@@ -67,10 +67,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\css\main.css" />
+    <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\images\admin.png" />
+    <Content Include="admin\js\bootstrap.min.js" />
+    <Content Include="admin\js\jquery-3.2.1.min.js" />
+    <Content Include="admin\js\main.js" />
+    <Content Include="admin\js\plugins\bootstrap-datepicker.min.js" />
+    <Content Include="admin\js\plugins\bootstrap-notify.min.js" />
+    <Content Include="admin\js\plugins\chart.js" />
+    <Content Include="admin\js\plugins\dataTables.bootstrap.min.js" />
+    <Content Include="admin\js\plugins\fullcalendar.min.js" />
+    <Content Include="admin\js\plugins\jquery-ui.custom.min.js" />
+    <Content Include="admin\js\plugins\jquery.dataTables.min.js" />
+    <Content Include="admin\js\plugins\jquery.vmap.min.js" />
+    <Content Include="admin\js\plugins\jquery.vmap.sampledata.js" />
+    <Content Include="admin\js\plugins\jquery.vmap.world.js" />
+    <Content Include="admin\js\plugins\moment.min.js" />
+    <Content Include="admin\js\plugins\pace.min.js" />
+    <Content Include="admin\js\plugins\select2.min.js" />
+    <Content Include="admin\js\plugins\sweetalert.min.js" />
+    <Content Include="admin\js\popper.min.js" />
     <Content Include="home.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,6 +123,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\admin.Master" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -97,6 +133,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
