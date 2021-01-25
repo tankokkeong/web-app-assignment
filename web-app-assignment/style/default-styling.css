@@ -1,0 +1,62 @@
+﻿/*Remove browser default styling*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/*Font colours*/
+.text-lightgreen {
+    color: #0B8C7B !important;
+}
+
+.text-lightblue {
+    color: #577488 !important;
+}
+
+/*background colours*/
+.bg-lightgreen {
+    background-color: #0B8C7B !important;
+}
+
+.bg-darkgreen {
+    background-color: #125642 !important
+}
+
+.bg-transparent{
+    background-color:transparent!important;
+}
+
+
+
+/*Styling for footer*/
+
+footer {
+    background-color: #252C41;
+    min-height:500px;
+    padding: 5% 10%;
+}
+
+.footer-job-details {
+    border-bottom: 1px solid #466F9F;
+    padding-bottom: 20px;
+}
+
+
+@media (min-width:1000px)
+{
+    footer{
+        padding: 0;
+    }
+
+    .footer-job-details {
+        padding: 20px 7.5%;
+    }
+
+    .navbar {
+        padding: 10px 7.5%;
+    }
+}

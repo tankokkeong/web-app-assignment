@@ -1,0 +1,42 @@
+﻿.home-body{
+    width:100%;
+}
+
+.banner-container {
+    width: 100%;
+    background-image: url("../images/home/writing-336370_1920-min.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position:relative;
+}
+
+#home-banner {
+    width: 100%;
+    visibility: hidden;
+    max-height:600px;
+}
+
+.home-search-container{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:80%;
+    padding:20px;
+}
+
+.home-search-form div{
+    padding:10px 20px;
+    width:100%;
+}
+
+.home-search-control {
+    margin-top: 5px;
+}
+
+@media (min-width:850px) {
+    .home-search-control {
+        margin-top: 0px;
+    }
+}
