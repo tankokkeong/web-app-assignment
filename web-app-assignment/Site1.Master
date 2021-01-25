@@ -7,6 +7,11 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+    <%-- Bootstrap Plugins --%>
+    <link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-4.5.3-dist/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

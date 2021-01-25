@@ -88,7 +88,40 @@
     <Content Include="admin\js\plugins\select2.min.js" />
     <Content Include="admin\js\plugins\sweetalert.min.js" />
     <Content Include="admin\js\popper.min.js" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap.css" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.bundle.js" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
+    <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="home.aspx" />
+    <Content Include="images\home\accounting-min.png" />
+    <Content Include="images\home\add-friend-min.png" />
+    <Content Include="images\home\data-analytics-min.png" />
+    <Content Include="images\home\digital-marketing-min.png" />
+    <Content Include="images\home\home-partner-min.png" />
+    <Content Include="images\home\hotel-min.png" />
+    <Content Include="images\home\illustration-min.png" />
+    <Content Include="images\home\internet-min.png" />
+    <Content Include="images\home\partner1-min.png" />
+    <Content Include="images\home\partner10-min.png" />
+    <Content Include="images\home\partner2-min.png" />
+    <Content Include="images\home\partner3-min.png" />
+    <Content Include="images\home\partner4-min.png" />
+    <Content Include="images\home\partner5-min.png" />
+    <Content Include="images\home\partner6-min.png" />
+    <Content Include="images\home\partner7-min.png" />
+    <Content Include="images\home\partner8-min.png" />
+    <Content Include="images\home\partner9-min.png" />
+    <Content Include="images\home\resume-and-cv-min.png" />
+    <Content Include="images\home\sale-min.png" />
+    <Content Include="images\home\teacher-min.png" />
+    <Content Include="images\home\writing-336370_1920-min.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +157,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\admin.Master" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.js.map" />
+    <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
