@@ -13,6 +13,10 @@ body {
     color: #0B8C7B !important;
 }
 
+.text-darkgreen {
+    color: #125642 !important;
+}
+
 .text-lightblue {
     color: #577488 !important;
 }
@@ -23,7 +27,7 @@ body {
 }
 
 .bg-darkgreen {
-    background-color: #125642 !important
+    background-color: #125642 !important;
 }
 
 .bg-transparent{
@@ -35,6 +39,9 @@ body {
     width:105px;
 }
 
+.navbar{
+    width:100%;
+}
 
 /*Styling for footer*/
 
@@ -71,7 +78,6 @@ footer {
 .footer-nav-list{
     margin-top:20px;
 }
-
 
 @media (min-width:1000px)
 {

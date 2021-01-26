@@ -25,7 +25,9 @@
                                 <input type="text" class="form-control col-sm-12 col-lg-3 home-search-control" placeholder="Job Title"/>
 
                                 <select class="form-control col-sm-12 col-lg-4 home-search-control">
-                                    <option>Location</option>
+                                    <option>
+                                        <h1>Location</h1>
+                                    </option>
                                 </select>
 
                                 <select class="form-control col-sm-12 col-lg-4 home-search-control">
@@ -49,7 +51,7 @@
                 <div class="process-card">
                     <div class="row">
 
-                      <div class="col-sm-12 col-lg-4 mt-3">
+                      <div class="col-sm-12 col-lg-4 mt-3 mb-3">
                         <div class="card">
                           <div class="card-body">
                               <div class="card-icon">
@@ -77,7 +79,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-12 col-lg-4 mt-3">
+                      <div class="col-sm-12 col-lg-4 mt-3 mb-3">
                         <div class="card">
                           <div class="card-body">
                               <div class="card-icon">
@@ -106,7 +108,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-12 col-lg-4 mt-3">
+                      <div class="col-sm-12 col-lg-4 mt-3 mb-3">
                         <div class="card">
                           <div class="card-body">
                               <div class="card-icon">
@@ -145,7 +147,182 @@
                     <h2 class="text-lightgreen">Job Services</h2>
                 </div>
                 
+                <div class="job-services-row row">
+
+                    <% for (int i = 0; i < 2; i++)
+                        {
+                    %>
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-chalkboard-teacher text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Education</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-ad text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Digital Marketing</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="far fa-object-group text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Graphic Design</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-bullhorn text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Sales & Marketing</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% 
+                        }
+                    %>
+
+                </div>
+
+                <div class="browse-all">
+                    <div class="browse-btn-container text-center">
+                        <button class="btn bg-lightgreen text-light text-center">Browser All Categories</button>
+                    </div>
+                </div>
+                                      
             </div>
         </div>
+
+        <div class="working-partner">
+            <div class="working-partner-title text-center mb-3">
+                <h2 class="text-lightgreen">Working Partners</h2>
+            </div>
+
+            <div class="marquee-background mt-3">
+                <div class="marquee">
+                    <div class="partner-images" id="partner-slides">
+                        <div class="display-slides">
+                            <img src="images/home/partner1-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner2-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner3-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                           <img src="images/home/partner4-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner5-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner6-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner7-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner8-min.png" />    
+                        </div>
+                
+                        <div class="display-slides">
+                            <img src="images/home/partner9-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner10-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner1-min.png" />
+                        </div>
+    
+                        <div class="display-slides">
+                            <img src="images/home/partner2-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                           <img src="images/home/partner3-min.png" />
+                        </div>
+        
+                        <div class="display-slides">
+                            <img src="images/home/partner4-min.png" />
+                        </div>
+
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
     </div>
 </asp:Content>

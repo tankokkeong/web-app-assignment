@@ -71,8 +71,41 @@
 }
 
 .job-services-container{
-    padding:20px;
+    padding:20px 80px;
 }
+
+.job-services-card {
+    background-color: #E4E3E3!important;
+}
+
+/*Marquee*/
+.partner-images {
+    display: flex;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-background {
+    background-image: url('../images/home/home-partner-min.png');
+    width:100%;
+    background-size:cover;
+    padding: 40px 0;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-5500px);
+    }
+}
+
+.working-partner {
+    overflow: hidden;
+    width: 100%;
+}
+
 
 @media (min-width:850px) {
     .home-search-control {
