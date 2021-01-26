@@ -1778,6 +1778,7 @@
     <Content Include="images\home\teacher-min.png" />
     <Content Include="images\home\writing-336370_1920-min.png" />
     <Content Include="images\logo\logo.png" />
+    <Content Include="script\app.js" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\home.css" />
     <Content Include="Web.config" />
