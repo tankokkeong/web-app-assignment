@@ -4,7 +4,7 @@
 
 .banner-container {
     width: 100%;
-    background-image: url("../images/home/original.jpg");
+    background-image: url("../images/home/writing-336370_1920-min3.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -85,7 +85,7 @@
 }
 
 .marquee-background {
-    background-image: url('../images/home/home-partner-min.png');
+    background-image: url('../images/home/home-partner.png');
     width:100%;
     background-size:cover;
     padding: 40px 0;

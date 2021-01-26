@@ -1759,6 +1759,7 @@
     <Content Include="images\home\data-analytics-min.png" />
     <Content Include="images\home\digital-marketing-min.png" />
     <Content Include="images\home\home-partner-min.png" />
+    <Content Include="images\home\home-partner.png" />
     <Content Include="images\home\hotel-min.png" />
     <Content Include="images\home\illustration-min.png" />
     <Content Include="images\home\internet-min.png" />
@@ -1777,6 +1778,7 @@
     <Content Include="images\home\sale-min.png" />
     <Content Include="images\home\teacher-min.png" />
     <Content Include="images\home\writing-336370_1920-min.png" />
+    <Content Include="images\home\writing-336370_1920-min3.png" />
     <Content Include="images\logo\logo.png" />
     <Content Include="script\app.js" />
     <Content Include="style\default-styling.css" />
