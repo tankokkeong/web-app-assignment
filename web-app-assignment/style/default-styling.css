@@ -8,6 +8,10 @@ body {
     overflow-x: hidden;
 }
 
+#page-content{
+    min-height:100vh;
+}
+
 /*Font colours*/
 .text-lightgreen {
     color: #0B8C7B !important;
