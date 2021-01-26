@@ -99,11 +99,56 @@
             </div>
 
             <div class="footer-content">
+                <div class="footer-content-container row">
 
+                    <div class="col-sm-12 col-lg-3 text-center">
+                        <div class="mt-2">
+                            <img src="images/logo/logo.png" />
+                        </div>
+                       
+
+                        <div class="text-lightblue mt-2 text-left">
+                            No.23 Jalan 12, Selayang Baru, 68100
+                            Batu Caves, Selangor
+                        </div>
+
+                        <div class="text-lightblue mt-2 text-left">
+                           Email : Webissue.emailus@gmail.com
+                        </div>
+
+                        <div class="text-lightblue mt-2 text-left">
+                            Call: 03-6123-5555
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3">
+
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3">
+
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3">
+
+                    </div>
+                </div>
             </div>
 
             <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span class="text-lightblue">@2020 Job Searching Desinged By Kenny's Team. All Rights Reserved</span>
+                    </div>
 
+                    <div class="col-sm-6 text-right">
+                        <i class="fab fa-facebook-f text-lightblue footer-icon"></i>
+                        <i class="fab fa-twitter text-lightblue footer-icon"></i>
+                        <i class="fab fa-linkedin-in text-lightblue footer-icon"></i>
+                        <i class="fab fa-instagram text-lightblue footer-icon"></i>
+                    </div>
+                </div>
+                
             </div>
         </div>
         

@@ -1770,6 +1770,7 @@
     <Content Include="images\home\sale-min.png" />
     <Content Include="images\home\teacher-min.png" />
     <Content Include="images\home\writing-336370_1920-min.jpg" />
+    <Content Include="images\logo\logo.png" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\home.css" />
     <Content Include="Web.config" />
