@@ -22,8 +22,10 @@
 <body>
 
     <%-- Header --%>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand text-light" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand text-light" href="#">
+          <img src="images/logo/logo.png" id="header-logo"/>
+      </a>
       <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -101,36 +103,92 @@
             <div class="footer-content">
                 <div class="footer-content-container row">
 
-                    <div class="col-sm-12 col-lg-3 text-center">
-                        <div class="mt-2">
-                            <img src="images/logo/logo.png" />
+                    <div class="col-sm-12 col-lg-3 footer-nav-list">
+                        <div class="mt-2 footer-nav footer-nav-header">
+                            <img src="images/logo/logo.png" id="footer-logo"/>
                         </div>
                        
 
-                        <div class="text-lightblue mt-2 text-left">
-                            No.23 Jalan 12, Selayang Baru, 68100
-                            Batu Caves, Selangor
+                        <div class="text-lightblue mt-2 footer-nav">
+                           About Us
                         </div>
 
-                        <div class="text-lightblue mt-2 text-left">
-                           Email : Webissue.emailus@gmail.com
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Privacy Policy
                         </div>
 
-                        <div class="text-lightblue mt-2 text-left">
-                            Call: 03-6123-5555
+                        <div class="text-lightblue mt-2 footer-nav">
+                            Career Center
+                        </div>
+
+                         <div class="text-lightblue mt-2 footer-nav">
+                            Contact Us
+                        </div>
+
+                         <div class="text-lightblue mt-2 footer-nav">
+                            Help
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Terms & Conditions
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-lg-3">
+                    <div class="col-sm-12 col-lg-3 footer-nav-list">
+                        <div class="text-light footer-nav-header">
+                            <h3>Job Seekers</h3>
+                        </div>
 
+                        <div class="text-lightblue mt-2 footer-nav">
+                           User Profile
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Search jobs
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Resume
+                        </div>
                     </div>
 
-                    <div class="col-sm-12 col-lg-3">
+                    <div class="col-sm-12 col-lg-3 footer-nav-list">
+                        <div class="text-light footer-nav-header">
+                            <h3>Employers</h3>
+                        </div>
 
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Company Profile
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Candidate List
+                        </div>
                     </div>
 
-                    <div class="col-sm-12 col-lg-3">
+                    <div class="col-sm-12 col-lg-3 footer-nav-list">
+                        <div class="text-light footer-nav-header">
+                            <h3>Languages</h3>
+                        </div>
 
+                        <div class="text-light mt-2 footer-nav">
+                           <select class="form-control mt-3 mb-3">
+                               <option>English</option>
+                               <option>Chinese</option>
+                           </select>
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           No.23 Jalan 12, Selaynag Baru, 68100 Batu Caves, Selangor
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Email: <br> webissue.emailus@gmail.com
+                        </div>
+
+                        <div class="text-lightblue mt-2 footer-nav">
+                           Call: <br> 03-6123-5555
+                        </div>
                     </div>
                 </div>
             </div>

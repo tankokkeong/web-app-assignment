@@ -1756,6 +1756,7 @@
     <Content Include="images\home\hotel-min.png" />
     <Content Include="images\home\illustration-min.png" />
     <Content Include="images\home\internet-min.png" />
+    <Content Include="images\home\original.jpg" />
     <Content Include="images\home\partner1-min.png" />
     <Content Include="images\home\partner10-min.png" />
     <Content Include="images\home\partner2-min.png" />
@@ -1769,7 +1770,7 @@
     <Content Include="images\home\resume-and-cv-min.png" />
     <Content Include="images\home\sale-min.png" />
     <Content Include="images\home\teacher-min.png" />
-    <Content Include="images\home\writing-336370_1920-min.jpg" />
+    <Content Include="images\home\writing-336370_1920-min.png" />
     <Content Include="images\logo\logo.png" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\home.css" />
