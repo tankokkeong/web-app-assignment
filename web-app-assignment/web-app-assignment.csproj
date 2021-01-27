@@ -1785,6 +1785,7 @@
     <Content Include="images\Signup _ Login\facebook.png" />
     <Content Include="images\Signup _ Login\gmail.png" />
     <Content Include="images\Signup _ Login\invisible.png" />
+    <Content Include="noscript.aspx" />
     <Content Include="script\app.js" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\home.css" />
@@ -1820,6 +1821,13 @@
     </Compile>
     <Compile Include="home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noscript.aspx.cs">
+      <DependentUpon>noscript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noscript.aspx.designer.cs">
+      <DependentUpon>noscript.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
