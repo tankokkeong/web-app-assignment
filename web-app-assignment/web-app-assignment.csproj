@@ -1780,10 +1780,17 @@
     <Content Include="images\home\writing-336370_1920-min.png" />
     <Content Include="images\home\writing-336370_1920-min3.png" />
     <Content Include="images\logo\logo.png" />
+    <Content Include="images\Signup _ Login\check.png" />
+    <Content Include="images\Signup _ Login\eye.png" />
+    <Content Include="images\Signup _ Login\facebook.png" />
+    <Content Include="images\Signup _ Login\gmail.png" />
+    <Content Include="images\Signup _ Login\invisible.png" />
     <Content Include="script\app.js" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\login_signup.css" />
     <Content Include="Web.config" />
+    <Content Include="login_signup.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\admin.Master.cs">
@@ -1821,6 +1828,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="login_signup.aspx.cs">
+      <DependentUpon>login_signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login_signup.aspx.designer.cs">
+      <DependentUpon>login_signup.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

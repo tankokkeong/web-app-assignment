@@ -1,0 +1,33 @@
+﻿.login_signupBody {
+    width: 50%;
+    height: 100%;
+    margin-left: 50%;
+    margin-top: 50%;
+    background-color: #0094ff;
+    transform: translate(-50%, -50%);
+    position: relative;
+}
+
+#myTab {
+    background-color: red;
+}
+
+.inputsFormSign_Login{
+    padding: 10%;
+}
+
+.sign_loginLogo {
+    width: 100%;
+    margin-top: 5%;
+}
+
+.sign_loginLogoImage {
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+#inputsFormSign_LoginButton {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: -10%;
+}
