@@ -1,5 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="web_app_assignment.Site1" %>
 
+
+<!-- No Script -->
+<noscript>
+    <meta HTTP-EQUIV="refresh" content=0;url="noscript.aspx">
+</noscript>
+
 <!DOCTYPE html>
 
 <html>
