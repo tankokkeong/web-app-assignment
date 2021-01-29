@@ -1748,12 +1748,19 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="help.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
     <Content Include="images\career\line-min.png" />
     <Content Include="images\career\search-min.png" />
     <Content Include="images\career\startup-594091_1920-min.jpg" />
+    <Content Include="images\help center\arrow-down-sign-to-navigate-min.png" />
+    <Content Include="images\help center\line-min.png" />
+    <Content Include="images\help center\question-mark-2492009_1920-min.jpg" />
+    <Content Include="images\help center\question-mark-2492009_1920-min.jpg.png" />
+    <Content Include="images\help center\search-min.png" />
+    <Content Include="images\help center\Untitled-1.png" />
     <Content Include="images\home\accounting-min.png" />
     <Content Include="images\home\add-friend-min.png" />
     <Content Include="images\home\data-analytics-min.png" />
@@ -1792,6 +1799,7 @@
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
     <Content Include="style\default-styling.css" />
+    <Content Include="style\help.css" />
     <Content Include="style\home.css" />
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
@@ -1821,6 +1829,13 @@
     </Compile>
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="help.aspx.cs">
+      <DependentUpon>help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="help.aspx.designer.cs">
+      <DependentUpon>help.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
