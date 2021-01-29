@@ -117,7 +117,7 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-3 footer-nav-list">
                         <div class="mt-2 footer-nav footer-nav-header">
-                            <img src="images/logo/logo.png" id="footer-logo"/>
+                            <a href="home.aspx"><img src="images/logo/logo.png" id="footer-logo"/></a>
                         </div>
                        
 
@@ -138,11 +138,11 @@
                         </div>
 
                          <div class="text-lightblue mt-2 footer-nav">
-                            Help
+                            <a href="help.aspx" class="text-lightblue text-decoration-none">Help</a>
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">
-                           Terms & Conditions
+                           <a href="terms_conditions.aspx" class="text-lightblue text-decoration-none">Terms & Conditions</a> 
                         </div>
                     </div>
 
