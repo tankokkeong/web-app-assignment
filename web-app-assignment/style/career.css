@@ -20,11 +20,12 @@
     transform: translate(-50%,-50%);
     flex-wrap: nowrap;
     color: white;
-    font-family: sans-serif;
+    font-family: Papyrus;
     font-size: 150px;
     text-align: center;
 }
 
+/*This is our team section*/
 .our-team {
     background-color: #F0F8FF;
 }
@@ -34,66 +35,115 @@
     text-transform: uppercase;
 }
 
-#our-team-line {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 130px;
-    width: 130px;
-    transform: rotate(45deg);
-}
 
-.team-slider {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    width: auto;
+/*Our team slider*/
+.testimonial {
+    background: #fff;
     text-align: center;
-    flex-wrap: wrap;
-    background-color:black;
+    padding: 30px 30px 70px;
+    margin: 0 15px 110px;
+    position: relative;
+    margin-top: 20px;
 }
 
-    .team-slider .team-intro {
-        background: #fff;
-        margin: 30px;
-        margin-bottom: 80px;
-        width: 500px;
-        padding: 20px;
-        line-height: 20px;
-        color: #8e8b8b;
+    .testimonial:before,
+    .testimonial:after {
+        content: "";
+        border-top: 40px solid #fff;
+        border-right: 125px solid transparent;
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+    }
+
+    .testimonial:after {
+        border-right: none;
+        border-left: 125px solid transparent;
+        left: auto;
+        right: 0;
+    }
+
+    .testimonial .icon {
+        display: inline-block;
+        font-size: 80px;
+        color: #bd986b;
+        margin-bottom: 30px;
+        opacity: 0.6;
+    }
+
+    .testimonial .description {
+        font-size: 16px;
+        color: #777;
+        text-align: justify;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        letter-spacing: -1px;
+    }
+
+    .testimonial .testimonial-content {
+        width: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    .testimonial .pic {
+        display: inline-block;
+        border: 6px solid white;
+        border-radius: 50%;
+        box-shadow: 0 0 2px 2px #daad86;
+        overflow: hidden;
+        z-index: 1;
         position: relative;
     }
 
-        .team-slider .team-intro h3 {
-            color: darkorange;
-            font-size: 18px;
-            margin-top: 10px;
+        .testimonial .pic img {
+            width: 100%;
+            height: auto;
         }
 
-        .team-slider .team-intro p.role-desc {
-            margin-top: 100px;
-        }
+    .testimonial .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: orange;
+        text-transform: capitalize;
+        margin: 0 0 5px 0;
+    }
 
-        .team-slider .team-intro p.role {
-            color: black;
-            margin: 12px 0;
-            font-size: 26px;
-            text-transform: uppercase;
-        }
+    .testimonial .post {
+        display: block;
+        font-size: 18px;
+        color: black;
+    }
 
-        .team-slider.team-intro .team-img {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 150px;
-            border-radius: 50%;
-            background: #fff;
-        }
+.owl-theme .owl-controls {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
 
-            .team-slider .team-intro .team-img img {
-                width: 130px;
-                height: 100px;
-                padding: 5px;
-            }
+    .owl-theme .owl-controls .owl-page span {
+        width: 32px;
+        height: 10px;
+        background: #fff;
+        border: 2px solid #bd986b;
+        margin: 20px;
+        opacity: 1;
+    }
+
+    .owl-theme .owl-controls .owl-page.active span,
+    .owl-theme .owl-controls.clickable .owl-page:hover span {
+        background: #ffd9b8;
+        border-color: #fff;
+    }
+
+.pic img {
+    width: 100px !important;
+    height: 50px;
+}
+
+/*This is application form section*/
+.application-container {
+    background-image: url('../images/career/startup-594091_1920-min.jpg');
+    height:500px;
+    width:100%;
+
+}

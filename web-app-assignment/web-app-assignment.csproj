@@ -1750,6 +1750,7 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
     <Content Include="help.aspx" />
     <Content Include="home.aspx" />
+    <Content Include="images\career\3.jpg" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
     <Content Include="images\career\line-min.png" />
