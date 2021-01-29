@@ -1795,6 +1795,13 @@
     <Content Include="images\Signup _ Login\gmail.png" />
     <Content Include="images\Signup _ Login\invisible.png" />
     <Content Include="images\Terms-conditions\writing-336370_1920-min3.png" />
+    <Content Include="images\user profile\add-min.png" />
+    <Content Include="images\user profile\facebook%281%29-min.png" />
+    <Content Include="images\user profile\invisible-min.png" />
+    <Content Include="images\user profile\linkedin-min.png" />
+    <Content Include="images\user profile\man-user-min.png" />
+    <Content Include="images\user profile\pin-min.png" />
+    <Content Include="images\user profile\twitter-min.png" />
     <Content Include="noscript.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="script\app.js" />
@@ -1805,7 +1812,9 @@
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\terms_conditions.css" />
+    <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
+    <Content Include="user-profile.aspx" />
     <Content Include="Web.config" />
     <Content Include="login_signup.aspx" />
   </ItemGroup>
@@ -1880,6 +1889,13 @@
     </Compile>
     <Compile Include="terms_conditions.aspx.designer.cs">
       <DependentUpon>terms_conditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-profile.aspx.cs">
+      <DependentUpon>user-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-profile.aspx.designer.cs">
+      <DependentUpon>user-profile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
