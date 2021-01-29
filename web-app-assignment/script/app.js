@@ -56,3 +56,39 @@ if (window.location.pathname === "/home" || window.location.pathname === "/home.
         $("#header-nav").css("position", "absolute");
     });
 }
+
+function helpQuestionToggleDown(question_id, toggle_id, call_id, question_title) {
+    $(document).ready(function () {
+        $('#' + question_id).slideDown();
+        $('#' + toggle_id).css("transform", "rotate(0deg)");
+        $('#' + call_id).attr("onclick", "helpQuestionToggleUp(" + '"' + question_id + '"' + "," + '"' + toggle_id + '"' + "," + '"' + call_id + '"' + "," + '"' + question_title + '")');
+        $('#' + question_title).addClass("text-lightgreen");
+    });
+}
+
+function helpQuestionToggleUp(question_id, toggle_id, call_id, question_title) {
+    $(document).ready(function () {
+        $('#' + question_id).slideUp();
+        $('#' + toggle_id).css("transform", "rotate(90deg)");
+        $('#' + call_id).attr("onclick", "helpQuestionToggleDown(" + '"' + question_id + '"' + "," + '"' + toggle_id + '"' + "," + '"' + call_id + '"' + "," + '"' + question_title + '")');
+        $('#' + question_title).removeClass("text-lightgreen");
+    });
+}
+
+function helpQuestionFilter() {
+    question_input = document.getElementById("question-input").value.toUpperCase();
+    current_question = document.getElementsByClassName("question-title");
+    question_bar = document.getElementsByClassName("question-bar");
+
+    for (var i = 0; i < current_question.length; i++) {
+        if (current_question[i].innerHTML.toUpperCase().indexOf(question_input) > -1) {
+            question_bar[i].style.display = "";
+        }
+        else if (question_input.value === "") {
+            question_bar[i].style.display = "";
+        }
+        else {
+            question_bar[i].style.display = "none";
+        }
+    }
+}
