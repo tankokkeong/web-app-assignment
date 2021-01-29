@@ -3,17 +3,14 @@
     height: 100%;
     margin-left: 50%;
     margin-top: 50%;
-    background-color: #0094ff;
+    background-color: #2f7e81;
     transform: translate(-50%, -50%);
     position: relative;
 }
 
-#myTab {
-    background-color: red;
-}
-
 .inputsFormSign_Login{
     padding: 10%;
+    position:relative;
 }
 
 .sign_loginLogo {
@@ -30,4 +27,91 @@
     margin-left: 50%;
     transform: translate(-50%);
     margin-bottom: -10%;
+    width: 100%;
+}
+
+#sign_login_emailUser {
+    background-color: #80b9bb;
+    color: white;
+}
+
+#sign_login_emailUser::placeholder {
+    color: white;
+}
+
+#sign_login_password {
+    background-color: #80b9bb;
+    color: white;
+}
+
+#sign_login_password::placeholder {
+    color: white;
+}
+
+#inputsFormSign_LoginFormCheck {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#inputsFormSign_LoginFormCheckboxRememberMe {
+    color: white;
+}
+
+.inputsFormSign_SignUpFree {
+    text-align: center;
+    color: white;
+}
+
+.inputsFormSign_LoginFree {
+    text-align: center;
+    color: white;
+}
+
+.SignUpFree LoginFree {
+    cursor: pointer;
+}
+
+.dividerSignUp{
+    padding: 5%;
+}
+
+.dividerSignUplines{
+    width: 100%;
+    height: 45px;
+    position:relative;
+}
+
+.dividerSignUplines::after, .dividerSignUplines::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    height: 1px;
+    background: white;
+    top: 30%;
+    width: 25%;
+}
+
+.dividerSignUplines::after {
+    left: 20%;
+}
+
+.dividerSignUplines::before {
+    right: 20%;
+}
+
+.dividerSignUplinesContent{
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: -5%;
+    color:white;
+    text-align:center;
+}
+
+.active_selected {
+    background-color: #194a4c!important;
 }
