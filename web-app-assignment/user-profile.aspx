@@ -6,5 +6,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="profile-container">
+        <div class="profile-row row">
+            <div class="profile-col">
 
+            </div>
+
+            <div class="profile-col">
+
+            </div>
+        </div>
+    </div>
 </asp:Content>
