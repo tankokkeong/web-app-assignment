@@ -100,6 +100,8 @@
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="Career.aspx" />
+    <Content Include="contact-us.aspx" />
+    <Content Include="edit-user.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.css" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.min.css" />
@@ -1751,6 +1753,7 @@
     <Content Include="forgotten_Password.aspx" />
     <Content Include="help.aspx" />
     <Content Include="home.aspx" />
+    <Content Include="images\career\3.jpg" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
     <Content Include="images\career\line-min.png" />
@@ -1801,18 +1804,30 @@
     <Content Include="images\Signup_Login\talent-pool-picture.jpg" />
     <Content Include="images\Signup_Login\works-1.png" />
     <Content Include="images\Terms-conditions\writing-336370_1920-min3.png" />
+    <Content Include="images\user profile\add-min.png" />
+    <Content Include="images\user profile\demo-user.png" />
+    <Content Include="images\user profile\facebook%281%29-min.png" />
+    <Content Include="images\user profile\invisible-min.png" />
+    <Content Include="images\user profile\linkedin-min.png" />
+    <Content Include="images\user profile\man-user-min.png" />
+    <Content Include="images\user profile\pin-min.png" />
+    <Content Include="images\user profile\twitter-min.png" />
     <Content Include="noscript.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
+    <Content Include="style\contact-us.css" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\forgottenPassword.css" />
+    <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\terms_conditions.css" />
+    <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
+    <Content Include="user-profile.aspx" />
     <Content Include="Web.config" />
     <Content Include="login_signup.aspx" />
   </ItemGroup>
@@ -1837,6 +1852,20 @@
     </Compile>
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contact-us.aspx.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contact-us.aspx.designer.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-user.aspx.cs">
+      <DependentUpon>edit-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-user.aspx.designer.cs">
+      <DependentUpon>edit-user.aspx</DependentUpon>
     </Compile>
     <Compile Include="forgotten_Password.aspx.cs">
       <DependentUpon>forgotten_Password.aspx</DependentUpon>
@@ -1894,6 +1923,13 @@
     </Compile>
     <Compile Include="terms_conditions.aspx.designer.cs">
       <DependentUpon>terms_conditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-profile.aspx.cs">
+      <DependentUpon>user-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-profile.aspx.designer.cs">
+      <DependentUpon>user-profile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
