@@ -1,2 +1,76 @@
 ﻿body {
+    width:100%;
+}
+
+.background-section {
+    background-image: url('../images/contact-us/writing-336370_1920-min3.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center bottom;
+    position: relative;
+    min-height: 500px;
+}
+
+.background-banner-text h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    flex-wrap: nowrap;
+    color: white;
+    font-family: Brush Script MT;
+    font-size: 150px;
+    text-align: center;
+    text-shadow: 2px 2px black;
+}
+
+.info-container{
+    position:relative;
+    font-family:sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    background:lightgrey;
+}
+
+.info{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:150px;
+    width:280px;
+    padding:20px;
+    margin:20px;
+    flex-wrap:wrap;
+    flex-direction:column;
+}
+
+.info .contact{
+    position:relative;
+    color:black;
+    font-size:50px;
+    padding:10px;
+    height:30px;
+    width:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+}
+
+.info .content{
+    position:relative;
+    width:100%;
+    text-align:center;
+    margin-top:300px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.content:hover{
+    
 }
