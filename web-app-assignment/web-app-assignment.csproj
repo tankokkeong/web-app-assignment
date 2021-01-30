@@ -1750,6 +1750,7 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="forgotten_Password.aspx" />
     <Content Include="help.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\career\3.jpg" />
@@ -1792,11 +1793,17 @@
     <Content Include="images\home\writing-336370_1920-min3.png" />
     <Content Include="images\logo\logo.png" />
     <Content Include="images\privacy-policy\writing-336370_1920-min3.png" />
-    <Content Include="images\Signup _ Login\check.png" />
-    <Content Include="images\Signup _ Login\eye.png" />
-    <Content Include="images\Signup _ Login\facebook.png" />
-    <Content Include="images\Signup _ Login\gmail.png" />
-    <Content Include="images\Signup _ Login\invisible.png" />
+    <Content Include="images\Signup_Login\cancel.png" />
+    <Content Include="images\Signup_Login\check.png" />
+    <Content Include="images\Signup_Login\conference-bridge.png" />
+    <Content Include="images\Signup_Login\eye.png" />
+    <Content Include="images\Signup_Login\facebook.png" />
+    <Content Include="images\Signup_Login\gmail.png" />
+    <Content Include="images\Signup_Login\invisible.png" />
+    <Content Include="images\Signup_Login\job-rotation-background-and-featured-image.png" />
+    <Content Include="images\Signup_Login\personal-assistant-job-description-1024x576.jpg" />
+    <Content Include="images\Signup_Login\talent-pool-picture.jpg" />
+    <Content Include="images\Signup_Login\works-1.png" />
     <Content Include="images\Terms-conditions\writing-336370_1920-min3.png" />
     <Content Include="images\user profile\add-min.png" />
     <Content Include="images\user profile\demo-user.png" />
@@ -1812,6 +1819,7 @@
     <Content Include="style\career.css" />
     <Content Include="style\contact-us.css" />
     <Content Include="style\default-styling.css" />
+    <Content Include="style\forgottenPassword.css" />
     <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
@@ -1859,6 +1867,13 @@
     </Compile>
     <Compile Include="edit-user.aspx.designer.cs">
       <DependentUpon>edit-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forgotten_Password.aspx.cs">
+      <DependentUpon>forgotten_Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgotten_Password.aspx.designer.cs">
+      <DependentUpon>forgotten_Password.aspx</DependentUpon>
     </Compile>
     <Compile Include="help.aspx.cs">
       <DependentUpon>help.aspx</DependentUpon>
