@@ -154,7 +154,7 @@
                     </div>
                 </div>
 
-                <div id="job-application-content" class="my-info row">
+                <div id="job-application-content" class="my-info row" style="display:none;">
                     
                     <div class="application-container">
                         <% for (int i = 0; i < 10; i++)
