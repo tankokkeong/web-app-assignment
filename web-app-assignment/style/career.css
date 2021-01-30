@@ -20,9 +20,10 @@
     transform: translate(-50%,-50%);
     flex-wrap: nowrap;
     color: white;
-    font-family: Papyrus;
+    font-family: Brush Script MT;
     font-size: 150px;
     text-align: center;
+    text-shadow: 2px 2px black;
 }
 
 /*This is our team section*/
@@ -143,7 +144,47 @@
 /*This is application form section*/
 .application-container {
     background-image: url('../images/career/startup-594091_1920-min.jpg');
-    height:500px;
-    width:100%;
+
+}
+
+#ui {
+    background-color: #333;
+    padding: 0 30px;
+    border: 5px solid #92DAE9;
+    border-radius: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    opacity:0.9;
+}
+
+    #ui h2, p {
+        text-align: center;
+        color: white;
+        font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
+        margin-top:20px;
+    }
+    #ui label {
+        color: white;
+        font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
+    }
+
+    #ui .radio{
+        margin:0px 0px 30px 20px;
+    }
+
+#ui #submit {
+    margin-bottom: 20px;
+}
+
+
+
+    @media screen and (max-width: 600px) {
+        #ui {
+        padding:0 30px;
+       /* margin-bottom:20px;*/
+    }
+    #submit{
+        margin-bottom:20px;
+    }
 
 }

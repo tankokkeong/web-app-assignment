@@ -12,17 +12,18 @@
     position: relative;
     min-height: 500px;
 }
-.banner-container h1 {
-    position: absolute;
-    padding:0 50px;
-    transform: translate(-50%,-50%);
-    flex-wrap: nowrap;
-    color: white;
-    font-family: Brush Script MT;
-    font-size: 120px;
-    text-align: center;
-    text-shadow: 2px 2px black;
-}
+    .banner-container h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        flex-wrap: nowrap;
+        color: white;
+        font-family: Brush Script MT;
+        font-size: 120px;
+        text-align: center;
+        text-shadow: 2px 2px black;
+    }
 
 .terms-conditions-content h1 {
     text-align: center;

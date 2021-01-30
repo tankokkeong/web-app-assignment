@@ -92,18 +92,47 @@
         </div>
     </div>
     <div class="application-container">
+
         <div class="row">
+
             <div class="col-lg-3"></div>
 
             <div class="col-lg-6">
                 <div id="ui">
                     <form class="form-group">
+                            <h2>Application Form</h2>
+                            <p>Fill out the below for job opportunies</p>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Full Name</label>
-                                <input type="text" name="fullname" class="form-control"/>
+                                <input type="text" name="fullname" class="form-control" required/>
                             </div>
+
+                            <div class="col-lg-6">
+                                <label>Email</label>
+                                <input type="text" name="email" class="form-control" required/>
+                            </div>
+
                         </div>
+
+                        <label>What Position are you looking for</label>
+                        <input type="text" name="position" class="form-control" required/>
+
+                        <label>Specific Your current employment status</label>
+                        <div class="radio-container">
+                            <input type="radio" class="radio" name="status" value="Employed" required />
+                            <label for="Employed">Employed</label>
+                            <input type="radio" class="radio" name="status" value="Umemployed" required />
+                            <label for="Umemployed">Umemployed</label>
+                            <input type="radio" class="radio" name="status" value="Self-Employmeny" required />
+                            <label for="Self-Employmeny">Self-Employmeny</label>
+                            <input type="radio" class="radio" name="status" value="Student" required />
+                            <label for="Student">Student</label>
+                        </div>
+                        <label>Upload Your Resume</label><br />
+                                
+
+                        <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success btn-block btn-lg" />
                     </form>
                 </div>
             </div>
