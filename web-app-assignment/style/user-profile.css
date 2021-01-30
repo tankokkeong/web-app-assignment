@@ -1,2 +1,140 @@
-﻿body {
+﻿#profile-pic{
+    width:100px;
+}
+
+.profile-container {
+    padding: 40px 5%;
+}
+
+.picture-container{
+    border: 1px solid black;
+    padding: 5px 7.5px;
+    position:relative;
+    width:120px;
+}
+
+.change-pic-btn{
+    position:absolute;
+    background-color: black;
+    color:white;
+    bottom:0px;
+    left:0;
+    width:100%;
+    padding:10px;
+}
+
+.change-pic-btn h4{
+    font-size:15px;
+    padding-bottom:0;
+    margin-bottom:0;
+    cursor:pointer;
+}
+
+.user-title{
+    margin-top:20px;
+    width:100%;
+}
+
+.user-location{
+    font-size:15px;
+}
+
+.details-nav {
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #C3C3C3;
+}
+
+.details-nav li{
+    padding-right: 20px;
+    padding:10px;
+    cursor:pointer;
+    margin-right: 2px;
+}
+
+.details-nav li:hover {
+    border-bottom: 5px solid #0B8C7B;
+}
+
+.detail-nav-selected {
+    border: 1px solid #C3C3C3;
+    border-bottom: 5px solid #0B8C7B;
+}
+
+.user-title-col{
+    width:100%;
+}
+
+.skill-list{
+    margin-left:10px;
+    font-size:15px;
+}
+
+.profile-skill h3, .profile-bios h3{
+    font-size: 20px;
+}
+
+.user-details{
+    width:100%;
+}
+
+.application-container {
+    width:100%;
+    padding: 20px;
+}
+
+.application-bar {
+    padding: 20px;
+    border: 1px solid #C3C3C3;
+    max-width:1000px;
+}
+
+.company-pic{
+    width:100%;
+    max-width:150px;
+}
+
+.company-name, .application-status {
+    font-size: 20px;
+}
+
+@media (min-width:850px) {
+    .profile-container {
+        padding: 40px 10%;
+    }
+
+    #profile-pic {
+        width: 150px;
+    }
+
+    .picture-container {
+        width: 160px;
+        padding: 5px;
+    }
+
+    .profile-row{
+        display:flex;
+    }
+
+    .user-title{
+        margin-top:0;
+        margin-left:50px;
+    }
+
+    .profile-skill, .profile-bios{
+        margin-left:50px;
+    }
+
+    .skill-list{
+        font-size:20px;
+    }
+
+    .profile-skill h3, .profile-bios h3 {
+        font-size: 25px;
+    }
+
+    .company-name, .application-status {
+        font-size: 25px;
+    }
+
 }

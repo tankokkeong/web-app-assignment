@@ -6,7 +6,7 @@
 .question-container {
     padding: 20px 10%;
     background-color: #cfe0e8;
-    height:100%;
+    min-height:100vh;
 }
 
 .question-list{

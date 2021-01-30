@@ -92,3 +92,39 @@ function helpQuestionFilter() {
         }
     }
 }
+
+function userProfileSwitchTab(tab_name) {
+
+    about_content = document.getElementById("about-content");
+    job_application_content = document.getElementById("job-application-content");
+
+    if (tab_name === "about") {
+
+        //Switch tab
+        about_content.style.display = "";
+        job_application_content.style.display = "none";
+
+        //Change tab styling
+        $('#about-tab').addClass("detail-nav-selected");
+        $("#application-tab").removeClass("detail-nav-selected");
+    }
+    else if (tab_name === "application") {
+
+        //Switch tab
+        about_content.style.display = "none";
+        job_application_content.style.display = "";
+
+        //Change tab styling
+        $('#application-tab').addClass("detail-nav-selected");
+        $("#about-tab").removeClass("detail-nav-selected");
+    }
+    else {
+        //default tab
+        about_content.style.display = "";
+        job_application_content.style.display = "none";
+
+        //Change tab styling
+        $('#about-tab').addClass("detail-nav-selected");
+        $("#application-tab").removeClass("detail-nav-selected");
+    }
+}
