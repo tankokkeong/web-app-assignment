@@ -24,7 +24,8 @@
                             <i class="fas fa-map-marker-alt"></i> Kuala Lumpur
                         </span>
 
-                        <span class="btn btn-secondary float-right">Edit Profile</span>
+                        <a href="edit-user.aspx
+                            " class="btn btn-secondary float-right">Edit Profile</a>
                     </h2>
                     <h3 class="text-lightgreen">Web Developer And Designer</h3>
                 </div>
