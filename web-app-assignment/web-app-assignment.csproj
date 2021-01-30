@@ -100,6 +100,7 @@
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="Career.aspx" />
+    <Content Include="edit-user.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.css" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.min.css" />
@@ -1808,6 +1809,7 @@
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
     <Content Include="style\default-styling.css" />
+    <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
     <Content Include="style\login_signup.css" />
@@ -1840,6 +1842,13 @@
     </Compile>
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-user.aspx.cs">
+      <DependentUpon>edit-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-user.aspx.designer.cs">
+      <DependentUpon>edit-user.aspx</DependentUpon>
     </Compile>
     <Compile Include="help.aspx.cs">
       <DependentUpon>help.aspx</DependentUpon>
