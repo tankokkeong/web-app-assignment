@@ -40,7 +40,7 @@
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" id="inputsFormSign_LoginFormCheckboxRememberMe" for="exampleCheck1">Remember Me</label>
                                 </div>
-                                <a href="#forgotten_password" class="inputsFormSign_LoginFormCheckForgotPassword"><p>Forgot Your Password ?</p></a>
+                                <a href="forgotten_Password.aspx" class="inputsFormSign_LoginFormCheckForgotPassword"><p>Forgot Your Password ?</p></a>
                             </div>
                             <div class="inputsFormSign_LoginFooter">
                                 <button type="submit" class="btn btn-info" id="inputsFormSign_LoginButton">Log In</button>
