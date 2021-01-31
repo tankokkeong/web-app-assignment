@@ -1793,6 +1793,16 @@
     <Content Include="images\home\teacher-min.png" />
     <Content Include="images\home\writing-336370_1920-min.png" />
     <Content Include="images\home\writing-336370_1920-min3.png" />
+    <Content Include="images\JobsList\clock.png" />
+    <Content Include="images\JobsList\full star.png" />
+    <Content Include="images\JobsList\loupe.png" />
+    <Content Include="images\JobsList\menu.png" />
+    <Content Include="images\JobsList\pin.png" />
+    <Content Include="images\JobsList\salary.png" />
+    <Content Include="images\JobsList\search.jpg" />
+    <Content Include="images\JobsList\star.png" />
+    <Content Include="images\JobsList\suitcase.png" />
+    <Content Include="images\JobsList\working-position.png" />
     <Content Include="images\logo\logo.png" />
     <Content Include="images\privacy-policy\writing-336370_1920-min3.png" />
     <Content Include="images\Signup_Login\cancel.png" />
@@ -1815,6 +1825,7 @@
     <Content Include="images\user profile\man-user-min.png" />
     <Content Include="images\user profile\pin-min.png" />
     <Content Include="images\user profile\twitter-min.png" />
+    <Content Include="job_lists.aspx" />
     <Content Include="noscript.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="recruiter-profile.aspx" />
@@ -1828,6 +1839,7 @@
     <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\job_lists.css" />
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\recruiter-profile.css" />
@@ -1908,6 +1920,13 @@
     </Compile>
     <Compile Include="home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="job_lists.aspx.cs">
+      <DependentUpon>job_lists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="job_lists.aspx.designer.cs">
+      <DependentUpon>job_lists.aspx</DependentUpon>
     </Compile>
     <Compile Include="noscript.aspx.cs">
       <DependentUpon>noscript.aspx</DependentUpon>
