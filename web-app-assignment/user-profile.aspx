@@ -186,7 +186,7 @@
 
                             <div class="col-sm-3 mt-3">
                                 <div class="mt-2">
-                                    <button class="btn btn-success">Chat</button>
+                                    <a href="chatbox.aspx" class="btn btn-success">Chat</a>
                                 </div>
 
                                 <div class="mt-2">
