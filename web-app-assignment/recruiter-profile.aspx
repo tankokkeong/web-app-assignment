@@ -168,6 +168,9 @@
                                 <div class="hiring-position">
                                     <span class="hiring-details">Graphic Designer</span>
                                 </div>
+                                <div class="view-profile">
+                                    <button class="btn btn-info">View Profile</button>
+                                </div>
                             </div>
 
                             <div class="col-sm-3 mt-3">
@@ -202,6 +205,10 @@
                 </div>
 
                 <div id="job-posted-content" class="my-info row" style="display:none;">
+                    <div class="">
+
+                    </div>
+
                     <table class="table table-bordered">
                       <thead>
                         <tr>
@@ -209,6 +216,7 @@
                           <th scope="col">Categories</th>
                           <th scope="col">Location</th>
                           <th scope="col">Budget</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -217,12 +225,20 @@
                           <td><span class="badge badge-success">Full-Time</span></td>
                           <td>Subang Jaya</td>
                           <td>RM 4,000/M</td>
+                          <td>
+                              <a class="badge badge-success p-2" role="button">Edit</a>
+                              <a class="badge badge-danger p-2" role="button">Delete</a>
+                          </td>
                         </tr>
                        <tr>
                           <th scope="row">Front End Developer</th>
                           <td><span class="badge badge-danger">Part-Time</span></td>
                           <td>Subang Jaya</td>
                           <td>RM 4,000/M</td>
+                          <td>
+                              <a class="badge badge-success p-2" role="button">Edit</a>
+                              <a class="badge badge-danger p-2" role="button">Delete</a>
+                          </td>
                         </tr>
                       </tbody>
                     </table>

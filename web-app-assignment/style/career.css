@@ -157,20 +157,52 @@
     opacity:0.9;
 }
 
-    #ui h2, p {
-        text-align: center;
-        color: white;
-        font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
-        margin-top:20px;
-    }
-    #ui label {
-        color: white;
-        font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
-    }
+#ui h2, p {
+    text-align: center;
+    color: white;
+    font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
+    margin-top:20px;
+}
+#ui label {
+    color: white;
+    font-family: Corbel,AdobeInvisFont,MyriadPro-Regular;
+    font-size:32px;
+}
 
-    #ui .radio{
-        margin:0px 0px 30px 20px;
-    }
+#ui .radio{
+   margin:0px 0px 30px 20px;
+}
+
+.application-container #ui #fullname, #email, #position input {
+    height: 50px;
+}
+
+.application-container #ui #fullname, #email, #position {
+    background-color: #63666A;
+    color: white;
+}
+
+
+.application-container#ui #upload {
+    padding: 10px;
+    color: black;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.application-container #ui #upload:hover {
+    background-color: #00b28f;
+}
+
+.application-container #ui #upload-text {
+    margin-left: 10px;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+}
 
 #ui #submit {
     margin-bottom: 20px;

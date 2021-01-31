@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Career</title>
     <link href="style/career.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
  
@@ -105,18 +105,18 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Full Name</label>
-                                <input type="text" name="fullname" class="form-control" required/>
+                                <input type="text" name="fullname" class="form-control" id="fullname" required/>
                             </div>
 
                             <div class="col-lg-6">
                                 <label>Email</label>
-                                <input type="text" name="email" class="form-control" required/>
+                                <input type="text" name="email" class="form-control" id="email" required/>
                             </div>
 
                         </div>
 
                         <label>What Position are you looking for</label>
-                        <input type="text" name="position" class="form-control" required/>
+                        <input type="text" name="position" class="form-control" id="position" required/>
 
                         <label>Specific Your current employment status</label>
                         <div class="radio-container">
@@ -130,7 +130,9 @@
                             <label for="Student">Student</label>
                         </div>
                         <label>Upload Your Resume</label><br />
-                                
+                            <input type="file" id="file" hidden="hidden" />
+                        <button type="button" id="upload">CHOOSE A FILE</button>
+                        <span id="upload-text">No file chosen, yet.</span> 
 
                         <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success btn-block btn-lg" />
                     </form>
@@ -143,17 +145,60 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $("#testimonial-slider").owlCarousel({
-            items: 3,
-            itemsDesktop: [1000, 3],
-            itemsDesktopSmall: [979, 2],
-            itemsTablet: [768, 2],
-            itemsMobile: [650, 1],
-            pagination: true,
-            autoPlay: true
+    <script>
+        $(document).ready(function () {
+            $("#testimonial-slider").owlCarousel({
+                items: 3,
+                itemsDesktop: [1000, 3],
+                itemsDesktopSmall: [979, 2],
+                itemsTablet: [768, 2],
+                itemsMobile: [650, 1],
+                pagination: true,
+                autoPlay: true
+            });
         });
-    });
-</script> 
+    </script>
+    <script>
+        const realFileBtn = document.getElementById("file");
+        const customBtn = document.getElementById("upload");
+        const customTxt = document.getElementById("upload-text");
+
+        customBtn.addEventListener("click", function () {
+            realFileBtn.click();
+        });
+
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+
+    </script>
+
+    <style>
+        #upload {
+          padding: 10px;
+          color: black;
+          background-color: white;
+          border: 1px solid #000;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-bottom:10px;
+        }
+
+        #upload:hover {
+          background-color: #00b28f;
+        }
+
+        #upload-text {
+          margin-left: 10px;
+          font-family: sans-serif;
+          font-size:20px;
+          color: white;
+        }
+    </style>
 </asp:Content>

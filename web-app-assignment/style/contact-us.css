@@ -26,51 +26,186 @@
     text-shadow: 2px 2px black;
 }
 
-.info-container{
-    position:relative;
-    font-family:sans-serif;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    background:lightgrey;
+.contact-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.info{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:150px;
-    width:280px;
-    padding:20px;
-    margin:20px;
-    flex-wrap:wrap;
-    flex-direction:column;
+/*Contact Info section*/
+.card {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+    height: 200px;
+    background-color: #444;
+    margin: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.info .contact{
-    position:relative;
-    color:black;
-    font-size:50px;
-    padding:10px;
-    height:30px;
-    width:30px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
+.icon {
+    font-size: 50px;
+    color: #ea8685;
+    transition: .3s linear;
 }
 
-.info .content{
-    position:relative;
+.card:hover .icon {
+    transform: scale(4);
+    opacity: 0;
+}
+
+.card-content h3,
+.card-content span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0;
+}
+
+.card-content h3 {
+    top: 20px;
+    text-transform: uppercase;
+    color: #ea8685;
+}
+
+.card-content span {
+    bottom: 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.card:hover h3 {
+    opacity: 1;
+    top: 46px;
+    transition: .3s linear .3s;
+}
+
+.card:hover span {
+    opacity: 1;
+    bottom: 46px;
+    transition: .3s linear .3s;
+}
+
+@media screen and (max-width:900px) {
+    .card {
+        flex: 100%;
+        max-width: 500px;
+    }
+}
+
+/*Contact info end*/
+
+/*Google map*/
+.map .googlemap {
+    width: 100%;
+    padding: 5% 10%;
+}
+
+@media screen and (max-width:600px) {
+    .map .googlemap {
+        height: 500px;
+    }
+}
+
+/*Contact Form*/
+/*.contact-form-container form{
+    max-width:800px;
+    padding:0 50%;
+}
+.form-row {
+    margin: 30px 30px;*/
+    /*padding: 0 50%;*/
+/*}
+
+input[type="text"]{
+    background-color: #7CAEA7;
+}
+
+
+.contact-form-container {
+    width:800px;
+    max-width:800px;
+}
+
+    .contact-form-container h1 {
+        margin: 5px 0;
+    }*/
+
+.contact-form-container{
     width:100%;
-    text-align:center;
-    margin-top:300px;
-    font-weight:700;
-    cursor:pointer;
 }
 
-.content:hover{
+.contact-form-container .contact-form{
     
+    padding:0 10%;
+    margin-top:10px;
 }
+
+    .contact-form-container h1 {
+        font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
+        font-weight:bold;
+        font-size: 54px;
+        margin-bottom: 10px;
+    }
+
+    .contact-form-container h3 {
+        font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
+        font-size:48px;
+        margin-bottom: 20px;
+    }
+
+    .contact-form-container h1, h3{
+        padding:0 10%;
+    }
+
+    .contact-form-container input{
+        height:50px;
+    }
+
+
+.contact-form-container #name,#contact-number,#email,#subject,#message {
+        background-color: #7CAEA7;
+        color: white;
+}
+.contact-form-container #name::placeholder{
+    color:white;
+}
+
+    .contact-form-container #contact-number::placeholder {
+        color: white;
+    }
+
+    .contact-form-container #email::placeholder {
+        color: white;
+    }
+
+    .contact-form-container #subject::placeholder {
+        color: white;
+    }
+
+    .contact-form-container #message::placeholder {
+        color: white;
+    }
+
+/*    input[type="text"]:invalid, textarea:invalid {
+        background-color: #7CAEA7;
+    }*/
+
+/*textarea {
+    background-color: #7CAEA7;
+}*/
+
+.contact-form-container button {
+    height: 80px;
+    width: 200px;
+    text-align: center;
+    background-color: #0B8C7B;
+    font-size:24px;
+}
+
+
