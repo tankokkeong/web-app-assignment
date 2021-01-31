@@ -24,7 +24,7 @@
                             <i class="fas fa-map-marker-alt"></i> Kuala Lumpur
                         </span>
 
-                        <a href="edit-user.aspx" class="btn btn-secondary float-right">Edit Profile</a>
+                        <a href="edit-recruiter.aspx" class="btn btn-secondary float-right">Edit Profile</a>
                     </h2>
                     <h3 class="text-lightgreen">Entertainment</h3>
                 </div>
@@ -42,8 +42,9 @@
             <div class="user-details mt-3">
                 <div class="details-header text-center">
                     <ul class="details-nav text-center">
-                        <li class="detail-nav-selected" onclick="userProfileSwitchTab('about')" id="about-tab">About</li>
-                        <li id="application-tab" onclick="userProfileSwitchTab('application')">Job Application</li>
+                        <li class="detail-nav-selected" onclick="recruiterProfileSwitchTab('about')" id="about-tab">About</li>
+                        <li id="application-tab" onclick="recruiterProfileSwitchTab('application')">Job Application</li>
+                        <li id="job-posted-tab" onclick="recruiterProfileSwitchTab('job-posted')">Job Posted</li>
                     </ul>
                 </div>
 
@@ -198,6 +199,33 @@
 
                     </div>
                     
+                </div>
+
+                <div id="job-posted-content" class="my-info row" style="display:none;">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Job Title</th>
+                          <th scope="col">Categories</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Budget</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Front End Developer</th>
+                          <td><span class="badge badge-success">Full-Time</span></td>
+                          <td>Subang Jaya</td>
+                          <td>RM 4,000/M</td>
+                        </tr>
+                       <tr>
+                          <th scope="row">Front End Developer</th>
+                          <td><span class="badge badge-danger">Part-Time</span></td>
+                          <td>Subang Jaya</td>
+                          <td>RM 4,000/M</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
 
             </div>
