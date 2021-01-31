@@ -100,7 +100,9 @@
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="Career.aspx" />
+    <Content Include="chatbox.aspx" />
     <Content Include="contact-us.aspx" />
+    <Content Include="edit-recruiter.aspx" />
     <Content Include="edit-user.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.css" />
@@ -1815,16 +1817,22 @@
     <Content Include="images\user profile\twitter-min.png" />
     <Content Include="noscript.aspx" />
     <Content Include="privacy_policy.aspx" />
+    <Content Include="recruiter-profile.aspx" />
+    <Content Include="schedule.aspx" />
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
+    <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
     <Content Include="style\default-styling.css" />
+    <Content Include="style\edit-recruiter.css" />
     <Content Include="style\forgottenPassword.css" />
     <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
+    <Content Include="style\recruiter-profile.css" />
+    <Content Include="style\schedule.css" />
     <Content Include="style\terms_conditions.css" />
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
@@ -1854,12 +1862,26 @@
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
     </Compile>
+    <Compile Include="chatbox.aspx.cs">
+      <DependentUpon>chatbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chatbox.aspx.designer.cs">
+      <DependentUpon>chatbox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="contact-us.aspx.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-recruiter.aspx.cs">
+      <DependentUpon>edit-recruiter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-recruiter.aspx.designer.cs">
+      <DependentUpon>edit-recruiter.aspx</DependentUpon>
     </Compile>
     <Compile Include="edit-user.aspx.cs">
       <DependentUpon>edit-user.aspx</DependentUpon>
@@ -1904,6 +1926,20 @@
       <DependentUpon>privacy_policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="recruiter-profile.aspx.cs">
+      <DependentUpon>recruiter-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="recruiter-profile.aspx.designer.cs">
+      <DependentUpon>recruiter-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schedule.aspx.cs">
+      <DependentUpon>schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schedule.aspx.designer.cs">
+      <DependentUpon>schedule.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

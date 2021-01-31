@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="user-profile.aspx.cs" Inherits="web_app_assignment.user_profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="recruiter-profile.aspx.cs" Inherits="web_app_assignment.recruiter_profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>User Profile</title>
-    <link href="style/user-profile.css" rel="stylesheet" />
+    <title>Recruiter Profile</title>
+    <link href="style/recruiter-profile.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="profile-container">
+     <div class="profile-container">
         <div class="profile-row">
             <div class="profile-col">
                 <div class="picture-container">
-                    <img src="images/user%20profile/demo-user.png" id="profile-pic"/>
+                    <img src="images/home/partner5-min.png" id="profile-pic"/>
                     <div class="change-pic-btn text-center"> 
                         <h4>Change Photo</h4>
                     </div>
@@ -19,23 +19,19 @@
             
             <div class="profile-col user-title-col">
                 <div class="user-title">
-                    <h2>Lui Deze 
+                    <h2>Netflix 
                         <span class="user-location text-secondary ml-3">
                             <i class="fas fa-map-marker-alt"></i> Kuala Lumpur
                         </span>
 
-                        <a href="edit-user.aspx" class="btn btn-secondary float-right">Edit Profile</a>
+                        <a href="edit-recruiter.aspx" class="btn btn-secondary float-right">Edit Profile</a>
                     </h2>
-                    <h3 class="text-lightgreen">Web Developer And Designer</h3>
+                    <h3 class="text-lightgreen">Entertainment</h3>
                 </div>
 
                 <div class="profile-bios">
                      <h3 class="text-secondary">Bio Links: <span><i class="fab fa-facebook-square"></i></span> <span><i class="fab fa-twitter-square"></i></span></h3>
-                </div>
-
-                <div class="profile-skill">
-                    <h3 class="text-secondary">Skills: <span class="skill-list">ASP.NET, PHP, C#, C++, WordPress</span></h3>
-                </div>
+                </div>      
             </div>
             
         </div>
@@ -46,8 +42,9 @@
             <div class="user-details mt-3">
                 <div class="details-header text-center">
                     <ul class="details-nav text-center">
-                        <li class="detail-nav-selected" onclick="userProfileSwitchTab('about')" id="about-tab">About</li>
-                        <li id="application-tab" onclick="userProfileSwitchTab('application')">My Application</li>
+                        <li class="detail-nav-selected" onclick="recruiterProfileSwitchTab('about')" id="about-tab">About</li>
+                        <li id="application-tab" onclick="recruiterProfileSwitchTab('application')">Job Application</li>
+                        <li id="job-posted-tab" onclick="recruiterProfileSwitchTab('job-posted')">Job Posted</li>
                     </ul>
                 </div>
 
@@ -171,6 +168,9 @@
                                 <div class="hiring-position">
                                     <span class="hiring-details">Graphic Designer</span>
                                 </div>
+                                <div class="view-profile">
+                                    <button class="btn btn-info">View Profile</button>
+                                </div>
                             </div>
 
                             <div class="col-sm-3 mt-3">
@@ -202,6 +202,46 @@
 
                     </div>
                     
+                </div>
+
+                <div id="job-posted-content" class="my-info row" style="display:none;">
+                    <div class="">
+
+                    </div>
+
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Job Title</th>
+                          <th scope="col">Categories</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Budget</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Front End Developer</th>
+                          <td><span class="badge badge-success">Full-Time</span></td>
+                          <td>Subang Jaya</td>
+                          <td>RM 4,000/M</td>
+                          <td>
+                              <a class="badge badge-success p-2" role="button">Edit</a>
+                              <a class="badge badge-danger p-2" role="button">Delete</a>
+                          </td>
+                        </tr>
+                       <tr>
+                          <th scope="row">Front End Developer</th>
+                          <td><span class="badge badge-danger">Part-Time</span></td>
+                          <td>Subang Jaya</td>
+                          <td>RM 4,000/M</td>
+                          <td>
+                              <a class="badge badge-success p-2" role="button">Edit</a>
+                              <a class="badge badge-danger p-2" role="button">Delete</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
 
             </div>
