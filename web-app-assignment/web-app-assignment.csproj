@@ -100,6 +100,7 @@
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="Career.aspx" />
+    <Content Include="chatbox.aspx" />
     <Content Include="contact-us.aspx" />
     <Content Include="edit-user.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
@@ -1817,6 +1818,7 @@
     <Content Include="privacy_policy.aspx" />
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
+    <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
     <Content Include="style\default-styling.css" />
     <Content Include="style\forgottenPassword.css" />
@@ -1853,6 +1855,13 @@
     </Compile>
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chatbox.aspx.cs">
+      <DependentUpon>chatbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chatbox.aspx.designer.cs">
+      <DependentUpon>chatbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="contact-us.aspx.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>

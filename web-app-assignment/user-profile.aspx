@@ -185,11 +185,15 @@
                             </div>
 
                             <div class="col-sm-3 mt-3">
-                                <div>
+                                <div class="mt-2">
                                     <button class="btn btn-success">Chat</button>
                                 </div>
 
-                                <div>
+                                <div class="mt-2">
+                                    <button class="btn btn-primary">Schedule</button>
+                                </div>
+
+                                <div class="mt-2">
                                     <button class="btn btn-danger">Remove</button>
                                 </div>
                             </div>
