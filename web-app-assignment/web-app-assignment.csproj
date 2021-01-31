@@ -1820,6 +1820,8 @@
     <Content Include="recruiter-profile.aspx" />
     <Content Include="schedule.aspx" />
     <Content Include="script\app.js" />
+    <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
+    <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
