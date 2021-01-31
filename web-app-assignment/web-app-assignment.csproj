@@ -1818,6 +1818,7 @@
     <Content Include="noscript.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="recruiter-profile.aspx" />
+    <Content Include="schedule.aspx" />
     <Content Include="script\app.js" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
@@ -1831,6 +1832,7 @@
     <Content Include="style\login_signup.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\recruiter-profile.css" />
+    <Content Include="style\schedule.css" />
     <Content Include="style\terms_conditions.css" />
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
@@ -1930,6 +1932,13 @@
     </Compile>
     <Compile Include="recruiter-profile.aspx.designer.cs">
       <DependentUpon>recruiter-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schedule.aspx.cs">
+      <DependentUpon>schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schedule.aspx.designer.cs">
+      <DependentUpon>schedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
