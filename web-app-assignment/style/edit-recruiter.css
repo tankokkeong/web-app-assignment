@@ -1,0 +1,14 @@
+﻿.profile-container {
+    padding: 40px 5%;
+}
+
+#edit-profile-pic {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+@media (min-width:850px) {
+    .profile-container {
+        padding: 40px 10%;
+    }
+}
