@@ -67,9 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\css\default.css" />
+    <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\images\admin.png" />
+    <Content Include="admin\images\login\admin-login.jpg" />
+    <Content Include="admin\images\logo\logo.png" />
     <Content Include="admin\js\bootstrap.min.js" />
     <Content Include="admin\js\jquery-3.2.1.min.js" />
     <Content Include="admin\js\main.js" />
@@ -88,6 +92,7 @@
     <Content Include="admin\js\plugins\select2.min.js" />
     <Content Include="admin\js\plugins\sweetalert.min.js" />
     <Content Include="admin\js\popper.min.js" />
+    <Content Include="admin\login.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1870,6 +1875,13 @@
     </Compile>
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Career.aspx.cs">
       <DependentUpon>Career.aspx</DependentUpon>
