@@ -30,6 +30,8 @@
 
     <%-- JQuery Plugins --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="select2@4.1.0-beta.1/js/select2.min.js"></script>
+    <link href="select2@4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
 

@@ -8,13 +8,100 @@
     position: relative;
 }
 
-.JobListContentsBackgroundInputs{
+.JobListContentsBackGroundContent{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.JobListContentsBackGroundContentHeader {
+    text-align: center;
+    font-family: SegoeScript-Bold,AdobeInvisFont,MyriadPro-Regular;
+    color: white;
+}
+
+.JobListContentsBackgroundInputs {
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 2.5%;
-    position: absolute;
+    width: 100%;
 }
 
-.JobListContentsSearchImage {
+.JobListContentsSearchImage, .JobListContentsLocationImage, .JobListContentsJobCategoryImage, .JobListContentsJobSpecImage {
     height: 20px;
+}
+
+.input-group{
+    display: flex;
+}
+
+.JobListContentsLocationDropdown, .JobListContentsJobCategoryDropdown, .JobListContentsJobSpecDropdown {
+    width: 95%;
+}
+
+.JobListContentsBackgroundInputsSearchButton{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2%;
+}
+
+.JobListContentsAllCompanies {
+    margin-top: 2.5%;
+    background-color: #F0F0F0;
+}
+
+.JobListContentsAllCompaniesHeader{
+    text-align: center;
+}
+
+.JobListContentsAllCompaniesBoxes {
+    border: solid 1px #82A69B;
+    margin: 1.25%;
+    position: relative;
+}
+
+.JobListContentsAllCompaniesBoxesCompanyLogoPosition {
+    height: 200px;
+    width: 200px;
+    padding: 5%;
+    margin-left: 50%;
+    transform:translateX(-50%);
+}
+
+.JobListContentsAllCompaniesBoxesDetails{
+    position: relative;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsTitle {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsBodyContents {
+    display: flex;
+}
+
+.JobListContentsAllCompaniesBoxesImages {
+    height: 50px;
+    padding: 2.5%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription{
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsStars{
+    width: 100%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsApplyButton {
+    margin-bottom: 5%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
 }

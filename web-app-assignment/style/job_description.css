@@ -1,0 +1,78 @@
+﻿.JobDescriptionDetails {
+    display: grid;
+    padding: 2.5%;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.JobDescriptionDetailsImagePosition{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.JobDescriptionDetailsImage {
+    height: 150px;
+    width: 150px;
+    margin-top: 10%;
+}
+
+.JobDescriptionDetailsBody{
+    margin-left: 0;
+}
+
+.JobDescriptionDetailsBodyContents {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.JobDescriptionDetailsBodyContentsDetails{
+    display: flex;
+    margin-top: 5%;
+}
+
+.JobDescriptionDetailsBodyContentsImage {
+    height: 50px;
+    width: 50px;
+}
+
+.JobDescriptionDetailsBodyContentsDetailsDescription{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.JobDescriptionDetailsApplyNow{
+    margin-left: 50%;
+    margin-top: 25%;
+    transform: translate(-25% -50%);
+}
+
+.tab-content {
+    background-color: #F0F0F0;
+    padding: 5%;
+}
+
+.JobDescriptionContentsBodyContents1 ul{
+    margin-left: 5%;
+}
+
+.JobDescriptionContentsBodyContents2 ul {
+    margin-left: 5%;
+}
+
+.JobDescriptionContentsBodyContents3Details {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.companyOverviewInformationDetails {
+    padding: 2.5%;
+}
+
+.companyOverviewInformationDetailsSubDetails{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.JobDescriptionContentsBodySubHeadersTagsButton {
+    margin-bottom: 1.25%;
+    margin-top: 1.25%;
+}

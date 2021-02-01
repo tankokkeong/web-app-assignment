@@ -1830,6 +1830,7 @@
     <Content Include="images\user profile\man-user-min.png" />
     <Content Include="images\user profile\pin-min.png" />
     <Content Include="images\user profile\twitter-min.png" />
+    <Content Include="job_description.aspx" />
     <Content Include="job_lists.aspx" />
     <Content Include="noscript.aspx" />
     <Content Include="post-job.aspx" />
@@ -1848,6 +1849,7 @@
     <Content Include="style\edit-user.css" />
     <Content Include="style\help.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\job_description.css" />
     <Content Include="style\job_lists.css" />
     <Content Include="style\login_signup.css" />
     <Content Include="style\post-job.css" />
@@ -1938,6 +1940,13 @@
     </Compile>
     <Compile Include="home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="job_description.aspx.cs">
+      <DependentUpon>job_description.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="job_description.aspx.designer.cs">
+      <DependentUpon>job_description.aspx</DependentUpon>
     </Compile>
     <Compile Include="job_lists.aspx.cs">
       <DependentUpon>job_lists.aspx</DependentUpon>
