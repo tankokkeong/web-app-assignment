@@ -1,5 +1,11 @@
 ﻿.profile-container {
     padding: 40px 5%;
+    background-color: #e6e6e6;
+}
+
+.profile-form {
+    background-color: #fff;
+    padding: 20px;
 }
 
 #edit-profile-pic{

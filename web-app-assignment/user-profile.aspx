@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="user-profile.aspx.cs" Inherits="web_app_assignment.user_profile" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="user-profile.aspx.cs" Inherits="web_app_assignment.user_profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>User Profile</title>
@@ -160,7 +161,7 @@
                             { %>
                         <div class="application-bar row">
                             <div class="col-sm-3 mt-3">
-                                <img src="images/user%20profile/demo-user.png" class="company-pic"/>
+                                <img src="images/home/partner5-min.png" class="company-pic"/>
                             </div>
 
                             <div class="col-sm-3 mt-3">
@@ -170,6 +171,9 @@
                                 </div>
                                 <div class="hiring-position">
                                     <span class="hiring-details">Graphic Designer</span>
+                                </div>
+                                <div class="view-profile">
+                                    <button class="btn btn-info">View Profile</button>
                                 </div>
                             </div>
 
@@ -186,10 +190,6 @@
                             <div class="col-sm-3 mt-3">
                                 <div class="mt-2">
                                     <a href="chatbox.aspx" class="btn btn-success">Chat</a>
-                                </div>
-
-                                <div class="mt-2">
-                                    <button class="btn btn-primary">Schedule</button>
                                 </div>
 
                                 <div class="mt-2">

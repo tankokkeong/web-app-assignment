@@ -189,7 +189,7 @@
                                 </div>
 
                                 <div class="mt-2">
-                                    <button class="btn btn-primary">Schedule</button>
+                                    <a href="schedule.aspx" class="btn btn-primary">Schedule</a>
                                 </div>
 
                                 <div class="mt-2">
@@ -205,8 +205,8 @@
                 </div>
 
                 <div id="job-posted-content" class="my-info row" style="display:none;">
-                    <div class="">
-
+                    <div class="mb-3">
+                        <button class="btn btn-primary">Post New Job</button>
                     </div>
 
                     <table class="table table-bordered">
