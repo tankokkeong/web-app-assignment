@@ -206,7 +206,7 @@
 
                 <div id="job-posted-content" class="my-info row" style="display:none;">
                     <div class="mb-3">
-                        <button class="btn btn-primary">Post New Job</button>
+                        <a href="post-job.aspx" class="btn btn-primary">Post New Job</a>
                     </div>
 
                     <table class="table table-bordered">

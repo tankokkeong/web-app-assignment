@@ -1827,6 +1827,7 @@
     <Content Include="images\user profile\twitter-min.png" />
     <Content Include="job_lists.aspx" />
     <Content Include="noscript.aspx" />
+    <Content Include="post-job.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="recruiter-profile.aspx" />
     <Content Include="schedule.aspx" />
@@ -1844,6 +1845,7 @@
     <Content Include="style\home.css" />
     <Content Include="style\job_lists.css" />
     <Content Include="style\login_signup.css" />
+    <Content Include="style\post-job.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\recruiter-profile.css" />
     <Content Include="style\schedule.css" />
@@ -1938,6 +1940,13 @@
     </Compile>
     <Compile Include="noscript.aspx.designer.cs">
       <DependentUpon>noscript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="post-job.aspx.cs">
+      <DependentUpon>post-job.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="post-job.aspx.designer.cs">
+      <DependentUpon>post-job.aspx</DependentUpon>
     </Compile>
     <Compile Include="privacy_policy.aspx.cs">
       <DependentUpon>privacy_policy.aspx</DependentUpon>

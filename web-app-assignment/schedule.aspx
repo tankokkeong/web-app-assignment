@@ -38,7 +38,7 @@
 
                 </div>
 
-                <div class="text-center mt-3">
+                <div class="mt-3">
                     <button type="button" class="btn btn-info">Schedule</button>
                     <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
                 </div>
