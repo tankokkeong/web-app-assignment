@@ -34,108 +34,27 @@
 }
 
 /*Contact Info section*/
-.card {
-    position: relative;
-    flex: 1;
-    max-width: 400px;
-    height: 200px;
-    background-color: #444;
-    margin: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.contact-info-container {
+    width: 100%;
+    padding: 0 10%;
 }
 
-.icon {
-    font-size: 50px;
-    color: #ea8685;
-    transition: .3s linear;
-}
-
-.card:hover .icon {
-    transform: scale(4);
-    opacity: 0;
-}
-
-.card-content h3,
-.card-content span {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    opacity: 0;
-}
-
-.card-content h3 {
-    top: 20px;
-    text-transform: uppercase;
-    color: #ea8685;
-}
-
-.card-content span {
-    bottom: 20px;
-    color: black;
-    font-weight: 500;
-}
-
-.card:hover h3 {
-    opacity: 1;
-    top: 46px;
-    transition: .3s linear .3s;
-}
-
-.card:hover span {
-    opacity: 1;
-    bottom: 46px;
-    transition: .3s linear .3s;
-}
-
-@media screen and (max-width:900px) {
-    .card {
-        flex: 100%;
-        max-width: 500px;
+    .contact-info-container.contact-info {
+        width: 100%;
     }
-}
 
+    .contact-info-container .box {
+        text-align: center;
+    }
+
+        .contact-info-container .box p {
+            margin-top: 50px;
+            font-size: 24px;
+            word-wrap: break-word;
+        }
 /*Contact info end*/
 
-/*Google map*/
-.map .googlemap {
-    width: 100%;
-    padding: 5% 10%;
-}
-
-@media screen and (max-width:600px) {
-    .map .googlemap {
-        height: 500px;
-    }
-}
-
 /*Contact Form*/
-/*.contact-form-container form{
-    max-width:800px;
-    padding:0 50%;
-}
-.form-row {
-    margin: 30px 30px;*/
-    /*padding: 0 50%;*/
-/*}
-
-input[type="text"]{
-    background-color: #7CAEA7;
-}
-
-
-.contact-form-container {
-    width:800px;
-    max-width:800px;
-}
-
-    .contact-form-container h1 {
-        margin: 5px 0;
-    }*/
-
 .contact-form-container{
     width:100%;
 }
@@ -192,14 +111,6 @@ input[type="text"]{
         color: white;
     }
 
-/*    input[type="text"]:invalid, textarea:invalid {
-        background-color: #7CAEA7;
-    }*/
-
-/*textarea {
-    background-color: #7CAEA7;
-}*/
-
 .contact-form-container button {
     height: 80px;
     width: 200px;
@@ -207,5 +118,17 @@ input[type="text"]{
     background-color: #0B8C7B;
     font-size:24px;
 }
+/*Contact Form End*/
 
+/*Google map*/
+.map .googlemap {
+    width: 100%;
+    padding: 5% 10%;
+}
 
+@media screen and (max-width:600px) {
+    .map .googlemap {
+        height: 500px;
+    }
+}
+/*Google map end*/
