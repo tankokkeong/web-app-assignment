@@ -166,9 +166,6 @@
             </div>
         </div>
     </div>
-    <div class="forgotten_password" id="forgotten_password">
-        <p>Forgotten Password</p>
-    </div>
 
     <script>
         var signUpTab = document.getElementById("signup-tab");
@@ -205,8 +202,8 @@
             $(recruiterTab).addClass("active_selected");
             $(seekerTab).removeClass("active_selected");
 
-            $(seekerTab).addClass("active");
             $(recruiterTab).removeClass("active");
+            $(seekerTab).removeClass("active");
         };
 
         function showSeeker() {
@@ -215,7 +212,7 @@
             $(recruiterTab).removeClass("active_selected");
 
             $(seekerTab).removeClass("active");
-            $(recruiterTab).addClass("active");
+            $(recruiterTab).removeClass("active");
         };
 
         function showTabContentsLogin() {
