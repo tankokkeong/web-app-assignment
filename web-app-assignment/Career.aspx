@@ -3,9 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Career</title>
     <link href="style/career.css" rel="stylesheet" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  
 
 <!-- jQuery library -->
@@ -98,7 +100,7 @@
             <div class="col-lg-3"></div>
 
             <div class="col-lg-6">
-                <div id="ui">
+                <div class="ui">
                     <form class="form-group">
                             <h2>Application Form</h2>
                             <p>Fill out the below for job opportunies</p>
@@ -120,13 +122,13 @@
 
                         <label>Specific Your current employment status</label>
                         <div class="radio-container">
-                            <input type="radio" class="radio" name="status" value="Employed" required />
+                            <input type="radio" id="employed" name="status" value="Employed" required />
                             <label for="Employed">Employed</label>
-                            <input type="radio" class="radio" name="status" value="Umemployed" required />
+                            <input type="radio" id="unemployed" name="unemployed" value="Umemployed" required />
                             <label for="Umemployed">Umemployed</label>
-                            <input type="radio" class="radio" name="status" value="Self-Employmeny" required />
+                            <input type="radio" id="self" name="self" value="Self-Employmeny" required />
                             <label for="Self-Employmeny">Self-Employmeny</label>
-                            <input type="radio" class="radio" name="status" value="Student" required />
+                            <input type="radio" id="stud" name="stud" value="Student" required />
                             <label for="Student">Student</label>
                         </div>
                         <label>Upload Your Resume</label><br />
@@ -179,26 +181,4 @@
 
     </script>
 
-    <style>
-        #upload {
-          padding: 10px;
-          color: black;
-          background-color: white;
-          border: 1px solid #000;
-          border-radius: 5px;
-          cursor: pointer;
-          margin-bottom:10px;
-        }
-
-        #upload:hover {
-          background-color: #00b28f;
-        }
-
-        #upload-text {
-          margin-left: 10px;
-          font-family: sans-serif;
-          font-size:20px;
-          color: white;
-        }
-    </style>
 </asp:Content>
