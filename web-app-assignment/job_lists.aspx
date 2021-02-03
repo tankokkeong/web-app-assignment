@@ -13,7 +13,7 @@
             </div>
             <div class="JobListContentsBackGroundContent">
                 <h2 class="JobListContentsBackGroundContentHeader">
-                    Find the jobs that matter to you
+                    Find The Jobs That Matter To You
                 </h2>
                 <div class="JobListContentsBackgroundInputs">
                     <div class="input-group mb-3">
@@ -22,7 +22,7 @@
                                 <img src="images/JobsList/loupe.png" alt="search" class="JobListContentsSearchImage"/>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Job Title, Keyword or Company" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Job Title, Keyword or Company" aria-label="searchbar" aria-describedby="searchbar">
                     </div>
                 </div>
                 <div class="JobListContentsBackgroundInputs">
@@ -33,7 +33,7 @@
                             </span>
                         </div>
                         <div class="JobListContentsLocationDropdown">
-                            <select class="custom-select" id="selectStates" multiple>
+                            <select class="custom-select" aria-label="locations" aria-describedby="locations" id="selectStates" multiple>
                                 <option value="">All</option>
                                 <option value="Malacca">Malacca</option>
                                 <option value="Selangor">Selangor</option>
@@ -63,7 +63,7 @@
                             </span>
                         </div>
                         <div class="JobListContentsJobCategoryDropdown">
-                            <select class="custom-select" id="jobCategory" multiple>
+                            <select class="custom-select" id="jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" multiple>
                                 <option value="">All</option>
                                 <option value="New">New</option>
                                 <option value="Recent">Recent</option>
@@ -81,7 +81,7 @@
                             </span>
                         </div>
                         <div class="JobListContentsJobSpecDropdown">
-                            <select class="custom-select" id="jobSpec" multiple>
+                            <select class="custom-select" id="jobSpec" aria-label="jobSpec" aria-describedby="jobSpec" multiple>
                                 <option value="">All</option>
                                 <option value="Accounting">Accounting</option>
                                 <option value="Information Technology">Information Technology</option>
@@ -91,17 +91,38 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info JobListContentsBackgroundInputsSearchButton">Search</button>
+                <div class="JobListContentsBackgroundInputs">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="JobListContentsSalaryPosition">
+                                <img src="images/JobsList/salary.png" alt="search" class="JobListContentsSalaryImage"/>
+                            </span>
+                        </div>
+                        <div class="JobListContentsSalaryRange">
+                            <label class="JobListContentsSalaryRangeHeader" for="form-control">Salary</label>
+                            <input type="text" id="textInputMin" value="0" readonly>
+                            <input type="range" class="form-control" id="formControlRange" max="5000" min="0" value="0" onchange="updateTextInput(this.value);">
+                            <input type="text" id="textInputMax" value="5000" readonly>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="JobListContentsBackgroundInputsSearchButton" class="btn btn-info">Search</button>
             </div>
         </div>
 
         <div class="JobListContentsAllCompanies">
-            <h2 class="JobListContentsAllCompaniesHeader">All Companies</h2>
             <div class="container">
+                <div class="JobListContentsAllCompaniesHeaderPosition">
+                    <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
+                </div>
                 <div class="row">
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
                             <img src="images/home/partner1-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
                             <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
@@ -124,47 +145,13 @@
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">Apply Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner4-min.png"" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Technician</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Johor</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,750 - MYR 2,970</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">Apply Now</button>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -172,6 +159,10 @@
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
                             <img src="images/home/partner3-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
                             <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
@@ -194,12 +185,13 @@
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">Apply Now</button>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -209,6 +201,10 @@
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
                             <img src="images/home/partner10-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
                             <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
@@ -231,19 +227,66 @@
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" href="">Apply Now</button>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
+                            <img src="images/home/partner4-min.png"" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
+                        </div>
+                        <div class="JobListContentsAllCompaniesBoxesDetails">
+                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
+                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
+                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
+                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
+                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Technician</p>
+                                </div>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
+                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
+                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Johor</p>
+                                </div>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
+                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
+                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,750 - MYR 2,970</p>
+                                </div>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
+                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
+                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
+                                </div>
+                            </div>
+                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm JobListContentsAllCompaniesBoxes">
+                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
                             <img src="images/home/partner7-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
                             <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
@@ -266,12 +309,13 @@
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">Apply Now</button>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -279,6 +323,10 @@
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
                             <img src="images/home/partner6-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
+                                <%--Stars Here--%>
+                                <p>Stars</p>
+                            </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
                             <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
@@ -301,12 +349,13 @@
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                    <%--Stars Here--%>
-                                    <p>Stars</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyButton">
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">Apply Now</button>
+                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
+                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">More Details</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
+                                        <a href="job_description.aspx">Apply Now</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +367,7 @@
 
     <script type="text/javascript">
         $("#selectStates").select2({
-            placeholder: "Select State",
+            placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
         });
@@ -334,5 +383,9 @@
             allowClear: true,
             tags: true,
         });
+
+        function updateTextInput(val) {
+            document.getElementById('textInputMax').value = val;
+        }
     </script>
 </asp:Content>

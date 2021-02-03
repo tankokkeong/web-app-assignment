@@ -4,7 +4,7 @@
 
 .JobListContentsImage {
     height: 80vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
 }
 
@@ -24,23 +24,43 @@
 .JobListContentsBackgroundInputs {
     padding-left: 10%;
     padding-right: 10%;
-    padding-top: 2.5%;
+    padding-top: .5%;
+    padding-top: .5%;
     width: 100%;
+    position: relative;
 }
 
-.JobListContentsSearchImage, .JobListContentsLocationImage, .JobListContentsJobCategoryImage, .JobListContentsJobSpecImage {
-    height: 20px;
+.JobListContentsSearchImage, .JobListContentsLocationImage, .JobListContentsJobCategoryImage, .JobListContentsJobSpecImage, .JobListContentsSalaryImage {
+    width: 20px;
 }
 
-.input-group{
+.JobListContentsJobCategoryDropdown, .JobListContentsJobSpecDropdown, .JobListContentsLocationDropdown {
+    width: calc(100% - 46px);
+}
+
+.JobListContentsSalaryRange {
     display: flex;
+    width: calc(100% - 46px);
+    background-color:white;
+    border-radius: 5px;
+    padding: 0.5%;
+    margin-left: 0%;
 }
 
-.JobListContentsLocationDropdown, .JobListContentsJobCategoryDropdown, .JobListContentsJobSpecDropdown {
-    width: 95%;
+.JobListContentsSalaryRangeHeader {
+    margin-top: .5%;
+    margin-right: 1%;
+    margin-left: 1%;
 }
 
-.JobListContentsBackgroundInputsSearchButton{
+#textInputMin, #textInputMax {
+    border: none;
+    text-align:center;
+    background-color: transparent;
+    width: 30%;
+}
+
+#JobListContentsBackgroundInputsSearchButton {
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 2%;
@@ -48,25 +68,44 @@
 
 .JobListContentsAllCompanies {
     margin-top: 2.5%;
-    background-color: #F0F0F0;
+    background-color: white;
+    margin-bottom: 2.5%;
 }
 
-.JobListContentsAllCompaniesHeader{
+.container {
+    background-color: #F0F0F0;
+    padding-top: 2%;
+}
+
+.JobListContentsAllCompaniesHeaderPosition {
+    background-color: #69A19A;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.JobListContentsAllCompaniesHeader {
     text-align: center;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    font-family: Arial-BoldItalicMT,AdobeInvisFont,MyriadPro-Regular;
+    font-style:italic;
+    font-weight: bold;
 }
 
 .JobListContentsAllCompaniesBoxes {
-    border: solid 1px #82A69B;
+    border: solid 3px #82A69B;
+    background-color: white;
     margin: 1.25%;
     position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .JobListContentsAllCompaniesBoxesCompanyLogoPosition {
     height: 200px;
     width: 200px;
+    margin-top: 10%;
     padding: 5%;
-    margin-left: 50%;
-    transform:translateX(-50%);
 }
 
 .JobListContentsAllCompaniesBoxesDetails{
@@ -96,12 +135,62 @@
     width: 100%;
 }
 
-.JobListContentsAllCompaniesBoxesDetailsApplyButton {
+.JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton {
+    display:flex;
     margin-bottom: 5%;
 }
 
 .JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow {
-    margin-left: 50%;
-    transform: translateX(-50%);
     width: 100%;
+    margin-right: 2.5%;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow a{
+    color: white;
+    text-decoration: none;
+}
+
+.JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen {
+    .select2 {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 576px){
+
+    .JobListContentsBackGroundContentHeader {
+        font-size: 30px;
+    }
+
+    .JobListContentsBackgroundInputs {
+        font-size: 15px;
+        margin-top: 7.5%;
+    }
+
+    .JobListContentsBackgroundInputs input {
+        font-size: 15px;
+    }
+
+    #JobListContentsBackgroundInputsSearchButton {
+        font-size: 15px;
+    }
+
+    .JobListContentsSalaryRangeHeader{
+        margin-top: 2.5%;
+    }
+
+    .JobListContentsAllCompaniesBoxes{
+        margin: 0;
+    }
+
+    .JobListContentsAllCompaniesBoxesCompanyLogoPosition {
+        height: 150px;
+        width: 150px;
+        margin-top: 25%;
+    }
 }
