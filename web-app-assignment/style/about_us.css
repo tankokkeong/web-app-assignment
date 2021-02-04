@@ -1,0 +1,86 @@
+﻿body {
+    width:100%;
+}
+
+.background-section {
+    background-image: url('../images/About Us/writing-336370_1920-min3.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center bottom;
+    position: relative;
+    min-height: 500px;
+}
+
+.background-banner-text h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    flex-wrap: nowrap;
+    color: white;
+    font-family: Brush Script MT;
+    font-size: 150px;
+    text-align: center;
+    text-shadow: 2px 2px black;
+}
+
+.about-us-container .about-us-title{
+    padding :0 5%
+}
+
+    .about-us-container .about-us-title h2 {
+        font-size: 64px;
+        font-family: BodoniMT-BoldItalic,AdobeInvisFont,MyriadPro-Regular;
+        margin:15px 0;
+    }
+
+.about-us-container .about-us-title img{
+    width:100%;
+}
+
+.about-us-container .about-us-desc p{
+    font-family: BodoniMT,AdobeInvisFont,MyriadPro-Regular;
+    text-align:justify;
+    font-size:24px;
+    padding:0 10%;
+    margin:20px 0 15px;
+}
+
+.about-box-container .row{
+    padding:0 10%;
+    margin:100px 0;
+}
+
+.about-box-container .row .about-image img{
+    width: 300px;
+    height: 398px;
+    border-radius:25px;
+}
+
+    .about-box-container .row .about-image img {
+        width: 300px;
+        height: 398px;
+        border-radius: 25px;
+    }
+
+    .about-box-container .row .about-image-decs p {
+        height: 398px;
+/*        background-color: #AFBDB9;
+        border-radius: 25px;*/
+        margin-top:10px;
+        font-size:24px;
+    }
+
+    .about-box-container .row .citation  .cite {
+        float: right;
+        font-size: 24px;
+        font-family: BodoniMT-Italic,AdobeInvisFont,MyriadPro-Regular;
+    }
+
+    @media screen and (max-width: 600px) {
+        .background-section {
+        min-height: 500px;
+    }
+}

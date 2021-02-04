@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About Us.aspx" />
     <Content Include="admin\css\default.css" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
@@ -1760,6 +1761,11 @@
     <Content Include="forgotten_Password.aspx" />
     <Content Include="help.aspx" />
     <Content Include="home.aspx" />
+    <Content Include="images\About Us\business-3076392_1280.jpg" />
+    <Content Include="images\About Us\img1.jpg" />
+    <Content Include="images\About Us\img2.jpg" />
+    <Content Include="images\About Us\img3.jpg" />
+    <Content Include="images\About Us\writing-336370_1920-min3.png" />
     <Content Include="images\career\3.jpg" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
@@ -1840,6 +1846,7 @@
     <Content Include="script\app.js" />
     <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
+    <Content Include="style\about_us.css" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
@@ -1864,6 +1871,13 @@
     <Content Include="login_signup.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About Us.aspx.cs">
+      <DependentUpon>About Us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About Us.aspx.designer.cs">
+      <DependentUpon>About Us.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
