@@ -163,6 +163,10 @@
 
 @media (max-width: 576px){
 
+    .JobListContentsAllCompanies{
+        padding: 5%;
+    }
+
     .JobListContentsBackGroundContentHeader {
         font-size: 30px;
     }
@@ -184,8 +188,9 @@
         margin-top: 2.5%;
     }
 
-    .JobListContentsAllCompaniesBoxes{
+    .JobListContentsAllCompaniesBoxes {
         margin: 0;
+        padding: 2.5%;
     }
 
     .JobListContentsAllCompaniesBoxesCompanyLogoPosition {
