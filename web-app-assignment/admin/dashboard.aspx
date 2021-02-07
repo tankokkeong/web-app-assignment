@@ -1,7 +1,92 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="web_app_assignment.admin.dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawBarChart);
 
+        function drawBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
+                ['Monday', 1000, 400, 200],
+                ['Tuesday', 1170, 460, 250],
+                ['Wednesday', 660, 1120, 300],
+                ['Thursday', 1030, 540, 350],
+                ['Friday', 1030, 540, 350],
+                ['Saturday', 1030, 540, 350],
+                ['Sunday', 1030, 540, 350]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'People Visited',
+                    subtitle: 'Visitors, Recruiters, and Job Seeker: Mon-Fri',
+                },
+
+                backgroundColor: "transparent",
+                chartArea: {
+                    backgroundColor: "transparent"
+                },
+
+                colors: [ "#009688", "#17a2b8", "#ffc107"],
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawLineChart);
+
+        function drawLineChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Total Application'],
+                ['Jan', 1000],
+                ['Feb', 1170],
+                ['Mar', 660],
+                ['Apr', 1030]
+            ]);
+
+            var options = {
+                title: 'Application Sent',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+
+
+        $(window).resize(function () {
+            drawBarChart();
+            drawLineChart();
+        });
+    </script>
+
+    <%-- CSS --%>
+    <link href="css/dashboard.css" rel="stylesheet" />
+
+    <%-- JQuery UI --%>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+
+            //Draggable
+            $("#draggable1").draggable({ containment: "#draggable-wrapper", scroll: false });
+            $("#draggable2").draggable({ containment: "#draggable-wrapper", scroll: false });
+            $("#draggable3").draggable({ containment: "#draggable-wrapper", scroll: false });
+
+            //Sortable
+            $("#sortable").sortable();
+        });
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,85 +100,175 @@
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         </ul>
       </div>
+
       <div class="row">
+
         <div class="col-md-6 col-lg-3">
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Users</h4>
+              <h4>Visitor</h4>
               <p><b>5</b></p>
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+          <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Likes</h4>
+              <h4>Job Seeker</h4>
               <p><b>25</b></p>
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
-          <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+          <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Uploades</h4>
+              <h4>Recruiter</h4>
               <p><b>10</b></p>
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+          <div class="widget-small danger coloured-icon"><i class="icon fas fa-suitcase fa-3x"></i>
             <div class="info">
-              <h4>Stars</h4>
+              <h4>Job Posted</h4>
               <p><b>500</b></p>
             </div>
           </div>
         </div>
+
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Monthly Sales</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 mt-3">
+            <div id="columnchart_material" class="chart-display">
+
             </div>
-          </div>
         </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Support Requests</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+
+        <div class="col-sm-12 col-lg-6 mt-3">
+            <div id="curve_chart" class="chart-display">
+
             </div>
+        </div>
+    </div>
+
+    <div class="row mt-3" style="height:1000px;" id="draggable-wrapper">
+        <div id="draggable1" class="col-md-6 col-lg-4 mt-3">
+            <div class="to-do-list">
+                <div class="do-list-header">
+                    <h5 class="text-light">To-Do-List 
+                        <span class="float-right" id="add-to-do-list" data-toggle="modal" data-target="#todoModal"><i class="fas fa-plus-circle"></i></span>
+                    </h5>
+                </div>
+
+                <div class="do-list-content" id="sortable">
+                    <%for (int i = 0; i < 5; i++)
+                        { %>
+                    <div class="to-do-task mt-3">
+                        <h5 class="mb-0">Meet Up with clients</h5>
+                        <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p>
+                    </div>
+                    <%}; %>
+                </div>
+            </div>
+        </div>
+
+        <div id="draggable2" class="col-md-6 col-lg-4 mt-3">
+            <div class="wrapper">
+              <div class="container-calendar">
+                  <h3 id="monthAndYear"></h3>
+                  <div class="button-container-calendar">
+                      <button id="previous" onclick="previousMonth()" type="button">&#8249;</button>
+                      <button id="next" onclick="nextMonth()" type="button">&#8250;</button>
+                  </div>
+          
+                  <table class="table-calendar" id="calendar" data-lang="en">
+                      <thead id="thead-month"></thead>
+                      <tbody id="calendar-body"></tbody>
+                  </table>
+          
+                  <div class="footer-container-calendar">
+                      <label for="month">Jump To: </label>
+                      <select id="month" onchange="jump()">
+                          <option value=0>Jan</option>
+                          <option value=1>Feb</option>
+                          <option value=2>Mar</option>
+                          <option value=3>Apr</option>
+                          <option value=4>May</option>
+                          <option value=5>Jun</option>
+                          <option value=6>Jul</option>
+                          <option value=7>Aug</option>
+                          <option value=8>Sep</option>
+                          <option value=9>Oct</option>
+                          <option value=10>Nov</option>
+                          <option value=11>Dec</option>
+                      </select>
+                      <select id="year" onchange="jump()"></select>       
+                  </div>
+              </div>
+            </div>
+            <script src="js/calendar.js"></script>
+
+        </div>
+
+        <div id="draggable3" class="col-md-6 col-lg-4 mt-3">
+            <div class="top-company-card">
+                <div class="top-company-header">
+                    <h5 class="text-light">Top 5 Companies</h5>
+                    <p class="text-light">Companies that have best review rates</p>
+                </div>
+
+                <div class="top-company-content">
+                    <%for (int i = 0; i < 5; i++)
+                        { %>
+                    <div class="media">
+                       <img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." />
+                      <div class="media-body">
+                        <h5 class="mt-0">Netflix</h5>
+                        <p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p>
+                      </div>
+                    </div>
+                    <%}; %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- To-do-list Modal -->
+    <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Task Name</label>
+                    <input type="text" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Task Remarks</label>
+                    <input type="text" class="form-control" >
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add Task</button>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Features</h3>
-            <ul>
-              <li>Built with Bootstrap 4, SASS and PUG.js</li>
-              <li>Fully responsive and modular code</li>
-              <li>Seven pages including login, user profile and print friendly invoice page</li>
-              <li>Smart integration of forgot password on login page</li>
-              <li>Chart.js integration to display responsive charts</li>
-              <li>Widgets to effectively display statistics</li>
-              <li>Data tables with sort, search and paginate functionality</li>
-              <li>Custom form elements like toggle buttons, auto-complete, tags and date-picker</li>
-              <li>A inbuilt toast library for providing meaningful response messages to user's actions</li>
-            </ul>
-            <p>Vali is a free and responsive admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.</p>
-            <p>Vali is is light-weight, expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> about customizing the theme colors and functionality.</p>
-            <p class="mt-4 mb-4"><a class="btn btn-primary mr-2 mb-2" href="http://pratikborsadiya.in/blog/vali-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Compatibility with frameworks</h3>
-            <p>This theme is not built for a specific framework or technology like Angular or React etc. But due to it's modular nature it's very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.</p>
-            <p>Go to <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> for more details about integrating this theme with various frameworks.</p>
-            <p>The source code is available on GitHub. If anything is missing or weird please report it as an issue on <a href="https://github.com/pratikborsadiya/vali-admin" target="_blank">GitHub</a>. If you want to contribute to this theme pull requests are always welcome.</p>
-          </div>
-        </div>
-      </div>
+    </div>
+      
+
+      
 </asp:Content>

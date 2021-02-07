@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About Us.aspx" />
+    <Content Include="admin\css\dashboard.css" />
     <Content Include="admin\css\aboutUs.css" />
     <Content Include="admin\css\career.css" />
     <Content Include="admin\css\contactUs.css" />
@@ -84,7 +85,9 @@
     <Content Include="admin\images\admin.png" />
     <Content Include="admin\images\login\admin-login.jpg" />
     <Content Include="admin\images\logo\logo.png" />
+    <Content Include="admin\js\app.js" />
     <Content Include="admin\js\bootstrap.min.js" />
+    <Content Include="admin\js\calendar.js" />
     <Content Include="admin\js\jquery-3.2.1.min.js" />
     <Content Include="admin\js\main.js" />
     <Content Include="admin\js\plugins\bootstrap-datepicker.min.js" />
@@ -115,6 +118,7 @@
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.js" />
     <Content Include="bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
+    <Content Include="candidate-list.aspx" />
     <Content Include="Career.aspx" />
     <Content Include="chatbox.aspx" />
     <Content Include="contact-us.aspx" />
@@ -1776,6 +1780,7 @@
     <Content Include="images\About Us\img2.jpg" />
     <Content Include="images\About Us\img3.jpg" />
     <Content Include="images\About Us\writing-336370_1920-min3.png" />
+    <Content Include="images\candidate list\example-candidate.png" />
     <Content Include="images\career\3.jpg" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
@@ -1857,6 +1862,7 @@
     <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="style\about_us.css" />
+    <Content Include="style\candidate-list.css" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
@@ -1936,6 +1942,13 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="candidate-list.aspx.cs">
+      <DependentUpon>candidate-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="candidate-list.aspx.designer.cs">
+      <DependentUpon>candidate-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\edit_termsConditions.aspx.cs">
       <DependentUpon>edit_termsConditions.aspx</DependentUpon>
