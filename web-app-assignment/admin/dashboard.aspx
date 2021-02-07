@@ -35,11 +35,6 @@
 
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
-
-        $(window).resize(function () {
-            drawBarChart();
-            drawLineChart();
-        });
     </script>
 
     <script>
@@ -65,6 +60,12 @@
 
             chart.draw(data, options);
         }
+
+
+        $(window).resize(function () {
+            drawBarChart();
+            drawLineChart();
+        });
     </script>
 
     <%-- CSS --%>
@@ -76,9 +77,14 @@
 
     <script>
         $(function () {
+
+            //Draggable
             $("#draggable1").draggable({ containment: "#draggable-wrapper", scroll: false });
             $("#draggable2").draggable({ containment: "#draggable-wrapper", scroll: false });
             $("#draggable3").draggable({ containment: "#draggable-wrapper", scroll: false });
+
+            //Sortable
+            $("#sortable").sortable();
         });
     </script>
 </asp:Content>
@@ -149,12 +155,28 @@
         </div>
     </div>
 
-    <div class="row" style="height:1000px;" id="draggable-wrapper">
-        <div id="draggable1" class="col-md-6 col-lg-4">
+    <div class="row mt-3" style="height:1000px;" id="draggable-wrapper">
+        <div id="draggable1" class="col-md-6 col-lg-4 mt-3">
+            <div class="to-do-list">
+                <div class="do-list-header">
+                    <h5 class="text-light">To-Do-List 
+                        <span class="float-right" id="add-to-do-list" data-toggle="modal" data-target="#todoModal"><i class="fas fa-plus-circle"></i></span>
+                    </h5>
+                </div>
 
+                <div class="do-list-content" id="sortable">
+                    <%for (int i = 0; i < 5; i++)
+                        { %>
+                    <div class="to-do-task mt-3">
+                        <h5 class="mb-0">Meet Up with clients</h5>
+                        <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p>
+                    </div>
+                    <%}; %>
+                </div>
+            </div>
         </div>
 
-        <div id="draggable2" class="col-md-6 col-lg-4">
+        <div id="draggable2" class="col-md-6 col-lg-4 mt-3">
             <div class="wrapper">
               <div class="container-calendar">
                   <h3 id="monthAndYear"></h3>
@@ -192,10 +214,59 @@
 
         </div>
 
-        <div id="draggable3" class="col-md-6 col-lg-4">
+        <div id="draggable3" class="col-md-6 col-lg-4 mt-3">
+            <div class="top-company-card">
+                <div class="top-company-header">
+                    <h5 class="text-light">Top 5 Companies</h5>
+                    <p class="text-light">Companies that have best review rates</p>
+                </div>
 
+                <div class="top-company-content">
+                    <%for (int i = 0; i < 5; i++)
+                        { %>
+                    <div class="media">
+                       <img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." />
+                      <div class="media-body">
+                        <h5 class="mt-0">Netflix</h5>
+                        <p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p>
+                      </div>
+                    </div>
+                    <%}; %>
+                </div>
+            </div>
         </div>
 
+    </div>
+
+    <!-- To-do-list Modal -->
+    <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Task Name</label>
+                    <input type="text" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Task Remarks</label>
+                    <input type="text" class="form-control" >
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add Task</button>
+          </div>
+        </div>
+      </div>
     </div>
       
 

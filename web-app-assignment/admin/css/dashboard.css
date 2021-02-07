@@ -5,16 +5,34 @@
     height:400px;
 }
 
-#draggable1{
-    width:50px;
-    height:50px;
-    background-color:black;
+/*To-do-list*/
+.to-do-list{
+    width:100%;
+}
+
+.do-list-header {
+    background-color: #00B67A;
+    padding:15px;
+}
+
+#add-to-do-list{
+    cursor:pointer;
+}
+
+.do-list-content{
+    padding:15px;
+    background-color:white;
+}
+
+.to-do-task {
+    border: 1px solid black;
+    border-left: 3px solid #00BBDD;
+    padding:5px 15px;
+
 }
 
 /*Calendar*/
-
 .wrapper {
-    margin: 15px auto;
     max-width: 1100px;
 }
 
@@ -103,4 +121,23 @@
     border: 1px solid #bfc5c5;
     border-radius: 3px;
     padding: 5px 1em;
+}
+
+/*Top 5 companies*/
+.top-company-card{
+    width:100%;
+}
+
+.top-company-header {
+    background-color: #CB2121;
+    padding:15px;
+}
+
+.top-company-content{
+    padding:15px;
+    background-color:white;
+}
+
+.top-company-pic{
+    width:64px;
 }
