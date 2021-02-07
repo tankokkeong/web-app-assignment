@@ -68,10 +68,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About Us.aspx" />
+    <Content Include="admin\css\aboutUs.css" />
+    <Content Include="admin\css\career.css" />
+    <Content Include="admin\css\contactUs.css" />
     <Content Include="admin\css\default.css" />
+    <Content Include="admin\css\helpCenter.css" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
+    <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\edit_aboutUs.aspx" />
+    <Content Include="admin\edit_career.aspx" />
+    <Content Include="admin\edit_contactUs.aspx" />
+    <Content Include="admin\edit_helpCenter.aspx" />
     <Content Include="admin\images\admin.png" />
     <Content Include="admin\images\login\admin-login.jpg" />
     <Content Include="admin\images\logo\logo.png" />
@@ -94,6 +103,7 @@
     <Content Include="admin\js\plugins\sweetalert.min.js" />
     <Content Include="admin\js\popper.min.js" />
     <Content Include="admin\login.aspx" />
+    <Content Include="admin\edit_termsConditions.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1892,12 +1902,47 @@
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\edit_aboutUs.aspx.cs">
+      <DependentUpon>edit_aboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_aboutUs.aspx.designer.cs">
+      <DependentUpon>edit_aboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_career.aspx.cs">
+      <DependentUpon>edit_career.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_career.aspx.designer.cs">
+      <DependentUpon>edit_career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_contactUs.aspx.cs">
+      <DependentUpon>edit_contactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_contactUs.aspx.designer.cs">
+      <DependentUpon>edit_contactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_helpCenter.aspx.cs">
+      <DependentUpon>edit_helpCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_helpCenter.aspx.designer.cs">
+      <DependentUpon>edit_helpCenter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_termsConditions.aspx.cs">
+      <DependentUpon>edit_termsConditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_termsConditions.aspx.designer.cs">
+      <DependentUpon>edit_termsConditions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Career.aspx.cs">
       <DependentUpon>Career.aspx</DependentUpon>
