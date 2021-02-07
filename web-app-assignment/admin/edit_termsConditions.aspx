@@ -7,22 +7,22 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
-        <div>
-            <h2>
+    <div class="Term_ConditionsAdminBody">
+        <div class="Term_ConditionsAdminBodyHeaderPosition">
+            <h2 class="Term_ConditionsAdminBodyHeader">
                 Edit Page
             </h2>
         </div>
-        <div>
-            <h3>
+        <div class="Term_ConditionsAdminBodyContents">
+            <h3 class="Term_ConditionsAdminBodyContentsHeader">
                 Terms & Conditions
             </h3>
         </div>
         <div id="toolbar-container"></div>
 
-            <!-- This container will become the editable. -->
             <div id="editor">
-                <p>This is the initial editor content.</p>
+                <%--Database code comes here--%>
+                <p>Lallalalala</p>
             </div>
         <script>
             DecoupledEditor
@@ -36,5 +36,9 @@
                     console.error(error);
                 });
         </script>
+
+        <div class="Term_ConditionsAdminBodyButtonPosition">
+            <button class="Term_ConditionsAdminBodyButton" type="submit">Update</button>
+        </div>
     </div>
 </asp:Content>

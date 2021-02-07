@@ -1,2 +1,33 @@
-﻿body {
+﻿.Term_ConditionsAdminBodyHeader{
+    font-style: italic;
+}
+
+.Term_ConditionsAdminBodyContents {
+    border: 3px solid #0B8C7B;
+    background-color: white;
+    margin-bottom: 2.5%;
+}
+
+#toolbar-container {
+    border: 3px solid #0B8C7B;
+}
+
+#editor {
+    border: 3px solid #0B8C7B;
+    background-color: white;
+    margin-bottom: 5%;
+}
+
+.Term_ConditionsAdminBodyButtonPosition{
+    width:100%;
+}
+
+.Term_ConditionsAdminBodyButton {
+    background-color: #0B8C7B;
+    color: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 1%;
+
 }
