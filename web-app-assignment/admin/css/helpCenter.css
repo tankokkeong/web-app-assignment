@@ -1,2 +1,54 @@
-﻿body {
+﻿.Edit_helpCenter{
+    background-color: white;
+    padding: 5%;
+    position: relative;
+}
+
+.Edit_helpCenterHeaderPosition {
+    border: 3px solid #0B8C7B;
+    background-color: white;
+    margin-bottom: 2.5%;
+}
+
+.Edit_helpCenterBodyHeaderPosition {
+    background-color: #0B8C7B;
+    border-radius: 10px;
+    border: 3px solid #0B8C7B;
+    width: 40%;
+    margin-bottom: 2.5%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.Edit_helpCenterBodyHeader{
+    text-align: center;
+    color: white;
+}
+
+.Edit_helpCenterBodyContents{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-bottom: 5%;
+}
+
+#questionToolbar-container, #answerToolbar-container, #answerEditor, #questionEditor {
+    border: 3px solid #0B8C7B;
+}
+
+.Edit_helpCenterButtons{
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.Edit_helpCenterAddQuestionsButton, .Edit_helpCenterSubmitButton {
+    padding: 1% 5%;
+    border: 3px solid #0B8C7B;
+    background-color: #0B8C7B;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5%;
 }
