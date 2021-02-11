@@ -83,6 +83,9 @@
     <Content Include="admin\edit_contactUs.aspx" />
     <Content Include="admin\edit_helpCenter.aspx" />
     <Content Include="admin\images\admin.png" />
+    <Content Include="admin\images\Contact Us\call.png" />
+    <Content Include="admin\images\Contact Us\email.png" />
+    <Content Include="admin\images\Contact Us\maps.png" />
     <Content Include="admin\images\login\admin-login.jpg" />
     <Content Include="admin\images\logo\logo.png" />
     <Content Include="admin\js\app.js" />

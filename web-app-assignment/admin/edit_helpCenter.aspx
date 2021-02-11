@@ -41,9 +41,12 @@
                 </div>
             </div>
         </div>
+        <div id="Edit_helpCenterMoreBodyContents">
+
+        </div>
         <div class="Edit_helpCenterButtons">
             <div class="Edit_helpCenterAddQuestions">
-                <button type="button" class="Edit_helpCenterAddQuestionsButton">Add More Question?</button>
+                <button type="button" class="Edit_helpCenterAddQuestionsButton" onclick="addNewQ_A()">Add More Question?</button>
             </div>
             <div class="Edit_helpCenterSubmit">
                 <button type="submit" class="Edit_helpCenterSubmitButton">Update</button>
@@ -73,5 +76,9 @@
             .catch(error => {
                 console.error(error);
             });
+
+        function addNewQ_A() {
+            $('#Edit_helpCenterMoreBodyContents').append('<div class="Edit_helpCenterBodyContents"><div class= "Edit_helpCenterBodyContentsTitle"><h6>Question</h6></div><div class="Edit_helpCenterBodyContentsDetails"><div id="questionToolbar-container"></div><div id = "questionEditor"><p>Lallalalala</p></div></div></div><div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Answer</h6></div><div class="Edit_helpCenterBodyContentsDetails"><div id="answerToolbar-container"></div><div id="answerEditor"><p>Lallalalala</p></div></div></div>');
+        };
     </script>
 </asp:Content>

@@ -1,2 +1,62 @@
-﻿body {
+﻿.Edit_contactUs{
+    background-color: white;
+    padding: 5%;
+}
+
+.Edit_contactUsHeaderPosition {
+    border: solid 3px #0B8C7B;
+    margin-bottom: 5%;
+}
+
+.Edit_contactUsBody{
+    display: block;
+}
+
+.Edit_contactUsBodyCall, .Edit_contactUsBodyEmail, .Edit_contactUsBodyLocation{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.Edit_contactUsBodyEmailContentsLeft, .Edit_contactUsBodyCallContentLeft, .Edit_contactUsBodyLocationContentLeft {
+    display: block;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.Edit_contactUsBodyLocationContentFilePosition, .Edit_contactUsBodyEmailContentFilePosition, .Edit_contactUsBodyCallContentFilePosition {
+    margin-top: 2.5%;
+}
+
+.Edit_contactUsBodyEmailContentUpload, .Edit_contactUsBodyCallContentUpload, .Edit_contactUsBodyLocationContentUpload {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.Edit_contactUsBodyLocationContentUploadPosition, .Edit_contactUsBodyCallContentUploadPosition, .Edit_contactUsBodyEmailContentUploadPosition {
+    border: 3px solid #0B8C7B;
+    color: white;
+    background-color: #0B8C7B;
+    border-radius: 10px;
+    padding: 0.5%;
+}
+
+.Edit_contactUsBodyLocationContentRightInput, .Edit_contactUsBodyCallContentRightInput, .Edit_contactUsBodyEmailContentRightInput {
+    width: 80%;
+    border: 3px solid #0B8C7B;
+    padding: 1%;
+}
+
+.Edit_contactUsButton{
+    margin-top: 2.5%;
+}
+
+.Edit_contactUsButtonPosition {
+    border: 3px solid #0B8C7B;
+    color: white;
+    background-color: #0B8C7B;
+    border-radius: 20px;
+    padding: 1.5%;
+    width: 20%;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
