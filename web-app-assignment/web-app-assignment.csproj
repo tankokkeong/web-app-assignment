@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About Us.aspx" />
+    <Content Include="admin\contact-message.aspx" />
+    <Content Include="admin\css\contact-message.css" />
     <Content Include="admin\css\dashboard.css" />
     <Content Include="admin\css\aboutUs.css" />
     <Content Include="admin\css\career.css" />
@@ -77,6 +79,7 @@
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\css\terms_conditions.css" />
+    <Content Include="admin\css\user-management.css" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\edit_aboutUs.aspx" />
     <Content Include="admin\edit_career.aspx" />
@@ -110,6 +113,7 @@
     <Content Include="admin\js\popper.min.js" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\edit_termsConditions.aspx" />
+    <Content Include="admin\user-management.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1904,6 +1908,13 @@
     <Compile Include="admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="admin\contact-message.aspx.cs">
+      <DependentUpon>contact-message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\contact-message.aspx.designer.cs">
+      <DependentUpon>contact-message.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1945,6 +1956,13 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user-management.aspx.cs">
+      <DependentUpon>user-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user-management.aspx.designer.cs">
+      <DependentUpon>user-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="candidate-list.aspx.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>
