@@ -1,2 +1,36 @@
-﻿body {
+﻿.aboutus-container {
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+}
+
+.aboutus-form {
+    width:100%;
+}
+
+.about-title h2 {
+    font-style: italic !important;
+}
+
+.aboutform-title h3 {
+    border: 2px solid #0B8C7B;
+    padding: 10px;
+}
+
+.about-input{
+    margin-top:20px;
+    padding: 10px;
+}
+
+.about-input-control {
+    border: 1px solid #0B8C7B;
+}
+
+.about-image-display{
+    width:100%;
+    margin-bottom:15px;
+}
+
+.founder-img-upload{
+    width:100%;
 }

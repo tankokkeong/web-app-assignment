@@ -6,3 +6,13 @@
 .app-content {
     overflow-y: hidden;
 }
+
+/*background colours*/
+.bg-lightgreen {
+    background-color: #0B8C7B !important;
+}
+
+/*Font colours*/
+.text-lightgreen {
+    color: #0B8C7B !important;
+}
