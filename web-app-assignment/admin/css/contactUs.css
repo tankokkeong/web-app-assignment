@@ -14,11 +14,12 @@
 
 .Edit_contactUsBody {
     display: block;
+    margin-left: 15%;
 }
 
 .Edit_contactUsBodyCall, .Edit_contactUsBodyEmail, .Edit_contactUsBodyLocation{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
 }
 
 .Edit_contactUsBodyEmailContentsLeft, .Edit_contactUsBodyCallContentLeft, .Edit_contactUsBodyLocationContentLeft {
@@ -59,8 +60,9 @@
     color: white;
     background-color: #0B8C7B;
     border-radius: 20px;
-    padding: 1.5%;
+    padding: .5%;
     width: 20%;
     margin-left: 50%;
     transform: translateX(-50%);
+    font-size: 1.25vw;
 }

@@ -90,9 +90,9 @@
                     </div>
                 </div>
             </div>
-            <div class="Edit_contactUsButton">
-                <button class="Edit_contactUsButtonPosition" type="submit">Update</button>
-            </div>
+        </div>
+        <div class="Edit_contactUsButton">
+            <button class="Edit_contactUsButtonPosition" type="submit">Update</button>
         </div>
     </div>
 </asp:Content>
