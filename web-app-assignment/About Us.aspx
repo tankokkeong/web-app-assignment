@@ -20,6 +20,7 @@
             </div>
         </div>
 
+    <%-- About Us Container --%>
         <div class="about-us-container">
             <div class="about-us-title">
                 <h2>Who We Are?</h2>
@@ -37,17 +38,55 @@
                 </p>
             </div>
 
+            <%-- About box container --%>
             <div class="about-box-container">
 
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-2 ">
                         <div class="about-us-container-image">
                             <img src="images/About%20Us/img1.jpg" id="img1"/>
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-10">
                         <div class="about-us-container-text">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
+                            <div class="cite">
+                               <br /> - Turpis Dui
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="about-us-container-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
+                            <div class="cite">
+                               <br /> - Dictum Non
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="about-us-container-image">
+                            <img src="images/About%20Us/img2.jpg" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2 ">
+                        <div class="about-us-container-image">
+                            <img src="images/About%20Us/img3.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="about-us-container-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
+                            
+                            <div class="cite">
+                            <br />    - Mauris Sed
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,6 +94,7 @@
 
             </div>
 
+            <%-- Mission Container --%>
             <div class="mission-container">
                 <div class="mission-title">
                     <h1>Mission</h1>
@@ -66,6 +106,7 @@
                 </div>
             </div>
 
+            <%-- Vision Container --%>
             <div class="vision-container">
                 <div class="vision-title">
                     <h1>Vision</h1>
@@ -74,22 +115,8 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
                 </div>
             </div>
-
-
-<%--<%--  <div class="container-fluid">     
-    <div class="row">
-      <div class="col-sm-3 col-md-6 col-lg-3"><div class="photo"><img src="images/About%20Us/img1.jpg" /></div></div>
-      <div class="col-sm-9 col-md-6 col-lg-9">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</div>
-    </div>
-  </div>
-        </div>
-
+         </div>
     <style>
-        .container-fluid. .row{
-            padding:0 5px;
-        }
-        .container-fluid .row img{
-            height:300px;
-        }--%>
 
+    </style>
 </asp:Content>
