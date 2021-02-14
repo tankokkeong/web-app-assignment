@@ -38,23 +38,43 @@
             </div>
 
             <div class="about-box-container">
+
                 <div class="row">
-                    <div class="col-sm-3 col-md-6 col-lg-3">
-                        <div class="about-image">
+                    <div class="col-sm-4">
+                        <div class="about-us-container-image">
                             <img src="images/About%20Us/img1.jpg" id="img1"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 col-md-6 col-lg-9">
-                        <div class="about-image-decs">
+                    <div class="col-sm-8">
+                        <div class="about-us-container-text">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
                         </div>
-                        <div class="citation">
-                            <p class="cite">- Turpis Dui</p>
-                        </div>
-                        
                     </div>
                 </div>
+
+
             </div>
+
+            <div class="mission-container">
+                <div class="mission-title">
+                    <h1>Mission</h1>
+                </div>
+                <div class="mission-desc">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="vision-container">
+                <div class="vision-title">
+                    <h1>Vision</h1>
+                </div>
+                <div class="vision-desc">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis.</p>
+                </div>
+            </div>
+
 
 <%--<%--  <div class="container-fluid">     
     <div class="row">

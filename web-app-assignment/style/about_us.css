@@ -48,39 +48,81 @@
     margin:20px 0 15px;
 }
 
-.about-box-container .row{
-    padding:0 10%;
-    margin:100px 0;
+.about-box-container .row {
+    padding: 0 10%;
+    margin: 100px 0;
 }
-
-.about-box-container .row .about-image img{
+.about-box-container .about-us-container-image img {
     width: 300px;
     height: 398px;
-    border-radius:25px;
+    border-radius: 25px;
 }
 
-    .about-box-container .row .about-image img {
-        width: 300px;
-        height: 398px;
-        border-radius: 25px;
+.about-box-container .about-us-container-text p {
+    font-family: BodoniMT,AdobeInvisFont,MyriadPro-Regular;
+    text-align: justify;
+    font-size: 24px;
+    font-weight:bold;
+}
+
+@media screen and (max-width: 600px) {
+    .about-box-container .about-us-container-image img {
+        margin:0 50%;
     }
 
-    .about-box-container .row .about-image-decs p {
-        height: 398px;
-/*        background-color: #AFBDB9;
-        border-radius: 25px;*/
-        margin-top:10px;
-        font-size:24px;
+
+    .mission-container .mission-title h1 {
+        text-align: center;
+        font-family: BrushScriptMT,AdobeInvisFont,MyriadPro-Regular;
+        font-size: 64px;
+        color: #0B8C7B;
+        margin: 25px 0 10px;
     }
 
-    .about-box-container .row .citation  .cite {
-        float: right;
+    .mission-container .mission-title #line {
+        transform: rotate(45deg);
+        margin-top: -70px;
+        margin-left: 45%;
+        height: 150px;
+        width: 150px;
+    }
+
+
+    .mission-container .mission-desc p {
+        font-family: BodoniMT,AdobeInvisFont,MyriadPro-Regular;
+        text-align: justify;
         font-size: 24px;
-        font-family: BodoniMT-Italic,AdobeInvisFont,MyriadPro-Regular;
+        padding: 0 10%;
+        margin: 20px 0 15px;
+    }
+
+    .vision-container .vision-title h1 {
+        text-align: center;
+        font-family: BrushScriptMT,AdobeInvisFont,MyriadPro-Regular;
+        font-size: 64px;
+        color: #0B8C7B;
+        margin: 25px 0 10px;
+    }
+
+    .vision-container .vision-title #line {
+        transform: rotate(45deg);
+        margin-top: -70px;
+        margin-left: 43%;
+        height: 150px;
+        width: 150px;
+    }
+
+
+    .vision-container .vision-desc p {
+        font-family: BodoniMT,AdobeInvisFont,MyriadPro-Regular;
+        text-align: justify;
+        font-size: 24px;
+        padding: 0 10%;
+        margin: 20px 0 30px;
     }
 
     @media screen and (max-width: 600px) {
         .background-section {
-        min-height: 500px;
+            min-height: 500px;
+        }
     }
-}
