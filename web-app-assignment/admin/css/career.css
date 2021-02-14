@@ -7,6 +7,10 @@
     border: 3px solid #0B8C7B;
 }
 
+.Edit_CareerHeader{
+    padding: 1%;
+}
+
 .Edit_CareerBackgroundContents {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -100,9 +104,8 @@
     margin-bottom: 5%;
 }
 
-#toolbar-container, #editor, #toolbar-container1, #editor1 {
-    border: 2px solid #0B8C7B;
-    background-color: white;
+.Edit_CareerBodyContentsDescDetails {
+    border: 3px solid #0B8C7B;
 }
 
 .Edit_CareerBodyContentsNameDetailsInput, .Edit_CareerBodyContentsPositionDetailsInput {

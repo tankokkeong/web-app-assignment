@@ -1,4 +1,9 @@
-﻿.Term_ConditionsAdminBodyHeader{
+﻿.Term_ConditionsAdminBody{
+    background-color:white;
+    padding: 2.5%;
+}
+
+.Term_ConditionsAdminBodyHeader {
     font-style: italic;
 }
 
@@ -8,18 +13,19 @@
     margin-bottom: 2.5%;
 }
 
-#toolbar-container {
-    border: 3px solid #0B8C7B;
+.Term_ConditionsAdminBodyContentsHeader{
+    padding: 1%;
 }
 
-#editor {
+.Term_ConditionsAdminBodyDatabaseSpot {
     border: 3px solid #0B8C7B;
     background-color: white;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
+    margin-top: -.5%;
 }
 
-.Term_ConditionsAdminBodyButtonPosition{
-    width:100%;
+.Term_ConditionsAdminBodyButtonPosition {
+    width: 100%;
 }
 
 .Term_ConditionsAdminBodyButton {
@@ -29,5 +35,4 @@
     transform: translateX(-50%);
     border-radius: 5px;
     padding: 1%;
-
 }

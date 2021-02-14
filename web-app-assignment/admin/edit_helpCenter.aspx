@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/helpCenter.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
     <title>Help Center</title>
 </asp:Content>
 
@@ -22,11 +24,7 @@
                 <h6>Question</h6>
             </div>
             <div class="Edit_helpCenterBodyContentsDetails">
-                <div id="questionToolbar-container"></div>
-                <div id="questionEditor">
-                    <%--Database code comes here--%>
-                    <p>Lallalalala</p>
-                </div>
+                <textarea>Database in here</textarea>
             </div>
         </div>
         <div class="Edit_helpCenterBodyContents">
@@ -34,11 +32,7 @@
                 <h6>Answer</h6>
             </div>
             <div class="Edit_helpCenterBodyContentsDetails">
-                <div id="answerToolbar-container"></div>
-                <div id="answerEditor">
-                    <%--Database code comes here--%>
-                    <p>Lallalalala</p>
-                </div>
+                <textarea>Database in here</textarea>
             </div>
         </div>
         <div id="Edit_helpCenterMoreBodyContents">
@@ -55,30 +49,9 @@
     </div>
 
     <script>
-        DecoupledEditor
-            .create(document.querySelector('#questionEditor'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#questionToolbar-container');
-
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        DecoupledEditor
-            .create(document.querySelector('#answerEditor'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#answerToolbar-container');
-
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
         function addNewQ_A() {
-            $('#Edit_helpCenterMoreBodyContents').append('<div class="Edit_helpCenterBodyContents"><div class= "Edit_helpCenterBodyContentsTitle"><h6>Question</h6></div><div class="Edit_helpCenterBodyContentsDetails"><div id="questionToolbar-container"></div><div id = "questionEditor"><p>Lallalalala</p></div></div></div><div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Answer</h6></div><div class="Edit_helpCenterBodyContentsDetails"><div id="answerToolbar-container"></div><div id="answerEditor"><p>Lallalalala</p></div></div></div>');
+            $('#Edit_helpCenterMoreBodyContents').append('<div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Question</h6></div><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div><div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Answer</h6></div><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div>');
+            tinymce.init({ selector: 'textarea' });
         };
     </script>
 </asp:Content>

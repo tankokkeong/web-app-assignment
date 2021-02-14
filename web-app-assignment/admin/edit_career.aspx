@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/career.css" rel="stylesheet" type="text/css"/>
     <title>Career</title>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -51,23 +53,7 @@
                             </h4>
                         </div>
                         <div class="Edit_CareerBodyContentsDescDetails">
-                            <div id="toolbar-container"></div>
-                            <div id="editor">
-                                <%--Database code comes here--%>
-                                <p>Lallalalala</p>
-                            </div>
-                            <script>
-                                DecoupledEditor
-                                    .create(document.querySelector('#editor'))
-                                    .then(editor => {
-                                        const toolbarContainer = document.querySelector('#toolbar-container');
-
-                                        toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                                    })
-                                    .catch(error => {
-                                        console.error(error);
-                                    });
-                            </script>
+                            <textarea>Database in here</textarea>
                         </div>
                     </div>
                     <div class="Edit_CareerBodyContentsName">
@@ -110,23 +96,7 @@
                             </h4>
                         </div>
                         <div class="Edit_CareerBodyContentsDescDetails">
-                            <div id="toolbar-container1"></div>
-                            <div id="editor1">
-                                <%--Database code comes here--%>
-                                <p>Lallalalala</p>
-                            </div>
-                            <script>
-                                DecoupledEditor
-                                    .create(document.querySelector('#editor1'))
-                                    .then(editor => {
-                                        const toolbarContainer = document.querySelector('#toolbar-container1');
-
-                                        toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                                    })
-                                    .catch(error => {
-                                        console.error(error);
-                                    });
-                            </script>
+                            <textarea>Database in here</textarea>
                         </div>
                     </div>
                     <div class="Edit_CareerBodyContentsName">

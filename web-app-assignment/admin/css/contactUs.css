@@ -8,7 +8,11 @@
     margin-bottom: 5%;
 }
 
-.Edit_contactUsBody{
+.Edit_contactUsHeader{
+    padding: 1%;
+}
+
+.Edit_contactUsBody {
     display: block;
 }
 

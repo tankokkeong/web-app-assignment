@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/terms_conditions.css" rel="stylesheet" type="text/css"/>
     <title>Terms & Condition</title>
+
+    <%-- CK EDITOR --%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -17,20 +20,16 @@
                 Terms & Conditions
             </h3>
         </div>
-        <div id="toolbar-container"></div>
 
+        <div class="Term_ConditionsAdminBodyDatabaseSpot">
             <div id="editor">
                 <%--Database code comes here--%>
                 <p>Lallalalala</p>
             </div>
+        </div>
         <script>
-            DecoupledEditor
+            ClassicEditor
                 .create(document.querySelector('#editor'))
-                .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container');
-
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
                 .catch(error => {
                     console.error(error);
                 });
