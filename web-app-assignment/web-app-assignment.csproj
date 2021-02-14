@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About Us.aspx" />
+    <Content Include="admin\admin-management.aspx" />
     <Content Include="admin\contact-message.aspx" />
     <Content Include="admin\css\contact-message.css" />
     <Content Include="admin\css\dashboard.css" />
@@ -1900,6 +1901,13 @@
     </Compile>
     <Compile Include="About Us.aspx.designer.cs">
       <DependentUpon>About Us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin-management.aspx.cs">
+      <DependentUpon>admin-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin-management.aspx.designer.cs">
+      <DependentUpon>admin-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
