@@ -137,7 +137,7 @@
 
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="admin-management.aspx"><i class="icon fa fa-circle-o"></i> Admin Management</a></li>
-                        <li><a class="treeview-item" href="user-management.aspx"><i class="icon fa fa-circle-o"></i> Clients Management</a></li>
+                        <li><a class="treeview-item" href="clients-management.aspx"><i class="icon fa fa-circle-o"></i> Clients Management</a></li>
                     </ul>
                 </li>
 

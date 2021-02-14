@@ -16,3 +16,9 @@
 .text-lightgreen {
     color: #0B8C7B !important;
 }
+
+.action-btn{
+    font-size:15px!important;
+    padding:5px!important;
+    cursor:pointer;
+}
