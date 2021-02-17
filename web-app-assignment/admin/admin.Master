@@ -158,6 +158,7 @@
                     <li><a class="treeview-item" href="edit_helpCenter.aspx"><i class="icon fa fa-circle-o"></i>Help Center</a></li>
                     <li><a class="treeview-item" href="edit_contactUs.aspx"><i class="icon fa fa-circle-o"></i>Contact Us</a></li>
                     <li><a class="treeview-item" href="edit_aboutUs.aspx"><i class="icon fa fa-circle-o"></i>About Us</a></li>
+                    <li><a class="treeview-item" href="edit_privacy.aspx"><i class="icon fa fa-circle-o"></i>Privacy</a></li>
                   </ul>
                 </li>
 

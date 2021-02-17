@@ -1,0 +1,42 @@
+﻿.PrivacyAdminBody {
+    background-color: white;
+    padding: 2.5%;
+}
+
+.PrivacyAdminBodyHeader {
+    font-style: italic;
+}
+
+.PrivacyAdminBodyContents {
+    border: 3px solid #0B8C7B;
+    background-color: white;
+    margin-bottom: 2.5%;
+}
+
+.PrivacyAdminBodyContentsHeader {
+    padding: 1%;
+}
+
+.PrivacyAdminBodyDatabaseSpot {
+    border: 3px solid #0B8C7B;
+    background-color: white;
+    margin-bottom: 2.5%;
+    margin-top: -.5%;
+}
+
+.PrivacyAdminBodyButtonPosition {
+    width: 100%;
+}
+
+.PrivacyAdminBodyButton {
+    background-color: #0B8C7B;
+    color: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.PrivacyAdminBodyButton:hover {
+    opacity: 80%;
+}
