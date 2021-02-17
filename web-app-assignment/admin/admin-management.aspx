@@ -26,6 +26,11 @@
         </div>
 
         <div class="table-container">
+
+            <div class="float-right mb-3 mt-3">
+                <button class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin">New Admin</button>
+            </div>
+
             <table class="table table-striped table-bordered">
               <thead>
                 <tr class="bg-lightgreen text-light">
@@ -66,5 +71,42 @@
               </tbody>
             </table>
         </div>
+    </div>
+
+    <!-- New Admin Modal -->
+    <div class="modal fade" id="addAdmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Add New Admin</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                 <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="email@example.com">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Admin Role</label>
+                    <div class="col-sm-10">
+                      <select class="form-control">
+                          <option>Editor</option>
+                          <option>Role</option>
+                      </select>
+                    </div>
+                  </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
     </div>
 </asp:Content>

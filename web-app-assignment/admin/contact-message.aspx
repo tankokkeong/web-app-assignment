@@ -6,6 +6,20 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- Change navbar active --%>
+    <script>
+        $(document).ready(function () {
+            navbarActive();
+
+            //Add active to user management
+            contact_message = nav_option[3];
+            $(contact_message).addClass("active");
+
+            //Remove active from dashboard
+            dashboard = nav_option[0];
+            $(dashboard).removeClass("active");
+        });
+    </script>
     <div class="message-container">
         <div class="message-title">
             <h2>Contact Message</h2>
@@ -29,19 +43,9 @@
                   <td>0123456789</td>
                   <td>demo@gmail.com</td>
                   <td>
-                      <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>
+                      <a href="message-details.aspx" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
                       <span class="badge badge-danger action-btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></span>
                   </td>
-                </tr>
-
-                <tr>
-                    <td>Jacob</td>
-                    <td>0123456789</td>
-                    <td>demo@gmail.com</td>
-                    <td>
-                        <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>
-                        <span class="badge badge-danger action-btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></span>
-                    </td>
                 </tr>
                 <%}; %>
               </tbody>
