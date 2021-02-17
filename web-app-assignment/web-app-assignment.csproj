@@ -80,6 +80,7 @@
     <Content Include="admin\css\helpCenter.css" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
+    <Content Include="admin\css\message-details.css" />
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
     <Content Include="admin\dashboard.aspx" />
@@ -116,6 +117,7 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\edit_termsConditions.aspx" />
     <Content Include="admin\clients-management.aspx" />
+    <Content Include="admin\message-details.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1972,6 +1974,13 @@
     </Compile>
     <Compile Include="admin\clients-management.aspx.designer.cs">
       <DependentUpon>clients-management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\message-details.aspx.cs">
+      <DependentUpon>message-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\message-details.aspx.designer.cs">
+      <DependentUpon>message-details.aspx</DependentUpon>
     </Compile>
     <Compile Include="candidate-list.aspx.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>

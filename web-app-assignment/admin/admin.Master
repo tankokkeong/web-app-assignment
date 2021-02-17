@@ -142,7 +142,7 @@
                 </li>
 
                 <li class="treeview">
-                    <a class="app-menu__item" href="#">
+                    <a class="app-menu__item" href="contact-message.aspx">
                         <i class="app-menu__icon far fa-address-book"></i><span class="app-menu__label">Contact Message</span>
                     </a>
                 </li>
@@ -168,8 +168,6 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i> Admin Management</a></li>
-                        <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Clients Management</a></li>
                     </ul>
                 </li>
 
