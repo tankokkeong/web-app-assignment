@@ -33,39 +33,46 @@
                 Frequently Asked Question
             </h4>
         </div>
-        <div class="Edit_helpCenterBodyContents">
-            <div class="Edit_helpCenterBodyContentsTitle">
-                <h6>Question</h6>
-            </div>
-            <div class="Edit_helpCenterBodyContentsDetails">
-                <textarea>Database in here</textarea>
-            </div>
-        </div>
-        <div class="Edit_helpCenterBodyContents">
-            <div class="Edit_helpCenterBodyContentsTitle">
-                <h6>Answer</h6>
-            </div>
-            <div class="Edit_helpCenterBodyContentsDetails">
-                <textarea>Database in here</textarea>
-            </div>
-        </div>
-        <div id="Edit_helpCenterMoreBodyContents">
 
-        </div>
-        <div class="Edit_helpCenterButtons">
-            <div class="Edit_helpCenterAddQuestions">
-                <button type="button" class="Edit_helpCenterAddQuestionsButton" onclick="addNewQ_A()">Add More Question?</button>
+        <form>
+            <div class="form-group row">
+                <h5>
+                    <label for="question" class="col-sm-2 col-form-label Edit_helpCenterBodyContentsTitle">Question</label>
+                </h5>
+                <div class="col-sm-10" id="question">
+                    <div class="Edit_helpCenterBodyContentsDetails">
+                        <textarea>Database in here</textarea>
+                    </div>
+                </div>
             </div>
-            <div class="Edit_helpCenterSubmit">
-                <button type="submit" class="Edit_helpCenterSubmitButton">Update</button>
+            <div class="form-group row">
+                <h5>
+                    <label for="answer" class="col-sm-2 col-form-label">Answer</label>
+                </h5>
+                <div class="col-sm-10" id="answer">
+                    <div class="Edit_helpCenterBodyContentsDetails">
+                        <textarea>Database in here</textarea>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div id="Edit_helpCenterMoreBodyContents"></div>
+
+            <div class="Edit_helpCenterButtons">
+                <div class="Edit_helpCenterAddQuestions">
+                    <button type="button" class="Edit_helpCenterAddQuestionsButton" onclick="addNewQ_A()">Add More Question?</button>
+                </div>
+                <div class="Edit_helpCenterSubmit">
+                    <button type="submit" class="Edit_helpCenterSubmitButton">Update</button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <script>
         function addNewQ_A() {
-            $('#Edit_helpCenterMoreBodyContents').append('<div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Question</h6></div><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div><div class="Edit_helpCenterBodyContents"><div class="Edit_helpCenterBodyContentsTitle"><h6>Answer</h6></div><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div>');
-            tinymce.init({ selector: 'textarea' });
+            $('#Edit_helpCenterMoreBodyContents').append('<div class="form-group row"><h5><label for="question" class="col-sm-2 col-form-label Edit_helpCenterBodyContentsTitle">Question</label></h5><div class="col-sm-10" id="question"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div><div class="form-group row"><h5><label for="answer" class="col-sm-2 col-form-label">Answer</label></h5><div class="col-sm-10" id="answer"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div>');
+            tinymce.init({selector: 'textarea' });
         };
     </script>
 </asp:Content>

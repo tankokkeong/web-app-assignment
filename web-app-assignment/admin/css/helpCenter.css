@@ -18,7 +18,7 @@
     background-color: #0B8C7B;
     border-radius: 10px;
     border: 3px solid #0B8C7B;
-    width: 40%;
+    width: 100%;
     margin-bottom: 2.5%;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -35,8 +35,8 @@
     margin-bottom: 5%;
 }
 
-#questionToolbar-container, #answerToolbar-container, #answerEditor, #questionEditor {
-    border: 3px solid #0B8C7B;
+form{
+    padding: 2.5%;
 }
 
 .Edit_helpCenterButtons{
@@ -55,6 +55,11 @@
     margin-left: 50%;
     transform: translateX(-50%);
     margin-bottom: 5%;
+    width: 100%;
+}
+
+.Edit_helpCenterAddQuestionsButton:hover, .Edit_helpCenterSubmitButton:hover {
+    opacity: 80%;
 }
 
 .Edit_helpCenterBodyContentsDetails {

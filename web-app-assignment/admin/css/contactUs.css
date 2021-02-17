@@ -14,12 +14,14 @@
 
 .Edit_contactUsBody {
     display: block;
-    margin-left: 15%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    margin-left: 10%;
 }
 
 .Edit_contactUsBodyCall, .Edit_contactUsBodyEmail, .Edit_contactUsBodyLocation{
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% 65%;
 }
 
 .Edit_contactUsBodyEmailContentsLeft, .Edit_contactUsBodyCallContentLeft, .Edit_contactUsBodyLocationContentLeft {
@@ -32,26 +34,13 @@
     margin-top: 2.5%;
 }
 
-.Edit_contactUsBodyEmailContentUpload, .Edit_contactUsBodyCallContentUpload, .Edit_contactUsBodyLocationContentUpload {
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-.Edit_contactUsBodyLocationContentUploadPosition, .Edit_contactUsBodyCallContentUploadPosition, .Edit_contactUsBodyEmailContentUploadPosition {
-    border: 3px solid #0B8C7B;
-    color: white;
-    background-color: #0B8C7B;
-    border-radius: 10px;
-    padding: 0.5%;
-}
-
 .Edit_contactUsBodyLocationContentRightInput, .Edit_contactUsBodyCallContentRightInput, .Edit_contactUsBodyEmailContentRightInput {
     width: 80%;
     border: 3px solid #0B8C7B;
     padding: 1%;
 }
 
-.Edit_contactUsButton{
+.Edit_contactUsButton {
     margin-top: 2.5%;
 }
 
@@ -63,6 +52,10 @@
     padding: .5%;
     width: 20%;
     margin-left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.25vw;
+    transform: translateX(-75%);
+    font-size: 1.5vw;
+}
+
+.Edit_contactUsButtonPosition:hover{
+    opacity: 80%;
 }

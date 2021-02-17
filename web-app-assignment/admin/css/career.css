@@ -1,6 +1,7 @@
 ﻿.Edit_Career{
     background-color: white;
     padding: 2.5%;
+    width: 100%;
 }
 
 .Edit_CareerHeaderPosition {
@@ -11,52 +12,24 @@
     padding: 1%;
 }
 
-.Edit_CareerBackgroundContents {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    margin-top: 2.5%;
-    position: relative;
-}
-
-.Edit_CareerBackgroundHeaderPosition {
-    margin-right: 10%;
-    margin-top: 2.5%;
-}
-
-.Edit_CareerBackgroundContentsImage_Buttons{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-.Edit_CareerBackgroundContentsImage {
-    height: 280px;
-    width: 280px;
-    padding: 5%;
-}
-
-.Edit_CareerBackgroundContentsBody{
-    display: block;
-    margin-top: 20%;
-}
-
-.Edit_CareerBackgroundContentsBodyFileInput {
-    margin-bottom: 5%;
-    margin-left: 25%;
-    transform: translateX(-25%);
-}
-
-.Edit_CareerBackgroundContentsBodyButtonPosition{
+.Edit_CareerFormContents{
     width: 100%;
 }
 
-.Edit_CareerBackgroundContentsBodyButton {
-    background-color: #0B8C7B;
-    border-radius: 10px;
-    border: 2px solid #0B8C7B;
-    padding: 2.5%;
-    color: white;
-    margin-left: 25%;
-    transform: translateX(-25%);
+.col-form-label {
+    font-weight: bold;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.Edit_CareerBackgroundContentsImage {
+    width: 100%;
+    padding: 5%;
+}
+
+.Edit_CareerBackgroundContentsBodyFileInput {
+    border: 3px solid #0B8C7B;
+    width: 100%;
 }
 
 .Edit_CareerBody{
@@ -67,6 +40,7 @@
     display: grid;
     grid-template-columns: 30% 70%;
     margin-bottom: 10%;
+    padding: 2.5%;
 }
 
 .Edit_CareerBodyPic{
@@ -75,37 +49,17 @@
 
 .Edit_CareerBodyImage {
     width: 200px;
-    height: 200px;
-    padding: 5%;
 }
 
-.Edit_CareerBodyPicFile {
-    margin-bottom: 5%;
-}
-
-.Edit_CareerBodyPicUploadPosition {
-    width: 25%;
-    position:relative;
-}
-
-.Edit_CareerBodyPicUpload {
-    background-color: #0B8C7B;
-    border-radius: 10px;
-    border: 2px solid #0B8C7B;
-    padding: 5%;
-    color: white;
-    margin-left: 150%;
-    transform: translateX(-50%);
-}
-
-.Edit_CareerBodyContentsDesc, .Edit_CareerBodyContentsName, .Edit_CareerBodyContentsPosition {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    margin-bottom: 5%;
+.Edit_CareerBodyLabels{
+    margin-right: 5%;
+    margin-left: 11%;
 }
 
 .Edit_CareerBodyContentsDescDetails {
     border: 3px solid #0B8C7B;
+    width: 100%;
+    border-radius: 5px;
 }
 
 .Edit_CareerBodyContentsNameDetailsInput, .Edit_CareerBodyContentsPositionDetailsInput {
@@ -126,4 +80,8 @@
     transform: translateX(-50%);
     padding: 1% 5%;
     border-radius: 10px;
+}
+
+.Edit_CareerSubmit:hover{
+    opacity: 80%;
 }

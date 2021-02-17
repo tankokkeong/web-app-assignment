@@ -28,116 +28,49 @@
                 Careers
             </h2>
         </div>
-        <div class="Edit_CareerBackground">
-            <div class="Edit_CareerBackgroundContents">
-                <div class="Edit_CareerBackgroundHeaderPosition">
-                    <h5 class="Edit_CareerBackgroundHeader">
-                        Form Background Image : 
-                    </h5>
-                </div>
-                <div class="Edit_CareerBackgroundContentsImage_Buttons">
-                    <div class="Edit_CareerBackgroundContentsImagePosition">
-                        <img src="../images/career/startup-594091_1920-min.jpg" class="Edit_CareerBackgroundContentsImage" alt="background"/>
+        <div class="Edit_CareerFormContents">
+            <form>
+                <div class="form-group row">
+                    <label for="backgroundImage" class="col-sm-2 col-form-label">Form Background Image :</label>
+                    <div class="col-sm-10">
+                      <img src="../images/career/startup-594091_1920-min.jpg" class="Edit_CareerBackgroundContentsImage" alt="background"/>
+                      <input type="file" class="Edit_CareerBackgroundContentsBodyFileInput" />
                     </div>
-                    <div class="Edit_CareerBackgroundContentsBody">
-                        <input type="file" class="Edit_CareerBackgroundContentsBodyFileInput" />
-                        <div class="Edit_CareerBackgroundContentsBodyButtonPosition">
-                            <button type="submit" class="Edit_CareerBackgroundContentsBodyButton">Upload</button>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="col-sm-12 col-lg-2 mt-5">
+                        <img src="../images/career/3.jpg" class="Edit_CareerBodyImage ml-4" alt="edit Image"/>
+                        <input type="file" class="Edit_CareerBodyPicFile ml-4 mt-3" />
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="row mt-3">
+                            <label class="col-sm-1 Edit_CareerBodyLabels">Description</label>
+                            <div class="col-sm-9">
+                                <div class="Edit_CareerBodyContentsDescDetails">
+                                    <textarea class="Edit_CareerBodyContentsDescDetailsText">Database in here</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <label for="name" class="col-sm-1 mt-1 Edit_CareerBodyLabels">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="name" class="form-control Edit_CareerBodyContentsNameDetailsInput"/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <label for="position" class="col-sm-1 mt-1 Edit_CareerBodyLabels">Position</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="position" class="form-control Edit_CareerBodyContentsPositionDetailsInput"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="Edit_CareerSubmitButton">
+                    <button type="submit" class="Edit_CareerSubmit">Update</button>
+                </div>
+            </form>
         </div>
-        <div class="Edit_CareerBody">
-            <div class="Edit_CareerBodyEdits">
-                <div class="Edit_CareerBodyPic">
-                    <img src="../images/career/3.jpg" class="Edit_CareerBodyImage" alt="edit Image"/>
-                    <div class="Edit_CareerBodyPicButtons">
-                        <input type="file" class="Edit_CareerBodyPicFile" />
-                        <div class="Edit_CareerBodyPicUploadPosition">
-                            <button class="Edit_CareerBodyPicUpload">Upload</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="Edit_CareerBodyContents">
-                    <div class="Edit_CareerBodyContentsDesc">
-                        <div class="Edit_CareerBodyContentsDescTitle">
-                            <h4>
-                                Description :
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsDescDetails">
-                            <textarea>Database in here</textarea>
-                        </div>
-                    </div>
-                    <div class="Edit_CareerBodyContentsName">
-                        <div class="Edit_CareerBodyContentsNameTitle">
-                            <h4>
-                                Name : 
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsNameDetails">
-                            <input type="text" class="Edit_CareerBodyContentsNameDetailsInput" />
-                        </div>
-                    </div>
-                    <div class="Edit_CareerBodyContentsPosition">
-                        <div class="Edit_CareerBodyContentsPositionTitle">
-                            <h4>
-                                Position : 
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsPositionDetails">
-                            <input type="text" class="Edit_CareerBodyContentsPositionDetailsInput" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="Edit_CareerBodyEdits">
-                <div class="Edit_CareerBodyPic">
-                    <img src="../images/career/3.jpg" class="Edit_CareerBodyImage" alt="edit Image"/>
-                    <div class="Edit_CareerBodyPicButtons">
-                        <input type="file" class="Edit_CareerBodyPicFile" />
-                        <div class="Edit_CareerBodyPicUploadPosition">
-                            <button class="Edit_CareerBodyPicUpload">Upload</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="Edit_CareerBodyContents">
-                    <div class="Edit_CareerBodyContentsDesc">
-                        <div class="Edit_CareerBodyContentsDescTitle">
-                            <h4>
-                                Description :
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsDescDetails">
-                            <textarea>Database in here</textarea>
-                        </div>
-                    </div>
-                    <div class="Edit_CareerBodyContentsName">
-                        <div class="Edit_CareerBodyContentsNameTitle">
-                            <h4>
-                                Name : 
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsNameDetails">
-                            <input type="text" class="Edit_CareerBodyContentsNameDetailsInput" />
-                        </div>
-                    </div>
-                    <div class="Edit_CareerBodyContentsPosition">
-                        <div class="Edit_CareerBodyContentsPositionTitle">
-                            <h4>
-                                Position : 
-                            </h4>
-                        </div>
-                        <div class="Edit_CareerBodyContentsPositionDetails">
-                            <input type="text" class="Edit_CareerBodyContentsPositionDetailsInput" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="Edit_CareerSubmitButton">
-                <button type="submit" class="Edit_CareerSubmit">Update</button>
-            </div>
         </div>
     </div>
 </asp:Content>

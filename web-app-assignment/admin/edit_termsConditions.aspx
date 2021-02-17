@@ -34,13 +34,21 @@
                 Terms & Conditions
             </h3>
         </div>
-
-        <div class="Term_ConditionsAdminBodyDatabaseSpot">
-            <div id="editor">
-                <%--Database code comes here--%>
-                <p>Lallalalala</p>
+        
+        <form>
+            <div class="form-group">
+                <div class="Term_ConditionsAdminBodyDatabaseSpot">
+                    <div id="editor">
+                        <%--Database code comes here--%>
+                        <p>Lallalalala</p>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="Term_ConditionsAdminBodyButtonPosition">
+                <button type="submit" class="Term_ConditionsAdminBodyButton">Submit</button>
+            </div>
+        </form>
+        
         <script>
             ClassicEditor
                 .create(document.querySelector('#editor'))
@@ -48,9 +56,5 @@
                     console.error(error);
                 });
         </script>
-
-        <div class="Term_ConditionsAdminBodyButtonPosition">
-            <button class="Term_ConditionsAdminBodyButton" type="submit">Update</button>
-        </div>
     </div>
 </asp:Content>

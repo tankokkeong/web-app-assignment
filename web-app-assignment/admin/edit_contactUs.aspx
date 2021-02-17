@@ -27,86 +27,85 @@
             </h2>
         </div>
         <div class="Edit_contactUsBody">
-            <div class="Edit_contactUsBodyEmail">
-                <div class="Edit_contactUsBodyEmailContentsLeft">
-                    <div class="Edit_contactUsBodyEmailImagePosition">
-                        <img src="images/Contact%20Us/email.png" class="Edit_contactUsBodyEmailImage" alt="email" />
-                    </div>
-                    <div class="Edit_contactUsBodyEmailContentButtons">
-                        <div class="Edit_contactUsBodyEmailContentFile">
-                            <input type="file" class="Edit_contactUsBodyEmailContentFilePosition" />
+            <form>
+                <div class="Edit_contactUsBodyEmail">
+                    <div class="form-group Edit_contactUsBodyEmailContentsLeft">
+                        <div class="Edit_contactUsBodyEmailImagePosition">
+                            <img src="images/Contact%20Us/email.png" class="Edit_contactUsBodyEmailImage" alt="email" />
                         </div>
-                        <div class="Edit_contactUsBodyEmailContentUpload">
-                            <button type="submit" class="Edit_contactUsBodyEmailContentUploadPosition">Upload</button>
+                        <div class="Edit_contactUsBodyEmailContentButtons">
+                            <div class="Edit_contactUsBodyEmailContentFile">
+                                <input type="file" class="Edit_contactUsBodyEmailContentFilePosition" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="Edit_contactUsBodyEmailContentRight">
-                    <div class="Edit_contactUsBodyEmailContentRightHeaderContainer">
-                        <h5 class="Edit_contactUsBodyEmailContentRightHeader">
-                            Email Address
-                        </h5>
-                    </div>
-                    <div class="Edit_contactUsBodyEmailContentRightInputPosition">
-                        <input type="text" class="Edit_contactUsBodyEmailContentRightInput" placeholder="webissue@gmail.com"/>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="Edit_contactUsBodyCall">
-                <div class="Edit_contactUsBodyCallContentLeft">
-                    <div class="Edit_contactUsBodyCallImagePosition">
-                        <img src="images/Contact%20Us/call.png" class="Edit_contactUsBodyCallImage" alt="email" />
-                    </div>
-                    <div class="Edit_contactUsBodyCallContentButtons">
-                        <div class="Edit_contactUsBodyCallContentFile">
-                            <input type="file" class="Edit_contactUsBodyCallContentFilePosition" />
+                    <div class="form-group Edit_contactUsBodyEmailContentRight">
+                        <div class="Edit_contactUsBodyEmailContentRightHeaderContainer">
+                            <h5 class="Edit_contactUsBodyEmailContentRightHeader">
+                                <label for="email" class="col-form-label mt-2">
+                                    Email Address
+                                </label>
+                            </h5>
                         </div>
-                        <div class="Edit_contactUsBodyCallContentUpload">
-                            <button type="submit" class="Edit_contactUsBodyCallContentUploadPosition">Upload</button>
+                        <div class="Edit_contactUsBodyEmailContentRightInputPosition">
+                            <input type="text" id="email" class="Edit_contactUsBodyEmailContentRightInput" placeholder="webissue@gmail.com"/>
                         </div>
                     </div>
                 </div>
-                <div class="Edit_contactUsBodyCallContentRight">
-                    <div class="Edit_contactUsBodyCallContentRightHeaderContainer">
-                        <h5 class="Edit_contactUsBodyCallContentRightHeader">
-                            Contact Number
-                        </h5>
-                    </div>
-                    <div class="Edit_contactUsBodyCallContentRightInputPosition">
-                        <input type="text" class="Edit_contactUsBodyCallContentRightInput" placeholder="(+60) 361235555"/>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="Edit_contactUsBodyLocation">
-                <div class="Edit_contactUsBodyLocationContentLeft">
-                    <div class="Edit_contactUsBodyLocationImagePosition">
-                        <img src="images/Contact%20Us/maps.png" class="Edit_contactUsBodyLocationImage" alt="email" />
-                    </div>
-                    <div class="Edit_contactUsBodyLocationContentButtons">
-                        <div class="Edit_contactUsBodyLocationContentFile">
-                            <input type="file" class="Edit_contactUsBodyLocationContentFilePosition" />
+
+                <div class="Edit_contactUsBodyCall">
+                    <div class="form-group Edit_contactUsBodyCallContentLeft">
+                        <div class="Edit_contactUsBodyCallImagePosition">
+                            <img src="images/Contact%20Us/call.png" class="Edit_contactUsBodyCallImage" alt="email" />
                         </div>
-                        <div class="Edit_contactUsBodyLocationContentUpload">
-                            <button type="submit" class="Edit_contactUsBodyLocationContentUploadPosition">Upload</button>
+                        <div class="Edit_contactUsBodyCallContentButtons">
+                            <div class="Edit_contactUsBodyCallContentFile">
+                                <input type="file" class="Edit_contactUsBodyCallContentFilePosition" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="Edit_contactUsBodyLocationContentRight">
-                    <div class="Edit_contactUsBodyLocationContentRightHeaderContainer">
-                        <h5 class="Edit_contactUsBodyLocationContentRightHeader">
-                            Location
-                        </h5>
+                    <div class="form-group Edit_contactUsBodyCallContentRight">
+                        <div class="Edit_contactUsBodyCallContentRightHeaderContainer">
+                            <h5 class="Edit_contactUsBodyCallContentRightHeader">
+                                <label for="call" class="col-form-label mt-2">
+                                    Contact Number
+                                </label>
+                            </h5>
+                        </div>
+                        <div class="Edit_contactUsBodyCallContentRightInputPosition">
+                            <input type="text" id="call" class="Edit_contactUsBodyCallContentRightInput" placeholder="(+60) 361235555"/>
+                        </div>
                     </div>
-                    <div class="Edit_contactUsBodyLocationContentRightInputPosition">
-                        <input type="text" class="Edit_contactUsBodyLocationContentRightInput" placeholder="No:23 Jalan 12, Selayang Baru, 68100 Batu Caves, Selangor"/>
+                </div>
+
+                <div class="Edit_contactUsBodyLocation">
+                    <div class="form-group Edit_contactUsBodyLocationContentLeft">
+                        <div class="Edit_contactUsBodyLocationImagePosition">
+                            <img src="images/Contact%20Us/maps.png" class="Edit_contactUsBodyLocationImage" alt="email" />
+                        </div>
+                        <div class="Edit_contactUsBodyLocationContentButtons">
+                            <div class="Edit_contactUsBodyLocationContentFile">
+                                <input type="file" class="Edit_contactUsBodyLocationContentFilePosition" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group Edit_contactUsBodyLocationContentRight">
+                        <div class="Edit_contactUsBodyLocationContentRightHeaderContainer">
+                            <h5 class="Edit_contactUsBodyLocationContentRightHeader">
+                                <label for="location" class="col-form-label mt-2">
+                                    Location
+                                </label>
+                            </h5>
+                        </div>
+                        <div class="Edit_contactUsBodyLocationContentRightInputPosition">
+                            <input type="text" id="location" class="Edit_contactUsBodyLocationContentRightInput" placeholder="No:23 Jalan 12, Selayang Baru, 68100 Batu Caves, Selangor"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="Edit_contactUsButton">
-            <button class="Edit_contactUsButtonPosition" type="submit">Update</button>
+                <div class="Edit_contactUsButton">
+                    <button class="Edit_contactUsButtonPosition" type="submit">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </asp:Content>
