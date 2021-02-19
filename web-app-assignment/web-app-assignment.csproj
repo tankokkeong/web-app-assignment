@@ -122,6 +122,7 @@
     <Content Include="admin\edit_termsConditions.aspx" />
     <Content Include="admin\clients-management.aspx" />
     <Content Include="admin\message-details.aspx" />
+    <Content Include="admin\signup.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1999,6 +2000,13 @@
     </Compile>
     <Compile Include="admin\message-details.aspx.designer.cs">
       <DependentUpon>message-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\signup.aspx.cs">
+      <DependentUpon>signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\signup.aspx.designer.cs">
+      <DependentUpon>signup.aspx</DependentUpon>
     </Compile>
     <Compile Include="candidate-list.aspx.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>
