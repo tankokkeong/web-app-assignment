@@ -1,1 +1,31 @@
-﻿
+﻿.LiveChat{
+    background-color: white;
+    padding: 2.5%;
+    position: relative;
+}
+
+.LiveChat_MessagesData {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 3px solid #E4E4E4;
+    padding: 1%;
+}
+
+.LiveChat_MessagesDataImages {
+    width: 100px;
+    padding: 2.5%;
+    background-color: #EEF2FD;
+}
+
+.LiveChat_MessagesDataDetails {
+    display: flex;
+}
+
+.LiveChat_MessagesInput {
+    margin-top: 2.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 3px solid #E4E4E4;
+}
+
+.LiveChat_MessagesInputImage {
+    width: 25px;
+}

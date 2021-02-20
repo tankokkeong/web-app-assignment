@@ -91,6 +91,10 @@
     <Content Include="admin\edit_contactUs.aspx" />
     <Content Include="admin\edit_helpCenter.aspx" />
     <Content Include="admin\edit_privacy.aspx" />
+    <Content Include="admin\images\Admin-LiveMessage\chatting.png" />
+    <Content Include="admin\images\Admin-LiveMessage\email.png" />
+    <Content Include="admin\images\Admin-LiveMessage\more.png" />
+    <Content Include="admin\images\Admin-LiveMessage\receive-mail.png" />
     <Content Include="admin\images\admin.png" />
     <Content Include="admin\images\Contact Us\call.png" />
     <Content Include="admin\images\Contact Us\email.png" />
