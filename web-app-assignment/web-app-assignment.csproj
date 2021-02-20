@@ -68,9 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About Us.aspx" />
+    <Content Include="admin\admin-details.aspx" />
     <Content Include="admin\admin-management.aspx" />
+    <Content Include="admin\clients-details.aspx" />
     <Content Include="admin\contact-message.aspx" />
+    <Content Include="admin\css\admin-details.css" />
     <Content Include="admin\css\admin-management.css" />
+    <Content Include="admin\css\client-details.css" />
     <Content Include="admin\css\contact-message.css" />
     <Content Include="admin\css\dashboard.css" />
     <Content Include="admin\css\aboutUs.css" />
@@ -1914,6 +1918,13 @@
     <Compile Include="About Us.aspx.designer.cs">
       <DependentUpon>About Us.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\admin-details.aspx.cs">
+      <DependentUpon>admin-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin-details.aspx.designer.cs">
+      <DependentUpon>admin-details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\admin-management.aspx.cs">
       <DependentUpon>admin-management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1927,6 +1938,13 @@
     </Compile>
     <Compile Include="admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\clients-details.aspx.cs">
+      <DependentUpon>clients-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\clients-details.aspx.designer.cs">
+      <DependentUpon>clients-details.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\contact-message.aspx.cs">
       <DependentUpon>contact-message.aspx</DependentUpon>

@@ -40,16 +40,6 @@
               <tbody>
                   <%for (int i = 0; i < 5; i++)
                       { %>
-                <tr>
-                  <th scope="row">U0001</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>Recrutier</td>
-                  <td>
-                      <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-toggle="modal" data-target="#editUser"></i></span>
-                      <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>               
-                  </td>
-                </tr>
 
                 <tr>
                     <th scope="row">U0002</th>
@@ -57,8 +47,8 @@
                     <td>Thornton</td>
                     <td>Job Seeker</td>
                     <td>
-                        <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-toggle="modal" data-target="#editUser"></i></span>
-                        <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>
+                        <a href="clients-details.aspx?edit" class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                        <a href="clients-details.aspx?view" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
                     </td>
                 </tr>
                 <%}; %>
