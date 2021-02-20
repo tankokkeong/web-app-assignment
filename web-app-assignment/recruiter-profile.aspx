@@ -19,18 +19,30 @@
             
             <div class="profile-col user-title-col">
                 <div class="user-title">
-                    <h2>Netflix 
+                    <h2>
+                        <asp:Label ID="lblRecruiterName" runat="server" Text=""></asp:Label>
                         <span class="user-location text-secondary ml-3">
-                            <i class="fas fa-map-marker-alt"></i> Kuala Lumpur
+                            <i class="fas fa-map-marker-alt"></i> <asp:Label ID="lblRecruiterState" runat="server" Text=""></asp:Label>
                         </span>
 
                         <a href="edit-recruiter.aspx" class="btn btn-secondary float-right">Edit Profile</a>
                     </h2>
-                    <h3 class="text-lightgreen">Entertainment</h3>
+                    <h3 class="text-lightgreen">
+                        <span class="text-secondary">Industry: </span><asp:Label ID="lblRecruiterIndustry" runat="server" Text=""></asp:Label>
+                    </h3>
                 </div>
 
                 <div class="profile-bios">
-                     <h3 class="text-secondary">Bio Links: <span><i class="fab fa-facebook-square"></i></span> <span><i class="fab fa-twitter-square"></i></span></h3>
+                     <h3 class="text-secondary">Bio Links: 
+                         <span>
+                             <asp:HyperLink ID="linkFB" runat="server" CssClass="text-secondary" NavigateUrl="" Target="_blank"><i class="fab fa-facebook-square"></i></asp:HyperLink>
+                         </span> 
+
+                         <span>
+                             <asp:HyperLink ID="linkLinkedIn" runat="server" CssClass="text-secondary" NavigateUrl="" Target="_blank"><i class="fab fa-linkedin"></i></asp:HyperLink>
+                         </span>
+
+                     </h3>
                 </div>      
             </div>
             
@@ -50,7 +62,8 @@
 
                 <div class="my-info row" id="about-content">
                     <div class="brief-info col-sm-12 col-lg-6">
-                        <h3>
+                        <asp:Label ID="lblIntroduction" runat="server" Text=""></asp:Label>
+                        <%--<h3>
                             My self-summary
                         </h3>
 
@@ -99,7 +112,7 @@
                             release of Letraset sheets containing Lorem Ipsum passages, 
                             and more recently with desktop publishing 
                             software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                        </p>--%>
                     </div>
 
                     <div class="basic-info col-sm-12 col-lg-6">

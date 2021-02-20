@@ -6,6 +6,21 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- Change navbar active --%>
+    <script>
+        $(document).ready(function () {
+            navbarActive();
+
+            //Add active to user management
+            live_chat = nav_option[1];
+            $(live_chat).addClass("active");
+
+            //Remove active from dashboard
+            dashboard = nav_option[0];
+            $(dashboard).removeClass("active");
+        });
+    </script>
+
     <div class="LiveChat">
         <div class="LiveChat_FilterPagination row">
             <h2 class="col">

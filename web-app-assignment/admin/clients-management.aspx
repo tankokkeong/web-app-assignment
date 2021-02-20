@@ -46,7 +46,7 @@
                   <td>Otto</td>
                   <td>Recrutier</td>
                   <td>
-                      <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></span>
+                      <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-toggle="modal" data-target="#editUser"></i></span>
                       <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>               
                   </td>
                 </tr>
@@ -57,7 +57,7 @@
                     <td>Thornton</td>
                     <td>Job Seeker</td>
                     <td>
-                        <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></span>
+                        <span class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-toggle="modal" data-target="#editUser"></i></span>
                         <span class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></span>
                     </td>
                 </tr>
@@ -65,5 +65,38 @@
               </tbody>
             </table>
         </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">User Status</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>User Status</td>
+                  <td>
+                      <select class="form-control">
+                          <option>Active</option>
+                          <option>Inactive</option>
+                      </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
     </div>
 </asp:Content>
