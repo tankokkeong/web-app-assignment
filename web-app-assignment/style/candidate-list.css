@@ -43,8 +43,20 @@
     width: calc(100% - 46px);
     background-color: white;
     border-radius: 5px;
-    padding: 0.5%;
     margin-left: 0%;
+    position:relative;
+}
+
+.JobListContentsSalaryRange p{
+    margin-left: 2.5%;
+    margin-top: .5%;
+}
+
+#slider-range {
+    width: 100%;
+    margin-top: 2%;
+    margin-left: -5%;
+    margin-right: 5%;
 }
 
 .JobListContentsSalaryRangeHeader {

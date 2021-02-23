@@ -99,10 +99,12 @@
                             </span>
                         </div>
                         <div class="JobListContentsSalaryRange">
-                            <label class="JobListContentsSalaryRangeHeader" for="form-control">Salary</label>
-                            <input type="text" id="textInputMin" value="0" readonly>
-                            <input type="range" class="form-control" id="formControlRange" max="5000" min="0" value="0" onchange="updateTextInput(this.value);">
-                            <input type="text" id="textInputMax" value="5000" readonly>
+                            <p>
+                              <label for="amount">Price range:</label>
+                              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            </p>
+                            
+                            <div id="slider-range"></div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +117,9 @@
                 <div class="JobListContentsAllCompaniesHeaderPosition">
                     <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
                 </div>
+
+                <% for (int i = 0; i < 5; i++)
+                            { %>
                 <div class="row">
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
@@ -197,170 +202,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner10-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Customer Services</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Pahang</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,000 - MYR 2,200</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Part Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Apply Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner4-min.png"" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Technician</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Johor</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,750 - MYR 2,970</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Apply Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner7-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Software Engineer</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Malacca</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 5,000 - MYR 6,000</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Part Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Apply Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner6-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Market Manager</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Kuala Lumpur</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 2,800 - MYR 3,900</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Apply Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <%}; %>
             </div>
         </div>
     </div>
@@ -387,5 +229,25 @@
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;
         }
+    </script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 50000,
+                values: [0, 50000],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
+        });
     </script>
 </asp:Content>
