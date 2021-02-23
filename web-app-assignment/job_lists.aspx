@@ -15,100 +15,102 @@
                 <h2 class="JobListContentsBackGroundContentHeader">
                     Find The Jobs That Matter To You
                 </h2>
-                <div class="JobListContentsBackgroundInputs">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="JobListContentsSearchPosition">
-                                <img src="images/JobsList/loupe.png" alt="search" class="JobListContentsSearchImage"/>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Job Title, Keyword or Company" aria-label="searchbar" aria-describedby="searchbar">
-                    </div>
-                </div>
-                <div class="JobListContentsBackgroundInputs">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="JobListContentsLocationPosition">
-                                <img src="images/JobsList/pin.png" alt="location" class="JobListContentsLocationImage"/>
-                            </span>
-                        </div>
-                        <div class="JobListContentsLocationDropdown">
-                            <select class="custom-select" aria-label="locations" aria-describedby="locations" id="selectStates" multiple>
-                                <option value="">All</option>
-                                <option value="Malacca">Malacca</option>
-                                <option value="Selangor">Selangor</option>
-                                <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                <option value="Terengganu">Terengganu</option>
-                                <option value="Kedah">Kedah</option>
-                                <option value="Kelantan">Kelantan</option>
-                                <option value="Pahang">Pahang</option>
-                                <option value="Penang">Penang</option>
-                                <option value="Perak">Perak</option>
-                                <option value="Perlis">Perlis</option>
-                                <option value="Sabah">Sabah</option>
-                                <option value="Sarawak">Sarawak</option>
-                                <option value="Kuala Lumpur">Kuala Lumpur</option>
-                                <option value="Labuan">Labuan</option>
-                                <option value="Putrajaya">Putrajaya</option>
-                                <option value="Johor">Johor</option>
-                            </select>
+                <form>
+                    <div class="form-group JobListContentsBackgroundInputs">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="JobListContentsSearchPosition">
+                                    <img src="images/JobsList/loupe.png" alt="search" class="JobListContentsSearchImage"/>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Job Title, Keyword or Company" aria-label="searchbar" aria-describedby="searchbar">
                         </div>
                     </div>
-                </div>
-                <div class="JobListContentsBackgroundInputs">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="JobListContentsJobCategoryPosition">
-                                <img src="images/JobsList/menu.png" alt="Job Category" class="JobListContentsJobCategoryImage"/>
-                            </span>
-                        </div>
-                        <div class="JobListContentsJobCategoryDropdown">
-                            <select class="custom-select" id="jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" multiple>
-                                <option value="">All</option>
-                                <option value="New">New</option>
-                                <option value="Recent">Recent</option>
-                                <option value="Full Time">Full Time</option>
-                                <option value="Part Time">Part Time</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="JobListContentsBackgroundInputs">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="JobListContentsJobSpecPosition">
-                                <img src="images/JobsList/suitcase.png" alt="Job Spec" class="JobListContentsJobSpecImage"/>
-                            </span>
-                        </div>
-                        <div class="JobListContentsJobSpecDropdown">
-                            <select class="custom-select" id="jobSpec" aria-label="jobSpec" aria-describedby="jobSpec" multiple>
-                                <option value="">All</option>
-                                <option value="Accounting">Accounting</option>
-                                <option value="Information Technology">Information Technology</option>
-                                <option value="Architect">Architect</option>
-                                <option value="Web Development">Web Development</option>
-                            </select>
+                    <div class="form-group JobListContentsBackgroundInputs">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="JobListContentsLocationPosition">
+                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsLocationImage"/>
+                                </span>
+                            </div>
+                            <div class="JobListContentsLocationDropdown">
+                                <select class="custom-select" aria-label="locations" aria-describedby="locations" id="selectStates" multiple>
+                                    <option value="">All</option>
+                                    <option value="Malacca">Malacca</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Penang">Penang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                    <option value="Labuan">Labuan</option>
+                                    <option value="Putrajaya">Putrajaya</option>
+                                    <option value="Johor">Johor</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="JobListContentsBackgroundInputs">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="JobListContentsSalaryPosition">
-                                <img src="images/JobsList/salary.png" alt="search" class="JobListContentsSalaryImage"/>
-                            </span>
+                    <div class="form-group JobListContentsBackgroundInputs">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="JobListContentsJobCategoryPosition">
+                                    <img src="images/JobsList/menu.png" alt="Job Category" class="JobListContentsJobCategoryImage"/>
+                                </span>
+                            </div>
+                            <div class="JobListContentsJobCategoryDropdown">
+                                <select class="custom-select" id="jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" multiple>
+                                    <option value="">All</option>
+                                    <option value="New">New</option>
+                                    <option value="Recent">Recent</option>
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="JobListContentsSalaryRange">
-                            <p>
-                              <label for="amount">Price range:</label>
-                              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                            </p>
+                    </div>
+                    <div class="form-group JobListContentsBackgroundInputs">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="JobListContentsJobSpecPosition">
+                                    <img src="images/JobsList/suitcase.png" alt="Job Spec" class="JobListContentsJobSpecImage"/>
+                                </span>
+                            </div>
+                            <div class="JobListContentsJobSpecDropdown">
+                                <select class="custom-select" id="jobSpec" aria-label="jobSpec" aria-describedby="jobSpec" multiple>
+                                    <option value="">All</option>
+                                    <option value="Accounting">Accounting</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Architect">Architect</option>
+                                    <option value="Web Development">Web Development</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group JobListContentsBackgroundInputs">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="JobListContentsSalaryPosition">
+                                    <img src="images/JobsList/salary.png" alt="search" class="JobListContentsSalaryImage"/>
+                                </span>
+                            </div>
+                            <div class="JobListContentsSalaryRange">
+                                <p>
+                                  <label for="amount">Price range:</label>
+                                  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                </p>
                             
-                            <div id="slider-range"></div>
+                                <div id="slider-range"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button type="submit" id="JobListContentsBackgroundInputsSearchButton" class="btn btn-info">Search</button>
+                    <button type="submit" id="JobListContentsBackgroundInputsSearchButton" class="btn btn-info">Search</button>
+                </form>
             </div>
         </div>
 
