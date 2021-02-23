@@ -113,7 +113,7 @@
         <div class="JobListContentsAllCompanies">
             <div class="container">
                 <div class="JobListContentsAllCompaniesHeaderPosition">
-                    <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
+                    <h2 class="JobListContentsAllCompaniesHeader">Candidates Recommended</h2>
                 </div>
 
                 <% for (int i = 0; i < 5; i++)
