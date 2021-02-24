@@ -125,38 +125,73 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>User ID</td>
-                                    <td class="text-lightgreen">deze 1325</td>
-                                </tr>
-
-                                <tr> 
-                                    <td>Name</td>
-                                    <td class="text-lightgreen">Lul Deze</td>
+                                    <td>Email:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterEmail" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Email</td>
-                                    <td class="text-lightgreen">deze4412@gmail.com</td>
+                                    <td>Phone:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterPhone" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Phone</td>
-                                    <td class="text-lightgreen">60+11 2234 1251</td>
+                                    <td>Contact Email:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterContactEmail" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender</td>
-                                    <td class="text-lightgreen">Male</td>
+                                    <td>Address Line: 1</td>
+                                    <td class="text-lightgreen">                 
+                                        <asp:Label ID="lblRecruiterAddress1" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Profession</td>
-                                    <td class="text-lightgreen">Web Developer and Designer</td>
+                                    <td>Address Line: 2</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterAddress2" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Last Online</td>
-                                    <td class="text-lightgreen">Yesterday 2PM</td>
+                                    <td>City:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterCity" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>State:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterState2" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Zip Code:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterZip" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Country:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterCountry" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Rating:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblRecruiterRating" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
