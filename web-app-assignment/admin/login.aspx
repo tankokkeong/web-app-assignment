@@ -24,16 +24,19 @@
 
                 <div class="login-body">
                     <form>
-                      <div class="form-group">        
-                        <input type="email" class="form-control bg-login" placeholder="Email Address">
+                      <div class="form-group">
+                          <asp:TextBox ID="txtEmail" runat="server" cssclass="form-control bg-login" placeholder="Email Address"></asp:TextBox>
+                        <%--<input type="email" class="form-control bg-login" placeholder="Email Address">--%>
                       </div>
 
-                      <div class="form-group">           
-                        <input type="password" class="form-control bg-login" placeholder="Password">
+                      <div class="form-group">
+                          <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" cssclass="form-control bg-login" placeholder="Password"></asp:TextBox>           
+                        <%--<input type="password" class="form-control bg-login" placeholder="Password">--%>
                       </div>
 
                        <div class="text-center">
-                           <button type="submit" class="btn btn-dark">Login</button>
+                           <asp:Button ID="btnSubmit" runat="server" Text="Login" cssclass="btn btn-dark" OnClick="btnSubmit_Click"/>
+                           <%--<button type="submit" class="btn btn-dark">Login</button>--%>
                        </div>
                       
                     </form>
