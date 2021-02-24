@@ -47,53 +47,21 @@
                     <div class="JobDescriptionContentsBody">
                         <h2 class="JobDescriptionContentsBodyHeader">H&M (Fashion Designer)</h2>
                     </div>
-                    <div class="JobDescriptionContentsBodyContents1">
-                        <h4 class="JobDescriptionContentsBodySubHeader">Responsibilities : </h4>
-                        <ul>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="JobDescriptionContentsBodyContents2">
-                        <h4 class="JobDescriptionContentsBodySubHeader">Requirements : </h4>
-                        <ul>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida.
-                            </li>
-                        </ul>
-                    </div>
+                    
+                    <asp:Label ID="lbl_JobDescriptionContentsBodyContents" runat="server" Text=""></asp:Label>
+
                     <div class="JobDescriptionContentsBodyContents3">
                         <h4 class="JobDescriptionContentsBodySubHeader">Additional Information : </h4>
                         <div class="JobDescriptionContentsBodyContents3Details">
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Qualification</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Diploma</button>
+                                    <%for (int i = 0; i < 5; i++)
+                                        {%>
+                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                        <asp:Label ID="lbl_JobDescriptionContentsBodySubHeadersTagsButton" runat="server" Text=""></asp:Label>
+                                    </button>
+                                    <%} %>
                                     <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Degree</button>
                                 </div>
                             </div>
