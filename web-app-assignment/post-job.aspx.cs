@@ -52,7 +52,7 @@ namespace web_app_assignment
                     
 
                     string sql = "INSERT INTO JobPost(job_title, job_description, salary, industry, qualification, working_hours, job_specializations," +
-                                " company_overview, location, experience_needed, job_type, head_quaters, benefits_others, company_size, process_time, recruiter_id, created_at)" +
+                                "company_overview, location, experience_needed, job_type, head_quaters, benefits_others, company_size, process_time, recruiter_id, created_at)" +
                                 "VALUES(@job_title, @job_description, @salary, @industry, @qualification, @working_hours, @job_specializations, " +
                                 "@company_overview, @location, @experience_needed, @job_type, @head_quaters, @benefits_others, @company_size, @process_time, @recruiter_id, @created_at)";
 

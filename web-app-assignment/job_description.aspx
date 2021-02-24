@@ -60,9 +60,7 @@
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Qualification</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
-                                        <asp:Label ID="lbl_JobDescriptionQualification" runat="server" Text=""></asp:Label>
-                                    </button>
+                                    <asp:Label ID="lbl_JobDescriptionQualification" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                             <div class="JobDescriptionContentsBodySubContents">
@@ -120,9 +118,7 @@
                                 <div class="companyOverviewInformationDetailsSubs">
                                     <h5 class="companyOverviewInformationDetailsSubHeaders">Industry</h5>
                                     <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
-                                            <asp:Label ID="lbl_JobDescriptionIndustry" runat="server" Text=""></asp:Label>
-                                        </button>
+                                        <asp:Label ID="lbl_JobDescriptionIndustry" runat="server" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="companyOverviewInformationDetailsSubs">
