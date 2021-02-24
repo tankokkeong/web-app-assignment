@@ -13,5 +13,113 @@ namespace web_app_assignment
 
     public partial class job_description
     {
+
+        /// <summary>
+        /// lbl_JobDescriptionDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionDesc;
+
+        /// <summary>
+        /// lbl_JobDescriptionQualification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionQualification;
+
+        /// <summary>
+        /// lbl_JobDescriptionExpReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionExpReq;
+
+        /// <summary>
+        /// lbl_JobDescriptionWorkingHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionWorkingHours;
+
+        /// <summary>
+        /// lbl_JobDescriptionJobType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionJobType;
+
+        /// <summary>
+        /// lbl_JobDescriptionJobSpec control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionJobSpec;
+
+        /// <summary>
+        /// lbl_JobDescriptionCompOverview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionCompOverview;
+
+        /// <summary>
+        /// lbl_JobDescriptionCompSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionCompSize;
+
+        /// <summary>
+        /// lbl_JobDescriptionIndustry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionIndustry;
+
+        /// <summary>
+        /// lbl_JobDescriptionProcessTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionProcessTime;
+
+        /// <summary>
+        /// lbl_JobDescriptionHeadquaters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionHeadquaters;
+
+        /// <summary>
+        /// lbl_JobDescriptionBenefitOther control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionBenefitOther;
     }
 }

@@ -38,21 +38,6 @@
     width: calc(100% - 46px);
 }
 
-.JobListContentsSalaryRange {
-    display: flex;
-    width: calc(100% - 46px);
-    background-color: white;
-    border-radius: 5px;
-    padding: 0.5%;
-    margin-left: 0%;
-}
-
-.JobListContentsSalaryRangeHeader {
-    margin-top: .5%;
-    margin-right: 1%;
-    margin-left: 1%;
-}
-
 #textInputMin, #textInputMax {
     border: none;
     text-align: center;
