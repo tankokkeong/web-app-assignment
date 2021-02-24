@@ -64,10 +64,8 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <select class="custom-select" id="jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" multiple>
+                                <select class="form-control">
                                     <option value="">All</option>
-                                    <option value="New">New</option>
-                                    <option value="Recent">Recent</option>
                                     <option value="Full Time">Full Time</option>
                                     <option value="Part Time">Part Time</option>
                                 </select>
@@ -101,7 +99,7 @@
                             </div>
                             <div class="JobListContentsSalaryRange">
                                 <p>
-                                  <label for="amount">Price range:</label>
+                                  <label for="amount">Salary Range:</label>
                                   <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                 </p>
                             
