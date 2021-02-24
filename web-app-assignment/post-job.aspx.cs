@@ -21,28 +21,43 @@ namespace web_app_assignment
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
+            var test = HttpUtility.UrlDecode(txtJobDescription.Text);
+            txtJobTitle.Text = test;
+
             //Read input from the form
-            Response.Write("<script>alert('" + "success" + "');</script>");
+            Response.Write("<script>alert('" + test + "');</script>");
 
-            try
+            if (Page.IsValid)
             {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
 
-                string sql = "SELECT * FROM Recruiter";
+                //Read input from the form
+                txtJobTitle.Text = test;
 
-                SqlCommand cmd = new SqlCommand(sql, con);
+                //try
+                //{
+                //    SqlConnection con = new SqlConnection(strcon);
+                //    if (con.State == ConnectionState.Closed)
+                //    {
+                //        con.Open();
+                //    }
 
-                SqlDataReader dr = cmd.ExecuteReader();
+                //    string sql = "SELECT * FROM Recruiter";
 
+                //    SqlCommand cmd = new SqlCommand(sql, con);
+
+                //    SqlDataReader dr = cmd.ExecuteReader();
+
+                //}
+                //catch (Exception error)
+                //{
+                //    Response.Write("<script>alert('" + error.Message + "');</script>");
+                //}
             }
-            catch (Exception error)
+            else
             {
-                Response.Write("<script>alert('" + error.Message + "');</script>");
+                Response.Write("<script>alert('" + "failed" + "');</script>");
             }
+            
         }
     }
 }
