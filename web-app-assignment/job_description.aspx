@@ -7,28 +7,28 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="JobDescription">
-        <div class="JobDescriptionDetails">
-            <div class="JobDescriptionDetailsImagePosition">
+        <div class="row JobDescriptionDetails">
+            <div class="ml-5 col JobDescriptionDetailsImagePosition">
                 <img src="images/home/partner1-min.png" alt="company" class="JobDescriptionDetailsImage"/>
             </div>
-            <div class="JobDescriptionDetailsBody">
+            <div class="col ml-3 JobDescriptionDetailsBody">
                 <h2 class="JobDescriptionDetailsBodyHeader">H&M</h2>
                 <div class="JobDescriptionDetailsBodyContents">
-                    <div class="JobDescriptionDetailsBodyContentsDetails">
+                    <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/pin.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
                         <p class="JobDescriptionDetailsBodyContentsDetailsDescription">Penang</p>
                     </div>
-                    <div class="JobDescriptionDetailsBodyContentsDetails">
+                    <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/working-position.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
                         <p class="JobDescriptionDetailsBodyContentsDetailsDescription">Fashion Designer</p>
                     </div>
-                    <div class="JobDescriptionDetailsBodyContentsDetails">
+                    <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/salary.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
                         <p class="JobDescriptionDetailsBodyContentsDetailsDescription">MYR 1,680 - MYR 2,019</p>
                     </div>
                 </div>
             </div>
-            <div class="JobDescriptionDetailsApplyNow">
+            <div class="col JobDescriptionDetailsApplyNow">
                 <button type="button" class="btn btn-danger JobDescriptionDetailsApplyNowButton">Apply Now</button>
             </div>
         </div>
@@ -47,8 +47,12 @@
                     <div class="JobDescriptionContentsBody">
                         <h2 class="JobDescriptionContentsBodyHeader">H&M (Fashion Designer)</h2>
                     </div>
-                    
-                    <asp:Label ID="lbl_JobDescriptionContentsBodyContents" runat="server" Text=""></asp:Label>
+
+                    <%--The CkEditor Stuff in here--%>
+                    <div>
+                        The CkEditor Stuff in here
+                        <asp:Label ID="lbl_JobDescriptionDesc" runat="server" Text=""></asp:Label>
+                    </div>
 
                     <div class="JobDescriptionContentsBodyContents3">
                         <h4 class="JobDescriptionContentsBodySubHeader">Additional Information : </h4>
@@ -56,39 +60,39 @@
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Qualification</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <%for (int i = 0; i < 5; i++)
-                                        {%>
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
-                                        <asp:Label ID="lbl_JobDescriptionContentsBodySubHeadersTagsButton" runat="server" Text=""></asp:Label>
+                                    <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                        <asp:Label ID="lbl_JobDescriptionQualification" runat="server" Text=""></asp:Label>
                                     </button>
-                                    <%} %>
-                                    <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Degree</button>
                                 </div>
                             </div>
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Experience Required</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>At Least 1 Year</button>
+                                    <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                        <asp:Label ID="lbl_JobDescriptionExpReq" runat="server" Text=""></asp:Label>
+                                    </button>
                                 </div>
                             </div>
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Working Hours</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Monday - Friday 9A.M. - 6P.M.</button>
+                                    <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                        <asp:Label ID="lbl_JobDescriptionWorkingHours" runat="server" Text=""></asp:Label>
+                                    </button>
                                 </div>
                             </div>
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Job Type</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Full Time</button>
+                                    <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                        <asp:Label ID="lbl_JobDescriptionJobType" runat="server" Text=""></asp:Label>
+                                    </button>
                                 </div>
                             </div>
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Job Specializations</h5>
                                 <div class="JobDescriptionContentsBodySubHeadersTags">
-                                    <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Fashion Designs</button>
-                                    <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Arts</button>
-                                    <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Creative Design</button>
+                                    <asp:Label ID="lbl_JobDescriptionJobSpec" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -97,49 +101,50 @@
 
                 <div class="tab-pane fade" id="companyoverview" role="tabpanel" aria-labelledby="companyoverview-tab">
                     <div class="companyOverviewInformation">
-                        <h5 class="companyOverviewInformationPara">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse arcu augue, iaculis a quam ut, varius 
-                            dignissim enim. Morbi egestas dolor semper lectus vulputate, interdum placerat ante venenatis. Nullam tincidunt 
-                            nulla sed consequat ullamcorper. Etiam sagittis vel arcu non varius. Morbi et congue magna. Morbi fermentum venenatis 
-                            neque, ac auctor justo fermentum imperdiet. Donec viverra blandit scelerisque. Duis maximus pulvinar tincidunt. 
-                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam aliquet, nibh at mattis 
-                            pellentesque, dolor ipsum pharetra nibh, vitae pretium libero nunc sit amet lacus. Praesent at sapien nec mi finibus 
-                            congue iaculis eget orci.
-                        </h5>
+                        <%--The CkEditor Stuff in here--%>
+                        <div>
+                            The CkEditor Stuff in here
+                            <asp:Label ID="lbl_JobDescriptionCompOverview" runat="server" Text=""></asp:Label>
+                        </div>
                         <div class="companyOverviewInformationDetails">
                             <h3 class="companyOverviewInformationDetailsHeader">Additional Company Information : </h3>
                             <div class="companyOverviewInformationDetailsSubDetails">
                                 <div class="companyOverviewInformationDetailsSubs">
                                     <h5 class="companyOverviewInformationDetailsSubHeaders">Company Size</h5>
                                     <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>126,376 Employees</button>
+                                        <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                            <asp:Label ID="lbl_JobDescriptionCompSize" runat="server" Text=""></asp:Label>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="companyOverviewInformationDetailsSubs">
                                     <h5 class="companyOverviewInformationDetailsSubHeaders">Industry</h5>
                                     <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Clothing Retail Company</button>
+                                        <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                            <asp:Label ID="lbl_JobDescriptionIndustry" runat="server" Text=""></asp:Label>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="companyOverviewInformationDetailsSubs">
                                     <h5 class="companyOverviewInformationDetailsSubHeaders">Average Processing Time</h5>
                                     <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>27 Days</button>
-                                    </div>
-                                </div>
-                                <div class="companyOverviewInformationDetailsSubs">
-                                    <h5 class="companyOverviewInformationDetailsSubHeaders">Benefit & Others</h5>
-                                    <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Insurance Coverage</button>
-                                        <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Performance Bonus</button>
-                                        <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Dental</button>
-                                        <button type="button" class="btn btn-info btn-lg JobDescriptionContentsBodySubHeadersTagsButton" disabled>Medical</button>
+                                        <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                            <asp:Label ID="lbl_JobDescriptionProcessTime" runat="server" Text=""></asp:Label>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="companyOverviewInformationDetailsSubs">
                                     <h5 class="companyOverviewInformationDetailsSubHeaders">Headquaters</h5>
                                     <div class="JobDescriptionContentsBodySubHeadersTags">
-                                        <button type="button" class="btn btn-lg btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>Stockholm, Sweden</button>
+                                        <button type="button" class="mr-4 btn btn-info JobDescriptionContentsBodySubHeadersTagsButton" disabled>
+                                            <asp:Label ID="lbl_JobDescriptionHeadquaters" runat="server" Text=""></asp:Label>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="companyOverviewInformationDetailsSubs">
+                                    <h5 class="companyOverviewInformationDetailsSubHeaders">Benefit & Others</h5>
+                                    <div class="JobDescriptionContentsBodySubHeadersTags">
+                                        <asp:Label ID="lbl_JobDescriptionBenefitOther" runat="server" Text=""></asp:Label>
                                     </div>
                                 </div>
                             </div>
