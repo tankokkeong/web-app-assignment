@@ -193,6 +193,7 @@
                 <div class="mt-3 text-center">
                     <asp:Button ID="btn_submit" runat="server" Text="Post" OnClick="btn_submit_Click" class="btn btn-info"/>
                     <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
+                    <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 </div>
             </form>
         </div>
