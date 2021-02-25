@@ -15,6 +15,15 @@ namespace web_app_assignment
     {
 
         /// <summary>
+        /// btn_JobDescriptionDetailsApplyNowButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_JobDescriptionDetailsApplyNowButton;
+
+        /// <summary>
         /// lbl_JobDescriptionDesc control.
         /// </summary>
         /// <remarks>

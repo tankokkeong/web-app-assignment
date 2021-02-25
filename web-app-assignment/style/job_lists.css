@@ -72,7 +72,7 @@
     width: 30%;
 }
 
-#JobListContentsBackgroundInputsSearchButton {
+.JobListContentsBackgroundInputsSearchButton {
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 2%;
@@ -107,7 +107,7 @@
 .JobListContentsAllCompaniesBoxes {
     border: solid 3px #82A69B;
     background-color: white;
-    margin: 1.25%;
+    margin: 1.5%;
     position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -154,60 +154,12 @@
 
 .JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow {
     width: 100%;
-    margin-right: 2.5%;
-}
-
-.JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow a{
-    color: white;
-    text-decoration: none;
-}
-
-.JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow a:hover {
-    color: white;
-    text-decoration: none;
+    margin-right: 6.5%;
+    margin-left: -4.5%
 }
 
 @media screen {
     .select2 {
         width: 100% !important;
-    }
-}
-
-@media (max-width: 576px){
-
-    .JobListContentsAllCompanies{
-        padding: 5%;
-    }
-
-    .JobListContentsBackGroundContentHeader {
-        font-size: 30px;
-    }
-
-    .JobListContentsBackgroundInputs {
-        font-size: 15px;
-        margin-top: 7.5%;
-    }
-
-    .JobListContentsBackgroundInputs input {
-        font-size: 15px;
-    }
-
-    #JobListContentsBackgroundInputsSearchButton {
-        font-size: 15px;
-    }
-
-    .JobListContentsSalaryRangeHeader{
-        margin-top: 2.5%;
-    }
-
-    .JobListContentsAllCompaniesBoxes {
-        margin: 0;
-        padding: 2.5%;
-    }
-
-    .JobListContentsAllCompaniesBoxesCompanyLogoPosition {
-        height: 150px;
-        width: 150px;
-        margin-top: 25%;
     }
 }

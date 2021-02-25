@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" id="JobListContentsBackgroundInputsSearchButton" class="btn btn-info">Search</button>
+                    <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" runat="server" Text="Search" />
                 </form>
             </div>
         </div>
@@ -137,12 +137,10 @@
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
                                 <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Contact Now</a>
-                                    </button>
+                                    <asp:Button ID="btn_jobListContentsApplyNow1" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
+                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow_Click" />
+                                    <asp:Button ID="btn_jobListContentsContactNow1" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
+                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow_Click" />
                                 </div>
                             </div>
                         </div>
@@ -179,12 +177,10 @@
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
                                 <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <button type="button" class="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">More Details</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow">
-                                        <a href="job_description.aspx">Contact Now</a>
-                                    </button>
+                                    <asp:Button ID="btn_jobListContentsApplyNow2" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
+                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow_Click" />
+                                    <asp:Button ID="btn_jobListContentsContactNow2" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
+                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow_Click" />
                                 </div>
                             </div>
                         </div>

@@ -13,5 +13,15 @@ namespace web_app_assignment
         {
 
         }
+
+        protected void btn_jobListContentsApplyNow_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("job_description.aspx");
+        }
+
+        protected void btn_jobListContentsContactNow_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("job_description.aspx");
+        }
     }
 }

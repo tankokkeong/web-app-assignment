@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col JobDescriptionDetailsApplyNow">
-                <button type="button" class="btn btn-danger JobDescriptionDetailsApplyNowButton">Apply Now</button>
+                <asp:Button ID="btn_JobDescriptionDetailsApplyNowButton" CssClass="btn btn-danger" runat="server" Text="Apply Now" />
             </div>
         </div>
         <div class="JobDescriptionContents">
@@ -50,7 +50,6 @@
 
                     <%--The CkEditor Stuff in here--%>
                     <div>
-                        The CkEditor Stuff in here
                         <asp:Label ID="lbl_JobDescriptionDesc" runat="server" Text=""></asp:Label>
                     </div>
 
