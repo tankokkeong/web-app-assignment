@@ -514,7 +514,7 @@ namespace web_app_assignment
                     //Upload Profile Image
 
                     Response.Write("<script>alert(" + "'" +txtCompanyName.Text + "'"+ ");</script>");
-                    lblError.Text = txtCompanyName.Text;
+                    lblError.Text = MapPath("/Upload");
 
                 }
                 catch (Exception error)
