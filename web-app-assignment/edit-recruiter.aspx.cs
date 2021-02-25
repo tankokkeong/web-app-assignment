@@ -266,7 +266,7 @@ namespace web_app_assignment
                 "Digital Imaging",
                 "High Precision Tools And Die Maintenance",
                 "Manufacturing Systems Designers",
-                "Experts In Steel Treatment(Melting And Casting",
+                "Experts In Steel Treatment(Melting And Casting)",
                 "Underwater welders",
                 "Material Technologists",
                 "Instrument Specialists(For Petrochemical Industry)",
@@ -447,6 +447,14 @@ namespace web_app_assignment
 
                 }
 
+                //Upload Profile Image Handled
+                string upload_path = MapPath("/Uploads/");
+                string file_name = fileCompanyPhoto.FileName;
+
+                fileCompanyPhoto.SaveAs(upload_path + file_name);
+                var company_photo = "Uploads/" + file_name;
+
+
                 //Read inputs from the form
                 var company_name = txtCompanyName.Text;
                 var contact_email = txtContactEmail.Text;
@@ -461,6 +469,7 @@ namespace web_app_assignment
                 var linkedin_link = txtLinkedInLink.Text;
                 var introduction = HttpUtility.UrlDecode(txtComapanyIntroduction.Text);
 
+
                 try
                 {
                     SqlConnection con = new SqlConnection(strcon);
@@ -474,6 +483,7 @@ namespace web_app_assignment
                     string sql = "UPDATE Recruiter " +
                                 "SET mobile_number = @mobile_number," +
                                 " company_name = @company_name," +
+                                " company_photo = @company_photo," +
                                 " contact_email = @contact_email," +
                                 " address_line1 = @address_line1," +
                                 " address_line2 = @address_line2," +
@@ -494,6 +504,7 @@ namespace web_app_assignment
                     //Insert parameters
                     cmd.Parameters.AddWithValue("@mobile_number", phone_number);
                     cmd.Parameters.AddWithValue("@company_name", company_name);
+                    cmd.Parameters.AddWithValue("@company_photo", company_photo);
                     cmd.Parameters.AddWithValue("@contact_email", contact_email);
                     cmd.Parameters.AddWithValue("@address_line1", address_line1);
                     cmd.Parameters.AddWithValue("@address_line2", address_line2);
@@ -511,10 +522,9 @@ namespace web_app_assignment
                     con.Close();
 
 
-                    //Upload Profile Image
+                    Response.Write("<script>alert('Profile Updated Successful!');</script>");
+                    imgRecruiterProfile.ImageUrl = company_photo;
 
-                    Response.Write("<script>alert(" + "'" +txtCompanyName.Text + "'"+ ");</script>");
-                    lblError.Text = MapPath("/Upload");
 
                 }
                 catch (Exception error)
