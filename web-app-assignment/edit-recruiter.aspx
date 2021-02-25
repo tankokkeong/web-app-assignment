@@ -9,14 +9,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="profile-container">
         <div class="profile-form">
-            <form>
                 <div class="form-row mb-3">
                     <h2>Company Information</h2>
                 </div>
 
                <div class="form-row">
                 <div class="form-group col-md-6 m-0">
-                    <img src="images/home/partner5-min.png" id="edit-profile-pic"/><br />
+                    <asp:Image ID="imgRecruiterProfile" runat="server" class="edit-profile-pic"/><br />
+                    
                     <label for="inputEmail4">Profile Photo</label>
                     <asp:FileUpload ID="fileCompanyPhoto" runat="server" cssClass="form-control"/>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -93,7 +93,7 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6 m-0">
+                <div class="form-group col-md-6 m-0 country-drop">
                     <label for="inputAddress">Country:</label>                    
                     <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" style="width:100%;">
                     </asp:DropDownList>
@@ -158,8 +158,6 @@
                 <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
                 <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </div>
-              
-            </form>
         </div>
         
     </div>

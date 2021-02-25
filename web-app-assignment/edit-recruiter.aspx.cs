@@ -16,7 +16,9 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> countryListItems = new List<string>{
+            if (!Page.IsPostBack)
+            {
+                List<string> countryListItems = new List<string>{
             "Afghanistan",
                 "Albania",
                 "Algeria",
@@ -258,7 +260,7 @@ namespace web_app_assignment
                 "Zimbabwe"
             };
 
-            List<string> IndustryListItems = new List<string>
+                List<string> IndustryListItems = new List<string>
             {
                 "Conveyor Vulcanizing",
                 "Digital Imaging",
@@ -348,78 +350,183 @@ namespace web_app_assignment
                 "Forest Mills – Most categories of job"
             };
 
-            // Add the arrays to the dropdown list
-            ddlCountry.DataSource = countryListItems;
-            ddlCountry.DataBind();
+                // Add the arrays to the dropdown list
+                ddlCountry.DataSource = countryListItems;
+                ddlCountry.DataBind();
 
-            lstIndustry.DataSource = IndustryListItems;
-            lstIndustry.DataBind();    
+                lstIndustry.DataSource = IndustryListItems;
+                lstIndustry.DataBind();
 
-            //Read Data from the database
-            try
-            {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                //Read Data from the database
+                try
                 {
-                    con.Open();
-                }
-
-                string selected_industry = "";
-                string sql = "SELECT * FROM Recruiter";
-
-                SqlCommand cmd = new SqlCommand(sql, con);
-
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    txtCompanyName.Text = dr["company_name"].ToString();
-                    txtState.Text = dr["state"].ToString();
-                    txtFacebookLink.Text = dr["facebook_link"].ToString();
-                    txtLinkedInLink.Text = dr["linkedin_link"].ToString();
-                    txtComapanyIntroduction.Text = dr["introduction"].ToString();
-                    txtPhone.Text = dr["mobile_number"].ToString();
-                    txtContactEmail.Text = dr["contact_email"].ToString();
-                    txtAddressLine1.Text = dr["address_line1"].ToString();
-                    txtAddressLine2.Text = dr["address_line2"].ToString();
-                    txtCity.Text = dr["city"].ToString();
-                    txtZipCode.Text = dr["zip_code"].ToString();
-                    ddlCountry.SelectedValue = dr["country"].ToString();
-
-                    //Get Selected Industry
-                    selected_industry = dr["industry"].ToString();
-                }
-
-                //Split the Selected Industry
-                string[] split_industries = selected_industry.Split(',');
-
-                //Print out the result
-                for (int i = 0; i < split_industries.Length; i++)
-                {
-
-                    if (lstIndustry.Items.FindByValue(split_industries[i]) != null)
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
                     {
-                        lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
+                        con.Open();
                     }
-                    else
-                    {
-                        lstIndustry.Items.Insert(0, new ListItem(split_industries[i], split_industries[i]));
-                        lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
-                    }
-                }
 
+                    string selected_industry = "";
+                    string sql = "SELECT * FROM Recruiter";
+
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        txtCompanyName.Text = dr["company_name"].ToString();
+                        txtState.Text = dr["state"].ToString();
+                        txtFacebookLink.Text = dr["facebook_link"].ToString();
+                        txtLinkedInLink.Text = dr["linkedin_link"].ToString();
+                        txtComapanyIntroduction.Text = dr["introduction"].ToString();
+                        txtPhone.Text = dr["mobile_number"].ToString();
+                        txtContactEmail.Text = dr["contact_email"].ToString();
+                        txtAddressLine1.Text = dr["address_line1"].ToString();
+                        txtAddressLine2.Text = dr["address_line2"].ToString();
+                        txtCity.Text = dr["city"].ToString();
+                        txtZipCode.Text = dr["zip_code"].ToString();
+                        ddlCountry.SelectedValue = dr["country"].ToString();
+
+                        //Get Selected Industry
+                        selected_industry = dr["industry"].ToString();
+                    }
+
+                    //Split the Selected Industry
+                    string[] split_industries = selected_industry.Split(',');
+
+                    //Print out the result
+                    for (int i = 0; i < split_industries.Length; i++)
+                    {
+
+                        if (lstIndustry.Items.FindByValue(split_industries[i]) != null)
+                        {
+                            lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
+                        }
+                        else
+                        {
+                            lstIndustry.Items.Insert(0, new ListItem(split_industries[i], split_industries[i]));
+                            lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
+                        }
+                    }
+
+                }
+                catch (Exception error)
+                {
+                    Response.Write("<script>alert('" + error.Message + "');</script>");
+                }
             }
-            catch (Exception error)
-            {
-                Response.Write("<script>alert('" + error.Message + "');</script>");
-            }
+                
         }
 
         protected void updateRecruiterProfile_Click(object sender, EventArgs e)
         {
             if(Page.IsValid)
             {
-                lblError.Text = "Hi";
+                //Read The Selected Industry
+                string industry_list = "";
+                int selected_count = 0;
+
+                for (int loop = 0; loop < lstIndustry.Items.Count; loop++)
+                {
+                    if(lstIndustry.Items.FindByValue(lstIndustry.Items[loop].ToString()).Selected == true)
+                    {
+                        if(selected_count == 0)
+                        {
+                            industry_list = lstIndustry.Items[loop].ToString();
+                        }
+                        else
+                        {
+                            industry_list = industry_list + "," + lstIndustry.Items[loop].ToString();
+                        }
+
+                        //Increase the selected value
+                        selected_count++;
+                        
+                    }
+
+                }
+
+                //Read inputs from the form
+                var company_name = txtCompanyName.Text;
+                var contact_email = txtContactEmail.Text;
+                var phone_number = txtPhone.Text;
+                var address_line1 = txtAddressLine1.Text;
+                var address_line2 = txtAddressLine2.Text;
+                var city = txtCity.Text;
+                var state = txtState.Text;
+                var country = ddlCountry.SelectedValue;
+                var zip_code = txtZipCode.Text;
+                var facebook_link = txtFacebookLink.Text;
+                var linkedin_link = txtLinkedInLink.Text;
+                var introduction = HttpUtility.UrlDecode(txtComapanyIntroduction.Text);
+
+                try
+                {
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+
+
+                    string sql = "UPDATE Recruiter " +
+                                "SET mobile_number = @mobile_number," +
+                                " company_name = @company_name," +
+                                " contact_email = @contact_email," +
+                                " address_line1 = @address_line1," +
+                                " address_line2 = @address_line2," +
+                                " city = @city," +
+                                " state = @state," +
+                                " zip_code = @zip_code," +
+                                " country = @country," +
+                                " industry = @industry," +
+                                " facebook_link = @facebook_link," +
+                                " linkedin_link = @linkedin_link," +
+                                " introduction = @introduction" +
+                                " WHERE recruiter_id = 1";
+
+                    //Connect to the database
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@mobile_number", phone_number);
+                    cmd.Parameters.AddWithValue("@company_name", company_name);
+                    cmd.Parameters.AddWithValue("@contact_email", contact_email);
+                    cmd.Parameters.AddWithValue("@address_line1", address_line1);
+                    cmd.Parameters.AddWithValue("@address_line2", address_line2);
+                    cmd.Parameters.AddWithValue("@city", city);
+                    cmd.Parameters.AddWithValue("@state", state);
+                    cmd.Parameters.AddWithValue("@zip_code", zip_code);
+                    cmd.Parameters.AddWithValue("@country", country);
+                    cmd.Parameters.AddWithValue("@industry", industry_list);
+                    cmd.Parameters.AddWithValue("@facebook_link", facebook_link);
+                    cmd.Parameters.AddWithValue("@linkedin_link", linkedin_link);
+                    cmd.Parameters.AddWithValue("@introduction", introduction);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+
+                    //Upload Profile Image
+
+                    Response.Write("<script>alert(" + "'" +txtCompanyName.Text + "'"+ ");</script>");
+                    lblError.Text = txtCompanyName.Text;
+
+                }
+                catch (Exception error)
+                {
+                    lblError.Text = error.Message;
+                }
             }
+            else
+            {
+                lblError.Text = "FAILED";
+            }
+
         }
     }
 }
