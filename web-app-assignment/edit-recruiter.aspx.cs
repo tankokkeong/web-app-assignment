@@ -416,7 +416,10 @@ namespace web_app_assignment
 
         protected void updateRecruiterProfile_Click(object sender, EventArgs e)
         {
-
+            if(Page.IsValid)
+            {
+                lblError.Text = "Hi";
+            }
         }
     }
 }
