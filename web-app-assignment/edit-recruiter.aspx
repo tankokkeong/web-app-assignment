@@ -18,7 +18,7 @@
                 <div class="form-group col-md-6">
                     <img src="images/home/partner5-min.png" id="edit-profile-pic"/><br />
                     <label for="inputEmail4">Profile Photo</label>
-                  <input type="file" class="form-control" id="inputEmail4">
+                    <asp:FileUpload ID="FileUpload1" runat="server" cssClass="form-control"/>
                 </div>
         
               </div>
@@ -34,6 +34,31 @@
                     <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control" placeholder="Contact Email"></asp:TextBox>
                 </div>
               </div>
+
+             <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Phone:</label>                    
+                    <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Phone"></asp:TextBox>
+                </div>
+                
+                 <div class="form-group col-md-6">
+                    <label for="inputAddress">Industry:</label>
+
+                     <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple">
+                     </asp:ListBox>
+                    
+                    <script>
+                        $("#ContentPlaceHolder1_lstIndustry").select2({
+                            placeholder: "Enter one or more industries",
+                            allowClear: true,
+                            tags: true,
+                        });
+                    </script>
+                 </div>
+                 
+                 
+
+            </div>
 
              <div class="form-row">
                 <div class="form-group col-md-6">
@@ -62,14 +87,17 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputAddress">Country:</label>                    
-                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control">
-                        <asp:ListItem Value="Malaysia">Malaysia</asp:ListItem>
+                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" style="width:100%;">
                     </asp:DropDownList>
+
+                    <script>
+                        $("#ContentPlaceHolder1_ddlCountry").select2({});
+                    </script>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="inputAddress">Industry:</label>
-                    <asp:TextBox ID="txtIndustry" runat="server" CssClass="form-control" placeholder="State"></asp:TextBox>
+                    <label for="inputAddress">Zip Code:</label>                    
+                    <asp:TextBox ID="txtZipCode" runat="server" CssClass="form-control" placeholder="Phone"></asp:TextBox>                             
                 </div>
             </div>
           
@@ -115,12 +143,29 @@
             </div>
           
             <div class="form-group text-center mt-3">
-                <button type="submit" class="btn bg-lightgreen text-light">Update</button>
+                <asp:Button ID="updateRecruiterProfile" runat="server" Text="Update" cssClass="btn bg-lightgreen text-light" OnClick="updateRecruiterProfile_Click"/>
                 <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
+                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </div>
               
             </form>
         </div>
         
     </div>
+
+    
+    <script>
+        //Sticky form script
+        function getCompanyIntroduction() {
+            var introduction_value = document.getElementById("ContentPlaceHolder1_txtComapanyIntroduction");
+            var ck_editor = document.getElementById("company_introduction");
+
+            //Assign the value to CK EDITOR
+            ck_editor.value = introduction_value.value;
+        }
+
+        //Call stick form functions
+        getCompanyIntroduction();
+
+    </script>
 </asp:Content>

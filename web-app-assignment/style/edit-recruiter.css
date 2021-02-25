@@ -13,6 +13,15 @@
     margin-bottom: 20px;
 }
 
+.select2-selection__rendered, .select2-selection--single, .select2-selection__clear, .select2-selection__arrow {
+    height: 38px !important;
+    outline:none!important;
+}
+
+.select2-selection__rendered {
+    padding: 5px;
+}
+
 @media (min-width:850px) {
     .profile-container {
         padding: 40px 10%;
