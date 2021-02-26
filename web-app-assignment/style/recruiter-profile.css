@@ -1,5 +1,5 @@
-﻿#profile-pic {
-    width: 100px;
+﻿.profile-pic {
+    width: 100%;
 }
 
 .profile-container {
@@ -96,6 +96,18 @@
 
 .company-name, .application-status {
     font-size: 20px;
+}
+
+#ContentPlaceHolder1_GridView1 {
+    width: 100% !important;
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+.gridview {
+    width: 100%;
+    word-wrap: break-word;
+    table-layout: fixed;
 }
 
 @media (min-width:850px) {

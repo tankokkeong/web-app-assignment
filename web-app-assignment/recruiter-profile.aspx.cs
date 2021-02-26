@@ -24,6 +24,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                //Read User profile Details
                 string sql = "SELECT * FROM Recruiter";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -32,6 +33,7 @@ namespace web_app_assignment
                 while(dr.Read())
                 {
                     lblRecruiterName.Text = dr["company_name"].ToString();
+                    imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
                     lblRecruiterState.Text = dr["state"].ToString();
                     lblRecruiterIndustry.Text = dr["industry"].ToString();
                     linkFB.NavigateUrl = dr["facebook_link"].ToString();
@@ -48,6 +50,26 @@ namespace web_app_assignment
                     lblRecruiterCountry.Text = dr["country"].ToString();
                     lblRecruiterRating.Text = dr["rating"].ToString();
                 }
+
+                //Close connection
+                con.Close();
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read Job Posted
+                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = 1";
+
+                SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobposted, con);
+                DataTable dtbl = new DataTable();
+                cmd2.Fill(dtbl);
+                GridView1.DataSource = dtbl;
+                GridView1.DataBind();
+
+
             }
             catch (Exception error)
             {
