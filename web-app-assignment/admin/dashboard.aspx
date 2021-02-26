@@ -168,8 +168,10 @@
                     <%for (int i = 0; i < 5; i++)
                         { %>
                     <div class="to-do-task mt-3">
-                        <h5 class="mb-0">Meet Up with clients</h5>
-                        <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p>
+                       <%-- <h5 class="mb-0">Meet Up with clients</h5> --%> 
+                       <%-- <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p> --%>
+                       <asp:Label ID="lblToDolist" runat="server" Text="Lab" class="mb-0" CssClass="h5"></asp:Label> <br />
+                       <asp:Label ID="lblToDoContent" runat="server" Text="L" class="text-secondary mb-0"></asp:Label>
                     </div>
                     <%}; %>
                 </div>
@@ -225,10 +227,13 @@
                     <%for (int i = 0; i < 5; i++)
                         { %>
                     <div class="media">
-                       <img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." />
+                      <%--<img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." /> --%>
+                        <asp:Image ID="imgCompany" runat="server" class="mr-3 top-company-pic"/>
                       <div class="media-body">
-                        <h5 class="mt-0">Netflix</h5>
-                        <p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p>
+                        <%--<h5 class="mt-0">Netflix</h5> --%>
+                        <%--<p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p> --%>
+                        <asp:Label ID="lblCompanyName" runat="server" Text="Netflix" class="mt-0" CssClass="h5"></asp:Label><br />
+                        <asp:Label ID="lblCompanyContent" runat="server" class="text-secondary" Text="Will you do the same for me? It's time to face the music I'm no longer your muse."></asp:Label>
                       </div>
                     </div>
                     <%}; %>
