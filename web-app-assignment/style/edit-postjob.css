@@ -1,0 +1,23 @@
+﻿.post-job-container {
+    background-color: #e6e6e6;
+    padding: 50px 0;
+    min-height: 100vh;
+}
+
+.post-job-form {
+    width: 90%;
+    background-color: #fff;
+    margin-left: 5%;
+    padding: 20px;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+@media (min-width:850px) {
+    .post-job-form {
+        width: 60%;
+        margin-left: 20%;
+    }
+}

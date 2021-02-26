@@ -146,6 +146,7 @@
     <Content Include="Career.aspx" />
     <Content Include="chatbox.aspx" />
     <Content Include="contact-us.aspx" />
+    <Content Include="edit-postjob.aspx" />
     <Content Include="edit-recruiter.aspx" />
     <Content Include="edit-user.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
@@ -1891,6 +1892,7 @@
     <Content Include="style\chatbox.css" />
     <Content Include="style\contact-us.css" />
     <Content Include="style\default-styling.css" />
+    <Content Include="style\edit-postjob.css" />
     <Content Include="style\edit-recruiter.css" />
     <Content Include="style\forgottenPassword.css" />
     <Content Include="style\edit-user.css" />
@@ -2064,6 +2066,13 @@
     </Compile>
     <Compile Include="contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-postjob.aspx.cs">
+      <DependentUpon>edit-postjob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-postjob.aspx.designer.cs">
+      <DependentUpon>edit-postjob.aspx</DependentUpon>
     </Compile>
     <Compile Include="edit-recruiter.aspx.cs">
       <DependentUpon>edit-recruiter.aspx</DependentUpon>
