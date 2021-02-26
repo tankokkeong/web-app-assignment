@@ -251,7 +251,14 @@
                     </div>
                     
                 </div>
-
+                    <%-- Delete Completed Alert --%>
+                <asp:Label ID="lblDeleteAlert" runat="server" Text=""></asp:Label>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="job-deleted-alert">
+                    Job deleted successful!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div id="job-posted-content" class="my-info row" style="display:none;">
                     <div class="mb-3">
                         <a href="post-job.aspx" class="btn btn-primary">Post New Job</a>
@@ -333,10 +340,35 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-
-            <button type="button" class="btn btn-primary">Yes</button>
+            <asp:Button ID="btnDeleteJob" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteJob_Click"/>
+            <asp:TextBox ID="txtDeleteJob" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+        function deleteJob(id) {
+            var delete_input = document.getElementById("ContentPlaceHolder1_txtDeleteJob");
+
+            //Change the id
+            delete_input.value = id;
+        }
+
+
+        //Check Delete Job Post
+        function checkDeleteJob() {
+            var link = window.location.href.split("?");
+            var deleted_alert = document.getElementById("job-deleted-alert");
+
+            if (link[1] === "deletedJob") {
+                //Change to job posted tab
+                recruiterProfileSwitchTab('job-posted');
+                deleted_alert.style.display = "";
+            }
+        }
+
+        checkDeleteJob();
+
+    </script>
 </asp:Content>

@@ -61,9 +61,11 @@ namespace web_app_assignment
                 }
 
                 //Read Job Posted
-                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = 1";
-
+                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = 1 AND deleted_at IS NULL";
                 SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobposted, con);
+
+                
+
                 DataTable dtbl = new DataTable();
                 cmd2.Fill(dtbl);
                 GridView1.DataSource = dtbl;
@@ -93,7 +95,46 @@ namespace web_app_assignment
 
                 //Query String
                 e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
-                    "<button class='btn btn-danger p-1' data-toggle='modal' data-target='#deleteModal' type='button'>Delete</button>";
+                    "<button class='btn btn-danger p-1' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[4].Text + ")'>Delete</button>";
+            }
+        }
+
+        protected void btnDeleteJob_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var post_id = txtDeleteJob.Text;
+
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read User profile Details
+                string sql = "Update JobPost " +
+                        "SET deleted_at = @deleted_at " +
+                        "WHERE post_id = @post_id";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@post_id", post_id);
+
+                //Execute the queries
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Write("<script>alert('Record Deleted successful!');</script>");
+                Response.Redirect("recruiter-profile.aspx?deletedJob");
+
+
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
             }
         }
     }
