@@ -47,9 +47,9 @@
             </div>
             <div class="form-group row">
                 <h5>
-                    <label for="answer" class="col-sm-2 col-form-label">Answer</label>
+                    <label for="answer" class="col-sm-2 col-form-label Edit_helpCenterBodyContentsTitle">Answer</label>
                 </h5>
-                <div class="col-sm-10" id="answer">
+                <div class="col-sm-10 ml-3" id="answer">
                     <div class="Edit_helpCenterBodyContentsDetails">
                         <textarea>Database in here</textarea>
                     </div>
@@ -71,7 +71,7 @@
 
     <script>
         function addNewQ_A() {
-            $('#Edit_helpCenterMoreBodyContents').append('<div class="form-group row"><h5><label for="question" class="col-sm-2 col-form-label Edit_helpCenterBodyContentsTitle">Question</label></h5><div class="col-sm-10" id="question"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div><div class="form-group row"><h5><label for="answer" class="col-sm-2 col-form-label">Answer</label></h5><div class="col-sm-10" id="answer"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div>');
+            $('#Edit_helpCenterMoreBodyContents').append('<div class="form-group row"><h5><label for="question" class="col-sm-2 col-form-label Edit_helpCenterBodyContentsTitle">Question</label></h5><div class="col-sm-10" id="question"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div><div class="form-group row"><h5><label for="answer" class="col-sm-2 col-form-label">Answer</label></h5><div class=" ml-3 col-sm-10" id="answer"><div class="Edit_helpCenterBodyContentsDetails"><textarea>Database in here</textarea></div></div></div>');
             tinymce.init({selector: 'textarea' });
         };
     </script>
