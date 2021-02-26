@@ -69,13 +69,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// txtIndustry control.
+        /// lstIndustry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIndustry;
+        protected global::System.Web.UI.WebControls.ListBox lstIndustry;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -87,13 +87,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// txtQualification control.
+        /// lstQualification control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQualification;
+        protected global::System.Web.UI.WebControls.ListBox lstQualification;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -123,13 +123,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
 
         /// <summary>
-        /// txtSpecilization control.
+        /// lstJobSpecialization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSpecilization;
+        protected global::System.Web.UI.WebControls.ListBox lstJobSpecialization;
 
         /// <summary>
         /// RequiredFieldValidator7 control.
@@ -231,13 +231,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
 
         /// <summary>
-        /// txtBenefits control.
+        /// lstBenefits control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBenefits;
+        protected global::System.Web.UI.WebControls.ListBox lstBenefits;
 
         /// <summary>
         /// RequiredFieldValidator13 control.
@@ -285,13 +285,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
 
         /// <summary>
-        /// btn_submit control.
+        /// btnUpdateJob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit;
+        protected global::System.Web.UI.WebControls.Button btnUpdateJob;
 
         /// <summary>
         /// lblError control.

@@ -76,5 +76,25 @@ namespace web_app_assignment
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
         }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Display the job type in colours.
+                if(e.Row.Cells[1].Text == "Full Time")
+                {
+                    e.Row.Cells[1].Text = "<span class='badge badge-success'>" + e.Row.Cells[1].Text + "</span>";
+                }
+                else
+                {
+                    e.Row.Cells[1].Text = "<span class='badge badge-danger'>" + e.Row.Cells[1].Text + "</span>";
+                }
+
+                //Query String
+                e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
+                    "<button class='btn btn-danger p-1' data-toggle='modal' data-target='#deleteModal' type='button'>Delete</button>";
+            }
+        }
     }
 }

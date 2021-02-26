@@ -85,6 +85,9 @@ namespace web_app_assignment
 
                     Response.Write("<script>alert('Record Inserted successful!');</script>");
 
+                    //Clear the form
+                    ClearForm();
+
                 }
                 catch (Exception error)
                 {
@@ -96,6 +99,25 @@ namespace web_app_assignment
                 lblError.Text = "FAILED";
             }
             
+        }
+
+        protected void ClearForm()
+        {
+            txtJobTitle.Text = "";
+            txtJobDescription.Text = "";
+            txtSalary.Text = "";
+            txtIndustry.Text = "";
+            txtQualification.Text = "";
+            txtWorkingHours.Text = "";
+            txtSpecilization.Text = "";
+            txtCompanyOverview.Text = "";
+            txtLocation.Text = "";
+            txtExperienceNeeded.Text = "";
+            ddlJobType.SelectedValue = "";
+            txtHeadQuarter.Text = "";
+            txtBenefits.Text = "";
+            ddlCompanySize.SelectedValue = "";
+            txtProcessingTime.Text = "";
         }
     }
 }

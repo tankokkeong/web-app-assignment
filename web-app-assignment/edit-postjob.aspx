@@ -53,12 +53,8 @@
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Industry:</label>
                     <div class="col-sm-10">
-                        <select class="form-control multiple-select2" id="industry-select" multiple onchange="formatSelectedIndustry()">
-                            <option value="IT">IT</option>
-                            <option value="Finance">Finance</option>
-                        </select>
-                        <asp:TextBox ID="txtIndustry" runat="server" class="form-control" style="display:none;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="This field is requried!" ControlToValidate="txtIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
+                        <asp:ListBox ID="lstIndustry" runat="server" multiple="multiple" SelectionMode="Multiple"></asp:ListBox>                       
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="This field is requried!" ControlToValidate="lstIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -66,13 +62,12 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Qualification:</label>
                     <div class="col-sm-10">
-                        <select class="multiple-select2" id="qualification-select" multiple onchange="formatSelectedQualification()">
-                            <option value="Diploma">Diploma</option>
-                            <option value="Degree">Degree</option>
-                            <option value="Master Degree">Master Degree</option>
-                        </select>
-                        <asp:TextBox ID="txtQualification" runat="server" style="display:none;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="This field is requried!" ControlToValidate="txtQualification" CssClass="text-danger"></asp:RequiredFieldValidator>
+                        <asp:ListBox ID="lstQualification" runat="server" multiple="multiple" SelectionMode="Multiple">
+                            <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
+                            <asp:ListItem Value="Degree">Degree</asp:ListItem>
+                            <asp:ListItem Value="Master Degree">Master Degree</asp:ListItem>
+                        </asp:ListBox>                
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="This field is requried!" ControlToValidate="lstQualification" CssClass="text-danger"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -88,12 +83,8 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Job Specializations:</label>
                     <div class="col-sm-10">
-                        <select class="multiple-select2" id="specilization-select"  multiple onchange="formatSelectedSpecilizations()">
-                            <option value="IT">IT</option>
-                            <option value="Finance">Finance</option>
-                        </select>
-                        <asp:TextBox ID="txtSpecilization" runat="server" style="display:none;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="This field is requried!" ControlToValidate="txtSpecilization" CssClass="text-danger"></asp:RequiredFieldValidator>
+                        <asp:ListBox ID="lstJobSpecialization" runat="server" multiple="multiple" SelectionMode="Multiple"></asp:ListBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="This field is requried!" ControlToValidate="lstJobSpecialization" CssClass="text-danger"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -158,11 +149,10 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Benefits & others:</label>
                     <div class="col-sm-10">
-                        <select class="multiple-select2" id="benefit-select" multiple onchange="formatSelectedBenefits()">
-                            <option value="Medical">Medical</option>
-                        </select>
-                        <asp:TextBox ID="txtBenefits" runat="server" style="display:none;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="This field is requried!" ControlToValidate="txtBenefits" CssClass="text-danger"></asp:RequiredFieldValidator>
+                        <asp:ListBox ID="lstBenefits" runat="server" multiple="multiple" SelectionMode="Multiple">
+                            <asp:ListItem Value="Medical">Medical</asp:ListItem>
+                        </asp:ListBox>                       
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="This field is requried!" ControlToValidate="lstBenefits" CssClass="text-danger"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -192,7 +182,7 @@
 
 
                 <div class="mt-3 text-center">
-                    <asp:Button ID="btn_submit" runat="server" Text="Post" class="btn btn-info"/>
+                    <asp:Button ID="btnUpdateJob" runat="server" Text="Update" class="btn btn-info" OnClick="btnUpdateJob_Click"/>
                     <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 </div>
@@ -201,111 +191,55 @@
     </div>
 
     <script type="text/javascript">
-        $("#industry-select").select2({
+        $("#ContentPlaceHolder1_lstIndustry").select2({
             placeholder: "Enter one or more industries",
             allowClear: true,
             tags: true,
         });
 
-        $("#qualification-select").select2({
+        $("#ContentPlaceHolder1_lstQualification").select2({
             placeholder: "Enter one or more qualifications",
             allowClear: true,
             tags: true,
         });
 
-        $("#specilization-select").select2({
+        $("#ContentPlaceHolder1_lstJobSpecialization").select2({
             placeholder: "Enter one or more specilizations",
             allowClear: true,
             tags: true,
         });
 
-        $("#benefit-select").select2({
+        $("#ContentPlaceHolder1_lstBenefits").select2({
             placeholder: "Enter one or benefits",
             allowClear: true,
             tags: true,
         });
 
-        function formatSelectedIndustry() {
-            var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry");
-            var selected_value = $("#industry-select").select2('val');
+        //Sticky form script
+        function getCompanyOverview() {
+            var company_overview_value = document.getElementById("ContentPlaceHolder1_txtCompanyOverview");
+            var ck_editor = document.getElementById("company_overview");
 
-            //Clear previous input
-            selected_industry.value = "";
+            //Assign the value to CK EDITOR
+            ck_editor.value = window.unescape(company_overview_value.value);
 
-            for (var i = 0; i < selected_value.length; i++) {
-                if (i == selected_value.length - 1) {
-                    selected_industry.value = selected_industry.value + selected_value[i];
-                }
-                else {
-                    selected_industry.value = selected_industry.value + selected_value[i] + ",";
-                }
-                
-            }
-
-            console.log(selected_industry.value)
+            //Escape the input value
+            company_overview_value.value = window.escape(company_overview_value.value);
         }
 
-        function formatSelectedQualification() {
-            var selected_qualification = document.getElementById("ContentPlaceHolder1_txtQualification");
-            var selected_value = $("#qualification-select").select2('val');
+        function getJobDescription() {
+            var job_description_value = document.getElementById("ContentPlaceHolder1_txtJobDescription");
+            var ck_editor = document.getElementById("job_description");
 
-            //Clear previous input
-            selected_qualification.value = "";
+            //Assign the value to CK EDITOR
+            ck_editor.value = window.unescape(job_description_value.value);
 
-            for (var i = 0; i < selected_value.length; i++) {
-
-                if (i == selected_value.length-1) {
-                    selected_qualification.value = selected_qualification.value + selected_value[i];
-                }
-                else {
-                    selected_qualification.value = selected_qualification.value + selected_value[i] + ",";
-                }
-                
-            }
-
-            console.log(selected_qualification.value)
+            //Escape the input value
+            job_description_value.value = window.escape(job_description_value.value);
         }
 
-        function formatSelectedSpecilizations() {
-            var selected_specilizations = document.getElementById("ContentPlaceHolder1_txtSpecilization");
-            var selected_value = $("#specilization-select").select2('val');
-
-            //Clear previous input
-            selected_specilizations.value = "";
-
-            for (var i = 0; i < selected_value.length; i++) {
-
-                if (i == selected_value.length - 1) {
-                    selected_specilizations.value = selected_specilizations.value + selected_value[i];
-                }
-                else {
-                    selected_specilizations.value = selected_specilizations.value + selected_value[i] + ",";
-                }
-
-            }
-
-            console.log(selected_specilizations.value)
-        }
-
-        function formatSelectedBenefits() {
-            var selected_benefits = document.getElementById("ContentPlaceHolder1_txtBenefits");
-            var selected_value = $("#benefit-select").select2('val');
-
-            //Clear previous input
-            selected_benefits.value = "";
-
-            for (var i = 0; i < selected_value.length; i++) {
-
-                if (i == selected_value.length - 1) {
-                    selected_benefits.value = selected_benefits.value + selected_value[i];
-                }
-                else {
-                    selected_benefits.value = selected_benefits.value + selected_value[i] + ",";
-                }
-
-            }
-
-            console.log(selected_benefits.value)
-        }
+        //Call stick form functions
+        getCompanyOverview();
+        getJobDescription();
     </script>
 </asp:Content>

@@ -291,18 +291,19 @@
                       </tbody>
                     </table>--%>
 
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered" AutoGenerateColumns="false" allowpaging="true" onrowdatabound="GridView1_RowDataBound">
                         <Columns>
                             <asp:BoundField DataField="job_title" HeaderText="Job Title" />
                             <asp:BoundField DataField="job_type" HeaderText="Job Type" />
                             <asp:BoundField DataField="location" HeaderText="Job Location" />
                             <asp:BoundField DataField="salary" HeaderText="Salary" />
-                            <asp:TemplateField HeaderText="Action">
+                            <asp:BoundField DataField="post_id" HeaderText="Action" />
+                            <%--<asp:TemplateField HeaderText="Action" >
                                 <ItemTemplate>
-                                    <a class="badge badge-success p-2" role="button">Edit</a>
+                                    <a class="badge badge-success p-2" role="button" >Edit</a>
                                     <a class="badge badge-danger p-2" role="button">Delete</a>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -315,5 +316,27 @@
 
             </div>
         </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this record?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+            <button type="button" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
     </div>
 </asp:Content>
