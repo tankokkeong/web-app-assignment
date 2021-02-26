@@ -13,5 +13,10 @@ namespace web_app_assignment.admin
         {
 
         }
+
+        protected void btnAddTask_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

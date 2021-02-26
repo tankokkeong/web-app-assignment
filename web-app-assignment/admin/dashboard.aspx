@@ -249,22 +249,28 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form runat="server">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Task Name</label>
-                    <input type="text" class="form-control" >
+                   <%-- <label for="exampleInputEmail1">Task Name</label> --%>
+                   <%-- <input type="text" class="form-control" > --%>
+                    <asp:Label ID="lblTaskName" runat="server" Text="Task Name"></asp:Label>
+                    <asp:TextBox ID="txtTaskName" runat="server" class="form-control"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Task Remarks</label>
-                    <input type="text" class="form-control" >
+                   <%-- <label for="exampleInputEmail1">Task Remarks</label> --%>
+                   <%-- <input type="text" class="form-control" > --%>
+                    <asp:Label ID="lblTaskRemarks" runat="server" Text="Task Name"></asp:Label>
+                    <asp:TextBox ID="txtTaskRemarks" runat="server" class="form-control"></asp:TextBox>
+                </div>
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   <%-- <button type="button" class="btn btn-primary">Add Task</button> --%>
+                   <asp:Button ID="btnAddTask" runat="server" class="btn btn-primary" Text="Add Task" OnClick="btnAddTask_Click" />
                 </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Task</button>
-          </div>
+
         </div>
       </div>
     </div>
