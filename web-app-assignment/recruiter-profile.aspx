@@ -10,10 +10,10 @@
         <div class="profile-row">
             <div class="profile-col">
                 <div class="picture-container">
-                    <img src="images/home/partner5-min.png" id="profile-pic"/>
-                    <div class="change-pic-btn text-center"> 
+                    <asp:Image ID="imgRecruiterProfile" runat="server" class="profile-pic"/>
+                    <%--<div class="change-pic-btn text-center"> 
                         <h4>Change Photo</h4>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
             
@@ -257,7 +257,7 @@
                         <a href="post-job.aspx" class="btn btn-primary">Post New Job</a>
                     </div>
 
-                    <table class="table table-bordered">
+                  <%--  <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th scope="col">Job Title</th>
@@ -289,8 +289,29 @@
                           </td>
                         </tr>
                       </tbody>
-                    </table>
+                    </table>--%>
+
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered" AutoGenerateColumns="false">
+                        <Columns>
+                            <asp:BoundField DataField="job_title" HeaderText="Job Title" />
+                            <asp:BoundField DataField="job_type" HeaderText="Job Type" />
+                            <asp:BoundField DataField="location" HeaderText="Job Location" />
+                            <asp:BoundField DataField="salary" HeaderText="Salary" />
+                            <asp:TemplateField HeaderText="Action">
+                                <ItemTemplate>
+                                    <a class="badge badge-success p-2" role="button">Edit</a>
+                                    <a class="badge badge-danger p-2" role="button">Delete</a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
+
+                <script>
+                    //$(document).ready(function () {
+                    //    $('#ContentPlaceHolder1_GridView1').DataTable();
+                    //});
+                </script>
 
             </div>
         </div>

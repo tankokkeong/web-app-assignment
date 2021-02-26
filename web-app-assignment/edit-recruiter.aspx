@@ -170,7 +170,7 @@
             var ck_editor = document.getElementById("company_introduction");
 
             //Assign the value to CK EDITOR
-            ck_editor.value = introduction_value.value;
+            ck_editor.value = window.unescape(introduction_value.value);
         }
 
         //Call stick form functions
