@@ -12,30 +12,32 @@
             <div class="profile-col">
                 <div class="picture-container">
                     <img src="images/user%20profile/demo-user.png" id="profile-pic"/>
-                    <div class="change-pic-btn text-center"> 
-                        <h4>Change Photo</h4>
-                    </div>
                 </div>
             </div>
             
             <div class="profile-col user-title-col">
                 <div class="user-title">
-                    <h2>Lui Deze 
+                    <h2><asp:Label ID="lblSeekerProfileName" runat="server" Text=""></asp:Label>
                         <span class="user-location text-secondary ml-3">
-                            <i class="fas fa-map-marker-alt"></i> Kuala Lumpur
+                            <i class="fas fa-map-marker-alt"></i> <asp:Label ID="lblSeekerProfileLocation" runat="server" Text=""></asp:Label>
                         </span>
 
                         <a href="edit-user.aspx" class="btn btn-secondary float-right">Edit Profile</a>
                     </h2>
-                    <h3 class="text-lightgreen">Web Developer And Designer</h3>
+                    <h3 class="text-lightgreen"><asp:Label ID="lblSeekerProfession" runat="server" Text=""></asp:Label></h3>
                 </div>
 
                 <div class="profile-bios">
-                     <h3 class="text-secondary">Bio Links: <span><i class="fab fa-facebook-square"></i></span> <span><i class="fab fa-twitter-square"></i></span></h3>
-                </div>
+                     <h3 class="text-secondary">Bio Links: 
+                         <span>
+                             <asp:HyperLink ID="SeekerFBLink" runat="server" CssClass="text-secondary" NavigateUrl="" Target="_blank"><i class="fab fa-facebook-square"></i></asp:HyperLink>
+                         </span> 
 
-                <div class="profile-skill">
-                    <h3 class="text-secondary">Skills: <span class="skill-list">ASP.NET, PHP, C#, C++, WordPress</span></h3>
+                         <span>
+                             <asp:HyperLink ID="SeekerLinkedInLink" runat="server" CssClass="text-secondary" NavigateUrl="" Target="_blank"><i class="fab fa-linkedin"></i></asp:HyperLink>
+                         </span>
+
+                     </h3>
                 </div>
             </div>
             
@@ -54,56 +56,7 @@
 
                 <div class="my-info row" id="about-content">
                     <div class="brief-info col-sm-12 col-lg-6">
-                        <h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-
-                        <h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-
-                        <h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                        <asp:Label ID="lblSeekerIntroduction" runat="server" Text="Label"></asp:Label>
                     </div>
 
                     <div class="basic-info col-sm-12 col-lg-6">
@@ -115,39 +68,67 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>User ID</td>
-                                    <td class="text-lightgreen">deze 1325</td>
-                                </tr>
-
                                 <tr> 
                                     <td>Name</td>
-                                    <td class="text-lightgreen">Lul Deze</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerName" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Email</td>
-                                    <td class="text-lightgreen">deze4412@gmail.com</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerEmail" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Phone</td>
-                                    <td class="text-lightgreen">60+11 2234 1251</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerPhone" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Gender</td>
-                                    <td class="text-lightgreen">Male</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerGender" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Profession</td>
-                                    <td class="text-lightgreen">Web Developer and Designer</td>
+                                    <td>Preferred Industry</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblPreferredIndustry" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Last Online</td>
-                                    <td class="text-lightgreen">Yesterday 2PM</td>
+                                    <td>Location</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerLocation" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Country:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerCountry" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Experience:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerExperience" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Skills:</td>
+                                    <td class="text-lightgreen">
+                                        <asp:Label ID="lblSeekerSkills" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -8,9 +8,19 @@
     padding: 20px;
 }
 
-#edit-profile-pic{
-    width:150px;
-    margin-bottom:20px;
+.edit-profile-pic {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.country-drop .select2-selection__rendered, .country-drop .select2-selection--single,
+.country-drop .select2-selection__clear, .country-drop .select2-selection__arrow {
+    height: 38px !important;
+    outline: none !important;
+}
+
+.country-drop .select2-selection__rendered {
+    padding: 5px;
 }
 
 @media (min-width:850px) {
