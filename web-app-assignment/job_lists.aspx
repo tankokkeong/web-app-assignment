@@ -114,89 +114,11 @@
 
         <div class="JobListContentsAllCompanies">
             <div class="container">
-                <div class="JobListContentsAllCompaniesHeaderPosition">
-                    <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <asp:Image ID="img_JobListCompanyLogoPosition" CssClass="JobListContentsAllCompaniesBoxesCompanyLogoPosition" AlternateText="company" runat="server" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">
-                                <asp:Label ID="lbl_JobListCompanyIndustry" runat="server" Text=""></asp:Label>
-                            </h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <asp:Label ID="lbl_JobListCompanyPosition" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <asp:Label ID="lbl_JobListCompanyLocation" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <asp:Label ID="lbl_JobListCompanySalary" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <asp:Label ID="lbl_JobListCompanyJobType" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <asp:Button ID="Button1" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow2_Click" />
-                                    <asp:Button ID="Button2" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow2_Click" />
-                                </div>
-                            </div>
-                        </div>
+                <div class="JobListContentsAllCompaniesContainer">
+                    <div class="JobListContentsAllCompaniesHeaderPosition">
+                        <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
                     </div>
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner3-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Accounting</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Sabah</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 2,680 - MYR 3,019</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <asp:Button ID="btn_jobListContentsApplyNow2" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow2_Click" />
-                                    <asp:Button ID="btn_jobListContentsContactNow2" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow2_Click" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
                 </div>
             </div>
         </div>
@@ -219,6 +141,14 @@
             allowClear: true,
             tags: true,
         });
+
+        function directContact() {
+            window.location = 'recruiter-profile.aspx';
+        }
+
+        function directDetails() {
+            window.location = 'job_description.aspx';
+        }
 
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;

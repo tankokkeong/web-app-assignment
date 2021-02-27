@@ -86,7 +86,10 @@
 
 .container {
     background-color: #F0F0F0;
-    padding-top: 2%;
+}
+
+.JobListContentsAllCompaniesContainer {
+    padding: 20px 25px;
 }
 
 .JobListContentsAllCompaniesHeaderPosition {
@@ -107,15 +110,13 @@
 .JobListContentsAllCompaniesBoxes {
     border: solid 3px #82A69B;
     background-color: white;
-    margin: 1.5%;
     position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
 }
 
 .JobListContentsAllCompaniesBoxesCompanyLogoPosition {
-    height: 200px;
-    width: 200px;
+    width: 100%;
     margin-top: 10%;
     padding: 5%;
 }

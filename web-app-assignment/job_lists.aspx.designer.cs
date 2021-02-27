@@ -24,93 +24,12 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Button btn_JobListContentsBackgroundInputsSearchButton;
 
         /// <summary>
-        /// img_JobListCompanyLogoPosition control.
+        /// lbl_JobListContentsAllCompanies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_JobListCompanyLogoPosition;
-
-        /// <summary>
-        /// lbl_JobListCompanyIndustry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListCompanyIndustry;
-
-        /// <summary>
-        /// lbl_JobListCompanyPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListCompanyPosition;
-
-        /// <summary>
-        /// lbl_JobListCompanyLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListCompanyLocation;
-
-        /// <summary>
-        /// lbl_JobListCompanySalary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListCompanySalary;
-
-        /// <summary>
-        /// lbl_JobListCompanyJobType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListCompanyJobType;
-
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
-
-        /// <summary>
-        /// btn_jobListContentsApplyNow2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsApplyNow2;
-
-        /// <summary>
-        /// btn_jobListContentsContactNow2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsContactNow2;
+        protected global::System.Web.UI.WebControls.Label lbl_JobListContentsAllCompanies;
     }
 }
