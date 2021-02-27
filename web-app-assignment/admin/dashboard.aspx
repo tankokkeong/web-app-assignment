@@ -259,7 +259,7 @@
                 <div class="form-group">
                    <%-- <label for="exampleInputEmail1">Task Remarks</label> --%>
                    <%-- <input type="text" class="form-control" > --%>
-                    <asp:Label ID="lblTaskRemarks" runat="server" Text="Task Name"></asp:Label>
+                    <asp:Label ID="lblTaskRemarks" runat="server" Text="Task Remarks"></asp:Label>
                     <asp:TextBox ID="txtTaskRemarks" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="modal-footer">

@@ -35,7 +35,27 @@ namespace web_app_assignment.admin
 
         protected void btnAddTask_Click(object sender, EventArgs e)
         {
+            string taskName = txtTaskName.Text;
+            string taskRemarks = txtTaskRemarks.Text;
+            string taskStatus = "active";
 
+            string sqlInsert = @"INSERT INTO ToDoList(task_name,task_remarks,task_status,belongs_to,created_at)
+                            VALUES (@task_name, @task_remarks, @task_status, @belongs_to, @created_at)";
+
+            SqlConnection con = new SqlConnection(strcon);
+            SqlCommand cmd = new SqlCommand(sqlInsert, con);
+            cmd.Parameters.AddWithValue("@task_name", taskName);
+            cmd.Parameters.AddWithValue("@task_remarks", taskRemarks);
+            cmd.Parameters.AddWithValue("@task_status", taskStatus);
+            cmd.Parameters.AddWithValue("@belongs_to", 1);
+            cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            Response.Write("<script>alert(' Inserted successful!');</script>");
+            Response.Redirect("dashboard.aspx");
         }
 
     }
