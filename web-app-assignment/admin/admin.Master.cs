@@ -11,13 +11,7 @@ namespace web_app_assignment.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null) { 
-            }
-        }
 
-        protected void LogoutLink_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("login.aspx");
         }
     }
 }

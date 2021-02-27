@@ -120,7 +120,7 @@
 
                               Response.Write(UserDetails["Admin_Name"]);
  
-                              //Response.Write(Session["Admin"]); 
+                            
                           } %></p>
                   <p class="app-sidebar__user-designation">
                        <% if (Session["Admin"] != null)
@@ -129,9 +129,9 @@
 
                               Response.Write(UserDetails["Admin_Right"]);
  
-                              //Response.Write(Session["Admin"]); 
+                              
                           } %></p>
-                  </p>
+                 
                 </div>
               </div>
               <ul class="app-menu">
