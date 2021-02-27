@@ -1,7 +1,7 @@
 ﻿.schedule-container {
     background-color: #e6e6e6;
     padding:50px 0;
-    height:100%;
+    height:auto;
 }
 
 .schedule-form{
@@ -33,8 +33,12 @@
     padding:20px;
 }
 
-#google-form-btn{
-    position:relative;
+#google-form-header{
+    text-align:center;
+}
+
+#google-form-btn {
+    position: relative;
 }
 
 #google-btn{
@@ -42,6 +46,28 @@
     top:50%;
     left:50%;
     transform:translate(-50%, -50%);
+}
+
+.extra-attendees{
+    width: calc(100% - 80px) !important;
+}
+
+.remove-attendees{
+    width:80px!important;
+}
+
+.extra-attendees-container{
+    display:flex;
+}
+
+select2-selection__rendered, .select2-selection--single,
+.select2-selection__clear, .select2-selection__arrow {
+    height: 38px !important;
+    outline: none !important;
+}
+
+.select2-selection__rendered {
+    padding: 5px;
 }
 
 @media (min-width:850px) {
