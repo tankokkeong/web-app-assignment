@@ -23,7 +23,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id;";
+                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 

@@ -23,7 +23,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id;";
+                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -31,28 +31,55 @@ namespace web_app_assignment
 
                 while (dr.Read())
                 {
-                    lbl_JobListCompanyPosition.Text = dr["job_title"].ToString();
-                    lbl_JobListCompanyLocation.Text = dr["location"].ToString();
-                    lbl_JobListCompanySalary.Text = "MYR " + dr["salary"].ToString();
-                    lbl_JobListCompanyJobType.Text = dr["job_type"].ToString();
-                    lbl_JobListCompanyIndustry.Text = dr["company_name"].ToString();
-                    img_JobListCompanyLogoPosition.ImageUrl = dr["company_photo"].ToString();
+                    lbl_JobListContentsAllCompanies.Text +=
+                        "<div class='col-sm-6 mt-3'>" +
+                            "<div class='JobListContentsAllCompaniesBoxes'> " +
+                                "<div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'>" +
+                                    "<img src='" + dr["company_photo"].ToString() + "' alt='company' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>" +
+                                    "<div class='JobListContentsAllCompaniesBoxesDetailsStars'>" +
+                                        "<%--Stars Here--%>" +
+                                        "<p>Stars</p>" +
+                                    "</div>" +
+                                "</div>" +
+                                "<div class='JobListContentsAllCompaniesBoxesDetails'>" +
+                                    "<h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>" +
+                                        dr["company_name"].ToString() +
+                                    "</h4>" +
+                                    "<div class='JobListContentsAllCompaniesBoxesDetailsBody'>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                            "<img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["job_title"].ToString() + "</p>" +
+                                        "</div>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                            "<img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["location"].ToString() + "</p>" +
+                                        "</div>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                            "<img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + "MYR " + dr["salary"].ToString() + "</p>" +
+                                        "</div>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                            "<img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["job_type"].ToString() + "</p>" +
+                                        "</div>" +
+                                    "</div>" +
+                                    "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
+                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails()'> More Details </button> " +
+                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button> " +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
                 }
+
+                con.Close();
             }
             catch (Exception error)
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
-        }
-
-        protected void btn_jobListContentsContactNow2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("recruiter-profile.aspx");
-        }
-
-        protected void btn_jobListContentsApplyNow2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("job_description.aspx");
         }
     }
 }

@@ -97,95 +97,12 @@
 
         <div class="JobListContentsAllCompanies">
             <div class="container">
-                <div class="JobListContentsAllCompaniesHeaderPosition">
-                    <h2 class="JobListContentsAllCompaniesHeader">Candidates Recommended</h2>
-                </div>
-
-                <% for (int i = 0; i < 5; i++)
-                    { %>
-                <div class="row">
-
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/candidate%20list/example-candidate.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="candidate"/>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Fashion Designer</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Penang</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,680 - MYR 2,019</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <asp:Button ID="btn_jobListContentsApplyNow1" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow_Click" />
-                                    <asp:Button ID="btn_jobListContentsContactNow1" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow_Click" />
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="JobListContentsAllCompaniesContainer">
+                    <div class="JobListContentsAllCompaniesHeaderPosition">
+                        <h2 class="JobListContentsAllCompaniesHeader">Candidates Recommended</h2>
                     </div>
-
-                    <div class="col-sm JobListContentsAllCompaniesBoxes">
-                        <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/candidate%20list/example-candidate.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="candidate"/>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsStars">
-                                <%--Stars Here--%>
-                                <p>Stars</p>
-                            </div>
-                        </div>
-                        <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsBody">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Accounting</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Sabah</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 2,680 - MYR 3,019</p>
-                                </div>
-                                <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
-                                    <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
-                                </div>
-                            </div>
-                            <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
-                                <div class="JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton">
-                                    <asp:Button ID="btn_jobListContentsApplyNow2" CssClass="btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="More Details" OnClick="btn_jobListContentsApplyNow_Click" />
-                                    <asp:Button ID="btn_jobListContentsContactNow2" CssClass="btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow" 
-                                        runat="server" Text="Contact Now" OnClick="btn_jobListContentsContactNow_Click" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
                 </div>
-                <%}; %>
-
             </div>
         </div>
     </div>
@@ -206,6 +123,14 @@
             allowClear: true,
             tags: true,
         });
+
+        function directContact() {
+            window.location = 'recruiter-profile.aspx';
+        }
+
+        function directDetails() {
+            window.location = 'user-profile.aspx';
+        }
 
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;

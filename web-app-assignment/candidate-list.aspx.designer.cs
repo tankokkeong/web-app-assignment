@@ -24,39 +24,12 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Button btn_JobListContentsBackgroundInputsSearchButton;
 
         /// <summary>
-        /// btn_jobListContentsApplyNow1 control.
+        /// lbl_JobListContentsAllCompanies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsApplyNow1;
-
-        /// <summary>
-        /// btn_jobListContentsContactNow1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsContactNow1;
-
-        /// <summary>
-        /// btn_jobListContentsApplyNow2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsApplyNow2;
-
-        /// <summary>
-        /// btn_jobListContentsContactNow2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_jobListContentsContactNow2;
+        protected global::System.Web.UI.WebControls.Label lbl_JobListContentsAllCompanies;
     }
 }
