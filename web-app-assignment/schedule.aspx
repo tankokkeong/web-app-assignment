@@ -32,47 +32,109 @@
             </div>
 
             <form>
-                <div class="form-row">
-
-                    <div class="col-sm-12 col-lg-6 mt-3">
-                        <input type="text" class="form-control" placeholder="Event name">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Meeting Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="meeting-name" value="email@example.com">
                     </div>
-
-                    <div class="col-sm-12 col-lg-6 mt-3">
-                        <input type="text" class="form-control" placeholder="Location">
-                    </div>
-
                 </div>
 
-                <div class="form-row">
-
-                    <div class="col-sm-12 col-lg-6 mt-3">
-                        <input type="text" class="form-control" placeholder="Start Date">
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Location:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="meeting-location">
                     </div>
+                </div>
 
-                    <div class="col-sm-12 col-lg-6 mt-3">
-                        <input type="text" class="form-control" placeholder="End Date">
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Description:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="meeting-description" rows="10"></textarea>
                     </div>
+                </div>
 
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Start Date:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control mb-2" id="meeting-startDate">
+                        <input type="time" class="form-control mb-2" id="meeting-startTime">
+                        <select class="form-control" id="meeting-startTimeZone" style="width:100%;">
+                            <option value="">Select the timezone</option>
+                        </select>
+
+                        <script>
+                            $("#meeting-startTimeZone").select2({
+                                placeholder: "Search the Timezons here",
+                                allowClear: true,
+                            });
+                        </script>   
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">End Date:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control mb-2" id="meeting-endDate">
+                        <input type="time" class="form-control mb-2" id="meeting-endTime">
+                        <select class="form-control" id="meeting-endTimeZone" style="width:100%;">
+                            <option value="">Select the timezone</option>
+                        </select>
+
+                        <script>
+                            $("#meeting-endTimeZone").select2({
+                                placeholder: "Search the Timezons here",
+                                allowClear: true,
+                            });
+                        </script>                               
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Attendees:</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control meeting-attendees" id="meeting-attendees" value="tankokkeong4488@gmail.com">
+
+                        <div id="attendees-container">
+
+                        </div>
+                        <div class="text-right mt-3 mb-3">
+                            <button class="btn btn-info" onclick="addMoreMeetingAttendees('attendees-container', 'meeting-attendees')" type="button">Add More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Google Meet:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="meeting-googleMeet">
+                            <option value="enable">Enable</option>
+                            <option value="disable">Disable</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mt-3">
-                    <button type="button" class="btn btn-info" type="button" onclick="CreateMeeting()">Schedule</button>
+                    <button type="button" class="btn btn-info" type="button" onclick="createScheduleMeeting()">Schedule</button>
                     <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
                 </div>
             </form>
         </div>
     </div>
 
-        <!--Add buttons to initiate auth sequence and sign out-->
+    <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;" type="button">Authorize</button>
     <button id="signout_button" style="display: none;" type="button">Sign Out</button>
     <!-- <button onclick="create()">Create</button> -->
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+<%--    <div class="mt-3">
+        <button id="authorize_button2" style="display: none;" type="button">Authorize</button>
+        <button id="signout_button2" style="display: none;" type="button">Sign Out</button>
+    </div>--%>
+
+    <%--<pre id="content" style="white-space: pre-wrap;"></pre>--%>
 
     <%-- Google Calendar API --%>
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <%--<pre id="content" style="white-space: pre-wrap;"></pre>--%>
 
     <script type="text/javascript">
         // Client ID and API key from the Developer Console
@@ -85,9 +147,6 @@
         // Authorization scopes required by the API; multiple scopes can be
         // included, separated by spaces.
         var SCOPES = "https://www.googleapis.com/auth/calendar";
-
-        var authorizeButton = document.getElementById('authorize_button');
-        var signoutButton = document.getElementById('signout_button');
 
         /**
          *  On load, called to load the auth2 library and API client library.
@@ -112,8 +171,6 @@
 
                 // Handle the initial sign-in state.
                 updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                authorizeButton.onclick = handleAuthClick;
-                signoutButton.onclick = handleSignoutClick;
             }, function (error) {
                 appendPre(JSON.stringify(error, null, 2));
             });
@@ -125,12 +182,10 @@
          */
         function updateSigninStatus(isSignedIn) {
             if (isSignedIn) {
-                authorizeButton.style.display = 'none';
-                signoutButton.style.display = 'block';
                 removeGoogleSignInContainer();
+
             } else {
-                authorizeButton.style.display = 'block';
-                signoutButton.style.display = 'none';
+                displayGoogleSignInContainer();
             }
         }
 
@@ -140,6 +195,16 @@
         function handleAuthClick(event) {
             gapi.auth2.getAuthInstance().signIn();
             updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+
+
+            var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
+            console.log('ID: ' + profile.getId());
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+      
         }
 
         /**
@@ -156,104 +221,27 @@
          * @param {string} message Text to be placed in pre element.
          */
         function appendPre(message) {
-            var pre = document.getElementById('content');
-            var textContent = document.createTextNode(message + '\n');
-            pre.appendChild(textContent);
+            alert(message);
         }
 
-        /**
-         * Print the summary and start datetime/date of the next ten events in
-         * the authorized user's calendar. If no events are found an
-         * appropriate message is printed.
-         */
-        function listUpcomingEvents() {
-            gapi.client.calendar.events.list({
-                'calendarId': 'primary',
-                'timeMin': (new Date()).toISOString(),
-                'showDeleted': false,
-                'singleEvents': true,
-                'maxResults': 10,
-                'orderBy': 'startTime'
-            }).then(function (response) {
-                var events = response.result.items;
-                appendPre('Upcoming events:');
-
-                if (events.length > 0) {
-                    for (i = 0; i < events.length; i++) {
-                        var event = events[i];
-                        var when = event.start.dateTime;
-                        if (!when) {
-                            when = event.start.date;
-                        }
-                        appendPre(event.summary + ' (' + when + ')')
-                    }
-                } else {
-                    appendPre('No upcoming events found.');
-                }
+        function printFile(fileId) {
+            var request = gapi.client.drive.files.get({
+                'fileId': fileId
+            });
+            request.execute(function (resp) {
+                console.log('Title: ' + resp.title);
+                console.log('Description: ' + resp.description);
+                console.log('MIME type: ' + resp.mimeType);
             });
         }
 
-        function removeGoogleSignInContainer() {
-            container = document.getElementById("google-signin-form");
-            background = document.getElementById("google-signin-background");
-
-            //Remove the background and container
-            container.style.display = "none";
-            background.style.display = "none";
-        }
-
-        function CreateMeeting() {
-            var event = {
-                'summary': 'Interview',
-                'location': '800 Howard St., San Francisco, CA 94103',
-                'description': 'A chance to hear more about Google\'s developer products.',
-                'start': {
-                    'dateTime': '2021-05-28T09:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles'
-                },
-                'end': {
-                    'dateTime': '2021-05-28T17:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles'
-                },
-                "conferenceData": {
-                    "createRequest": {
-                        "conferenceSolutionKey": {
-                            "type": "hangoutsMeet"
-                        },
-                        "requestId": "some-random-string"
-                    }
-                },
-                'recurrence': [
-                    'RRULE:FREQ=DAILY;COUNT=2'
-                ],
-                'attendees': [
-                    { 'email': 'tankokkeong4488@gmail.com' },
-                ],
-                'reminders': {
-                    'useDefault': false,
-                    'overrides': [
-                        { 'method': 'email', 'minutes': 24 * 60 },
-                        { 'method': 'popup', 'minutes': 10 }
-                    ]
-                }
-            };
-
-            var request = gapi.client.calendar.events.insert({
-                'calendarId': 'demo33885.email@gmail.com',
-                "conferenceDataVersion": 1,
-                'resource': event,
-                'sendUpdates': "all",
-            });
-
-            request.execute(function (event) {
-                appendPre('Event created: ' + event.htmlLink);
-            });
-        }
-
+        //Print out timezones for the form inputs
+        timeZonePrintOut("meeting-startTimeZone");
+        timeZonePrintOut("meeting-endTimeZone");
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
+     </script>
 </asp:Content>
