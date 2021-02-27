@@ -11,8 +11,40 @@
     padding:20px;
 }
 
-@media (min-width:850px)
-{
+#google-signin-background {
+    min-width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1000;
+}
+
+#google-signin-form {
+    width: 400px;
+    height: 300px;
+    background-color: white;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    z-index: 2000;
+    padding:20px;
+}
+
+#google-form-btn{
+    position:relative;
+}
+
+#google-btn{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+
+@media (min-width:850px) {
     .schedule-form {
         width: 60%;
         margin-left: 20%;

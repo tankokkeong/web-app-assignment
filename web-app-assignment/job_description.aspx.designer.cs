@@ -15,6 +15,51 @@ namespace web_app_assignment
     {
 
         /// <summary>
+        /// img_JobDescriptionDetailsImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img_JobDescriptionDetailsImage;
+
+        /// <summary>
+        /// lbl_JobDescriptionDetailsHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionDetailsHeader;
+
+        /// <summary>
+        /// lbl_JobDescriptionDetailsLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionDetailsLocation;
+
+        /// <summary>
+        /// lbl_JobDescriptionDetailsJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionDetailsJobTitle;
+
+        /// <summary>
+        /// lbl_JobDescriptionDetailsJobSalary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionDetailsJobSalary;
+
+        /// <summary>
         /// btn_JobDescriptionDetailsApplyNowButton control.
         /// </summary>
         /// <remarks>

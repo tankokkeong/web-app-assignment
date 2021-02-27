@@ -23,7 +23,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string sql = "SELECT * FROM JobPost";
+                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id;";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -40,6 +40,12 @@ namespace web_app_assignment
                     string[] jobSpecArr = jobSpec.Split(',', '/');
                     string[] qualificationArr = qualification.Split(',', '/');
                     string[] industryArr = industry.Split(',', '/');
+
+                    lbl_JobDescriptionDetailsHeader.Text = dr["company_name"].ToString();
+                    img_JobDescriptionDetailsImage.ImageUrl = dr["company_photo"].ToString();
+                    lbl_JobDescriptionDetailsJobTitle.Text = dr["job_title"].ToString();
+                    lbl_JobDescriptionDetailsLocation.Text = dr["location"].ToString();
+                    lbl_JobDescriptionDetailsJobSalary.Text = "MYR " + dr["salary"].ToString();
 
                     lbl_JobDescriptionDesc.Text = dr["job_description"].ToString();
                     lbl_JobDescriptionExpReq.Text = dr["experience_needed"].ToString();

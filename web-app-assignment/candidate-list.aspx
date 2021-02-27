@@ -64,10 +64,8 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <select class="custom-select" id="jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" multiple>
-                                    <option value="">All</option>
-                                    <option value="New">New</option>
-                                    <option value="Recent">Recent</option>
+                                <select class="custom-select jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" name="jobCategory[]" multiple="multiple">
+                                    <option value="All">All</option>
                                     <option value="Full Time">Full Time</option>
                                     <option value="Part Time">Part Time</option>
                                 </select>
@@ -198,16 +196,17 @@
             allowClear: true,
             tags: true,
         });
-        $("#jobCategory").select2({
-            placeholder: "Select Job Category",
-            allowClear: true,
-            tags: true,
+
+        $('.jobCategory').select2({
+            placeholder: "Job Category",
         });
+
         $("#jobSpec").select2({
             placeholder: "Job Specialization or Position eg. Accounting",
             allowClear: true,
             tags: true,
         });
+
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;
         }

@@ -9,22 +9,24 @@
     <div class="JobDescription">
         <div class="row JobDescriptionDetails">
             <div class="ml-5 col JobDescriptionDetailsImagePosition">
-                <img src="images/home/partner1-min.png" alt="company" class="JobDescriptionDetailsImage"/>
+                <asp:Image ID="img_JobDescriptionDetailsImage" CssClass="JobDescriptionDetailsImage" runat="server" />
             </div>
             <div class="col ml-3 JobDescriptionDetailsBody">
-                <h2 class="JobDescriptionDetailsBodyHeader">H&M</h2>
+                <h2 class="JobDescriptionDetailsBodyHeader">
+                    <asp:Label ID="lbl_JobDescriptionDetailsHeader" runat="server" Text=""></asp:Label>
+                </h2>
                 <div class="JobDescriptionDetailsBodyContents">
                     <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/pin.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
-                        <p class="JobDescriptionDetailsBodyContentsDetailsDescription">Penang</p>
+                        <asp:Label ID="lbl_JobDescriptionDetailsLocation" CssClass="JobDescriptionDetailsBodyContentsDetailsDescription" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/working-position.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
-                        <p class="JobDescriptionDetailsBodyContentsDetailsDescription">Fashion Designer</p>
+                        <asp:Label ID="lbl_JobDescriptionDetailsJobTitle" CssClass="ml-2 JobDescriptionDetailsBodyContentsDetailsDescription" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col JobDescriptionDetailsBodyContentsDetails">
                         <img src="images/JobsList/salary.png" alt="location" class="JobDescriptionDetailsBodyContentsImage"/>
-                        <p class="JobDescriptionDetailsBodyContentsDetailsDescription">MYR 1,680 - MYR 2,019</p>
+                        <asp:Label ID="lbl_JobDescriptionDetailsJobSalary" CssClass="ml-2 JobDescriptionDetailsBodyContentsDetailsDescription" runat="server" Text=""></asp:Label>
                     </div>
                 </div>
             </div>

@@ -64,8 +64,8 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <select class="form-control">
-                                    <option value="">All</option>
+                                <select class="custom-select jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" name="jobCategory[]" multiple="multiple">
+                                    <option value="All">All</option>
                                     <option value="Full Time">Full Time</option>
                                     <option value="Part Time">Part Time</option>
                                 </select>
@@ -118,35 +118,35 @@
                     <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
                 </div>
 
-                <% for (int i = 0; i < 5; i++)
-                            { %>
                 <div class="row">
                     <div class="col-sm JobListContentsAllCompaniesBoxes">
                         <div class="JobListContentsAllCompaniesBoxesCompanyLogoPosition">
-                            <img src="images/home/partner1-min.png" class="JobListContentsAllCompaniesBoxesCompanyLogoPosition" alt="company" />
+                            <asp:Image ID="img_JobListCompanyLogoPosition" CssClass="JobListContentsAllCompaniesBoxesCompanyLogoPosition" AlternateText="company" runat="server" />
                             <div class="JobListContentsAllCompaniesBoxesDetailsStars">
                                 <%--Stars Here--%>
                                 <p>Stars</p>
                             </div>
                         </div>
                         <div class="JobListContentsAllCompaniesBoxesDetails">
-                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">Industry</h4>
+                            <h4 class="JobListContentsAllCompaniesBoxesDetailsTitle">
+                                <asp:Label ID="lbl_JobListCompanyIndustry" runat="server" Text=""></asp:Label>
+                            </h4>
                             <div class="JobListContentsAllCompaniesBoxesDetailsBody">
                                 <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
                                     <img src="images/JobsList/working-position.png" alt="position" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Fashion Designer</p>
+                                    <asp:Label ID="lbl_JobListCompanyPosition" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
                                 </div>
                                 <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
                                     <img src="images/JobsList/pin.png" alt="location" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Penang</p>
+                                    <asp:Label ID="lbl_JobListCompanyLocation" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
                                 </div>
                                 <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
                                     <img src="images/JobsList/salary.png" alt="salary" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">MYR 1,680 - MYR 2,019</p>
+                                    <asp:Label ID="lbl_JobListCompanySalary" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
                                 </div>
                                 <div class="JobListContentsAllCompaniesBoxesDetailsBodyContents">
                                     <img src="images/JobsList/clock.png" alt="emmployee status" class="JobListContentsAllCompaniesBoxesImages"/>
-                                    <p class="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription">Full Time</p>
+                                    <asp:Label ID="lbl_JobListCompanyJobType" CssClass="JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                             <div class="JobListContentsAllCompaniesBoxesDetailsFooter">
@@ -198,7 +198,6 @@
                         </div>
                     </div>
                 </div>
-                    <%}; %>
             </div>
         </div>
     </div>
@@ -210,12 +209,11 @@
             tags: true,
         });
 
-        $("#jobCategory").select2({
-            placeholder: "Select Job Category",
-            allowClear: true,
-            tags: true,
-        });
 
+        $('.jobCategory').select2({
+            placeholder: "Job Category",
+        });
+        
         $("#jobSpec").select2({
             placeholder: "Job Specialization or Position eg. Accounting",
             allowClear: true,
