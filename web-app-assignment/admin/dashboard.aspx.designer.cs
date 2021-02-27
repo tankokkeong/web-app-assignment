@@ -15,22 +15,13 @@ namespace web_app_assignment.admin
     {
 
         /// <summary>
-        /// lblToDolist control.
+        /// litResultToDoList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblToDolist;
-
-        /// <summary>
-        /// lblToDoContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblToDoContent;
+        protected global::System.Web.UI.WebControls.Literal litResultToDoList;
 
         /// <summary>
         /// imgCompany control.

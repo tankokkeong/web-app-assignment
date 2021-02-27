@@ -165,15 +165,9 @@
                 </div>
 
                 <div class="do-list-content" id="sortable">
-                    <%for (int i = 0; i < 5; i++)
-                        { %>
-                    <div class="to-do-task mt-3">
                        <%-- <h5 class="mb-0">Meet Up with clients</h5> --%> 
                        <%-- <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p> --%>
-                       <asp:Label ID="lblToDolist" runat="server" Text="Lab" class="mb-0" CssClass="h5"></asp:Label> <br />
-                       <asp:Label ID="lblToDoContent" runat="server" Text="L" class="text-secondary mb-0"></asp:Label>
-                    </div>
-                    <%}; %>
+                        <asp:Literal ID="litResultToDoList" runat="server"></asp:Literal>
                 </div>
             </div>
         </div>
