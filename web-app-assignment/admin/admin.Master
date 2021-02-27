@@ -102,8 +102,9 @@
                   <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                     <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                    <li><a class="dropdown-item" href="login.aspx"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
-                      
+                    <li><a class="dropdown-item" id="logout" runat="server" onserverclick="logout_Click"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                    <%--<li><asp:LinkButton runat="server" CssClass="dropdown-item"><i class="fa fa-sign-out fa-lg"></i>Logout</asp:LinkButton></li>--%>
+
                   </ul>
                 </li>
               </ul>
@@ -114,23 +115,11 @@
               <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/admin.png" alt="User Image" width="35px">
                 <div>
                   <p class="app-sidebar__user-name">
-                      <% if (Session["Admin"] != null)
-                          {
-                              Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-                              Response.Write(UserDetails["Admin_Name"]);
- 
-                            
-                          } %></p>
+                      <asp:Label ID="lblUserName" runat="server"></asp:Label>
+                  </p>
                   <p class="app-sidebar__user-designation">
-                       <% if (Session["Admin"] != null)
-                          {
-                              Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-                              Response.Write(UserDetails["Admin_Right"]);
- 
-                              
-                          } %></p>
+                      <asp:Label ID="lblRight" runat="server"></asp:Label>
+                  </p>
                  
                 </div>
               </div>

@@ -11,7 +11,25 @@ namespace web_app_assignment.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] != null)
+            {
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
+                lblUserName.Text = UserDetails["Admin_Name"];
+                lblRight.Text = UserDetails["Admin_Right"];
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
+        protected void logout_Click (object sender, EventArgs e)
+        {           
+           
+            Session.Remove("Admin");
+
+            Response.Redirect("login.aspx");
+        }
+
     }
 }

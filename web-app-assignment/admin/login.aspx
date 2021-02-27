@@ -35,7 +35,7 @@
                       </div>
 
                        <div class="text-center">
-                           <asp:Button ID="btnSubmit" runat="server" Text="Login" cssclass="btn btn-dark" OnClick="btnSubmit_Click"/>
+                           <asp:Button ID="btnLogin" runat="server" Text="Login" cssclass="btn btn-dark" OnClick="btnLogin_Click"/>
                            <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                            <%--<button type="submit" class="btn btn-dark">Login</button>--%>
                        </div>

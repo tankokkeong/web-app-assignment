@@ -22,7 +22,7 @@ namespace web_app_assignment.admin
 
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
             
 
