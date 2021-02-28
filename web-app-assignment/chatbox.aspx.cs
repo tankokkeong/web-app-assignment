@@ -37,20 +37,31 @@ namespace web_app_assignment
                 cmd.Parameters.AddWithValue("@seeker_id", 1);
 
                 SqlDataReader dr = cmd.ExecuteReader();
+                //Record Chat sent date
+                string sent_date = "";
 
 
                 while (dr.Read())
                 {
+                    string sent_time = dr["sent_time"].ToString().Substring(12);
+
+                    if (dr["sent_time"].ToString().Substring(0, 11) != sent_date)
+                    {
+                        sent_date = dr["sent_time"].ToString().Substring(0, 11);
+
+                        lblContent.Text = lblContent.Text +
+                            "<div class='text-center'>" + "<span class='sent-date-bg rounded p-1'>" + sent_date + "</span>" +"</div>";
+                    }
 
                     if (dr["sent"].ToString() == "Recruiter")
                     {
                         lblContent.Text = lblContent.Text +
                         "<div class='my-reply'>" +
                             "<div class='my-reply-content'>" +
-                                dr["chat_content"].ToString() +
+                                dr["chat_content"].ToString() + 
 
                                 "<div class='my-reply-time float-right'>" +
-                                    "<span class='text-light'>10:25</span>" +
+                                    "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12)  +"</span>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
@@ -64,10 +75,10 @@ namespace web_app_assignment
                             "</div>" +
 
                             "<div class='reply-content'>" +
-                                dr["chat_content"].ToString() +
+                                dr["chat_content"].ToString() + 
 
                                 "<div class='replier-time float-right'>" +
-                                    "<span class='text-secondary'>10:24</span>" +
+                                   "<span class='text-secondary'>" + sent_time + "</span>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
@@ -109,20 +120,30 @@ namespace web_app_assignment
                 cmd.Parameters.AddWithValue("@seeker_id", 1);
 
                 SqlDataReader dr = cmd.ExecuteReader();
-
+                //Record Chat sent date
+                string sent_date = "";
 
                 while (dr.Read())
                 {
+                    string sent_time = dr["sent_time"].ToString().Substring(12);
+
+                    if (dr["sent_time"].ToString().Substring(0, 11) != sent_date)
+                    {
+                        sent_date = dr["sent_time"].ToString().Substring(0, 11);
+
+                        lblContent.Text = lblContent.Text +
+                           "<div class='text-center'>" + "<span class='sent-date-bg rounded p-1'>" + sent_date + "</span>" + "</div>";
+                    }
 
                     if (dr["sent"].ToString() == "Recruiter")
                     {
                         lblContent.Text = lblContent.Text +
                         "<div class='my-reply'>" +
                             "<div class='my-reply-content'>" +
-                                dr["chat_content"].ToString() +
+                                dr["chat_content"].ToString() + 
 
                                 "<div class='my-reply-time float-right'>" +
-                                    "<span class='text-light'>10:25</span>" +
+                                    "<span class='text-light'>" + sent_time + "</span>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
@@ -139,7 +160,7 @@ namespace web_app_assignment
                                 dr["chat_content"].ToString() +
 
                                 "<div class='replier-time float-right'>" +
-                                    "<span class='text-secondary'>10:24</span>" +
+                                    "<span class='text-secondary'>" + sent_time + "</span>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";

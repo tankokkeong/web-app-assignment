@@ -101,6 +101,10 @@
     justify-content:flex-end;
 }
 
+.sent-date-bg {
+    background-color: #DADADA;
+}
+
 @media (min-width:850px)
 {
     .chatbox-container{
