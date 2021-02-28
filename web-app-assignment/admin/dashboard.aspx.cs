@@ -14,6 +14,7 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //To-Do-List
             string s = "";
             string sql = "SELECT * FROM ToDoList";
@@ -117,19 +118,31 @@ namespace web_app_assignment.admin
             string taskRemarks = txtTaskRemarks.Text;
             string taskStatus = "active";
 
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
+            SqlCommand cmdSession = new SqlCommand(sqlSession, con);
+            con.Open();
+            cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
+            SqlDataReader drSession = cmdSession.ExecuteReader();
 
             string sqlInsert = @"INSERT INTO ToDoList(task_name,task_remarks,task_status,belongs_to,created_at)
                             VALUES (@task_name, @task_remarks, @task_status, @belongs_to, @created_at)";
-
-            SqlConnection con = new SqlConnection(strcon);
+            
+            
             SqlCommand cmd = new SqlCommand(sqlInsert, con);
             cmd.Parameters.AddWithValue("@task_name", taskName);
             cmd.Parameters.AddWithValue("@task_remarks", taskRemarks);
             cmd.Parameters.AddWithValue("@task_status", taskStatus);
-            cmd.Parameters.AddWithValue("@belongs_to", 1);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
-            con.Open();
+            while (drSession.Read())
+            {
+                cmd.Parameters.AddWithValue("@belongs_to", drSession["admin_id"]);
+            }
+            drSession.Close();
             cmd.ExecuteNonQuery();
             con.Close();
 

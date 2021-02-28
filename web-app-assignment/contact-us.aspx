@@ -56,29 +56,35 @@
                 <div class="form-row">
 
                     <div class="form-group col-md-6">
-                      <input type="text" class="form-control" id="name" placeholder="Name">
+                      <%-- <input type="text" class="form-control" id="name" placeholder="Name"> --%>
+                      <asp:TextBox ID="txtName" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Name" runat="server"></asp:TextBox>
                     </div>
 
                     <div class="form-group col-md-6">
-                      <input type="text" class="form-control" id="contact-number" placeholder="Contact Number">
+                     <%-- <input type="text" class="form-control" id="contact-number" placeholder="Contact Number"> --%>
+                      <asp:TextBox ID="txtContactNum" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Contact Number" runat="server"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                      <input type="text" class="form-control" id="email" placeholder="E-mail">
+                      <%-- <input type="text" class="form-control" id="email" placeholder="E-mail"> --%>
+                      <asp:TextBox ID="txtEmail" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Email" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-6">
-                      <input type="text" class="form-control" id="subject" placeholder="Subject">
+                      <%-- <input type="text" class="form-control" id="subject" placeholder="Subject"> --%>
+                       <asp:TextBox ID="txtSubject" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Subject" runat="server"></asp:TextBox>
                     </div>
                </div>
 
                <div class="form-group">
-                    <textarea class="form-control" rows="8" id="message" placeholder="Message"></textarea>
+                    <%-- <textarea class="form-control" rows="8" id="message" placeholder="Message"></textarea> --%>
+                   <textarea id="message" class="form-control" placeholder="Message" rows="8"></textarea>
                </div>
 
                 <div class='text-center'>
-                    <button class="btn btn-success">Submit</button>
+                    <%-- <button class="btn btn-success">Submit</button> --%>
+                    <asp:Button ID="btnSubmit" class="btn btn-success" runat="server" Text="Submit" />
                 </div>
             </form>
 
