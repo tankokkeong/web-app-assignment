@@ -876,7 +876,7 @@ function createScheduleMeeting() {
             //    'RRULE:FREQ=DAILY;COUNT=2'
             //],
             'attendees': [
-                { 'email': 'tankokkeong4488@gmail.com' },
+               
             ],
             'reminders': {
                 'useDefault': false,
@@ -904,7 +904,7 @@ function createScheduleMeeting() {
             //    'RRULE:FREQ=DAILY;COUNT=2'
             //],
             'attendees': [
-                { 'email': 'tankokkeong4488@gmail.com' },
+               
             ],
             'reminders': {
                 'useDefault': false,
