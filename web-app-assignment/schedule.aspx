@@ -224,17 +224,6 @@
             alert(message);
         }
 
-        function printFile(fileId) {
-            var request = gapi.client.drive.files.get({
-                'fileId': fileId
-            });
-            request.execute(function (resp) {
-                console.log('Title: ' + resp.title);
-                console.log('Description: ' + resp.description);
-                console.log('MIME type: ' + resp.mimeType);
-            });
-        }
-
         //Print out timezones for the form inputs
         timeZonePrintOut("meeting-startTimeZone");
         timeZonePrintOut("meeting-endTimeZone");

@@ -916,7 +916,9 @@ function createScheduleMeeting() {
         };
     }
 
-
+    //Get Google User Profile
+    var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+    var organizer_email = profile.getEmail();
 
     //Insert Attendees to the event JSON Object
     for (var i = 0; i < attendees_collection.length; i++) {
@@ -926,7 +928,7 @@ function createScheduleMeeting() {
     console.log(event)
 
     var request = gapi.client.calendar.events.insert({
-        'calendarId': 'demo33885.email@gmail.com',
+        'calendarId': organizer_email,
         "conferenceDataVersion": 1,
         'resource': event,
         'sendUpdates': "all",
