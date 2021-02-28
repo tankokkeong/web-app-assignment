@@ -7,18 +7,27 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="chatbox-container">
         <div class="chatbox-box">
-            <div class="chatbox-header text-center text-light">
-                <h3>Festus Ho Hon Chuang</h3>
-                <button type="button" class="close chatbox-close" aria-label="Close">
-                    <a href="user-profile.aspx" aria-hidden="true" class="text-dark text-decoration-none">&times;</a>
-                </button>
+            <div class="chatbox-header-container">
+                <div class="chatbox-header text-center text-light">
+                    <h3>Festus Ho Hon Chuang</h3>
+                    <button type="button" class="close chatbox-close" aria-label="Close">
+                        <a href="user-profile.aspx" aria-hidden="true" class="text-dark text-decoration-none">&times;</a>
+                    </button>
+                </div>
             </div>
+            
+            <div class="chat-content" id="chat-content-container">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="1000"></asp:Timer>
+                         <asp:Literal ID="lblContent" runat="server"></asp:Literal>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
 
-            <div class="chat-content">
+               
 
-                <%for (int i = 0; i < 3; i++)
-                    { %>
-                <div class="replier">
+<%--                <div class="replier">
                     <div class="replier-icon">
                         <img src="images/user%20profile/demo-user.png" class="rounded-circle replier-img"/>
                     </div>
@@ -56,15 +65,61 @@
                             <span class="text-light">10:25</span>
                         </div>
                     </div>
-                </div>
+                </div>--%>
+                
+                <asp:Literal ID="ltrScriptTrigger" runat="server"></asp:Literal>
 
-                <%} %>
             </div>
+            
 
             <div class="chat-input">
-                <input type="text" class="form-control" placeholder="Enter message here"/>
-                <button class="bg-lightgreen text-light btn">Send</button>
+                <input type="text" class="form-control" placeholder="Enter message here" id="chat-content" onkeyup="enterSendMessage()"/>
+                <button class="bg-lightgreen text-light btn" type="button" id="insert-chat-btn">Send</button>
             </div>
         </div>
     </div>
+
+    <%-- Insert Chat Record --%>
+    <script>
+        $("#insert-chat-btn").click(function(){
+            $.post("chat-post.aspx",
+            {
+                chat_content: $("#chat-content").val(),
+            },
+            function () {
+                //Clear form
+                scrollToBottom();
+
+                //Scroll to bottom every time send out message
+                scrollToBottom();
+
+            });
+        });
+
+        //Enter key to send message
+        function enterSendMessage() {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+ 
+                $.post("chat-post.aspx",
+                {
+                    chat_content: $("#chat-content").val(),
+                },
+                function () {
+                    //Clear form
+                    document.getElementById("chat-content").value = "";
+
+                    //Scroll to bottom every time send out message
+                    scrollToBottom();
+
+                });
+
+            }
+        }
+
+        function scrollToBottom() {
+            var messages = document.getElementById("chat-content-container");
+            messages.scrollTop = messages.scrollHeight;
+        }
+    </script>
 </asp:Content>

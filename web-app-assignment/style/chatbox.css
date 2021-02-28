@@ -7,7 +7,12 @@
     border: 1px solid #92989C;
 }
 
-.chatbox-box{
+.chatbox-box {
+    width: 100%;
+}
+
+.chatbox-header-container{
+    position:relative;
     width:100%;
 }
 
@@ -15,7 +20,6 @@
     background-color: #92989C;
     width:100%;
     padding:5px;
-    position:relative;
 }
 
 .chatbox-close{
@@ -33,9 +37,12 @@
     color:black;
 }
 
-.chat-content{
-    min-height:300px;
-    width:100%;
+.chat-content {
+    min-height: 300px;
+    width: 100%;
+    padding-top: 51px;
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 
 .chat-input {
@@ -87,6 +94,11 @@
 
 .my-reply-time {
     margin-top: 20px;
+}
+
+.my-reply{
+    display:flex;
+    justify-content:flex-end;
 }
 
 @media (min-width:850px)

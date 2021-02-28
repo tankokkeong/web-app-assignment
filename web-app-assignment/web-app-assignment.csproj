@@ -144,6 +144,7 @@
     <Content Include="bootstrap-4.5.3-dist\js\jquery-3.5.1.slim.min.js" />
     <Content Include="candidate-list.aspx" />
     <Content Include="Career.aspx" />
+    <Content Include="chat-post.aspx" />
     <Content Include="chatbox.aspx" />
     <Content Include="contact-us.aspx" />
     <Content Include="edit-postjob.aspx" />
@@ -2052,6 +2053,13 @@
     </Compile>
     <Compile Include="Career.aspx.designer.cs">
       <DependentUpon>Career.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chat-post.aspx.cs">
+      <DependentUpon>chat-post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chat-post.aspx.designer.cs">
+      <DependentUpon>chat-post.aspx</DependentUpon>
     </Compile>
     <Compile Include="chatbox.aspx.cs">
       <DependentUpon>chatbox.aspx</DependentUpon>
