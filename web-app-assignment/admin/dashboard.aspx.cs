@@ -14,6 +14,7 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //To-Do-List
             string s = "";
             string sql = "SELECT * FROM ToDoList";
 
@@ -31,6 +32,83 @@ namespace web_app_assignment.admin
 
             litResultToDoList.Text = s;
 
+
+            //Visitor count
+
+
+
+
+
+
+            //Job Seeker count
+            string sqlSeeker = "SELECT COUNT(*) FROM JobSeeker";
+
+            SqlCommand cmdSeeker = new SqlCommand(sqlSeeker, con);
+            con.Open();
+
+            //read from db
+            Int32 rows_countSeeker = Convert.ToInt32(cmdSeeker.ExecuteScalar());
+            cmdSeeker.Dispose();
+            con.Close();
+
+            //display
+            lblJobSeekerDisplay.Text = rows_countSeeker.ToString();
+
+            //Recruiter count
+            string sqlRecruiter = "SELECT COUNT(*) FROM Recruiter";
+
+            SqlCommand cmdRecruiter = new SqlCommand(sqlRecruiter, con);
+            con.Open();
+
+            //read from db
+            Int32 rows_countRecruiter = Convert.ToInt32(cmdRecruiter.ExecuteScalar());
+            cmdRecruiter.Dispose();
+            con.Close();
+
+            //display
+            lblRecruiterDisplay.Text = rows_countRecruiter.ToString();
+
+
+            //Job Posted count
+            string sqlJobPosted = "SELECT COUNT(*) FROM JobPost";
+
+            SqlCommand cmdJobPosted = new SqlCommand(sqlJobPosted, con);
+            con.Open();
+
+            //read from db
+            Int32 rows_countJobPosted = Convert.ToInt32(cmdJobPosted.ExecuteScalar());
+            cmdJobPosted.Dispose();
+            con.Close();
+
+            //display
+            lblJobPostedDisplay.Text = rows_countJobPosted.ToString();
+
+
+
+            //Top 5 companies
+
+            string company = "";
+            string sqlTopCompany = "SELECT top 5 company_name, company_photo,rating FROM Recruiter ORDER BY rating desc; ";
+
+            SqlCommand cmdTopCompany = new SqlCommand(sqlTopCompany, con);
+            con.Open();
+            SqlDataReader drTopCompany = cmdTopCompany.ExecuteReader();
+            
+            while(drTopCompany.Read())
+            {
+                company += string.Format("<div class='media'>" +
+                                            "<img src='{0}' class='mr-3 top-company-pic'/>" +
+                                            "<div class='media-body'>" +
+                                                "<h5 class='mt-0'>{1}</h5>" +
+                                                "<p class='text-secondary'>{2}</p>" +
+                                            "</div>" +
+                                        "</div>",drTopCompany["company_photo"],drTopCompany["company_name"],drTopCompany["rating"]);
+            }
+            drTopCompany.Close();
+            con.Close();
+
+            litResultCompany.Text = company;
+
         }
 
         protected void btnAddTask_Click(object sender, EventArgs e)
@@ -38,6 +116,7 @@ namespace web_app_assignment.admin
             string taskName = txtTaskName.Text;
             string taskRemarks = txtTaskRemarks.Text;
             string taskStatus = "active";
+
 
             string sqlInsert = @"INSERT INTO ToDoList(task_name,task_remarks,task_status,belongs_to,created_at)
                             VALUES (@task_name, @task_remarks, @task_status, @belongs_to, @created_at)";
@@ -54,7 +133,6 @@ namespace web_app_assignment.admin
             cmd.ExecuteNonQuery();
             con.Close();
 
-            Response.Write("<script>alert(' Inserted successful!');</script>");
             Response.Redirect("dashboard.aspx");
         }
 

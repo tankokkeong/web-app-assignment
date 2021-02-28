@@ -107,7 +107,8 @@
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
               <h4>Visitor</h4>
-              <p><b>5</b></p>
+              <%-- <p><b>5</b></p> --%>
+              <asp:Label ID="lblVistorDisplay" runat="server" CssClass="font-weight-bold" Text="5"></asp:Label>
             </div>
           </div>
         </div>
@@ -116,7 +117,8 @@
           <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
               <h4>Job Seeker</h4>
-              <p><b>25</b></p>
+              <%-- <p><b>25</b></p> --%>
+              <asp:Label ID="lblJobSeekerDisplay" runat="server" CssClass="font-weight-bold"></asp:Label>
             </div>
           </div>
         </div>
@@ -125,7 +127,8 @@
           <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
               <h4>Recruiter</h4>
-              <p><b>10</b></p>
+              <%-- <p><b>10</b></p> --%>
+              <asp:Label ID="lblRecruiterDisplay" runat="server" CssClass="font-weight-bold"></asp:Label>
             </div>
           </div>
         </div>
@@ -134,7 +137,8 @@
           <div class="widget-small danger coloured-icon"><i class="icon fas fa-suitcase fa-3x"></i>
             <div class="info">
               <h4>Job Posted</h4>
-              <p><b>500</b></p>
+              <%-- <p><b>500</b></p> --%>
+              <asp:Label ID="lblJobPostedDisplay" runat="server" CssClass="font-weight-bold"></asp:Label>
             </div>
           </div>
         </div>
@@ -165,7 +169,7 @@
                 </div>
 
                 <div class="do-list-content" id="sortable">
-                       <%-- <h5 class="mb-0">Meet Up with clients</h5> --%> 
+                       <%-- <h5 class="mb-0">Meet Up with clients</h5> --%>
                        <%-- <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p> --%>
                         <asp:Literal ID="litResultToDoList" runat="server"></asp:Literal>
                 </div>
@@ -218,19 +222,15 @@
                 </div>
 
                 <div class="top-company-content">
-                    <%for (int i = 0; i < 5; i++)
-                        { %>
                     <div class="media">
                       <%--<img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." /> --%>
                         <asp:Image ID="imgCompany" runat="server" class="mr-3 top-company-pic"/>
                       <div class="media-body">
                         <%--<h5 class="mt-0">Netflix</h5> --%>
                         <%--<p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p> --%>
-                        <asp:Label ID="lblCompanyName" runat="server" Text="Netflix" class="mt-0" CssClass="h5"></asp:Label><br />
-                        <asp:Label ID="lblCompanyContent" runat="server" class="text-secondary" Text="Will you do the same for me? It's time to face the music I'm no longer your muse."></asp:Label>
+                          <asp:Literal ID="litResultCompany" runat="server"></asp:Literal>
                       </div>
                     </div>
-                    <%}; %>
                 </div>
             </div>
         </div>

@@ -15,6 +15,42 @@ namespace web_app_assignment.admin
     {
 
         /// <summary>
+        /// lblVistorDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVistorDisplay;
+
+        /// <summary>
+        /// lblJobSeekerDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJobSeekerDisplay;
+
+        /// <summary>
+        /// lblRecruiterDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRecruiterDisplay;
+
+        /// <summary>
+        /// lblJobPostedDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJobPostedDisplay;
+
+        /// <summary>
         /// litResultToDoList control.
         /// </summary>
         /// <remarks>
@@ -33,22 +69,13 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.Image imgCompany;
 
         /// <summary>
-        /// lblCompanyName control.
+        /// litResultCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCompanyName;
-
-        /// <summary>
-        /// lblCompanyContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCompanyContent;
+        protected global::System.Web.UI.WebControls.Literal litResultCompany;
 
         /// <summary>
         /// lblTaskName control.
