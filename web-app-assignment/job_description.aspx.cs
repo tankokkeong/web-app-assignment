@@ -23,9 +23,13 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
+                string post_id = Request.QueryString["post_id"] ?? "";
+
+                string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.post_id = @post_id AND JP.deleted_at IS NULL AND JP.recruiter_id = R.recruiter_id;";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@post_id", post_id);
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -36,10 +40,10 @@ namespace web_app_assignment
                     string qualification = (string)dr["qualification"];
                     string industry = (string)dr["industry"];
 
-                    string[] benefitOthersArr = benefitOthers.Split(',', '/');
-                    string[] jobSpecArr = jobSpec.Split(',', '/');
-                    string[] qualificationArr = qualification.Split(',', '/');
-                    string[] industryArr = industry.Split(',', '/');
+                    string[] benefitOthersArr = benefitOthers.Split(',');
+                    string[] jobSpecArr = jobSpec.Split(',');
+                    string[] qualificationArr = qualification.Split(',');
+                    string[] industryArr = industry.Split(',');
 
                     lbl_JobDescriptionDetailsHeader.Text = dr["company_name"].ToString();
                     img_JobDescriptionDetailsImage.ImageUrl = dr["company_photo"].ToString();

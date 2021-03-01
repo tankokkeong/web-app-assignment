@@ -23,7 +23,7 @@
                                     <img src="images/JobsList/loupe.png" alt="search" class="JobListContentsSearchImage"/>
                                 </span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Job Title, Keyword or Company" aria-label="searchbar" aria-describedby="searchbar">
+                            <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title, Keyword or Company" CssClass="form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group JobListContentsBackgroundInputs">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" runat="server" Text="Search" />
+                    <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" OnClick="btn_JobListContentsBackgroundInputsSearchButton_Click" runat="server" Text="Search" />
                 </form>
             </div>
         </div>
@@ -146,8 +146,8 @@
             window.location = 'recruiter-profile.aspx';
         }
 
-        function directDetails() {
-            window.location = 'job_description.aspx';
+        function directDetails(count) {
+            window.location = 'job_description.aspx?post_id=' + count;
         }
 
         function updateTextInput(val) {

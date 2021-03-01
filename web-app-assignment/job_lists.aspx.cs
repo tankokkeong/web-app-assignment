@@ -29,6 +29,8 @@ namespace web_app_assignment
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
+                int count = 1;
+
                 while (dr.Read())
                 {
                     lbl_JobListContentsAllCompanies.Text +=
@@ -65,13 +67,14 @@ namespace web_app_assignment
                                     "</div>" +
                                     "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
                                         "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
-                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails()'> More Details </button> " +
+                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + count + ")'> More Details </button> " +
                                             "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button> " +
                                         "</div>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
+                    count++;
                 }
 
                 con.Close();
@@ -80,6 +83,11 @@ namespace web_app_assignment
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+        }
+
+        protected void btn_JobListContentsBackgroundInputsSearchButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

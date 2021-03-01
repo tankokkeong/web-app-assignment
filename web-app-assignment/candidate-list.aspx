@@ -128,8 +128,8 @@
             window.location = 'recruiter-profile.aspx';
         }
 
-        function directDetails() {
-            window.location = 'user-profile.aspx';
+        function directDetails(count) {
+            window.location = 'user-profile.aspx?seeker_id=' + count;
         }
 
         function updateTextInput(val) {

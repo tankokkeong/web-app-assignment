@@ -102,7 +102,6 @@
                     <div class="companyOverviewInformation">
                         <%--The CkEditor Stuff in here--%>
                         <div>
-                            The CkEditor Stuff in here
                             <asp:Label ID="lbl_JobDescriptionCompOverview" runat="server" Text=""></asp:Label>
                         </div>
                         <div class="companyOverviewInformationDetails">

@@ -15,6 +15,15 @@ namespace web_app_assignment
     {
 
         /// <summary>
+        /// txt_SearchJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_SearchJobTitle;
+
+        /// <summary>
         /// btn_JobListContentsBackgroundInputsSearchButton control.
         /// </summary>
         /// <remarks>
