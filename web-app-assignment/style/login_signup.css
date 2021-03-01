@@ -108,12 +108,21 @@
         margin-top: 5%;
     }
 
-    #inputsFormSign_LoginButton {
+    #inputsFormSign_LoginFooter {
         margin-left: 50%;
         transform: translate(-50%);
         margin-bottom: -10%;
         width: 100%;
     }
+
+/*    #userRole {
+        background-color: #80b9bb;
+        color: white;
+    }
+
+    #userRole::placeholder {
+        color: white;
+    }*/
 
     #sign_login_emailUser {
         background-color: #80b9bb;

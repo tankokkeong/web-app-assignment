@@ -29,10 +29,19 @@
                     <div class="inputsFormSign_Login" id="inputsFormSign_Logins">
                         <form>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="sign_login_emailUser" aria-describedby="emailHelp" placeholder="Email OR User ID">
+                                    <asp:DropDownList ID="Role" runat="server" CssClass="form-control bg-info text-white">
+                                        <asp:ListItem Selected="True" Value="0"> Select Your Role </asp:ListItem>
+                                        <asp:ListItem Value="job_seeker"> Job Seeker </asp:ListItem>
+                                        <asp:ListItem Value="recruiter"> Recruiter </asp:ListItem>
+                                    </asp:DropDownList>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="sign_login_password" placeholder="Password">
+                               <%-- <input type="email" class="form-control" id="sign_login_emailUser" aria-describedby="emailHelp" placeholder="Email OR User ID">--%>
+                                <asp:TextBox ID="sign_login_emailUser" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Email" aria-describedby="emailHelp" Placeholder="Email OR User ID"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox ID="sign_login_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Password"></asp:TextBox>
+                                <%--<input type="password" class="form-control" id="sign_login_password" placeholder="Password">--%>
                                 <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordLogin" onclick="showPassword()"/>
                             </div>
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">
@@ -47,7 +56,8 @@
                                 </div>
                             </div>
                             <div class="inputsFormSign_LoginFooter">
-                                <button type="submit" class="btn btn-info" id="inputsFormSign_LoginButton">Log In</button>
+                                <%--<button type="submit" class="btn btn-info" id="inputsFormSign_LoginButton">Log In</button>--%>
+                                <asp:Button ID="inputsFormSign_LoginButton" ClientIDMode="Static" class="btn btn-info" runat="server" Text="Log In" Onclick="inputsFormSign_LoginButton_Click"/>
                             </div>
                         </form>
                     </div>

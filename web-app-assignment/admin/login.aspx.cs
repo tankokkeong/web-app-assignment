@@ -74,7 +74,7 @@ namespace web_app_assignment.admin
             }
             catch (Exception error)
             {
-                lblError.Text = error.Message;
+                //lblError.Text = error.Message;
             }
             
         }
