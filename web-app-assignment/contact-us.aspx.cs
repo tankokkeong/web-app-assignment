@@ -47,10 +47,10 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@subject", subject);
                     cmd.Parameters.AddWithValue("@contact_message", message);
                     cmd.Parameters.AddWithValue("@visitor_id",1);
-                    cmd.Parameters.AddWithValue("@seeker_id",0);
-                    cmd.Parameters.AddWithValue("@recruiter_id",0);
-                    cmd.Parameters.AddWithValue("@replied_by",null);
-                    cmd.Parameters.AddWithValue("@replied_date",null);
+                    cmd.Parameters.AddWithValue("@seeker_id",2);
+                    cmd.Parameters.AddWithValue("@recruiter_id",2);
+                    cmd.Parameters.AddWithValue("@replied_by",2);
+                    cmd.Parameters.AddWithValue("@replied_date",DateTime.Now);
                     cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
                     //Execute the queries

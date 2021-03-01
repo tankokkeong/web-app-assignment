@@ -24,7 +24,26 @@
         <div class="message-title">
             <h2>Contact Message</h2>
         </div>
+     <form runat="server">
 
+     <div class="table-container">
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="false" DataKeyNames="contact_id" AllowSorting="true">
+            <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
+            <RowStyle HorizontalAlign="Center" BackColor="#c0c0c0"/>
+            <Columns>
+                <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"/>
+                <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"/>
+                <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"/>
+                 <asp:HyperLinkField DataNavigateUrlFields="contact_id" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px"/>
+                <asp:ButtonField Text="Delete" HeaderStyle-CssClass="bg-lightgreen text-light" />
+            </Columns>
+        </asp:GridView>
+     </div>
+
+     </form>
+
+
+    <%--
         <div class="table-container">
             <table class="table table-striped table-bordered">
               <thead>
@@ -36,8 +55,6 @@
                 </tr>
               </thead>
               <tbody>
-                  <%for (int i = 0; i < 5; i++)
-                      { %>
                 <tr>
                   <td>Mark</td>
                   <td>0123456789</td>
@@ -47,9 +64,9 @@
                       <span class="badge badge-danger action-btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></span>
                   </td>
                 </tr>
-                <%}; %>
               </tbody>
             </table>
         </div>
+    --%>
     </div>
 </asp:Content>

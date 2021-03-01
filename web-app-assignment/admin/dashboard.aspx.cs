@@ -22,10 +22,13 @@ namespace web_app_assignment.admin
             {
                 SqlConnection con = new SqlConnection(strcon);
 
+                //Get admin_id from database
                 string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
                 SqlCommand cmdSession = new SqlCommand(sqlSession, con);
                 con.Open();
+                
                 cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
+
                 SqlDataReader drSession = cmdSession.ExecuteReader();
 
                 string sqlDoList = @"SELECT * FROM ToDoList WHERE belongs_to = @id AND deleted_at IS NULL";
