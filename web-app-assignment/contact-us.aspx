@@ -79,12 +79,12 @@
 
                <div class="form-group">
                     <%-- <textarea class="form-control" rows="8" id="message" placeholder="Message"></textarea> --%>
-                   <textarea id="message" class="form-control" placeholder="Message" rows="8"></textarea>
+                   <asp:TextBox ID="txtMessage" CssClass="form-control" placeholder="Message" TextMode="MultiLine" BackColor="#7CAEA7" Columns="50" Rows="8" runat="server"></asp:TextBox>
                </div>
 
                 <div class='text-center'>
                     <%-- <button class="btn btn-success">Submit</button> --%>
-                    <asp:Button ID="btnSubmit" class="btn btn-success" runat="server" Text="Submit" />
+                    <asp:Button ID="btnSubmit" class="btn btn-success" runat="server" Text="Submit" OnClick="btnSubmit_Click"/>
                 </div>
             </form>
 

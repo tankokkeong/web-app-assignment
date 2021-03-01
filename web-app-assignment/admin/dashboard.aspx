@@ -4,7 +4,7 @@
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawBarChart);
-
+       
         function drawBarChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
@@ -275,5 +275,5 @@
     </div>
       
 
-      
+    
 </asp:Content>

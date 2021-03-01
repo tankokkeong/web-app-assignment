@@ -13,5 +13,16 @@ namespace web_app_assignment
         {
 
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string name = txtName.Text;
+            string contactNum = txtContactNum.Text;
+            string email = txtEmail.Text;
+            string subject = txtSubject.Text;
+            string message = txtMessage.Text;
+
+            
+        }
     }
 }
