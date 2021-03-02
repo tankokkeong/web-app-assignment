@@ -27,7 +27,7 @@
      <form runat="server">
 
      <div class="table-container">
-        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="false" DataKeyNames="contact_id" AllowSorting="true">
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="false" DataKeyNames="contact_id" AllowSorting="true" >
             <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
             <RowStyle HorizontalAlign="Center" BackColor="#c0c0c0"/>
             <Columns>
