@@ -18,7 +18,7 @@ namespace web_app_assignment.admin
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sql = "SELECT * FROM ContactMessage";
+            string sql = "SELECT * FROM ContactMessage WHERE deleted_at IS NULL";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
