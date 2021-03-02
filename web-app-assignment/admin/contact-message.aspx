@@ -34,8 +34,14 @@
                 <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"/>
                 <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"/>
                 <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"/>
-                 <asp:HyperLinkField DataNavigateUrlFields="contact_id" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px"/>
-                <asp:ButtonField Text="Delete" HeaderStyle-CssClass="bg-lightgreen text-light" />
+                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="btn btn-primary" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px"/>
+                <asp:TemplateField HeaderStyle-CssClass="bg-lightgreen text-light">
+                    <ItemTemplate>
+                        <asp:Button ID="btnDelete" CssClass="btn btn-primary" Text="Delete" runat="server" OnClick="btnDelete_Click"/>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                
+                 
             </Columns>
         </asp:GridView>
      </div>

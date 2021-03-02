@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Text;
+using System.IO;
 
 namespace web_app_assignment.admin
 {
@@ -55,8 +58,11 @@ namespace web_app_assignment.admin
         {
             if(Page.IsValid)
             {
-                string emailReply = txtEmailReply.Text;
+                string emailReply = txtEmailReply.Text.Trim();
+                string from = "webissue.emailus@gmail.com";
+                // can be used for email subject title also
                 string subjectReply = txtSubjectReply.Text;
+                // can be used for Mailbody also
                 string messageReply = txtMessageReply.Text;
 
                 string id = Request.QueryString["Id"] ?? "";
@@ -76,7 +82,43 @@ namespace web_app_assignment.admin
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                Response.Redirect("message-details.aspx");
+                MailMessage message = new MailMessage(from, emailReply);
+
+                //Mail Subject
+                message.Subject = subjectReply;
+                message.Body = messageReply;
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
+
+                //SMTP Client port 587 for gmail
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+                System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential("webissue.emailus@gmail.com", "webissue123");
+
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+                try
+                {
+                    //send email
+                    client.Send(message);
+                    lblMailMessage.Visible = true;
+                    lblMailMessage.Text = "Mail Send Successfully";
+                    
+                }
+                catch (Exception ex)
+                {
+                    lblMailMessage.Visible = true;
+                    lblMailMessage.Text = ex.Message;
+                }
+
+
+                //Response.Redirect("message-details.aspx");
+
+
+
+
+
             }
 
         }

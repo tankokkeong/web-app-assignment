@@ -33,5 +33,30 @@ namespace web_app_assignment.admin
             con.Close();
 
         }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            if(Page.IsValid)
+            {
+
+                
+                int id = Int32.Parse(gvContactMessage.DataKeyNames.ToString());
+
+                string sqlDelete = @"UPDATE ContactMessage SET deleted_at = @delete WHERE contact_id = @Id";
+
+                SqlConnection con = new SqlConnection(strcon);
+                SqlCommand cmd = new SqlCommand(sqlDelete, con);
+                cmd.Parameters.AddWithValue("@Id",id);
+                cmd.Parameters.AddWithValue("@delete",DateTime.Now);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Redirect("contact-message.aspx");
+                
+            }
+        }
     }
 }
