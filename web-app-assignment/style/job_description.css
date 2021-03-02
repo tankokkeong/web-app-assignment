@@ -1,4 +1,40 @@
-﻿.JobDescriptionDetails {
+﻿.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating > input {
+    display: none
+}
+
+.rating > label {
+    position: relative;
+    font-size: 2.5vh;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating > label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+    .rating > label:hover:before,
+    .rating > label:hover ~ label:before {
+        opacity: 1 !important
+    }
+
+.rating > input:checked ~ label:before {
+    opacity: 1
+}
+
+.rating:hover > input:checked ~ label:before {
+    opacity: 0.4
+}
+
+.JobDescriptionDetails {
     position: relative;
     margin-left: 10%;
     padding: 2.5%;
@@ -53,6 +89,12 @@
     padding-right: 10%;
 }
 
+.JobDescriptionContentsReviews {
+    padding-left: 15%;
+    padding-right: 10%;
+    margin-bottom: 5%;
+}
+
 .JobDescriptionContentsBodyContents1 ul {
     margin-left: 5%;
 }
@@ -78,4 +120,9 @@
 .JobDescriptionContentsBodySubHeadersTagsButton {
     margin-bottom: 1.25%;
     margin-top: 1.25%;
+}
+
+.JobDescriptionContentsReviewsPostButton{
+    margin-left: 50%;
+    transform:translateX(-50%);
 }

@@ -72,6 +72,11 @@
     width: 30%;
 }
 
+.amount {
+    color: #69A19A;
+    font-weight: bold;
+}
+
 .JobListContentsBackgroundInputsSearchButton {
     margin-left: 50%;
     transform: translateX(-50%);

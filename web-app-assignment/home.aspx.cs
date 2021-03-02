@@ -13,5 +13,10 @@ namespace web_app_assignment
         {
 
         }
+
+        protected void btn_HomeSearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

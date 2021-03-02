@@ -34,25 +34,24 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <select class="custom-select" aria-label="locations" aria-describedby="locations" id="selectStates" multiple>
-                                    <option value="">All</option>
-                                    <option value="Malacca">Malacca</option>
-                                    <option value="Selangor">Selangor</option>
-                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                    <option value="Terengganu">Terengganu</option>
-                                    <option value="Kedah">Kedah</option>
-                                    <option value="Kelantan">Kelantan</option>
-                                    <option value="Pahang">Pahang</option>
-                                    <option value="Penang">Penang</option>
-                                    <option value="Perak">Perak</option>
-                                    <option value="Perlis">Perlis</option>
-                                    <option value="Sabah">Sabah</option>
-                                    <option value="Sarawak">Sarawak</option>
-                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
-                                    <option value="Labuan">Labuan</option>
-                                    <option value="Putrajaya">Putrajaya</option>
-                                    <option value="Johor">Johor</option>
-                                </select>
+                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select" runat="server" multiple>
+                                    <asp:ListItem Value="All">All</asp:ListItem>
+                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
+                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
+                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
+                                    <asp:ListItem Value="Terengganu">Terengganu</asp:ListItem>
+                                    <asp:ListItem Value="Kedah">Kedah</asp:ListItem>
+                                    <asp:ListItem Value="Kelantan">Kelantan</asp:ListItem>
+                                    <asp:ListItem Value="Pahang">Pahang</asp:ListItem>
+                                    <asp:ListItem Value="Perak">Perak</asp:ListItem>
+                                    <asp:ListItem Value="Perlis">Perlis</asp:ListItem>
+                                    <asp:ListItem Value="Sabah">Sabah</asp:ListItem>
+                                    <asp:ListItem Value="Sarawak">Sarawak</asp:ListItem>
+                                    <asp:ListItem Value="Kuala Lumpur">Kuala Lumpur</asp:ListItem>
+                                    <asp:ListItem Value="Labuan">Labuan</asp:ListItem>
+                                    <asp:ListItem Value="Johor">Johor</asp:ListItem>
+                                    <asp:ListItem Value="Putrajaya">Putrajaya</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>
@@ -64,11 +63,11 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <select class="custom-select jobCategory" aria-label="jobCategory" aria-describedby="jobCategory" name="jobCategory[]" multiple="multiple">
-                                    <option value="All">All</option>
-                                    <option value="Full Time">Full Time</option>
-                                    <option value="Part Time">Part Time</option>
-                                </select>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectJobCategory" CssClass="custom-select jobCategory" name="jobCategory[]" runat="server" multiple>
+                                    <asp:ListItem Value="All">All</asp:ListItem>
+                                    <asp:ListItem Value="Full Time">Full Time</asp:ListItem>
+                                    <asp:ListItem Value="Part Time">Part Time</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>
@@ -80,13 +79,13 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobSpecDropdown">
-                                <select class="custom-select" id="jobSpec" aria-label="jobSpec" aria-describedby="jobSpec" multiple>
-                                    <option value="">All</option>
-                                    <option value="Accounting">Accounting</option>
-                                    <option value="Information Technology">Information Technology</option>
-                                    <option value="Architect">Architect</option>
-                                    <option value="Web Development">Web Development</option>
-                                </select>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectJobSpec" CssClass="custom-select jobSpec" runat="server" multiple>
+                                    <asp:ListItem Value="All">All</asp:ListItem>
+                                    <asp:ListItem Value="Accounting">Accounting</asp:ListItem>
+                                    <asp:ListItem Value="Information Technology">Information Technology</asp:ListItem>
+                                    <asp:ListItem Value="Architect">Architect</asp:ListItem>
+                                    <asp:ListItem Value="Web Development">Web Development</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>
@@ -100,9 +99,9 @@
                             <div class="JobListContentsSalaryRange">
                                 <p>
                                   <label for="amount">Salary Range:</label>
-                                  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+                                    <asp:TextBox ID="txt_amount" CssClass="amount" runat="server" BorderStyle="None"></asp:TextBox>
                                 </p>
-                            
                                 <div id="slider-range"></div>
                             </div>
                         </div>
@@ -125,7 +124,7 @@
     </div>
 
     <script type="text/javascript">
-        $("#selectStates").select2({
+        $(".selectStates").select2({
             placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
@@ -136,7 +135,7 @@
             placeholder: "Job Category",
         });
         
-        $("#jobSpec").select2({
+        $(".jobSpec").select2({
             placeholder: "Job Specialization or Position eg. Accounting",
             allowClear: true,
             tags: true,
@@ -167,10 +166,10 @@
                 max: 50000,
                 values: [0, 50000],
                 slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    $(".amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                 }
             });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            $(".amount").val("$" + $("#slider-range").slider("values", 0) +
                 " - $" + $("#slider-range").slider("values", 1));
         });
     </script>

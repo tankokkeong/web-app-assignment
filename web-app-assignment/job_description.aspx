@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Job Description</title>
     <link href="style/job_description.css" rel="stylesheet" type="text/css"/>
+
+    <%-- CK EDITOR --%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -148,6 +151,40 @@
                     </div>
                 </div>
             </div>
+            <div class="JobDescriptionContentsReviews">
+                <div>
+                    <div class="JobDescriptionContentsReviewsHeader row">
+                        <h4 class="ml-4 col-sm">Job Review</h4>
+                        <form>
+                            <div class="ml-4 form-group rating col-sm"> 
+                                <input type="radio" class="form-control" name="rating" value="5" id="5">
+                                <label for="5">☆</label>
+                                <input type="radio" class="form-control" name="rating" value="4" id="4">
+                                <label for="4">☆</label>
+                                <input type="radio" class="form-control" name="rating" value="3" id="3">
+                                <label for="3">☆</label>
+                                <input type="radio" class="form-control" name="rating" value="2" id="2">
+                                <label for="2">☆</label>
+                                <input type="radio" class="form-control" name="rating" value="1" id="1">
+                                <label for="1">☆</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm">
+                          <div id="ck-editor1" class="form-control"></div>
+                        </div>
+                        <asp:Button ID="btn_JobDescriptionContentsReviewsPostButton" CssClass="btn btn-primary JobDescriptionContentsReviewsPostButton" runat="server" Text="Post" />
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+
+
+<script type="text/javascript">
+    ClassicEditor
+        .create(document.querySelector('#ck-editor1'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 </asp:Content>
