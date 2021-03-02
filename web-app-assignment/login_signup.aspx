@@ -82,7 +82,7 @@
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <div class="nav-pillsTabs">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true">Are You A Recruiter?</a>
+                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" onclientclick="Showrecruiter_Click">Are You A Recruiter?</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link badge-info" onclick="showSeeker()" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
@@ -127,14 +127,12 @@
                                     </div>
                                 </form>
                             </div>
+
                             <div class="tab-pane fade" id="seeker" role="tabpanel" aria-labelledby="seekerTab">
                                 <form>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                          <input type="text" class="form-control" id="sign_seeker_FirstName" placeholder="First Name">
-                                        </div>
-                                        <div class="col">
-                                          <input type="text" class="form-control" id="sign_seeker_LastName" placeholder="Last Name">
+                                          <input type="text" class="form-control" id="sign_seeker_FirstName" placeholder="Full Name">
                                         </div>
                                      </div>
                                     <div class="row form-group-row">

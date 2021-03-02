@@ -22,7 +22,7 @@ namespace web_app_assignment
         {
             try
             {
-                if (Role.SelectedValue == "job_seeker")
+                if(Role.SelectedItem.Value == "job_seeker")
                 {
                     SqlConnection con = new SqlConnection(strcon);
 
@@ -36,37 +36,118 @@ namespace web_app_assignment
 
                     if (output == "1")
                     {
-                        Response.Redirect("edit-user.aspx");
+                        Dictionary<string, string> UserDetail = new Dictionary<string, string>();
+                        string sql = "SELECT * FROM JobSeeker WHERE email = @email";
+
+                        SqlCommand command = new SqlCommand(sql, con);
+
+                        //Insert parameters
+                        command.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+
+                        SqlDataReader dread = command.ExecuteReader();
+
+                        while (dread.Read())
+                        {
+                            //Add User Details
+                            //UserDetails.Add("Admin_Email", "anson22267@gmail.com");
+                            //UserDetails.Add("Admin_Name", "Anson");
+                            //UserDetails.Add("Admin_Right", "Viewer");
+                            UserDetail.Add("user_name", dread["full_name"].ToString());
+                            UserDetail.Add("user_email", dread["email"].ToString());
+                            UserDetail.Add("user_skills", dread["skills"].ToString());
+                            UserDetail.Add("user_gender", dread["gender"].ToString());
+                            UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
+                            UserDetail.Add("user_location", dread["location"].ToString());
+                            UserDetail.Add("user_profession", dread["profession"].ToString());
+                            UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
+                            UserDetail.Add("user_country", dread["country"].ToString());
+                            UserDetail.Add("user_experience", dread["experience"].ToString());
+                            UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
+                        }
+
+                        Session["User"] = UserDetail;
+                        Response.Redirect("home.aspx");
                     }
+                    else
+                    {
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                    }
+
                     con.Close();
                 }
-                else if (Role.SelectedValue == "recruiter")
+                else if (Role.SelectedItem.Value == "recruiter")
                 {
-                    SqlConnection con = new SqlConnection(strcon);
+                    SqlConnection conn = new SqlConnection(strcon);
 
-                    con.Open();
+                    conn.Open();
 
-                    String query = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
+                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
 
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    SqlCommand cm = new SqlCommand(qry, conn);
 
-                    String output = cmd.ExecuteScalar().ToString();
+                    String result = cm.ExecuteScalar().ToString();
 
-                    if (output == "1")
+                    if (result == "1")
                     {
-                        Response.Redirect("edit-recruiter.aspx");
+                        Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+                        string sqlquery = "SELECT * FROM Recruiter WHERE email = @email";
+
+                        SqlCommand commands = new SqlCommand(sqlquery, conn);
+
+                        //Insert parameters
+                        commands.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+
+                        SqlDataReader dR = commands.ExecuteReader();
+
+                        while (dR.Read())
+                        {
+                            //Add User Details
+                            //UserDetails.Add("Admin_Email", "anson22267@gmail.com");
+                            //UserDetails.Add("Admin_Name", "Anson");
+                            //UserDetails.Add("Admin_Right", "Viewer");
+                            RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
+                            RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
+                            RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
+                            RecruiterDetails.Add("recruiter_company", dR["company_name"].ToString());
+                            RecruiterDetails.Add("recruiter_contactEmail", dR["contact_email"].ToString());
+                            RecruiterDetails.Add("address_line1", dR["address_line1"].ToString());
+                            RecruiterDetails.Add("address_line2", dR["address_line2"].ToString());
+                            RecruiterDetails.Add("city", dR["city"].ToString());
+                            RecruiterDetails.Add("state", dR["state"].ToString());
+                            RecruiterDetails.Add("zip-code", dR["zip_code"].ToString());
+                            RecruiterDetails.Add("recruiter_country", dR["country"].ToString());
+                            RecruiterDetails.Add("recruiter_industry", dR["industry"].ToString());
+                            RecruiterDetails.Add("recruiter_fbLink", dR["facebook_link"].ToString());
+                            RecruiterDetails.Add("recruiter_linkedinLink", dR["linkedin_link"].ToString());
+                            RecruiterDetails.Add("introduction", dR["introduction"].ToString());
+                            RecruiterDetails.Add("rating", dR["rating"].ToString());
+                        }
+
+                        Session["Recruiter"] = RecruiterDetails;
+
+                        Response.Redirect("home.aspx");
                     }
+                    else
+                    {
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                    }
+
+                    conn.Close();
                 }
                 else
                 {
-                    Response.Write(@"<script language='javascript'>alert('Please choose the correct role.')</script>");
+                    Response.Write(@"<script language='javascript'>alert('Please choose your role.')</script>");
                 }
             }
-            catch (Exception error)
+            catch(Exception error)
             {
                 Response.Write(error.Message);
             }
-           
+        }
+
+        protected void Showrecruiter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
