@@ -63,11 +63,16 @@
           </li>
 
            <li class="nav-item">
-            <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>
+     <%--       <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>--%>
+               <asp:HyperLink ID="SignUpLink" cssclass="nav-link text-light" runat="server" Visible="true">Sign Up</asp:HyperLink>
+                <%--<asp:HyperLink ID="ProfileLink" cssclass="nav-link text-light" runat="server" Visible="false">My Profile</asp:HyperLink>--%>
+               <a class="nav-link text-light" id="ProfileLink" runat="server" visible="false" onserverclick="ProfileLink_Click">My Profile</a>
           </li>
 
             <li class="nav-item">
-            <a class="nav-link text-light btn bg-lightgreen" href="#">Sign In</a>
+            <asp:HyperLink ID="LoginLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
+            <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
+<%--            <asp:HyperLink ID="LogoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" onclick="LogoutLink_Click">Sign Out</asp:HyperLink>--%>
           </li>
 
         </ul>
