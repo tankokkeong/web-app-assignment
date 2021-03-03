@@ -42,6 +42,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox sign_login_password;
 
         /// <summary>
+        /// checkRememberMe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkRememberMe;
+
+        /// <summary>
         /// inputsFormSign_LoginButton control.
         /// </summary>
         /// <remarks>
@@ -49,5 +58,14 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button inputsFormSign_LoginButton;
+
+        /// <summary>
+        /// inputsFormSign_SignUpButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton inputsFormSign_SignUpButton;
     }
 }

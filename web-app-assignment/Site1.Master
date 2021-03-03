@@ -70,7 +70,7 @@
           </li>
 
             <li class="nav-item">
-            <asp:HyperLink ID="LoginLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
+            <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
             <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
 <%--            <asp:HyperLink ID="LogoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" onclick="LogoutLink_Click">Sign Out</asp:HyperLink>--%>
           </li>
