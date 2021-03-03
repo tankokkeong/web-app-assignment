@@ -1884,6 +1884,7 @@
     <Content Include="post-job.aspx" />
     <Content Include="privacy_policy.aspx" />
     <Content Include="recruiter-profile.aspx" />
+    <Content Include="Reset_Password.aspx" />
     <Content Include="schedule.aspx" />
     <Content Include="script\app.js" />
     <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
@@ -1906,6 +1907,7 @@
     <Content Include="style\post-job.css" />
     <Content Include="style\privacy_policy.css" />
     <Content Include="style\recruiter-profile.css" />
+    <Content Include="style\Reset_Password.css" />
     <Content Include="style\schedule.css" />
     <Content Include="style\terms_conditions.css" />
     <Content Include="style\user-profile.css" />
@@ -2160,6 +2162,13 @@
     </Compile>
     <Compile Include="recruiter-profile.aspx.designer.cs">
       <DependentUpon>recruiter-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reset_Password.aspx.cs">
+      <DependentUpon>Reset_Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reset_Password.aspx.designer.cs">
+      <DependentUpon>Reset_Password.aspx</DependentUpon>
     </Compile>
     <Compile Include="schedule.aspx.cs">
       <DependentUpon>schedule.aspx</DependentUpon>
