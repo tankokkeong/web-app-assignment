@@ -103,6 +103,7 @@
     <Content Include="admin\images\Contact Us\call.png" />
     <Content Include="admin\images\Contact Us\email.png" />
     <Content Include="admin\images\Contact Us\maps.png" />
+    <Content Include="admin\images\dashboard\delete.png" />
     <Content Include="admin\images\login\admin-login.jpg" />
     <Content Include="admin\images\logo\logo.png" />
     <Content Include="admin\js\app.js" />
