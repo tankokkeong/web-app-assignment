@@ -15,7 +15,14 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+                {
+                    sign_login_emailUser.Text = Request.Cookies["email"].Value;
+                    sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
+                }
+            }
         }
 
         protected void inputsFormSign_LoginButton_Click(object sender, EventArgs e)
@@ -65,8 +72,22 @@ namespace web_app_assignment
                             UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
                         }
 
+                        if (checkRememberMe.Checked)
+                        {
+                            Response.Cookies["email"].Value = sign_login_emailUser.Text;
+                            Response.Cookies["password"].Value = sign_login_password.Text;
+                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                        }
+                        else
+                        {
+                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
+                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                        }
+
                         Session["User"] = UserDetail;
                         Response.Redirect("home.aspx");
+
                     }
                     else
                     {
@@ -123,6 +144,19 @@ namespace web_app_assignment
                             RecruiterDetails.Add("rating", dR["rating"].ToString());
                         }
 
+                        if (checkRememberMe.Checked)
+                        {
+                            Response.Cookies["email"].Value = sign_login_emailUser.Text;
+                            Response.Cookies["password"].Value = sign_login_password.Text;
+                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                        }
+                        else
+                        {
+                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
+                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                        }
+
                         Session["Recruiter"] = RecruiterDetails;
 
                         Response.Redirect("home.aspx");
@@ -143,11 +177,6 @@ namespace web_app_assignment
             {
                 Response.Write(error.Message);
             }
-        }
-
-        protected void Showrecruiter_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

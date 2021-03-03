@@ -47,8 +47,9 @@
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">
                                 <div class="inputsFormSign_LoginFormCheckbox">
                                     <div class="inputsFormSign_LoginFormCheckboxList">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" id="inputsFormSign_LoginFormCheckboxRememberMe" for="exampleCheck1">Remember Me</label>
+                                        <%--<input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
+                                        <asp:CheckBox ID="checkRememberMe" ClientIDMode="Static" cssclass="form-check-input" runat="server" />
+                                        <label class="form-check-label" id="inputsFormSign_LoginFormCheckboxRememberMe" for="checkRememberMe">Remember Me</label>
                                     </div>
                                     <div>
                                         <a href="forgotten_Password.aspx" class="inputsFormSign_LoginFormCheckForgotPassword"><p>Forgot Your Password ?</p></a>
@@ -82,7 +83,7 @@
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <div class="nav-pillsTabs">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" onclientclick="Showrecruiter_Click">Are You A Recruiter?</a>
+                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true">Are You A Recruiter?</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link badge-info" onclick="showSeeker()" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
@@ -96,21 +97,8 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="sign_recruiter_companyName" aria-describedby="recruiter_companyName" placeholder="Company Name">
                                     </div>
-                                    <div class="row form-group-row">
-                                        <div class="col">
-                                          <input type="text" class="form-control" id="sign_recruiter_contactFirstName" placeholder="Conctact Person First Name">
-                                        </div>
-                                        <div class="col">
-                                          <input type="text" class="form-control" id="sign_recruiter_contactLastName" placeholder="Last Name">
-                                        </div>
-                                     </div>
-                                    <div class="row form-group-row">
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="sign_recruiter_username" placeholder="Username">
-                                        </div>
-                                        <div class="col">
+                                    <div class=" form-group">
                                             <input type="email" class="form-control" id="sign_recruiter_companyEmail" placeholder="Company Email">
-                                        </div>
                                     </div>
                                     <div class="row form-group-row">
                                         <div class="col">
@@ -154,7 +142,8 @@
                                         </div>
                                     </div>
                                     <div class="inputsFormSign_LoginFooter">
-                                        <button type="submit" class="btn btn-info" id="inputsFormSign_SignUpButton">Sign Up</button>
+                                        <button type="submit" class="btn btn-info" id="inputsFormSign_SignUpButton" runat="server" >Sign Up</button>
+                                        <%--<asp:Button ID="inputsFormSign_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" OnClick="inputsFormSign_SignUpButton_Click"/>--%>
                                     </div>
                                 </form>
                             </div>
