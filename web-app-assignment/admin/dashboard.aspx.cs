@@ -53,6 +53,7 @@ namespace web_app_assignment.admin
                     s += string.Format("<div class='to-do-task mt-3'>" +
                                         "<h5 class='mb-0'>{0}</h5>" +
                                         "<p class='text-secondary mb-0'>{1}</p>" +
+                                        "<button class='btn btn-primary' onclick=''><img src='images/dashboard/delete.png'</button>" +
                                        "</div>", drDoList["task_name"], drDoList["task_remarks"]);
                 }
                 drDoList.Close();

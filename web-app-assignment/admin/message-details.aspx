@@ -50,6 +50,7 @@
             <div class="text-center">
                <button type="button" class="btn text-light bg-lightgreen" data-toggle="modal" data-target="#replyModal">Reply</button> 
                 <a href="contact-message.aspx" class="btn btn-secondary">Back</a>
+                <asp:Label ID="lblMailMessage" runat="server"></asp:Label>
             </div>
         </div>
     </div>

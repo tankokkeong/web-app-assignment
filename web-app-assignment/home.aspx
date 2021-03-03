@@ -34,7 +34,7 @@
                                     <option>Job Category</option>
                                 </select>
 
-                                <asp:Button ID="btn_HomeSearchButton" runat="server" CssClass="bg-lightgreen form-control col text-light col-sm-12 col-lg-1 home-search-control" Text="Search" />
+                                <asp:Button ID="btn_HomeSearchButton" runat="server" CssClass="bg-lightgreen form-control col text-light col-sm-12 col-lg-1 home-search-control" Text="Search" OnClick="btn_HomeSearchButton_Click"/>
                             </div>
                         </div>
                     </form>
