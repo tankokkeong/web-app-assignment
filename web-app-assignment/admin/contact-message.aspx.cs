@@ -14,49 +14,47 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+            if(!Page.IsPostBack)
+            {
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            SqlConnection con = new SqlConnection(strcon);
+                SqlConnection con = new SqlConnection(strcon);
 
-            string sql = "SELECT * FROM ContactMessage WHERE deleted_at IS NULL";
+                string sql = "SELECT * FROM ContactMessage WHERE deleted_at IS NULL";
 
-            SqlCommand cmd = new SqlCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
 
-            con.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
 
-            //Data binding
-            gvContactMessage.DataSource = dr;
-            gvContactMessage.DataBind();
+                //Data binding
+                gvContactMessage.DataSource = dr;
+                gvContactMessage.DataBind();
 
-            dr.Close();
-            con.Close();
+                dr.Close();
+                con.Close();
+            }
+            
 
         }
 
-        protected void btnDelete_Click(object sender, EventArgs e)
+
+        protected void gvContactMessage_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            if(Page.IsValid)
+            int id = Convert.ToInt32(gvContactMessage.DataKeys[e.RowIndex].Value.ToString());
+
+            using (SqlConnection con = new SqlConnection(strcon))
             {
-
-                
-                int id = Int32.Parse(gvContactMessage.DataKeyNames.ToString());
-
-                string sqlDelete = @"UPDATE ContactMessage SET deleted_at = @delete WHERE contact_id = @Id";
-
-                SqlConnection con = new SqlConnection(strcon);
-                SqlCommand cmd = new SqlCommand(sqlDelete, con);
-                cmd.Parameters.AddWithValue("@Id",id);
-                cmd.Parameters.AddWithValue("@delete",DateTime.Now);
-
                 con.Open();
-                cmd.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand("UPDATE ContactMessage SET deleted_at = '"+DateTime.Now+"' WHERE contact_id ='"+ id +"'", con);
+                int t = cmd.ExecuteNonQuery();
+
                 con.Close();
 
                 Response.Redirect("contact-message.aspx");
-                
             }
+
         }
     }
 }

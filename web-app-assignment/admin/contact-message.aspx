@@ -27,21 +27,17 @@
      <form runat="server">
 
      <div class="table-container">
-        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="false" DataKeyNames="contact_id" AllowSorting="true" >
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" DataKeyNames="contact_id" AllowSorting="True" OnRowDeleting="gvContactMessage_RowDeleting" CssClass="table table-striped table-bordered" >
             <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
-            <RowStyle HorizontalAlign="Center" BackColor="#c0c0c0"/>
+            <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
             <Columns>
-                <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"/>
-                <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"/>
-                <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"/>
-                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="btn btn-primary" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px"/>
-                <asp:TemplateField HeaderStyle-CssClass="bg-lightgreen text-light">
-                    <ItemTemplate>
-                        <asp:Button ID="btnDelete" CssClass="btn btn-primary" Text="Delete" runat="server" OnClick="btnDelete_Click"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                
-                 
+                <asp:BoundField DataField="contact_id" HeaderText="ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" ></asp:BoundField>
+                <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
+                <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"></asp:BoundField>
+                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="btn btn-primary" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px">
+                </asp:HyperLinkField>
+                <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" />            
             </Columns>
         </asp:GridView>
      </div>
