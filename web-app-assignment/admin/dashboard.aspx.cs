@@ -51,10 +51,10 @@ namespace web_app_assignment.admin
                 while (drDoList.Read())
                 {
                     s += string.Format("<div class='to-do-task mt-3'>" +
-                                        "<h5 class='mb-0'>{0}</h5>" +
-                                        "<p class='text-secondary mb-0'>{1}</p>" +
-                                        "<button class='btn btn-primary' onclick=''><img src='images/dashboard/delete.png'</button>" +
-                                       "</div>", drDoList["task_name"], drDoList["task_remarks"]);
+                                        "<h5 id='task-name' class='mb-0'>{0}</h5>" +
+                                        "<p id='task-remarks' class='text-secondary mb-0'>{1}</p>" +
+                                        "<button type='button' data-taskID={2} class='btn btn-light delete-task-btn'><img src='images/dashboard/delete.png' width='25px' height='25px'</button>" +
+                                        "</div>", drDoList["task_name"], drDoList["task_remarks"],drDoList["task_id"]);
                 }
                 drDoList.Close();
                 con.Close();
@@ -184,6 +184,10 @@ namespace web_app_assignment.admin
 
             
         }
-            
+
+
+
+
+
     }
 }

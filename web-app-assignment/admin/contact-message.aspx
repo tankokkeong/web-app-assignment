@@ -35,9 +35,9 @@
                 <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
                 <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
                 <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"></asp:BoundField>
-                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="btn btn-primary" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" Text="View" HeaderStyle-Width="50px">
+                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="badge badge-success action-btn fas fa-edit" Text="View" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px">
                 </asp:HyperLinkField>
-                <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" />            
+                <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="badge badge-danger action-btn fas fa-trash" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" />           
             </Columns>
         </asp:GridView>
      </div>

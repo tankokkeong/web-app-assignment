@@ -90,6 +90,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <form runat="server">
     <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
@@ -171,7 +172,12 @@
                 <div class="do-list-content" id="sortable">
                        <%-- <h5 class="mb-0">Meet Up with clients</h5> --%>
                        <%-- <p class="text-secondary mb-0">At KFC Batu Caves, Monday</p> --%>
-                        <asp:Literal ID="litResultToDoList" runat="server"></asp:Literal>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:Literal ID="litResultToDoList" runat="server"></asp:Literal>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>
@@ -248,7 +254,6 @@
             </button>
           </div>
           <div class="modal-body">
-            <form runat="server">
                 <div class="form-group">
                    <%-- <label for="exampleInputEmail1">Task Name</label> --%>
                    <%-- <input type="text" class="form-control" > --%>
@@ -267,13 +272,23 @@
                    <%-- <button type="button" class="btn btn-primary">Add Task</button> --%>
                    <asp:Button ID="btnAddTask" runat="server" class="btn btn-primary" Text="Add Task" OnClick="btnAddTask_Click" />
                 </div>
-            </form>
           </div>
 
         </div>
       </div>
     </div>
       
+ </form>
+    <script>
+        $(".delete-task-btn").each(function () {
+            $(this).click(function () {
+                $.post("task-post.aspx",
+                    {
+                        task_id: $(this).attr('data-taskID')
+                    });
+            });
+        });
 
+    </script>
     
 </asp:Content>
