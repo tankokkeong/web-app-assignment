@@ -27,20 +27,39 @@
      <form runat="server">
 
      <div class="table-container">
-        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" DataKeyNames="contact_id" AllowSorting="True" OnRowDeleting="gvContactMessage_RowDeleting" CssClass="table table-striped table-bordered" >
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvContactMessage_RowDataBound" CssClass="table table-striped table-bordered" >
             <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
             <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
             <Columns>
-                <asp:BoundField DataField="contact_id" HeaderText="ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" ></asp:BoundField>
                 <asp:BoundField DataField="contact_name" HeaderText="Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
                 <asp:BoundField DataField="phone_number" HeaderText="Contact Number" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
                 <asp:BoundField DataField="company_email" HeaderText="Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="500px"></asp:BoundField>
-                <asp:HyperLinkField DataNavigateUrlFields="contact_id" ControlStyle-CssClass="badge badge-success action-btn fas fa-edit" Text="View" DataNavigateUrlFormatString="message-details.aspx?Id={0}" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px">
-                </asp:HyperLinkField>
-                <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="badge badge-danger action-btn fas fa-trash" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="50px" />           
+                <asp:BoundField DataField="contact_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
             </Columns>
         </asp:GridView>
      </div>
+
+         <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this message record?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnDeleteMessage" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteMessage_Click"/>
+            <asp:TextBox ID="txtDeleteMessage" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
 
      </form>
 
@@ -71,4 +90,13 @@
         </div>
     --%>
     </div>
+    
+    <script>
+        function deleteMessage(id) {
+            var delete_message = document.getElementById("ContentPlaceHolder1_txtDeleteMessage");
+
+            //Change the id
+            delete_message.value = id;
+        }
+    </script>
 </asp:Content>
