@@ -15,14 +15,14 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
-                {
-                    sign_login_emailUser.Text = Request.Cookies["email"].Value;
-                    sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
-                }
-            }
+            //if (!Page.IsPostBack)
+            //{
+            //    if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+            //    {
+            //        sign_login_emailUser.Text = Request.Cookies["email"].Value;
+            //        sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
+            //    }
+            //}
         }
 
         protected void inputsFormSign_LoginButton_Click(object sender, EventArgs e)
@@ -178,5 +178,74 @@ namespace web_app_assignment
                 Response.Write(error.Message);
             }
         }
+
+        protected void Recruiter_SignUpButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Equals(sign_recruiter_password.Text,sign_recruiter_confirmPassword.Text))
+                {
+                    SqlConnection sqlcon = new SqlConnection(strcon);
+
+                    sqlcon.Open();
+
+                    String sqlquery = "INSERT INTO Recruiter (company_name, company_email, password) VALUES (@company_name, @company_email, @password)";
+
+                    SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
+
+                    sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
+                    sqlcmd.Parameters.AddWithValue("@company_email", sign_recruiter_companyEmail.Text);
+                    sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
+
+                    sqlcmd.ExecuteNonQuery();
+                    sqlcon.Close();
+
+                    Response.Write("<script>alert('Register Successfully');</script>");
+                    //Response.Redirect("login_signup.aspx");             
+                }
+
+            }
+            catch (Exception error)
+            {
+                Response.Write(error.Message);
+            }
+
+        }
+
+        protected void JobSeeker_SignUpButton_Click (object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Equals(sign_seeker_password.Text, sign_seeker_confirmPassword.Text))
+                {
+                    SqlConnection sqlconnection = new SqlConnection(strcon);
+
+                    sqlconnection.Open();
+
+                    String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password) VALUES (@full_name, @username, @email, @password)";
+
+                    SqlCommand sqlcommand = new SqlCommand(sqlqry, sqlconnection);
+
+                    sqlcommand.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
+                    sqlcommand.Parameters.AddWithValue("@username", sign_seeker_username.Text);
+                    sqlcommand.Parameters.AddWithValue("@email", sign_seeker_email.Text);
+                    sqlcommand.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+
+                    sqlcommand.ExecuteNonQuery();
+                    sqlconnection.Close();
+
+                    Response.Write("<script>alert('Register Successfully');</script>");            
+                }
+
+            }
+            catch (Exception error)
+            {
+                Response.Write(error.Message);
+            }
+        }
+
+
     }
+
+
 }

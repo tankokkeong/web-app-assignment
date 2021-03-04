@@ -255,21 +255,34 @@
             color: white;
         }
 
-    #inputsFormSign_SignUpButton {
+    #Recruiter_SignUpButton {
         margin-left: 50%;
         transform: translate(-50%);
         margin-bottom: -10%;
         width: 100%;
     }
 
-    #sign_seeker_FirstName, #sign_seeker_LastName, #sign_seeker_username,
+    #JobSeeker_SignUpButton {
+        margin-left: 50%;
+        transform: translate(-50%);
+        margin-bottom: -10%;
+        width: 100%;
+    }
+
+    #inputsFormSign_LoginButton {
+        margin-left: 50%;
+        transform: translate(-50%);
+        margin-bottom: -10%;
+        width: 100%;
+    }
+
+    #sign_seeker_FullName, #sign_seeker_username,
     #sign_seeker_Email, #sign_seeker_password, #sign_seeker_confirmPassword {
         background-color: #80b9bb;
         color: white;
     }
 
-        #sign_seeker_FirstName::placeholder, #sign_seeker_LastName::placeholder,
-        #sign_seeker_username::placeholder, #sign_seeker_Email::placeholder,
+        #sign_seeker_FullName::placeholder, #sign_seeker_username::placeholder, #sign_seeker_Email::placeholder,
         #sign_seeker_password::placeholder, #sign_seeker_confirmPassword::placeholder {
             color: white;
         }
@@ -296,4 +309,5 @@
         cursor: pointer;
         transform: translate(-90%, -50%);
     }
+
 }

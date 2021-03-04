@@ -8,6 +8,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    
     <div class="login_signupBody">
         <div class="login_signUpBackgroundImage">
             <img src="images/Signup_Login/works-1.png" class="login_signUpBackgroundImagePics" alt="background"/>
@@ -25,6 +27,8 @@
                 <div class="sign_loginLogo">
                     <img class="sign_loginLogoImage" src="images/logo/logo.png" alt="logo"/>
                 </div>
+
+                <%-- User Login Session --%>
                 <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
                     <div class="inputsFormSign_Login" id="inputsFormSign_Logins">
                         <form>
@@ -77,13 +81,21 @@
                         <a class="SignUpFree" id="signup_tabatag" onclick="showSignUpTab()" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up FREE Now</a>
                     </p>
                 </div>
+                <%-- User Login Session End --%>
 
+
+
+
+
+
+                <%-- Register Session --%>
                 <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
                     <div class="inputsFormSign_SignUp" id="inputsFormSign_SignUp">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <div class="nav-pillsTabs">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true">Are You A Recruiter?</a>
+                                        <asp:HyperLink ID="recruiterTab" ClientIDMode="Static" CssClass="nav-link badge-info active_selected active" onclick="showRecruiter()" runat="server" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" Text="Are You A Recruiter?"></asp:HyperLink>
+<%--                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true">Are You A Recruiter?</a>--%>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link badge-info" onclick="showSeeker()" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
@@ -91,62 +103,81 @@
                                 </div>
                             </ul>
 
+
                         <div class="tab-content" id="pills-tabContent">
+
+                            <%-- Recruiter Register Section Start --%>
                             <div class="tab-pane fade show active" id="recruiter" role="tabpanel" aria-labelledby="recruiterTab">
-                                <form>
+                                
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="sign_recruiter_companyName" aria-describedby="recruiter_companyName" placeholder="Company Name">
+                                        <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name" aria-describedby="recruiter_companyName"></asp:TextBox>
                                     </div>
                                     <div class=" form-group">
-                                            <input type="email" class="form-control" id="sign_recruiter_companyEmail" placeholder="Company Email">
+                                            <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
                                     </div>
                                     <div class="row form-group-row">
-                                        <div class="col">
-                                            <input type="password" class="form-control" id="sign_recruiter_password"  placeholder="Password">
+                                        <div class="col">                                          
+                                            <asp:TextBox ID="sign_recruiter_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
+                                            <asp:RequiredFieldValidator id="recruiterPasswordReq" runat ="server" ControlToValidate="sign_recruiter_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                         <div class="col">
-                                            <input type="password" class="form-control" id="sign_recruiter_confirmPassword" placeholder="Confirm Password">
+                                            <asp:TextBox ID="sign_recruiter_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
+                                            <asp:RequiredFieldValidator id="recruiterConfirmPasswordReq" runat ="server" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Confirm Password is required!" SetFocusOnError="True" Display="Dynamic" />
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <asp:CompareValidator id="comparePasswords" runat="server" ControlToCompare="sign_recruiter_password" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red"/>
                                     </div>
                                     <div class="inputsFormSign_LoginFooter">
-                                        <button type="submit" class="btn btn-info" id="inputsFormSign_SignUpButton">Sign Up</button>
-                                    </div>
-                                </form>
-                            </div>
+                                         <asp:Button ID="Recruiter_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" OnClick="Recruiter_SignUpButton_Click"/>
+                                      </div>
+                               
+                            </div><%-- Recruiter Register Section End --%>
 
+
+
+
+
+
+
+
+                            <%-- Job Seeker Register Section Start --%>
                             <div class="tab-pane fade" id="seeker" role="tabpanel" aria-labelledby="seekerTab">
-                                <form>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                          <input type="text" class="form-control" id="sign_seeker_FirstName" placeholder="Full Name">
+                                            <asp:TextBox ID="sign_seeker_FullName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Full Name"></asp:TextBox>
                                         </div>
                                      </div>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                            <input type="text" class="form-control" id="sign_seeker_username" placeholder="Username">
+                                             <asp:TextBox ID="sign_seeker_username" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Username"></asp:TextBox>                                           
                                         </div>
                                         <div class="col">
-                                            <input type="email" class="form-control" id="sign_seeker_email" placeholder="Email">
+                                            <asp:TextBox ID="sign_seeker_email" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                            <input type="password" class="form-control" id="sign_seeker_password" placeholder="Password">
+                                            <asp:TextBox ID="sign_seeker_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator id="seekerPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
                                         </div>
                                         <div class="col">
-                                            <input type="password" class="form-control" id="sign_seeker_confirmPassword" placeholder="Confirm Password">
+                                            <asp:TextBox ID="sign_seeker_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator id="seekerConfirmPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
                                         </div>
                                     </div>
-                                    <div class="inputsFormSign_LoginFooter">
-                                        <button type="submit" class="btn btn-info" id="inputsFormSign_SignUpButton" runat="server" >Sign Up</button>
-                                        <%--<asp:Button ID="inputsFormSign_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" OnClick="inputsFormSign_SignUpButton_Click"/>--%>
+                                    <div class="form-group">
+                                        <asp:CompareValidator id="compareSeekerPassword" runat="server" ControlToCompare="sign_seeker_password" ControlToValidate="sign_seeker_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red"/>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="inputsFormSign_LoginFooter">
+                                        <asp:Button ID="JobSeeker_SignUpButton" runat="server" Text="Sign Up" ClientIDMode="Static" CssClass="btn btn-info" OnClick="JobSeeker_SignUpButton_Click"/>
+                                    </div>
+                            </div><%-- Job Seeker Register Section End --%>
+                            
                         </div>
                     
                     </div>
@@ -164,9 +195,11 @@
                         <a class="LoginFree" id="login_tabatag" onclick="showLoginTab()" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Log In Now</a>
                     </p>
                 </div>
+                <%-- Register Session End --%>
             </div>
         </div>
     </div>
+
 
     <script>
         var signUpTab = document.getElementById("signup-tab");
