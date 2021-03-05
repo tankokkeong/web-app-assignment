@@ -35,7 +35,7 @@ namespace web_app_assignment
 
                     con.Open();
 
-                    String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
+                    String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL'";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
@@ -111,7 +111,7 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
+                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL";
 
                     SqlCommand cm = new SqlCommand(qry, conn);
 
@@ -230,7 +230,7 @@ namespace web_app_assignment
                         sqlcmd.ExecuteNonQuery();
                         sqlcon.Close();
 
-                        Response.Write("<script>alert('Register Successfully');</script>");             
+                        Response.Write("<script>alert('Register Successfully, Please Go and Verify Your email!');</script>");             
                     }
                 }
                 else //if the company is exist in the record

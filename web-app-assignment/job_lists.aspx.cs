@@ -15,6 +15,40 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                List<string> LocationStatesItems = new List<string>
+                {
+                    "Johor",
+                    "Kedah",
+                    "Kelantan",
+                    "Kuala Lumpur",
+                    "Labuan",
+                    "Melacca",
+                    "Negeri Sembilan",
+                    "Pahang",
+                    "Perak",
+                    "Perlis",
+                    "Pulau Pinang",
+                    "Putrajaya",
+                    "Sabah",
+                    "Sarawak",
+                    "Selangor",
+                    "Terengganu",
+                };
+
+                List<string> JobTypeItems = new List<string>
+                {
+                    "Full Time",
+                    "Part Time",
+                };
+
+                lstSearchJobType.DataSource = JobTypeItems;
+                lstSearchJobType.DataBind();
+
+                lstSearchLocation.DataSource = LocationStatesItems;
+                lstSearchLocation.DataBind();
+            }
             try
             {
                 SqlConnection con = new SqlConnection(strcon);

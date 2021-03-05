@@ -18,18 +18,51 @@ namespace web_app_assignment
         {
             try
             {
+
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
                 }
 
-                //Read User profile Details
-                string sql = "SELECT * FROM JobSeeker WHERE seeker_id = 1";
+                //Get Recruiter ID
 
-                SqlCommand cmd = new SqlCommand(sql, con);
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+
+                string seeker_id = "";
+
+                //GET Seeker ID from the seeker table
+                string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+                SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+                cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
 
                 SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    seeker_id = dr["seeker_id"].ToString();
+                }
+
+                con.Close();
+
+                //Reopen connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read User profile Details
+                string sql = "SELECT * FROM JobSeeker WHERE seeker_id = @seeker_id";
+
+                cmd = new SqlCommand(sql, con);
+
+                //Insert parameter
+                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+                dr = cmd.ExecuteReader();
+
                 while (dr.Read())
                 {
                     lblSeekerName.Text = dr["full_name"].ToString();
