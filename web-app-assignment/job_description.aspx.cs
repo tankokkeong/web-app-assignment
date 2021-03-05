@@ -89,7 +89,68 @@ namespace web_app_assignment
 
         protected void btn_JobDescriptionDetailsApplyNowButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Dictionary<string, string> UserDetail = (Dictionary<string, string>)Session["User"];
 
+                string seekerID = "";
+
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+                if (UserDetail["user_email"] != null)
+                {
+                    Response.Write("<script>alert('" + UserDetail["user_email"] + "');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Empty');</script>");
+                }
+
+                SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+                cmd.Parameters.AddWithValue("@email", UserDetail["user_email"].ToString());
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    seekerID = dr["seeker_id"].ToString();
+                }
+                
+                con.Close();
+
+                SqlConnection con2 = new SqlConnection(strcon);
+                if (con2.State == ConnectionState.Closed)
+                {
+                    con2.Open();
+                }
+
+                string post_id = Request.QueryString["post_id"] ?? "";
+
+                string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
+                            "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
+
+                SqlCommand cmd2 = new SqlCommand(sql, con2);
+
+                cmd2.Parameters.AddWithValue("@post_id", post_id);
+                cmd2.Parameters.AddWithValue("@seeker_id", seekerID);
+
+                cmd2.ExecuteNonQuery();
+
+                con2.Close();
+
+                Response.Write("<script>alert('Application Sent Successfully!');</script>");
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
         }
     }
 }

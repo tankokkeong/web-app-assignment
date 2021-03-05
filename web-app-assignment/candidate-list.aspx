@@ -23,7 +23,8 @@
                                 </span>
                             </div>
                             <div class="JobListContentsSkillsDropdown">
-                                <asp:DropDownList ID="ddl_SearchSkills" CssClass="selectSkills custom-select form-control" runat="server" multiple>
+                                <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+                                <asp:DropDownList ID="ddl_SearchSkills" CssClass="selectSkills custom-select" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
                                     <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
@@ -40,7 +41,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select form-control" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
                                     <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
@@ -69,7 +70,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectIndustry" CssClass="custom-select jobIndustry form-control" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectIndustry" CssClass="custom-select jobIndustry" runat="server" multiple>
                                     <asp:ListItem Value="Teachers and Trainers for Jewellery Production">Teachers and Trainers for Jewellery Production</asp:ListItem>
                                     <asp:ListItem Value="Wireless Technologist">Wireless Technologist</asp:ListItem>
                                     <asp:ListItem Value="Photonics">Photonics</asp:ListItem>
@@ -92,7 +93,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobSpecDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectProfession" CssClass="custom-select jobSpec form-control" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectProfession" CssClass="custom-select jobSpec" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Accounting">Accounting</asp:ListItem>
                                     <asp:ListItem Value="Information Technology">Information Technology</asp:ListItem>

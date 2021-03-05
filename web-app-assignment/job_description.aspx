@@ -155,7 +155,6 @@
                 <div>
                     <div class="JobDescriptionContentsReviewsHeader row">
                         <h4 class="ml-4 col-sm">Job Review</h4>
-                        <form>
                             <div class="ml-4 form-group rating col-sm"> 
                                 <input type="radio" class="form-control" name="rating" value="5" id="5">
                                 <label for="5">☆</label>
@@ -173,7 +172,6 @@
                           <div id="ck-editor1" class="form-control"></div>
                         </div>
                         <asp:Button ID="btn_JobDescriptionContentsReviewsPostButton" CssClass="btn btn-primary JobDescriptionContentsReviewsPostButton" runat="server" Text="Post" />
-                    </form>
                 </div>
             </div>
         </div>
