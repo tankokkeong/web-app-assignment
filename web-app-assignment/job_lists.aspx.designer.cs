@@ -24,31 +24,31 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox txt_SearchJobTitle;
 
         /// <summary>
-        /// ddl_JobListContentsLocationSelectStates control.
+        /// lstSearchLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsLocationSelectStates;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchLocation;
 
         /// <summary>
-        /// ddl_JobListContentsSelectJobType control.
+        /// lstSearchJobType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsSelectJobType;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchJobType;
 
         /// <summary>
-        /// ddl_JobListContentsSelectJobSpec control.
+        /// lstSearchJobSpec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsSelectJobSpec;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchJobSpec;
 
         /// <summary>
         /// txt_amount control.

@@ -34,24 +34,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
-                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
-                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
-                                    <asp:ListItem Value="Terengganu">Terengganu</asp:ListItem>
-                                    <asp:ListItem Value="Kedah">Kedah</asp:ListItem>
-                                    <asp:ListItem Value="Kelantan">Kelantan</asp:ListItem>
-                                    <asp:ListItem Value="Pahang">Pahang</asp:ListItem>
-                                    <asp:ListItem Value="Perak">Perak</asp:ListItem>
-                                    <asp:ListItem Value="Perlis">Perlis</asp:ListItem>
-                                    <asp:ListItem Value="Sabah">Sabah</asp:ListItem>
-                                    <asp:ListItem Value="Sarawak">Sarawak</asp:ListItem>
-                                    <asp:ListItem Value="Kuala Lumpur">Kuala Lumpur</asp:ListItem>
-                                    <asp:ListItem Value="Labuan">Labuan</asp:ListItem>
-                                    <asp:ListItem Value="Johor">Johor</asp:ListItem>
-                                    <asp:ListItem Value="Putrajaya">Putrajaya</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -62,12 +45,8 @@
                                     <img src="images/JobsList/menu.png" alt="Job Category" class="JobListContentsJobCategoryImage"/>
                                 </span>
                             </div>
-                            <div class="JobListContentsJobCategoryDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectJobType" CssClass="custom-select jobType" name="jobCategory[]" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Full Time">Full Time</asp:ListItem>
-                                    <asp:ListItem Value="Part Time">Part Time</asp:ListItem>
-                                </asp:DropDownList>
+                            <div class="JobListContentsJobTypeDropdown">
+                                <asp:ListBox ID="lstSearchJobType" runat="server" CssClass="form-control jobType custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -79,13 +58,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobSpecDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectJobSpec" CssClass="custom-select jobSpec" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Accounting">Accounting</asp:ListItem>
-                                    <asp:ListItem Value="Information Technology">Information Technology</asp:ListItem>
-                                    <asp:ListItem Value="Architect">Architect</asp:ListItem>
-                                    <asp:ListItem Value="Web Development">Web Development</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListBox ID="lstSearchJobSpec" runat="server" CssClass="form-control jobSpec custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>

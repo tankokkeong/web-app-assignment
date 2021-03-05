@@ -15,49 +15,40 @@ namespace web_app_assignment
     {
 
         /// <summary>
-        /// ListBox1 control.
+        /// lstSearchSkills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchSkills;
 
         /// <summary>
-        /// ddl_SearchSkills control.
+        /// lstSearchLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_SearchSkills;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchLocation;
 
         /// <summary>
-        /// ddl_JobListContentsLocationSelectStates control.
+        /// lstSearchIndustry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsLocationSelectStates;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchIndustry;
 
         /// <summary>
-        /// ddl_JobListContentsSelectIndustry control.
+        /// lstSearchJobProfession control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsSelectIndustry;
-
-        /// <summary>
-        /// ddl_JobListContentsSelectProfession control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_JobListContentsSelectProfession;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchJobProfession;
 
         /// <summary>
         /// btn_JobListContentsBackgroundInputsSearchButton control.

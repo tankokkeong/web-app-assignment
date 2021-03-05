@@ -23,13 +23,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsSkillsDropdown">
-                                <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
-                                <asp:DropDownList ID="ddl_SearchSkills" CssClass="selectSkills custom-select" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
-                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
-                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListBox ID="lstSearchSkills" runat="server" CssClass="form-control selectSkills custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -41,24 +35,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
-                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
-                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
-                                    <asp:ListItem Value="Terengganu">Terengganu</asp:ListItem>
-                                    <asp:ListItem Value="Kedah">Kedah</asp:ListItem>
-                                    <asp:ListItem Value="Kelantan">Kelantan</asp:ListItem>
-                                    <asp:ListItem Value="Pahang">Pahang</asp:ListItem>
-                                    <asp:ListItem Value="Perak">Perak</asp:ListItem>
-                                    <asp:ListItem Value="Perlis">Perlis</asp:ListItem>
-                                    <asp:ListItem Value="Sabah">Sabah</asp:ListItem>
-                                    <asp:ListItem Value="Sarawak">Sarawak</asp:ListItem>
-                                    <asp:ListItem Value="Kuala Lumpur">Kuala Lumpur</asp:ListItem>
-                                    <asp:ListItem Value="Labuan">Labuan</asp:ListItem>
-                                    <asp:ListItem Value="Johor">Johor</asp:ListItem>
-                                    <asp:ListItem Value="Putrajaya">Putrajaya</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -69,19 +46,8 @@
                                     <img src="images/JobsList/menu.png" alt="Job Category" class="JobListContentsJobCategoryImage"/>
                                 </span>
                             </div>
-                            <div class="JobListContentsJobCategoryDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectIndustry" CssClass="custom-select jobIndustry" runat="server" multiple>
-                                    <asp:ListItem Value="Teachers and Trainers for Jewellery Production">Teachers and Trainers for Jewellery Production</asp:ListItem>
-                                    <asp:ListItem Value="Wireless Technologist">Wireless Technologist</asp:ListItem>
-                                    <asp:ListItem Value="Photonics">Photonics</asp:ListItem>
-                                    <asp:ListItem Value="Electrical & Electronics">Electrical & Electronics</asp:ListItem>
-                                    <asp:ListItem Value="Designers">Designers</asp:ListItem>
-                                    <asp:ListItem Value="Wood Technologists">Wood Technologists</asp:ListItem>
-                                    <asp:ListItem Value="Food Industry">Food Industry</asp:ListItem>
-                                    <asp:ListItem Value="Biotechnologist">Biotechnologist</asp:ListItem>
-                                    <asp:ListItem Value="Conveyor Vulcanizing">Conveyor Vulcanizing</asp:ListItem>
-                                    <asp:ListItem Value="Digital Imaging">Digital Imaging</asp:ListItem>
-                                </asp:DropDownList>
+                            <div class="JobListContentsIndustryDropdown">
+                                <asp:ListBox ID="lstSearchIndustry" runat="server" CssClass="form-control jobIndustry custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -92,14 +58,8 @@
                                     <img src="images/JobsList/suitcase.png" alt="Job Spec" class="JobListContentsJobSpecImage"/>
                                 </span>
                             </div>
-                            <div class="JobListContentsJobSpecDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectProfession" CssClass="custom-select jobSpec" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Accounting">Accounting</asp:ListItem>
-                                    <asp:ListItem Value="Information Technology">Information Technology</asp:ListItem>
-                                    <asp:ListItem Value="Architect">Architect</asp:ListItem>
-                                    <asp:ListItem Value="Web Development">Web Development</asp:ListItem>
-                                </asp:DropDownList>
+                            <div class="JobListContentsJobProfessionDropdown">
+                                <asp:ListBox ID="lstSearchJobProfession" runat="server" CssClass="form-control jobProfession custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -139,8 +99,8 @@
             tags: true,
         });
 
-        $(".jobSpec").select2({
-            placeholder: "Job Specialization or Position eg. Accounting",
+        $(".jobProfession").select2({
+            placeholder: "Job Profession",
             allowClear: true,
             tags: true,
         });
