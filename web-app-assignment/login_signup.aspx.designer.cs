@@ -33,6 +33,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox sign_login_emailUser;
 
         /// <summary>
+        /// login_emailReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator login_emailReq;
+
+        /// <summary>
         /// sign_login_password control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox sign_login_password;
+
+        /// <summary>
+        /// login_passwordReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator login_passwordReq;
 
         /// <summary>
         /// checkRememberMe control.
@@ -78,6 +96,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox sign_recruiter_companyName;
 
         /// <summary>
+        /// recruiterCompanyReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator recruiterCompanyReq;
+
+        /// <summary>
         /// sign_recruiter_companyEmail control.
         /// </summary>
         /// <remarks>
@@ -85,6 +112,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox sign_recruiter_companyEmail;
+
+        /// <summary>
+        /// recruiterCompEmailReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator recruiterCompEmailReq;
 
         /// <summary>
         /// sign_recruiter_password control.
@@ -150,6 +186,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox sign_seeker_FullName;
 
         /// <summary>
+        /// seekerFullNameReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerFullNameReq;
+
+        /// <summary>
         /// sign_seeker_username control.
         /// </summary>
         /// <remarks>
@@ -159,6 +204,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox sign_seeker_username;
 
         /// <summary>
+        /// seekerUsernameReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerUsernameReq;
+
+        /// <summary>
         /// sign_seeker_email control.
         /// </summary>
         /// <remarks>
@@ -166,6 +220,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox sign_seeker_email;
+
+        /// <summary>
+        /// seekerEmailReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerEmailReq;
 
         /// <summary>
         /// sign_seeker_password control.

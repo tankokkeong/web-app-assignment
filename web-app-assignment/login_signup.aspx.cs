@@ -189,7 +189,7 @@ namespace web_app_assignment
 
                     sqlcon.Open();
 
-                    String sqlquery = "INSERT INTO Recruiter (company_name, company_email, password) VALUES (@company_name, @company_email, @password)";
+                    String sqlquery = "INSERT INTO Recruiter (company_name, email, password, created_at) VALUES (@company_name, @company_email, @password, GETDATE())";
 
                     SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
 
@@ -214,25 +214,27 @@ namespace web_app_assignment
 
         protected void JobSeeker_SignUpButton_Click (object sender, EventArgs e)
         {
+
             try
             {
+
                 if (string.Equals(sign_seeker_password.Text, sign_seeker_confirmPassword.Text))
                 {
-                    SqlConnection sqlconnection = new SqlConnection(strcon);
+                    SqlConnection connectionSql = new SqlConnection(strcon);
 
-                    sqlconnection.Open();
+                    connectionSql.Open();
 
-                    String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password) VALUES (@full_name, @username, @email, @password)";
+                    String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password, created_at) VALUES (@full_name, @username, @email, @password, GETDATE())";
 
-                    SqlCommand sqlcommand = new SqlCommand(sqlqry, sqlconnection);
+                    SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
 
-                    sqlcommand.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
-                    sqlcommand.Parameters.AddWithValue("@username", sign_seeker_username.Text);
-                    sqlcommand.Parameters.AddWithValue("@email", sign_seeker_email.Text);
-                    sqlcommand.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+                    commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
+                    commandSql.Parameters.AddWithValue("@username", sign_seeker_username.Text);
+                    commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
+                    commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
 
-                    sqlcommand.ExecuteNonQuery();
-                    sqlconnection.Close();
+                    commandSql.ExecuteNonQuery();
+                    connectionSql.Close();
 
                     Response.Write("<script>alert('Register Successfully');</script>");            
                 }

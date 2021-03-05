@@ -42,11 +42,13 @@
                             <div class="form-group">
                                <%-- <input type="email" class="form-control" id="sign_login_emailUser" aria-describedby="emailHelp" placeholder="Email OR User ID">--%>
                                 <asp:TextBox ID="sign_login_emailUser" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Email" aria-describedby="emailHelp" Placeholder="Email OR User ID"></asp:TextBox>
+                                <asp:RequiredFieldValidator id="login_emailReq" runat ="server" ControlToValidate="sign_login_emailUser" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group">
                                 <asp:TextBox ID="sign_login_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Password"></asp:TextBox>
                                 <%--<input type="password" class="form-control" id="sign_login_password" placeholder="Password">--%>
                                 <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordLogin" onclick="showPassword()"/>
+                                <asp:RequiredFieldValidator id="login_passwordReq" runat ="server" ControlToValidate="sign_login_password" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">
                                 <div class="inputsFormSign_LoginFormCheckbox">
@@ -62,7 +64,7 @@
                             </div>
                             <div class="inputsFormSign_LoginFooter">
                                 <%--<button type="submit" class="btn btn-info" id="inputsFormSign_LoginButton">Log In</button>--%>
-                                <asp:Button ID="inputsFormSign_LoginButton" ClientIDMode="Static" class="btn btn-info" runat="server" Text="Log In" Onclick="inputsFormSign_LoginButton_Click"/>
+                                <asp:Button ID="inputsFormSign_LoginButton" ClientIDMode="Static" class="btn btn-info" runat="server" Text="Log In" validationgroup="login" Onclick="inputsFormSign_LoginButton_Click"/>
                             </div>
                         </form>
                     </div>
@@ -111,29 +113,31 @@
                                 
                                     <div class="form-group">
                                         <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name" aria-describedby="recruiter_companyName"></asp:TextBox>
+                                        <asp:RequiredFieldValidator id="recruiterCompanyReq" runat ="server" ControlToValidate="sign_recruiter_companyName" validationgroup="recruiter" ErrorMessage="Company Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+
                                     </div>
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
-                                    </div>
+                                            <asp:RequiredFieldValidator id="recruiterCompEmailReq" runat ="server" ControlToValidate="sign_recruiter_companyEmail" ErrorMessage="Company Email is required!" Forecolor="Red" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic"/>
+                                        </div>
                                     <div class="row form-group-row">
                                         <div class="col">                                          
                                             <asp:TextBox ID="sign_recruiter_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
-                                            <asp:RequiredFieldValidator id="recruiterPasswordReq" runat ="server" ControlToValidate="sign_recruiter_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RequiredFieldValidator id="recruiterPasswordReq" runat ="server" ControlToValidate="sign_recruiter_password" ErrorMessage="Password is required!" forecolor="Red" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_recruiter_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
-                                            <asp:RequiredFieldValidator id="recruiterConfirmPasswordReq" runat ="server" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Confirm Password is required!" SetFocusOnError="True" Display="Dynamic" />
+                                            <asp:RequiredFieldValidator id="recruiterConfirmPasswordReq" runat ="server" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Confirm Password is required!" forecolor="Red" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                            <asp:CompareValidator id="comparePasswords" runat="server" ControlToCompare="sign_recruiter_password" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red"/>
+                                            <asp:CompareValidator id="comparePasswords" runat="server" ControlToCompare="sign_recruiter_password" ControlToValidate="sign_recruiter_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red" ValidationGroup="recruiter"/>
                                     </div>
                                     <div class="inputsFormSign_LoginFooter">
-                                         <asp:Button ID="Recruiter_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" OnClick="Recruiter_SignUpButton_Click"/>
-                                      </div>
-                               
+                                         <asp:Button ID="Recruiter_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" ValidationGroup="recruiter" OnClick="Recruiter_SignUpButton_Click"/>
+                                    </div>
                             </div><%-- Recruiter Register Section End --%>
 
 
@@ -148,33 +152,36 @@
                                     <div class="row form-group-row">
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_FullName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Full Name"></asp:TextBox>
+                                            <asp:RequiredFieldValidator id="seekerFullNameReq" runat ="server" ControlToValidate="sign_seeker_FullName" validationgroup="seeker" ErrorMessage="Full Name is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                      </div>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                             <asp:TextBox ID="sign_seeker_username" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Username"></asp:TextBox>                                           
+                                             <asp:TextBox ID="sign_seeker_username" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Username"></asp:TextBox>  
+                                             <asp:RequiredFieldValidator id="seekerUsernameReq" runat ="server" ControlToValidate="sign_seeker_username" validationgroup="seeker" ErrorMessage="Username is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_email" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
+                                             <asp:RequiredFieldValidator id="seekerEmailReq" runat ="server" ControlToValidate="sign_seeker_email" validationgroup="seeker" ErrorMessage="Email is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                     </div>
                                     <div class="row form-group-row">
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
-                                            <asp:RequiredFieldValidator id="seekerPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
+                                            <asp:RequiredFieldValidator id="seekerPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" validationgroup="seeker" ErrorMessage="Password is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
-                                            <asp:RequiredFieldValidator id="seekerConfirmPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" ErrorMessage="Password is required!" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RequiredFieldValidator id="seekerConfirmPasswordReq" runat ="server" ControlToValidate="sign_seeker_confirmPassword" validationgroup="seeker" ErrorMessage="Password is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <asp:CompareValidator id="compareSeekerPassword" runat="server" ControlToCompare="sign_seeker_password" ControlToValidate="sign_seeker_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red"/>
+                                        <asp:CompareValidator id="compareSeekerPassword" runat="server" ControlToCompare="sign_seeker_password" ControlToValidate="sign_seeker_confirmPassword" validationgroup="seeker" ErrorMessage="Your passwords do not match up! Please Re-enter Again." forecolor="Red" Display="Dynamic"/>
                                     </div>
                                     <div class="inputsFormSign_LoginFooter">
-                                        <asp:Button ID="JobSeeker_SignUpButton" runat="server" Text="Sign Up" ClientIDMode="Static" CssClass="btn btn-info" OnClick="JobSeeker_SignUpButton_Click"/>
+                                        <asp:Button ID="JobSeeker_SignUpButton" runat="server" Text="Sign Up" ClientIDMode="Static" CssClass="btn btn-info" OnClick="JobSeeker_SignUpButton_Click" validationgroup="seeker"/>
                                     </div>
                             </div><%-- Job Seeker Register Section End --%>
                             
