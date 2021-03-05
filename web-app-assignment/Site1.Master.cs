@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +12,8 @@ namespace web_app_assignment
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["User"] != null || Session["Recruiter"]!= null)
@@ -38,14 +43,32 @@ namespace web_app_assignment
 
         protected void ProfileLink_Click(object sender, EventArgs e)
         {
-            if(Session["User"] != null)
+            
+            try
             {
-                Response.Redirect("edit-user.aspx");
+
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                if (Session["User"] != null)
+                {
+                    Response.Redirect("user-profile.aspx");
+                }
+                else if (Session["Recruiter"] != null)
+                {
+
+                    Response.Redirect("recruiter-profile.aspx");
+
+                }
             }
-            else if(Session["Recruiter"] != null)
+            catch(Exception error)
             {
-                Response.Redirect("edit-recruiter.aspx");
+                Response.Write("<script>alert('" + error.Message + "');</script>"); 
             }
+
         }
     }
 }
