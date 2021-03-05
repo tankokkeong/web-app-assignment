@@ -40,20 +40,17 @@
                                     </asp:DropDownList>
                             </div>
                             <div class="form-group">
-                               <%-- <input type="email" class="form-control" id="sign_login_emailUser" aria-describedby="emailHelp" placeholder="Email OR User ID">--%>
-                                <asp:TextBox ID="sign_login_emailUser" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Email" aria-describedby="emailHelp" Placeholder="Email OR User ID"></asp:TextBox>
+                                <asp:TextBox ID="sign_login_emailUser" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Email" aria-describedby="emailHelp" Placeholder="Email"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="login_emailReq" runat ="server" ControlToValidate="sign_login_emailUser" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group">
                                 <asp:TextBox ID="sign_login_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Password"></asp:TextBox>
-                                <%--<input type="password" class="form-control" id="sign_login_password" placeholder="Password">--%>
                                 <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordLogin" onclick="showPassword()"/>
                                 <asp:RequiredFieldValidator id="login_passwordReq" runat ="server" ControlToValidate="sign_login_password" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">
                                 <div class="inputsFormSign_LoginFormCheckbox">
                                     <div class="inputsFormSign_LoginFormCheckboxList">
-                                        <%--<input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
                                         <asp:CheckBox ID="checkRememberMe" ClientIDMode="Static" cssclass="form-check-input" runat="server" />
                                         <label class="form-check-label" id="inputsFormSign_LoginFormCheckboxRememberMe" for="checkRememberMe">Remember Me</label>
                                     </div>
@@ -63,7 +60,6 @@
                                 </div>
                             </div>
                             <div class="inputsFormSign_LoginFooter">
-                                <%--<button type="submit" class="btn btn-info" id="inputsFormSign_LoginButton">Log In</button>--%>
                                 <asp:Button ID="inputsFormSign_LoginButton" ClientIDMode="Static" class="btn btn-info" runat="server" Text="Log In" validationgroup="login" Onclick="inputsFormSign_LoginButton_Click"/>
                             </div>
                         </form>
@@ -97,7 +93,6 @@
                                 <div class="nav-pillsTabs">
                                     <li class="nav-item" role="presentation">
                                         <asp:HyperLink ID="recruiterTab" ClientIDMode="Static" CssClass="nav-link badge-info active_selected active" onclick="showRecruiter()" runat="server" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" Text="Are You A Recruiter?"></asp:HyperLink>
-<%--                                        <a class="nav-link badge-info active_selected active" onclick="showRecruiter()" id="recruiterTab" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true">Are You A Recruiter?</a>--%>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link badge-info" onclick="showSeeker()" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
@@ -112,9 +107,8 @@
                             <div class="tab-pane fade show active" id="recruiter" role="tabpanel" aria-labelledby="recruiterTab">
                                 
                                     <div class="form-group">
-                                        <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name" aria-describedby="recruiter_companyName"></asp:TextBox>
+                                        <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="recruiterCompanyReq" runat ="server" ControlToValidate="sign_recruiter_companyName" validationgroup="recruiter" ErrorMessage="Company Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
-
                                     </div>
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
@@ -162,7 +156,7 @@
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_email" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
-                                             <asp:RequiredFieldValidator id="seekerEmailReq" runat ="server" ControlToValidate="sign_seeker_email" validationgroup="seeker" ErrorMessage="Email is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RequiredFieldValidator id="seekerEmailReq" runat ="server" ControlToValidate="sign_seeker_email" validationgroup="seeker" ErrorMessage="Email is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic" />
                                         </div>
                                     </div>
                                     <div class="row form-group-row">

@@ -15,21 +15,21 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.IsPostBack)
-            //{
-            //    if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
-            //    {
-            //        sign_login_emailUser.Text = Request.Cookies["email"].Value;
-            //        sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
-            //    }
-            //}
+            if (!Page.IsPostBack)
+            {
+                if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+                {
+                    sign_login_emailUser.Text = Request.Cookies["email"].Value;
+                    sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
+                }
+            }
         }
 
         protected void inputsFormSign_LoginButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if(Role.SelectedItem.Value == "job_seeker")
+                if(Role.SelectedItem.Value == "job_seeker") //If user select job seeker
                 {
                     SqlConnection con = new SqlConnection(strcon);
 
@@ -41,7 +41,7 @@ namespace web_app_assignment
 
                     String output = cmd.ExecuteScalar().ToString();
 
-                    if (output == "1")
+                    if (output == "1") //if the result found
                     {
                         Dictionary<string, string> UserDetail = new Dictionary<string, string>();
                         string sql = "SELECT * FROM JobSeeker WHERE email = @email";
@@ -55,10 +55,6 @@ namespace web_app_assignment
 
                         while (dread.Read())
                         {
-                            //Add User Details
-                            //UserDetails.Add("Admin_Email", "anson22267@gmail.com");
-                            //UserDetails.Add("Admin_Name", "Anson");
-                            //UserDetails.Add("Admin_Right", "Viewer");
                             UserDetail.Add("user_name", dread["full_name"].ToString());
                             UserDetail.Add("user_email", dread["email"].ToString());
                             UserDetail.Add("user_skills", dread["skills"].ToString());
@@ -96,7 +92,7 @@ namespace web_app_assignment
 
                     con.Close();
                 }
-                else if (Role.SelectedItem.Value == "recruiter")
+                else if (Role.SelectedItem.Value == "recruiter") //if user select recruiter
                 {
                     SqlConnection conn = new SqlConnection(strcon);
 
@@ -108,7 +104,7 @@ namespace web_app_assignment
 
                     String result = cm.ExecuteScalar().ToString();
 
-                    if (result == "1")
+                    if (result == "1") // if the result found
                     {
                         Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
                         string sqlquery = "SELECT * FROM Recruiter WHERE email = @email";
@@ -122,10 +118,6 @@ namespace web_app_assignment
 
                         while (dR.Read())
                         {
-                            //Add User Details
-                            //UserDetails.Add("Admin_Email", "anson22267@gmail.com");
-                            //UserDetails.Add("Admin_Name", "Anson");
-                            //UserDetails.Add("Admin_Right", "Viewer");
                             RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
                             RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
                             RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
@@ -183,27 +175,43 @@ namespace web_app_assignment
         {
             try
             {
-                if (string.Equals(sign_recruiter_password.Text,sign_recruiter_confirmPassword.Text))
+                SqlConnection strconnect = new SqlConnection(strcon);
+
+                String checkcompany = "SELECT COUNT(*) FROM Recruiter WHERE company_name = '" + sign_recruiter_companyName.Text + "'";
+
+                SqlCommand commRecruiter = new SqlCommand(checkcompany, strconnect);
+
+                strconnect.Open();
+
+                string companyExist =  commRecruiter.ExecuteScalar().ToString();
+
+                if (companyExist == "0") //if the company does not exist
                 {
-                    SqlConnection sqlcon = new SqlConnection(strcon);
+                    if (string.Equals(sign_recruiter_password.Text, sign_recruiter_confirmPassword.Text))
+                    {
+                        SqlConnection sqlcon = new SqlConnection(strcon);
 
-                    sqlcon.Open();
+                        sqlcon.Open();
 
-                    String sqlquery = "INSERT INTO Recruiter (company_name, email, password, created_at) VALUES (@company_name, @company_email, @password, GETDATE())";
+                        String sqlquery = "INSERT INTO Recruiter (company_name, email, password, created_at) VALUES (@company_name, @email, @password, GETDATE())";
 
-                    SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
+                        SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
 
-                    sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
-                    sqlcmd.Parameters.AddWithValue("@company_email", sign_recruiter_companyEmail.Text);
-                    sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
+                        sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
+                        sqlcmd.Parameters.AddWithValue("@email", sign_recruiter_companyEmail.Text);
+                        sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
 
-                    sqlcmd.ExecuteNonQuery();
-                    sqlcon.Close();
+                        sqlcmd.ExecuteNonQuery();
+                        sqlcon.Close();
 
-                    Response.Write("<script>alert('Register Successfully');</script>");
-                    //Response.Redirect("login_signup.aspx");             
+                        Response.Write("<script>alert('Register Successfully');</script>");             
+                    }
                 }
-
+                else //if the company is exist in the record
+                {
+                    Response.Write("<script>alert('The company has been registered');</script>");
+                }
+                strconnect.Close();
             }
             catch (Exception error)
             {
@@ -217,28 +225,48 @@ namespace web_app_assignment
 
             try
             {
+                SqlConnection connectSql = new SqlConnection(strcon);
 
-                if (string.Equals(sign_seeker_password.Text, sign_seeker_confirmPassword.Text))
+                String qrysql = "select count(*) from JobSeeker where email= @email";
+
+                SqlCommand commSql = new SqlCommand(qrysql, connectSql);
+
+                commSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
+
+                connectSql.Open();
+                
+                int existResult = (int)commSql.ExecuteScalar();
+
+                if (existResult == 0) //if the email exist in the record
                 {
-                    SqlConnection connectionSql = new SqlConnection(strcon);
+                    if (string.Equals(sign_seeker_password.Text, sign_seeker_confirmPassword.Text))
+                    {
+                        SqlConnection connectionSql = new SqlConnection(strcon);
 
-                    connectionSql.Open();
+                        connectionSql.Open();
 
-                    String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password, created_at) VALUES (@full_name, @username, @email, @password, GETDATE())";
+                        String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password, created_at) VALUES (@full_name, @username, @email, @password, GETDATE())";
 
-                    SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
+                        SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
 
-                    commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
-                    commandSql.Parameters.AddWithValue("@username", sign_seeker_username.Text);
-                    commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
-                    commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+                        commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
+                        commandSql.Parameters.AddWithValue("@username", sign_seeker_username.Text);
+                        commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
+                        commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
 
-                    commandSql.ExecuteNonQuery();
-                    connectionSql.Close();
+                        commandSql.ExecuteNonQuery();
+                        connectionSql.Close();
 
-                    Response.Write("<script>alert('Register Successfully');</script>");            
+                        Response.Write("<script>alert('Register Successfully');</script>");
+                    }
+                }
+                else //if the email does not exist in the record
+                {
+                    Response.Write("<script>alert('The email you entered has been registered');</script>");
+
                 }
 
+                connectSql.Close();
             }
             catch (Exception error)
             {
