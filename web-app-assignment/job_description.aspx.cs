@@ -86,5 +86,10 @@ namespace web_app_assignment
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
         }
+
+        protected void btn_JobDescriptionDetailsApplyNowButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

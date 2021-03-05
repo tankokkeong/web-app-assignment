@@ -34,7 +34,7 @@
     width: 20px;
 }
 
-.JobListContentsJobCategoryDropdown, .JobListContentsJobSpecDropdown, .JobListContentsLocationDropdown {
+.JobListContentsJobCategoryDropdown, .JobListContentsJobSpecDropdown, .JobListContentsLocationDropdown, .JobListContentsSkillsDropdown {
     width: calc(100% - 46px);
 }
 

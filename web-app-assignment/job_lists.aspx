@@ -63,7 +63,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectJobCategory" CssClass="custom-select jobCategory" name="jobCategory[]" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectJobType" CssClass="custom-select jobType" name="jobCategory[]" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Full Time">Full Time</asp:ListItem>
                                     <asp:ListItem Value="Part Time">Part Time</asp:ListItem>
@@ -131,8 +131,8 @@
         });
 
 
-        $('.jobCategory').select2({
-            placeholder: "Job Category",
+        $('.jobType').select2({
+            placeholder: "Job Type",
         });
         
         $(".jobSpec").select2({
