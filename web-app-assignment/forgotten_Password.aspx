@@ -22,10 +22,12 @@
                 <p class="forgotPasswordBodyContentsFormPara">Enter your login email to reset your password</p>
                 <form>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="forgotPasswordFormEmail" aria-describedby="emailHelp" placeholder="Email">
+                        <%--<input type="email" class="form-control" id="forgotPasswordFormEmail" aria-describedby="emailHelp" placeholder="Email">--%>
+                        <asp:TextBox ID="forgotPasswordFormEmail" ClientIDMode="Static" cssclass="form-control" runat="server" placeholder="Email"></asp:TextBox>
                     </div>
                     <div class="forgotPasswordFormEmailButton">
-                        <button type="submit" class="btn btn-info" id="forgotPasswordFormEmailButtonSubmit">Send Reset Password Email</button>
+                        <%--<button type="submit" class="btn btn-info" id="forgotPasswordFormEmailButtonSubmit">Send Reset Password Email</button>--%>
+                        <asp:Button ID="forgotPasswordFormEmailButtonSubmit" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Send Reset Password Email" OnClick="forgotPasswordFormEmailButtonSubmit_Click"/>
                     </div>
                 </form>
             </div>

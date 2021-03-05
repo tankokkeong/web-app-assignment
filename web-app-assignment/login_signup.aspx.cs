@@ -43,46 +43,59 @@ namespace web_app_assignment
 
                     if (output == "1") //if the result found
                     {
-                        Dictionary<string, string> UserDetail = new Dictionary<string, string>();
-                        string sql = "SELECT * FROM JobSeeker WHERE email = @email";
+                        query = "select * from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
 
-                        SqlCommand command = new SqlCommand(sql, con);
+                        cmd = new SqlCommand(query, con);
 
-                        //Insert parameters
-                        command.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                        output = cmd.ExecuteScalar().ToString();
 
-                        SqlDataReader dread = command.ExecuteReader();
-
-                        while (dread.Read())
+                        if (output == "1")
                         {
-                            UserDetail.Add("user_name", dread["full_name"].ToString());
-                            UserDetail.Add("user_email", dread["email"].ToString());
-                            UserDetail.Add("user_skills", dread["skills"].ToString());
-                            UserDetail.Add("user_gender", dread["gender"].ToString());
-                            UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
-                            UserDetail.Add("user_location", dread["location"].ToString());
-                            UserDetail.Add("user_profession", dread["profession"].ToString());
-                            UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
-                            UserDetail.Add("user_country", dread["country"].ToString());
-                            UserDetail.Add("user_experience", dread["experience"].ToString());
-                            UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
-                        }
+                            Dictionary<string, string> UserDetail = new Dictionary<string, string>();
+                            string sql = "SELECT * FROM JobSeeker WHERE email = @email";
 
-                        if (checkRememberMe.Checked)
-                        {
-                            Response.Cookies["email"].Value = sign_login_emailUser.Text;
-                            Response.Cookies["password"].Value = sign_login_password.Text;
-                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                            SqlCommand command = new SqlCommand(sql, con);
+
+                            //Insert parameters
+                            command.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+
+                            SqlDataReader dread = command.ExecuteReader();
+
+                            while (dread.Read())
+                            {
+                                UserDetail.Add("user_name", dread["full_name"].ToString());
+                                UserDetail.Add("user_email", dread["email"].ToString());
+                                UserDetail.Add("user_skills", dread["skills"].ToString());
+                                UserDetail.Add("user_gender", dread["gender"].ToString());
+                                UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
+                                UserDetail.Add("user_location", dread["location"].ToString());
+                                UserDetail.Add("user_profession", dread["profession"].ToString());
+                                UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
+                                UserDetail.Add("user_country", dread["country"].ToString());
+                                UserDetail.Add("user_experience", dread["experience"].ToString());
+                                UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
+                            }
+
+                            if (checkRememberMe.Checked)
+                            {
+                                Response.Cookies["email"].Value = sign_login_emailUser.Text;
+                                Response.Cookies["password"].Value = sign_login_password.Text;
+                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                            }
+                            else
+                            {
+                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
+                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                            }
+
+                            Session["User"] = UserDetail;
+                            Response.Redirect("home.aspx");
                         }
                         else
                         {
-                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
-                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify')</script>");
                         }
-
-                        Session["User"] = UserDetail;
-                        Response.Redirect("home.aspx");
 
                     }
                     else
@@ -106,52 +119,65 @@ namespace web_app_assignment
 
                     if (result == "1") // if the result found
                     {
-                        Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
-                        string sqlquery = "SELECT * FROM Recruiter WHERE email = @email";
+                        qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
 
-                        SqlCommand commands = new SqlCommand(sqlquery, conn);
+                        cm = new SqlCommand(qry, conn);
 
-                        //Insert parameters
-                        commands.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                        result = cm.ExecuteScalar().ToString();
 
-                        SqlDataReader dR = commands.ExecuteReader();
-
-                        while (dR.Read())
+                        if (result == "1")
                         {
-                            RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
-                            RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
-                            RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
-                            RecruiterDetails.Add("recruiter_company", dR["company_name"].ToString());
-                            RecruiterDetails.Add("recruiter_contactEmail", dR["contact_email"].ToString());
-                            RecruiterDetails.Add("address_line1", dR["address_line1"].ToString());
-                            RecruiterDetails.Add("address_line2", dR["address_line2"].ToString());
-                            RecruiterDetails.Add("city", dR["city"].ToString());
-                            RecruiterDetails.Add("state", dR["state"].ToString());
-                            RecruiterDetails.Add("zip-code", dR["zip_code"].ToString());
-                            RecruiterDetails.Add("recruiter_country", dR["country"].ToString());
-                            RecruiterDetails.Add("recruiter_industry", dR["industry"].ToString());
-                            RecruiterDetails.Add("recruiter_fbLink", dR["facebook_link"].ToString());
-                            RecruiterDetails.Add("recruiter_linkedinLink", dR["linkedin_link"].ToString());
-                            RecruiterDetails.Add("introduction", dR["introduction"].ToString());
-                            RecruiterDetails.Add("rating", dR["rating"].ToString());
-                        }
+                            Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+                            string sqlquery = "SELECT * FROM Recruiter WHERE email = @email";
 
-                        if (checkRememberMe.Checked)
-                        {
-                            Response.Cookies["email"].Value = sign_login_emailUser.Text;
-                            Response.Cookies["password"].Value = sign_login_password.Text;
-                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                            SqlCommand commands = new SqlCommand(sqlquery, conn);
+
+                            //Insert parameters
+                            commands.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+
+                            SqlDataReader dR = commands.ExecuteReader();
+
+                            while (dR.Read())
+                            {
+                                RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
+                                RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
+                                RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
+                                RecruiterDetails.Add("recruiter_company", dR["company_name"].ToString());
+                                RecruiterDetails.Add("recruiter_contactEmail", dR["contact_email"].ToString());
+                                RecruiterDetails.Add("address_line1", dR["address_line1"].ToString());
+                                RecruiterDetails.Add("address_line2", dR["address_line2"].ToString());
+                                RecruiterDetails.Add("city", dR["city"].ToString());
+                                RecruiterDetails.Add("state", dR["state"].ToString());
+                                RecruiterDetails.Add("zip-code", dR["zip_code"].ToString());
+                                RecruiterDetails.Add("recruiter_country", dR["country"].ToString());
+                                RecruiterDetails.Add("recruiter_industry", dR["industry"].ToString());
+                                RecruiterDetails.Add("recruiter_fbLink", dR["facebook_link"].ToString());
+                                RecruiterDetails.Add("recruiter_linkedinLink", dR["linkedin_link"].ToString());
+                                RecruiterDetails.Add("introduction", dR["introduction"].ToString());
+                                RecruiterDetails.Add("rating", dR["rating"].ToString());
+                            }
+
+                            if (checkRememberMe.Checked)
+                            {
+                                Response.Cookies["email"].Value = sign_login_emailUser.Text;
+                                Response.Cookies["password"].Value = sign_login_password.Text;
+                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
+                            }
+                            else
+                            {
+                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
+                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                            }
+
+                            Session["Recruiter"] = RecruiterDetails;
+
+                            Response.Redirect("home.aspx");
                         }
                         else
                         {
-                            Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
-                            Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify')</script>");
                         }
-
-                        Session["Recruiter"] = RecruiterDetails;
-
-                        Response.Redirect("home.aspx");
                     }
                     else
                     {
