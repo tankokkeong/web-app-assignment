@@ -23,6 +23,9 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                string job_title = Request.QueryString["job_title"] ?? "";
+                string location = Request.QueryString["location"] ?? "";
+
                 string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
 
                 SqlCommand cmd = new SqlCommand(sql, con);

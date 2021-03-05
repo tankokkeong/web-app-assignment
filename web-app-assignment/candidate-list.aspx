@@ -15,7 +15,6 @@
                 <h2 class="JobListContentsBackGroundContentHeader">
                     Find The Jobs That Matter To You
                 </h2>
-                <form>
                     <div class="form-group JobListContentsBackgroundInputs">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -23,7 +22,14 @@
                                     <img src="images/JobsList/loupe.png" alt="search" class="JobListContentsSearchImage"/>
                                 </span>
                             </div>
-                            <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title, Keyword or Company" CssClass="form-control" runat="server"></asp:TextBox>
+                            <div class="JobListContentsSkillsDropdown">
+                                <asp:DropDownList ID="ddl_SearchSkills" CssClass="selectSkills custom-select form-control" runat="server" multiple>
+                                    <asp:ListItem Value="All">All</asp:ListItem>
+                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
+                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
+                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group JobListContentsBackgroundInputs">
@@ -34,7 +40,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsLocationSelectStates" CssClass="selectStates custom-select form-control" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
                                     <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
@@ -63,10 +69,17 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobCategoryDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectJobCategory" CssClass="custom-select jobCategory" name="jobCategory[]" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Full Time">Full Time</asp:ListItem>
-                                    <asp:ListItem Value="Part Time">Part Time</asp:ListItem>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectIndustry" CssClass="custom-select jobIndustry form-control" runat="server" multiple>
+                                    <asp:ListItem Value="Teachers and Trainers for Jewellery Production">Teachers and Trainers for Jewellery Production</asp:ListItem>
+                                    <asp:ListItem Value="Wireless Technologist">Wireless Technologist</asp:ListItem>
+                                    <asp:ListItem Value="Photonics">Photonics</asp:ListItem>
+                                    <asp:ListItem Value="Electrical & Electronics">Electrical & Electronics</asp:ListItem>
+                                    <asp:ListItem Value="Designers">Designers</asp:ListItem>
+                                    <asp:ListItem Value="Wood Technologists">Wood Technologists</asp:ListItem>
+                                    <asp:ListItem Value="Food Industry">Food Industry</asp:ListItem>
+                                    <asp:ListItem Value="Biotechnologist">Biotechnologist</asp:ListItem>
+                                    <asp:ListItem Value="Conveyor Vulcanizing">Conveyor Vulcanizing</asp:ListItem>
+                                    <asp:ListItem Value="Digital Imaging">Digital Imaging</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -79,7 +92,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobSpecDropdown">
-                                <asp:DropDownList ID="ddl_JobListContentsSelectJobSpec" CssClass="custom-select jobSpec" runat="server" multiple>
+                                <asp:DropDownList ID="ddl_JobListContentsSelectProfession" CssClass="custom-select jobSpec form-control" runat="server" multiple>
                                     <asp:ListItem Value="All">All</asp:ListItem>
                                     <asp:ListItem Value="Accounting">Accounting</asp:ListItem>
                                     <asp:ListItem Value="Information Technology">Information Technology</asp:ListItem>
@@ -90,7 +103,7 @@
                         </div>
                     </div>
                     <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" runat="server" Text="Search" OnClick="btn_JobListContentsBackgroundInputsSearchButton_Click" />
-                </form>
+                
             </div>
         </div>
 
@@ -107,14 +120,22 @@
     </div>
 
     <script type="text/javascript">
+        $(".selectSkills").select2({
+            placeholder: "Skills",
+            allowClear: true,
+            tags: true,
+        });
+
         $(".selectStates").select2({
             placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
         });
 
-        $('.jobCategory').select2({
-            placeholder: "Job Category",
+        $('.jobIndustry').select2({
+            placeholder: "Industry",
+            allowClear: true,
+            tags: true,
         });
 
         $(".jobSpec").select2({

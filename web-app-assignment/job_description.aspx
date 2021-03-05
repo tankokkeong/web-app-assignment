@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col JobDescriptionDetailsApplyNow">
-                <asp:Button ID="btn_JobDescriptionDetailsApplyNowButton" CssClass="btn btn-danger" runat="server" Text="Apply Now" />
+                <asp:Button ID="btn_JobDescriptionDetailsApplyNowButton" CssClass="btn btn-danger" runat="server" Text="Apply Now" OnClick="btn_JobDescriptionDetailsApplyNowButton_Click"/>
             </div>
         </div>
         <div class="JobDescriptionContents">

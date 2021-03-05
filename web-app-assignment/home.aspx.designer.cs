@@ -15,6 +15,33 @@ namespace web_app_assignment
     {
 
         /// <summary>
+        /// txt_SearchJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_SearchJobTitle;
+
+        /// <summary>
+        /// ddl_HomeLocationSelectStates control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_HomeLocationSelectStates;
+
+        /// <summary>
+        /// ddl_HomeSelectJobCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_HomeSelectJobCategory;
+
+        /// <summary>
         /// btn_HomeSearchButton control.
         /// </summary>
         /// <remarks>
