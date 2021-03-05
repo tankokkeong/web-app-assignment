@@ -41,6 +41,8 @@ namespace web_app_assignment.admin
                 //Close connection
                 con.Close();
 
+                Response.Redirect("dashboard.aspx");
+
             }
             else 
             {

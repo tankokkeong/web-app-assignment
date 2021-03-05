@@ -4,23 +4,24 @@
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawBarChart);
-       
+        
+
+
         function drawBarChart() {
+
+
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
-                ['Monday', 1000, 400, 200],
-                ['Tuesday', 1170, 460, 250],
-                ['Wednesday', 660, 1120, 300],
-                ['Thursday', 1030, 540, 350],
-                ['Friday', 1030, 540, 350],
-                ['Saturday', 1030, 540, 350],
-                ['Sunday', 1030, 540, 350]
+                ['2020', 1000, 400, 200],
+                ['2021', 1170, 460, 250],
+                ['2022', 660, 1120, 300],
+                ['2023', 1030, 540, 350]
             ]);
 
             var options = {
                 chart: {
                     title: 'People Visited',
-                    subtitle: 'Visitors, Recruiters, and Job Seeker: Mon-Fri',
+                    subtitle: 'Visitors, Recruiters, and Job Seeker: 2020-2023',
                 },
 
                 backgroundColor: "transparent",
@@ -43,11 +44,11 @@
 
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Month', 'Total Application'],
-                ['Jan', 1000],
-                ['Feb', 1170],
-                ['Mar', 660],
-                ['Apr', 1030]
+                ['Year', 'Total Application'],
+                ['2020', 1000],
+                ['2021', 1170],
+                ['2022', 660],
+                ['2023', 1030]
             ]);
 
             var options = {
