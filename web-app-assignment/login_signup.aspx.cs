@@ -245,12 +245,11 @@ namespace web_app_assignment
 
                         connectionSql.Open();
 
-                        String sqlqry = "INSERT INTO JobSeeker (full_name, username, email, password, created_at) VALUES (@full_name, @username, @email, @password, GETDATE())";
+                        String sqlqry = "INSERT INTO JobSeeker (full_name, email, password, created_at) VALUES (@full_name, @email, @password, GETDATE())";
 
                         SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
 
                         commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
-                        commandSql.Parameters.AddWithValue("@username", sign_seeker_username.Text);
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
                         commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
 

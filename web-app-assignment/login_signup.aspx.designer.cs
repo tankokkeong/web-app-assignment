@@ -195,24 +195,6 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerFullNameReq;
 
         /// <summary>
-        /// sign_seeker_username control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox sign_seeker_username;
-
-        /// <summary>
-        /// seekerUsernameReq control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerUsernameReq;
-
-        /// <summary>
         /// sign_seeker_email control.
         /// </summary>
         /// <remarks>

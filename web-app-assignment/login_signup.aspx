@@ -151,10 +151,6 @@
                                      </div>
                                     <div class="row form-group-row">
                                         <div class="col">
-                                             <asp:TextBox ID="sign_seeker_username" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Username"></asp:TextBox>  
-                                             <asp:RequiredFieldValidator id="seekerUsernameReq" runat ="server" ControlToValidate="sign_seeker_username" validationgroup="seeker" ErrorMessage="Username is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
-                                        </div>
-                                        <div class="col">
                                             <asp:TextBox ID="sign_seeker_email" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="seekerEmailReq" runat ="server" ControlToValidate="sign_seeker_email" validationgroup="seeker" ErrorMessage="Email is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic" />
                                         </div>
