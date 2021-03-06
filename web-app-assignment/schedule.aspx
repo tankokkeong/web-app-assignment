@@ -35,7 +35,7 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Meeting Name:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="meeting-name" value="email@example.com">
+                        <input type="text" class="form-control" id="meeting-name">
                     </div>
                 </div>
 
