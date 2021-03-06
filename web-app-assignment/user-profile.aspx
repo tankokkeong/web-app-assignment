@@ -43,7 +43,7 @@
             
         </div>
 
-        <div class="profile-row">
+        <div class="profile-row mt-3">
             
 
             <div class="user-details mt-3">
