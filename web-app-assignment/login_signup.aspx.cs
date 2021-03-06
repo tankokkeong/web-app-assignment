@@ -35,7 +35,7 @@ namespace web_app_assignment
 
                     con.Open();
 
-                    String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL'";
+                    String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
@@ -111,7 +111,7 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL";
+                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "'";
 
                     SqlCommand cm = new SqlCommand(qry, conn);
 
@@ -225,7 +225,7 @@ namespace web_app_assignment
 
                         sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
                         sqlcmd.Parameters.AddWithValue("@email", sign_recruiter_companyEmail.Text);
-                        sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
+                        sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
 
                         sqlcmd.ExecuteNonQuery();
                         sqlcon.Close();
@@ -277,7 +277,7 @@ namespace web_app_assignment
 
                         commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
-                        commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+                        commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
 
                         commandSql.ExecuteNonQuery();
                         connectionSql.Close();
