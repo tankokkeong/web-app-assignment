@@ -31,7 +31,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                cmd = new SqlCommand("SELECT * FROM Recruiter ")
+                cmd = new SqlCommand("SELECT * FROM Recruiter ");
             }
             catch (Exception error)
             {
