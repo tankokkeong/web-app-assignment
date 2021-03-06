@@ -198,19 +198,29 @@
                     </div>
                 </div>
 
+                <%-- Job Approval Alert --%>
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display:none" id="job-approved-alert">
+                    Job Application is approved!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
                 <div id="job-application-content" class="my-info row" style="display:none;">
                     
                     <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
                     
                 </div>
-                    <%-- Delete Completed Alert --%>
-                <asp:Label ID="lblDeleteAlert" runat="server" Text=""></asp:Label>
+
+                <%-- Delete Completed Alert --%>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="job-deleted-alert">
                     Job deleted successful!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                
+
                 <div id="job-posted-content" class="my-info row" style="display:none;">
                     <div class="mb-3">
                         <a href="post-job.aspx" class="btn btn-primary">Post New Job</a>
@@ -299,6 +309,28 @@
       </div>
     </div>
 
+    <!-- Approve Job Modal -->
+    <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Approval Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to approve this job application?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnApproveJob" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnApproveJob_Click"/>
+            <asp:TextBox ID="txtApproveApplication" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
         function deleteJob(id) {
             var delete_input = document.getElementById("ContentPlaceHolder1_txtDeleteJob");
@@ -320,7 +352,27 @@
             }
         }
 
+        function approveApplication(id) {
+            var approve_input = document.getElementById("ContentPlaceHolder1_txtApproveApplication");
+
+            //Change the id
+            approve_input.value = id;
+        }
+
+        //Check Approve Job Application
+        function checkApprovedApplication() {
+            var link = window.location.href.split("?");
+            var approved_alert = document.getElementById("job-approved-alert");
+
+            if (link[1] === "approval") {
+                //Change to job posted tab
+                recruiterProfileSwitchTab('application');
+                approved_alert.style.display = "";
+            }
+        }
+
         checkDeleteJob();
+        checkApprovedApplication();
 
     </script>
 </asp:Content>

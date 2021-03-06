@@ -143,7 +143,7 @@ namespace web_app_assignment
                         lblJobStatus.Text = lblJobStatus.Text +
                             "<div class='col-sm-3 mt-3'>" +
                             "<div class='mt-2'>" +
-                                "<a href = 'chatbox.aspx' class='btn btn-success'>Approve</a>" +
+                                "<button href = 'chatbox.aspx' class='btn btn-success' data-toggle='modal' data-target='#approveModal' type='button' onclick='approveApplication(" + dr["application_id"].ToString() + ")'>Approve</button>" +
                             "</div>" +
 
                             "<div class='mt-2'>" +
@@ -158,11 +158,11 @@ namespace web_app_assignment
                         lblJobStatus.Text = lblJobStatus.Text +
                         "<div class='col-sm-3 mt-3'>" +
                             "<div class='mt-2'>" +
-                                "<a href = 'chatbox.aspx' class='btn btn-success'>Chat</a>" +
+                                "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
                             "</div>" +
 
                             "<div class='mt-2'>" +
-                                "<a href = 'schedule.aspx' class='btn btn-primary'>Schedule</a>" +
+                                "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString()  + "' class='btn btn-primary'>Schedule</a>" +
                             "</div>" +
 
                             "<div class='mt-2'>" +
@@ -256,6 +256,43 @@ namespace web_app_assignment
                 Response.Write("<script>alert('Record Deleted successful!');</script>");
                 Response.Redirect("recruiter-profile.aspx?deletedJob");
 
+
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
+        }
+
+        protected void btnApproveJob_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var application_id = txtApproveApplication.Text;
+
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read User profile Details
+                string sql = "Update ApplicationStatus " +
+                        "SET applied_status = 'Approved' " +
+                        "WHERE application_id = @application_id";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@application_id", application_id);
+
+                //Execute the queries
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Write("<script>alert('Application approved!!');</script>");
+                Response.Redirect("recruiter-profile.aspx?approval");
 
             }
             catch (Exception error)
