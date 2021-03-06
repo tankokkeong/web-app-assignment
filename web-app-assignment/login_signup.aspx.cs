@@ -32,7 +32,7 @@ namespace web_app_assignment
                 if(Role.SelectedItem.Value == "job_seeker") //If user select job seeker
                 {
                     SqlConnection con = new SqlConnection(strcon);
-
+                    
                     con.Open();
 
                     String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL'";

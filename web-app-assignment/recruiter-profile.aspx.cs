@@ -91,8 +91,103 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                string sql_jobStatus = "SELECT * FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP " +
+                                        "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                        "ASS.post_id = JP.post_id AND " +
+                                        "JP.recruiter_id = @recruiter_id";
+
+                cmd = new SqlCommand(sql_jobStatus, con);
+
+                //Insert parameter
+                cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+
+                dr = cmd.ExecuteReader();
+
+                //Print out the application status
+                while (dr.Read())
+                {
+                    lblJobStatus.Text = lblJobStatus.Text +
+                    "<div class='application-bar row'>" +
+                        "<div class='col-sm-3 mt-3'>" +
+                            "<img src = 'images/user%20profile/demo-user.png' class='company-pic'/>" +
+                        "</div>" +
+
+                        "<div class='col-sm-3 mt-3'>" +
+                            "<div class='company-name text-lightgreen'>" + dr["full_name"] + "</div>" +
+                            "<div class='company-location'>" +
+                                "<span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>" +
+                            "</div>" +
+
+                            "<div class='hiring-position'>" +
+                                "<span class='hiring-details'>Graphic Designer</span>" +
+                            "</div>" +
+
+                            "<div class='view-profile'>" +
+                                "<button class='btn btn-info'>View Profile</button>" +
+                            "</div>" +
+                        "</div>" +
+
+                        "<div class='col-sm-3 mt-3'>" +
+                            "<div class='application-status text-info'>Applied</div>" +
+                            "<div>" +
+                                dr["job_title"] +
+                            "</div>" +
+
+                            "<div class='employment-type badge badge-success'>" +
+                                dr["job_type"] +
+                        "</div>" +
+                    "</div>";
+
+                    if(dr["applied_status"].ToString() == "Pending")
+                    {
+                        lblJobStatus.Text = lblJobStatus.Text +
+                            "<div class='col-sm-3 mt-3'>" +
+                            "<div class='mt-2'>" +
+                                "<a href = 'chatbox.aspx' class='btn btn-success'>Approve</a>" +
+                            "</div>" +
+
+                            "<div class='mt-2'>" +
+                                "<button class='btn btn-danger'>Reject</button>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>";
+
+                    }
+                    else
+                    {
+                        lblJobStatus.Text = lblJobStatus.Text +
+                        "<div class='col-sm-3 mt-3'>" +
+                            "<div class='mt-2'>" +
+                                "<a href = 'chatbox.aspx' class='btn btn-success'>Chat</a>" +
+                            "</div>" +
+
+                            "<div class='mt-2'>" +
+                                "<a href = 'schedule.aspx' class='btn btn-primary'>Schedule</a>" +
+                            "</div>" +
+
+                            "<div class='mt-2'>" +
+                                "<button class='btn btn-danger'>Remove</button>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>";
+                    }
+                        
+                    //Response.Write("<script>alert('" + dr["seeker_id"] + "');</script>");
+                    //Response.Write("<script>alert('fuck');</script>");
+                }
+
+
+                //Close connection
+                con.Close();
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
                 //Read Job Posted
-                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = 1 AND deleted_at IS NULL";
+                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
                 SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobposted, con);
 
                 

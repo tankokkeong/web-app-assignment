@@ -168,6 +168,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblRecruiterRating;
 
         /// <summary>
+        /// lblJobStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJobStatus;
+
+        /// <summary>
         /// lblDeleteAlert control.
         /// </summary>
         /// <remarks>

@@ -200,55 +200,7 @@
 
                 <div id="job-application-content" class="my-info row" style="display:none;">
                     
-                    <div class="application-container">
-                        <% for (int i = 0; i < 10; i++)
-                            { %>
-                        <div class="application-bar row">
-                            <div class="col-sm-3 mt-3">
-                                <img src="images/user%20profile/demo-user.png" class="company-pic"/>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="company-name text-lightgreen">Company Name</div>
-                                <div class="company-location">
-                                    <span class="company-location-details text-secondary"><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Selangor</span>
-                                </div>
-                                <div class="hiring-position">
-                                    <span class="hiring-details">Graphic Designer</span>
-                                </div>
-                                <div class="view-profile">
-                                    <button class="btn btn-info">View Profile</button>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="application-status text-info">Applied</div>
-                                <div>
-                                    Front-End Developer
-                                </div>
-                                <div class="employment-type badge badge-success">
-                                    Full Time
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="mt-2">
-                                    <a href="chatbox.aspx" class="btn btn-success">Chat</a>
-                                </div>
-
-                                <div class="mt-2">
-                                    <a href="schedule.aspx" class="btn btn-primary">Schedule</a>
-                                </div>
-
-                                <div class="mt-2">
-                                    <button class="btn btn-danger">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <%} %>
-
-                    </div>
+                    <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
                     
                 </div>
                     <%-- Delete Completed Alert --%>
