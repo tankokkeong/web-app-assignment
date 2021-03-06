@@ -92,8 +92,8 @@
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Attendees:</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control meeting-attendees" id="meeting-attendees" value="tankokkeong4488@gmail.com">
-
+                        <%--<input type="text" readonly class="form-control meeting-attendees" id="meeting-attendees" value="tankokkeong4488@gmail.com">--%>
+                        <asp:TextBox ID="txtMeetingAttendees" runat="server" class="form-control meeting-attendees" ReadOnly></asp:TextBox>
                         <div id="attendees-container">
 
                         </div>

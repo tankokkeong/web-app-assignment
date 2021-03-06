@@ -162,7 +162,7 @@ namespace web_app_assignment
                             "</div>" +
 
                             "<div class='mt-2'>" +
-                                "<a href = 'schedule.aspx?seeker='" + dr["seeker_id"].ToString()  + "' class='btn btn-primary'>Schedule</a>" +
+                                "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString()  + "' class='btn btn-primary'>Schedule</a>" +
                             "</div>" +
 
                             "<div class='mt-2'>" +
