@@ -1,313 +1,250 @@
-﻿@media (min-width: 368px){
-    .login_signupBody{
-        display: block;
-        margin-bottom: -25%;
-    }
-
-    .login_signUpBackgroundImagePics {
-        display: none;
-    }
-
-    .eyeImagePasswordLogin {
-        left: 100%;
-        height: 20px;
-        top: 60%;
-        transform: translateY(-60%);
-    }
-
-    .eyeImagePasswordSignUp{
-       left: 80%;
-       height: 20px;
-       top: 50%;
-       transform: translate(-80%, -50%);
-    }
-
-    .eyeImagePasswordLogin {
-        left: 75%;
-    }
-
-    #sign_recruiter_companyName::placeholder, #sign_recruiter_contactFirstName::placeholder, #sign_recruiter_contactLastName::placeholder,
-    #sign_recruiter_username::placeholder, #sign_recruiter_companyEmail::placeholder,
-    #sign_recruiter_password::placeholder, #sign_recruiter_confirmPassword::placeholder {
-        font-size: 9px;
-    }
+﻿.login_signUpBackgroundImagePics {
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 
-@media (min-width: 768px) {
-    .login_signupBody {
-        display: block;
-        margin-bottom: -5%;
-    }
-
-    #sign_recruiter_companyName::placeholder, #sign_recruiter_contactFirstName::placeholder, #sign_recruiter_contactLastName::placeholder,
-    #sign_recruiter_username::placeholder, #sign_recruiter_companyEmail::placeholder,
-    #sign_recruiter_password::placeholder, #sign_recruiter_confirmPassword::placeholder {
-        font-size: 15px;
-    }
-
-    .eyeImagePasswordLogin {
-        left: 90%;
-        height: 20px;
-        top: 60%;
-        transform: translateY(-60%);
-    }
-
-    .eyeImagePasswordSignUp {
-        left: 90%;
-        height: 20px;
-        top: 50%;
-        transform: translate(-80%, -50%);
-    }
+.Login_signUpForms{
+    padding: 2.5%;
 }
 
-@media (min-width: 992px) {
+.tab-content {
+    background-color: #E3DFDF;
+    padding: 2.5%;
+}
 
-    .login_signupBody {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        margin-bottom: 0;
-    }
+.inputsFormSign_Login {
+    padding: 10%;
+    position: relative;
+}
 
-    .login_signUpBackgroundImagePics {
-        margin-top: 40%;
-        margin-left: 50%;
-        transform: translate(-50%, -50%);
-        height: 70%;
-        display: block;
-    }
+.inputsFormSign_SignUp {
+    padding: 5%;
+    position: relative;
+}
 
-    .Login_signUpForms {
-        padding: 5%;
-        height: 100vh;
-    }
+.sign_loginLogoImage {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 5%;
+}
 
-    .tab-content {
-        background-color: #E3DFDF;
-    }
+#inputsFormSign_LoginFooter {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: -10%;
+    width: 100%;
+}
 
-    .inputsFormSign_Login {
-        padding: 10%;
-        position: relative;
-    }
-
-    .inputsFormSign_SignUp {
-        padding: 5%;
-        position: relative;
-    }
-
-    .sign_loginLogo {
-        width: 100%;
-    }
-
-    .sign_loginLogoImage {
-        margin-left: 50%;
-        transform: translate(-50%);
-        margin-top: 5%;
-    }
-
-    #inputsFormSign_LoginFooter {
-        margin-left: 50%;
-        transform: translate(-50%);
-        margin-bottom: -10%;
-        width: 100%;
-    }
-
-/*    #userRole {
-        background-color: #80b9bb;
-        color: white;
-    }
+#userRole {
+    background-color: #80b9bb;
+    color: white;
+}
 
     #userRole::placeholder {
         color: white;
-    }*/
-
-    #sign_login_emailUser {
-        background-color: #80b9bb;
-        color: white;
     }
 
-        #sign_login_emailUser::placeholder {
-            color: white;
-        }
+#sign_login_emailUser {
+    background-color: #80b9bb;
+    color: white;
+}
 
-    #sign_login_password {
-        background-color: #80b9bb;
-        color: white;
+#sign_login_emailUser::placeholder {
+    color: white;
+}
+
+#sign_login_password {
+    background-color: #80b9bb;
+    color: white;
+}
+
+#sign_login_password::placeholder {
+    color: white;
+}
+
+.inputsFormSign_LoginFormCheckbox {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.inputsFormSign_LoginFormCheckboxList {
+    margin-left: 25%;
+}
+
+#inputsFormSign_LoginFormCheckboxRememberMe {
+    color: #8C8686;
+}
+
+.inputsFormSign_LoginFormCheckForgotPassword {
+    color: #8C8686;
+}
+
+.inputsFormSign_SignUpFree, .inputsFormSign_LoginFree {
+    text-align: center;
+    color: #8C8686;
+    padding: 2.5%;
+}
+
+.SignUpFree, .LoginFree {
+    color: #8C8686;
+}
+
+.nav-pillsTabs {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: auto;
+    grid-gap: 5%;
+    width: 100%;
+}
+
+#recruiterTab {
+    width: 100%;
+    text-align: center;
+}
+
+#seekerTab {
+    width: 100%;
+    text-align: center;
+}
+
+.dividerSignUp {
+    padding: 5%;
+    margin-top: 5%;
+}
+
+.dividerLogin {
+    padding: 5%;
+}
+
+.dividerSignUplines {
+    width: 100%;
+    height: 45px;
+    position: relative;
+}
+
+.dividerSignUplines::after, .dividerSignUplines::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    height: 1px;
+    background: #8C8686;
+    top: 30%;
+    width: 25%;
+}
+
+.dividerSignUplines::after {
+    left: 20%;
+}
+
+.dividerSignUplines::before {
+    right: 20%;
+}
+
+.dividerSignUplinesContent {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: -5%;
+    color: #8C8686;
+    text-align: center;
+}
+
+.active_selected {
+    background-color: #194a4c !important;
+}
+
+.form-group-row {
+    margin-bottom: 2%;
+}
+
+#sign_recruiter_companyName, #sign_recruiter_contactFirstName, #sign_recruiter_contactLastName, #sign_recruiter_username,
+#sign_recruiter_companyEmail, #sign_recruiter_password, #sign_recruiter_confirmPassword {
+    background-color: #80b9bb;
+    color: white;
+}
+
+#sign_recruiter_companyName::placeholder, #sign_recruiter_contactFirstName::placeholder, #sign_recruiter_contactLastName::placeholder,
+#sign_recruiter_username::placeholder, #sign_recruiter_companyEmail::placeholder,
+#sign_recruiter_password::placeholder, #sign_recruiter_confirmPassword::placeholder {
+    color: white;
+}
+
+#Recruiter_SignUpButton {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: -10%;
+    width: 100%;
+}
+
+#JobSeeker_SignUpButton {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: -10%;
+    width: 100%;
+}
+
+#inputsFormSign_LoginButton {
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: -10%;
+    width: 100%;
+}
+
+#sign_seeker_FullName, #sign_seeker_username,
+#sign_seeker_Email, #sign_seeker_password, #sign_seeker_confirmPassword {
+    background-color: #80b9bb;
+    color: white;
+}
+
+#sign_seeker_FullName::placeholder, #sign_seeker_username::placeholder, #sign_seeker_Email::placeholder,
+#sign_seeker_password::placeholder, #sign_seeker_confirmPassword::placeholder {
+    color: white;
+}
+
+.eyeImagePasswordLogin {
+    position: absolute;
+    height: 25px;
+    left: 85%;
+    top: 55%;
+    cursor: pointer;
+    transform: translate(-90%, -50%);
+}
+
+.eyeImagePasswordSignUp {
+    position: absolute;
+    height: 25px;
+    left: 90%;
+    top: 50%;
+    cursor: pointer;
+    transform: translate(-90%, -50%);
+}
+
+@media(max-width: 576px) {
+    .login_signUpBackgroundImagePics {
+        display: none;
     }
+}
 
-        #sign_login_password::placeholder {
-            color: white;
-        }
-
-    .inputsFormSign_LoginFormCheckbox {
-        display: grid;
-        grid-template-columns: 50% 50%;
-    }
-
-    .inputsFormSign_LoginFormCheckboxList {
-        margin-left: 25%;
-    }
-
-    #inputsFormSign_LoginFormCheckboxRememberMe {
-        color: #8C8686;
-    }
-
-    .inputsFormSign_LoginFormCheckForgotPassword {
-        color: #8C8686;
-    }
-
-    .inputsFormSign_SignUpFree, .inputsFormSign_LoginFree {
-        text-align: center;
-        color: #8C8686;
-        padding: 2.5%;
-    }
-
-    .SignUpFree {
-        color: #8C8686;
-    }
-
-    .LoginFree {
-        color: #8C8686;
-    }
-
-    .nav-pillsTabs {
-        display: grid;
-        grid-template-columns: auto auto;
-        margin: auto;
-        grid-gap: 5%;
-        width: 100%;
-    }
-
-    #recruiterTab {
-        width: 100%;
-        text-align: center;
-    }
-
-    #seekerTab {
-        width: 100%;
-        text-align: center;
-    }
-
-    .dividerSignUp {
-        padding: 5%;
-        margin-top: 5%;
-    }
-
-    .dividerLogin {
-        padding: 5%;
-    }
-
-    .dividerSignUplines {
-        width: 100%;
-        height: 45px;
-        position: relative;
-    }
-
-        .dividerSignUplines::after, .dividerSignUplines::before {
-            content: '';
-            position: absolute;
-            margin: auto;
-            height: 1px;
-            background: #8C8686;
-            top: 30%;
-            width: 25%;
-        }
-
-        .dividerSignUplines::after {
-            left: 20%;
-        }
-
-        .dividerSignUplines::before {
-            right: 20%;
-        }
-
-    .dividerSignUplinesContent {
-        width: 100%;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin-top: -5%;
-        color: #8C8686;
-        text-align: center;
-    }
-
-    .active_selected {
-        background-color: #194a4c !important;
-    }
-
-    .form-group-row {
-        margin-bottom: 2%;
-    }
-
-    #sign_recruiter_companyName, #sign_recruiter_contactFirstName, #sign_recruiter_contactLastName, #sign_recruiter_username,
-    #sign_recruiter_companyEmail, #sign_recruiter_password, #sign_recruiter_confirmPassword {
-        background-color: #80b9bb;
-        color: white;
-    }
-
-        #sign_recruiter_companyName::placeholder, #sign_recruiter_contactFirstName::placeholder, #sign_recruiter_contactLastName::placeholder,
-        #sign_recruiter_username::placeholder, #sign_recruiter_companyEmail::placeholder,
-        #sign_recruiter_password::placeholder, #sign_recruiter_confirmPassword::placeholder {
-            color: white;
-        }
-
-    #Recruiter_SignUpButton {
-        margin-left: 50%;
-        transform: translate(-50%);
-        margin-bottom: -10%;
-        width: 100%;
-    }
-
-    #JobSeeker_SignUpButton {
-        margin-left: 50%;
-        transform: translate(-50%);
-        margin-bottom: -10%;
-        width: 100%;
-    }
-
-    #inputsFormSign_LoginButton {
-        margin-left: 50%;
-        transform: translate(-50%);
-        margin-bottom: -10%;
-        width: 100%;
-    }
-
-    #sign_seeker_FullName, #sign_seeker_username,
-    #sign_seeker_Email, #sign_seeker_password, #sign_seeker_confirmPassword {
-        background-color: #80b9bb;
-        color: white;
-    }
-
-        #sign_seeker_FullName::placeholder, #sign_seeker_username::placeholder, #sign_seeker_Email::placeholder,
-        #sign_seeker_password::placeholder, #sign_seeker_confirmPassword::placeholder {
-            color: white;
-        }
-
-    .form-group {
-        position: relative;
-        width: 100%;
-    }
-
+@media(max-width: 1100px) {
     .eyeImagePasswordLogin {
         position: absolute;
-        height: 30px;
-        left: 90%;
-        top: 50%;
+        height: 25px;
+        left: 85%;
+        top: 56%;
         cursor: pointer;
         transform: translate(-90%, -50%);
     }
 
     .eyeImagePasswordSignUp {
         position: absolute;
-        height: 30px;
-        left: 90%;
-        top: 50%;
+        height: 25px;
+        left: 89%;
+        top: 55%;
         cursor: pointer;
         transform: translate(-90%, -50%);
     }
-
 }

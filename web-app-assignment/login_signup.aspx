@@ -9,12 +9,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
-    <div class="login_signupBody">
-        <div class="login_signUpBackgroundImage">
+    <div class="Login_Body">
+        
+    <div class="row login_signupBody">
+        <div class="col-sm-6 login_signUpBackgroundImage">
             <img src="images/Signup_Login/works-1.png" class="login_signUpBackgroundImagePics" alt="background"/>
         </div>
-        <div class="Login_signUpForms">
+        <div class="col-sm-6 pr-4 pl-4 Login_signUpForms">
             <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link badge-info active_selected active" onclick="showTabContentsLogin()" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
@@ -195,6 +196,7 @@
                 <%-- Register Session End --%>
             </div>
         </div>
+    </div>
     </div>
 
 

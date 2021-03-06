@@ -103,13 +103,9 @@ namespace web_app_assignment
 
                 string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
 
-                if (UserDetail["user_email"] != null)
+                if (UserDetail["user_email"] == null)
                 {
-                    Response.Write("<script>alert('" + UserDetail["user_email"] + "');</script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('Empty');</script>");
+                    Response.Write("<script>alert('Empty Email');</script>");
                 }
 
                 SqlCommand cmd = new SqlCommand(selectSeekerID, con);
