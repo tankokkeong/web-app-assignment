@@ -2164,6 +2164,7 @@
       <DependentUpon>privacy_policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pwHash.cs" />
     <Compile Include="recruiter-profile.aspx.cs">
       <DependentUpon>recruiter-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

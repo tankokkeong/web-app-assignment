@@ -19,24 +19,24 @@ namespace web_app_assignment
 
         protected void forgotPasswordFormEmailButtonSubmit_Click (object sender, EventArgs e)
         {
-            string uniqueCode = string.Empty;
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader dr;
+            //string uniqueCode = string.Empty;
+            //SqlCommand cmd = new SqlCommand();
+            //SqlDataReader dr;
 
-            try
-            {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["strcon"].ConnectionString);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+            //try
+            //{
+            //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["strcon"].ConnectionString);
+            //    if (con.State == ConnectionState.Closed)
+            //    {
+            //        con.Open();
+            //    }
 
-                cmd = new SqlCommand("SELECT * FROM Recruiter ");
-            }
-            catch (Exception error)
-            {
-                Response.Write(error.Message);
-            }
+            //    cmd = new SqlCommand("SELECT * FROM Recruiter ")
+            //}
+            //catch (Exception error)
+            //{
+            //    Response.Write(error.Message);
+            //}
         }
     }
 }

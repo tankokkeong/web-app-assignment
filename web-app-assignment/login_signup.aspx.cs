@@ -35,17 +35,23 @@ namespace web_app_assignment
                     
                     con.Open();
 
-                    String query = "select count(*) from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL'";
+                    String query = "select count(*) from JobSeeker where email= @email AND password = @password AND verified_at IS NOT NULL";
 
                     SqlCommand cmd = new SqlCommand(query, con);
+
+                    cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                    cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
 
                     String output = cmd.ExecuteScalar().ToString();
 
                     if (output == "1") //if the result found
                     {
-                        query = "select * from JobSeeker where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
+                        query = "select count(*) from JobSeeker where email= @email AND password = @password AND verified_at IS NOT NULL";
 
                         cmd = new SqlCommand(query, con);
+
+                        cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                        cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
 
                         output = cmd.ExecuteScalar().ToString();
 
@@ -111,17 +117,23 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
+                    String qry = "select count(*) from Recruiter where email= @email AND password = @password AND verified_at IS NOT NULL";
 
                     SqlCommand cm = new SqlCommand(qry, conn);
+
+                    cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                    cm.Parameters.AddWithValue("@password", sign_login_password.Text);
 
                     String result = cm.ExecuteScalar().ToString();
 
                     if (result == "1") // if the result found
                     {
-                        qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
+                        qry = "select count(*) from Recruiter where email= @email AND password = @password AND verified_at IS NOT NULL";
 
                         cm = new SqlCommand(qry, conn);
+
+                        cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
+                        cm.Parameters.AddWithValue("@password", sign_login_password.Text);
 
                         result = cm.ExecuteScalar().ToString();
 
@@ -225,7 +237,7 @@ namespace web_app_assignment
 
                         sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
                         sqlcmd.Parameters.AddWithValue("@email", sign_recruiter_companyEmail.Text);
-                        sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
+                        sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
 
                         sqlcmd.ExecuteNonQuery();
                         sqlcon.Close();
@@ -277,7 +289,7 @@ namespace web_app_assignment
 
                         commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
-                        commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+                        commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
 
                         commandSql.ExecuteNonQuery();
                         connectionSql.Close();
