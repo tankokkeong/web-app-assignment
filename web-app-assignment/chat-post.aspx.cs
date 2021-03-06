@@ -37,11 +37,21 @@ namespace web_app_assignment
                 //Insert parameters
                 cmd.Parameters.AddWithValue("@chat_content", chat_content);
                 cmd.Parameters.AddWithValue("@sent_time", DateTime.Now);
-                cmd.Parameters.AddWithValue("@sent", "Job Seeker");
-                cmd.Parameters.AddWithValue("@received", "Recruiter");
                 cmd.Parameters.AddWithValue("@recruiter_id", 1);
                 cmd.Parameters.AddWithValue("@seeker_id", 1);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                //Check role
+                if(Session["Recruiter"] != null)
+                {
+                    cmd.Parameters.AddWithValue("@sent", "Recruiter");
+                    cmd.Parameters.AddWithValue("@received", "Job Seeker");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@sent", "Job Seeker");
+                    cmd.Parameters.AddWithValue("@received", "Recruiter");
+                }
 
                 //Execute the queries
                 cmd.ExecuteNonQuery();
