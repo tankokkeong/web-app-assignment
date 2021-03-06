@@ -111,7 +111,7 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + " AND verified_at IS NOT NULL";
+                    String qry = "select count(*) from Recruiter where email= '" + sign_login_emailUser.Text + "' and password ='" + sign_login_password.Text + "' AND verified_at IS NOT NULL";
 
                     SqlCommand cm = new SqlCommand(qry, conn);
 
