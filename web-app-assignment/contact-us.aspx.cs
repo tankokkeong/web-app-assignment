@@ -30,37 +30,127 @@ namespace web_app_assignment
 
                 try 
                 {
-                    SqlConnection con = new SqlConnection(strcon);
 
-                    con.Open();
-                    string sql = "INSERT INTO ContactMessage(contact_name, phone_number, company_email, subject, contact_message, visitor_id," +
-                                 "seeker_id, recruiter_id, replied_by, replied_date, created_at) VALUES(@contact_name, @phone_number, @company_email," +
-                                 "@subject, @contact_message, @visitor_id, @seeker_id, @recruiter_id, @replied_by, @replied_date, @created_at)";
+                    if (Session["Recruiter"] != null)
+                    {
 
-                    //Connect to the database
-                    SqlCommand cmd = new SqlCommand(sql, con);
+                        Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+                        SqlConnection con = new SqlConnection(strcon);
 
-                    //Insert parameters
-                    cmd.Parameters.AddWithValue("@contact_name", name);
-                    cmd.Parameters.AddWithValue("@phone_number", contactNum);
-                    cmd.Parameters.AddWithValue("@company_email", email);
-                    cmd.Parameters.AddWithValue("@subject", subject);
-                    cmd.Parameters.AddWithValue("@contact_message", message);
-                    cmd.Parameters.AddWithValue("@visitor_id",1);
-                    cmd.Parameters.AddWithValue("@seeker_id",2);
-                    cmd.Parameters.AddWithValue("@recruiter_id",2);
-                    cmd.Parameters.AddWithValue("@replied_by",2);
-                    cmd.Parameters.AddWithValue("@replied_date",DateTime.Now);
-                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                        string sqlSession = @"SELECT recruiter_id FROM Recruiter WHERE email = @email";
+                        SqlCommand cmdSession = new SqlCommand(sqlSession, con);
+                        con.Open();
+                        cmdSession.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"]);
+                        SqlDataReader drSession = cmdSession.ExecuteReader();
 
-                    //Execute the queries
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        string sqlInsert = "INSERT INTO ContactMessage(contact_name, phone_number, company_email, subject, contact_message," +
+                                     "recruiter_id, created_at) VALUES(@contact_name, @phone_number, @company_email," +
+                                     "@subject, @contact_message, @recruiter_id, @created_at)";
 
-                    Response.Write("<script>alert('Message Sent Successful!');</script>");
 
-                    //Clear the form
-                    ClearForm();
+                        //Connect to the database
+                        SqlCommand cmd = new SqlCommand(sqlInsert, con);
+
+                        //Insert parameters
+                        cmd.Parameters.AddWithValue("@contact_name", name);
+                        cmd.Parameters.AddWithValue("@phone_number", contactNum);
+                        cmd.Parameters.AddWithValue("@company_email", email);
+                        cmd.Parameters.AddWithValue("@subject", subject);
+                        cmd.Parameters.AddWithValue("@contact_message", message);
+                        cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                        while(drSession.Read())
+                        {
+                            cmd.Parameters.AddWithValue("@recruiter_id", drSession["recruiter_id"]);
+                        }
+                        drSession.Close();
+                        //Execute the queries
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        Response.Write("<script>alert('Message Sent Successful!');</script>");
+
+                        //Clear the form
+                        ClearForm();
+
+                    }
+                    else if(Session["User"] != null)
+                    {
+                        Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+                        SqlConnection con = new SqlConnection(strcon);
+
+                        string sqlSession2 = @"SELECT seeker_id FROM JobSeeker WHERE email = @emailS";
+                        SqlCommand cmdSession2 = new SqlCommand(sqlSession2, con);
+                        con.Open();
+                        cmdSession2.Parameters.AddWithValue("@emailS", UserDetails["user_email"]);
+                        SqlDataReader drSession2 = cmdSession2.ExecuteReader();
+
+                        string sqlInsert2 = "INSERT INTO ContactMessage(contact_name, phone_number, company_email, subject, contact_message," +
+                                     "seeker_id, created_at) VALUES(@contact_name, @phone_number, @company_email," +
+                                     "@subject, @contact_message, @seeker_id, @created_at)";
+
+
+                        //Connect to the database
+                        SqlCommand cmd2 = new SqlCommand(sqlInsert2, con);
+
+                        //Insert parameters
+                        cmd2.Parameters.AddWithValue("@contact_name", name);
+                        cmd2.Parameters.AddWithValue("@phone_number", contactNum);
+                        cmd2.Parameters.AddWithValue("@company_email", email);
+                        cmd2.Parameters.AddWithValue("@subject", subject);
+                        cmd2.Parameters.AddWithValue("@contact_message", message);
+                        cmd2.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                        while (drSession2.Read())
+                        {
+                            cmd2.Parameters.AddWithValue("@seeker_id", drSession2["seeker_id"]);
+                        }
+                        drSession2.Close();
+                        //Execute the queries
+                        cmd2.ExecuteNonQuery();
+                        con.Close();
+
+                        Response.Write("<script>alert('Message Sent Successful!');</script>");
+
+                        //Clear the form
+                        ClearForm();
+                    }
+                    else 
+                    {
+                        SqlConnection con = new SqlConnection(strcon);
+
+                        string sqlInsert3 = "INSERT INTO ContactMessage(contact_name, phone_number, company_email, subject, contact_message," +
+                                     " created_at) VALUES(@contact_name, @phone_number, @company_email," +
+                                     "@subject, @contact_message, @created_at)";
+
+                        //Connect to the database
+                        SqlCommand cmd3 = new SqlCommand(sqlInsert3, con);
+                        con.Open();
+                        //Insert parameters
+                        cmd3.Parameters.AddWithValue("@contact_name", name);
+                        cmd3.Parameters.AddWithValue("@phone_number", contactNum);
+                        cmd3.Parameters.AddWithValue("@company_email", email);
+                        cmd3.Parameters.AddWithValue("@subject", subject);
+                        cmd3.Parameters.AddWithValue("@contact_message", message);
+                        cmd3.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                        //Execute the queries
+                        cmd3.ExecuteNonQuery();
+                        con.Close();
+
+                        Response.Write("<script>alert('Message Sent Successful!');</script>");
+
+                        //Clear the form
+                        ClearForm();
+                    }
+
+
+
+
+
+
+                  
+
 
 
                 }
@@ -68,7 +158,6 @@ namespace web_app_assignment
                 {
                     lblError.Text = error.Message;
                 }
-
 
             }
             else

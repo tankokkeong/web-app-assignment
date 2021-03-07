@@ -1914,6 +1914,7 @@
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
     <Content Include="user-profile.aspx" />
+    <Content Include="verificationPost.aspx" />
     <Content Include="Web.config" />
     <Content Include="login_signup.aspx" />
   </ItemGroup>
@@ -2213,6 +2214,13 @@
     </Compile>
     <Compile Include="user-profile.aspx.designer.cs">
       <DependentUpon>user-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="verificationPost.aspx.cs">
+      <DependentUpon>verificationPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="verificationPost.aspx.designer.cs">
+      <DependentUpon>verificationPost.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

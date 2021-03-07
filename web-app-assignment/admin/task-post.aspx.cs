@@ -25,14 +25,15 @@ namespace web_app_assignment.admin
                 {
                     con.Open();
                 }
-
-                string sql = "UPDATE ToDoList SET deleted_at = @delete WHERE task_id = @Id";
+                string status = "close";
+                string sql = "UPDATE ToDoList SET task_status =@status deleted_at = @delete WHERE task_id = @Id";
 
                  //Connect to the database
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 //Insert parameters
                 cmd.Parameters.AddWithValue("@delete", DateTime.Now);
+                cmd.Parameters.AddWithValue("@status", status);
                 cmd.Parameters.AddWithValue("@Id", task_id);
 
                 //Execute the queries

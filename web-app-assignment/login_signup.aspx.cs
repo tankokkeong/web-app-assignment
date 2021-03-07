@@ -253,7 +253,7 @@ namespace web_app_assignment
 
                         //Mail Body
                         string mailbody = "<button style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
-                        "<a href='verification_post.aspx?email=" + sign_recruiter_companyEmail.Text + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
+                        "<a href='https://localhost:44329/verificationPost.aspx?emailRecruiter=" + sign_recruiter_companyEmail.Text + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
 
                         //Mail Subject
                         message.Subject = "Email Verification";
@@ -326,7 +326,35 @@ namespace web_app_assignment
                         commandSql.ExecuteNonQuery();
                         connectionSql.Close();
 
-                        Response.Write("<script>alert('Register Successfully');</script>");
+
+                        string from = "webissue.emailus@gmail.com";
+
+                        //Instantiate MailMessage
+                        MailMessage message = new MailMessage(from, sign_seeker_email.Text);
+
+                        //Mail Body
+                        string mailbody = "<button style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
+                                          "<a href='https://localhost:44329/verificationPost.aspx?emailSeeker=" + sign_seeker_email.Text + "'" + "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
+
+                        //Mail Subject
+                        message.Subject = "Email Verification";
+                        message.Body = mailbody;
+                        message.BodyEncoding = Encoding.UTF8;
+                        message.IsBodyHtml = true;
+
+                        //SMTP Client port 587 for gmail
+                        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+                        System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential("webissue.emailus@gmail.com", "webissue123");
+
+                        client.EnableSsl = true;
+                        client.UseDefaultCredentials = false;
+                        client.Credentials = basicCredential1;
+
+                        //send email
+                        client.Send(message);
+                        Response.Write("<script>alert('Register Successfully, Please Go and Verify Your email!');</script>");
+
                     }
                 }
                 else //if the email does not exist in the record
