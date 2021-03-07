@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Net.Mail;
+using System.Text;
+using System.IO;
 
 namespace web_app_assignment.admin
 {
@@ -69,6 +72,37 @@ namespace web_app_assignment.admin
             cmd.Parameters.AddWithValue("@admin_email", admin_email);
             cmd.Parameters.AddWithValue("@admin_right", admin_right);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+            //email
+            string from = "webissue.emailus@gmail.com";
+
+            MailMessage message = new MailMessage(from, admin_email);
+
+            //Mail Subject
+            message.Subject = "Jobs4U Admin Registration";
+            message.Body = "Signup yourself at (put link here) <br />" +
+                "Thanks, Jobs4U Team <br />" +
+                "***This is a system generated email. Please do not reply to this address***";
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+
+            //SMTP Client port 587 for gmail
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+            System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential("webissue.emailus@gmail.com", "webissue123");
+
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            try
+            {
+                //send email
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                
+            }
 
             read2.Close();
             cmd.ExecuteNonQuery();
