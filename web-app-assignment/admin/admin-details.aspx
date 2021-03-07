@@ -28,9 +28,16 @@
 
         <form>
           <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+            <label for="staticID" class="col-sm-2 col-form-label">Admin ID:</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control"  value="email@example.com">
+              <input type="text" readonly class="form-control"  value="U0001">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="staticName" class="col-sm-2 col-form-label">Admin Name:</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control"  value="Festus">
             </div>
           </div>
 
@@ -41,10 +48,10 @@
             </div>
           </div>
 
-            <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+          <div class="form-group row">
+            <label for="staticRole" class="col-sm-2 col-form-label">Role:</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control"  value="email@example.com">
+              <input type="text" readonly class="form-control"  value="Super Admin">
             </div>
           </div>
 

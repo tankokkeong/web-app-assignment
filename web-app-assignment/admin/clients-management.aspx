@@ -26,6 +26,21 @@
             <h3>User Management</h3>
         </div>
 
+        <%--display--%>
+            <%--<div class="table-container">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-striped table-bordered" >
+                    <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
+                    <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
+                    <Columns>
+                        <asp:BoundField runat="server" DataField="user_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="user_name" HeaderText="User Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="user_email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="user_right" HeaderText="Role" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="user_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+            </div>--%>
+
         <div class="table-container">
             <table class="table table-striped table-bordered">
               <thead>

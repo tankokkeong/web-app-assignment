@@ -4,7 +4,7 @@
     <link href="css/admin-management.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<form runat="server">
     <%-- Change navbar active --%>
     <script>
         $(document).ready(function () {
@@ -25,42 +25,25 @@
             <h3>Admin Management</h3>
         </div>
 
-        <div class="table-container">
-
             <div class="float-right mb-3 mt-3">
-                <button class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin">New Admin</button>
+                <button type="button" class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin">New Admin</button>
             </div>
-
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr class="bg-lightgreen text-light">
-                  <th scope="col">Admin ID</th>
-                  <th scope="col">Admin Name</th>
-                  <th scope="col">Admin Email</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <%for (int i = 0; i < 5; i++)
-                      { %>     
-
-                <tr>
-                    <th scope="row">U0002</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Job Seeker</td>
-                    <td>
-                        <a href="admin-details.aspx?edit" class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                        <a href="admin-details.aspx?view" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                        <span class="badge badge-danger action-btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></span>
-                    </td>
-                </tr>
-                <%}; %>
-              </tbody>
-            </table>
+            
+            <%--display--%>
+            <div class="table-container">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-striped table-bordered" >
+                    <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
+                    <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
+                    <Columns>
+                        <asp:BoundField runat="server" DataField="admin_id" HeaderText="Admin ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_name" HeaderText="Admin Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_email" HeaderText="Admin Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_right" HeaderText="Role" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
-    </div>
 
     <!-- New Admin Modal -->
     <div class="modal fade" id="addAdmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -73,29 +56,76 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
                  <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
+                     <div class="col-sm-10">
+                         <asp:Label ID="lblAdminName" runat="server" Text="Admin Name"></asp:Label>
+                         <asp:TextBox ID="txtAdminName" runat="server" class="form-control"></asp:TextBox>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <div class="col-sm-10">
+                     <asp:Label ID="lblAdminEmail" runat="server" Text="Admin Email"></asp:Label>
+                     <asp:TextBox ID="txtAdminEmail" runat="server" class="form-control"></asp:TextBox>
+                    <%--<label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="email@example.com">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Admin Role</label>
-                    <div class="col-sm-10">
-                      <select class="form-control">
+                      <input type="text" class="form-control" placeholder="email@example.com">--%>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <div class="col-sm-10">
+                         <asp:Label ID="lblAdminRight" runat="server" Text="Admin Role "></asp:Label>
+<%--                    <label for="inputPassword" class="col-sm-2 col-form-label">Admin Role</label>--%>
+                         <asp:DropDownList ID="listAdminRight" runat="server" >
+                            <asp:ListItem Value="">Please Select</asp:ListItem>  
+                            <asp:ListItem>Super Admin</asp:ListItem>
+                            <asp:ListItem>Editor</asp:ListItem>  
+                            <asp:ListItem>Viewer</asp:ListItem>
+                         </asp:DropDownList>
+                      <%--<select class="form-control">
+                          <option>Super Admin</option>
                           <option>Editor</option>
-                          <option>Role</option>
-                      </select>
-                    </div>
-                  </div>
-            </form>
+                          <option>Viewer</option>
+                      </select>--%>
+                     </div>
+                 </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <asp:Button ID="btnAddAdmin" runat="server" Text="Add" class="btn btn-primary" OnClick="btnAddAdmin_Click"/>
+           <%--<button type="button" class="btn btn-primary">Add</button>--%>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Delete Modal -->
+    <%--<div class="modal fade" id="deleteAdmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Delete Admin</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete admin?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <asp:Button ID="btnDeleteAdmin" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteAdmin_Click"/>
+            <asp:TextBox ID="txtDeleteAdmin" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function deleteAdmin(id) {
+            var delete_admin = document.getElementById("ContentPlaceHolder1_txtDeleteAdmin");
+
+            delete_admin.value = id;
+        }
+    </script>--%>
+    </form>
 </asp:Content>
