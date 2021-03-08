@@ -24,22 +24,22 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox txt_SearchJobTitle;
 
         /// <summary>
-        /// ddl_HomeLocationSelectStates control.
+        /// lstSearchLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_HomeLocationSelectStates;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchLocation;
 
         /// <summary>
-        /// ddl_HomeSelectJobCategory control.
+        /// lstSearchJobType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_HomeSelectJobCategory;
+        protected global::System.Web.UI.WebControls.ListBox lstSearchJobType;
 
         /// <summary>
         /// btn_HomeSearchButton control.

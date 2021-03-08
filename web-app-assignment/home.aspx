@@ -21,35 +21,13 @@
                     <form>
                         <div class="home-search-form">
                             <div class="row bg-darkgreen">
+                                <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title" CssClass="select2 form-control home-search-control" runat="server"></asp:TextBox>
 
-                                <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title" CssClass="form-control col-sm-12 col-lg-3 home-search-control" runat="server"></asp:TextBox>
+                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates home-search-control" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                                 
-                                <asp:DropDownList ID="ddl_HomeLocationSelectStates" CssClass="selectStates form-control col-sm-12 col-lg-4 home-search-control" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Malacca">Malacca</asp:ListItem>
-                                    <asp:ListItem Value="Selangor">Selangor</asp:ListItem>
-                                    <asp:ListItem Value="Negeri Sembilan">Negeri Sembilan</asp:ListItem>
-                                    <asp:ListItem Value="Terengganu">Terengganu</asp:ListItem>
-                                    <asp:ListItem Value="Kedah">Kedah</asp:ListItem>
-                                    <asp:ListItem Value="Kelantan">Kelantan</asp:ListItem>
-                                    <asp:ListItem Value="Pahang">Pahang</asp:ListItem>
-                                    <asp:ListItem Value="Perak">Perak</asp:ListItem>
-                                    <asp:ListItem Value="Perlis">Perlis</asp:ListItem>
-                                    <asp:ListItem Value="Sabah">Sabah</asp:ListItem>
-                                    <asp:ListItem Value="Sarawak">Sarawak</asp:ListItem>
-                                    <asp:ListItem Value="Kuala Lumpur">Kuala Lumpur</asp:ListItem>
-                                    <asp:ListItem Value="Labuan">Labuan</asp:ListItem>
-                                    <asp:ListItem Value="Johor">Johor</asp:ListItem>
-                                    <asp:ListItem Value="Putrajaya">Putrajaya</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListBox ID="lstSearchJobType" runat="server" CssClass="form-control jobType home-search-control" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
 
-                                <asp:DropDownList ID="ddl_HomeSelectJobCategory" CssClass="form-control col-sm-12 col-lg-4 home-search-control jobType" name="jobCategory[]" runat="server" multiple>
-                                    <asp:ListItem Value="All">All</asp:ListItem>
-                                    <asp:ListItem Value="Full Time">Full Time</asp:ListItem>
-                                    <asp:ListItem Value="Part Time">Part Time</asp:ListItem>
-                                </asp:DropDownList>
-
-                                <asp:Button ID="btn_HomeSearchButton" runat="server" CssClass="bg-lightgreen form-control col text-light col-sm-12 col-lg-1 home-search-control" Text="Search" OnClick="btn_HomeSearchButton_Click"/>
+                                <asp:Button ID="btn_HomeSearchButton" runat="server" CssClass="btn bg-lightgreen form-control text-light home-search-control" Text="Search" OnClick="btn_HomeSearchButton_Click"/>
                             </div>
                         </div>
                     </form>
@@ -344,10 +322,12 @@
             placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
+            width: "100%",
         });
 
         $('.jobType').select2({
             placeholder: "Job Type",
+            width: "100%",
         });
     </script>
 </asp:Content>
