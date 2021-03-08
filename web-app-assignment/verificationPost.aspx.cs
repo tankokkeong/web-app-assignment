@@ -15,16 +15,18 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["emailRecruiter"] != null)
+            if (Request.QueryString["vkRecruiter"] != null)
             {
-                string emailR = Request.QueryString["emailRecruiter"] ?? "";
+                string vkey = Request.QueryString["vkRecruiter"] ?? "";
 
-                string sql = "UPDATE Recruiter SET verified_at = @verify WHERE email = @email";
+
+
+                string sql = "UPDATE Recruiter SET verified_at = @verify WHERE verify_key = @vkey";
 
                 SqlConnection con = new SqlConnection(strcon);
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@verify", DateTime.Now);
-                cmd.Parameters.AddWithValue("@email", emailR);
+                cmd.Parameters.AddWithValue("@vkey", vkey);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -32,16 +34,16 @@ namespace web_app_assignment
 
                 Response.Redirect("login_signup.aspx");
             }
-            else if (Request.QueryString["emailSeeker"] != null)
+            else if (Request.QueryString["vkSeeker"] != null)
             {
-                string emailS = Request.QueryString["emailSeeker"] ?? "";
+                string vkey2 = Request.QueryString["vkSeeker"] ?? "";
 
-                string sql = "UPDATE JobSeeker SET verified_at = @verify WHERE email = @email";
+                string sql = "UPDATE JobSeeker SET verified_at = @verify WHERE verify_key = @vkey";
 
                 SqlConnection con = new SqlConnection(strcon);
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@verify", DateTime.Now);
-                cmd.Parameters.AddWithValue("@email", emailS);
+                cmd.Parameters.AddWithValue("@vkey", vkey2);
 
                 con.Open();
                 cmd.ExecuteNonQuery();

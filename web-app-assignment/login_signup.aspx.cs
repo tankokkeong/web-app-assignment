@@ -38,7 +38,7 @@ namespace web_app_assignment
                     
                     con.Open();
 
-                    String query = "select count(*) from JobSeeker where email= @email AND password = @password AND verified_at IS NOT NULL";
+                    String query = "select count(*) from JobSeeker where email= @email AND password = @password";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
@@ -120,7 +120,7 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    String qry = "select count(*) from Recruiter where email= @email AND password = @password AND verified_at IS NOT NULL";
+                    String qry = "select count(*) from Recruiter where email= @email AND password = @password";
 
                     SqlCommand cm = new SqlCommand(qry, conn);
 
@@ -230,17 +230,27 @@ namespace web_app_assignment
                 {
                     if (string.Equals(sign_recruiter_password.Text, sign_recruiter_confirmPassword.Text))
                     {
+                        //int hashcode = GetHashCode();
+                        Random random = new Random();
+                        int length = 16;
+                        var vkey = "";
+                        for (var i = 0; i < length; i++)
+                        {
+                            vkey += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
+                        }
+
                         SqlConnection sqlcon = new SqlConnection(strcon);
 
                         sqlcon.Open();
 
-                        String sqlquery = "INSERT INTO Recruiter (company_name, email, password, created_at) VALUES (@company_name, @email, @password, GETDATE())";
+                        String sqlquery = "INSERT INTO Recruiter (company_name, email, password, verify_key, created_at) VALUES (@company_name, @email, @password, @vkey, GETDATE())";
 
                         SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
 
                         sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
                         sqlcmd.Parameters.AddWithValue("@email", sign_recruiter_companyEmail.Text);
                         sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
+                        sqlcmd.Parameters.AddWithValue("@vkey", vkey);
 
                         sqlcmd.ExecuteNonQuery();
                         sqlcon.Close();
@@ -253,7 +263,7 @@ namespace web_app_assignment
 
                         //Mail Body
                         string mailbody = "<button style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
-                        "<a href='https://localhost:44329/verificationPost.aspx?emailRecruiter=" + sign_recruiter_companyEmail.Text + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
+                        "<a href='https://localhost:44329/verificationPost.aspx?vkRecruiter=" + vkey + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
 
                         //Mail Subject
                         message.Subject = "Email Verification";
@@ -311,17 +321,26 @@ namespace web_app_assignment
                 {
                     if (string.Equals(sign_seeker_password.Text, sign_seeker_confirmPassword.Text))
                     {
+                        Random random = new Random();
+                        int length = 16;
+                        var vkey2 = "";
+                        for (var i = 0; i < length; i++)
+                        {
+                            vkey2 += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
+                        }
+
                         SqlConnection connectionSql = new SqlConnection(strcon);
 
                         connectionSql.Open();
 
-                        String sqlqry = "INSERT INTO JobSeeker (full_name, email, password, created_at) VALUES (@full_name, @email, @password, GETDATE())";
+                        String sqlqry = "INSERT INTO JobSeeker (full_name, email, password, verify_key, created_at) VALUES (@full_name, @email, @password, @vkey, GETDATE())";
 
                         SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
 
                         commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
                         commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
+                        commandSql.Parameters.AddWithValue("@vkey", vkey2);
 
                         commandSql.ExecuteNonQuery();
                         connectionSql.Close();
@@ -334,7 +353,7 @@ namespace web_app_assignment
 
                         //Mail Body
                         string mailbody = "<button style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
-                                          "<a href='https://localhost:44329/verificationPost.aspx?emailSeeker=" + sign_seeker_email.Text + "'" + "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
+                                          "<a href='https://localhost:44329/verificationPost.aspx?vkSeeker=" + vkey2 + "'" + "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
 
                         //Mail Subject
                         message.Subject = "Email Verification";
@@ -360,7 +379,6 @@ namespace web_app_assignment
                 else //if the email does not exist in the record
                 {
                     Response.Write("<script>alert('The email you entered has been registered');</script>");
-
                 }
 
                 connectSql.Close();
