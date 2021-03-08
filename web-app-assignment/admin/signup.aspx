@@ -30,7 +30,7 @@
                       </div>
 
                       <div class="form-group">        
-                        <input type="email" class="form-control bg-login" placeholder="Full Name">
+                        <input type="text" class="form-control bg-login" placeholder="Full Name">
                       </div>
 
                       <div class="form-group">           

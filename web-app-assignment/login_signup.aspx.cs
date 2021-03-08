@@ -24,6 +24,8 @@ namespace web_app_assignment
                 {
                     sign_login_emailUser.Text = Request.Cookies["email"].Value;
                     sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
+
+                    checkRememberMe.Checked = true;
                 }
             }
         }
