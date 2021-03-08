@@ -24,7 +24,7 @@ namespace web_app_assignment.admin
 
                 SqlConnection con = new SqlConnection(strcon);
 
-                string sql = "SELECT * FROM Admin";
+                string sql = "SELECT * FROM Admin WHERE deleted_at IS NULL";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -51,9 +51,15 @@ namespace web_app_assignment.admin
 
         protected void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            string admin_name = txtAdminName.Text;
             string admin_email = txtAdminEmail.Text;
             string admin_right = listAdminRight.Text;
+            Random random = new Random();
+            int length = 16;
+            var vkey2 = "";
+            for (var i = 0; i < length; i++)
+            {
+                vkey2 += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
+            }
 
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
             SqlConnection con = new SqlConnection(strcon);
@@ -64,14 +70,14 @@ namespace web_app_assignment.admin
             cmd2.Parameters.AddWithValue("@admin_email", UserDetails["Admin_Email"]);
             SqlDataReader read2 = cmd2.ExecuteReader();
 
-            string sqlInsert = @"INSERT INTO Admin(admin_name, admin_email, admin_right, created_at)
-                            VALUES (@admin_name, @admin_email, @admin_right, @created_at)";
+            string sqlInsert = @"INSERT INTO Admin(admin_email, admin_right, created_at, verify_key)
+                               VALUES (@admin_email, @admin_right, @created_at, @verify_key)";
 
             SqlCommand cmd = new SqlCommand(sqlInsert, con);
-            cmd.Parameters.AddWithValue("@admin_name", admin_name);
             cmd.Parameters.AddWithValue("@admin_email", admin_email);
             cmd.Parameters.AddWithValue("@admin_right", admin_right);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+            cmd.Parameters.AddWithValue("@verify_key", vkey2);
 
             //email
             string from = "webissue.emailus@gmail.com";
@@ -80,7 +86,8 @@ namespace web_app_assignment.admin
 
             //Mail Subject
             message.Subject = "Jobs4U Admin Registration";
-            message.Body = "Signup yourself at (put link here) <br />" +
+            message.Body = "Signup yourself " +
+                "<a href = 'https://localhost:44329/admin/signup.aspx?v-key=" + vkey2 + "'" + " >here</a> <br />" +
                 "Thanks, Jobs4U Team <br />" +
                 "***This is a system generated email. Please do not reply to this address***";
             message.BodyEncoding = Encoding.UTF8;
@@ -111,70 +118,34 @@ namespace web_app_assignment.admin
             Response.Redirect("admin-management.aspx");
         }
 
-        //protected void btnDeleteMessage_Click(object sender, EventArgs e)
-        //{
-        //    string admin_id = txtDeleteAdmin.Text;
+        protected void btnDeleteAdmin_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-        //    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+            try
+            {
+                int admin_id = Convert.ToInt32(txtDeleteAdmin.Text);
 
-        //    try
-        //    {
-        //        int admin_id = Convert.ToInt32(txtDeleteAdmin.Text);
+                SqlConnection con = new SqlConnection(strcon);
 
-        //        SqlConnection con = new SqlConnection(strcon);
+                string sql = "UPDATE Admin SET deleted_at = @deleted_at WHERE admin_id = @admin_id";
 
-        //        //Read User profile Details
-        //        string sql = "UPDATE Admin SET deleted_at = @delete WHERE admin_id = @adminID";
+                SqlCommand cmd = new SqlCommand(sql, con);
 
-        //        SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@admin_id", admin_id);
 
-        //        con.Open();
-        //        //Insert parameters
-        //        cmd.Parameters.AddWithValue("@delete", DateTime.Now);
-        //        cmd.Parameters.AddWithValue("@adminID", admin_id);
+                cmd.ExecuteNonQuery();
+                con.Close();
 
-        //        //Execute the queries
-        //        cmd.ExecuteNonQuery();
-        //        con.Close();
-
-        //        Response.Write("<script>alert('Admin deleted successfully!');</script>");
-        //        Response.Redirect("admin-management.aspx");
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        Response.Write("<script>alert('" + error.Message + "');</script>");
-        //    }
-        //}
-
-        //protected void btnDeleteAdmin_Click(object sender, EventArgs e)
-        //{
-        //    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-        //    try
-        //    {
-        //        int admin_id = Convert.ToInt32(txtDeleteAdmin.Text);
-
-        //        SqlConnection con = new SqlConnection(strcon);
-
-        //        string sql = "UPDATE Admin SET deleted_at = @deleted_at WHERE admin_id = @admin_id";
-
-        //        SqlCommand cmd = new SqlCommand(sql, con);
-
-        //        con.Open();
-        //        cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
-        //        cmd.Parameters.AddWithValue("@admin_id", admin_id);
-
-        //        cmd.ExecuteNonQuery();
-        //        con.Close();
-
-        //        Response.Write("<script>alert('Record deleted successfully!');</script>");
-        //        Response.Redirect("contact-message.aspx");
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        Response.Write("<script>alert('" + error.Message + "');</script>");
-        //    }
-        //}
-
+                Response.Write("<script>alert('Admin deleted successfully!');</script>");
+                Response.Redirect("admin-management.aspx");
+            }
+            catch (Exception error)
+            {
+                
+            }
+        }
     }
 }

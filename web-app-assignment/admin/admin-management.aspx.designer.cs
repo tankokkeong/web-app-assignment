@@ -24,24 +24,6 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// lblAdminName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdminName;
-
-        /// <summary>
-        /// txtAdminName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdminName;
-
-        /// <summary>
         /// lblAdminEmail control.
         /// </summary>
         /// <remarks>
@@ -85,5 +67,23 @@ namespace web_app_assignment.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddAdmin;
+
+        /// <summary>
+        /// btnDeleteAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteAdmin;
+
+        /// <summary>
+        /// txtDeleteAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteAdmin;
     }
 }

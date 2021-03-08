@@ -58,12 +58,6 @@
           <div class="modal-body">
                  <div class="form-group row">
                      <div class="col-sm-10">
-                         <asp:Label ID="lblAdminName" runat="server" Text="Admin Name"></asp:Label>
-                         <asp:TextBox ID="txtAdminName" runat="server" class="form-control"></asp:TextBox>
-                     </div>
-                 </div>
-                 <div class="form-group row">
-                     <div class="col-sm-10">
                      <asp:Label ID="lblAdminEmail" runat="server" Text="Admin Email"></asp:Label>
                      <asp:TextBox ID="txtAdminEmail" runat="server" class="form-control"></asp:TextBox>
                     <%--<label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
@@ -76,8 +70,7 @@
                          <asp:Label ID="lblAdminRight" runat="server" Text="Admin Role "></asp:Label>
 <%--                    <label for="inputPassword" class="col-sm-2 col-form-label">Admin Role</label>--%>
                          <asp:DropDownList ID="listAdminRight" runat="server" >
-                            <asp:ListItem Value="">Please Select</asp:ListItem>  
-                            <asp:ListItem>Super Admin</asp:ListItem>
+                            <asp:ListItem Value="">Please Select</asp:ListItem>
                             <asp:ListItem>Editor</asp:ListItem>  
                             <asp:ListItem>Viewer</asp:ListItem>
                          </asp:DropDownList>
@@ -99,20 +92,18 @@
     </div>
 
     <!-- Delete Modal -->
-    <%--<div class="modal fade" id="deleteAdmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteAdmin" tabindex="-1" aria-labelledby="deleteAdminLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Delete Admin</h5>
+            <h5 class="modal-title" id="exampleAdminLabel">Delete Admin</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            Are you sure you want to delete admin?
-          </div>
+          <div class="modal-body">Are you sure you want to delete this admin?</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <asp:Button ID="btnDeleteAdmin" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteAdmin_Click"/>
             <asp:TextBox ID="txtDeleteAdmin" runat="server" style="display:none;"></asp:TextBox>
           </div>
@@ -121,11 +112,11 @@
     </div>
 
     <script>
-        function deleteAdmin(id) {
+        function deleteAdmin(admin_id) {
             var delete_admin = document.getElementById("ContentPlaceHolder1_txtDeleteAdmin");
 
-            delete_admin.value = id;
+            delete_admin.value = admin_id;
         }
-    </script>--%>
+    </script>
     </form>
 </asp:Content>
