@@ -20,10 +20,12 @@ namespace web_app_assignment
         {
             if (!Page.IsPostBack)
             {
-                if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+                if (Session["Email"] !=null && Session["Password"]!= null)
                 {
-                    sign_login_emailUser.Text = Request.Cookies["email"].Value;
-                    sign_login_password.Attributes["value"] = Request.Cookies["password"].Value;
+                    sign_login_emailUser.Text = Session["Email"].ToString();
+                    sign_login_password.Text  = Session["Password"].ToString();  
+
+                    checkRememberMe.Checked = true;
                 }
             }
         }
@@ -43,7 +45,7 @@ namespace web_app_assignment
                     SqlCommand cmd = new SqlCommand(query, con);
 
                     cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                    cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
+                    cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
 
                     String output = cmd.ExecuteScalar().ToString();
 
@@ -54,7 +56,7 @@ namespace web_app_assignment
                         cmd = new SqlCommand(query, con);
 
                         cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                        cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
+                        cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
 
                         output = cmd.ExecuteScalar().ToString();
 
@@ -87,15 +89,9 @@ namespace web_app_assignment
 
                             if (checkRememberMe.Checked)
                             {
-                                Response.Cookies["email"].Value = sign_login_emailUser.Text;
-                                Response.Cookies["password"].Value = sign_login_password.Text;
-                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
-                            }
-                            else
-                            {
-                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
-                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                                Session["Email"] = sign_login_emailUser.Text;
+                                Session["Password"] = sign_login_password.Text;
+                                Session.Timeout = 43200;
                             }
 
                             Session["User"] = UserDetail;
@@ -125,7 +121,7 @@ namespace web_app_assignment
                     SqlCommand cm = new SqlCommand(qry, conn);
 
                     cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                    cm.Parameters.AddWithValue("@password", sign_login_password.Text);
+                    cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
 
                     String result = cm.ExecuteScalar().ToString();
 
@@ -136,7 +132,7 @@ namespace web_app_assignment
                         cm = new SqlCommand(qry, conn);
 
                         cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                        cm.Parameters.AddWithValue("@password", sign_login_password.Text);
+                        cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
 
                         result = cm.ExecuteScalar().ToString();
 
@@ -174,18 +170,12 @@ namespace web_app_assignment
 
                             if (checkRememberMe.Checked)
                             {
-                                Response.Cookies["email"].Value = sign_login_emailUser.Text;
-                                Response.Cookies["password"].Value = sign_login_password.Text;
-                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
-                            }
-                            else
-                            {
-                                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-30);
-                                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-30);
+                                Session["Email"] = sign_login_emailUser.Text;
+                                Session["Password"] = sign_login_password.Text;
+                                Session.Timeout = 43200;
                             }
 
-                            Session["Recruiter"] = RecruiterDetails;
+                                Session["Recruiter"] = RecruiterDetails;
 
                             Response.Redirect("home.aspx");
                         }
@@ -211,6 +201,7 @@ namespace web_app_assignment
                 Response.Write(error.Message);
             }
         }
+
 
         protected void Recruiter_SignUpButton_Click(object sender, EventArgs e)
         {
