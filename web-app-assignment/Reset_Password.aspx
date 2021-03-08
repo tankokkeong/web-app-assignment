@@ -25,7 +25,7 @@
                          <asp:TextBox ID="confirm_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Confirm Password"></asp:TextBox>
                     </div>
                     <div class="forgotPasswordFormEmailButton">
-                        <asp:Button ID="forgotPasswordFormEmailButtonSubmit" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Reset Password" />
+                        <asp:Button ID="forgotPasswordFormEmailButtonSubmit" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Reset Password" OnClick="forgotPasswordFormEmailButtonSubmit_Click"/>
                     </div>
                 </form>
             </div>

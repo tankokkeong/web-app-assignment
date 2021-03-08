@@ -29,6 +29,9 @@
                         <%--<button type="submit" class="btn btn-info" id="forgotPasswordFormEmailButtonSubmit">Send Reset Password Email</button>--%>
                         <asp:Button ID="forgotPasswordFormEmailButtonSubmit" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Send Reset Password Email" OnClick="forgotPasswordFormEmailButtonSubmit_Click"/>
                     </div>
+                    <div class="form-group">
+                        <asp:Label ID="lblresult" runat="server"></asp:Label>
+                    </div>
                 </form>
             </div>
         </div>
