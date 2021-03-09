@@ -44,11 +44,10 @@ namespace web_app_assignment.admin
             {
                 //Query String
                 e.Row.Cells[4].Text = "<a class='badge badge-success action-btn'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
-                    "<a class='badge badge-primary action-btn'  href='admin-details.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                    "<a class='badge badge-primary action-btn'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                     "<button class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteAdmin' type='button' onclick='deleteAdmin(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></button>";
             }
         }
-
         protected void btnAddAdmin_Click(object sender, EventArgs e)
         {
             string admin_email = txtAdminEmail.Text;
@@ -139,7 +138,6 @@ namespace web_app_assignment.admin
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                Response.Write("<script>alert('Admin deleted successfully!');</script>");
                 Response.Redirect("admin-management.aspx");
             }
             catch (Exception error)

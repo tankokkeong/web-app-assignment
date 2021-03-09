@@ -67,7 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About Us.aspx" />
+    <Content Include="About_Us.aspx" />
+    <Content Include="admin\admin-details-edit.aspx" />
     <Content Include="admin\admin-details.aspx" />
     <Content Include="admin\admin-management.aspx" />
     <Content Include="admin\clients-details.aspx" />
@@ -1919,12 +1920,19 @@
     <Content Include="login_signup.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About Us.aspx.cs">
-      <DependentUpon>About Us.aspx</DependentUpon>
+    <Compile Include="About_Us.aspx.cs">
+      <DependentUpon>About_Us.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About Us.aspx.designer.cs">
-      <DependentUpon>About Us.aspx</DependentUpon>
+    <Compile Include="About_Us.aspx.designer.cs">
+      <DependentUpon>About_Us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin-details-edit.aspx.cs">
+      <DependentUpon>admin-details-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin-details-edit.aspx.designer.cs">
+      <DependentUpon>admin-details-edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\admin-details.aspx.cs">
       <DependentUpon>admin-details.aspx</DependentUpon>
@@ -2300,6 +2308,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Default.aspx.resx" />
+    <Content Include="App_LocalResources\Default.aspx.CN.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

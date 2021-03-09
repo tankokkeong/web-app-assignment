@@ -11,7 +11,7 @@ namespace web_app_assignment.admin
 {
 
 
-    public partial class admin_details
+    public partial class admin_details_edit
     {
 
         /// <summary>
@@ -49,5 +49,14 @@ namespace web_app_assignment.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRight;
+
+        /// <summary>
+        /// btnEditAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditAdmin;
     }
 }

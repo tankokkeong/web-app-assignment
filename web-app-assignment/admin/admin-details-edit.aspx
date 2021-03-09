@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="admin-details.aspx.cs" Inherits="web_app_assignment.admin.admin_details" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="admin-details-edit.aspx.cs" Inherits="web_app_assignment.admin.admin_details_edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin Details</title>
@@ -39,7 +39,7 @@
                 <label for="staticName" class="col-sm-2 col-form-label">Admin Name:</label>
                 <div class="col-sm-10">
                     <%--<input type="text" readonly class="form-control" value="Festus">--%>
-                    <asp:TextBox ID="txtName" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-10">
                     <%--<input type="text" readonly class="form-control" value="email@example.com">--%>
-                    <asp:TextBox ID="txtEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 
@@ -55,12 +55,13 @@
                 <label for="staticRight" class="col-sm-2 col-form-label">Role:</label>
                 <div class="col-sm-10">
                     <%--<input type="text" readonly class="form-control" value="Super Admin">--%>
-                    <asp:TextBox ID="txtRight" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtRight" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 
             <div class="form-group text-center">
                 <a href="admin-management.aspx" class="btn btn-secondary">Back</a>
+                <asp:Button ID="btnEditAdmin" runat="server" Text="Update" class="btn btn-primary" OnClick="btnEditAdmin_Click"/>
             </div>
         </form>
     </div>
