@@ -32,7 +32,7 @@ namespace web_app_assignment.admin
 
                 con.Open();
 
-                String query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + txtPassword.Text + "'";
+                String query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + txtPassword.Text + "' AND deleted_at IS NULL";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
