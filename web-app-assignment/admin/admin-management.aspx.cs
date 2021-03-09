@@ -43,9 +43,9 @@ namespace web_app_assignment.admin
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
-                e.Row.Cells[4].Text = "<a class='badge badge-success action-btn'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
-                    "<a class='badge badge-primary action-btn'  href='admin-details.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
-                    "<button class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteAdmin' type='button' onclick='deleteAdmin(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></button>";
+                e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                    "<a class='badge badge-primary action-btn mr-1'  href='admin-details.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                    "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteAdmin' onclick='deleteAdmin(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></span>";
             }
         }
 

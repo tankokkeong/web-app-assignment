@@ -41,7 +41,7 @@ namespace web_app_assignment.admin
             {
                 SqlConnection conn = new SqlConnection(strcon);
 
-                string qry = "UPDATE Admin SET admin_name = @admin_name, admin_password = @admin_password where verify_key = @verify_key";
+                string qry = "UPDATE Admin SET admin_name = @admin_name, admin_password = @admin_password, verified_at = @verified_at where verify_key = @verify_key";
                 
                 SqlCommand cm = new SqlCommand(qry, conn);
 
@@ -50,6 +50,7 @@ namespace web_app_assignment.admin
                 cm.Parameters.AddWithValue("@admin_name", admin_Name.Text);
                 cm.Parameters.AddWithValue("@admin_password", pwHash.hashPassword(admin_newPassword.Text));
                 cm.Parameters.AddWithValue("@verify_key", Session["admin_verify_key"].ToString());
+                cm.Parameters.AddWithValue("@verified_at", DateTime.Now);
 
                 cm.ExecuteNonQuery();
 
@@ -57,6 +58,8 @@ namespace web_app_assignment.admin
 
               
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Set Successfully'); window.open('login.aspx');", true);
+
+                Response.Redirect("login.aspx");
             }
             con.Close();
         }
