@@ -21,6 +21,13 @@
                 </h2>
                 <p class="forgotPasswordBodyContentsFormPara">Enter your login email to reset your password</p>
                 <form>
+                   <div class="form-group">
+                         <asp:DropDownList ID="Role" runat="server" CssClass="form-control bg-info text-white">
+                             <asp:ListItem Selected="True" Value="0"> Select Your Role </asp:ListItem>
+                             <asp:ListItem Value="job_seeker"> Job Seeker </asp:ListItem>
+                             <asp:ListItem Value="recruiter"> Recruiter </asp:ListItem>
+                         </asp:DropDownList>
+                    </div>
                     <div class="form-group">
                         <%--<input type="email" class="form-control" id="forgotPasswordFormEmail" aria-describedby="emailHelp" placeholder="Email">--%>
                         <asp:TextBox ID="forgotPasswordFormEmail" ClientIDMode="Static" cssclass="form-control" runat="server" placeholder="Email"></asp:TextBox>

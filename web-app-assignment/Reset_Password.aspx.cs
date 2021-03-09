@@ -17,43 +17,60 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string key = Session["seeker_verify_key"].ToString();
-           
+            if (Session["seeker_verify_key"] != null)
+            {
+                string seeker = Session["seeker_verify_key"].ToString();
+            }
+            if (Session["recruiter_verify_key"] != null)
+            {
+                string seeker = Session["recruiter_verify_key"].ToString();
+            }
         }
 
         protected void forgotPasswordFormEmailButtonSubmit_Click(object sender, EventArgs e)
         {
-            string key = Session["seeker_verify_key"].ToString();
+            string requestRole = Request.QueryString["Role"];
 
-            SqlConnection con = new SqlConnection(strcon);
+            if(requestRole == "job-seeker")
+            {
+                SqlConnection con = new SqlConnection(strcon);
 
-            string query = "SELECT COUNT(*) FROM JobSeeker WHERE verify_key = @verify_key";
+                string query = "UPDATE JobSeeker SET password = @password where verify_key = @verify_key";
 
-            SqlCommand cmd = new SqlCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
 
-            con.Open();
+                con.Open();
 
-            cmd.Parameters.AddWithValue("@verify_key", key);
-            string output = cmd.ExecuteScalar().ToString();
+                cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(new_password.Text));
+                cmd.Parameters.AddWithValue("@verify_key", Session["seeker_verify_key"].ToString());
 
-            if(output == "1")
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);
+
+            }
+            else if (requestRole == "recruiter")
             {
                 SqlConnection conn = new SqlConnection(strcon);
 
-                string qry = "UPDATE JobSeeker SET password = @password";
+                string query = "UPDATE Recruiter SET password = @password where verify_key = @verify_key";
 
-                SqlCommand command = new SqlCommand(qry, conn);
+                SqlCommand comm = new SqlCommand(query, conn);
 
                 conn.Open();
 
-                command.Parameters.AddWithValue("@verify_key", new_password.Text);
+                comm.Parameters.AddWithValue("@password", pwHash.hashPassword(new_password.Text));
+                comm.Parameters.AddWithValue("@verify_key", Session["recruiter_verify_key"].ToString());
 
-                command.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-                conn.Close();             
+                conn.Close();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);
             }
-            con.Close();
-
+            
         }
     }
 }

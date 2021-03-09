@@ -55,7 +55,7 @@ namespace web_app_assignment.admin
 
                 conn.Close();
 
-                //Response.Write(" < script language = 'javascript'> window.alert('Password Set Successfully window.location = 'admin/login.aspx;</ script >");
+              
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Set Successfully'); window.open('login.aspx');", true);
             }
             con.Close();
