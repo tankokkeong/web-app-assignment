@@ -79,6 +79,8 @@ namespace web_app_assignment.admin
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
             cmd.Parameters.AddWithValue("@verify_key", vkey2);
 
+            Session["admin_verify_key"] = vkey2;
+
             //email
             string from = "webissue.emailus@gmail.com";
 

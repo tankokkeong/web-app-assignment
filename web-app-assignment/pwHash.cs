@@ -20,17 +20,5 @@ namespace web_app_assignment
 
             return encypt;
         }
-
-        public static string decyptPassword (string encypt)
-        {
-            SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
-
-            byte[] newBytes = Convert.FromBase64String(encypt);
-
-            return BitConverter.ToString(newBytes);
-
-
-
-        }
     }
 }
