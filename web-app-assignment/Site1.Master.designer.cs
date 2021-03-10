@@ -48,7 +48,7 @@ namespace web_app_assignment
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink About Us;
+        protected global::System.Web.UI.WebControls.HyperLink About_Us;
         
         /// <summary>
         /// SignUpLink control.
