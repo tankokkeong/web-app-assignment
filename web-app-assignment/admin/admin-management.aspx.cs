@@ -44,7 +44,7 @@ namespace web_app_assignment.admin
             {
                 //Query String
                 e.Row.Cells[4].Text = "<a class='badge badge-success action-btn'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
-                    "<a class='badge badge-primary action-btn'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                    "<a class='badge badge-primary action-btn'  href='admin-details.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                     "<button class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteAdmin' type='button' onclick='deleteAdmin(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></button>";
             }
         }
@@ -77,6 +77,8 @@ namespace web_app_assignment.admin
             cmd.Parameters.AddWithValue("@admin_right", admin_right);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
             cmd.Parameters.AddWithValue("@verify_key", vkey2);
+
+            Session["admin_verify_key"] = vkey2;
 
             //email
             string from = "webissue.emailus@gmail.com";

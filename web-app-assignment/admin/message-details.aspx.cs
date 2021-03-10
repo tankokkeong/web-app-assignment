@@ -58,6 +58,9 @@ namespace web_app_assignment.admin
         {
             if(Page.IsValid)
             {
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+                SqlConnection con = new SqlConnection(strcon);
+
                 string emailReply = txtEmailReply.Text.Trim();
                 string from = "webissue.emailus@gmail.com";
                 // can be used for email subject title also
@@ -67,18 +70,28 @@ namespace web_app_assignment.admin
 
                 string id = Request.QueryString["Id"] ?? "";
 
+                string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
+                SqlCommand cmdSession = new SqlCommand(sqlSession, con);
+                con.Open();
+                cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
+                SqlDataReader drSession = cmdSession.ExecuteReader();
+
                 string sqlSubmit = @"UPDATE ContactMessage SET subject = @subject, reply_message = @replyMessage,
-                                     deleted_at = @delete
+                                     replied_by = @reply , replied_date = @reply_date, deleted_at = @delete
                                     WHERE contact_id = @Id";
 
-                SqlConnection con = new SqlConnection(strcon);
                 SqlCommand cmd = new SqlCommand(sqlSubmit, con);
                 cmd.Parameters.AddWithValue("@Id",id);
                 cmd.Parameters.AddWithValue("@subject", subjectReply);
                 cmd.Parameters.AddWithValue("@replyMessage", messageReply);
+                cmd.Parameters.AddWithValue("@reply_date", DateTime.Now);
                 cmd.Parameters.AddWithValue("@delete", DateTime.Now);
 
-                con.Open();
+                while(drSession.Read())
+                {
+                    cmd.Parameters.AddWithValue("@reply", drSession["admin_id"]);
+                }
+                drSession.Close();
                 cmd.ExecuteNonQuery();
                 con.Close();
 

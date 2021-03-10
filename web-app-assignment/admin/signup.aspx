@@ -21,30 +21,29 @@
                 <div class="login-title text-center">
                     <img src="images/logo/logo.png" id="admin-login-logo"/>
                     <h1 class="mt-3 mb-3">Admin Sign Up</h1>
+                    <p class="mt-3 mb-3">Please enter full name and set password for your admin account.</p>
                 </div>
 
                 <div class="login-body">
                     <form>
-                      <div class="form-group">        
-                        <input type="email" class="form-control bg-login" placeholder="Email Address">
+                        <div class="form-group">  
+                          <asp:TextBox ID="admin_Name" cssclass="form-control bg-login" ClientIDMode="Static" runat="server" Placeholder="Full Name"></asp:TextBox>
+                          <asp:RequiredFieldValidator id="admin_NameReq" runat ="server" ControlToValidate="admin_Name" validationgroup="admin_signup" ErrorMessage="Full Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                      </div>
+                      <div class="form-group">  
+                          <asp:TextBox ID="admin_newPassword" cssclass="form-control bg-login" ClientIDMode="Static" runat="server" TextMode="Password" Placeholder="Password"></asp:TextBox>
+                          <asp:RequiredFieldValidator id="admin_newPasswordReq" runat ="server" ControlToValidate="admin_newPassword" validationgroup="admin_signup" ErrorMessage="Password is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                       </div>
 
-                      <div class="form-group">        
-                        <input type="text" class="form-control bg-login" placeholder="Full Name">
+                      <div class="form-group">    
+                          <asp:TextBox ID="admin_confirmPassword" cssclass="form-control bg-login" ClientIDMode="Static" runat="server" TextMode="Password" Placeholder=" Confirm Password"></asp:TextBox>
+                          <asp:RequiredFieldValidator id="admin_confirmPasswordReq" runat ="server" ControlToValidate="admin_confirmPassword" validationgroup="admin_signup" ErrorMessage="Password is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                       </div>
-
-                      <div class="form-group">           
-                        <input type="password" class="form-control bg-login" placeholder="Password">
-                      </div>
-
-                      <div class="form-group">           
-                        <input type="password" class="form-control bg-login" placeholder="Confirm Password">
-                      </div>
-
-
-
+                      <div class="form-group">
+                           <asp:CompareValidator id="comparePasswords" runat="server" ControlToCompare="admin_newPassword" ControlToValidate="admin_confirmPassword" ErrorMessage="Your passwords do not match up! Please Re-enter Again." Display="Dynamic" forecolor="Red" ValidationGroup="recruiter"/>
+                        </div>
                        <div class="text-center">
-                           <button type="submit" class="btn btn-dark">Sign Up</button>
+                           <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" cssclass="btn btn-dark" OnClick="btnSignUp_Click"/>                          
                        </div>
                       
                     </form>

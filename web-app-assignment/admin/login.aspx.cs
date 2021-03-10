@@ -32,7 +32,7 @@ namespace web_app_assignment.admin
 
                 con.Open();
 
-                String query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + txtPassword.Text + "'";
+                String query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + txtPassword.Text + "' AND verified_at IS NOT NULL AND deleted_at IS NULL";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -68,7 +68,7 @@ namespace web_app_assignment.admin
                 }
                 else
                 {
-                    Response.Write(@"<script language='javascript'>alert('Invalid Username or Password.')</script>");
+                    Response.Write(@"<script language='javascript'>alert('Invalid Username or Password. Or Your Email Is Not Verified Yet!')</script>");
 
                 }
             }
