@@ -31,6 +31,7 @@
                     <div class="form-group">
                         <%--<input type="email" class="form-control" id="forgotPasswordFormEmail" aria-describedby="emailHelp" placeholder="Email">--%>
                         <asp:TextBox ID="forgotPasswordFormEmail" ClientIDMode="Static" cssclass="form-control" runat="server" placeholder="Email"></asp:TextBox>
+                         <asp:RequiredFieldValidator id="forgotPwReq" runat ="server" ControlToValidate="forgotPasswordFormEmail" validationgroup="reset_password" ErrorMessage="Password is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                     </div>
                     <div class="forgotPasswordFormEmailButton">
                         <%--<button type="submit" class="btn btn-info" id="forgotPasswordFormEmailButtonSubmit">Send Reset Password Email</button>--%>
