@@ -22,21 +22,32 @@ namespace web_app_assignment.admin
             if (!Page.IsPostBack)
             {
                 bool found = false;
-                string admin_id = Request.QueryString["admin_id"] ?? "";
+                string id = Request.QueryString["editId"] ?? "";
 
-                string sql = "SELECT * FROM Admin WHERE admin_id = @admin_id AND deleted_at IS NULL";
+                string sql = "SELECT * FROM Admin WHERE admin_id = @Id AND deleted_at IS NULL";
 
                 SqlConnection con = new SqlConnection(strcon);
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@admin_id", admin_id);
+                cmd.Parameters.AddWithValue("@Id", id);
 
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
 
+                try
+                {
+                    int Id = Int32.Parse(id);
+                    Console.WriteLine(Id);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
                 if (dr.Read())
                 {
                     found = true;
-                    txtID.Text = (string)dr["admin_id"];
+                    Console.WriteLine(txtID.Text);
+                    //txtID.Text = dr["admin_id"];
                     txtName.Text = (string)dr["admin_name"];
                     txtEmail.Text = (string)dr["admin_email"];
                     txtRight.Text = (string)dr["admin_right"];
@@ -47,7 +58,7 @@ namespace web_app_assignment.admin
 
                 if (!found)
                 {
-                    Response.Redirect("admin-details-edit.aspx");
+                    Response.Redirect("admin-management.aspx");
                 }
             }
         }

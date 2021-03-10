@@ -19,31 +19,43 @@ namespace web_app_assignment.admin
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            if (Session["Admin"] != null)
+            if (!Page.IsPostBack)
             {
+                bool found = false;
+                string id = Request.QueryString["viewId"] ?? "";
+
+                string sql = "SELECT * FROM Admin WHERE admin_id = @id AND deleted_at IS NULL";
+
                 SqlConnection con = new SqlConnection(strcon);
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", id);
 
-                //Get admin_id from database
-                string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-                SqlCommand cmdSession = new SqlCommand(sqlSession, con);
                 con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
 
-                cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
+                //int Id = Int32.Parse(id);
 
-                SqlDataReader drSession = cmdSession.ExecuteReader();
-
-                string sqlDoList = @"SELECT * FROM Admin WHERE deleted_at IS NULL";
-                SqlCommand cmdDoList = new SqlCommand(sqlDoList, con);
-
-                int adminID = 0;
-
-                while (drSession.Read())
+                if (dr.Read())
                 {
-                    adminID = Int32.Parse(drSession["admin_id"].ToString());
+                    found = true;
+                    //int Id = dr.GetInt32(0); 
+                    //string name = dr.GetString(1); 
+                    //string email = dr.GetString(2);
+                    //string right = dr.GetString(3);
+                    //txtID.Text = (string)dr["admin_id"];
+                    txtName.Text = (string)dr["admin_name"];
+                    txtEmail.Text = (string)dr["admin_email"];
+                    txtRight.Text = (string)dr["admin_right"];
+                    //Console.WriteLine(Id, name, email, right);
                 }
-                cmdDoList.Parameters.AddWithValue("@id", adminID);
 
-                drSession.Close();
+                dr.Close();
+                con.Close();
+
+                if (!found)
+                {
+                    Response.Redirect("admin-management.aspx");
+                }
             }
         }
     }
