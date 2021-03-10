@@ -21,12 +21,10 @@ namespace web_app_assignment.admin
             if (task_id != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+
+                con.Open();
                 string status = "close";
-                string sql = "UPDATE ToDoList SET task_status =@status deleted_at = @delete WHERE task_id = @Id";
+                string sql = "UPDATE ToDoList SET task_status = @status, deleted_at = @delete WHERE task_id = @Id";
 
                  //Connect to the database
                 SqlCommand cmd = new SqlCommand(sql, con);
