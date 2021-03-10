@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="web_app_assignment.Site1" Culture="auto:en-US" UICulture="auto" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="web_app_assignment.Site1"%>
 
 
 <!-- No Script -->
@@ -53,29 +53,29 @@
           </div>
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <%--<a class="nav-link text-light" href="home.aspx">Home</a>--%>
-            <asp:HyperLink ID="Home" navigateUrl="home.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Home">Home</asp:HyperLink>
+            <a class="nav-link text-light" href="home.aspx">Home</a>
+<%--            <asp:HyperLink ID="Home" navigateUrl="home.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Home">Home</asp:HyperLink>--%>
           </li>
           <li class="nav-item">
-            <%--<a class="nav-link text-light" href="#">Jobs</a>--%>
-            <asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>
+            <a class="nav-link text-light" href="#">Jobs</a>
+            <%--<asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>--%>
           </li>
           <li class="nav-item">
-            <%--<a class="nav-link text-light" href="#">About Us</a>--%>
-            <asp:HyperLink ID="About Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>
+            <a class="nav-link text-light" href="#">About Us</a>
+            <%--<asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
           </li>
 
            <li class="nav-item">
      <%--       <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>--%>
-               <asp:HyperLink ID="SignUpLink" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Sign Up">Sign Up</asp:HyperLink>
+               <asp:HyperLink ID="SignUpLink" cssclass="nav-link text-light" runat="server" Visible="true">Sign Up</asp:HyperLink>
                 <%--<asp:HyperLink ID="ProfileLink" cssclass="nav-link text-light" runat="server" Visible="false">My Profile</asp:HyperLink>--%>
                <a class="nav-link text-light" id="ProfileLink" runat="server" visible="false" onserverclick="ProfileLink_Click">My Profile</a>
           </li>
 
             <li class="nav-item">
-            <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true" meta:resourceKey="Sign In">Sign In</asp:HyperLink>
+            <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
             <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
-<%--            <asp:HyperLink ID="LogoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" onclick="LogoutLink_Click" meta:resourceKey="Sign Out">Sign Out</asp:HyperLink>--%>
+<%--            <asp:HyperLink ID="LogoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" onclick="LogoutLink_Click">Sign Out</asp:HyperLink>--%>
           </li>
 
         </ul>
