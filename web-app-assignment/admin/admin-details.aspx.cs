@@ -33,20 +33,13 @@ namespace web_app_assignment.admin
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
 
-                //int Id = Int32.Parse(id);
-
                 if (dr.Read())
                 {
                     found = true;
-                    //int Id = dr.GetInt32(0); 
-                    //string name = dr.GetString(1); 
-                    //string email = dr.GetString(2);
-                    //string right = dr.GetString(3);
-                    //txtID.Text = (string)dr["admin_id"];
+                    txtID.Text = (dr["admin_id"].ToString());
                     txtName.Text = (string)dr["admin_name"];
                     txtEmail.Text = (string)dr["admin_email"];
                     txtRight.Text = (string)dr["admin_right"];
-                    //Console.WriteLine(Id, name, email, right);
                 }
 
                 dr.Close();
