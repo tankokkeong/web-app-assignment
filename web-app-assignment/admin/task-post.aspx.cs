@@ -17,7 +17,7 @@ namespace web_app_assignment.admin
         {
             
             //Read task content from post submit
-            var task_id = Request.Form["task_id"];
+            var task_id = Request.QueryString["Id"];
             if (task_id != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
@@ -41,7 +41,6 @@ namespace web_app_assignment.admin
                 con.Close();
 
                 Response.Redirect("dashboard.aspx");
-
             }
             else 
             {

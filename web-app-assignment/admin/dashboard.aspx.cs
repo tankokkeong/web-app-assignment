@@ -53,7 +53,7 @@ namespace web_app_assignment.admin
                     s += string.Format("<div class='to-do-task mt-3'>" +
                                         "<h5 id='task-name' class='mb-0'>{0}</h5>" +
                                         "<p id='task-remarks' class='text-secondary mb-0'>{1}</p>" +
-                                        "<button type='button' data-taskID={2} class='btn btn-light delete-task-btn'><img src='images/dashboard/delete.png' width='25px' height='25px'</button>" +
+                                        "<a href='task-post.aspx?Id={2}' class='btn btn-light delete-task-btn'><img src='images/dashboard/delete.png' width='25px' height='25px'></a>" +
                                         "</div>", drDoList["task_name"], drDoList["task_remarks"],drDoList["task_id"]);
                 }
                 drDoList.Close();
