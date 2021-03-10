@@ -21,64 +21,64 @@ namespace web_app_assignment
 
         }
 
-        protected void forgotPasswordFormEmailButtonSubmit_Click (object sender, EventArgs e)
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection(strcon);
+        //protected void forgotPasswordFormEmailButtonSubmit_Click (object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        SqlConnection conn = new SqlConnection(strcon);
 
-                SqlDataAdapter adp = new SqlDataAdapter("select * from JobSeeker where email = @email ", conn);
+        //        SqlDataAdapter adp = new SqlDataAdapter("select * from JobSeeker where email = @email ", conn);
 
-                conn.Open();
+        //        conn.Open();
 
-                adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+        //        adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
 
-                adp.Fill(dt);
+        //        adp.Fill(dt);
 
-                if (dt.Rows.Count > 0)
-                {
-                    Session["seeker_verify_key"] = getSeeker_vkey(forgotPasswordFormEmail.Text);
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            Session["seeker_verify_key"] = getSeeker_vkey(forgotPasswordFormEmail.Text);
 
-                    sendSeekerEmail();
+        //            sendSeekerEmail();
 
-                    lblresult.Text = "Successfully sent reset link on your email! Thank you.";
+        //            lblresult.Text = "Successfully sent reset link on your email! Thank you.";
 
-                    forgotPasswordFormEmail.Text = "";
+        //            forgotPasswordFormEmail.Text = "";
 
-                }
-                else
-                {
-                    adp = new SqlDataAdapter("select * from Recruiter where email = @email ", conn);
+        //        }
+        //        else
+        //        {
+        //            adp = new SqlDataAdapter("select * from Recruiter where email = @email ", conn);
 
-                    adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+        //            adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
 
-                    adp.Fill(dt);
+        //            adp.Fill(dt);
 
-                    if (dt.Rows.Count > 0)
-                    {
-                        Session["recruiter_verify_key"] = getRecruiter_vkey(forgotPasswordFormEmail.Text);
+        //            if (dt.Rows.Count > 0)
+        //            {
+        //                Session["recruiter_verify_key"] = getRecruiter_vkey(forgotPasswordFormEmail.Text);
 
-                        sendRecruiterEmail();
+        //                sendRecruiterEmail();
 
-                        lblresult.Text = "Successfully sent reset link on your email! Thank you.";
+        //                lblresult.Text = "Successfully sent reset link on your email! Thank you.";
 
-                        forgotPasswordFormEmail.Text = "";
+        //                forgotPasswordFormEmail.Text = "";
 
-                    }
-                    else
-                    {
-                        lblresult.Text = "The email mail You entered does not exist.";
-                    }
-                    conn.Close();
-                }
+        //            }
+        //            else
+        //            {
+        //                lblresult.Text = "The email mail You entered does not exist.";
+        //            }
+        //            conn.Close();
+        //        }
 
-            }
+        //    }
 
-            catch (Exception error)
-            {
-                Response.Write(error.Message);
-            }
-        }
+        //    catch (Exception error)
+        //    {
+        //        Response.Write(error.Message);
+        //    }
+        //}
 
         private void sendSeekerEmail()
         {
@@ -93,7 +93,7 @@ namespace web_app_assignment
                 //Mail Subject
                 message.Subject = "Reset Password";
                 message.Body = "Hi,<br/> Click on below given link to Reset Your Password<br/>" +
-                               "<a href=https://localhost:44329/Reset_Password.aspx?" + getSeeker_vkey(forgotPasswordFormEmail.Text) +
+                               "<a href=https://localhost:44329/Reset_Password.aspx?" + getSeeker_vkey(forgotPasswordFormEmail.Text) + "&Role=" + getSeekerRole() +
                                ">Click here to change your password</a><br/>" +
                                "Thanks, Jobs4U Team <br />" +
                                "***This is a system generated email. Please do not reply to this address***";
@@ -138,7 +138,7 @@ namespace web_app_assignment
                 //Mail Subject
                 message.Subject = "Reset Password";
                 message.Body = "Hi,<br/> Click on below given link to Reset Your Password<br/>" +
-                               "<a href=https://localhost:44329/Reset_Password.aspx?" + getRecruiter_vkey(forgotPasswordFormEmail.Text) +
+                               "<a href=https://localhost:44329/Reset_Password.aspx?" + getRecruiter_vkey(forgotPasswordFormEmail.Text) + "&Role=" + getRecruiterRole() +
                                ">Click here to change your password</a><br/>" +
                                "Thanks, Jobs4U Team <br />" +
                                "***This is a system generated email. Please do not reply to this address***";
@@ -178,9 +178,9 @@ namespace web_app_assignment
             String query = "select verify_key from JobSeeker where email= @email";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
-            string output = cmd.ExecuteScalar().ToString();
+            string seekvkey = cmd.ExecuteScalar().ToString();
             con.Close();
-            return output;
+            return seekvkey;
             
         }
 
@@ -196,6 +196,83 @@ namespace web_app_assignment
             con.Close();
             return output;
             
+        }
+
+        private string getSeekerRole()
+        {
+            string seekerrole = "job-seeker";
+            return seekerrole;
+        }
+        private string getRecruiterRole()
+        {
+            string seekerrole = "recruiter";
+            return seekerrole;
+        }
+
+
+
+        protected void forgotPasswordFormEmailButtonSubmit_Click(object sender, EventArgs e)
+        {
+            if (Role.SelectedItem.Value == "job_seeker")
+            {
+                SqlConnection conn = new SqlConnection(strcon);
+
+                SqlDataAdapter adp = new SqlDataAdapter("select * from JobSeeker where email = @email ", conn);
+
+                conn.Open();
+
+                adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    Session["seeker_verify_key"] = getSeeker_vkey(forgotPasswordFormEmail.Text);
+
+                    sendSeekerEmail();
+
+                    lblresult.Text = "Successfully sent reset link on your email! Thank you.";
+
+                    forgotPasswordFormEmail.Text = "";
+                }
+                else
+                {
+                    Response.Write("<script>alert('Email does not exist');</script>");
+                }
+                conn.Close();
+            }
+            else if(Role.SelectedItem.Value == "recruiter")
+            {
+                SqlConnection connection = new SqlConnection(strcon);
+
+                SqlDataAdapter adp = new SqlDataAdapter("select * from Recruiter where email = @email ", connection);
+
+                connection.Open();
+
+                adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    Session["recruiter_verify_key"] = getRecruiter_vkey(forgotPasswordFormEmail.Text);
+
+                    sendRecruiterEmail();
+
+                    lblresult.Text = "Successfully sent reset link on your email! Thank you.";
+
+                    forgotPasswordFormEmail.Text = "";
+                }
+                else
+                {
+                    Response.Write("<script>alert('Email does not exist');</script>");
+                }
+                connection.Close();
+            }
+            else
+            {
+                Response.Write("<script>alert('The Please choose a role');</script>");
+            }
         }
     }
 }
