@@ -24,32 +24,41 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
-        /// Home control.
+        /// lblHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Home;
+        protected global::System.Web.UI.WebControls.Label lblHome;
 
         /// <summary>
-        /// Jobs control.
+        /// lblJobs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Jobs;
+        protected global::System.Web.UI.WebControls.Label lblJobs;
 
         /// <summary>
-        /// About Us control.
+        /// lblAboutUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink About_Us;
-        
+        protected global::System.Web.UI.WebControls.Label lblAboutUs;
+
+        /// <summary>
+        /// lblSignUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSignUp;
+
         /// <summary>
         /// SignUpLink control.
         /// </summary>

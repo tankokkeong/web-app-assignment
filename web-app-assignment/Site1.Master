@@ -217,7 +217,7 @@
                         </div>
                         
                         <div class="text-light mt-2 footer-nav">
-                            <asp:DropDownList ID="listLanguage" class="form-control mt-3 mb-3" AutoPostBack="True" OnClick="btnLanguages_Click" runat="server">
+                            <asp:DropDownList ID="listLanguage" class="form-control mt-3 mb-3" AutoPostBack="true" OnSelectedIndexChanged="btnLanguages_Click" runat="server">
                                 <asp:ListItem Value="EN">English</asp:ListItem>
                                 <asp:ListItem Value="CN">Chinese</asp:ListItem>
                             </asp:DropDownList>

@@ -177,12 +177,12 @@ namespace web_app_assignment
 
             if (listLanguage.SelectedItem.Value == "EN")
             {
-                Session["Languages_EN"] = true;
+                Session["Languages_EN"] = "true";
                 Session.Remove("Languages_CN");
             }
             else if (listLanguage.SelectedItem.Value == "CN")
             {
-                Session["Languages_CN"] = true;
+                Session["Languages_CN"] = "true";
                 Session.Remove("Languages_EN");
             }
         }
