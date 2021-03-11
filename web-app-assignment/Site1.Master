@@ -53,28 +53,35 @@
           </div>
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link text-light" href="home.aspx">Home</a>
+              <asp:Label ID="lblHome" runat="server"></asp:Label>
+              <a class="nav-link text-light" href="home.aspx">Home</a>
 <%--            <asp:HyperLink ID="Home" navigateUrl="home.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Home">Home</asp:HyperLink>--%>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Jobs</a>
-            <%--<asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>--%>
+              <asp:Label ID="lblJobs" runat="server"></asp:Label>
+              <a class="nav-link text-light" href="#">Jobs</a>
+<%--            <asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>--%>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">About Us</a>
-            <%--<asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
+              <asp:Label ID="lblAboutUs" runat="server"></asp:Label>
+              <a class="nav-link text-light" href="#">About Us</a>
+<%--            <asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
           </li>
 
            <li class="nav-item">
-     <%--       <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>--%>
+<%--            <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>--%>
+               <asp:Label ID="lblSignUp" runat="server"></asp:Label>
                <asp:HyperLink ID="SignUpLink" cssclass="nav-link text-light" runat="server" Visible="true">Sign Up</asp:HyperLink>
                 <%--<asp:HyperLink ID="ProfileLink" cssclass="nav-link text-light" runat="server" Visible="false">My Profile</asp:HyperLink>--%>
+               <asp:Label ID="lblMyProfile" runat="server"></asp:Label>
                <a class="nav-link text-light" id="ProfileLink" runat="server" visible="false" onserverclick="ProfileLink_Click">My Profile</a>
           </li>
 
             <li class="nav-item">
+            <asp:Label ID="lblSignIn" runat="server"></asp:Label>
             <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
-            <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
+            <asp:Label ID="lblSignOut" runat="server"></asp:Label>
+                <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
 <%--            <asp:HyperLink ID="LogoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" onclick="LogoutLink_Click">Sign Out</asp:HyperLink>--%>
           </li>
 
@@ -88,11 +95,12 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-    </form>
+    
 
     <%-- Footer --%>
     <footer>
         <div class="footer-container">
+            <asp:Label ID="lblJobPosted" runat="server"></asp:Label>
             <div class="footer-job-details">
                 <div class="job-number-display row">
                     <div class="job-number col-sm-12 col-lg-2 text-center mt-2">
@@ -133,84 +141,98 @@
                             <a href="home.aspx"><img src="images/logo/logo.png" id="footer-logo"/></a>
                         </div>
                        
-
                         <div class="text-lightblue mt-2 footer-nav">
                            About Us
                         </div>
 
+                        <asp:Label ID="lblPrivacyPolicy" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Privacy Policy
                         </div>
 
+                        <asp:Label ID="lblCareerCenter" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                             Career Center
                         </div>
 
+                        <asp:Label ID="lblContactUs" runat="server"></asp:Label>
                          <div class="text-lightblue mt-2 footer-nav">
                             Contact Us
                         </div>
 
+                        <asp:Label ID="lblHelp" runat="server"></asp:Label>
                          <div class="text-lightblue mt-2 footer-nav">
                             <a href="help.aspx" class="text-lightblue text-decoration-none">Help</a>
                         </div>
 
+                        <asp:Label ID="lblTerms" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            <a href="terms_conditions.aspx" class="text-lightblue text-decoration-none">Terms & Conditions</a> 
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-3 footer-nav-list">
+                        <asp:Label ID="lblJobSeeker" runat="server"></asp:Label>
                         <div class="text-light footer-nav-header">
                             <h3>Job Seekers</h3>
                         </div>
 
+                        <asp:Label ID="lblUserProfile" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            User Profile
                         </div>
 
+                        <asp:Label ID="lblSearchJobs" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
-                           Search jobs
+                           Search Jobs
                         </div>
 
+                        <asp:Label ID="lblResume" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Resume
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-3 footer-nav-list">
+                        <asp:Label ID="lblEmployers" runat="server"></asp:Label>
                         <div class="text-light footer-nav-header">
                             <h3>Employers</h3>
                         </div>
 
+                        <asp:Label ID="lblCompanyProfile" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Company Profile
                         </div>
 
+                        <asp:Label ID="lblCandidateList" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Candidate List
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-3 footer-nav-list">
+                        <asp:Label ID="lblLanguages" runat="server"></asp:Label>
                         <div class="text-light footer-nav-header">
                             <h3>Languages</h3>
                         </div>
-
+                        
                         <div class="text-light mt-2 footer-nav">
-                           <select class="form-control mt-3 mb-3">
-                               <option>English</option>
-                               <option>Chinese</option>
-                           </select>
+                            <asp:DropDownList ID="listLanguage" class="form-control mt-3 mb-3" AutoPostBack="True" OnClick="btnLanguages_Click" runat="server">
+                                <asp:ListItem Value="EN">English</asp:ListItem>
+                                <asp:ListItem Value="CN">Chinese</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">
                            No.23 Jalan 12, Selaynag Baru, 68100 Batu Caves, Selangor
                         </div>
 
+                        <asp:Label ID="lblEmail" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Email: <br> webissue.emailus@gmail.com
                         </div>
 
+                        <asp:Label ID="lblCall" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            Call: <br> 03-6123-5555
                         </div>
@@ -236,5 +258,6 @@
         </div>
         
     </footer>
+        </form>
 </body>
 </html>

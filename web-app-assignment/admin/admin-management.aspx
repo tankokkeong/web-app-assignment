@@ -70,9 +70,9 @@
                          <asp:Label ID="lblAdminRight" runat="server" Text="Admin Role "></asp:Label>
 <%--                    <label for="inputPassword" class="col-sm-2 col-form-label">Admin Role</label>--%>
                          <asp:DropDownList ID="listAdminRight" runat="server" >
-                            <asp:ListItem Value="">Please Select</asp:ListItem>
-                            <asp:ListItem>Editor</asp:ListItem>  
-                            <asp:ListItem>Viewer</asp:ListItem>
+                            <asp:ListItem Value="Default">Please Select</asp:ListItem>
+                            <asp:ListItem Value="Editor">Editor</asp:ListItem>  
+                            <asp:ListItem Value="Viewer">Viewer</asp:ListItem>
                          </asp:DropDownList>
                       <%--<select class="form-control">
                           <option>Super Admin</option>
