@@ -24,6 +24,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox new_password;
 
         /// <summary>
+        /// new_passwordReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator new_passwordReq;
+
+        /// <summary>
         /// confirm_password control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,24 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirm_password;
+
+        /// <summary>
+        /// confirm_passwordReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator confirm_passwordReq;
+
+        /// <summary>
+        /// comparePasswords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator comparePasswords;
 
         /// <summary>
         /// forgotPasswordFormEmailButtonSubmit control.

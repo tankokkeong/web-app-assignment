@@ -17,16 +17,14 @@ namespace web_app_assignment.admin
         {
             
             //Read task content from post submit
-            var task_id = Request.Form["task_id"];
+            var task_id = Request.QueryString["Id"];
             if (task_id != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+
+                con.Open();
                 string status = "close";
-                string sql = "UPDATE ToDoList SET task_status =@status deleted_at = @delete WHERE task_id = @Id";
+                string sql = "UPDATE ToDoList SET task_status = @status, deleted_at = @delete WHERE task_id = @Id";
 
                  //Connect to the database
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -43,7 +41,6 @@ namespace web_app_assignment.admin
                 con.Close();
 
                 Response.Redirect("dashboard.aspx");
-
             }
             else 
             {
