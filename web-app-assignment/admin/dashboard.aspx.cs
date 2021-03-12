@@ -117,7 +117,7 @@ namespace web_app_assignment.admin
                 //Top 5 companies
 
                 string company = "";
-                string sqlTopCompany = "SELECT top 5 company_name, company_photo,rating FROM Recruiter ORDER BY rating desc; ";
+                string sqlTopCompany = "SELECT top 5 company_name, company_photo,rating FROM Recruiter WHERE rating IS NOT NULL ORDER BY rating desc; ";
 
                 SqlCommand cmdTopCompany = new SqlCommand(sqlTopCompany, con);
                 con.Open();

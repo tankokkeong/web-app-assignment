@@ -1,14 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="web_app_assignment.admin.dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%-- 
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawBarChart);
         
-
-
         function drawBarChart() {
-
 
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
@@ -30,6 +28,41 @@
                 },
 
                 colors: [ "#009688", "#17a2b8", "#ffc107"],
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+    --%>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawBarChart);
+
+        function drawBarChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
+                ['2020', 1000, 400, 200],
+                ['2021', 1170, 460, 250],
+                ['2022', 660, 1120, 300],
+                ['2023', 1030, 540, 350]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'People Visited',
+                    subtitle: 'Visitors, Recruiters, and Job Seeker: 2020-2023',
+                },
+
+                backgroundColor: "transparent",
+                chartArea: {
+                    backgroundColor: "transparent"
+                },
+
+                colors: ["#009688", "#17a2b8", "#ffc107"],
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
