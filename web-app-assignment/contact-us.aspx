@@ -19,7 +19,7 @@
     </div> <%-- Contact Us banner end--%>
 
     <div class="contact-info-container"> <%-- Contact info --%>
-        <div class="contact-info">
+        <div class="contact-info mt-5">
             <div class="row" id="contact-row">
                 <div class=" col-sm-12 col-lg-4 mt-3 mb-3" >
                     <div class="box">
@@ -57,13 +57,13 @@
 
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="name" placeholder="Name"> --%>
-                      <asp:TextBox ID="txtName" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Name" runat="server"></asp:TextBox>
+                      <asp:TextBox ID="txtName" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Name" runat="server"></asp:TextBox>
                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtName" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
                     </div>
 
                     <div class="form-group col-md-6">
                      <%-- <input type="text" class="form-control" id="contact-number" placeholder="Contact Number"> --%>
-                      <asp:TextBox ID="txtContactNum" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Contact Number" runat="server"></asp:TextBox>
+                      <asp:TextBox ID="txtContactNum" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Contact Number" runat="server"></asp:TextBox>
                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtContactNum" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
                     </div>
                 </div>
@@ -71,25 +71,25 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="email" placeholder="E-mail"> --%>
-                      <asp:TextBox ID="txtEmail" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Email" runat="server"></asp:TextBox>
+                      <asp:TextBox ID="txtEmail" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Email" runat="server"></asp:TextBox>
                       <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtEmail" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
                      </div>
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="subject" placeholder="Subject"> --%>
-                       <asp:TextBox ID="txtSubject" class="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Subject" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtSubject" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Subject" runat="server"></asp:TextBox>
                       <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtSubject" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
                     </div>
                </div>
 
                <div class="form-group">
                     <%-- <textarea class="form-control" rows="8" id="message" placeholder="Message"></textarea> --%>
-                   <asp:TextBox ID="txtMessage" CssClass="form-control" placeholder="Message" TextMode="MultiLine" BackColor="#7CAEA7" Columns="50" Rows="8" runat="server"></asp:TextBox>
+                   <asp:TextBox ID="txtMessage" ClientIDMode="Static" CssClass="form-control" placeholder="Message" TextMode="MultiLine" BackColor="#7CAEA7" Columns="50" Rows="8" runat="server"></asp:TextBox>
                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtMessage" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
                </div>
 
                 <div class='text-center'>
                     <%-- <button class="btn btn-success">Submit</button> --%>
-                    <asp:Button ID="btnSubmit" class="btn btn-success" runat="server" Text="Submit" OnClick="btnSubmit_Click"/>
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-success w-100" runat="server" Text="Submit" OnClick="btnSubmit_Click"/>
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 </div>
             </form>

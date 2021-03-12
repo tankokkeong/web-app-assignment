@@ -87,27 +87,29 @@
     }
 
 
-.contact-form-container #name,#contact-number,#email,#subject,#message {
+    .contact-form-container #txtName, #txtContactNum, #txtEmail, #txtSubject, #txtMessage {
         background-color: #7CAEA7;
         color: white;
-}
-.contact-form-container #name::placeholder{
+    }
+
+.contact-form-container #txtName::placeholder{
     color:white;
 }
 
-    .contact-form-container #contact-number::placeholder {
+.contact-form-container #txtContactNum::placeholder {
+        color: white;
+
+}
+
+    .contact-form-container #txtEmail::placeholder {
         color: white;
     }
 
-    .contact-form-container #email::placeholder {
+    .contact-form-container #txtSubject::placeholder {
         color: white;
     }
 
-    .contact-form-container #subject::placeholder {
-        color: white;
-    }
-
-    .contact-form-container #message::placeholder {
+    .contact-form-container #txtMessage::placeholder {
         color: white;
     }
 
