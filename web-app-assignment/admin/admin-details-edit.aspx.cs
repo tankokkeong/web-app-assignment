@@ -55,10 +55,40 @@ namespace web_app_assignment.admin
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            if (!Page.IsPostBack)
+            SqlConnection con = new SqlConnection(strcon);
+            string id = Request.QueryString["editId"] ?? "";
+            string admin_name = txtName.Text;
+            string admin_email = txtEmail.Text;
+            string admin_right = txtRight.Text;
+
+            string sql = @"SELECT admin_id FROM Admin WHERE admin_email = @admin_email AND deleted_at IS NULL";
+            
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            con.Open();
+            cmd.Parameters.AddWithValue("@admin_email", admin_email);
+            SqlDataReader dr = cmd.ExecuteReader();
+            
+            string sqlEdit = @"UPDATE Admin SET admin_name = @admin_name, 
+                               admin_email = @admin_email, admin_right = @admin_right 
+                               WHERE admin_id = @id2";
+
+            SqlCommand cmdEdit = new SqlCommand(sqlEdit, con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmdEdit.Parameters.AddWithValue("@admin_name", admin_name);
+            cmdEdit.Parameters.AddWithValue("@admin_email", admin_email);
+            cmdEdit.Parameters.AddWithValue("@admin_right", admin_right);
+
+            while (dr.Read())
             {
-                
+                cmdEdit.Parameters.AddWithValue("@id2", id);
             }
+
+            dr.Close();
+            cmdEdit.ExecuteNonQuery();
+            con.Close();
+            
+            Response.Redirect("admin-management.aspx");
         }
     }
 }
