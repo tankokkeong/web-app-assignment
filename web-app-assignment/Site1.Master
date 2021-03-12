@@ -141,6 +141,7 @@
                             <a href="home.aspx"><img src="images/logo/logo.png" id="footer-logo"/></a>
                         </div>
                        
+                        <asp:Label ID="lblAboutUs2" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
                            About Us
                         </div>
@@ -217,10 +218,36 @@
                         </div>
                         
                         <div class="text-light mt-2 footer-nav">
-                            <asp:DropDownList ID="listLanguage" class="form-control mt-3 mb-3" AutoPostBack="true" OnSelectedIndexChanged="btnLanguages_Click" runat="server">
-                                <asp:ListItem Value="EN">English</asp:ListItem>
-                                <asp:ListItem Value="CN">Chinese</asp:ListItem>
-                            </asp:DropDownList>
+                            <select id="language" class="form-control mt-3 mb-3" onchange="languageFunction()">
+                                <option value="EN">English</option>
+                                <option value="CN">Chinese</option>
+                            </select>
+
+                            <script>
+                                function languageFunction() {
+                                    var x = document.getElementById("language").value;
+                                    var language_string = window.location.href.split("?");
+
+                                    if (x === "EN") {
+                                        window.location.href = language_string[0] + "?language=EN";
+                                    }
+                                    else if (x === "CN") {
+                                        window.location.href = language_string[0] + "?language=CN";
+                                    }
+                                }
+
+                                function languageSticky() {
+                                    language_string = window.location.href.split("?");
+                                    var y = document.getElementById("language");
+
+                                    if (language_string[1] === "language=EN") {
+                                        y.options.item(0).selected = true
+                                    }
+                                    else if (language_string[1] === "language=CN") {
+                                        y.options.item(1).selected = true
+                                    }
+                                }
+                            </script>
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">

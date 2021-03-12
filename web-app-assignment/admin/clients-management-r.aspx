@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="clients-management.aspx.cs" Inherits="web_app_assignment.admin.clients_management" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.Master" AutoEventWireup="true" CodeBehind="clients-management-r.aspx.cs" Inherits="web_app_assignment.admin.clients_management_r" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>User Management</title>
@@ -53,45 +53,17 @@
 
             <%--display--%>
             <div class="table-container">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView2_RowDataBound" CssClass="table table-striped table-bordered">
+                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView3_RowDataBound" CssClass="table table-striped table-bordered">
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
                     <Columns>
-                        <asp:BoundField runat="server" DataField="seeker_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="full_name" HeaderText="User Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="company_name" HeaderText="Company Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="seeker_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>
-
-            <%--<div class="table-container">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr class="bg-lightgreen text-light">
-                        <th scope="col">User ID</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%for (int i = 0; i < 5; i++)
-                        { %>
-
-                    <tr>
-                        <th scope="row">U0002</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <a href="clients-details.aspx?edit" class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                            <a href="clients-details.aspx?view" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    <%}; %>
-                </tbody>
-            </table>
-        </div>--%>
         </div>
 
         <!-- Edit User Modal -->

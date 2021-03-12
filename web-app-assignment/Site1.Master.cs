@@ -16,7 +16,20 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["User"] != null || Session["Recruiter"]!= null)
+            var languages_selected = Request.QueryString["language"];
+
+            if (languages_selected == "EN")
+            {
+                Session["Languages_EN"] = true;
+                Session.Remove("Languages_CN");
+            }
+            else if (languages_selected == "CN")
+            {
+                Session["Languages_CN"] = true;
+                Session.Remove("Languages_EN");
+            }
+
+            if (Session["User"] != null || Session["Recruiter"]!= null)
             {
                 SignUpLink.Visible = false;
                 ProfileLink.Visible = true;
@@ -55,6 +68,7 @@ namespace web_app_assignment
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
+                lblAboutUs2.Text = Languages["About Us"];
                 lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
@@ -72,10 +86,13 @@ namespace web_app_assignment
                 lblJobSeeker.Text = Languages["Job Seekers"];
                 lblEmployers.Text = Languages["Employers"];
                 lblSignOut.Text = Languages["Sign Out"];
-                lblJobPosted.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted.Text = Languages["Full-Time Job Posted"]; 
+                //lblJobPosted2.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted3.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted4.Text = Languages["Full-Time Job Posted"];
                 lblLanguages.Text = Languages["Languages"];
             }
-            else
+            else if (Session["Languages_EN"] != null)
             {
                 Languages.Add("Home", "Home");
                 Languages.Add("Jobs", "Jobs");
@@ -104,6 +121,7 @@ namespace web_app_assignment
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
+                lblAboutUs2.Text = Languages["About Us"];
                 lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
@@ -121,7 +139,10 @@ namespace web_app_assignment
                 lblJobSeeker.Text = Languages["Job Seekers"];
                 lblEmployers.Text = Languages["Employers"];
                 lblSignOut.Text = Languages["Sign Out"];
-                lblJobPosted.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted2.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted3.Text = Languages["Full-Time Job Posted"];
+                //lblJobPosted4.Text = Languages["Full-Time Job Posted"];
                 lblLanguages.Text = Languages["Languages"];
             }
         }
@@ -171,20 +192,12 @@ namespace web_app_assignment
             }
 
         }
-        protected void btnLanguages_Click(Object sender, EventArgs e)
-        {
-            Dictionary<string, string> Languages = new Dictionary<string, string>();
+        //protected void btnLanguages_Click(Object sender, EventArgs e)
+        //{
+        //    Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            if (listLanguage.SelectedItem.Value == "EN")
-            {
-                Session["Languages_EN"] = "true";
-                Session.Remove("Languages_CN");
-            }
-            else if (listLanguage.SelectedItem.Value == "CN")
-            {
-                Session["Languages_CN"] = "true";
-                Session.Remove("Languages_EN");
-            }
-        }
+            
+
+        //}
     }
 }

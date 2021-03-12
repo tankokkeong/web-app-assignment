@@ -11,7 +11,7 @@ namespace web_app_assignment.admin
 {
 
 
-    public partial class clients_details
+    public partial class clients_details_r
     {
 
         /// <summary>
