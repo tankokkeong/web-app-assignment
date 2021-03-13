@@ -156,16 +156,12 @@
 
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview">
-                        <i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages Management</span><i class="treeview-indicator fa fa-angle-right"></i>
+                        <i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Blogs Management</span><i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
 
                   <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="edit_termsConditions.aspx"><i class="icon fa fa-circle-o"></i>Terms & Conditions</a></li>
-                    <li><a class="treeview-item" href="edit_career.aspx"><i class="icon fa fa-circle-o"></i>Careers</a></li>
-                    <li><a class="treeview-item" href="edit_helpCenter.aspx"><i class="icon fa fa-circle-o"></i>Help Center</a></li>
-                    <li><a class="treeview-item" href="edit_contactUs.aspx"><i class="icon fa fa-circle-o"></i>Contact Us</a></li>
-                    <li><a class="treeview-item" href="edit_aboutUs.aspx"><i class="icon fa fa-circle-o"></i>About Us</a></li>
-                    <li><a class="treeview-item" href="edit_privacy.aspx"><i class="icon fa fa-circle-o"></i>Privacy</a></li>
+                    <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>Blog Post</a></li>
+                    <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>Blog Category</a></li>
                   </ul>
                 </li>
 
