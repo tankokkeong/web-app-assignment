@@ -1,31 +1,53 @@
-﻿.LiveChat{
-    background-color: white;
-    padding: 2.5%;
+﻿.LiveChatContainer {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #92989C;
+}
+
+.LiveChatContainerHeader {
     position: relative;
+    width: 100%;
 }
 
-.LiveChat_MessagesData {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: 3px solid #E4E4E4;
-    padding: 1%;
+.LiveChatHeader {
+    background-color: #92989C;
+    width: 100%;
+    padding: 5px;
 }
 
-.LiveChat_MessagesDataImages {
-    width: 100px;
-    padding: 2.5%;
-    background-color: #EEF2FD;
+.chatbox-close {
+    position: absolute;
+    right: 10px;
+    top: 0;
 }
 
-.LiveChat_MessagesDataDetails {
+.chatbox-close:focus {
+    outline: none !important;
+}
+
+.chatbox-close a {
+    font-size: 35px;
+    color: black;
+}
+
+.LiveChatContainerContents {
+    min-height: 300px;
+    width: 100%;
+    padding-top: 51px;
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.sendMessages {
+    border-top: 1px solid #B5B9BC;
+    padding: 5px;
+    width: 100%;
     display: flex;
 }
 
-.LiveChat_MessagesInput {
-    margin-top: 2.5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: 3px solid #E4E4E4;
-}
-
-.LiveChat_MessagesInputImage {
-    width: 25px;
+.LCusername {
+    display: none;
 }
