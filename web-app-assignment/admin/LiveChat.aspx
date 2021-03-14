@@ -59,6 +59,12 @@
         var admin_email = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML);
         var mailArr = admin_email.split('@');
         var logn = mailArr[0];
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes();
+        var sentTime = date + ' ' + time;
+        var deletedTime = date + ' ' + time;
+        var count = 1;
 
         function sendMessage() {
             // get messages
@@ -68,7 +74,11 @@
             firebase.database().ref("messages/" + logn + "/").push({
                 "sender": logn,
                 "message": message,
+                "timeSent": sentTime,
+                "messageNumber": count,
+                "timeDeleted":"",
             });
+            count++;
         }
 
         //listen for incoming messages
@@ -97,11 +107,13 @@
             var messageId = self.getAttribute("data-id");
 
             //delete message
-            firebase.database().ref("messages/" + logn + "/").child(messageId).remove();
+            firebase.database().ref("messages/" + logn + "/").child(messageId).update({
+                "timeDeleted": deletedTime,
+            });
         }
 
         //attach listener for deleted message
-        firebase.database().ref("messages/" + logn + "/").on("child_removed", function (snapshot) {
+        firebase.database().ref("messages/" + logn + "/").on("child_changed", function (snapshot) {
             //remove message node
             document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
         });
