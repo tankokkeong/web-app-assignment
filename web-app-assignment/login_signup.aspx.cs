@@ -243,8 +243,8 @@ namespace web_app_assignment
 
                         sqlcmd.Parameters.AddWithValue("@company_name", sign_recruiter_companyName.Text);
                         sqlcmd.Parameters.AddWithValue("@email", sign_recruiter_companyEmail.Text);
-                        //sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
-                        sqlcmd.Parameters.AddWithValue("@password", sign_recruiter_password.Text);
+                        sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
+
                         sqlcmd.Parameters.AddWithValue("@vkey", vkey);
 
                         sqlcmd.ExecuteNonQuery();
@@ -334,8 +334,7 @@ namespace web_app_assignment
 
                         commandSql.Parameters.AddWithValue("@full_name", sign_seeker_FullName.Text);
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
-                        //commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
-                        commandSql.Parameters.AddWithValue("@password", sign_seeker_password.Text);
+                        commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
                         commandSql.Parameters.AddWithValue("@vkey", vkey2);
 
                         commandSql.ExecuteNonQuery();
