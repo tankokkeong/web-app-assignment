@@ -8,13 +8,16 @@
 
         function drawBarChart() {
 
+            var dataChart = <%=chartValue%>;
+            var dataChart2 = <%=chartValue2%>;
+            var dataChart3 = <%=chartValue3%>;
 
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
                 ['2020', 1000, 400, 200],
-                ['2021', 1170, 460, 250],
-                ['2022', 660, 1120, 300],
-                ['2023', 1030, 540, 350]
+                ['2021', dataChart3, dataChart, dataChart2],
+                ['2022', 0, 0, 0],
+                ['2023', 0, 0, 0]
             ]);
 
             var options = {
@@ -41,15 +44,16 @@
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawLineChart);
 
+        var dataChartApp = <%=chartValueApp%>;
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Total Application'],
                 ['2020', 1000],
-                ['2021', 1170],
+                ['2021', dataChartApp],
                 ['2022', 660],
                 ['2023', 1030]
             ]);
-
+            console.log(dataChartApp);
             var options = {
                 title: 'Application Sent',
                 curveType: 'function',

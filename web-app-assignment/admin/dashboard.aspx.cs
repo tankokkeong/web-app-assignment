@@ -12,7 +12,10 @@ namespace web_app_assignment.admin
     public partial class dashboard : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
-
+        public int chartValue = 0;
+        public int chartValue2 = 0;
+        public int chartValue3 = 0;
+        public int chartValueApp = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -21,10 +24,27 @@ namespace web_app_assignment.admin
             if(Session["Admin"] != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
-
-                //Google Chart
-
+                
+                
+                //Google Chart Recruiter, JobSeeker and Visitors
+                string sqlChart = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
+                string sqlChart2 = "SELECT COUNT(*) FROM JobSeeker WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
+                string sqlChart3 = "SELECT COUNT(*) FROM Visitors WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
+                SqlCommand cmdChart = new SqlCommand(sqlChart, con);
+                SqlCommand cmdChart2 = new SqlCommand(sqlChart2, con);
+                SqlCommand cmdChart3 = new SqlCommand(sqlChart3, con);
                 con.Open();
+
+                this.chartValue = (int)(cmdChart.ExecuteScalar());
+                this.chartValue2 = (int)(cmdChart2.ExecuteScalar());
+                this.chartValue3 = (int)(cmdChart3.ExecuteScalar());
+
+                //Google Chart Application Sent
+                string sqlChartApp = "SELECT COUNT(*) FROM ApplicationStatus WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
+                SqlCommand cmdChartApp = new SqlCommand(sqlChartApp, con);
+
+                this.chartValueApp = (int)(cmdChartApp.ExecuteScalar());
+
 
 
                 //Get admin_id from database
