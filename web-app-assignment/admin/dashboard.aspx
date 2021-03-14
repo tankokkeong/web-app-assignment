@@ -53,7 +53,7 @@
                 ['2022', 660],
                 ['2023', 1030]
             ]);
-            console.log(dataChartApp);
+
             var options = {
                 title: 'Application Sent',
                 curveType: 'function',
