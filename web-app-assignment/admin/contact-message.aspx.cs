@@ -43,7 +43,7 @@ namespace web_app_assignment.admin
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
-                e.Row.Cells[3].Text = "<a class='badge badge-success action-btn mr-1'  href='message-details.aspx?Id=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-eye'></i></a>" +
+                e.Row.Cells[3].Text = "<a class='badge badge-success action-btn mr-1'  href='message-details.aspx?Id=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
                     "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteMessage(" + e.Row.Cells[3].Text + ")'><i class='fas fa-trash'></i></span>";
             }
         }

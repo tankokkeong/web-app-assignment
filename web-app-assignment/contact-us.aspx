@@ -58,13 +58,15 @@
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="name" placeholder="Name"> --%>
                       <asp:TextBox ID="txtName" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Name" runat="server"></asp:TextBox>
-                       <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtName" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                       <asp:RequiredFieldValidator ID="reqValName" runat="server"  ErrorMessage="Name is required to fill in!" CssClass="text-danger" ControlToValidate="txtName" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="regExValName" runat="server" ErrorMessage="Only alphabets are allowed" ControlToValidate="txtName" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </div>
 
                     <div class="form-group col-md-6">
                      <%-- <input type="text" class="form-control" id="contact-number" placeholder="Contact Number"> --%>
                       <asp:TextBox ID="txtContactNum" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Contact Number" runat="server"></asp:TextBox>
-                       <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtContactNum" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                       <asp:RequiredFieldValidator ID="reqValContactNum" runat="server" ErrorMessage="Contact Number is required!" ControlToValidate="txtContactNum" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegExValContactNum" runat="server" ErrorMessage="Please Enter valid mobile number" ControlToValidate="txtContactNum" CssClass="text-danger" ValidationExpression="^\d+$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </div>
                 </div>
 
@@ -72,19 +74,20 @@
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="email" placeholder="E-mail"> --%>
                       <asp:TextBox ID="txtEmail" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Email" runat="server"></asp:TextBox>
-                      <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtEmail" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                       <asp:RequiredFieldValidator ID="reqValEmail" runat="server" ErrorMessage="Email is required to fill in!" ControlToValidate="txtEmail" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegExValEmail" runat="server" ErrorMessage="Invalid Email!" ControlToValidate="txtEmail" CssClass="text-danger" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display="Dynamic"></asp:RegularExpressionValidator>
                      </div>
                     <div class="form-group col-md-6">
                       <%-- <input type="text" class="form-control" id="subject" placeholder="Subject"> --%>
                        <asp:TextBox ID="txtSubject" ClientIDMode="Static" CssClass="form-control" BackColor="#7CAEA7" ForeColor="White" placeholder="Subject" runat="server"></asp:TextBox>
-                      <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtSubject" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                        <asp:RequiredFieldValidator ID="reqValSubject" runat="server" ErrorMessage="Subject is required!" ControlToValidate="txtSubject" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                </div>
 
                <div class="form-group">
                     <%-- <textarea class="form-control" rows="8" id="message" placeholder="Message"></textarea> --%>
                    <asp:TextBox ID="txtMessage" ClientIDMode="Static" CssClass="form-control" placeholder="Message" TextMode="MultiLine" BackColor="#7CAEA7" Columns="50" Rows="8" runat="server"></asp:TextBox>
-                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="This field is required!" ControlToValidate="txtMessage" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                    <asp:RequiredFieldValidator ID="reqValMessage" runat="server" ErrorMessage="Message is empty!" ControlToValidate="txtMessage" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                </div>
 
                 <div class='text-center'>

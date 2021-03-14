@@ -22,10 +22,14 @@ namespace web_app_assignment.admin
             {
                 SqlConnection con = new SqlConnection(strcon);
 
+                //Google Chart
+
+                con.Open();
+
+
                 //Get admin_id from database
                 string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-                SqlCommand cmdSession = new SqlCommand(sqlSession, con);
-                con.Open();
+                SqlCommand cmdSession = new SqlCommand(sqlSession, con);             
                 
                 cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
 

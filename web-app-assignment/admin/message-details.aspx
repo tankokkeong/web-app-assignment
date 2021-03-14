@@ -50,7 +50,7 @@
             <div class="text-center">
                <button type="button" class="btn text-light bg-lightgreen" data-toggle="modal" data-target="#replyModal">Reply</button> 
                 <a href="contact-message.aspx" class="btn btn-secondary">Back</a>
-                <asp:Label ID="lblMailMessage" runat="server"></asp:Label>
+                <asp:Label ID="lblMailMessage" runat="server" ForeColor="Green"></asp:Label>
             </div>
         </div>
     </div>
@@ -88,6 +88,7 @@
                 <div class="col-sm-10">
                   <%-- <textarea class="form-control" rows="15" placeholder="Reply Message"></textarea> --%>
                   <asp:TextBox ID="txtMessageReply" CssClass="form-control" placeholder="Reply Message" TextMode="MultiLine" Rows="15" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValMessageReply" runat="server" ErrorMessage="Reply Message is empty!" ControlToValidate="txtMessageReply" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>
           
