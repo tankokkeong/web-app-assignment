@@ -45,8 +45,7 @@ namespace web_app_assignment
                     SqlCommand cmd = new SqlCommand(query, con);
 
                     cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                    //cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
-                    cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
+                    cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));                  
 
                     String output = cmd.ExecuteScalar().ToString();
 
@@ -57,8 +56,8 @@ namespace web_app_assignment
                         cmd = new SqlCommand(query, con);
 
                         cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                        //cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
-                        cmd.Parameters.AddWithValue("@password", sign_login_password.Text);
+                        cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
+                        
 
                         output = cmd.ExecuteScalar().ToString();
 
@@ -123,8 +122,8 @@ namespace web_app_assignment
                     SqlCommand cm = new SqlCommand(qry, conn);
 
                     cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                    //cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
-                    cm.Parameters.AddWithValue("@password", sign_login_password.Text);
+                    cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
+
 
                     String result = cm.ExecuteScalar().ToString();
 
@@ -135,8 +134,8 @@ namespace web_app_assignment
                         cm = new SqlCommand(qry, conn);
 
                         cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                        //cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
-                        cm.Parameters.AddWithValue("@password", sign_login_password.Text);
+                        cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
+
 
                         result = cm.ExecuteScalar().ToString();
 
