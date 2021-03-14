@@ -16,6 +16,12 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Login
+            if (Session["Recruiter"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 List<string> countryListItems = new List<string>{

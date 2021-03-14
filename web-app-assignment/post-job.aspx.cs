@@ -16,7 +16,11 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Check Login
+            if (Session["Recruiter"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
