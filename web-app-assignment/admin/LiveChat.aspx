@@ -62,8 +62,8 @@
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         var time = today.getHours() + ":" + today.getMinutes();
-        var sentTime = date + ' ' + time;
-        var deletedTime = date + ' ' + time;
+        var sentTime = time + ' ' + date;
+        var deletedTime = time + ' ' + date;
         var count = 1;
 
         function sendMessage() {
@@ -85,21 +85,39 @@
         firebase.database().ref("messages/" + logn + "/").on("child_added", function (snapshot) {
             var html = "";
 
-            // give each message a unique ID
-            html += "<li id='message-" + snapshot.key + "'>";
-
             if (snapshot.val().sender == logn) {
-                html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-                html += "Delete";
-                html += "</button>";
+                if (snapshot.val().timeDeleted == "") {
+                    // give each message a unique ID
+                    html += "<div class='sender-messagesContexts'>";
+                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+
+                    if (snapshot.val().sender == logn) {
+                        html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
+                        html += "Delete";
+                        html += "</button>";
+                    }
+
+                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+
+                    html += "</div>";
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                }
+            } else {
+                if (snapshot.val().timeDeleted == "") {
+                    // give each message a unique ID
+                    html += "<div class='replier-messagesContexts'>";
+                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
+
+                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+
+                    html += "</div>";
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                }
             }
-
-            html += snapshot.val().sender + ": " + snapshot.val().message;
-
-            html += "</li>";
-
-            document.getElementById("messages").innerHTML += html;
-            document.getElementById('message').value = "";
         });
 
         function deleteMessage(self) {
