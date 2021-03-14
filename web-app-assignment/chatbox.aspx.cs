@@ -31,6 +31,9 @@ namespace web_app_assignment
                     //Get Seeker ID
                     string seeker_id = Request.QueryString["seeker"] ?? "";
 
+                    //Insert value to hidden field
+                    hfSeekerID.Value = seeker_id;
+
                     SqlConnection con = new SqlConnection(strcon);
                     if (con.State == ConnectionState.Closed)
                     {

@@ -18,6 +18,7 @@ namespace web_app_assignment
         {
             //Read chat content from post submit
             var chat_content = Request.Form["chat_content"];
+            var seeker_id = Request.Form["seeker_id"];
 
             //Insert Chat Record
             try
@@ -38,7 +39,7 @@ namespace web_app_assignment
                 cmd.Parameters.AddWithValue("@chat_content", chat_content);
                 cmd.Parameters.AddWithValue("@sent_time", DateTime.Now);
                 cmd.Parameters.AddWithValue("@recruiter_id", 1);
-                cmd.Parameters.AddWithValue("@seeker_id", 1);
+                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
                 //Check role

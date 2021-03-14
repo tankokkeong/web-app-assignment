@@ -73,7 +73,8 @@
             
 
             <div class="chat-input">
-                <input type="text" class="form-control" placeholder="Enter message here" id="chat-content" onkeyup="enterSendMessage()"/>
+                <input type="text" class="form-control" placeholder="Enter message here" id="chat-content" onkeydown="enterSendMessage()"/>
+                <asp:HiddenField ID="hfSeekerID" runat="server" />
                 <button class="bg-lightgreen text-light btn" type="button" id="insert-chat-btn">Send</button>
             </div>
         </div>
@@ -81,10 +82,13 @@
 
     <%-- Insert Chat Record --%>
     <script>
+        var seeker_value = document.getElementById("ContentPlaceHolder1_hfSeekerID").value;
+
         $("#insert-chat-btn").click(function(){
             $.post("chat-post.aspx",
             {
                 chat_content: $("#chat-content").val(),
+                seeker_id : seeker_value,
             },
             function () {
                 //Clear form
@@ -99,11 +103,12 @@
         //Enter key to send message
         function enterSendMessage() {
             if (event.keyCode === 13) {
-                event.preventDefault();
- 
+                event.preventDefault();              
+
                 $.post("chat-post.aspx",
                 {
                     chat_content: $("#chat-content").val(),
+                    seeker_id: seeker_value,
                 },
                 function () {
                     //Clear form
@@ -113,6 +118,8 @@
                     scrollToBottom();
 
                 });
+
+                return false;
 
             }
         }
