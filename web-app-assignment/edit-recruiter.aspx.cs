@@ -16,6 +16,12 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Login
+            if (Session["Recruiter"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 List<string> countryListItems = new List<string>{
@@ -478,6 +484,32 @@ namespace web_app_assignment
                         con.Open();
                     }
 
+                    //Get Recruiter ID
+
+                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+
+                    string recruiterID = "";
+
+                    //GET Seeker ID from the seeker table
+                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        recruiterID = dr["recruiter_id"].ToString();
+                    }
+
+                    con.Close();
+
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
 
 
                     string sql = "UPDATE Recruiter " +
@@ -495,10 +527,10 @@ namespace web_app_assignment
                                 " facebook_link = @facebook_link," +
                                 " linkedin_link = @linkedin_link," +
                                 " introduction = @introduction" +
-                                " WHERE recruiter_id = 1";
+                                " WHERE recruiter_id = @recruiter_id";
 
                     //Connect to the database
-                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd = new SqlCommand(sql, con);
 
 
                     //Insert parameters
@@ -516,7 +548,8 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@facebook_link", facebook_link);
                     cmd.Parameters.AddWithValue("@linkedin_link", linkedin_link);
                     cmd.Parameters.AddWithValue("@introduction", introduction);
-
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                    
                     //Execute the queries
                     cmd.ExecuteNonQuery();
                     con.Close();

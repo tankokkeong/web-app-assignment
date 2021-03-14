@@ -16,7 +16,11 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Check Login
+            if (Session["Recruiter"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
@@ -49,7 +53,33 @@ namespace web_app_assignment
                         con.Open();
                     }
 
-                    
+                    //Get Recruiter ID
+
+                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+
+                    string recruiterID = "";
+
+                    //GET Seeker ID from the seeker table
+                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        recruiterID = dr["recruiter_id"].ToString();
+                    }
+
+                    con.Close();
+
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
 
                     string sql = "INSERT INTO JobPost(job_title, job_description, salary, industry, qualification, working_hours, job_specializations," +
                                 "company_overview, location, experience_needed, job_type, head_quaters, benefits_others, company_size, process_time, recruiter_id, created_at)" +
@@ -57,7 +87,7 @@ namespace web_app_assignment
                                 "@company_overview, @location, @experience_needed, @job_type, @head_quaters, @benefits_others, @company_size, @process_time, @recruiter_id, @created_at)";
 
                     //Connect to the database
-                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd = new SqlCommand(sql, con);
 
 
                     //Insert parameters
@@ -76,7 +106,7 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@benefits_others", benefits);
                     cmd.Parameters.AddWithValue("@company_size", company_size);
                     cmd.Parameters.AddWithValue("@process_time", processing_time);
-                    cmd.Parameters.AddWithValue("@recruiter_id", 1);
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
                     cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
                     //Execute the queries

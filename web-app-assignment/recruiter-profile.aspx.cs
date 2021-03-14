@@ -24,6 +24,11 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                //Check Login
+                if(Session["Recruiter"] == null)
+                {
+                    Response.Redirect("home.aspx");
+                }
 
                 //Get Recruiter ID
 
