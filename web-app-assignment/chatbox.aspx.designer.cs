@@ -60,12 +60,21 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Literal ltrScriptTrigger;
 
         /// <summary>
-        /// hfSeekerID control.
+        /// txtSeekerID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSeekerID;
+        protected global::System.Web.UI.WebControls.TextBox txtSeekerID;
+
+        /// <summary>
+        /// txtRecruiterID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRecruiterID;
     }
 }

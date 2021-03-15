@@ -26,44 +26,39 @@
                 </asp:UpdatePanel>
 
                
-
-<%--                <div class="replier">
-                    <div class="replier-icon">
-                        <img src="images/user%20profile/demo-user.png" class="rounded-circle replier-img"/>
+<%--                <div class='replier'>
+                    <div class='replier-icon'>
+                        <img src = '" + dr["user_photo"] +"' class='rounded-circle replier-img'/>
                     </div>
 
-                    <div class="reply-content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, 
-                        but also the leap into electronic typesetting, 
-                        remaining essentially unchanged. It was popularised in the 1960s with the 
-                        release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                        with desktop publishing software like Aldus PageMaker including versions 
-                        of Lorem Ipsum.
+                    <div class='reply-content'>
+                        <div class='mb-1'>
+                            Testing Content, Hi I am your recruiter
+                        </div>
 
-                        <div class="replier-time float-right">
-                            <span class="text-secondary">10:24</span>
+                        <div class='replier-time float-right'>
+                            <span class='text-secondary'>10:12 AM </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="my-reply">
-                    <div class="my-reply-content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, 
-                        but also the leap into electronic typesetting, 
-                        remaining essentially unchanged. It was popularised in the 1960s with the 
-                        release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                        with desktop publishing software like Aldus PageMaker including versions 
-                        of Lorem Ipsum.
-
-                        <div class="my-reply-time float-right">
-                            <span class="text-light">10:25</span>
+                <div class='my-reply'>
+                    <div class='reply-container'>
+                    <div class='my-reply-content'>
+                        <div class='mb-1'>
+                           Testing Content, hi
                         </div>
+
+                        <div class='my-reply-time float-right'>                           
+                            <span class='text-light'>10:12 AM</span><br/>
+                            <div class="float-right">
+                                 <span class='text-light seen-text'>seen <i class="fas fa-check-circle"></i></span>
+                            </div>
+                           
+                        </div>
+                         
+                    </div>                
+
                     </div>
                 </div>--%>
                 
@@ -74,7 +69,8 @@
 
             <div class="chat-input">
                 <input type="text" class="form-control" placeholder="Enter message here" id="chat-content" onkeydown="enterSendMessage()"/>
-                <asp:HiddenField ID="hfSeekerID" runat="server" />
+                <asp:TextBox ID="txtSeekerID" runat="server" style="display:none;"></asp:TextBox>
+                <asp:TextBox ID="txtRecruiterID" runat="server" style="display:none;"></asp:TextBox>
                 <button class="bg-lightgreen text-light btn" type="button" id="insert-chat-btn">Send</button>
             </div>
         </div>
@@ -82,17 +78,19 @@
 
     <%-- Insert Chat Record --%>
     <script>
-        var seeker_value = document.getElementById("ContentPlaceHolder1_hfSeekerID").value;
+        var seeker_value = document.getElementById("ContentPlaceHolder1_txtSeekerID").value;
+        var recruiter_value = document.getElementById("ContentPlaceHolder1_txtRecruiterID").value;
 
         $("#insert-chat-btn").click(function(){
             $.post("chat-post.aspx",
             {
                 chat_content: $("#chat-content").val(),
-                seeker_id : seeker_value,
+                seeker_id: seeker_value,
+                recruiter_id: recruiter_value,
             },
             function () {
                 //Clear form
-                scrollToBottom();
+                document.getElementById("chat-content").value = "";
 
                 //Scroll to bottom every time send out message
                 scrollToBottom();
@@ -109,6 +107,7 @@
                 {
                     chat_content: $("#chat-content").val(),
                     seeker_id: seeker_value,
+                    recruiter_id: recruiter_value,
                 },
                 function () {
                     //Clear form

@@ -16,6 +16,95 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+
+                if (Session["Recruiter"] != null)
+                {
+                    SqlConnection con = new SqlConnection(strcon);
+
+                    //Open Connection Again
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    //Get Recruiter ID
+                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+
+                    string recruiterID = "";
+
+                    //GET Seeker ID from the seeker table
+                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        recruiterID = dr["recruiter_id"].ToString();
+                    }
+
+                    con.Close();
+
+                    //Get Seeker ID
+                    string seeker_id = Request.QueryString["seeker"] ?? "";
+
+                    //Insert id to the hidden field
+                    txtSeekerID.Text = seeker_id;
+                    txtRecruiterID.Text = recruiterID;
+
+                }
+                else
+                {
+                    
+
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    //Get Recruiter ID
+
+                    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+
+                    string seeker_id = "";
+
+                    //GET Seeker ID from the seeker table
+                    string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+                    cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        seeker_id = dr["seeker_id"].ToString();
+                    }
+
+                    con.Close();
+
+                    //Get Recruiter ID
+                    string recruiterID = Request.QueryString["recruiter"] ?? "";
+
+                    //Insert id to the hidden field
+                    txtSeekerID.Text = seeker_id;
+                    txtRecruiterID.Text = recruiterID;
+                }
+                
+
+                
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert(' +" + error.Message + "'); </script>");
+            }
             
         }
 
@@ -31,10 +120,10 @@ namespace web_app_assignment
                     //Get Seeker ID
                     string seeker_id = Request.QueryString["seeker"] ?? "";
 
-                    //Insert value to hidden field
-                    hfSeekerID.Value = seeker_id;
 
                     SqlConnection con = new SqlConnection(strcon);
+
+                    //Open Connection Again
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
@@ -61,6 +150,34 @@ namespace web_app_assignment
                     }
 
                     con.Close();
+
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    //Update unseen message
+                    string update_seen = "UPDATE ChatMessages " +
+                                        "SET seen = @seen " +
+                                        "WHERE seen IS NULL " +
+                                        "AND sent = @sent " +
+                                        "AND recruiter_id = @recruiter_id " +
+                                        "AND seeker_id = @seeker_id"; 
+
+                    //Connect to the database
+                    cmd = new SqlCommand(update_seen, con);
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@seen", "seen");
+                    cmd.Parameters.AddWithValue("@sent", "Job Seeker");
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+
 
                     //Open Connection Again
                     if (con.State == ConnectionState.Closed)
@@ -100,18 +217,49 @@ namespace web_app_assignment
 
                         if (dr["sent"].ToString() == "Recruiter")
                         {
-                            lblContent.Text = lblContent.Text +
-                            "<div class='my-reply'>" +
-                                "<div class='my-reply-content'>" +
-                                    "<div class='mb-1'>" +
-                                    dr["chat_content"].ToString() +
-                                    "</div>" +
+                            if(dr["seen"].ToString() == "seen")
+                            {
+                                lblContent.Text = lblContent.Text +
+                               "<div class='my-reply'>" +
+                                  "<div class='reply-container'>" +
+                                   "<div class='my-reply-content'>" +
+                                       "<div class='mb-1'>" +
+                                       dr["chat_content"].ToString() +
+                                       "</div>" +
 
-                                    "<div class='my-reply-time float-right'>" +
-                                        "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</div>";
+                                       "<div class='my-reply-time float-right'>" +
+                                           "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span><br/>" +
+                                           "<div class='float-right'>" +
+                                                "<span class='text-light seen-text'>seen<i class='fas fa-check-circle'></i></span>" +
+                                           "</div>" +
+                                       "</div>" +
+                                   "</div>" +
+
+                                   "</div>" +
+                               "</div>";
+                            }
+                            else
+                            {
+                                lblContent.Text = lblContent.Text +
+                              "<div class='my-reply'>" +
+                                 "<div class='reply-container'>" +
+                                  "<div class='my-reply-content'>" +
+                                      "<div class='mb-1'>" +
+                                      dr["chat_content"].ToString() +
+                                      "</div>" +
+
+                                      "<div class='my-reply-time float-right'>" +
+                                          "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span><br/>" +
+                                          "<div class='float-right'>" +
+                                               "<span class='text-light seen-text'>unseen<i class='fas fa-check-circle text-dark'></i></span>" +
+                                          "</div>" +
+                                      "</div>" +
+                                  "</div>" +
+
+                                  "</div>" +
+                              "</div>";
+                            }
+                           
                         }
                         else
                         {
@@ -171,6 +319,33 @@ namespace web_app_assignment
 
                     con.Close();
 
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    //Update unseen message
+                    string update_seen = "UPDATE ChatMessages " +
+                                        "SET seen = @seen " +
+                                        "WHERE seen IS NULL " +
+                                        "AND sent = @sent " +
+                                        "AND recruiter_id = @recruiter_id " +
+                                        "AND seeker_id = @seeker_id";
+
+                    //Connect to the database
+                    cmd = new SqlCommand(update_seen, con);
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@seen", "seen");
+                    cmd.Parameters.AddWithValue("@sent", "Recruiter");
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+
                     //Open Connection Again
                     if (con.State == ConnectionState.Closed)
                     {
@@ -209,18 +384,48 @@ namespace web_app_assignment
 
                         if (dr["sent"].ToString() == "Job Seeker")
                         {
-                            lblContent.Text = lblContent.Text +
-                            "<div class='my-reply'>" +
-                                "<div class='my-reply-content'>" +
-                                     "<div class='mb-1'>" +
-                                    dr["chat_content"].ToString() +
-                                    "</div>" +
+                            if (dr["seen"].ToString() == "seen")
+                            {
+                                lblContent.Text = lblContent.Text +
+                               "<div class='my-reply'>" +
+                                  "<div class='reply-container'>" +
+                                   "<div class='my-reply-content'>" +
+                                       "<div class='mb-1'>" +
+                                       dr["chat_content"].ToString() +
+                                       "</div>" +
 
-                                    "<div class='my-reply-time float-right'>" +
-                                        "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</div>";
+                                       "<div class='my-reply-time float-right'>" +
+                                           "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span><br/>" +
+                                           "<div class='float-right'>" +
+                                                "<span class='text-light seen-text'>seen<i class='fas fa-check-circle'></i></span>" +
+                                           "</div>" +
+                                       "</div>" +
+                                   "</div>" +
+
+                                   "</div>" +
+                               "</div>";
+                            }
+                            else
+                            {
+                                lblContent.Text = lblContent.Text +
+                              "<div class='my-reply'>" +
+                                 "<div class='reply-container'>" +
+                                  "<div class='my-reply-content'>" +
+                                      "<div class='mb-1'>" +
+                                      dr["chat_content"].ToString() +
+                                      "</div>" +
+
+                                      "<div class='my-reply-time float-right'>" +
+                                          "<span class='text-light'>" + dr["sent_time"].ToString().Substring(12) + "</span><br/>" +
+                                          "<div class='float-right'>" +
+                                               "<span class='text-light seen-text'>unseen<i class='fas fa-check-circle text-dark'></i></span>" +
+                                          "</div>" +
+                                      "</div>" +
+                                  "</div>" +
+
+                                  "</div>" +
+                              "</div>";
+                            }
                         }
                         else
                         {
