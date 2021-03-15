@@ -135,51 +135,18 @@
                     </div>
                 </div>
 
+                <%-- Delete Completed Alert --%>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="job-cancel-alert">
+                    Job application cancelled successful!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
                 <div id="job-application-content" class="my-info row" style="display:none;">
                     
                     <div class="application-container">
-                        <% for (int i = 0; i < 10; i++)
-                            { %>
-                        <div class="application-bar row">
-                            <div class="col-sm-3 mt-3">
-                                <img src="images/home/partner5-min.png" class="company-pic"/>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="company-name text-lightgreen">Company Name</div>
-                                <div class="company-location">
-                                    <span class="company-location-details text-secondary"><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Selangor</span>
-                                </div>
-                                <div class="hiring-position">
-                                    <span class="hiring-details">Graphic Designer</span>
-                                </div>
-                                <div class="view-profile">
-                                    <button class="btn btn-info">View Profile</button>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="application-status text-info">Applied</div>
-                                <div>
-                                    Front-End Developer
-                                </div>
-                                <div class="employment-type badge badge-success">
-                                    Full Time
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 mt-3">
-                                <div class="mt-2">
-                                    <a href="chatbox.aspx" class="btn btn-success">Chat</a>
-                                </div>
-
-                                <div class="mt-2">
-                                    <button class="btn btn-danger">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <%} %>
+                       <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
 
                     </div>
                     
@@ -187,5 +154,50 @@
 
             </div>
         </div>
+    </div>
+
+    <script>
+        function cancelApplication(id) {
+            var cancel_input = document.getElementById("ContentPlaceHolder1_txtApplicationID");
+
+            //Change the id
+            cancel_input.value = id;
+        }
+
+        //Check Cancelled Job Application
+        function checkCancelledApplication() {
+            var link = window.location.href.split("?");
+            var deleted_alert = document.getElementById("job-cancel-alert");
+
+            if (link[1] === "cancelApplication") {
+
+                //Change to job application tab
+                userProfileSwitchTab("application");
+                deleted_alert.style.display = "";
+            }
+        }
+
+        checkCancelledApplication();
+    </script>
+    <!-- Cancel Application Modal -->
+    <div class="modal fade" id="cancelApplicationModal" tabindex="-1" aria-labelledby="cancelApplicationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cancel Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to cancel your application?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <asp:Button ID="btnCancelApplication" runat="server" Text="Cancel" class="btn btn-danger" OnClick="btnCancelApplication_Click"/>
+            <asp:TextBox ID="txtApplicationID" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
     </div>
 </asp:Content>

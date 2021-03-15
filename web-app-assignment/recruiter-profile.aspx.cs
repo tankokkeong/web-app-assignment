@@ -98,6 +98,7 @@ namespace web_app_assignment
 
                 string sql_jobStatus = "SELECT * FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP " +
                                         "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                        "ASS.deleted_at IS NULL AND " +
                                         "ASS.post_id = JP.post_id AND " +
                                         "JP.recruiter_id = @recruiter_id";
 
