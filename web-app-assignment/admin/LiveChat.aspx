@@ -51,8 +51,6 @@
         </div>
     </div>
 
-    <ul ></ul>
-
     <script type="text/javascript">
 
         //get admin email

@@ -35,8 +35,135 @@
 
     <link href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+    <!-- Include firebase database-->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDNzVP3LRjenYXgNEYhmNW7jf2kw1mdVIc",
+            authDomain: "livechat-3c810.firebaseapp.com",
+            databaseURL: "https://livechat-3c810-default-rtdb.firebaseio.com",
+            projectId: "livechat-3c810",
+            storageBucket: "livechat-3c810.appspot.com",
+            messagingSenderId: "154912838250",
+            appId: "1:154912838250:web:d1defccda1595a26293013",
+            measurementId: "G-GNQJGM0SMP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 </head>
 <body>
+    <style type="text/css">
+    .btn-chat{
+      border:none;
+      text-transform: uppercase;
+      font-size: 20px;
+      position: absolute;
+      bottom: 2%;
+      right: 2%;
+      width: 20%;
+      position: fixed;
+      z-index: 99999;
+    }
+    #chatbox{
+      display:none;
+      border: 3px solid #f1f1f1;
+      position: fixed;
+      bottom: 2%;
+      right: 2%;
+      z-index: 99999;
+    }
+    .form-container{
+      min-width: 400px; 
+      padding: 10px;
+      background: #F7F7F7;
+      height:100%;
+    }
+    .btn-close{
+      font-size: 18px;
+      margin-top: 10px;
+      border: none;
+      width: 100%;
+      opacity: 0.9;
+    }
+    .btn-send, .btn-close,.btn-chat:hover{
+      opacity: 1;
+    }
+    .chatboxHeader{
+      background: blue;
+      color:white;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      margin:0;
+    }
+
+    .LiveChatContainerContents {
+        min-height: 300px;
+        width: 100%;
+        padding-top: 51px;
+        max-height: 80vh;
+        overflow-y: scroll;
+        position: relative;
+        background-color: white;
+    }
+
+    .sendMessages {
+        border-top: 1px solid #B5B9BC;
+        padding: 5px;
+        width: 100%;
+        display: flex;
+    }
+
+    .LCusername {
+        display: none;
+    }
+
+    .sender-messagesContexts {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .sender-messagesContents {
+        background-color: #2098F5;
+        color: white;
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 15px;
+        margin: 15px;
+        margin-right: 30px;
+        float: right;
+    }
+
+    .replier-messagesContexts {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .replier-messagesContents {
+        background-color: #2098F5;
+        color: white;
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 15px;
+        margin: 15px;
+        margin-right: 30px;
+        float: left;
+    }
+  </style>
+
 
     <%-- Header --%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="header-nav">
@@ -96,6 +223,24 @@
             </asp:ContentPlaceHolder>
         </div>
     
+        <div class="container">
+            <button class="btn btn-info btn-chat" type="button" onclick="openChat()">Need Help??</button>
+
+            <div class="chatbox" id="chatbox">
+              <h2 class="chatboxHeader">Message</h2>
+              <div class="form-container">
+                    <div id="messages" class="LiveChatContainerContents"></div>
+
+                    <div class="sendMessages">
+                        <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
+                        <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterSendMessage()"/>
+                        <button type="button" class="bg-lightgreen text-light btn btn-send" onclick="sendMessage()">Send</button>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-close" onclick="closeChat()">Close</button>
+                </div>
+            </div>
+        </div>
+
 
     <%-- Footer --%>
     <footer>
@@ -286,5 +431,108 @@
         
     </footer>
         </form>
+     <script type="text/javascript">
+         function openChat() {
+             document.getElementById('chatbox').style.display = 'block';
+             $('.btn-chat').hide();
+         }
+         function closeChat() {
+             document.getElementById('chatbox').style.display = 'none';
+             $('.btn-chat').show();
+         }
+     </script>
+
+    <script type="text/javascript">
+
+        //get admin email
+        var admin_email = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML);
+        var mailArr = admin_email.split('@');
+        var logn = mailArr[0];
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes();
+        var sentTime = time + ' ' + date;
+        var deletedTime = time + ' ' + date;
+        var count = 1;
+
+        function sendMessage() {
+            // get messages
+            var message = document.getElementById("message").value;
+
+            //save in database
+            firebase.database().ref("messages/" + logn + "/").push({
+                "sender": logn,
+                "message": message,
+                "timeSent": sentTime,
+                "messageNumber": count,
+                "timeDeleted": "",
+            });
+            count++;
+        }
+
+        //listen for incoming messages
+        firebase.database().ref("messages/" + logn + "/").on("child_added", function (snapshot) {
+            var html = "";
+
+            if (snapshot.val().sender == logn) {
+                if (snapshot.val().timeDeleted == "") {
+                    // give each message a unique ID
+                    html += "<div class='sender-messagesContexts'>";
+                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+
+                    if (snapshot.val().sender == logn) {
+                        html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
+                        html += "Delete";
+                        html += "</button>";
+                    }
+
+                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+
+                    html += "</div>";
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                }
+            } else {
+                if (snapshot.val().timeDeleted == "") {
+                    // give each message a unique ID
+                    html += "<div class='replier-messagesContexts'>";
+                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
+
+                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+
+                    html += "</div>";
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                }
+            }
+        });
+
+        function deleteMessage(self) {
+            // get message ID
+            var messageId = self.getAttribute("data-id");
+
+            //delete message
+            firebase.database().ref("messages/" + logn + "/").child(messageId).update({
+                "timeDeleted": deletedTime,
+            });
+        }
+
+        //attach listener for deleted message
+        firebase.database().ref("messages/" + logn + "/").on("child_changed", function (snapshot) {
+            //remove message node
+            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
+        });
+
+        //Enter key to send message
+        function enterSendMessage() {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+    </script>
+
 </body>
 </html>
