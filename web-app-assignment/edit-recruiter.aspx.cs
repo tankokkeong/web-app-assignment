@@ -435,9 +435,9 @@ namespace web_app_assignment
 
                 for (int loop = 0; loop < lstIndustry.Items.Count; loop++)
                 {
-                    if(lstIndustry.Items.FindByValue(lstIndustry.Items[loop].ToString()).Selected == true)
+                    if (lstIndustry.Items.FindByValue(lstIndustry.Items[loop].ToString()).Selected == true)
                     {
-                        if(selected_count == 0)
+                        if (selected_count == 0)
                         {
                             industry_list = lstIndustry.Items[loop].ToString();
                         }
@@ -448,10 +448,12 @@ namespace web_app_assignment
 
                         //Increase the selected value
                         selected_count++;
-                        
+
                     }
 
                 }
+
+                Response.Write("<script>alert('" + lstIndustry.Items.Count + "'</script>");
 
                 //Upload Profile Image Handled
                 string upload_path = MapPath("/Uploads/");

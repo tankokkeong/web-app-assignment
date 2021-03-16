@@ -19,7 +19,7 @@
                     
                     <label for="inputEmail4">Profile Photo</label>
                     <asp:FileUpload ID="fileCompanyPhoto" runat="server" cssClass="form-control"/>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
+<%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
                 </div>
         
               </div>
@@ -49,7 +49,7 @@
                     <label for="inputAddress">Industry:</label>
 
                      <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple">
-                     </asp:ListBox>
+                     </asp:ListBox><asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>
                      <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="lstIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
                     
                     <script>
