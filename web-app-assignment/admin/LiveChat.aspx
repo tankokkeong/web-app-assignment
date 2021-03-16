@@ -46,7 +46,7 @@
 
         <div class="sendMessages">
             <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
-            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterSendMessage()"/>
+            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessagesLiveChatAdmin()"/>
             <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
         </div>
     </div>
@@ -69,7 +69,7 @@
             var message = document.getElementById("message").value;
 
             //save in database
-            firebase.database().ref("messages/" + logn + "/").push({
+            firebase.database().ref("receivedMessages/" + logn + "/").push({
                 "sender": logn,
                 "message": message,
                 "timeSent": sentTime,
@@ -80,7 +80,7 @@
         }
 
         //listen for incoming messages
-        firebase.database().ref("messages/" + logn + "/").on("child_added", function (snapshot) {
+        firebase.database().ref("receivedMessages/" + logn + "/").on("child_added", function (snapshot) {
             var html = "";
 
             if (snapshot.val().sender == logn) {
@@ -123,19 +123,19 @@
             var messageId = self.getAttribute("data-id");
 
             //delete message
-            firebase.database().ref("messages/" + logn + "/").child(messageId).update({
+            firebase.database().ref("receivedMessages/" + logn + "/").child(messageId).update({
                 "timeDeleted": deletedTime,
             });
         }
 
         //attach listener for deleted message
-        firebase.database().ref("messages/" + logn + "/").on("child_changed", function (snapshot) {
+        firebase.database().ref("receivedMessages/" + logn + "/").on("child_changed", function (snapshot) {
             //remove message node
             document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
         });
 
         //Enter key to send message
-        function enterSendMessage() {
+        function enterMessagesLiveChatAdmin() {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 sendMessage();
