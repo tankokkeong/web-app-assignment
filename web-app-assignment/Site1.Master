@@ -94,7 +94,7 @@
 
           <li class="nav-item">
               <asp:Label ID="lblBlogs" runat="server"></asp:Label>
-              <a class="nav-link text-light" href="#">Blogs</a>
+              <a class="nav-link text-light" href="#">Blog</a>
 <%--            <asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
           </li>
 
