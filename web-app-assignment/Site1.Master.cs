@@ -31,10 +31,15 @@ namespace web_app_assignment
 
             if (Session["User"] != null || Session["Recruiter"]!= null)
             {
-                SignUpLink.Visible = false;
+               
                 ProfileLink.Visible = true;
                 LoginLink.Visible = false;
                 logoutLink.Visible = true;
+            }
+            if(Session["Recruiter"] != null)
+            {
+                jobList.Visible = false;
+                candidatesList.Visible = true;
             }
 
             Dictionary<string, string> Languages = new Dictionary<string, string>();
@@ -69,7 +74,7 @@ namespace web_app_assignment
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
                 lblAboutUs2.Text = Languages["About Us"];
-                lblSignUp.Text = Languages["Sign Up"];
+                //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
@@ -122,7 +127,7 @@ namespace web_app_assignment
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
                 lblAboutUs2.Text = Languages["About Us"];
-                lblSignUp.Text = Languages["Sign Up"];
+                //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
