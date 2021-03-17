@@ -146,97 +146,99 @@ namespace web_app_assignment
                 lblLanguages.Text = Languages["Languages"];
             }
 
-            //try
-            //{
-            //    SqlConnection con = new SqlConnection(strcon);
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
 
-            //    Dictionary<string, string> UserDetail = (Dictionary<string, string>)Session["User"];
+                Dictionary<string, string> UserDetail = (Dictionary<string, string>)Session["User"];
 
-            //    Dictionary<string, string> RecruiterDetail = (Dictionary<string, string>)Session["Recruiter"];
+                Dictionary<string, string> RecruiterDetail = (Dictionary<string, string>)Session["Recruiter"];
 
-            //    if (con.State == ConnectionState.Closed)
-            //    {
-            //        con.Open();
-            //    }
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
 
-            //    if (UserDetail["Email"] != "")
-            //    {
-            //        if (UserDetail["Email"] == null)
-            //        {
-            //            Response.Write("<script>alert('Empty Email');</script>");
-            //        }
-            //        else
-            //        {
-            //            string seeker_email = UserDetail["Email"];
+                if (Session["User"] != null)
+                {
+                    if (UserDetail["user_email"] == "")
+                    {
+                        Response.Write("<script>alert('Empty Email');</script>");
+                        Response.Redirect("login_signup.aspx");
+                    }
+                    else
+                    {
+                        string seeker_email = UserDetail["user_email"];
 
-            //            string sql = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+                        string sql = "SELECT * FROM JobSeeker WHERE email = @email";
 
-            //            SqlCommand command = new SqlCommand(sql, con);
+                        SqlCommand command = new SqlCommand(sql, con);
 
-            //            command.Parameters.AddWithValue("@email", seeker_email);
+                        command.Parameters.AddWithValue("@email", seeker_email);
 
-            //            SqlDataReader dread = command.ExecuteReader();
+                        SqlDataReader dread = command.ExecuteReader();
 
-            //            while (dread.Read())
-            //            {
-            //                lblUsername.Text = dread["seeker_id"].ToString();
-            //            }
-            //        }
-            //    }
-            //    else if (RecruiterDetail["Email"] != "")
-            //    {
-            //        if (RecruiterDetail["Email"] == null)
-            //        {
-            //            Response.Write("<script>alert('Empty Email');</script>");
-            //        }
-            //        else
-            //        {
-            //            string recruiter_email = RecruiterDetail["Email"];
+                        while (dread.Read())
+                        {
+                            txtUsername.Text = dread["email"].ToString();
+                        }
+                    }
+                }
+                else if (Session["Recruiter"] != null)
+                {
+                    if (RecruiterDetail["recruiter_email"] == "")
+                    {
+                        Response.Write("<script>alert('Empty Email');</script>");
+                        Response.Redirect("login_signup.aspx");
+                    }
+                    else
+                    {
+                        string recruiter_email = RecruiterDetail["recruiter_email"];
 
-            //            string sql = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+                        string sql = "SELECT * FROM Recruiter WHERE email = @email";
 
-            //            SqlCommand command = new SqlCommand(sql, con);
+                        SqlCommand command = new SqlCommand(sql, con);
 
-            //            command.Parameters.AddWithValue("@email", recruiter_email);
+                        command.Parameters.AddWithValue("@email", recruiter_email);
 
-            //            SqlDataReader dread = command.ExecuteReader();
+                        SqlDataReader dread = command.ExecuteReader();
 
-            //            while (dread.Read())
-            //            {
-            //                lblUsername.Text = dread["recruiter_id"].ToString();
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        string sql = "INSERT INTO Visitors (date_of_visit, created_at) VALUES (CURDATE(), GETDATE());";
+                        while (dread.Read())
+                        {
+                            txtUsername.Text = dread["email"].ToString();
+                        }
+                    }
+                }
+                //else
+                //{
+                //    string sql = "INSERT INTO Visitors (date_of_visit, created_at) VALUES (CURDATE(), GETDATE());";
 
-            //        SqlCommand command = new SqlCommand(sql, con);
+                //    SqlCommand command = new SqlCommand(sql, con);
 
-            //        command.ExecuteNonQuery();
+                //    command.ExecuteNonQuery();
 
-            //        con.Close();
+                //    con.Close();
 
-            //        con.Open();
+                //    con.Open();
 
-            //        string getVisitorID = "SELECT visitor_id FROM Visitors WHERE date_of_visit = CURDATE()";
+                //    string getVisitorID = "SELECT visitor_id FROM Visitors WHERE date_of_visit = CURDATE()";
 
-            //        SqlCommand cmd = new SqlCommand(getVisitorID, con);
+                //    SqlCommand cmd = new SqlCommand(getVisitorID, con);
 
-            //        SqlDataReader dr = cmd.ExecuteReader();
+                //    SqlDataReader dr = cmd.ExecuteReader();
 
-            //        while (dr.Read())
-            //        {
-            //            lblUsername.Text = dr["visitor_id"].ToString();
-            //        }
-            //    }
+                //    while (dr.Read())
+                //    {
+                //        lblUsername.Text = dr["visitor_id"].ToString();
+                //    }
+                //}
 
-            //    con.Close();
-            //}
-            //catch (Exception error)
-            //{
-            //    Response.Write("<script>alert('" + error.Message + "');</script>");
-            //}
+                con.Close();
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
         }
 
         protected void logoutLink_Click(object sender, EventArgs e)

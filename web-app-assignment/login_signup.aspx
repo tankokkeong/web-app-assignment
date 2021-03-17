@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <asp:TextBox ID="sign_login_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Password"></asp:TextBox>
-                                <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordLogin" onclick="showPassword()"/>
+                                <img src="images/Signup_Login/eye.png" alt="eye" class="LogineyeImagePasswordLogin" onclick="showPassword()"/>
                                 <asp:RequiredFieldValidator id="login_passwordReq" runat ="server" ControlToValidate="sign_login_password" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">

@@ -114,8 +114,8 @@
             tags: true,
         });
 
-        function directContact() {
-            window.location = 'recruiter-profile.aspx';
+        function directContact(recruiter_id) {
+            window.location = 'recruiter-profile.aspx?view=' + recruiter_id;
         }
 
         function directDetails(count) {

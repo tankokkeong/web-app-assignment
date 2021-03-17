@@ -105,7 +105,7 @@ namespace web_app_assignment
                                     "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
                                         "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
                                             "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + count + ")'> More Details </button> " +
-                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button> " +
+                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(" + dr["recruiter_id"].ToString() +")'> Contact Now </button> " +
                                         "</div>" +
                                     "</div>" +
                                 "</div>" +

@@ -128,14 +128,14 @@
 
             <div class="chatbox" id="chatbox">
                 <div class="chatboxHeaderContents">
-                    <h2 class="chatboxHeader">Message</h2>
-                    <img src="images/home/closeButton.png" class="btn-close-chat" onclick="closeChat()" />
+                    <h5 class="chatboxHeader">Message</h5>
+                    <i class="fa fa-times btn-close-chat text-white" aria-hidden="true" onclick="closeChat()"></i>
                 </div>
                 <div id="form-container" class="form-container">
                     <div id="messages" class="LiveChatContainerContents"></div>
 
                     <div class="sendMessages">
-                        <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
+                        <asp:TextBox ID="txtUsername" class="LCusername" runat="server"></asp:TextBox>
                         <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessages()"/>
                         <button type="button" class="bg-lightgreen text-light btn btn-send" onclick="enterMessagesUser()">Send</button>
                     </div>
@@ -346,28 +346,24 @@
 
     <script type="text/javascript">
 
-        var checkEmail = String(document.getElementById("ContentPlaceHolder1_lblUsername"));
+        var checkEmail = String(document.getElementById("txtUsername").value);
         var verifyEmail = checkEmail.includes("@");
 
         if (verifyEmail) {
             //get recruiter and user email
-            var URemail = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML);
+            var URemail = String(document.getElementById("txtUsername").value);
             var mailArr = URemail.split('@');
             var logn = mailArr[0];
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             var time = today.getHours() + ":" + today.getMinutes();
             var sentTime = time + ' ' + date;
-            var deletedTime = time + ' ' + date;
-            var UserCount = 1;
         } else {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             var time = today.getHours() + ":" + today.getMinutes();
             var sentTime = time + ' ' + date;
-            var deletedTime = time + ' ' + date;
-            var VisitorCount = 1;
-            var visitor = String(document.getElementById("ContentPlaceHolder1_lblUsername"));
+            var visitor = String(document.getElementById("txtUsername").value);
         }
 
         function enterMessagesUser() {
@@ -380,21 +376,16 @@
                     "sender": logn,
                     "message": message,
                     "timeSent": sentTime,
-                    "messageNumber": UserCount,
-                    "timeDeleted": "",
                 });
-                UserCount++;
-            } else {
-                //save in database
-                firebase.database().ref("VisitorMessages/" + visitor + "/").push({
-                    "sender": visitor,
-                    "message": message,
-                    "timeSent": sentTime,
-                    "messageNumber": VisitorCount,
-                    "timeDeleted": "",
-                });
-                VisitorCount++;
             }
+            //else {
+            //    //save in database
+            //    firebase.database().ref("VisitorMessages/" + visitor + "/").push({
+            //        "sender": visitor,
+            //        "message": message,
+            //        "timeSent": sentTime,
+            //    });
+            //}
         }
 
         //listen for incoming messages
@@ -402,109 +393,54 @@
             var html = "";
 
             if (snapshot.val().sender == logn) {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                // give each message a unique ID
+                html += "<div class='sender-messagesContexts'>";
+                html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    if (snapshot.val().sender == logn) {
-                        html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-                        html += "Delete";
-                        html += "</button>";
-                    }
+                html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
 
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+                html += "</div>";
 
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                    scrollToBottomMessage();
-                }
-            } else {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='replier-messagesContexts'>";
-                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
-
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
-
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                    scrollToBottomMessage();
-                }
-            }
+                document.getElementById("messages").innerHTML += html;
+                document.getElementById('message').value = "";
+                scrollToBottomMessage();
+            } 
         });
 
         //listen for incoming messages
-        firebase.database().ref("VisitorMessages/" + visitor + "/").on("child_added", function (snapshot) {
-            var html = "";
+        //firebase.database().ref("VisitorMessages/" + visitor + "/").on("child_added", function (snapshot) {
+        //    var html = "";
 
-            if (snapshot.val().sender == visitor) {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+        //    if (snapshot.val().sender == visitor) {
+        //        if (snapshot.val().timeDeleted == "") {
+        //            // give each message a unique ID
+        //            html += "<div class='sender-messagesContexts'>";
+        //            html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    if (snapshot.val().sender == visitor) {
-                        html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-                        html += "Delete";
-                        html += "</button>";
-                    }
+        //            html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
 
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+        //            html += "</div>";
 
-                    html += "</div>";
+        //            document.getElementById("messages").innerHTML += html;
+        //            document.getElementById('message').value = "";
+        //            scrollToBottomMessage();
+        //        }
+        //    } else {
+        //        if (snapshot.val().timeDeleted == "") {
+        //            // give each message a unique ID
+        //            html += "<div class='replier-messagesContexts'>";
+        //            html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                    scrollToBottomMessage();
-                }
-            } else {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='replier-messagesContexts'>";
-                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
+        //            html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
 
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+        //            html += "</div>";
 
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                    scrollToBottomMessage();
-                }
-            }
-        });
-
-        function deleteMessage(self) {
-            // get message ID
-            var messageId = self.getAttribute("data-id");
-
-            //delete message
-            firebase.database().ref("UserMessages/" + logn + "/").child(messageId).update({
-                "timeDeleted": deletedTime,
-            });
-
-            //delete message
-            firebase.database().ref("VisitorMessages/" + visitor + "/").child(messageId).update({
-                "timeDeleted": deletedTime,
-            });
-        }
-
-        //attach listener for deleted message
-        firebase.database().ref("UserMessages/" + logn + "/").on("child_changed", function (snapshot) {
-            //remove message node
-            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-        });
-
-        //attach listener for deleted message
-        firebase.database().ref("VisitorMessages/" + visitor + "/").on("child_changed", function (snapshot) {
-            //remove message node
-            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-        });
+        //            document.getElementById("messages").innerHTML += html;
+        //            document.getElementById('message').value = "";
+        //            scrollToBottomMessage();
+        //        }
+        //    }
+        //});
 
         //Enter key to send message
         function enterMessages() {
