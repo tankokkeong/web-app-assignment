@@ -19,7 +19,7 @@
                     
                     <label for="inputEmail4">Profile Photo</label>
                     <asp:FileUpload ID="fileCompanyPhoto" runat="server" cssClass="form-control"/>
-<%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
                 </div>
         
               </div>
@@ -48,17 +48,13 @@
                  <div class="form-group col-md-6 m-0">
                     <label for="inputAddress">Industry:</label>
 
-                     
-                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                         <ContentTemplate>
-                             <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple" OnSelectedIndexChanged="lstIndustry_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
-                         </ContentTemplate>
-                     </asp:UpdatePanel>
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="lstIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
+                     <select class="form-control" style="width:100%;" id="industry-selection" multiple="multiple" onchange="addIndustry();"></select>
+                     <asp:TextBox ID="txtIndustry" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
+                
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="txtIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
                     
                     <script>
-                        $("#ContentPlaceHolder1_lstIndustry").select2({
+                        $("#industry-selection").select2({
                             placeholder: "Enter one or more industries",
                             allowClear: true,
                             tags: true,
@@ -178,8 +174,54 @@
             ck_editor.value = window.unescape(introduction_value.value);
         }
 
+        function getSelectedIndustry() {
+            var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
+            var select2_input = document.getElementById("industry-selection");
+
+            //Add Customize creation for the users
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                //If the selected value didnt exist in the current option
+                if (document.getElementById(selected_industry[i]) == null) {
+                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                }
+            }
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (document.getElementById(selected_industry[i]) != null) {
+                    document.getElementById(selected_industry[i]).selected = true;
+                }
+
+            }
+            
+        }
+
+        function addIndustry() {
+            var selected_industry = $('#industry-selection').select2('data');
+            var industry_input = document.getElementById("ContentPlaceHolder1_txtIndustry");
+
+            //Clear previous input
+            industry_input.value = "";
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (i === 0) {
+                    industry_input.value = selected_industry[i].text
+                }
+                else {
+                    industry_input.value = industry_input.value + "," + selected_industry[i].text;
+                }
+
+            }
+        }
+
+        //Print out the available industry
+        printSelect2Industry("industry-selection");
+
         //Call stick form functions
         getCompanyIntroduction();
-
+        getSelectedIndustry();
+       
     </script>
 </asp:Content>
