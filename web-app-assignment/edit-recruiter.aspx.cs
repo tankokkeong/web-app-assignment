@@ -573,5 +573,10 @@ namespace web_app_assignment
             }
 
         }
+
+        protected void lstIndustry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Write("<script>alert('Changed!');</script>");
+        }
     }
 }

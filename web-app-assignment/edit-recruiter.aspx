@@ -48,8 +48,13 @@
                  <div class="form-group col-md-6 m-0">
                     <label for="inputAddress">Industry:</label>
 
-                     <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple">
-                     </asp:ListBox><asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>
+                     
+                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                         <ContentTemplate>
+                             <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple" OnSelectedIndexChanged="lstIndustry_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
+                         </ContentTemplate>
+                     </asp:UpdatePanel>
                      <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="lstIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
                     
                     <script>
