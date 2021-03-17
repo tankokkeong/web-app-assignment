@@ -1899,6 +1899,7 @@
     <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="style\about_us.css" />
+    <Content Include="style\blog.css" />
     <Content Include="style\candidate-list.css" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
