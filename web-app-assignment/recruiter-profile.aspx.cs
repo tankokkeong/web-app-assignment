@@ -24,184 +24,234 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                //View Profile Query String
+                string view_id = Request.QueryString["view"] ?? "";
+
                 //Check Login
-                if(Session["Recruiter"] == null)
+                if (Session["Recruiter"] == null)
                 {
-                    Response.Redirect("home.aspx");
+                    if(view_id == "")
+                    {
+                        Response.Redirect("home.aspx");
+                    }
+                    
                 }
-
-                //Get Recruiter ID
-
-                Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-
-                string recruiterID = "";
-
-                //GET Seeker ID from the seeker table
-                string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-                SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-                cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                else
                 {
-                    recruiterID = dr["recruiter_id"].ToString();
-                }
+                    //Get Recruiter ID
 
-                con.Close();
+                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
 
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+                    string recruiterID = "";
 
-                //Read User profile Details
-                string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+                    //GET Seeker ID from the seeker table
+                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
 
-                cmd = new SqlCommand(sql, con);
+                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
 
-                //Insert parameter
-                cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
 
-                dr = cmd.ExecuteReader();
-                while(dr.Read())
-                {
-                    lblRecruiterName.Text = dr["company_name"].ToString();
-                    imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
-                    lblRecruiterState.Text = dr["state"].ToString();
-                    lblRecruiterIndustry.Text = dr["industry"].ToString();
-                    linkFB.NavigateUrl = dr["facebook_link"].ToString();
-                    linkLinkedIn.NavigateUrl = dr["linkedin_link"].ToString();
-                    lblIntroduction.Text = dr["introduction"].ToString();
-                    lblRecruiterEmail.Text = dr["email"].ToString();
-                    lblRecruiterPhone.Text = dr["mobile_number"].ToString();
-                    lblRecruiterContactEmail.Text = dr["contact_email"].ToString();
-                    lblRecruiterAddress1.Text = dr["address_line1"].ToString();
-                    lblRecruiterAddress2.Text = dr["address_line2"].ToString();
-                    lblRecruiterCity.Text = dr["city"].ToString();
-                    lblRecruiterState2.Text = dr["state"].ToString();
-                    lblRecruiterZip.Text = dr["zip_code"].ToString();
-                    lblRecruiterCountry.Text = dr["country"].ToString();
-                    lblRecruiterRating.Text = dr["rating"].ToString();
-                }
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                //Close connection
-                con.Close();
+                    while (dr.Read())
+                    {
+                        recruiterID = dr["recruiter_id"].ToString();
+                    }
 
-                //Open Connection
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+                    con.Close();
 
-                string sql_jobStatus = "SELECT * FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP " +
-                                        "WHERE ASS.seeker_id = JS.seeker_id AND " +
-                                        "ASS.deleted_at IS NULL AND " +
-                                        "ASS.post_id = JP.post_id AND " +
-                                        "JP.recruiter_id = @recruiter_id";
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
 
-                cmd = new SqlCommand(sql_jobStatus, con);
+                    //Read User profile Details
+                    string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
 
-                //Insert parameter
-                cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                    cmd = new SqlCommand(sql, con);
 
-                dr = cmd.ExecuteReader();
+                    //Insert parameter
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
 
-                //Print out the application status
-                while (dr.Read())
-                {
-                    lblJobStatus.Text = lblJobStatus.Text +
-                    "<div class='application-bar row'>" +
-                        "<div class='col-sm-3 mt-3'>" +
-                            "<img src = 'images/user%20profile/demo-user.png' class='company-pic'/>" +
-                        "</div>" +
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        lblRecruiterName.Text = dr["company_name"].ToString();
+                        imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        lblRecruiterState.Text = dr["state"].ToString();
+                        lblRecruiterIndustry.Text = dr["industry"].ToString();
+                        linkFB.NavigateUrl = dr["facebook_link"].ToString();
+                        linkLinkedIn.NavigateUrl = dr["linkedin_link"].ToString();
+                        lblIntroduction.Text = dr["introduction"].ToString();
+                        lblRecruiterEmail.Text = dr["email"].ToString();
+                        lblRecruiterPhone.Text = dr["mobile_number"].ToString();
+                        lblRecruiterContactEmail.Text = dr["contact_email"].ToString();
+                        lblRecruiterAddress1.Text = dr["address_line1"].ToString();
+                        lblRecruiterAddress2.Text = dr["address_line2"].ToString();
+                        lblRecruiterCity.Text = dr["city"].ToString();
+                        lblRecruiterState2.Text = dr["state"].ToString();
+                        lblRecruiterZip.Text = dr["zip_code"].ToString();
+                        lblRecruiterCountry.Text = dr["country"].ToString();
+                        lblRecruiterRating.Text = dr["rating"].ToString();
+                    }
 
-                        "<div class='col-sm-3 mt-3'>" +
-                            "<div class='company-name text-lightgreen'>" + dr["full_name"] + "</div>" +
-                            "<div class='company-location'>" +
-                                "<span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>" +
-                            "</div>" +
+                    //Close connection
+                    con.Close();
 
-                            "<div class='hiring-position'>" +
-                                "<span class='hiring-details'>Graphic Designer</span>" +
-                            "</div>" +
+                    //Open Connection
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
 
-                            "<div class='view-profile'>" +
-                                "<button class='btn btn-info'>View Profile</button>" +
-                            "</div>" +
-                        "</div>" +
+                    string sql_jobStatus = "SELECT * FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP " +
+                                            "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                            "ASS.deleted_at IS NULL AND " +
+                                            "ASS.post_id = JP.post_id AND " +
+                                            "JP.recruiter_id = @recruiter_id";
 
-                        "<div class='col-sm-3 mt-3'>" +
-                            "<div class='application-status text-info'>Applied</div>" +
-                            "<div>" +
-                                dr["job_title"] +
-                            "</div>" +
+                    cmd = new SqlCommand(sql_jobStatus, con);
 
-                            "<div class='employment-type badge badge-success'>" +
-                                dr["job_type"] +
-                        "</div>" +
-                    "</div>";
+                    //Insert parameter
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
 
-                    if(dr["applied_status"].ToString() == "Pending")
+                    dr = cmd.ExecuteReader();
+
+                    //Print out the application status
+                    while (dr.Read())
                     {
                         lblJobStatus.Text = lblJobStatus.Text +
+                        "<div class='application-bar row'>" +
                             "<div class='col-sm-3 mt-3'>" +
-                            "<div class='mt-2'>" +
-                                "<button href = 'chatbox.aspx' class='btn btn-success' data-toggle='modal' data-target='#approveModal' type='button' onclick='approveApplication(" + dr["application_id"].ToString() + ")'>Approve</button>" +
+                                "<img src = 'images/user%20profile/demo-user.png' class='company-pic'/>" +
                             "</div>" +
 
-                            "<div class='mt-2'>" +
-                                "<button class='btn btn-danger'>Reject</button>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>";
+                            "<div class='col-sm-3 mt-3'>" +
+                                "<div class='company-name text-lightgreen'>" + dr["full_name"] + "</div>" +
+                                "<div class='company-location'>" +
+                                    "<span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>" +
+                                "</div>" +
 
+                                "<div class='hiring-position'>" +
+                                    "<span class='hiring-details'>Graphic Designer</span>" +
+                                "</div>" +
+
+                                "<div class='view-profile'>" +
+                                    "<button class='btn btn-info'>View Profile</button>" +
+                                "</div>" +
+                            "</div>" +
+
+                            "<div class='col-sm-3 mt-3'>" +
+                                "<div class='application-status text-info'>Applied</div>" +
+                                "<div>" +
+                                    dr["job_title"] +
+                                "</div>" +
+
+                                "<div class='employment-type badge badge-success'>" +
+                                    dr["job_type"] +
+                            "</div>" +
+                        "</div>";
+
+                        if (dr["applied_status"].ToString() == "Pending")
+                        {
+                            lblJobStatus.Text = lblJobStatus.Text +
+                                "<div class='col-sm-3 mt-3'>" +
+                                "<div class='mt-2'>" +
+                                    "<button href = 'chatbox.aspx' class='btn btn-success' data-toggle='modal' data-target='#approveModal' type='button' onclick='approveApplication(" + dr["application_id"].ToString() + ")'>Approve</button>" +
+                                "</div>" +
+
+                                "<div class='mt-2'>" +
+                                    "<button class='btn btn-danger'>Reject</button>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
+
+                        }
+                        else
+                        {
+                            lblJobStatus.Text = lblJobStatus.Text +
+                            "<div class='col-sm-3 mt-3'>" +
+                                "<div class='mt-2'>" +
+                                    "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
+                                "</div>" +
+
+                                "<div class='mt-2'>" +
+                                    "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-primary'>Schedule</a>" +
+                                "</div>" +
+
+                                "<div class='mt-2'>" +
+                                    "<button class='btn btn-danger'>Remove</button>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
+                        }
+
+                        //Response.Write("<script>alert('" + dr["seeker_id"] + "');</script>");
+                        //Response.Write("<script>alert('fuck');</script>");
                     }
-                    else
+
+
+                    //Close connection
+                    con.Close();
+
+                    //Open Connection
+                    if (con.State == ConnectionState.Closed)
                     {
-                        lblJobStatus.Text = lblJobStatus.Text +
-                        "<div class='col-sm-3 mt-3'>" +
-                            "<div class='mt-2'>" +
-                                "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
-                            "</div>" +
-
-                            "<div class='mt-2'>" +
-                                "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString()  + "' class='btn btn-primary'>Schedule</a>" +
-                            "</div>" +
-
-                            "<div class='mt-2'>" +
-                                "<button class='btn btn-danger'>Remove</button>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>";
+                        con.Open();
                     }
-                        
-                    //Response.Write("<script>alert('" + dr["seeker_id"] + "');</script>");
-                    //Response.Write("<script>alert('fuck');</script>");
+
+                    //Read Job Posted
+                    string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
+                    SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobposted, con);
+
+
+
+                    DataTable dtbl = new DataTable();
+                    cmd2.Fill(dtbl);
+                    GridView1.DataSource = dtbl;
+                    GridView1.DataBind();
                 }
 
-
-                //Close connection
-                con.Close();
-
-                //Open Connection
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-
-                //Read Job Posted
-                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
-                SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobposted, con);
+                //View Profile
 
                 
 
-                DataTable dtbl = new DataTable();
-                cmd2.Fill(dtbl);
-                GridView1.DataSource = dtbl;
-                GridView1.DataBind();
+                if(Session["Recruiter"] == null && view_id != "")
+                {
+                    //Read User profile Details
+                    string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+                    //Insert parameter
+                    cmd.Parameters.AddWithValue("@recruiter_id", view_id);
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        lblRecruiterName.Text = dr["company_name"].ToString();
+                        imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        lblRecruiterState.Text = dr["state"].ToString();
+                        lblRecruiterIndustry.Text = dr["industry"].ToString();
+                        linkFB.NavigateUrl = dr["facebook_link"].ToString();
+                        linkLinkedIn.NavigateUrl = dr["linkedin_link"].ToString();
+                        lblIntroduction.Text = dr["introduction"].ToString();
+                        lblRecruiterEmail.Text = dr["email"].ToString();
+                        lblRecruiterPhone.Text = dr["mobile_number"].ToString();
+                        lblRecruiterContactEmail.Text = dr["contact_email"].ToString();
+                        lblRecruiterAddress1.Text = dr["address_line1"].ToString();
+                        lblRecruiterAddress2.Text = dr["address_line2"].ToString();
+                        lblRecruiterCity.Text = dr["city"].ToString();
+                        lblRecruiterState2.Text = dr["state"].ToString();
+                        lblRecruiterZip.Text = dr["zip_code"].ToString();
+                        lblRecruiterCountry.Text = dr["country"].ToString();
+                        lblRecruiterRating.Text = dr["rating"].ToString();
+                    }
+
+                    //Close connection
+                    con.Close();
+                }
+
 
 
             }

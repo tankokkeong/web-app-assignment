@@ -55,8 +55,15 @@
                 <div class="details-header text-center">
                     <ul class="details-nav text-center">
                         <li class="detail-nav-selected" onclick="recruiterProfileSwitchTab('about')" id="about-tab">About</li>
-                        <li id="application-tab" onclick="recruiterProfileSwitchTab('application')">Job Application</li>
-                        <li id="job-posted-tab" onclick="recruiterProfileSwitchTab('job-posted')">Job Posted</li>
+
+                        <%
+                            if(Session["Recruiter"] != null)
+                            {
+                                Response.Write("<li id='application-tab' onclick=\"recruiterProfileSwitchTab('application')\">Job Application</li>");
+                                Response.Write("<li id='job-posted-tab' onclick=\"recruiterProfileSwitchTab('job-posted')\">Job Posted</li>");
+                            }
+                        %>
+                        
                     </ul>
                 </div>
 
