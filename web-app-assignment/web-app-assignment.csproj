@@ -137,6 +137,7 @@
     <Content Include="admin\message-details.aspx" />
     <Content Include="admin\signup.aspx" />
     <Content Include="admin\task-post.aspx" />
+    <Content Include="blog.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -2072,6 +2073,13 @@
     </Compile>
     <Compile Include="admin\task-post.aspx.designer.cs">
       <DependentUpon>task-post.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="blog.aspx.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="blog.aspx.designer.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
     </Compile>
     <Compile Include="candidate-list.aspx.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>

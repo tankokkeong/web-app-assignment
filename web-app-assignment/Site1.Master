@@ -86,20 +86,26 @@
           </li>
           <li class="nav-item">
               <asp:Label ID="lblJobs" runat="server"></asp:Label>
-              <a class="nav-link text-light" href="#">Jobs</a>
+              <a class="nav-link text-light" href="#" runat="server" id="jobList" visible="true">Jobs</a>
+              <asp:Label ID="lblCandidatesList" runat="server"></asp:Label>
+              <a class="nav-link text-light" href="#" id="candidatesList" runat="server" visible="false">Candidates</a>
 <%--            <asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>--%>
           </li>
+
+          <li class="nav-item">
+              <asp:Label ID="lblBlogs" runat="server"></asp:Label>
+              <a class="nav-link text-light" href="#">Blog</a>
+<%--            <asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
+          </li>
+
           <li class="nav-item">
               <asp:Label ID="lblAboutUs" runat="server"></asp:Label>
-              <a class="nav-link text-light" href="#">About Us</a>
+              <a class="nav-link text-light" href="#">Contact Us</a>
 <%--            <asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
           </li>
 
            <li class="nav-item">
-<%--            <a class="nav-link text-light" href="login_signup.aspx">Sign Up</a>--%>
-               <asp:Label ID="lblSignUp" runat="server"></asp:Label>
-               <asp:HyperLink ID="SignUpLink" cssclass="nav-link text-light" runat="server" Visible="true">Sign Up</asp:HyperLink>
-                <%--<asp:HyperLink ID="ProfileLink" cssclass="nav-link text-light" runat="server" Visible="false">My Profile</asp:HyperLink>--%>
+               <asp:Label ID="Label1" runat="server"></asp:Label>
                <asp:Label ID="lblMyProfile" runat="server"></asp:Label>
                <a class="nav-link text-light" id="ProfileLink" runat="server" visible="false" onserverclick="ProfileLink_Click">My Profile</a>
           </li>

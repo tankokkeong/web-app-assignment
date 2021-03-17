@@ -42,6 +42,42 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblJobs;
 
         /// <summary>
+        /// jobList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor jobList;
+
+        /// <summary>
+        /// lblCandidatesList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCandidatesList;
+
+        /// <summary>
+        /// candidatesList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor candidatesList;
+
+        /// <summary>
+        /// lblBlogs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBlogs;
+
+        /// <summary>
         /// lblAboutUs control.
         /// </summary>
         /// <remarks>
@@ -51,22 +87,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblAboutUs;
 
         /// <summary>
-        /// lblSignUp control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSignUp;
-
-        /// <summary>
-        /// SignUpLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink SignUpLink;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// lblMyProfile control.
