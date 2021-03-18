@@ -16,3 +16,15 @@
     font-size: 12px;
     margin-left: 2.5%;
 }
+
+.swiper-box {
+    position: relative;
+}
+
+.swiper-nav-prev {
+    left: -50px !important;
+}
+
+.swiper-nav-next {
+    right: -50px !important;
+}
