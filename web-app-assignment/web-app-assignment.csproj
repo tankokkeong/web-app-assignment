@@ -138,6 +138,7 @@
     <Content Include="admin\signup.aspx" />
     <Content Include="admin\task-post.aspx" />
     <Content Include="blog.aspx" />
+    <Content Include="blog_description.aspx" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
@@ -1900,6 +1901,7 @@
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="style\about_us.css" />
     <Content Include="style\blog.css" />
+    <Content Include="style\blog_description.css" />
     <Content Include="style\candidate-list.css" />
     <Content Include="style\career.css" />
     <Content Include="style\chatbox.css" />
@@ -2081,6 +2083,13 @@
     </Compile>
     <Compile Include="blog.aspx.designer.cs">
       <DependentUpon>blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="blog_description.aspx.cs">
+      <DependentUpon>blog_description.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="blog_description.aspx.designer.cs">
+      <DependentUpon>blog_description.aspx</DependentUpon>
     </Compile>
     <Compile Include="candidate-list.aspx.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>

@@ -1,0 +1,18 @@
+﻿.blogDescription {
+    padding-left: 15%;
+    padding-right: 15%;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+.blogDescriptionImagePosition {
+    width: 700px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2.5%;
+}
+
+.blogDescriptionDate {
+    font-size: 12px;
+    margin-left: 2.5%;
+}
