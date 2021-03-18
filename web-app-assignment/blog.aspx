@@ -6,11 +6,12 @@
     <%-- CSS --%>
     <link href="style/blog.css" rel="stylesheet" />
 
-    <%-- OWL Carousel Plugins --%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <%-- Swiper Slides Plugins --%>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -90,24 +91,34 @@
             </div>
 
             <div class="common-list-container">
-                <div class="row">
+                <div class="swiper-box">
+                    <!-- Swiper -->
+                      <div class="swiper-container sw">
+                        <div class="swiper-wrapper">
+                              <%for (int i = 0; i < 9; i++)
+                                { %>
+                                <div class="swiper-slide">
+                                    <div class="card" style="width: 100%;">
+                                      <img src="https://jobmajestic.com/blog/media/2020/09/Malaysian-Fresh-Graduates-Guide-To-Writing-An-Effective-Cover-Letter-Templates-8-Tips-768x512.jpg" class="card-img-top" alt="...">
+                                      <div class="card-body text-center">
+                                        <p class="card-text font-weight-bold">Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter (Templates + 8 Tips)	</p>
+                                     </div>
 
-                    <%for (int i = 0; i < 3; i++)
-                        { %>
-                    <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
-                        <div class="card" style="width: 100%;">
-                          <img src="https://jobmajestic.com/blog/media/2020/09/Malaysian-Fresh-Graduates-Guide-To-Writing-An-Effective-Cover-Letter-Templates-8-Tips-768x512.jpg" class="card-img-top" alt="...">
-                          <div class="card-body text-center">
-                            <p class="card-text font-weight-bold">Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter (Templates + 8 Tips)	</p>
-                         </div>
-
-                            <div class="card-footer text-muted text-center">
-                                17 March 2021
-                             </div>
-                        </div>
-                    </div>                    
-                    <%}; %>
-
+                                        <div class="card-footer text-muted text-center">
+                                            17 March 2021
+                                         </div>
+                                    </div>
+                                </div>                    
+                            <%}; %>
+                        </div>                        
+                      </div>
+                    
+                      <!-- Add Arrows -->
+                       <div class="swiper-nav-container">
+                           <div class="swiper-button-next swiper-nav-next text-lightgreen"></div>
+                            <div class="swiper-button-prev swiper-nav-prev text-lightgreen"></div>
+                       </div>
+                        
                 </div>
             </div>
 
@@ -152,4 +163,81 @@
         </div>
 
     </div>
+
+     <!-- Initialize Swiper -->
+      <script>
+          $(document).ready(function () {
+              if ($(window).width() < 800) {
+
+                  var swiper = new Swiper('.sw', {
+                      autoHeight: true, //enable auto height
+                      slidesPerView: 2,
+                      spaceBetween: 30,
+                      pagination: {
+                          el: '.swiper-pagination',
+                          clickable: true,
+                      },
+                      navigation: {
+                          nextEl: '.swiper-button-next',
+                          prevEl: '.swiper-button-prev',
+                      },
+                  });
+
+              }
+              else {
+                  var swiper = new Swiper('.sw', {
+                      autoHeight: true, //enable auto height
+                      slidesPerView: 3,
+                      spaceBetween: 30,
+                      pagination: {
+                          el: '.swiper-pagination',
+                          clickable: true,
+                      },
+                      navigation: {
+                          nextEl: '.swiper-button-next',
+                          prevEl: '.swiper-button-prev',
+                      },
+                  });
+
+              }
+
+              $(window).resize(function () {
+                  if ($(window).width() < 800) {
+                      var swiper = new Swiper('.sw', {
+                          autoHeight: true, //enable auto height
+                          slidesPerView: 2,
+                          spaceBetween: 30,
+                          pagination: {
+                              el: '.swiper-pagination',
+                              clickable: true,
+                          },
+                          navigation: {
+                              nextEl: '.swiper-button-next',
+                              prevEl: '.swiper-button-prev',
+                          },
+                      });
+
+                  }
+                  else {
+                      var swiper = new Swiper('.sw', {
+                          autoHeight: true, //enable auto height
+                          slidesPerView: 3,
+                          spaceBetween: 30,
+                          pagination: {
+                              el: '.swiper-pagination',
+                              clickable: true,
+                          },
+                          navigation: {
+                              nextEl: '.swiper-button-next',
+                              prevEl: '.swiper-button-prev',
+                          },
+                      });
+
+                  }
+              });
+
+          });
+
+          
+      </script>
 </asp:Content>
