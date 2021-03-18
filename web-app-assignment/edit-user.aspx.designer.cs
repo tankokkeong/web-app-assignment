@@ -150,13 +150,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
-        /// lstIndustry control.
+        /// txtIndustry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstIndustry;
+        protected global::System.Web.UI.WebControls.TextBox txtIndustry;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -204,13 +204,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
 
         /// <summary>
-        /// lstSkills control.
+        /// txtSkills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstSkills;
+        protected global::System.Web.UI.WebControls.TextBox txtSkills;
 
         /// <summary>
         /// RequiredFieldValidator8 control.

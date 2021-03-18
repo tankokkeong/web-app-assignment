@@ -260,102 +260,9 @@ namespace web_app_assignment
                 "Zimbabwe"
             };
 
-                List<string> IndustryListItems = new List<string>
-            {
-                "Conveyor Vulcanizing",
-                "Digital Imaging",
-                "High Precision Tools And Die Maintenance",
-                "Manufacturing Systems Designers",
-                "Experts In Steel Treatment(Melting And Casting)",
-                "Underwater welders",
-                "Material Technologists",
-                "Instrument Specialists(For Petrochemical Industry)",
-                "Sensor Technologist",
-                "Wireless Technologist",
-                "Radio Frequency Designers",
-                "Auto Systems Designers",
-                "Offshore Field Operation",
-                "Photonics",
-                "Wafer Fabrication",
-                "Metallurgist",
-                "Geo sciences and Geophysical Disciplines",
-                "Metallurgists",
-                "Geotechnologists",
-                "Geoscientists",
-                "Seismologists",
-                "Medical and Pharmaceutical",
-                "Technical",
-                "Production",
-                "Specialists",
-                "Electrical & Electronics",
-                "Analogue Designers",
-                "Microwave Designers",
-                "Environment",
-                "Renewable Energy",
-                "Textiles & Minerals Industry",
-                "Dye Technologists",
-                "Embroidery Specialists",
-                "Dyeing Technicians",
-                "Apparel Specialists",
-                "Craft / Design Specialists",
-                "Fabric Specialists",
-                "Jewelry Designers",
-                "Designers",
-                "Teachers and Trainers for Jewellery Production",
-                "Cutting Specialists",
-                "Wood Industry",
-                "Wood Technologists",
-                "Designers",
-                "Technical Specialists",
-                "Craftsman / Engraving",
-                "Framework / Design Cutting Specialists",
-                "Food Industry / Biotechnology",
-                "Product / Flavoring Specialist",
-                "Biotechnology Analysts",
-                "Dyestuff Specialists",
-                "Biotechnologists",
-                "Tea / Food Tasters",
-                "Food / Nutrient Technologists",
-                "Disease Control / Quarantine",
-                "Genetic Engineering Specialists",
-                "Distributive & retail sectors",
-                "Supermarket and mini market",
-                "Provision shop",
-                "Furnitures  and fittings",
-                "Photo frames shop",
-                "Textiles and clothings",
-                "Computer accessories",
-                "Hair salon",
-                "Laundry shop",
-                "Small and non - exclusive Restaurant",
-                "Prepaid card Business",
-                "Cyber Café",
-                "Car glass and aluminium workshop",
-                "Herbal  product Business",
-                "Spa - only for shareholders and spa in hotels",
-                "Restaurant, bistro and café – exclusive concept & shareholders allowed",
-                "Cleaning and maintenance",
-                "Massage parlour",
-                "Construction industry",
-                "Electrical chargeman",
-                "Electrical Wireman",
-                "Telephone and Telegraph Fixing",
-                "Air conducting Fixing",
-                "Installation of  lift and escalator",
-                "Excavator operator",
-                "Shovel operator",
-                "Timber industry",
-                "Timber Factories – Most categories of job",
-                "Furniture factory –  All machinery specialist",
-                "Forest Mills – Most categories of job"
-            };
-
                 // Add the arrays to the dropdown list
                 ddlCountry.DataSource = countryListItems;
                 ddlCountry.DataBind();
-
-                lstIndustry.DataSource = IndustryListItems;
-                lstIndustry.DataBind();
 
                 //Read Data from the database
                 try
@@ -389,6 +296,8 @@ namespace web_app_assignment
                         txtExperience.Text = dr["experience"].ToString();
                         txtProfession.Text = dr["profession"].ToString();
                         imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+                        txtIndustry.Text = dr["prefer_industry"].ToString();
+                        txtSkills.Text = dr["skills"].ToString();
 
                         //Get Selected Industry
                         selected_industry = dr["prefer_industry"].ToString();
@@ -398,38 +307,10 @@ namespace web_app_assignment
                     //Split the Selected Industry
                     string[] split_industries = selected_industry.Split(',');
 
-                    //Print out the result
-                    for (int i = 0; i < split_industries.Length; i++)
-                    {
-
-                        if (lstIndustry.Items.FindByValue(split_industries[i]) != null)
-                        {
-                            lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
-                        }
-                        else
-                        {
-                            lstIndustry.Items.Insert(0, new ListItem(split_industries[i], split_industries[i]));
-                            lstIndustry.Items.FindByValue(split_industries[i]).Selected = true;
-                        }
-                    }
 
                     //Split the Selected Skills
                     string[] split_skills = selected_skills.Split(',');
 
-                    //Print out the result
-                    for (int i = 0; i < split_skills.Length; i++)
-                    {
-
-                        if (lstSkills.Items.FindByValue(split_skills[i]) != null)
-                        {
-                            lstSkills.Items.FindByValue(split_skills[i]).Selected = true;
-                        }
-                        else
-                        {
-                            lstSkills.Items.Insert(0, new ListItem(split_skills[i], split_skills[i]));
-                            lstSkills.Items.FindByValue(split_skills[i]).Selected = true;
-                        }
-                    }
 
 
                 }
@@ -445,55 +326,6 @@ namespace web_app_assignment
         {
             if (Page.IsValid)
             {
-                //Read The Selected Industry
-                string industry_list = "";
-                int selected_count = 0;
-
-                for (int loop = 0; loop < lstIndustry.Items.Count; loop++)
-                {
-                    if (lstIndustry.Items.FindByValue(lstIndustry.Items[loop].ToString()).Selected == true)
-                    {
-                        if (selected_count == 0)
-                        {
-                            industry_list = lstIndustry.Items[loop].ToString();
-                        }
-                        else
-                        {
-                            industry_list = industry_list + "," + lstIndustry.Items[loop].ToString();
-                        }
-
-                        //Increase the selected value
-                        selected_count++;
-
-                    }
-
-                }
-
-                //reset selected count
-                selected_count = 0;
-
-                //Read The Selected Skills
-                string skills_list = "";
-                for (int loop = 0; loop < lstSkills.Items.Count; loop++)
-                {
-                    if (lstSkills.Items.FindByValue(lstSkills.Items[loop].ToString()).Selected == true)
-                    {
-                        if (selected_count == 0)
-                        {
-                            skills_list = lstSkills.Items[loop].ToString();
-                        }
-                        else
-                        {
-                            skills_list = skills_list + "," + lstSkills.Items[loop].ToString();
-                        }
-
-                        //Increase the selected value
-                        selected_count++;
-
-                    }
-
-                }
-
                 //Upload Profile Image Handled
                 string upload_path = MapPath("/Uploads/");
                 string file_name = fileSeekerPhoto.FileName;
@@ -510,6 +342,8 @@ namespace web_app_assignment
                 var country = ddlCountry.SelectedValue;
                 var profession = txtPhone.Text;
                 var experience = txtExperience.Text;
+                var industry_list = txtIndustry.Text;
+                var skills_list = txtSkills.Text;
                 var facebook_link = txtFacebookLink.Text;
                 var linkedin_link = txtLinkedInLink.Text;
                 var introduction = HttpUtility.UrlDecode(txtjobSeekerIntroduction.Text);

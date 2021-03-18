@@ -280,7 +280,6 @@ namespace web_app_assignment
                         con.Open();
                     }
 
-                    string selected_industry = "";
                     string sql = "SELECT * FROM Recruiter";
 
                     SqlCommand cmd = new SqlCommand(sql, con);

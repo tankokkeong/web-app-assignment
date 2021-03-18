@@ -84,12 +84,12 @@
                  <div class="form-group col-md-6 m-0">
                     <label for="inputAddress">Preferred Industry:</label>
 
-                     <asp:ListBox ID="lstIndustry" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple">
-                     </asp:ListBox>
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="lstIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <select class="form-control" style="width:100%;" id="industry-selection" multiple="multiple" onchange="addIndustry();"></select>
+                     <asp:TextBox ID="txtIndustry" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Industry is required!" ControlToValidate="txtIndustry" CssClass="text-danger"></asp:RequiredFieldValidator>
                     
                     <script>
-                        $("#ContentPlaceHolder1_lstIndustry").select2({
+                        $("#industry-selection").select2({
                             placeholder: "Enter one or more industries",
                             allowClear: true,
                             tags: true,
@@ -112,18 +112,21 @@
                 </div>
 
                 <div class="form-group col-md-6 m-0">
-                    <label for="inputAddress">Skills:</label>                    
-                   <asp:ListBox ID="lstSkills" style="width:100%;" runat="server" CssClass="form-control" multiple="multiple" SelectionMode ="Multiple">
-                        <asp:ListItem Value="Publick Speaking">Publick Speaking</asp:ListItem>
-                       <asp:ListItem Value="Java">Java</asp:ListItem>
-                       <asp:ListItem Value="C#">C#</asp:ListItem>
-                       <asp:ListItem Value="Python">Python</asp:ListItem>
-                       <asp:ListItem Value="PHP">PHP</asp:ListItem>
-                   </asp:ListBox>                     
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Skills is required!" ControlToValidate="lstSkills" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <label for="inputAddress">Skills:</label>   
+                    
+                    <select class="form-control" style="width:100%;" id="skill-selection" multiple="multiple" onchange="addSkills()">
+                        <option value="Public Speaking" id="Public Speaking">Public Speaking</option>
+                        <option value="Java" id="Java">Java</option>
+                        <option value="C#" id="C#">C#</option>
+                        <option value="Python" id="Python">Python</option>
+                        <option value="PHP" id="PHP">PHP</option>
+                    </select>
+
+                     <asp:TextBox ID="txtSkills" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Skills is required!" ControlToValidate="txtSkills" CssClass="text-danger"></asp:RequiredFieldValidator>
                     
                     <script>
-                        $("#ContentPlaceHolder1_lstSkills").select2({
+                        $("#skill-selection").select2({
                             placeholder: "Enter one or more skills",
                             allowClear: true,
                             tags: true,
@@ -192,10 +195,103 @@
 
             //Assign the value to CK EDITOR
             ck_editor.value = window.unescape(introduction_value.value);
+
+            //Escape the data
+            introduction_value.value = window.escape(CKEDITOR.instances.jobSeeker_introduction.getData());
         }
 
+        function getSelectedIndustry() {
+            var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
+            var select2_input = document.getElementById("industry-selection");
+
+            //Add Customize creation for the users
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                //If the selected value didnt exist in the current option
+                if (document.getElementById(selected_industry[i]) == null) {
+                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                }
+            }
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (document.getElementById(selected_industry[i]) != null) {
+                    document.getElementById(selected_industry[i]).selected = true;
+                }
+
+            }
+
+        }
+
+        function getSelectedSkills() {
+            var selected_skills = document.getElementById("ContentPlaceHolder1_txtSkills").value.split(",");
+            var select2_input = document.getElementById("skill-selection");
+
+            //Add Customize creation for the users
+            for (var i = 0; i < selected_skills.length; i++) {
+
+                //If the selected value didnt exist in the current option
+                if (document.getElementById(selected_skills[i]) == null) {
+                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_skills[i] + "' selected id='" + selected_skills[i] + "'>" + selected_skills[i] + "</option>";
+                }
+            }
+
+            
+            for (var i = 0; i < selected_skills.length; i++) {
+
+                if (document.getElementById(selected_skills[i]) != null) {
+                    document.getElementById(selected_skills[i]).selected = true;
+                }
+
+            }
+
+        }
+
+        function addIndustry() {
+            var selected_industry = $('#industry-selection').select2('data');
+            var industry_input = document.getElementById("ContentPlaceHolder1_txtIndustry");
+
+            //Clear previous input
+            industry_input.value = "";
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (i === 0) {
+                    industry_input.value = selected_industry[i].text
+                }
+                else {
+                    industry_input.value = industry_input.value + "," + selected_industry[i].text;
+                }
+
+            }
+        }
+
+        function addSkills() {
+            var selected_skill = $('#skill-selection').select2('data');
+            var skill_input = document.getElementById("ContentPlaceHolder1_txtSkills");
+
+            //Clear previous input
+            skill_input.value = "";
+
+            for (var i = 0; i < selected_skill.length; i++) {
+
+                if (i === 0) {
+                    skill_input.value = selected_skill[i].text
+                }
+                else {
+                    skill_input.value = skill_input.value + "," + selected_skill[i].text;
+                }
+
+            }
+        }
+
+        //Print out the available industry
+        printSelect2Industry("industry-selection");
+
         //Call stick form functions
-        getSeekerIntroduction();
+        getSeekerIntroduction();        
+        getSelectedIndustry();
+        getSelectedSkills();
 
     </script>
 </asp:Content>
