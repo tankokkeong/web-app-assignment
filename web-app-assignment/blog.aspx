@@ -18,6 +18,8 @@
     <div class="blog-container">
         <div class="blog-category latest-category">
             <div class="row">
+                <asp:Literal ID="litResultLatest" runat="server"></asp:Literal>
+               <%-- 
                 <div class="col-sm-12 col-lg-6">
                     <div class="left-latest">
                         <div class="left-thumbnail-container">
@@ -67,7 +69,7 @@
                             <%}; %>
 
                         </div>
-
+              --%>
                     </div>
 
                 </div>

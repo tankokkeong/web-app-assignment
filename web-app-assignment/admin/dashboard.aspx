@@ -14,7 +14,7 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
-                ['2020', 1000, 400, 200],
+                ['2020', 100, 40, 20],
                 ['2021', dataChart3, dataChart, dataChart2],
                 ['2022', 0, 0, 0],
                 ['2023', 0, 0, 0]
