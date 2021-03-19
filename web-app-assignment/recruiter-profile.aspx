@@ -468,7 +468,7 @@
                             </tr>
                             <tr>
                               <td class="text-center">
-                                  <asp:Button ID="Button1" runat="server" Text="Upgrade" class="btn btn-primary"/>
+                                  <a class="btn btn-primary" href="upgrade.aspx">Upgrade</a>
                               </td>
                             </tr>
                           </tbody>

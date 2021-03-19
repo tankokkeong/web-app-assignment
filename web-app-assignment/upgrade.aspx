@@ -22,6 +22,9 @@
     <script src="https://www.paypal.com/sdk/js?client-id=AdDOLLOLk2_J1EZhhXVYKJh7-Q0HC87201ipDZK4vUd1ILLBcIYzM462C7MWSWJ26aFV6j22IvQDYBTe"> // Replace YOUR_CLIENT_ID with your sandbox client ID
     </script>
 
+    <%-- Payer ID Hidden Field --%>
+    <asp:HiddenField ID="payerID" runat="server" />
+
     <div id="paypal-button-container">
         <h2 class="mb-3">Choose Your Payment Method</h2>
         <div id="container"></div>       
@@ -44,7 +47,8 @@
         },
         onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
-            alert('Transaction completed by ' + details.payer.name.given_name);
+              alert('Transaction completed by ' + details.payer.name.given_name);
+              console.log(details.payer)
           });
         }
       }).render('#paypal-button-container'); // Display payment options on your web page
