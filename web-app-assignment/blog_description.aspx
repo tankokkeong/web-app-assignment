@@ -12,10 +12,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="blogDescription">
+     <%--    
         <div class="blogDescriptionHeader">
             <h2>The Ultimate Elevator Pitch For Fresh Graduates</h2>
         </div>
-        <div class="blogDescriptionBody">
+         <div class="blogDescriptionBody"> 
             <div class="blogDescriptionDate">
                 <p>March 13, 2021</p>
             </div>
@@ -120,8 +121,10 @@
                     Thanks for reading our guide on creating the ultimate elevator pitch for fresh graduates! Read the Chinese version: 毕业生自我推荐(Elevator Pitch)讲稿指南 (附上5个贴士)  <br />  <br />
                 </p>
             </div>
-
+         --%>
             <h3>You Might Also Like</h3>
+            <asp:Literal ID="litResultLike" runat="server"></asp:Literal>
+            <%--
             <div class="common-list-container">
                 <div class="swiper-box">
                     <!-- Swiper -->
@@ -153,7 +156,8 @@
                         
                 </div>
             </div>
-        </div>
+            --%>
+       <%-- </div> --%>
     </div>
 
     <!-- Initialize Swiper -->
