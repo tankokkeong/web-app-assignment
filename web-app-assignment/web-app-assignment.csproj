@@ -1922,6 +1922,7 @@
     <Content Include="style\Reset_Password.css" />
     <Content Include="style\schedule.css" />
     <Content Include="style\terms_conditions.css" />
+    <Content Include="style\upgrade.css" />
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
     <Content Include="upgrade.aspx" />

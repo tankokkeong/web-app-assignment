@@ -2,25 +2,27 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Payment Gateway</title>
-
-    <style>
-        #paypal-button-container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .gpay-card-info-container{
-            width: 100%;
-            margin-bottom: 15px;
-        }
-    </style>
+    <link href="style/upgrade.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="https://www.paypal.com/sdk/js?client-id=AdDOLLOLk2_J1EZhhXVYKJh7-Q0HC87201ipDZK4vUd1ILLBcIYzM462C7MWSWJ26aFV6j22IvQDYBTe"> // Replace YOUR_CLIENT_ID with your sandbox client ID
     </script>
+
+    <%-- Payment Loader --%>
+    <div class="payment-loader-container" style="display:none;" id="payment-loader">
+        <div class="payment-inner-container">
+            <div class="payment-loader">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+    
+            <div class="loader-text text-light">
+                Payment processing...
+            </div>
+        </div>
+
+    </div>
+
 
     <%-- Payer ID Hidden Field --%>
     <asp:HiddenField ID="payerID" runat="server" />
@@ -40,12 +42,24 @@
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '10.00'
+                value: '88.00'
               }
             }]
           });
         },
-        onApprove: function(data, actions) {
+          onApprove: function (data, actions) {
+
+              var payment_loader = document.getElementById("payment-loader");
+
+              //Display Loader
+              payment_loader.style.display = "";
+
+              //Disable Scrolling
+              $('html, body').css({
+                  overflow: 'hidden',
+                  height: '100%'
+              });
+
           return actions.order.capture().then(function(details) {
                            
               //Send post request
@@ -54,6 +68,15 @@
                       upgrade_id: $("#ContentPlaceHolder1_payerID").val(),
                   },
                   function () {
+                      //Remove Loader
+                      payment_loader.style.display = "none";
+
+                      //Disable Scrolling
+                      $('html, body').css({
+                          overflow: 'auto',
+                          height: 'auto'
+                      });
+
                       alert("Payment Successful!");
 
                       //Redirect Back to home page
