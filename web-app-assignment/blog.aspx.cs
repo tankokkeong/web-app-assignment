@@ -15,6 +15,8 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             string blogDisplayLatest = "";
+            string blogDisplayPopular = "";
+            string blogDisplayCareer = "";
 
             SqlConnection con = new SqlConnection(strcon);
 
@@ -61,10 +63,73 @@ namespace web_app_assignment
                                                                         "</div>" +
                                                                     "</div>" +
                                                                 "</div>" +
-                                                            "</div>");
+                                                            "</div>" +
+                                                       "</div>");
 
+            blogDisplayPopular += string.Format("<div class='common-list-container'>" +
+                                                    "<div class='swiper-box'>" +
+                                                        "<!-- Swiper -->" +
+                                                            "<div class='swiper-container sw'>" +
+                                                                "<div class='swiper-wrapper'>" +
+                                                                        "<div class='swiper-slide'>" +
+                                                                            "<div class='card' style='width: 100%;'>" +
+                                                                                "<img src='https://jobmajestic.com/blog/media/2020/09/Malaysian-Fresh-Graduates-Guide-To-Writing-An-Effective-Cover-Letter-Templates-8-Tips-768x512.jpg' class='card-img-top' alt='...'>" +
+                                                                                "<div class='card-body text-center'>" +
+                                                                                    "<p class='card-text font-weight-bold'>Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter (Templates + 8 Tips)	</p>" +
+                                                                                "</div>" +
+                                                                               
+                                                                                    "<div class='card-footer text-muted text-center'>" +
+                                                                                        "17 March 2021" +
+                                                                                    "</div>" +
+                                                                            "</div>" +
+                                                                        "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+
+
+                                                            "<!--Add Arrows-->" +
+                                                             "<div class='swiper-nav-container'>" +
+                                                                "<div class='swiper-button-next swiper-nav-next text-lightgreen'></div>" +
+                                                                "<div class='swiper-button-prev swiper-nav-prev text-lightgreen'></div>" +
+                                                             "</div>" +
+                        
+                                                    "</div>" +
+                                                "</div>");
+
+            blogDisplayCareer += string.Format("<div class='blog-category common-category'>" +
+                                                    "<div class='common-cat-title mb-3 row'>" +
+                                                        "<div class='col-6'>" +
+                                                            "<h3>Career</h3>" +
+                                                        "</div>" +
+
+                                                        "<div class='col-6'>" +
+                                                            "<div class='explore-more-container text-right text-lightgreen'>" +
+                                                                "<span>Explore More ></span>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>" +
+
+                                                    "<div class='common-list-container'>" +
+                                                        "<div class='row'>" +
+                                                            "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                                                                "<div class='card' style='width: 100%;'>" +
+                                                                    "<img src='https://jobmajestic.com/blog/media/2021/02/3-Tips-for-Building-Employee-Engagement-Right-Now-Featured-Image-1-768x512.jpg' class='card-img-top' alt='...'>" +
+                                                                    "<div class='card-body text-center'>" +
+                                                                        "<p class='card-text font-weight-bold'>3 Tips for Building Employee Engagement Right Now.</p>" +
+                                                                    "</div>" +
+
+                                                                        "<div class='card-footer text-muted text-center'>" +
+                                                                            "17 March 2021" +
+                                                                        "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>" +
+                                               "</div>");
 
             litResultLatest.Text = blogDisplayLatest;
+            litResultPopular.Text = blogDisplayPopular;
+            litResultCareer.Text = blogDisplayCareer;
         }
     }
 }

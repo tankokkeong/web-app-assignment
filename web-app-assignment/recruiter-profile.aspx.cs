@@ -123,7 +123,7 @@ namespace web_app_assignment
                         lblJobStatus.Text = lblJobStatus.Text +
                         "<div class='application-bar row'>" +
                             "<div class='col-sm-3 mt-3'>" +
-                                "<img src = 'images/user%20profile/demo-user.png' class='company-pic'/>" +
+                                "<img src = '" + dr["user_photo"] + "' class='company-pic'/>" +
                             "</div>" +
 
                             "<div class='col-sm-3 mt-3'>" +
@@ -137,7 +137,7 @@ namespace web_app_assignment
                                 "</div>" +
 
                                 "<div class='view-profile'>" +
-                                    "<button class='btn btn-info'>View Profile</button>" +
+                                    "<a href='user-profile.aspx?view=" +dr["seeker_id"] + "' class='btn btn-info'>View Profile</a>" +
                                 "</div>" +
                             "</div>" +
 

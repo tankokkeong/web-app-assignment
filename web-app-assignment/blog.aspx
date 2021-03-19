@@ -43,7 +43,7 @@
                         <div class="right-latest-title">
                             <h3>Latest</h3>
                         </div>
-
+                    
                         <div class="right-latest-list">
                             <%for (int i = 0; i < 3; i++)
                                 { %>
@@ -54,12 +54,12 @@
                                              <img src="https://jobmajestic.com/blog/media/2021/03/Cover-Ultimate-Elevator-Pitch-CH-768x512.jpg" class="list-thumbnail-pic"/>
                                         </div>
                                     </div>
-
+                      
                                     <div class="col-7 ">
                                         <div class="latest-list-title">
                                             <h5>The Ultimate Elevator Pitch for Fresh Graduates	</h5>
                                         </div>
-
+                    
                                         <div class="latest-list-description">
                                             <h6 class="text-secondary">What is an elevator pitch? Why is it important for</h6>
                                         </div>
@@ -67,11 +67,11 @@
                                 </div>
                             </div>
                             <%}; %>
-
+                    
                         </div>
-              --%>
+                    
                     </div>
-
+                --%>
                 </div>
 
             </div>
@@ -81,7 +81,7 @@
         <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
-                    <h3>Interview</h3>
+                    <h3>Additional</h3>
                 </div>
                 
                 <div class="col-6">
@@ -92,6 +92,8 @@
                 
             </div>
 
+            <asp:Literal ID="litResultPopular" runat="server"></asp:Literal>
+        <%-- 
             <div class="common-list-container">
                 <div class="swiper-box">
                     <!-- Swiper -->
@@ -105,7 +107,7 @@
                                       <div class="card-body text-center">
                                         <p class="card-text font-weight-bold">Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter (Templates + 8 Tips)	</p>
                                      </div>
-
+                      
                                         <div class="card-footer text-muted text-center">
                                             17 March 2021
                                          </div>
@@ -123,9 +125,10 @@
                         
                 </div>
             </div>
-
+    --%>
         </div>
-
+         <asp:Literal ID="litResultCareer" runat="server"></asp:Literal>
+     <%-- 
         <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
@@ -139,7 +142,7 @@
                 </div>
                 
             </div>
-
+        
             <div class="common-list-container">
                 <div class="row">
 
@@ -161,10 +164,9 @@
 
                 </div>
             </div>
-
+        
         </div>
-
-    </div>
+      --%>
 
      <!-- Initialize Swiper -->
       <script>
