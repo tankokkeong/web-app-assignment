@@ -48,10 +48,10 @@
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Total Application'],
-                ['2020', 1000],
+                ['2020', 500],
                 ['2021', dataChartApp],
-                ['2022', 660],
-                ['2023', 1030]
+                ['2022', 300],
+                ['2023', 130]
             ]);
 
             var options = {
@@ -113,7 +113,7 @@
             <div class="info">
               <h4>Visitor</h4>
               <%-- <p><b>5</b></p> --%>
-              <asp:Label ID="lblVistorDisplay" runat="server" CssClass="font-weight-bold" Text="5"></asp:Label>
+              <asp:Label ID="lblVisitorDisplay" runat="server" CssClass="font-weight-bold"></asp:Label>
             </div>
           </div>
         </div>

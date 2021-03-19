@@ -81,7 +81,7 @@
         <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
-                    <h3>Popular</h3>
+                    <h3>Additional</h3>
                 </div>
                 
                 <div class="col-6">
@@ -127,7 +127,8 @@
             </div>
     --%>
         </div>
-
+         <asp:Literal ID="litResultCareer" runat="server"></asp:Literal>
+     <%-- 
         <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
@@ -141,7 +142,7 @@
                 </div>
                 
             </div>
-
+        
             <div class="common-list-container">
                 <div class="row">
 
@@ -163,10 +164,9 @@
 
                 </div>
             </div>
-
+        
         </div>
-
-    </div>
+      --%>
 
      <!-- Initialize Swiper -->
       <script>

@@ -87,9 +87,18 @@ namespace web_app_assignment.admin
 
 
                 //Visitor count
+                string sqlVisitor = "SELECT COUNT(*) FROM Visitors";
 
+                SqlCommand cmdVisitor = new SqlCommand(sqlVisitor, con);
+                con.Open();
 
+                //read from db
+                Int32 rows_countVisitor = Convert.ToInt32(cmdVisitor.ExecuteScalar());
+                cmdVisitor.Dispose();
+                con.Close();
 
+                //display
+                lblVisitorDisplay.Text = rows_countVisitor.ToString();
 
 
 
