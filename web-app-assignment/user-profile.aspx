@@ -11,7 +11,7 @@
         <div class="profile-row">
             <div class="profile-col">
                 <div class="picture-container">
-                    <img src="images/user%20profile/demo-user.png" id="profile-pic"/>
+                    <asp:Image ID="imgSeekerProfile" runat="server" class="profile-pic"/>
                 </div>
             </div>
             
@@ -22,7 +22,12 @@
                             <i class="fas fa-map-marker-alt"></i> <asp:Label ID="lblSeekerProfileLocation" runat="server" Text=""></asp:Label>
                         </span>
 
-                        <a href="edit-user.aspx" class="btn btn-secondary float-right">Edit Profile</a>
+                        <%
+                            if(Session["User"] != null)
+                            {
+                                Response.Write("<a href='edit-user.aspx' class='btn btn-secondary float-right'>Edit Profile</a>");
+                            }
+                        %>
                     </h2>
                     <h3 class="text-lightgreen"><asp:Label ID="lblSeekerProfession" runat="server" Text=""></asp:Label></h3>
                 </div>
@@ -50,7 +55,13 @@
                 <div class="details-header text-center">
                     <ul class="details-nav text-center">
                         <li class="detail-nav-selected" onclick="userProfileSwitchTab('about')" id="about-tab">About</li>
-                        <li id="application-tab" onclick="userProfileSwitchTab('application')">My Application</li>
+
+                        <%
+                            if(Session["User"] != null)
+                            {
+                                Response.Write("<li id='application-tab' onclick=\"userProfileSwitchTab('application')\">My Application</li>");
+                            }
+                        %>
                     </ul>
                 </div>
 

@@ -25,7 +25,12 @@
                             <i class="fas fa-map-marker-alt"></i> <asp:Label ID="lblRecruiterState" runat="server" Text=""></asp:Label>
                         </span>
 
-                        <a href="edit-recruiter.aspx" class="btn btn-secondary float-right">Edit Profile</a>
+                        <%
+                            if(Session["Recruiter"] != null)
+                            {
+                                Response.Write("<a href='edit-recruiter.aspx' class='btn btn-secondary float-right'>Edit Profile</a>");
+                            }
+                        %>
                     </h2>
                     <h3 class="text-lightgreen">
                         <span class="text-secondary">Industry: </span><asp:Label ID="lblRecruiterIndustry" runat="server" Text=""></asp:Label>
