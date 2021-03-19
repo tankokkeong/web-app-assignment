@@ -47,8 +47,18 @@
         },
         onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name);
-              console.log(details.payer)
+                           
+              //Send post request
+              $.post("upgrade.aspx",
+                  {
+                      upgrade_id: $("#ContentPlaceHolder1_payerID").val(),
+                  },
+                  function () {
+                      alert("Payment Successful!");
+
+                      //Redirect Back to home page
+                      window.history.back();
+                  });
           });
         }
       }).render('#paypal-button-container'); // Display payment options on your web page

@@ -24,61 +24,107 @@ namespace web_app_assignment
                 Response.Redirect("home.aspx");
             }
 
-            SqlConnection con = new SqlConnection(strcon);
-            if (con.State == ConnectionState.Closed)
+
+            try
             {
-                con.Open();
-            }
-
-            if(Session["Recruiter"] != null)
-            {
-                //Get Recruiter ID
-
-                Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-              
-
-                //GET Seeker ID from the seeker table
-                string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-                SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-                cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
                 {
-                    payer_id = dr["recruiter_id"].ToString();
+                    con.Open();
                 }
 
-                con.Close();
-            }
-            else if(Session["Recruiter"] != null)
-            {
-                //Get Seeker ID
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
-
-                
-
-                //GET Seeker ID from the seeker table
-                string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
-
-                SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-                cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                if (Session["Recruiter"] != null)
                 {
-                    payer_id = dr["seeker_id"].ToString();
+                    //Get Recruiter ID
+
+                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+
+
+                    //GET Seeker ID from the seeker table
+                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        payer_id = dr["recruiter_id"].ToString();
+                    }
+
+                    con.Close();
+                }
+                else if (Session["Recruiter"] != null)
+                {
+                    //Get Seeker ID
+                    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+
+                    //GET Seeker ID from the seeker table
+                    string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+                    SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+                    cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        payer_id = dr["seeker_id"].ToString();
+                    }
+
+                    con.Close();
                 }
 
-                con.Close();
-            }
+                //Assign the value to hidden field
+                payerID.Value = payer_id;
 
-            //Assign the value to hidden field
-            payerID.Value = payer_id;
+                //Upgrade user if received the request
+                var upgrade_id = Request.Form["upgrade_id"] ?? "";
+                string upgrade_sql = "";
+
+                if (upgrade_id != "")
+                {
+                    //OPEN Connection
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    if (Session["User"] != null)
+                    {
+                        //Upgrade User to premium
+                        upgrade_sql = "Update JobSeeker " +
+                                "SET is_premium = @is_premium " +
+                                "WHERE seeker_id = @upgrade_id";
+                    }
+                    else if (Session["Recruiter"] != null)
+                    {
+                        //Upgrade User to premium
+                        upgrade_sql = "Update Recruiter " +
+                                "SET is_premium = @is_premium " +
+                                "WHERE recruiter_id = @upgrade_id";
+                    }
+
+
+                    SqlCommand cmd = new SqlCommand(upgrade_sql, con);
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@is_premium", "true");
+                    cmd.Parameters.AddWithValue("@upgrade_id", upgrade_id);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert(' +" + error.Message + "'); </script>");
+            }
+            
 
 
         }
