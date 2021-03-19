@@ -3,6 +3,34 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Live Chat</title>
     <link href="css/LiveChatDashboard.css" rel="stylesheet" type="text/css"/>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+    <!-- Include firebase database-->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDNzVP3LRjenYXgNEYhmNW7jf2kw1mdVIc",
+            authDomain: "livechat-3c810.firebaseapp.com",
+            databaseURL: "https://livechat-3c810-default-rtdb.firebaseio.com",
+            projectId: "livechat-3c810",
+            storageBucket: "livechat-3c810.appspot.com",
+            messagingSenderId: "154912838250",
+            appId: "1:154912838250:web:d1defccda1595a26293013",
+            measurementId: "G-GNQJGM0SMP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -116,48 +144,33 @@
 
         <div class="LiveChat_MessagesInput">
             <table class="table">
-              <tbody>
-                <tr>
-                    <th scope="row">
-                        <input type="checkbox"/>
-                    </th>
-                    <td>Jason Hing</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-secondary">Topic Design</button>
-                    </td>
-                    <td>Good Afternnon, we need to do the testing by monday . Please read me</td>
-                    <td>
-                        <img src="images/Admin-LiveMessage/more.png" alt="more" class="LiveChat_MessagesInputImage"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <input type="checkbox"/>
-                    </th>
-                    <td>Jason Hing</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-secondary">Topic Design</button>
-                    </td>
-                    <td>Good Afternnon, we need to do the testing by monday . Please read me</td>
-                    <td>
-                        <img src="images/Admin-LiveMessage/more.png" alt="more" class="LiveChat_MessagesInputImage"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <input type="checkbox"/>
-                    </th>
-                    <td>Jason Hing</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-secondary">Topic Design</button>
-                    </td>
-                    <td>Good Afternnon, we need to do the testing by monday . Please read me</td>
-                    <td>
-                        <img src="images/Admin-LiveMessage/more.png" alt="more" class="LiveChat_MessagesInputImage"/>
-                    </td>
-                </tr>
-              </tbody>
+              <tbody id="table-contents"></tbody>
             </table>
         </div>
     </div>
+
+    <script>
+        //listen for incoming messages
+        firebase.database().ref("UserMessages/").on("child_added", function (snapshot) {
+            var html = "";
+
+            // give each message a unique ID
+            html += "<tr class='table-rowLiveChat'>" +
+                "<th scope='row'>" +
+                "<input type='checkbox' />" +
+                "</th>" +
+                "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
+                "<td>" +
+                "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
+                "</td>" +
+                "<td>" + snapshot.val().message + "</td>" +
+                "<td>" +
+                "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
+                "</td>" +
+                "</tr>";
+
+            document.getElementById("table-contents").innerHTML += html;
+            console.log(snapshot.key);
+        });
+    </script>
 </asp:Content>

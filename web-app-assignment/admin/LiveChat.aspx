@@ -46,6 +46,7 @@
 
         <div class="sendMessages">
             <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
+            <asp:Label ID="lblAdminName" class="LCusername" runat="server"></asp:Label>
             <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessagesLiveChatAdmin()"/>
             <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
         </div>
@@ -54,14 +55,14 @@
     <script type="text/javascript">
 
         //get admin email
-        var admin_email = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML);
+        var userName = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML)
+        var admin_email = String(document.getElementById("ContentPlaceHolder1_lblAdminName").innerHTML);
         var mailArr = admin_email.split('@');
         var logn = mailArr[0];
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         var time = today.getHours() + ":" + today.getMinutes();
         var sentTime = time + ' ' + date;
-        var deletedTime = time + ' ' + date;
         var count = 1;
 
         function sendMessage() {
@@ -69,69 +70,49 @@
             var message = document.getElementById("message").value;
 
             //save in database
-            firebase.database().ref("receivedMessages/" + logn + "/").push({
+            firebase.database().ref("adminMessages/" + logn + "/").push({
                 "sender": logn,
                 "message": message,
                 "timeSent": sentTime,
                 "messageNumber": count,
-                "timeDeleted":"",
             });
             count++;
         }
 
-        //listen for incoming messages
-        firebase.database().ref("receivedMessages/" + logn + "/").on("child_added", function (snapshot) {
+        //listen for admin messages
+        firebase.database().ref("adminMessages/" + logn + "/").on("child_added", function (snapshot) {
             var html = "";
 
             if (snapshot.val().sender == logn) {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                // give each message a unique ID
+                html += "<div class='sender-messagesContexts'>";
+                html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    if (snapshot.val().sender == logn) {
-                        html += "<button class='btn btn-danger text-light' data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-                        html += "Delete";
-                        html += "</button>";
-                    }
+                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
 
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+                html += "</div>";
 
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                }
-            } else {
-                if (snapshot.val().timeDeleted == "") {
-                    // give each message a unique ID
-                    html += "<div class='replier-messagesContexts'>";
-                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
-
-                    html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
-
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                }
+                document.getElementById("messages").innerHTML += html;
+                document.getElementById('message').value = "";
             }
         });
 
-        function deleteMessage(self) {
-            // get message ID
-            var messageId = self.getAttribute("data-id");
+        //listen for user messages
+        firebase.database().ref("UserMessages/" + userName + "/").on("child_added", function (snapshot) {
+            var html = "";
 
-            //delete message
-            firebase.database().ref("receivedMessages/" + logn + "/").child(messageId).update({
-                "timeDeleted": deletedTime,
-            });
-        }
+            if (snapshot.val().sender == userName) {
+                // give each message a unique ID
+                html += "<div class='replier-messagesContexts'>";
+                html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-        //attach listener for deleted message
-        firebase.database().ref("receivedMessages/" + logn + "/").on("child_changed", function (snapshot) {
-            //remove message node
-            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
+                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+
+                html += "</div>";
+
+                document.getElementById("messages").innerHTML += html;
+                document.getElementById('message').value = "";
+            }
         });
 
         //Enter key to send message
@@ -139,7 +120,13 @@
             if (event.keyCode === 13) {
                 event.preventDefault();
                 sendMessage();
+                scrollToBottomMessage();
             }
+        }
+
+        function scrollToBottomMessage() {
+            var messages = document.getElementById("messages");
+            messages.scrollTop = messages.scrollHeight;
         }
     </script>
 </asp:Content>

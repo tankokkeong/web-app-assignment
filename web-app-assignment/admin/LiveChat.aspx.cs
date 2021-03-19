@@ -23,7 +23,8 @@ namespace web_app_assignment.admin
                     Response.Write("<script>alert('Empty Email');</script>");
                 }
 
-                lblUsername.Text = AdminDetail["Admin_Email"].ToString();
+                lblUsername.Text = Request.QueryString["chat"] ?? "";
+                lblAdminName.Text = AdminDetail["Admin_Email"].ToString();
             }
             catch(Exception error)
             {
