@@ -132,7 +132,7 @@
                 </li>
 
                 <li class="treeview">
-                    <a class="app-menu__item" href="LiveChat.aspx">
+                    <a class="app-menu__item" href="LiveChatDashboard.aspx">
                         <i class="app-menu__icon far fa-comments"></i><span class="app-menu__label">Live Message</span>
                     </a>
                 </li>

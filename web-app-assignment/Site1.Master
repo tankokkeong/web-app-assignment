@@ -403,7 +403,7 @@
                 html += "<div class='sender-messagesContexts'>";
                 html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += snapshot.val().sender + ": " + snapshot.val().message + "<br/>Sent at : " + sentTime;
+                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
 
                 html += "</div>";
 

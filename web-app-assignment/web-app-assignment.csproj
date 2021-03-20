@@ -1923,8 +1923,10 @@
     <Content Include="style\Reset_Password.css" />
     <Content Include="style\schedule.css" />
     <Content Include="style\terms_conditions.css" />
+    <Content Include="style\upgrade.css" />
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
+    <Content Include="upgrade.aspx" />
     <Content Include="user-profile.aspx" />
     <Content Include="verificationPost.aspx" />
     <Content Include="Web.config" />
@@ -2268,6 +2270,13 @@
     </Compile>
     <Compile Include="terms_conditions.aspx.designer.cs">
       <DependentUpon>terms_conditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="upgrade.aspx.cs">
+      <DependentUpon>upgrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="upgrade.aspx.designer.cs">
+      <DependentUpon>upgrade.aspx</DependentUpon>
     </Compile>
     <Compile Include="user-profile.aspx.cs">
       <DependentUpon>user-profile.aspx</DependentUpon>

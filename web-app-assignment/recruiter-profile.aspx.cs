@@ -93,6 +93,16 @@ namespace web_app_assignment
                         lblRecruiterZip.Text = dr["zip_code"].ToString();
                         lblRecruiterCountry.Text = dr["country"].ToString();
                         lblRecruiterRating.Text = dr["rating"].ToString();
+
+                        //Check premium user
+                        if (dr["is_premium"].ToString() != "true")
+                        {
+                            ltrPlan.Text = "Free  <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#premiumModal'>Upgrade</button>";
+                        }
+                        else
+                        {
+                            ltrPlan.Text = "Premium";
+                        }
                     }
 
                     //Close connection

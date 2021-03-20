@@ -48,11 +48,7 @@
                 </div>      
 
                 <div class="upgrade-container">
-                    <h5 class="text-secondary">Plan: Free
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#premiumModal">
-                            Upgrade
-                        </button>
+                    <h5 class="text-secondary">Plan: <asp:Literal ID="ltrPlan" runat="server"></asp:Literal>
                     </h5>                    
                 </div>
 
@@ -369,8 +365,8 @@
                           <thead>
                             <tr class="text-center">
                               <th scope="col" class="text-primary">
-                                  Free
-                                  <div>RM0</div>
+                                  <h3>Free</h3>
+                                  <h2><div>$0</div></h2>
                               </th>
                             </tr>
                           </thead>
@@ -425,8 +421,8 @@
                           <thead>
                             <tr>
                               <th scope="col" class="text-primary">
-                                  Premium
-                                  <div>RM88</div>
+                                  <h3>Premium</h3>
+                                  <h2><div>$88</div></h2>
                               </th>
                             </tr>
                           </thead>
@@ -468,7 +464,7 @@
                             </tr>
                             <tr>
                               <td class="text-center">
-                                  <asp:Button ID="Button1" runat="server" Text="Upgrade" class="btn btn-primary"/>
+                                  <a class="btn btn-primary" href="upgrade.aspx">Upgrade</a>
                               </td>
                             </tr>
                           </tbody>

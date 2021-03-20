@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace web_app_assignment.admin
+namespace web_app_assignment
 {
 
 
-    public partial class LiveChat1
+    public partial class upgrade
     {
 
         /// <summary>
-        /// lblUsername control.
+        /// payerID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsername;
-
-        /// <summary>
-        /// lblAdminName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdminName;
+        protected global::System.Web.UI.WebControls.HiddenField payerID;
     }
 }
