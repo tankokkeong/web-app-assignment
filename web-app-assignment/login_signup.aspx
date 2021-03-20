@@ -5,7 +5,7 @@
 
     <%-- Stylesheet --%>
     <link href="style/login_signup.css" rel="stylesheet" type="text/css"/>   
-
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </asp:Content>
 
@@ -73,8 +73,9 @@
                         </div>
                     </div>
                 
-                    <div>
+                    <div class="form-group">
                         <%-- Gmail and Facebook Button Comes here --%>
+                        <button type="button" id="btnSignIn" runat="server" class="btn btn-danger" onserverclick="btnSignIn_Click">Sign in With Google</button>                     
                     </div>
 
                     <p class="inputsFormSign_SignUpFree">
@@ -185,13 +186,12 @@
                         <div class="dividerSignUplines">
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
+                    <div>
+                        <button type="button" id="btnSignUp" runat="server" class="btn btn-danger" onserverclick="btnSignUp_Click">Sign Up With Google</button>                     
+                    </div>
                     </div>
                 
-                    <div class="align-content-center">
-                        <%-- Gmail and Facebook Button Comes here --%>
-                        <%--<button type="button" runat="server" id="btnSignUp" OnClick="btnsignUp_Click" class="btn btn-primary">Sign Up With Google</button>--%>
-                        <asp:Button ID="btnSignUp" runat="server" Text="Sign Up With Gmail" CssClass="btn btn-primary" OnClick="btnSignUp_Click"/> 
-                    </div>
+
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
                         <a class="LoginFree" id="login_tabatag" onclick="showLoginTab()" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Log In Now</a>
