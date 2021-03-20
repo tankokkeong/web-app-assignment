@@ -15,11 +15,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="blog-container">
-        <div class="blog-category latest-category">
-            <div class="row">
                 <asp:Literal ID="litResultLatest" runat="server"></asp:Literal>
                <%-- 
+     <div class="blog-container">
+        <div class="blog-category latest-category">
+            <div class="row">
                 <div class="col-sm-12 col-lg-6">
                     <div class="left-latest">
                         <div class="left-thumbnail-container">
@@ -71,14 +71,17 @@
                         </div>
                     
                     </div>
-                --%>
+                
                 </div>
 
             </div>
 
         </div>
+    --%>
 
-        <div class="blog-category common-category">
+        <asp:Literal ID="litResultAdditional" runat="server"></asp:Literal>
+        <%--
+    <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
                     <h3>Additional</h3>
@@ -91,9 +94,7 @@
                 </div>
                 
             </div>
-
-            <asp:Literal ID="litResultPopular" runat="server"></asp:Literal>
-        <%-- 
+         
             <div class="common-list-container">
                 <div class="swiper-box">
                     <!-- Swiper -->
@@ -125,8 +126,9 @@
                         
                 </div>
             </div>
-    --%>
+    
         </div>
+     --%>
          <asp:Literal ID="litResultCareer" runat="server"></asp:Literal>
      <%-- 
         <div class="blog-category common-category">

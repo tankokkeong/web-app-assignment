@@ -78,6 +78,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Button inputsFormSign_LoginButton;
 
         /// <summary>
+        /// btnSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSignIn;
+
+        /// <summary>
         /// recruiterTab control.
         /// </summary>
         /// <remarks>
@@ -265,5 +274,14 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button JobSeeker_SignUpButton;
+
+        /// <summary>
+        /// btnSignUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSignUp;
     }
 }
