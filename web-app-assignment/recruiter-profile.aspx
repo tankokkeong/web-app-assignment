@@ -350,7 +350,7 @@
     <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
       <div class="modal-dialog upgrade-dialog">
         <div class="modal-content">
-          <div class="modal-header bg-primary text-light">
+          <div class="modal-header bg-lightgreen text-light">
             <h5 class="modal-title" id="">Upgrade Plans</h5>
             <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true" class="text-light">&times;</span>
@@ -364,7 +364,7 @@
                         <table class="table table-bordered plan-table">
                           <thead>
                             <tr class="text-center">
-                              <th scope="col" class="text-primary">
+                              <th scope="col" class="text-lightgreen">
                                   <h3>Free</h3>
                                   <h2><div>$0</div></h2>
                               </th>
@@ -407,7 +407,7 @@
                               </td>
                             </tr>
                             <tr class="text-secondary text-center">
-                              <td style="padding: 21px 0px;">Current Plan</td>
+                              <td><asp:Label ID="lblFreePlan" runat="server" Text=""></asp:Label></td>
                             </tr>
                           </tbody>
                         </table>
@@ -420,7 +420,7 @@
                         <table class="table table-bordered plan-table">
                           <thead>
                             <tr>
-                              <th scope="col" class="text-primary">
+                              <th scope="col" class="text-lightgreen">
                                   <h3>Premium</h3>
                                   <h2><div>$88</div></h2>
                               </th>
@@ -464,7 +464,8 @@
                             </tr>
                             <tr>
                               <td class="text-center">
-                                  <a class="btn btn-primary" href="upgrade.aspx">Upgrade</a>
+                                  <asp:Label ID="lblPremiumPlan" runat="server" Text=""></asp:Label>
+                                  
                               </td>
                             </tr>
                           </tbody>
