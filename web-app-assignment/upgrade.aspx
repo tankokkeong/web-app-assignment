@@ -27,17 +27,30 @@
     <%-- Payer ID Hidden Field --%>
     <asp:HiddenField ID="payerID" runat="server" />
 
-    <div id="paypal-button-container">
-        <h2 class="mb-3">Choose Your Payment Method</h2>
-        <div id="container"></div>       
+    <div class="payment-option-container">
+        <div id="paypal-button-container" class="text-center">
+            <h2 class="mb-3">Choose Your Payment Method</h2>
+            <div class="google-pay-container text-center">
+                <div id="container" class="google-pay-inner-container"></div>  
+            </div>              
+        </div>
     </div>
+
 
     <!-- Add the checkout buttons, set up the order and approve the order -->
     <script>
       paypal.Buttons({
         style: {
-        size: 'responsive',
-        },
+            size: 'responsive',
+            layout: "vertical",
+            color: "blue",
+            label: "pay",
+            fundingicons: 'true',
+          },
+          funding: {
+              allowed: [paypal.FUNDING.CARD, paypal.FUNDING.CREDIT, paypal.FUNDING.VENMO, paypal.FUNDING.ELV,],
+          },
+
         createOrder: function(data, actions) {
           return actions.order.create({
             purchase_units: [{
