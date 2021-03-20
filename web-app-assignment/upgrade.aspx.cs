@@ -56,7 +56,7 @@ namespace web_app_assignment
 
                     con.Close();
                 }
-                else if (Session["Recruiter"] != null)
+                else if (Session["User"] != null)
                 {
                     //Get Seeker ID
                     Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];

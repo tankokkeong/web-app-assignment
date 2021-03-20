@@ -102,6 +102,7 @@ namespace web_app_assignment
                 Dictionary<string, string> UserDetail = (Dictionary<string, string>)Session["User"];
 
                 string seekerID = "";
+                string is_premium = "";
                 bool validSeeker = false;
 
                 SqlConnection con = new SqlConnection(strcon);
@@ -110,7 +111,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email AND mobile_number IS NOT NULL AND contact_email IS NOT NULL AND location IS NOT NULL AND profession IS NOT NULL";
+                string selectSeekerID = "SELECT * FROM JobSeeker WHERE email = @email AND mobile_number IS NOT NULL AND contact_email IS NOT NULL AND location IS NOT NULL AND profession IS NOT NULL";
 
                 if (UserDetail["user_email"] == null)
                 {
@@ -126,31 +127,94 @@ namespace web_app_assignment
                 while (dr.Read())
                 {
                     seekerID = dr["seeker_id"].ToString();
+                    
+                    if(dr["is_premium"].ToString() == "true")
+                    {
+                        is_premium = "true";
+                    }
                 }
                 
                 con.Close();
 
-                SqlConnection con2 = new SqlConnection(strcon);
-                if (con2.State == ConnectionState.Closed)
+                if(is_premium != "true")
                 {
-                    con2.Open();
+                    //Open Connection
+                    con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    string sql_jobApplied = "SELECT COUNT(*) FROM ApplicationStatus WHERE seeker_id = @seeker_id AND deleted_at IS NULL";
+
+                    cmd = new SqlCommand(sql_jobApplied, con);
+
+                    //Insert parameter
+                    cmd.Parameters.AddWithValue("@seeker_id", seekerID);
+
+                    int applied_count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    //Close connection
+                    con.Close();
+
+                    if (applied_count > 0)
+                    {
+                        Response.Write("<script>alert('You can only apply 1 job, please upgrade your plan!');</script>");
+                    }
+                    else
+                    {
+                        //Open Connection
+                        con = new SqlConnection(strcon);
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+                        string post_id = Request.QueryString["post_id"] ?? "";
+
+                        string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
+                                    "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
+
+                        cmd = new SqlCommand(sql, con);
+
+                        cmd.Parameters.AddWithValue("@post_id", post_id);
+                        cmd.Parameters.AddWithValue("@seeker_id", seekerID);
+
+                        cmd.ExecuteNonQuery();
+
+                        con.Close();
+
+                        Response.Write("<script>alert('Application Sent Successfully!');</script>");
+                    }
                 }
+                else
+                {
+                    //Open Connection
+                    con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
 
-                string post_id = Request.QueryString["post_id"] ?? "";
+                    string post_id = Request.QueryString["post_id"] ?? "";
 
-                string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
-                            "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
+                    string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
+                                "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
 
-                SqlCommand cmd2 = new SqlCommand(sql, con2);
+                    cmd = new SqlCommand(sql, con);
 
-                cmd2.Parameters.AddWithValue("@post_id", post_id);
-                cmd2.Parameters.AddWithValue("@seeker_id", seekerID);
+                    cmd.Parameters.AddWithValue("@post_id", post_id);
+                    cmd.Parameters.AddWithValue("@seeker_id", seekerID);
 
-                cmd2.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                con2.Close();
+                    //Close Connection
+                    con.Close();
 
-                Response.Write("<script>alert('Application Sent Successfully!');</script>");
+                    Response.Write("<script>alert('Application Sent Successfully!');</script>");
+                }
+                               
+                
             }
             catch (Exception error)
             {

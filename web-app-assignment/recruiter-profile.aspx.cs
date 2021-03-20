@@ -43,6 +43,7 @@ namespace web_app_assignment
                     Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
 
                     string recruiterID = "";
+                    string is_premium = "";
 
                     //GET Seeker ID from the seeker table
                     string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
@@ -106,6 +107,8 @@ namespace web_app_assignment
                             ltrPlan.Text = "Premium <button type='button' class='btn bg-lightgreen text-light' data-toggle='modal' data-target='#premiumModal'>View</button>";
                             lblFreePlan.Text = "Free Plan";
                             lblPremiumPlan.Text = "<span class='text-lightgreen'>Current Plan</span>";
+
+                            is_premium = "true";
                         }
                     }
 
@@ -224,6 +227,45 @@ namespace web_app_assignment
                     cmd2.Fill(dtbl);
                     GridView1.DataSource = dtbl;
                     GridView1.DataBind();
+
+                    //Close Connection
+                    con.Close();
+
+                    //Check Job Posted if not premium
+                    if (is_premium != "true")
+                    {
+                        string sql_jobPosted = "SELECT COUNT(*) FROM JobPost WHERE recruiter_id = @recruiter_id AND deleted_at IS NULL";
+
+                        //Open Connection
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+
+                        cmd = new SqlCommand(sql_jobPosted, con);
+
+                        //Insert parameter
+                        cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+
+                        int posted_count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if(posted_count > 0)
+                        {
+                            lblPostJob.Text = "<span data-toggle='tooltip' data-placement='right' title='Premium only' tabindex='0'>" +
+                                                "<button class='btn btn-primary' disabled>Post New Job</button>" +
+                                                "<i class='fas fa-lock' id='post-job-lock'></i>" +
+                                                "</span>";
+                        }
+                        else
+                        {
+                            lblPostJob.Text = "<a class='btn btn-primary' href='post-job.aspx'>Post New Job</a>";
+                        }
+                    }
+                    else
+                    {
+                        lblPostJob.Text = "<a class='btn btn-primary' href='post-job.aspx'>Post New Job</a>";
+                    }
                 }
 
                 //View Profile

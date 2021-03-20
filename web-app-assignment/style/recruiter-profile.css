@@ -126,6 +126,12 @@
     background-color: #f1f1f1 !important;
 }
 
+#post-job-lock{
+    position:relative;
+    right:10px;
+    bottom:10px;
+}
+
 @media (min-width:850px) {
     .profile-container {
         padding: 40px 10%;

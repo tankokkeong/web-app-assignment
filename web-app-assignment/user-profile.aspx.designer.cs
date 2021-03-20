@@ -69,6 +69,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.HyperLink SeekerLinkedInLink;
 
         /// <summary>
+        /// ltrPlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrPlan;
+
+        /// <summary>
         /// lblSeekerIntroduction control.
         /// </summary>
         /// <remarks>
@@ -184,5 +193,23 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicationID;
+
+        /// <summary>
+        /// lblFreePlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFreePlan;
+
+        /// <summary>
+        /// lblPremiumPlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPremiumPlan;
     }
 }

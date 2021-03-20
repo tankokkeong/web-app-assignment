@@ -98,6 +98,22 @@
     font-size: 20px;
 }
 
+.upgrade-dialog {
+    max-width: 1000px !important;
+}
+
+.plan-table tr th {
+    text-align: center;
+}
+
+.plan-criteria {
+    margin: 10px 0;
+}
+
+.bg-lightgray {
+    background-color: #f1f1f1 !important;
+}
+
 @media (min-width:850px) {
     .profile-container {
         padding: 40px 10%;
@@ -121,8 +137,8 @@
         margin-left:50px;
     }
 
-    .profile-skill, .profile-bios{
-        margin-left:50px;
+    .profile-skill, .profile-bios, .upgrade-container {
+        margin-left: 50px;
     }
 
     .skill-list{

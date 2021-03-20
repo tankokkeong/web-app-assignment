@@ -238,7 +238,8 @@
 
                 <div id="job-posted-content" class="my-info row" style="display:none;">
                     <div class="mb-3">
-                        <a href="post-job.aspx" class="btn btn-primary">Post New Job</a>
+                        <asp:Label ID="lblPostJob" runat="server" Text=""></asp:Label>                        
+                        
                     </div>
 
                   <%--  <table class="table table-bordered">
