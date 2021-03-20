@@ -4,7 +4,9 @@
     <title>Login / Sign Up</title>
 
     <%-- Stylesheet --%>
-    <link href="style/login_signup.css" rel="stylesheet" type="text/css"/>
+    <link href="style/login_signup.css" rel="stylesheet" type="text/css"/>   
+
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -185,8 +187,10 @@
                         </div>
                     </div>
                 
-                    <div>
+                    <div class="align-content-center">
                         <%-- Gmail and Facebook Button Comes here --%>
+                        <%--<button type="button" runat="server" id="btnSignUp" OnClick="btnsignUp_Click" class="btn btn-primary">Sign Up With Google</button>--%>
+                        <asp:Button ID="btnSignUp" runat="server" Text="Sign Up With Gmail" CssClass="btn btn-primary" OnClick="btnSignUp_Click"/> 
                     </div>
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
