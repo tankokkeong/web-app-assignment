@@ -157,7 +157,32 @@ namespace web_app_assignment
             string careerOnly = "";
             if(blog_additional != null)
             {
-                additionalOnly += string.Format("<h1>I believe I can fly</h1>");
+                additionalOnly += string.Format("<div class='blog-category common-category'>" +
+                                                        "<div class='col-6'>" +
+                                                            "<h3>Additional</h3>" +
+                                                        "</div>" +
+
+                                                    "<div class='common-list-container'>" +
+                                                        "<div class='row'>" +
+                                                            "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                                                                "<div class='card' style='width: 100%;'>" +
+                                                                    "<img src='https://jobmajestic.com/blog/media/2021/02/3-Tips-for-Building-Employee-Engagement-Right-Now-Featured-Image-1-768x512.jpg' class='card-img-top' alt='...'>" +
+                                                                    "<div class='card-body text-center'>" +
+                                                                        "<p class='card-text font-weight-bold'>3 Tips for Building Employee Engagement Right Now.</p>" +
+                                                                        "<p class='text-muted text-center'>12-3-2021</p>" +
+                                                                    "</div>" +
+
+                                                                        "<div class='card-footer text-muted text-center'>" +
+                                                                            "<a href='' class='btn btn-info'>Details</a>" +
+                                                                        "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>" +
+                                                "</div>" 
+
+
+                                                );
 
                 litResultAdditional.Text = additionalOnly;
                 litResultCareer.Text = "";
