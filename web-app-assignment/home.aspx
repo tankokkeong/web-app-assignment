@@ -21,13 +21,39 @@
                     <form>
                         <div class="home-search-form">
                             <div class="row bg-darkgreen">
-                                <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title" CssClass="select2 form-control home-search-control" runat="server"></asp:TextBox>
+                                <div class="col-lg-3 p-1 home-search-col">
+                                    <span class="search-icon-container">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    
+                                    <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title" CssClass="form-control home-search-textbox" runat="server"></asp:TextBox>
+                                </div>
 
-                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates home-search-control" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
-                                
-                                <asp:ListBox ID="lstSearchJobType" runat="server" CssClass="form-control jobType home-search-control" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <div class="col-lg-3 p-1">
+                                    <span class="search-icon-container">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </span>
+                                    <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                </div>
 
-                                <asp:Button ID="btn_HomeSearchButton" runat="server" CssClass="btn bg-lightgreen form-control text-light home-search-control" Text="Search" OnClick="btn_HomeSearchButton_Click"/>
+                                <div class="col-lg-3 p-1">
+                                    <span class="search-icon-container">
+                                        <i class="fas fa-briefcase"></i>
+                                    </span>
+
+                                    <select id="ddlSearchJobType" class="form-control home-search-dropdown">
+                                        <option value="">Select Job Type</option>
+                                        <option value="All">All</option>
+                                        <option value="Full Time">Full Time</option>
+                                        <option value="Part Time">Part Time</option>
+                                    </select>
+                                    
+                                  <%--  <asp:ListBox ID="lstSearchJobType" runat="server" CssClass="form-control jobType home-search-control" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>--%>
+                                </div>
+
+                                <div class="col p-1">
+                                    <button id="btn_HomeSearchButton" class="btn bg-lightgreen form-control text-light">Search</button>
+                                </div>                               
                             </div>
                         </div>
                     </form>
@@ -63,7 +89,7 @@
                                   </p>
 
                                     <div class="card-btn text-center">
-                                        <a class="process-btn text-dark" href="#"><i class="fas fa-location-arrow process-btn-icon"></i></a>
+                                        <a class="process-btn text-dark" href="login_signup.aspx"><i class="fas fa-location-arrow process-btn-icon"></i></a>
                                     </div>
                               </div>
                           </div>
@@ -91,7 +117,7 @@
                                   </p>
 
                                     <div class="card-btn text-center">
-                                        <a class="process-btn text-dark" href="#"><i class="fas fa-location-arrow process-btn-icon"></i></a>
+                                        <a class="process-btn text-dark" href="job_lists.aspx"><i class="fas fa-location-arrow process-btn-icon"></i></a>
                                     </div>
                                     
                               </div>
@@ -120,7 +146,7 @@
                                   </p>
 
                                   <div class="card-btn text-center">
-                                        <a class="process-btn text-dark" href="#"><i class="fas fa-location-arrow process-btn-icon"></i></a>
+                                        <a class="process-btn text-dark" href="job_lists.aspx"><i class="fas fa-location-arrow process-btn-icon"></i></a>
                                     </div>
                               </div>
                           </div>
@@ -325,9 +351,8 @@
             width: "100%",
         });
 
-        $('.jobType').select2({
-            placeholder: "Job Type",
-            width: "100%",
-        });
+        function homeJobSearch() {
+
+        }
     </script>
 </asp:Content>

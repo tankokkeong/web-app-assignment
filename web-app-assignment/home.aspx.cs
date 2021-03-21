@@ -30,14 +30,6 @@ namespace web_app_assignment
                     "Selangor",
                     "Terengganu",
                 };
-            List<string> JobTypeItems = new List<string>
-                {
-                    "Full Time",
-                    "Part Time",
-                };
-
-            lstSearchJobType.DataSource = JobTypeItems;
-            lstSearchJobType.DataBind();
 
             lstSearchLocation.DataSource = LocationStatesItems;
             lstSearchLocation.DataBind();
