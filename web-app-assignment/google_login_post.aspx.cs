@@ -82,6 +82,8 @@ namespace web_app_assignment
 
 
             loginInfo(id, email, name);
+
+            
         }
 
         public void loginInfo(string id, string email, string name)
@@ -118,7 +120,17 @@ namespace web_app_assignment
 
                     while (dread.Read())
                     {
-
+                        UserDetail.Add("user_name", dread["full_name"].ToString());
+                        UserDetail.Add("user_email", dread["email"].ToString());
+                        UserDetail.Add("user_skills", dread["skills"].ToString());
+                        UserDetail.Add("user_gender", dread["gender"].ToString());
+                        UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
+                        UserDetail.Add("user_location", dread["location"].ToString());
+                        UserDetail.Add("user_profession", dread["profession"].ToString());
+                        UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
+                        UserDetail.Add("user_country", dread["country"].ToString());
+                        UserDetail.Add("user_experience", dread["experience"].ToString());
+                        UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
                     }
 
                     Session["User"] = UserDetail;
@@ -128,17 +140,75 @@ namespace web_app_assignment
                     conn.Close();
 
                 }
-                else
+                else if (output == "0")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Not Register'); window.open('login_signup.aspx');", true);
 
+
+                    sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+
+                    cmd = new SqlCommand(sql, con);
+
+                    con.Open();
+
+                    cmd.Parameters.AddWithValue("gmail_token", id);
+
+                    int result = (int) cmd.ExecuteScalar();
+
+                    if (result == 1)
+                    {
+                        Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+
+                        SqlConnection connection = new SqlConnection(strcon);
+
+                        string query = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
+
+                        cmd = new SqlCommand(query, connection);
+
+                        connection.Open();
+
+                        cmd.Parameters.AddWithValue("gmail_token", id);
+
+                        SqlDataReader dR = cmd.ExecuteReader();
+
+                        while (dR.Read())
+                        {
+                            RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
+                            RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
+                            RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
+                            RecruiterDetails.Add("recruiter_company", dR["company_name"].ToString());
+                            RecruiterDetails.Add("recruiter_contactEmail", dR["contact_email"].ToString());
+                            RecruiterDetails.Add("address_line1", dR["address_line1"].ToString());
+                            RecruiterDetails.Add("address_line2", dR["address_line2"].ToString());
+                            RecruiterDetails.Add("city", dR["city"].ToString());
+                            RecruiterDetails.Add("state", dR["state"].ToString());
+                            RecruiterDetails.Add("zip-code", dR["zip_code"].ToString());
+                            RecruiterDetails.Add("recruiter_country", dR["country"].ToString());
+                            RecruiterDetails.Add("recruiter_industry", dR["industry"].ToString());
+                            RecruiterDetails.Add("recruiter_fbLink", dR["facebook_link"].ToString());
+                            RecruiterDetails.Add("recruiter_linkedinLink", dR["linkedin_link"].ToString());
+                            RecruiterDetails.Add("introduction", dR["introduction"].ToString());
+                            RecruiterDetails.Add("rating", dR["rating"].ToString());
+                        }
+
+                        Session["Recruiter"] = RecruiterDetails;
+
+                        Response.Redirect("home.aspx");
+
+                        connection.Close();
+
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Not Register'); window.open('login_signup.aspx');", true);
+                    }
+                    con.Close();
                 }
-                con.Close();
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Response.Write(e.Message);
             }
-            
+
         }
 
         public class Tokenclass
