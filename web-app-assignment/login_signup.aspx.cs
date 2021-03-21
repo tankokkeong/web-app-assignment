@@ -398,14 +398,14 @@ namespace web_app_assignment
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            ////your client id  
-            //string clientid = "804776769506-k0ibg0dnd1vmigibsmjt4p8gekqp4unn.apps.googleusercontent.com";
-            ////your client secret  
-            //string clientsecret = "SsB5Pq6GdQIk0j7J9stZdY2D";
-            ////your redirection url  
-            //string redirection_url = "https://localhost:44329/google_signin-post.aspx";
-            //string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
-            //Response.Redirect(url);
+            //your client id  
+            string clientid = "804776769506-k0ibg0dnd1vmigibsmjt4p8gekqp4unn.apps.googleusercontent.com";
+            //your client secret  
+            string clientsecret = "SsB5Pq6GdQIk0j7J9stZdY2D";
+            //your redirection url  
+            string redirection_url = "https://localhost:44329/google_login_post.aspx";
+            string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
+            Response.Redirect(url);
         }
 
 

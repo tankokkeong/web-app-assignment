@@ -74,6 +74,7 @@
     <Content Include="admin\clients-details-r.aspx" />
     <Content Include="admin\clients-details.aspx" />
     <Content Include="admin\contact-message.aspx" />
+    <Content Include="admin\create-blogs.aspx" />
     <Content Include="admin\css\admin-details.css" />
     <Content Include="admin\css\admin-management.css" />
     <Content Include="admin\css\client-details.css" />
@@ -93,6 +94,7 @@
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
     <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\edit-blogs.aspx" />
     <Content Include="admin\edit_aboutUs.aspx" />
     <Content Include="admin\edit_career.aspx" />
     <Content Include="admin\edit_contactUs.aspx" />
@@ -1808,6 +1810,7 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
     <Content Include="forgotten_Password.aspx" />
+    <Content Include="google_login_post.aspx" />
     <Content Include="google_signup-post.aspx" />
     <Content Include="help.aspx" />
     <Content Include="home.aspx" />
@@ -1989,12 +1992,26 @@
     <Compile Include="admin\contact-message.aspx.designer.cs">
       <DependentUpon>contact-message.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\create-blogs.aspx.cs">
+      <DependentUpon>create-blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\create-blogs.aspx.designer.cs">
+      <DependentUpon>create-blogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit-blogs.aspx.cs">
+      <DependentUpon>edit-blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit-blogs.aspx.designer.cs">
+      <DependentUpon>edit-blogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\edit_aboutUs.aspx.cs">
       <DependentUpon>edit_aboutUs.aspx</DependentUpon>
@@ -2170,6 +2187,13 @@
     </Compile>
     <Compile Include="forgotten_Password.aspx.designer.cs">
       <DependentUpon>forgotten_Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="google_login_post.aspx.cs">
+      <DependentUpon>google_login_post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="google_login_post.aspx.designer.cs">
+      <DependentUpon>google_login_post.aspx</DependentUpon>
     </Compile>
     <Compile Include="google_signup-post.aspx.cs">
       <DependentUpon>google_signup-post.aspx</DependentUpon>

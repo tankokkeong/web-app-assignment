@@ -14,19 +14,18 @@ using System.Configuration;
 
 namespace web_app_assignment
 {
-
-    public partial class google_signup_post : System.Web.UI.Page
+    public partial class google_login_post : System.Web.UI.Page
     {
-
         //your client id  
         string clientid = "804776769506-k0ibg0dnd1vmigibsmjt4p8gekqp4unn.apps.googleusercontent.com";
         //your client secret  
         string clientsecret = "SsB5Pq6GdQIk0j7J9stZdY2D";
         //your redirection url  
-        string redirection_url = "https://localhost:44329/google_signup-post.aspx";
+        string redirection_url = "https://localhost:44329/google_login_post.aspx";
         string url = "https://accounts.google.com/o/oauth2/token";
 
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -82,47 +81,64 @@ namespace web_app_assignment
             string name = userinfo.name;
 
 
-            registerInfo(id, email, name);
+            loginInfo(id, email, name);
         }
 
-        public void registerInfo(string id, string email, string name)
+        public void loginInfo(string id, string email, string name)
         {
-            SqlConnection con = new SqlConnection(strcon);
-
-            string sql = "SELECT COUNT(*) FROM JobSeeker WHERE gmail_token = '" + id + "'";
-
-            SqlCommand cmd = new SqlCommand(sql, con);
-
-            con.Open();
-
-            string result = cmd.ExecuteScalar().ToString();
-
-            if (result == "0")
+            try
             {
-                 con = new SqlConnection(strcon);
+                SqlConnection con = new SqlConnection(strcon);
 
-                 sql = "INSERT INTO JobSeeker (full_name, email, gmail_token, verified_at, created_at) VALUES (@full_name, @email, @gmail_token, GETDATE(), GETDATE())";
+                string sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
 
-                 cmd = new SqlCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
 
                 con.Open();
 
-                cmd.Parameters.AddWithValue("@full_name", name);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@gmail_token", id);
+                cmd.Parameters.AddWithValue("gmail_token", id);
 
-                cmd.ExecuteNonQuery();
+                string output = cmd.ExecuteScalar().ToString();
 
+                if (output == "1")
+                {
+                    Dictionary<string, string> UserDetail = new Dictionary<string, string>();
+
+                    SqlConnection conn = new SqlConnection(strcon);
+
+                    sql = "SELECT * FROM JobSeeker WHERE gmail_token = @gmail_token";
+
+                    cmd = new SqlCommand(sql, conn);
+
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("gmail_token", id);
+
+                    SqlDataReader dread = cmd.ExecuteReader();
+
+                    while (dread.Read())
+                    {
+
+                    }
+
+                    Session["User"] = UserDetail;
+
+                    Response.Redirect("home.aspx");
+
+                    conn.Close();
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Not Register'); window.open('login_signup.aspx');", true);
+
+                }
                 con.Close();
-
-                
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Register Successfully'); window.open('login_signup.aspx');", true);
-            }
-            else
+            }catch (Exception e)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered'); window.open('login_signup.aspx');", true);
+                Response.Write(e.Message);
             }
-            con.Close();
+            
         }
 
         public class Tokenclass
@@ -170,21 +186,7 @@ namespace web_app_assignment
                 get;
                 set;
             }
-            public string link
-            {
-                get;
-                set;
-            }
-            public string picture
-            {
-                get;
-                set;
-            }
-            public string gender
-            {
-                get;
-                set;
-            }
+
             public string email
             {
                 get;

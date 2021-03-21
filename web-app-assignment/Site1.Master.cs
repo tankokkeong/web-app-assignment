@@ -36,7 +36,17 @@ namespace web_app_assignment
                 LoginLink.Visible = false;
                 logoutLink.Visible = true;
             }
-            if(Session["Recruiter"] != null)
+
+            if (Session["google_seeker"] != null)
+            {
+
+                ProfileLink.Visible = true;
+                LoginLink.Visible = false;
+                logoutLink.Visible = true;
+            }
+
+
+            if (Session["Recruiter"] != null)
             {
                 jobList.Visible = false;
                 candidatesList.Visible = true;
