@@ -15,8 +15,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-                <asp:Literal ID="litResultLatest" runat="server"></asp:Literal>
-               <%-- 
      <div class="blog-container">
         <div class="blog-category latest-category">
             <div class="row">
@@ -45,6 +43,8 @@
                         </div>
                     
                         <div class="right-latest-list">
+                            <asp:Literal ID="litResultLatest" runat="server"></asp:Literal>
+                           <%-- 
                             <%for (int i = 0; i < 3; i++)
                                 { %>
                             <div class="latest-list-container">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <%}; %>
-                    
+                          --%>
                         </div>
                     
                     </div>
@@ -77,10 +77,8 @@
             </div>
 
         </div>
-    --%>
-
-        <asp:Literal ID="litResultAdditional" runat="server"></asp:Literal>
-        <%--
+     </div>
+        
     <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
@@ -89,7 +87,7 @@
                 
                 <div class="col-6">
                     <div class="explore-more-container text-right text-lightgreen">
-                         <span>Explore More ></span>                   
+                         <a href="blog.aspx?additional=display">Explore More ></a>                   
                     </div>
                 </div>
                 
@@ -100,6 +98,8 @@
                     <!-- Swiper -->
                       <div class="swiper-container sw">
                         <div class="swiper-wrapper">
+                            <asp:Literal ID="litResultAdditional" runat="server"></asp:Literal>
+                            <%-- 
                               <%for (int i = 0; i < 9; i++)
                                 { %>
                                 <div class="swiper-slide">
@@ -115,6 +115,7 @@
                                     </div>
                                 </div>                    
                             <%}; %>
+                            --%>
                         </div>                        
                       </div>
                     
@@ -126,11 +127,8 @@
                         
                 </div>
             </div>
-    
         </div>
-     --%>
-         <asp:Literal ID="litResultCareer" runat="server"></asp:Literal>
-     <%-- 
+      
         <div class="blog-category common-category">
             <div class="common-cat-title mb-3 row">
                 <div class="col-6">
@@ -139,7 +137,7 @@
                 
                 <div class="col-6">
                     <div class="explore-more-container text-right text-lightgreen">
-                         <span>Explore More ></span>                   
+                         <a href="blog.aspx?career=display">Explore More ></a>                   
                     </div>
                 </div>
                 
@@ -147,7 +145,8 @@
         
             <div class="common-list-container">
                 <div class="row">
-
+                    <asp:Literal ID="litResultCareer" runat="server"></asp:Literal>
+                    <%--
                     <%for (int i = 0; i < 3; i++)
                         { %>
                     <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
@@ -163,12 +162,10 @@
                         </div>
                     </div>                    
                     <%}; %>
-
+                    --%>
                 </div>
             </div>
-        
         </div>
-      --%>
 
      <!-- Initialize Swiper -->
       <script>
