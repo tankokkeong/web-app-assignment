@@ -273,12 +273,18 @@ namespace web_app_assignment
                         con.Open();
                     }
 
+
+
+                    string seeker_id = getSeekerID();
                     string selected_industry = "";
                     string selected_skills = "";
 
-                    string sql = "SELECT * FROM JobSeeker";
+                    string sql = "SELECT * FROM JobSeeker where seeker_id = @seeker_id";
 
                     SqlCommand cmd = new SqlCommand(sql, con);
+
+                    //Insert Parameter
+                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
 
                     SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
@@ -298,20 +304,7 @@ namespace web_app_assignment
                         imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
                         txtIndustry.Text = dr["prefer_industry"].ToString();
                         txtSkills.Text = dr["skills"].ToString();
-
-                        //Get Selected Industry
-                        selected_industry = dr["prefer_industry"].ToString();
-                        selected_skills = dr["skills"].ToString();
                     }
-
-                    //Split the Selected Industry
-                    string[] split_industries = selected_industry.Split(',');
-
-
-                    //Split the Selected Skills
-                    string[] split_skills = selected_skills.Split(',');
-
-
 
                 }
                 catch (Exception error)
@@ -348,6 +341,8 @@ namespace web_app_assignment
                 var linkedin_link = txtLinkedInLink.Text;
                 var introduction = HttpUtility.UrlDecode(txtjobSeekerIntroduction.Text);
 
+                //Get Seeker Id
+                string seeker_id = getSeekerID();
 
                 try
                 {
@@ -374,7 +369,7 @@ namespace web_app_assignment
                                 " facebook_link = @facebook_link," +
                                 " linkedin_link = @linkedin_link," +
                                 " introduction = @introduction" +
-                                " WHERE seeker_id = 1";
+                                " WHERE seeker_id = @seeker_id";
 
                     //Connect to the database
                     SqlCommand cmd = new SqlCommand(sql, con);
@@ -395,6 +390,7 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@facebook_link", facebook_link);
                     cmd.Parameters.AddWithValue("@linkedin_link", linkedin_link);
                     cmd.Parameters.AddWithValue("@introduction", introduction);
+                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
 
                     //Execute the queries
                     cmd.ExecuteNonQuery();
@@ -409,6 +405,39 @@ namespace web_app_assignment
                     lblError.Text = error.Message;
                 }
             }
+        }
+
+        protected string getSeekerID()
+        {
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Seeker ID
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+
+            string seeker_id = "";
+
+            //GET Seeker ID from the seeker table
+            string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+            SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+            cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                seeker_id = dr["seeker_id"].ToString();
+            }
+
+            con.Close();
+
+            //Return seeker id
+            return seeker_id;
         }
     }
 }
