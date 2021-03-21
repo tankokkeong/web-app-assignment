@@ -89,6 +89,15 @@
                     <div class="JobListContentsAllCompaniesHeaderPosition">
                         <h2 class="JobListContentsAllCompaniesHeader">Companies Recommended</h2>
                     </div>
+                    <div class="PageSizeLimit">
+                        Limit
+                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Value="15">15</asp:ListItem>
+                            <asp:ListItem Value="30">30</asp:ListItem>
+                            <asp:ListItem Value="60">60</asp:ListItem>
+                        </asp:DropDownList>
+                        Per Page
+                    </div>
                     <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
                 </div>
             </div>

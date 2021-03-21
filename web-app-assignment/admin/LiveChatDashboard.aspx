@@ -170,7 +170,6 @@
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
-            console.log(snapshot.key);
         });
     </script>
 </asp:Content>

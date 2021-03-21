@@ -127,23 +127,23 @@
         <div id="page-content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
     
-        <div class="container">
-            <img src="images/home/messagingPic.png" class="btn-chat" onclick="openChat()"/>
+            <div class="container">
+                <img src="images/home/messagingPic.png" class="btn-chat" onclick="openChat()"/>
 
-            <div class="chatbox" id="chatbox">
-                <div class="chatboxHeaderContents">
-                    <h5 class="chatboxHeader">Message</h5>
-                    <i class="fa fa-times btn-close-chat text-white" aria-hidden="true" onclick="closeChat()"></i>
-                </div>
-                <div id="form-container" class="form-container">
-                    <div id="messages" class="LiveChatContainerContents"></div>
+                <div class="chatbox" id="chatbox">
+                    <div class="chatboxHeaderContents">
+                        <h5 class="chatboxHeader">Message</h5>
+                        <i class="fa fa-times btn-close-chat text-white" aria-hidden="true" onclick="closeChat()"></i>
+                    </div>
+                    <div id="form-container" class="form-container">
+                        <div id="messages" class="LiveChatContainerContents"></div>
 
-                    <div class="sendMessages">
-                        <asp:TextBox ID="txtUsername" class="LCusername" runat="server"></asp:TextBox>
-                        <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessages()"/>
-                        <button type="button" class="bg-lightgreen text-light btn btn-send" onclick="enterMessagesUser()">Send</button>
+                        <div class="sendMessages">
+                            <asp:TextBox ID="txtUsername" class="LCusername" runat="server"></asp:TextBox>
+                            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessages()"/>
+                            <button type="button" class="bg-lightgreen text-light btn btn-send" onclick="enterMessagesUser()">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>

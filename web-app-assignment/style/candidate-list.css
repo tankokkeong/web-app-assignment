@@ -130,8 +130,26 @@
     margin-left: -4.5%
 }
 
+.PageSizeLimit{
+    margin-left: 82.5%;
+}
+
 @media screen {
     .select2 {
         width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .PageSizeLimitPosition {
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .PageSizeLimitPosition {
+        width: 70%;
     }
 }
