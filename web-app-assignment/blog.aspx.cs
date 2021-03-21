@@ -53,7 +53,7 @@ namespace web_app_assignment
             con.Close();
 
 
-            string sqlAdditional = @"SELECT top 5 blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 2 AND deleted_at IS NULL";
+            string sqlAdditional = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 2 AND deleted_at IS NULL";
             SqlCommand cmdAdditional = new SqlCommand(sqlAdditional, con);
             con.Open();
 
@@ -67,19 +67,20 @@ namespace web_app_assignment
                                                             "<img src='{0}' class='card-img-top' alt='...'>" +
                                                             "<div class='card-body text-center'>" +
                                                                 "<p class='card-text font-weight-bold'>{1}</p>" +
+                                                                "<p class='text-muted text-center'>{2}</p>" +
                                                             "</div>" +
 
                                                                 "<div class='card-footer text-muted text-center'>" +
-                                                                    "{2}" +
+                                                                    "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
                                                                 "</div>" +
                                                         "</div>" +
-                                                    "</div>",drAdditional["blog_image"],drAdditional["blog_title"],drAdditional["last_updated"]);
+                                                    "</div>",drAdditional["blog_image"],drAdditional["blog_title"],drAdditional["last_updated"],drAdditional["blog_id"]);
             }
 
             drAdditional.Close();
             con.Close();
 
-            string sqlCareer = @"SELECT top 5 blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 1 AND deleted_at IS NULL";
+            string sqlCareer = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 1 AND deleted_at IS NULL";
             SqlCommand cmdCareer = new SqlCommand(sqlCareer, con);
             con.Open();
 
@@ -92,13 +93,14 @@ namespace web_app_assignment
                                                         "<img src='{0}' class='card-img-top' alt='...'>" +
                                                         "<div class='card-body text-center'>" +
                                                             "<p class='card-text font-weight-bold'>{1}</p>" +
+                                                            "<p class='text-muted text-center'>{2}</p>" +
                                                         "</div>" +
 
                                                             "<div class='card-footer text-muted text-center'>" +
-                                                                "{2}" +
+                                                                "<a href='blog_description.aspx?career={3}' class='btn btn-info'>Details</a>" +
                                                             "</div>" +
                                                     "</div>" +
-                                                "</div>", drCareer["blog_image"], drCareer["blog_title"], drCareer["last_updated"]);
+                                                "</div>", drCareer["blog_image"], drCareer["blog_title"],drCareer["last_updated"], drCareer["blog_id"]);
             }
             drCareer.Close();
             con.Close();
