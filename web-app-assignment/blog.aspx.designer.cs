@@ -24,13 +24,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Literal litResultLatest;
 
         /// <summary>
-        /// litResultPopular control.
+        /// litResultAdditional control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litResultPopular;
+        protected global::System.Web.UI.WebControls.Literal litResultAdditional;
 
         /// <summary>
         /// litResultCareer control.

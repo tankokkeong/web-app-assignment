@@ -56,7 +56,7 @@ namespace web_app_assignment
 
                     con.Close();
                 }
-                else if (Session["Recruiter"] != null)
+                else if (Session["User"] != null)
                 {
                     //Get Seeker ID
                     Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
@@ -84,6 +84,9 @@ namespace web_app_assignment
                 //Upgrade user if received the request
                 var upgrade_id = Request.Form["upgrade_id"] ?? "";
                 string upgrade_sql = "";
+                string payment_sql = "";
+                string premium_seeker = null;
+                string premium_recruiter = null;
 
                 if (upgrade_id != "")
                 {
@@ -99,6 +102,13 @@ namespace web_app_assignment
                         upgrade_sql = "Update JobSeeker " +
                                 "SET is_premium = @is_premium " +
                                 "WHERE seeker_id = @upgrade_id";
+
+                        //Assign Value to premium seeker
+                        premium_seeker = upgrade_id;
+
+                        payment_sql = "INSERT INTO PaymentRecord(payment_method, payment_amount, premium_seeker, created_at) " +
+                                     "VALUES(@payment_method, @payment_amount, @premium_seeker, @created_at)";
+
                     }
                     else if (Session["Recruiter"] != null)
                     {
@@ -106,6 +116,12 @@ namespace web_app_assignment
                         upgrade_sql = "Update Recruiter " +
                                 "SET is_premium = @is_premium " +
                                 "WHERE recruiter_id = @upgrade_id";
+
+                        //Assign Value to premium seeker
+                        premium_recruiter = upgrade_id;
+
+                        payment_sql = "INSERT INTO PaymentRecord(payment_method, payment_amount, premium_recruiter, created_at) " +
+                                     "VALUES(@payment_method, @payment_amount, @premium_recruiter, @created_at)";
                     }
 
 
@@ -114,6 +130,38 @@ namespace web_app_assignment
                     //Insert parameters
                     cmd.Parameters.AddWithValue("@is_premium", "true");
                     cmd.Parameters.AddWithValue("@upgrade_id", upgrade_id);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    //OPEN Connection
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    //Connect to the database
+                    cmd = new SqlCommand(payment_sql, con);
+
+
+                    if(Session["Recruiter"] != null)
+                    {
+                        //Insert parameters
+                        cmd.Parameters.AddWithValue("@payment_method", "PayPal");
+                        cmd.Parameters.AddWithValue("@payment_amount", 88);
+                        cmd.Parameters.AddWithValue("@premium_recruiter", premium_recruiter);
+                        cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                    }
+                    else
+                    {
+                        //Insert parameters
+                        cmd.Parameters.AddWithValue("@payment_method", "PayPal");
+                        cmd.Parameters.AddWithValue("@payment_amount", 88);
+                        cmd.Parameters.AddWithValue("@premium_seeker", premium_seeker);
+                        cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                    }
+                    
 
                     //Execute the queries
                     cmd.ExecuteNonQuery();

@@ -94,6 +94,20 @@ namespace web_app_assignment
                         lblSeekerExperience.Text = dr["experience"].ToString();
                         lblSeekerSkills.Text = dr["skills"].ToString();
                         imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+
+                        //Check premium user
+                        if (dr["is_premium"].ToString() != "true")
+                        {
+                            ltrPlan.Text = "Free  <button type='button' class='btn bg-lightgreen text-light' data-toggle='modal' data-target='#premiumModal'>Upgrade</button>";
+                            lblFreePlan.Text = "Current Plan";
+                            lblPremiumPlan.Text = "<a class='text-lightgreen' href='upgrade.aspx'>Upgrade</a>";
+                        }
+                        else
+                        {
+                            ltrPlan.Text = "Premium <button type='button' class='btn bg-lightgreen text-light' data-toggle='modal' data-target='#premiumModal'>View</button>";
+                            lblFreePlan.Text = "Free Plan";
+                            lblPremiumPlan.Text = "<span class='text-lightgreen'>Current Plan</span>";
+                        }
                     }
 
                     //Close connection

@@ -15,12 +15,15 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             string blogDisplayLatest = "";
-            string blogDisplayPopular = "";
+            string blogDisplayAdditional = "";
             string blogDisplayCareer = "";
 
             SqlConnection con = new SqlConnection(strcon);
 
-                blogDisplayLatest += string.Format("<div class='col-sm-12 col-lg-6'>" +
+            blogDisplayLatest += string.Format("<div class='blog-container'>" +
+                                                 "<div class='blog-category latest-category'>" +
+                                                  "<div class='row'>" +
+                                                    "<div class='col-sm-12 col-lg-6'>" +
                                                         "<div class='left-latest'>" +
                                                            "<div class='left-thumbnail-container'>" +
                                                                 "<img src='https://jobmajestic.com/blog/media/2021/03/Cover-Ultimate-Elevator-Pitch-CH-768x512.jpg' id='latest-thumbnail'/>" +
@@ -64,9 +67,25 @@ namespace web_app_assignment
                                                                     "</div>" +
                                                                 "</div>" +
                                                             "</div>" +
-                                                       "</div>");
+                                                       "</div>" +
+                                                      "</div>" +
+                                                     "</div>" +
+                                                    "</div>");
 
-            blogDisplayPopular += string.Format("<div class='common-list-container'>" +
+            blogDisplayAdditional += string.Format("<div class='blog-category common-category'>" +
+                                                        "<div class='common-cat-title mb-3 row'>" +
+                                                            "<div class='col-6'>" +
+                                                                "<h3>Additional</h3>" +
+                                                            "</div>" +
+                
+                                                            "<div class='col-6'>" +
+                                                                "<div class='explore-more-container text-right text-lightgreen'>" +
+                                                                    "<a href='blog.aspx?additional=displayadditional'>Explore More ></a>" +                  
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                
+                                                 "<div class='common-list-container'>" +
                                                     "<div class='swiper-box'>" +
                                                         "<!-- Swiper -->" +
                                                             "<div class='swiper-container sw'>" +
@@ -94,7 +113,8 @@ namespace web_app_assignment
                                                              "</div>" +
                         
                                                     "</div>" +
-                                                "</div>");
+                                                "</div>" +
+                                             "</div>");
 
             blogDisplayCareer += string.Format("<div class='blog-category common-category'>" +
                                                     "<div class='common-cat-title mb-3 row'>" +
@@ -104,7 +124,7 @@ namespace web_app_assignment
 
                                                         "<div class='col-6'>" +
                                                             "<div class='explore-more-container text-right text-lightgreen'>" +
-                                                                "<span>Explore More ></span>" +
+                                                                "<a href='blog.aspx?career=displaycareer'>Explore More ></a>" +
                                                             "</div>" +
                                                         "</div>" +
                                                     "</div>" +
@@ -128,8 +148,58 @@ namespace web_app_assignment
                                                "</div>");
 
             litResultLatest.Text = blogDisplayLatest;
-            litResultPopular.Text = blogDisplayPopular;
+            litResultAdditional.Text = blogDisplayAdditional;
             litResultCareer.Text = blogDisplayCareer;
+
+            var blog_additional = Request.QueryString["additional"];
+            var blog_career = Request.QueryString["career"];
+            string additionalOnly = "";
+            string careerOnly = "";
+            if(blog_additional != null)
+            {
+                additionalOnly += string.Format("<div class='blog-category common-category'>" +
+                                                        "<div class='col-6'>" +
+                                                            "<h3>Additional</h3>" +
+                                                        "</div>" +
+
+                                                    "<div class='common-list-container'>" +
+                                                        "<div class='row'>" +
+                                                            "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                                                                "<div class='card' style='width: 100%;'>" +
+                                                                    "<img src='https://jobmajestic.com/blog/media/2021/02/3-Tips-for-Building-Employee-Engagement-Right-Now-Featured-Image-1-768x512.jpg' class='card-img-top' alt='...'>" +
+                                                                    "<div class='card-body text-center'>" +
+                                                                        "<p class='card-text font-weight-bold'>3 Tips for Building Employee Engagement Right Now.</p>" +
+                                                                        "<p class='text-muted text-center'>12-3-2021</p>" +
+                                                                    "</div>" +
+
+                                                                        "<div class='card-footer text-muted text-center'>" +
+                                                                            "<a href='' class='btn btn-info'>Details</a>" +
+                                                                        "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>" +
+                                                "</div>" 
+
+
+                                                );
+
+                litResultAdditional.Text = additionalOnly;
+                litResultCareer.Text = "";
+                litResultLatest.Text = "";
+            }
+            else if(blog_career != null)
+            {
+                careerOnly += string.Format("<h1>Testing 123</h1>");
+
+                litResultCareer.Text = careerOnly;
+                litResultLatest.Text = "";
+                litResultAdditional.Text = "";
+            }
+            else 
+            {
+                
+            }
         }
     }
 }

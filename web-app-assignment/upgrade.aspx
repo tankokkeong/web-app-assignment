@@ -74,7 +74,8 @@
               });
 
           return actions.order.capture().then(function(details) {
-                           
+
+              console.log(details)
               //Send post request
               $.post("upgrade.aspx",
                   {

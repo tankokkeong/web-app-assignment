@@ -44,6 +44,12 @@
 
                      </h3>
                 </div>
+
+                <div class="upgrade-container">
+                    <h5 class="text-secondary">Plan: <asp:Literal ID="ltrPlan" runat="server"></asp:Literal>
+                    </h5>                    
+                </div>
+
             </div>
             
         </div>
@@ -207,6 +213,140 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <asp:Button ID="btnCancelApplication" runat="server" Text="Cancel" class="btn btn-danger" OnClick="btnCancelApplication_Click"/>
             <asp:TextBox ID="txtApplicationID" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Upgrade Modal -->
+    <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+      <div class="modal-dialog upgrade-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-lightgreen text-light">
+            <h5 class="modal-title" id="">Upgrade Plans</h5>
+            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="text-light">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body bg-lightgray">
+              <div class="row">
+                  <div class="col-6">
+                      <div class="plan-table-container bg-light rounded">
+                        <table class="table table-bordered plan-table">
+                          <thead>
+                            <tr class="text-center">
+                              <th scope="col" class="text-lightgreen">
+                                  <h3>Free</h3>
+                                  <h2><div>$0</div></h2>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-secondary"></i>Better Search Ranking
+                                </div>
+                               
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-secondary"></i>Scheduling function
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-secondary"></i>See company's rating
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-secondary"></i>Job Review
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Apply 1 Job
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Post 1 Job
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Customer Support
+                                </div>
+                                  
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Live Chat function
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="text-secondary text-center">
+                              <td><asp:Label ID="lblFreePlan" runat="server" Text=""></asp:Label></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                  </div>
+
+                  <div class="col-6">
+                      <div class="plan-table-container bg-light rounded">
+                        <table class="table table-bordered plan-table">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-lightgreen">
+                                  <h3>Premium</h3>
+                                  <h2><div>$88</div></h2>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>                        
+                              <td>
+                                  <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Better Search Ranking
+                                </div>
+                               
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Scheduling function
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>See company's rating
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Job Review
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Apply Unlimited Jobs
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Post Unlimited Jobs
+                                </div>
+
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Customer Support
+                                </div>
+                                  
+                                <div class="plan-criteria">
+                                    <i class="fas fa-check mr-3 text-lightgreen"></i>Live Chat function
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                  <asp:Label ID="lblPremiumPlan" runat="server" Text=""></asp:Label>
+                                  
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    
+                  </div>
+              </div>
+            
           </div>
         </div>
       </div>
