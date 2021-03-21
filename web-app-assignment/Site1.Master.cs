@@ -249,11 +249,17 @@ namespace web_app_assignment
                 //}
 
                 con.Close();
+
+                //Display Current Site information
+                getCurrentSiteJobDetails();
+
             }
             catch (Exception error)
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+
+           
         }
 
         protected void logoutLink_Click(object sender, EventArgs e)
@@ -301,12 +307,40 @@ namespace web_app_assignment
             }
 
         }
-        //protected void btnLanguages_Click(Object sender, EventArgs e)
-        //{
-        //    Dictionary<string, string> Languages = new Dictionary<string, string>();
+        
+        protected void getCurrentSiteJobDetails()
+        {
+            SqlConnection con = new SqlConnection(strcon);
 
-            
+            //Opem Connection
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
-        //}
+            string sql = "SELECT (SELECT COUNT(*) FROM JobPost WHERE job_type = @job_type1) as full_time, " +
+                         "(SELECT COUNT(*) FROM JobPost WHERE job_type = @job_type2) as part_time, " +
+                         "(SELECT COUNT(*) FROM Recruiter) as recruiter_count, " +
+                         "(SELECT COUNT(*) FROM JobSeeker) as seeker_count";
+
+            SqlCommand command = new SqlCommand(sql, con);
+
+            //Insert parameters
+            command.Parameters.AddWithValue("@job_type1", "Full Time");
+            command.Parameters.AddWithValue("@job_type2", "Part Time");
+
+            SqlDataReader dread = command.ExecuteReader();
+
+            while (dread.Read())
+            {
+                lblFullTimeJobPosted.Text = dread["full_time"].ToString();
+                lblPartTimeJobPosted.Text = dread["part_time"].ToString();
+                lblTotalRecruiter.Text = dread["recruiter_count"].ToString();
+                lblTotalJobSeeker.Text = dread["seeker_count"].ToString();
+            }
+
+            //Close Connection
+            con.Close();
+        }
     }
 }

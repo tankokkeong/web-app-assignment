@@ -157,23 +157,23 @@
             <div class="footer-job-details">
                 <div class="job-number-display row">
                     <div class="job-number col-sm-12 col-lg-2 text-center mt-2">
-                        <div class="text-light">1234</div>
+                        <asp:Label ID="lblFullTimeJobPosted" runat="server" Text=""  class="text-light"></asp:Label>
                         <div class="text-lightblue">Full-Time Job Posted</div>
                     </div>
 
                     <div class="job-number col-sm-12 col-lg-2 text-center mt-2">
-                        <div class="text-light">1234</div>
-                        <div class="text-lightblue">Full-Time Job Posted</div>
+                        <asp:Label ID="lblPartTimeJobPosted" runat="server" Text="" class="text-light"></asp:Label>
+                        <div class="text-lightblue">Part-Time Job Posted</div>
                     </div>
 
                     <div class="job-number col-sm-12 col-lg-2 text-center mt-2">
-                        <div class="text-light">1234</div>
-                        <div class="text-lightblue">Full-Time Job Posted</div>
+                        <asp:Label ID="lblTotalJobSeeker" runat="server" Text="" class="text-light"></asp:Label>
+                        <div class="text-lightblue">Job Seeker</div>
                     </div>
 
                     <div class="job-number col-sm-12 col-lg-2 text-center mt-2">
-                        <div class="text-light">1234</div>
-                        <div class="text-lightblue">Full-Time Job Posted</div>
+                        <asp:Label ID="lblTotalRecruiter" runat="server" Text="" class="text-light"></asp:Label>
+                        <div class="text-lightblue">Recruiter</div>
                     </div>
 
                     <div class="footer-email-input col-sm-12 col-lg-3 mt-2">

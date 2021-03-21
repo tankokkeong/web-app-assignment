@@ -132,6 +132,12 @@
     bottom:10px;
 }
 
+#schedule-lock {
+    position: relative;
+    right: 10px;
+    bottom: 15px;
+}
+
 @media (min-width:850px) {
     .profile-container {
         padding: 40px 10%;

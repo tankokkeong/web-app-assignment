@@ -186,6 +186,42 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblJobPosted;
 
         /// <summary>
+        /// lblFullTimeJobPosted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFullTimeJobPosted;
+
+        /// <summary>
+        /// lblPartTimeJobPosted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPartTimeJobPosted;
+
+        /// <summary>
+        /// lblTotalJobSeeker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalJobSeeker;
+
+        /// <summary>
+        /// lblTotalRecruiter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRecruiter;
+
+        /// <summary>
         /// lblAboutUs2 control.
         /// </summary>
         /// <remarks>

@@ -186,21 +186,45 @@ namespace web_app_assignment
                         }
                         else
                         {
-                            lblJobStatus.Text = lblJobStatus.Text +
-                            "<div class='col-sm-3 mt-3'>" +
-                                "<div class='mt-2'>" +
-                                    "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
-                                "</div>" +
+                            if(is_premium == "true")
+                            {
+                                lblJobStatus.Text = lblJobStatus.Text +
+                                "<div class='col-sm-3 mt-3'>" +
+                                    "<div class='mt-2'>" +
+                                        "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
+                                    "</div>" +
 
-                                "<div class='mt-2'>" +
-                                    "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-primary'>Schedule</a>" +
-                                "</div>" +
+                                    "<div class='mt-2'>" +
+                                        "<a href = 'schedule.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-primary'>Schedule</a>" +
+                                    "</div>" +
 
-                                "<div class='mt-2'>" +
-                                    "<button class='btn btn-danger'>Remove</button>" +
+                                    "<div class='mt-2'>" +
+                                        "<button class='btn btn-danger'>Remove</button>" +
+                                    "</div>" +
                                 "</div>" +
-                            "</div>" +
-                        "</div>";
+                            "</div>";
+                            }
+                            else
+                            {
+                                lblJobStatus.Text = lblJobStatus.Text +
+                                "<div class='col-sm-3 mt-3'>" +
+                                    "<div class='mt-2'>" +
+                                        "<a href = 'chatbox.aspx?seeker=" + dr["seeker_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
+                                    "</div>" +
+
+                                    "<div class='mt-2'>" +
+                                        "<span data-toggle='tooltip' data-placement='right' title='Premium only' tabindex='0'>" +
+                                        "<button class='btn btn-primary' disabled>Schedule</button><i class='fas fa-lock' id='schedule-lock'></i>" +
+                                        "</span>" +
+                                    "</div>" +
+
+                                    "<div class='mt-2'>" +
+                                        "<button class='btn btn-danger'>Remove</button>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+                            }
+                            
                         }
 
                         //Response.Write("<script>alert('" + dr["seeker_id"] + "');</script>");
@@ -319,6 +343,7 @@ namespace web_app_assignment
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 // Display the job type in colours.
@@ -411,6 +436,61 @@ namespace web_app_assignment
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+        }
+
+        protected string getIsPremium()
+        {
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Get Recruiter ID
+            Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
+
+            string recruiterID = "";
+            string is_premium = "";
+
+            //GET Seeker ID from the seeker table
+            string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+            SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+            cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                recruiterID = dr["recruiter_id"].ToString();
+            }
+
+            con.Close();
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Read User profile Details
+            string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+            cmd = new SqlCommand(sql, con);
+
+            //Insert parameter
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                if(dr["is_premium"].ToString() != "true")
+                {
+                    is_premium = "false";
+                }
+                else
+                {
+                    is_premium = "true";
+                }
+            }
+
+            return is_premium;
         }
     }
 }
