@@ -26,7 +26,7 @@
                                         <i class="fas fa-search"></i>
                                     </span>
                                     
-                                    <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title" CssClass="form-control home-search-textbox" runat="server"></asp:TextBox>
+                                    <input id="txt_SearchJobTitle" placeholder="Job Title" class="form-control home-search-textbox">
                                 </div>
 
                                 <div class="col-lg-3 p-1">
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="col p-1">
-                                    <button id="btn_HomeSearchButton" class="btn bg-lightgreen form-control text-light">Search</button>
+                                    <button id="btn_HomeSearchButton" class="btn bg-lightgreen form-control text-light" onclick="homeJobSearch()" type="button">Search</button>
                                 </div>                               
                             </div>
                         </div>
@@ -352,6 +352,25 @@
         });
 
         function homeJobSearch() {
+
+            //Get Search Input
+            var job_title = document.getElementById("txt_SearchJobTitle").value;
+            var location_selected = $('.selectStates').select2('data');
+            var job_location = "";
+            var job_type = document.getElementById("ddlSearchJobType").value;
+
+            for (var i = 0; i < location_selected.length; i++) {
+
+                if (i === 0) {
+                    job_location = location_selected[i].text;
+                }
+                else {
+                    job_location = job_location + "," + location_selected[i].text;
+                }
+            }
+
+            //Redirect to job list page
+            window.location.href = "job_lists.aspx?title=" + job_title + "&location=" + job_location + "&type=" + job_type;
 
         }
     </script>
