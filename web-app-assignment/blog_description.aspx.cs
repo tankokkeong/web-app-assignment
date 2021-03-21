@@ -18,36 +18,32 @@ namespace web_app_assignment
 
             SqlConnection con = new SqlConnection(strcon);
 
-            displayLike += string.Format("<div class='common-list-container'>" +
-                                            "<div class='swiper-box'>" +
-                                                "<!-- Swiper -->" +
-                                                    "<div class='swiper-container sw'>" +
-                                                        "<div class='swiper-wrapper'>" +
-                                                            "<div class='swiper-slide'>" +
-                                                                "<div class='card' style='width: 100%;'>" +
-                                                                    "<img src='https://jobmajestic.com/blog/media/2020/09/Malaysian-Fresh-Graduates-Guide-To-Writing-An-Effective-Cover-Letter-Templates-8-Tips-768x512.jpg' class='card-img-top' alt='...'>" +
-                                                                    "<div class='card-body text-center'>" +
-                                                                        "<p class='card-text font-weight-bold'>Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter(Templates + 8 Tips)    </p>" +
-                                                                    "</div>" +
+            string sqlLike = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image, last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
 
-                                                                        "<div class='card-footer text-muted text-center'>" +
-                                                                            "17 March 2021" +
-                                                                        "</div>" +
-                                                                "</div>" +
-                                                            "</div>" +                    
-                                                        "</div>" +                        
-                                                    "</div>" +
-                    
-                                                    "<!-- Add Arrows -->" +
-                                                     "<div class='swiper-nav-container'>" +
-                                                        "<div class='swiper-button-next swiper-nav-next text-lightgreen'></div>" +
-                                                        "<div class='swiper-button-prev swiper-nav-prev text-lightgreen'></div>" +
+            SqlCommand cmdLike = new SqlCommand(sqlLike, con);
+            con.Open();
+
+            SqlDataReader drLike = cmdLike.ExecuteReader();
+
+            while (drLike.Read())
+            {
+                displayLike += string.Format("<div class='swiper-slide'>" +
+                                             "<div class='card' style='width: 100%;'>" +
+                                                 "<img src='Uploads/{0}' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
+                                                 "<div class='card-body text-center'>" +
+                                                     "<p class='card-text font-weight-bold'>{1}</p>" +
+                                                     "<p class='text-muted text-center'>{2}</p>" +
+                                                 "</div>" +
+
+                                                     "<div class='card-footer text-muted text-center'>" +
+                                                        "<a href='blog_description.aspx?like={3}' class='btn btn-info'>Details</a>" +
                                                      "</div>" +
-                        
-                                            "</div>" +
-                                         "</div>");
+                                             "</div>" +
+                                         "</div>",drLike["blog_image"],drLike["blog_title"],drLike["last_updated"],drLike["blog_id"]);
+            }
 
-
+            drLike.Close();
+            con.Close();
 
             litResultLike.Text = displayLike;
         }

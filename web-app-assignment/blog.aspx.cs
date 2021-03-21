@@ -33,7 +33,7 @@ namespace web_app_assignment
                                                     "<div class='row latest-list-row'>" +
                                                         "<div class='col-5 '>" +
                                                             "<div class='list-thumbnail'>" +
-                                                                "<img src='{0}' class='list-thumbnail-pic'/>" +
+                                                                "<img src='Uploads/{0}' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
                                                             "</div>" +
                                                         "</div>" +
 
@@ -63,8 +63,8 @@ namespace web_app_assignment
             {
                 blogDisplayAdditional += string.Format(
                                                     "<div class='swiper-slide'>" +
-                                                        "<div class='card' style='width: 100%;'>" +
-                                                            "<img src='{0}' class='card-img-top' alt='...'>" +
+                                                        "<div class='card' style='width: 100%; height: 100%;'>" +
+                                                            "<img src='Uploads/{0}' style='width:100%; height:400px;' class='card-img-top' alt='...'>" +
                                                             "<div class='card-body text-center'>" +
                                                                 "<p class='card-text font-weight-bold'>{1}</p>" +
                                                                 "<p class='text-muted text-center'>{2}</p>" +
@@ -89,8 +89,8 @@ namespace web_app_assignment
             while (drCareer.Read())
             {
                 blogDisplayCareer += string.Format("<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
-                                                    "<div class='card' style='width: 100%;'>" +
-                                                        "<img src='{0}' class='card-img-top' alt='...'>" +
+                                                    "<div class='card' style='width: 100%; height: 100%;'>" +
+                                                        "<img src='Uploads/{0}' style='width:100%; height:400px;' class='card-img-top' alt='...'>" +
                                                         "<div class='card-body text-center'>" +
                                                             "<p class='card-text font-weight-bold'>{1}</p>" +
                                                             "<p class='text-muted text-center'>{2}</p>" +
