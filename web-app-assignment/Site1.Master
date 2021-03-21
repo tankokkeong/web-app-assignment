@@ -196,22 +196,22 @@
                        
                         <asp:Label ID="lblAboutUs2" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
-                           About Us
+                            <a href="About Us.aspx" class="text-lightblue text-decoration-none">About Us</a>                           
                         </div>
 
                         <asp:Label ID="lblPrivacyPolicy" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
-                           Privacy Policy
+                            <a href="privacy_policy.aspx" class="text-lightblue text-decoration-none">Privacy Policy</a>                          
                         </div>
 
                         <asp:Label ID="lblCareerCenter" runat="server"></asp:Label>
                         <div class="text-lightblue mt-2 footer-nav">
-                            Career Center
+                            <a href="Career.aspx" class="text-lightblue text-decoration-none">Career Center</a>
                         </div>
 
                         <asp:Label ID="lblContactUs" runat="server"></asp:Label>
                          <div class="text-lightblue mt-2 footer-nav">
-                            Contact Us
+                             <a href="contact-us.aspx" class="text-lightblue text-decoration-none">Contact Us</a>
                         </div>
 
                         <asp:Label ID="lblHelp" runat="server"></asp:Label>

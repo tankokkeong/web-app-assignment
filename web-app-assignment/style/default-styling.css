@@ -83,6 +83,10 @@ footer {
     margin-top:20px;
 }
 
+.footer-nav a:hover{
+    color:white!important;
+}
+
 .btn-chat {
     border: none;
     text-transform: uppercase;
