@@ -79,11 +79,13 @@
     <Content Include="admin\css\admin-management.css" />
     <Content Include="admin\css\client-details.css" />
     <Content Include="admin\css\contact-message.css" />
+    <Content Include="admin\css\create-blogs.css" />
     <Content Include="admin\css\dashboard.css" />
     <Content Include="admin\css\aboutUs.css" />
     <Content Include="admin\css\career.css" />
     <Content Include="admin\css\contactUs.css" />
     <Content Include="admin\css\default.css" />
+    <Content Include="admin\css\edit-blog.css" />
     <Content Include="admin\css\helpCenter.css" />
     <Content Include="admin\css\LiveChat.css" />
     <Content Include="admin\css\LiveChatDashboard.css" />
