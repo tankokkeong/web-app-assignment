@@ -14,14 +14,36 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string displayLike = "";
 
+            string displayHeader = "";
+            string displayLike = "";
+            
             SqlConnection con = new SqlConnection(strcon);
+
+            //Blog description Header
+            var blog_id = Request.QueryString["blog"] ?? "";
+
+            string sqlHeader = @"SELECT blog_title FROM BlogPost WHERE deleted_at IS NULL AND blog_id = @blog_id";
+            SqlCommand cmdHeader = new SqlCommand(sqlHeader, con);
+            cmdHeader.Parameters.AddWithValue("@blog_id", blog_id);
+
+            con.Open();
+            SqlDataReader drHeader = cmdHeader.ExecuteReader();
+
+            if(drHeader.Read())
+            {
+                displayHeader += string.Format("<h2>{0}</h2>",drHeader["blog_title"]);
+            }
+            drHeader.Close();
+
+            //Blog Description Content
+            
+
+
 
             string sqlLike = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image, last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
 
             SqlCommand cmdLike = new SqlCommand(sqlLike, con);
-            con.Open();
 
             SqlDataReader drLike = cmdLike.ExecuteReader();
 
@@ -45,7 +67,9 @@ namespace web_app_assignment
             drLike.Close();
             con.Close();
 
+            litResultHeader.Text = displayHeader;
             litResultLike.Text = displayLike;
+            
         }
     }
 }

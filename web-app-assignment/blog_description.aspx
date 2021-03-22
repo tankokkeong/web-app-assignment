@@ -14,10 +14,12 @@
     <div class="blogDescription">
          
         <div class="blogDescriptionHeader">
-            <h2>The Ultimate Elevator Pitch For Fresh Graduates</h2>
+            <%-- <h2>The Ultimate Elevator Pitch For Fresh Graduates</h2> --%>
+            <asp:Literal ID="litResultHeader" runat="server"></asp:Literal>
         </div>
          <div class="blogDescriptionBody"> 
-         
+             <asp:Label ID="lblDescription" runat="server" Text=""></asp:Label>
+
             <h3>You Might Also Like</h3>
 
             <div class="common-list-container">

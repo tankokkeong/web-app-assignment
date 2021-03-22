@@ -27,7 +27,7 @@
      <form runat="server">
 
      <div class="table-container">
-        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvContactMessage_RowDataBound" CssClass="table table-striped table-bordered" >
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvContactMessage_RowDataBound" CssClass="table table-striped table-bordered" AllowPaging="false">
             <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
             <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
             <Columns>
