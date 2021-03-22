@@ -85,6 +85,7 @@
     <Content Include="admin\css\career.css" />
     <Content Include="admin\css\contactUs.css" />
     <Content Include="admin\css\default.css" />
+    <Content Include="admin\css\display-blogs.css" />
     <Content Include="admin\css\edit-blog.css" />
     <Content Include="admin\css\helpCenter.css" />
     <Content Include="admin\css\LiveChat.css" />
@@ -96,6 +97,7 @@
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
     <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\display-blogs.aspx" />
     <Content Include="admin\edit-blogs.aspx" />
     <Content Include="admin\edit_aboutUs.aspx" />
     <Content Include="admin\edit_career.aspx" />
@@ -2008,6 +2010,13 @@
     </Compile>
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\display-blogs.aspx.cs">
+      <DependentUpon>display-blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\display-blogs.aspx.designer.cs">
+      <DependentUpon>display-blogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\edit-blogs.aspx.cs">
       <DependentUpon>edit-blogs.aspx</DependentUpon>

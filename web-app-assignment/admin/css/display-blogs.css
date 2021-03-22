@@ -1,0 +1,66 @@
+﻿.display-blogpost-container {
+    background-color: white;
+    padding: 20px;
+}
+
+.blogpost-search-container{
+    margin:20px 0;
+    max-width:300px;
+    
+}
+
+.blogpost-search-bar input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.blogpost-search-bar button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+    .blogpost-search-bar button:hover {
+        background: #0b7dda;
+    }
+
+.blogpost-search-bar::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.post-table-container{
+    width:100%;
+}
+
+.table-head-title {
+    text-align:center;
+   
+}
+
+.content-blog {
+    text-align: center;
+}
+
+.post-table-container .action-icon {
+    text-align:center;
+}
+
+.action-icon .action-icon-link{
+    margin:0 10px;
+}
+
+.eye-display{
+    color:black;
+}
