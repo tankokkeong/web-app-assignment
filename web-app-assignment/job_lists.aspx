@@ -5,7 +5,8 @@
     <link href="style/job_lists.css" rel="stylesheet" type="text/css"/>
     </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  <div class="JobListContents">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
+    <div class="JobListContents">
         <div class="JobListContentsBackGroundImage">
             <div class="JobListContentsImagePosition">
                 <img src="images/JobsList/search.jpg" alt="searchBackground" class="JobListContentsImage"/>
@@ -33,8 +34,33 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control selectStates custom-select" id="selectStates" multiple="multiple" onchange="addLocation();">
+                                    <option value="Johor">Johor</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                    <option value="Labuan">Labuan</option>
+                                    <option value="Melacca">Melacca</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Pulau Pinang">Pulau Pinang</option>
+                                    <option value="Putrajaya">Putrajaya</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                </select>
+                                <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
                             </div>
+                            <script>
+                                $("#selectStates").select2({
+                                    placeholder: "Select Location or Write Location",
+                                    allowClear: true,
+                                    tags: true,
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="form-group JobListContentsBackgroundInputs">
@@ -91,7 +117,7 @@
                     </div>
                     <div class="PageSizeLimit">
                         Limit
-                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="true" runat="server">
+                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white PageSizeLimitPosition" AutoPostBack="true" runat="server">
                             <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="10">10</asp:ListItem>
                             <asp:ListItem Value="15">15</asp:ListItem>
@@ -105,13 +131,6 @@
     </div>
 
     <script type="text/javascript">
-        $(".selectStates").select2({
-            placeholder: "Select Location or Write Location",
-            allowClear: true,
-            tags: true,
-        });
-
-
         $('.jobType').select2({
             placeholder: "Job Type",
         });
@@ -132,6 +151,49 @@
 
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;
+        }
+
+        function getSelectedIndustry() {
+            var selected_industry = document.getElementById("ContentPlaceHolder1_txtLocation").value.split(",");
+            var select2_input = document.getElementById("selectStates");
+
+            //Add Customize creation for the users
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                //If the selected value didnt exist in the current option
+                if (document.getElementById(selected_industry[i]) == null) {
+                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                }
+            }
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (document.getElementById(selected_industry[i]) != null) {
+                    document.getElementById(selected_industry[i]).selected = true;
+                }
+
+            }
+
+        }
+
+        function addLocation() {
+            var selected_industry = $('#selectStates').select2('data');
+            var industry_input = document.getElementById("ContentPlaceHolder1_txtLocation");
+
+            //Clear previous input
+            industry_input.value = "";
+
+            for (var i = 0; i < selected_industry.length; i++) {
+
+                if (i === 0) {
+                    industry_input.value = selected_industry[i].text
+                }
+                else {
+                    industry_input.value = industry_input.value + "," + selected_industry[i].text;
+                    console.log(industry_input.value)
+                }
+
+            }
         }
     </script>
     

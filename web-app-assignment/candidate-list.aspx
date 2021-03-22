@@ -76,7 +76,7 @@
                     </div>
                     <div class="PageSizeLimit">
                         Limit
-                        <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="True">
+                        <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="btn btn-sm bg-lightgreen text-white PageSizeLimitPosition" AutoPostBack="true">
                             <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="10">10</asp:ListItem>
                             <asp:ListItem Value="15">15</asp:ListItem>
@@ -90,6 +90,7 @@
     </div>
 
     <script type="text/javascript">
+        console.log(ContentPlaceHolder1_ddlPageSize.value);
         $(".selectSkills").select2({
             placeholder: "Skills",
             allowClear: true,
