@@ -91,10 +91,10 @@
                     </div>
                     <div class="PageSizeLimit">
                         Limit
-                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" runat="server">
+                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="true" runat="server">
+                            <asp:ListItem Value="5">5</asp:ListItem>
+                            <asp:ListItem Value="10">10</asp:ListItem>
                             <asp:ListItem Value="15">15</asp:ListItem>
-                            <asp:ListItem Value="30">30</asp:ListItem>
-                            <asp:ListItem Value="60">60</asp:ListItem>
                         </asp:DropDownList>
                         Per Page
                     </div>

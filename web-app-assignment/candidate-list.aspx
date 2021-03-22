@@ -49,7 +49,7 @@
                             <div class="JobListContentsIndustryDropdown">
                                 <asp:ListBox ID="lstSearchIndustry" runat="server" CssClass="form-control jobIndustry custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
                             </div>
-                        </div>
+                        </div>  
                     </div>
                     <div class="form-group JobListContentsBackgroundInputs">
                         <div class="input-group mb-3">
@@ -76,10 +76,10 @@
                     </div>
                     <div class="PageSizeLimit">
                         Limit
-                        <asp:DropDownList ID="ddlPageSize" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" runat="server">
+                        <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="btn btn-sm bg-lightgreen text-white dropdown-toggle PageSizeLimitPosition" AutoPostBack="True">
+                            <asp:ListItem Value="5">5</asp:ListItem>
+                            <asp:ListItem Value="10">10</asp:ListItem>
                             <asp:ListItem Value="15">15</asp:ListItem>
-                            <asp:ListItem Value="30">30</asp:ListItem>
-                            <asp:ListItem Value="60">60</asp:ListItem>
                         </asp:DropDownList>
                         Per Page
                     </div>
@@ -119,7 +119,7 @@
         }
 
         function directDetails(count) {
-            window.location = 'user-profile.aspx?seeker_id=' + count;
+            window.location = 'user-profile.aspx?view=' + count;
         }
 
         function updateTextInput(val) {

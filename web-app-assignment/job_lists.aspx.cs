@@ -49,6 +49,7 @@ namespace web_app_assignment
                 lstSearchLocation.DataSource = LocationStatesItems;
                 lstSearchLocation.DataBind();
             }
+
             try
             {
                 SqlConnection con = new SqlConnection(strcon);
@@ -59,14 +60,56 @@ namespace web_app_assignment
 
                 string job_title = Request.QueryString["job_title"] ?? "";
                 string location = Request.QueryString["location"] ?? "";
+                string page_num = Request.QueryString["page"];
 
-                string sql = "SELECT TOP 15 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
+                int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedItem.Value);
+
+                int current_page = Convert.ToInt32(page_num);
+
+                int end_page = current_page * limit_per_page;
+                int first_page = end_page - limit_per_page + 1;
+
+                string sql = "";
+
+                if (current_page <= 0)
+                {
+                    if (ddlPageSize.SelectedItem.Value == "5")
+                    {
+                        lbl_JobListContentsAllCompanies.Text = "";
+                        sql = "SELECT TOP 5 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
+                    }
+                    else if (ddlPageSize.SelectedItem.Value == "10")
+                    {
+                        lbl_JobListContentsAllCompanies.Text = "";
+                        sql = "SELECT TOP 10 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
+                    }
+                    else if (ddlPageSize.SelectedItem.Value == "15")
+                    {
+                        lbl_JobListContentsAllCompanies.Text = "";
+                        sql = "SELECT TOP 15 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
+                    }
+                }
+                else
+                {
+                    sql = "SELECT * FROM (SELECT ROW_NUMBER() Over (Order By post_id) AS ROW_NUMBER, * FROM JobPost JP) t , Recruiter R WHERE t.recruiter_id = R.recruiter_id AND t.ROW_NUMBER BETWEEN @first_page AND @end_page AND t.deleted_at IS NULL;";
+                }
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
+                cmd.Parameters.AddWithValue("@first_page", first_page);
+                cmd.Parameters.AddWithValue("@end_page", end_page);
+
                 SqlDataReader dr = cmd.ExecuteReader();
 
-                int count = 1;
+                // ensure current page isn't out of range
+                if (current_page < 1)
+                {
+                    current_page = 1;
+                }
+                else if (current_page > end_page)
+                {
+                    current_page = end_page;
+                }
 
                 while (dr.Read())
                 {
@@ -104,14 +147,13 @@ namespace web_app_assignment
                                     "</div>" +
                                     "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
                                         "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
-                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + count + ")'> More Details </button> " +
+                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + dr["post_id"] + ")'> More Details </button> " +
                                             "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(" + dr["recruiter_id"].ToString() +")'> Contact Now </button> " +
                                         "</div>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
-                    count++;
                 }
 
                 con.Close();
@@ -125,94 +167,6 @@ namespace web_app_assignment
         protected void btn_JobListContentsBackgroundInputsSearchButton_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-
-                string sql = "";
-
-                if (ddlPageSize.SelectedItem.Value == "15")
-                {
-                    lbl_JobListContentsAllCompanies.Text = "";
-                    sql = "SELECT TOP 15 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
-                }
-                else if (ddlPageSize.SelectedItem.Value == "30")
-                {
-                    lbl_JobListContentsAllCompanies.Text = "";
-                    sql = "SELECT TOP 30 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
-                }
-                else if (ddlPageSize.SelectedItem.Value == "60")
-                {
-                    lbl_JobListContentsAllCompanies.Text = "";
-                    sql = "SELECT TOP 60 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL;";
-                }
-
-                SqlCommand cmd = new SqlCommand(sql, con);
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                int count = 1;
-
-                while (dr.Read())
-                {
-                    lbl_JobListContentsAllCompanies.Text +=
-                        "<div class='col-sm-6 mt-3'>" +
-                            "<div class='JobListContentsAllCompaniesBoxes'> " +
-                                "<div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'>" +
-                                    "<img src='" + dr["company_photo"].ToString() + "' alt='company' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsStars'>" +
-                                        "<%--Stars Here--%>" +
-                                        "<p>Stars</p>" +
-                                    "</div>" +
-                                "</div>" +
-                                "<div class='JobListContentsAllCompaniesBoxesDetails'>" +
-                                    "<h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>" +
-                                        dr["company_name"].ToString() +
-                                    "</h4>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsBody'>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["job_title"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["location"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + "MYR " + dr["salary"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["job_type"].ToString() + "</p>" +
-                                        "</div>" +
-                                    "</div>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
-                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + count + ")'> More Details </button> " +
-                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(" + dr["recruiter_id"].ToString() + ")'> Contact Now </button> " +
-                                        "</div>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</div>" +
-                        "</div>";
-                    count++;
-                }
-
-                con.Close();
-            }
-            catch (Exception error)
-            {
-                Response.Write("<script>alert('" + error.Message + "');</script>");
-            }
         }
     }
 }
