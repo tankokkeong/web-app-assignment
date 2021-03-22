@@ -159,7 +159,7 @@ namespace web_app_assignment.admin
                 while (drTopCompany.Read())
                 {
                     company += string.Format("<div class='media'>" +
-                                                "<img src='{0}' class='mr-3 top-company-pic'/>" +
+                                                "<img src='../Uploads/{0}' class='mr-3 top-company-pic'/>" +
                                                 "<div class='media-body'>" +
                                                     "<h5 class='mt-0'>{1}</h5>" +
                                                     "<p class='text-secondary'>{2}</p>" +
