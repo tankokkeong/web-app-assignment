@@ -71,11 +71,10 @@
                         <div class="dividerSignUplines">
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
-                    </div>
-                
-                    <div class="form-group">
-                        <%-- Gmail and Facebook Button Comes here --%>
-                        <button type="button" id="btnSignIn" runat="server" class="btn btn-danger" onserverclick="btnSignIn_Click">Sign in With Google</button>                     
+                        <div class="form-group dividerLoginGoogle">
+                            <%-- Gmail and Facebook Button Comes here --%>
+                            <button type="button" id="btnSignIn" runat="server" class="btn btn-danger googleSignIn" onserverclick="btnSignIn_Click">Sign in With Google</button>                     
+                        </div>
                     </div>
 
                     <p class="inputsFormSign_SignUpFree">
@@ -136,6 +135,15 @@
                                     <div class="inputsFormSign_LoginFooter">
                                          <asp:Button ID="Recruiter_SignUpButton" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Sign Up" ValidationGroup="recruiter" OnClick="Recruiter_SignUpButton_Click"/>
                                     </div>
+                            
+                    <div class="dividerSignUp">
+                        <div class="dividerSignUplines">
+                            <p class="dividerSignUplinesContent">OR</p>
+                        </div>
+                        <div>
+                            <button type="button" id="googleRecruiter" runat="server" class="btn btn-danger googleSignIn" onserverclick="btnSignUp_Click">Sign Up With Google</button>                     
+                        </div>
+                    </div>  
                             </div><%-- Recruiter Register Section End --%>
 
 
@@ -177,18 +185,18 @@
                                     <div class="inputsFormSign_LoginFooter">
                                         <asp:Button ID="JobSeeker_SignUpButton" runat="server" Text="Sign Up" ClientIDMode="Static" CssClass="btn btn-info" OnClick="JobSeeker_SignUpButton_Click" validationgroup="seeker"/>
                                     </div>
-                            </div><%-- Job Seeker Register Section End --%>
                             
-                        </div>
-                    
-                    </div>
                     <div class="dividerSignUp">
                         <div class="dividerSignUplines">
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
-                    <div>
-                        <button type="button" id="btnSignUp" runat="server" class="btn btn-danger" onserverclick="btnSignUp_Click">Sign Up With Google</button>                     
-                    </div>
+                        <div>
+                            <button type="button" id="googleSeeker" runat="server" class="btn btn-danger googleSignIn" onserverclick="btnSignUp_Click">Sign Up With Google</button>                     
+                        </div>
+                    </div>  
+                            </div><%-- Job Seeker Register Section End --%>
+                        </div>
+                    
                     </div>
                 
 

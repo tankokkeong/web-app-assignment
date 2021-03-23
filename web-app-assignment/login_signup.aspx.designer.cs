@@ -186,6 +186,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Button Recruiter_SignUpButton;
 
         /// <summary>
+        /// googleRecruiter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton googleRecruiter;
+
+        /// <summary>
         /// sign_seeker_FullName control.
         /// </summary>
         /// <remarks>
@@ -276,12 +285,12 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Button JobSeeker_SignUpButton;
 
         /// <summary>
-        /// btnSignUp control.
+        /// googleSeeker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSignUp;
+        protected global::System.Web.UI.HtmlControls.HtmlButton googleSeeker;
     }
 }
