@@ -37,9 +37,17 @@ namespace web_app_assignment
             drHeader.Close();
 
             //Blog Description Content
-            
+            string sqlContent = @"SELECT * FROM BlogPost WHERE blog_id = @blog_id AND deleted_at IS NULL";
 
+            SqlCommand cmdContent = new SqlCommand(sqlContent, con);
+            cmdContent.Parameters.AddWithValue("@blog_id", blog_id);
 
+            SqlDataReader drContent = cmdContent.ExecuteReader();
+            while(drContent.Read())
+            {
+                lblDescription.Text = drContent["blog_content"].ToString();
+            }
+            drContent.Close();
 
             string sqlLike = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image, last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
 
