@@ -370,7 +370,7 @@
             }
 
             //Redirect to job list page
-            window.location.href = "job_lists.aspx?title=" + job_title + "&location=" + job_location + "&type=" + job_type;
+            window.location.href = "job_lists.aspx?job_title=" + job_title + "&location=" + job_location + "&job_type=" + job_type;
 
         }
     </script>

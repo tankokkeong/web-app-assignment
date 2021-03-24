@@ -69,13 +69,27 @@
                                     <img src="images/JobsList/salary.png" alt="search" class="JobListContentsSalaryImage"/>
                                 </span>
                             </div>
-                            <div class="JobListContentsSalaryRange">
-                                <p>
-                                  <label for="amount">Salary Range:</label>
-                                    <input id="txt_amount" class="amount"/>
+
+                            <div class="JobListContentsSalaryRange row">
+                                <p class="col amount">
+                                  <label>Salary Range:</label>
+                                    RM <input id="txt_amountLeft" type="text" value="0" readonly="readonly"/> -
+                                    RM <input id="txt_amountRight" type="text" value="50000" readonly="readonly"/>
                                 </p>
-                                <div id="slider-range"></div>
+                                <div class="col middle">
+                                    <div class="multi-range-slider">
+                                        <input type="range" id="input-left" class="rangeSlider" min="0" max="50000" value="0"/>
+                                        <input type="range" id="input-right" class="rangeSlider" min="0" max="50000" value="50000"/>
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <button type="button" id="btn_JobListContentsBackgroundInputsSearchButton" class="JobListContentsBackgroundInputsSearchButton btn btn-info" onclick="JobListSearch()">Search</button>
@@ -131,57 +145,106 @@
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;
         }
+    </script>
 
-        function getSelectedIndustry() {
-            var selected_industry = document.getElementById("ContentPlaceHolder1_txtLocation").value.split(",");
-            var select2_input = document.getElementById("selectStates");
+    <script>
+        var inputLeft = document.getElementById("input-left");
+        var inputRight = document.getElementById("input-right");
 
-            //Add Customize creation for the users
-            for (var i = 0; i < selected_industry.length; i++) {
+        var thumbLeft = document.querySelector(".slider > .thumb.left");
+        var thumbRight = document.querySelector(".slider > .thumb.right");
+        var range = document.querySelector(".slider > .range");
 
-                //If the selected value didnt exist in the current option
-                if (document.getElementById(selected_industry[i]) == null) {
-                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
-                }
-            }
+        function setLeftValue() {
+            var _this = inputLeft,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
 
-            for (var i = 0; i < selected_industry.length; i++) {
+            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
 
-                if (document.getElementById(selected_industry[i]) != null) {
-                    document.getElementById(selected_industry[i]).selected = true;
-                }
+            var percent = ((_this.value - min) / (max - min)) * 100;
 
-            }
-
+            thumbLeft.style.left = percent + "%";
+            range.style.left = percent + "%";
         }
+        setLeftValue();
+
+        function setRightValue() {
+            var _this = inputRight,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
+
+            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+            var percent = ((_this.value - min) / (max - min)) * 100;
+
+            thumbRight.style.right = (100 - percent) + "%";
+            range.style.right = (100 - percent) + "%";
+        }
+        setRightValue();
+
+        inputLeft.addEventListener("input", setLeftValue);
+        inputRight.addEventListener("input", setRightValue); 
+
+        inputLeft.addEventListener("mouseover", function () {
+            thumbLeft.classList.add("hover");
+        })
+
+        inputLeft.addEventListener("mouseout", function () {
+            thumbLeft.classList.remove("hover");
+        })
+
+        inputLeft.addEventListener("mousedown", function () {
+            thumbLeft.classList.add("active");
+        })
+
+        inputLeft.addEventListener("mouseup", function () {
+            thumbLeft.classList.remove("active");
+        })
+
+        inputRight.addEventListener("mouseover", function () {
+            thumbRight.classList.add("hover");
+        })
+
+        inputRight.addEventListener("mouseout", function () {
+            thumbRight.classList.remove("hover");
+        })
+
+        inputRight.addEventListener("mousedown", function () {
+            thumbRight.classList.add("active");
+        })
+
+        inputRight.addEventListener("mouseup", function () {
+            thumbRight.classList.remove("active");
+        })
     </script>
-    
-    <script>   
-        $(function () {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 50000,
-                values: [0, 50000],
-                slide: function (event, ui) {
-                    $(".amount").val("RM " + ui.values[0] + " - RM " + ui.values[1]);
-                }
+
+    <script>
+        $(document).ready(function () {
+            $("#input-left").on("input change", function () {
+                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
+                console.log(document.getElementById('txt_amountLeft').value);
             });
-            $(".amount").val("RM " + $("#slider-range").slider("values", 0) +
-                " - RM " + $("#slider-range").slider("values", 1));
         });
-    </script>
-    
+
+        $(document).ready(function () {
+            $("#input-right").on("input change", function () {
+                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
+            });
+        });
+    </script>    
     <script>
         function JobListSearch() {
-            var job_Title = document.getElementById('ContentPlaceHolder1_txt_SearchJobTitle').value;
-            var sliderInputs = document.getElementById('txt_amount').value;
             var location_selected = $('.selectStates').select2('data');
             var job_location = "";
             var jobType_selected = $('.jobType').select2('data');
             var job_type = "";
             var spec_selected = $('.jobSpec').select2('data');
             var job_spec = "";
+            var job_Title = document.getElementById('ContentPlaceHolder1_txt_SearchJobTitle').value;
+            var rangeFrom = document.getElementById('txt_amountLeft').value;
+            var rangeEnd = document.getElementById('txt_amountRight').value;
+
 
             for (var i = 0; i < location_selected.length; i++) {
 
@@ -214,11 +277,8 @@
             }
 
             //Redirect to job list page
-            window.location.href = "candidate-list.aspx?job_title=" + job_Title + "&location=" + job_location + "&job_type=" + job_type + "&job_specializations=" + job_spec;
+            window.location.href = "job_lists.aspx?job_title=" + job_Title + "&location=" + job_location +
+                "&job_type=" + job_type + "&job_spec=" + job_spec + "&rangeFrom=" + rangeFrom + "&rangeEnd=" + rangeEnd;
         }
     </script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 </asp:Content>

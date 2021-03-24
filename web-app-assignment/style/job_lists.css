@@ -44,19 +44,12 @@
     background-color:white;
     border-radius: 5px;
     padding: 0.5%;
-    margin-left: 0%;
+    margin-left: 0%!important;
 }
 
 .JobListContentsSalaryRange p {
     margin-left: 2.5%;
-    margin-top: .5%;
-}
-
-#slider-range {
-    width: 100%;
     margin-top: 2%;
-    margin-left: -5%;
-    margin-right: 5%;
 }
 
 .JobListContentsSalaryRangeHeader {
@@ -72,10 +65,15 @@
     width: 30%;
 }
 
-.amount {
+#txt_amountRight, #txt_amountLeft, .amount {
     color: #69A19A;
     font-weight: bold;
-    border-style:none;
+    border-style: none;
+    width: 10%;
+}
+
+.amount label {
+    color: black;
 }
 
 .JobListContentsBackgroundInputsSearchButton {
@@ -167,6 +165,93 @@
 
 .PageSizeLimit {
     margin-left: 82.5%;
+}
+
+.middle {
+    position: relative;
+    width: 95%;
+    max-width: 500px;
+    margin-left: -15%;
+    margin-right: 15%;
+}
+
+.slider {
+    position: relative;
+    z-index: 1;
+    height: 10px;
+    margin-top: 30px;
+}
+
+.slider > .track {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 5px;
+    background-color: #82A69B;
+}
+
+.slider > .range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    bottom: 0;
+    top: 0;
+    border-radius: 5px;
+    background-color: #0B8C7B;
+}
+
+.slider > .thumb {
+    position: absolute;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #0B8C7B;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(98, 0, 238, .1);
+    transition: box-shadow .3s ease-in-out;
+}
+
+.slider > .thumb.left {
+    left: 25%;
+    transform: translate(-15px, -10px);
+}
+
+.slider > .thumb.right {
+    right: 25%;
+    transform: translate(15px, -10px);
+}
+
+.slider > .thumb.hover {
+    box-shadow: 0 0 0 5px rgba(11,140,123, 0.3);
+}
+
+.slider > .thumb.active {
+    box-shadow: 0 0 0 10px rgba(11,140,123, 0.5);
+}
+
+input[type=range] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 2;
+    height: 10px;
+    width: 100%;
+    opacity: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    border: 0 none;
+    background-color: red;
+    -webkit-appearance:none;
 }
 
 @media screen {

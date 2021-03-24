@@ -69,9 +69,6 @@ namespace web_app_assignment
                 {
                     con.Open();
                 }
-
-                string job_title = Request.QueryString["job_title"] ?? "";
-                string location = Request.QueryString["location"] ?? "";
                 string page_num = Request.QueryString["page"];
 
                 int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedItem.Value);
@@ -89,16 +86,19 @@ namespace web_app_assignment
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 5 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
+                        sql = JobListSearchCriteria(sql);
                     }
                     else if (ddlPageSize.SelectedItem.Value == "10")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 10 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
+                        sql = JobListSearchCriteria(sql);
                     }
                     else if (ddlPageSize.SelectedItem.Value == "15")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 15 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
+                        sql = JobListSearchCriteria(sql);
                     }
                 }
                 else
@@ -106,6 +106,7 @@ namespace web_app_assignment
                     lbl_JobListContentsAllCompanies.Text = "";
                     sql = "SELECT * FROM (SELECT ROW_NUMBER() Over (Order By post_id) AS ROW_NUMBER, * FROM JobPost JP) t , Recruiter R WHERE" +
                         " t.recruiter_id = R.recruiter_id AND t.ROW_NUMBER BETWEEN @first_page AND @end_page AND t.deleted_at IS NULL";
+                    sql = JobListSearchCriteria(sql);
                 }
 
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -176,6 +177,42 @@ namespace web_app_assignment
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+        }
+        protected string JobListSearchCriteria(string sql)
+        {
+            string jobTitlequery = Request.QueryString["job_title"] ?? "";
+            string locationsquery = Request.QueryString["location"] ?? "";
+            string jobTypequery = Request.QueryString["job_type"] ?? "";
+            string JobSpecquery = Request.QueryString["job_spec"] ?? "";
+            string rangeFromquery = Request.QueryString["rangeFrom"] ?? "";
+            string rangeEndquery = Request.QueryString["rangeEnd"] ?? "";
+
+            if (jobTitlequery != "")
+            {
+                sql += " AND job_title LIKE '%" + jobTitlequery + "%'";
+            }
+
+            if (locationsquery != "")
+            {
+                sql += " AND location LIKE '%" + locationsquery + "%'";
+            }
+
+            if (jobTypequery != "")
+            {
+                sql += " AND job_type LIKE '%" + jobTypequery + "%'";
+            }
+
+            if (JobSpecquery != "")
+            {
+                sql += " AND job_specializations LIKE '%" + JobSpecquery + "%'";
+            }
+
+            if (rangeFromquery != "" && rangeEndquery != "")
+            {
+                sql += " AND salary BETWEEN " + rangeFromquery + " AND " + rangeEndquery;
+            }
+
+            return sql;
         }
     }
 }
