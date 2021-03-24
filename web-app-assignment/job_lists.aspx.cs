@@ -43,11 +43,22 @@ namespace web_app_assignment
                     "Part Time",
                 };
 
+                List<string> JobSpecialization = new List<string>
+                {
+                    "Design platform",
+                    "Front end",
+                    "Back end",
+                    "Full stack",
+                };
+
                 lstSearchJobType.DataSource = JobTypeItems;
                 lstSearchJobType.DataBind();
 
-                //lstSearchLocation.DataSource = LocationStatesItems;
-                //lstSearchLocation.DataBind();
+                lstSearchLocation.DataSource = LocationStatesItems;
+                lstSearchLocation.DataBind();
+
+                lstSearchJobSpec.DataSource = JobSpecialization;
+                lstSearchJobSpec.DataBind();
             }
 
             try
@@ -91,6 +102,7 @@ namespace web_app_assignment
                 }
                 else
                 {
+                    lbl_JobListContentsAllCompanies.Text = "";
                     sql = "SELECT * FROM (SELECT ROW_NUMBER() Over (Order By post_id) AS ROW_NUMBER, * FROM JobPost JP) t , Recruiter R WHERE t.recruiter_id = R.recruiter_id AND t.ROW_NUMBER BETWEEN @first_page AND @end_page AND t.deleted_at IS NULL;";
                 }
 
@@ -173,7 +185,7 @@ namespace web_app_assignment
                 {
                     con.Open();
                 }
-                string sql2 = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.job_title LIKE '" + txt_SearchJobTitle.Text + "%' OR JP.location LIKE '" + txtLocation.Text + "%' OR " +
+                string sql2 = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.job_title LIKE '" + txt_SearchJobTitle.Text + "%' OR JP.location LIKE '" + lstSearchLocation.Text + "%' OR " +
                     "JP.job_type LIKE '" + lstSearchJobType.Items + "%' OR JP.job_specializations LIKE '" + lstSearchJobSpec.Items + "%' AND JP.recruiter_id = R.recruiter_id AND deleted_at IS NULL;";
 
                 SqlCommand cmd = new SqlCommand(sql2, con);

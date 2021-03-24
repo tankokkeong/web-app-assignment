@@ -63,8 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" runat="server" Text="Search" OnClick="btn_JobListContentsBackgroundInputsSearchButton_Click" />
-                
+                <button id="btn_JobListContentsBackgroundInputsSearchButton" class="btn btn-info JobListContentsBackgroundInputsSearchButton" onclick="CandidateSearch()" type="button">Search</button>                
             </div>
         </div>
 
@@ -90,7 +89,6 @@
     </div>
 
     <script type="text/javascript">
-        console.log(ContentPlaceHolder1_ddlPageSize.value);
         $(".selectSkills").select2({
             placeholder: "Skills",
             allowClear: true,
@@ -125,6 +123,64 @@
 
         function updateTextInput(val) {
             document.getElementById('textInputMax').value = val;
+        }
+    </script>
+
+    <script>
+        function CandidateSearch() {
+            //Get Search Input
+            var location_selected = $('.selectStates').select2('data');
+            var job_location = "";
+            var skils_selected = $('.selectSkills').select2('data');
+            var job_skils = "";
+            var industry_selected = $('.jobIndustry').select2('data');
+            var job_industry = "";
+            var profession_selected = $('.jobProfession').select2('data');
+            var job_profession = "";
+
+            for (var i = 0; i < location_selected.length; i++) {
+
+                if (i === 0) {
+                    job_location = location_selected[i].text;
+                }
+                else {
+                    job_location = job_location + "," + location_selected[i].text;
+                }
+            }
+
+            for (var i = 0; i < skils_selected.length; i++) {
+
+                if (i === 0) {
+                    job_skils = skils_selected[i].text;
+                }
+                else {
+                    job_skils = job_skils + "," + skils_selected[i].text;
+                }
+            }
+
+            for (var i = 0; i < industry_selected.length; i++) {
+
+                if (i === 0) {
+                    job_industry = industry_selected[i].text;
+                }
+                else {
+                    job_industry = job_industry + "," + industry_selected[i].text;
+                }
+            }
+
+            for (var i = 0; i < profession_selected.length; i++) {
+
+                if (i === 0) {
+                    job_profession = profession_selected[i].text;
+                }
+                else {
+                    job_profession = job_profession + "," + profession_selected[i].text;
+                }
+            }
+
+            //Redirect to job list page
+            window.location.href = "candidate-list.aspx?skills=" + job_skils + "&location=" + job_location + "&prefer_industry=" + job_industry + "&profession=" + job_profession;
+
         }
     </script>
 </asp:Content>

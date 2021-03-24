@@ -159,13 +159,14 @@ footer {
     display: flex;
 }
 
-.LCusername {
+.LCusername, .LCadmin {
     display: none;
 }
 
 .sender-messagesContexts {
     display: flex;
     justify-content: flex-end;
+    position: relative;
 }
 
 .sender-messagesContents {
@@ -175,7 +176,8 @@ footer {
     padding: 10px;
     border-radius: 15px;
     margin: 15px;
-    position:relative;
+    position: relative;
+    overflow-wrap: break-word;
 }
 
 .replier-messagesContexts {

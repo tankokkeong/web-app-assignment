@@ -11,7 +11,9 @@ namespace web_app_assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> LocationStatesItems = new List<string>
+            if (!Page.IsPostBack){
+
+                List<string> LocationStatesItems = new List<string>
                 {
                     "Johor",
                     "Kedah",
@@ -31,8 +33,9 @@ namespace web_app_assignment
                     "Terengganu",
                 };
 
-            lstSearchLocation.DataSource = LocationStatesItems;
-            lstSearchLocation.DataBind();
+                lstSearchLocation.DataSource = LocationStatesItems;
+                lstSearchLocation.DataBind();
+            }
         }
 
         protected void btn_HomeSearchButton_Click(object sender, EventArgs e)

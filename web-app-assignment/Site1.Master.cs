@@ -253,7 +253,25 @@ namespace web_app_assignment
                 //Display Current Site information
                 getCurrentSiteJobDetails();
 
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string searchAdmin = "SELECT admin_email FROM Admin WHERE deleted_at IS NULL";
+
+                SqlCommand command2 = new SqlCommand(searchAdmin, con);
+
+                SqlDataReader dr = command2.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    txtAdmin.Text += dr["admin_email"].ToString() + " ";
+                }
+
+                con.Close();
             }
+
             catch (Exception error)
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");

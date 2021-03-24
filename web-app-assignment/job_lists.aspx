@@ -34,7 +34,8 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <select class="form-control selectStates custom-select" id="selectStates" multiple="multiple" onchange="addLocation();">
+                                <asp:ListBox ID="lstSearchLocation" CssClass="form-control selectStates custom-select" SelectionMode="Multiple" multiple="multiple" runat="server"></asp:ListBox>
+                                <%--<select class="form-control selectStates custom-select" id="selectStates" multiple="multiple" onchange="addLocation();">
                                     <option value="Johor">Johor</option>
                                     <option value="Kedah">Kedah</option>
                                     <option value="Kelantan">Kelantan</option>
@@ -52,15 +53,8 @@
                                     <option value="Selangor">Selangor</option>
                                     <option value="Terengganu">Terengganu</option>
                                 </select>
-                                <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
+                                <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>--%>  
                             </div>
-                            <script>
-                                $("#selectStates").select2({
-                                    placeholder: "Select Location or Write Location",
-                                    allowClear: true,
-                                    tags: true,
-                                });
-                            </script>
                         </div>
                     </div>
                     <div class="form-group JobListContentsBackgroundInputs">
@@ -131,6 +125,11 @@
     </div>
 
     <script type="text/javascript">
+        $(".selectStates").select2({
+            placeholder: "Select Location or Write Location",
+            allowClear: true,
+            tags: true,
+        });
         $('.jobType').select2({
             placeholder: "Job Type",
         });

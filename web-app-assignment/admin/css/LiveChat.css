@@ -54,7 +54,8 @@
 }
 
 .sender-messagesContexts {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .sender-messagesContents {
@@ -64,7 +65,7 @@
     padding: 10px;
     border-radius: 15px;
     margin: 15px;
-    margin-left: 650px;
+    overflow-wrap: break-word;
 }
 
 .replier-messagesContexts {
@@ -79,6 +80,7 @@
     margin: 15px;
     max-width: 25%;
     margin-left: 45px;
+    overflow-wrap: break-word;
 }
 
 .replier-messagesContentsName{

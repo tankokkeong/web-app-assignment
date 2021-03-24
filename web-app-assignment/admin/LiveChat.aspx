@@ -47,7 +47,7 @@
         <div class="sendMessages">
             <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
             <asp:Label ID="lblAdminName" class="LCusername" runat="server"></asp:Label>
-            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeyup="enterMessagesLiveChatAdmin()"/>
+            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
             <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
         </div>
     </div>
@@ -63,20 +63,20 @@
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         var time = today.getHours() + ":" + today.getMinutes();
         var sentTime = time + ' ' + date;
-        var count = 1;
 
         function sendMessage() {
             // get messages
             var message = document.getElementById("message").value;
 
-            //save in database
-            firebase.database().ref("adminMessages/" + logn + "/").push({
-                "sender": logn,
-                "message": message,
-                "timeSent": sentTime,
-                "messageNumber": count,
-            });
-            count++;
+            if (message != "") {
+                //save in database
+                firebase.database().ref("adminMessages/" + logn + "/").push({
+                    "sender": logn,
+                    "message": message,
+                    "timeSent": sentTime,
+                });
+                count++;
+            }
         }
 
         //listen for admin messages
