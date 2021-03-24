@@ -77,6 +77,7 @@
     <Content Include="admin\create-blogs.aspx" />
     <Content Include="admin\css\admin-details.css" />
     <Content Include="admin\css\admin-management.css" />
+    <Content Include="admin\css\blog-category-management.css" />
     <Content Include="admin\css\client-details.css" />
     <Content Include="admin\css\contact-message.css" />
     <Content Include="admin\css\create-blogs.css" />
@@ -143,6 +144,7 @@
     <Content Include="admin\message-details.aspx" />
     <Content Include="admin\signup.aspx" />
     <Content Include="admin\task-post.aspx" />
+    <Content Include="admin\blog-category-management.aspx" />
     <Content Include="blog-explore.aspx" />
     <Content Include="blog.aspx" />
     <Content Include="blog_description.aspx" />
@@ -2109,6 +2111,13 @@
     </Compile>
     <Compile Include="admin\task-post.aspx.designer.cs">
       <DependentUpon>task-post.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\blog-category-management.aspx.cs">
+      <DependentUpon>blog-category-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\blog-category-management.aspx.designer.cs">
+      <DependentUpon>blog-category-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="blog-explore.aspx.cs">
       <DependentUpon>blog-explore.aspx</DependentUpon>

@@ -1,0 +1,28 @@
+﻿.display-blogpost-container {
+    background-color: white;
+    padding: 20px;
+}
+
+.post-table-container {
+    width: 100%;
+}
+
+.table-head-title {
+    text-align: center;
+}
+
+.content-blog {
+    text-align: center;
+}
+
+.post-table-container .action-icon {
+    text-align: center;
+}
+
+.action-icon .action-icon-link {
+    margin: 0 10px;
+}
+
+.eye-display {
+    color: black;
+}
