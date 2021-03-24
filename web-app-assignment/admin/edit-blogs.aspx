@@ -7,7 +7,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <%-- Change navbar active --%>
+ <%-- Change navbar active --%>
     <script>
         $(document).ready(function () {
             navbarActive();
@@ -21,43 +21,52 @@
             $(dashboard).removeClass("active");
         });
     </script>
-    <div class="edit-blogs-container">
-        <div class="edit-blog-header">
-            <h2 class="edit-blog-header-title">
-                Edit Page
-            </h2>
+    
+  <div class="edit-blogs-container">
+        <div class="edit-header mb-3">
+            <h2>Edit Post</h2>
         </div>
-        <div class="edit-blog-content">
-            <h3 class="EditBlogsAdminBodyContentsHeader">
-                Blog 1
-            </h3>
-        </div>
-        
+
         <form runat="server">
-            <h3 class="mb-3 desc-title">Main Description</h3>
-            <div class="form-group">
-                <div class="EditBlogsAdminBodyDatabaseSpot">
-                    <div id="editor">
-                        <%--Database code comes here--%>
-                        <p>Hello World</p>
-                    </div>
+            <div class="form-group row">
+                <label for="staticTitle" class="col-sm-2 col-form-label">Post Title:</label>
+                <div class="col-sm-10">
+                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
+                    <asp:TextBox ID="txtID" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 
-            <div class="select-category">
-                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="ddlcategory w-100">
+            <div class="form-group row">
+                <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
+                <div class="col-sm-10">
+                        <div id="editor">
+                            <%--Database code comes here--%>
+                            <p>Hello World</p>
+                        </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticCategory" class="col-sm-2 col-form-label">Category:</label>
+                <div class="col-sm-10">              
+            
+                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
                     <asp:ListItem Selected="True" Value="0"> Blog Category </asp:ListItem>
                     <asp:ListItem Value="Interview"> Interview </asp:ListItem>
                     <asp:ListItem Value="Recruiter"> Recruiter </asp:ListItem>
                 </asp:DropDownList>
+            
+                </div>
             </div>
+                
 
-            <div class="EditBlogsAdminBodyButtonPosition">
-                <button type="submit" class="EditBlogsAdminBodyButton">UPDATE</button>
+            <div class="form-group text-center">
+                <a href="display-blogs.aspx" class="btn btn-secondary">Back</a>
+                <asp:Button ID="btnCreatePost" runat="server" Text="Update" class="btn btn-primary"/>
             </div>
         </form>
+    </div>       
         
-
         <script>
             ClassicEditor
                 .create(document.querySelector('#editor'))
@@ -65,5 +74,5 @@
                     console.error(error);
                 });
         </script>
-    </div>
+
 </asp:Content>

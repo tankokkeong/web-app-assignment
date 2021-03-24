@@ -4,7 +4,8 @@
     <title>Blog Posts</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="display-blogpost-container">
+    <form runat="server">
+  <div class="display-blogpost-container">
          <div class="blog-title">
                 <h3>Blog Posts</h3>
           </div>
@@ -42,7 +43,7 @@
                                      <div class="action-icon">
                                         <a href="#" class="action-icon-link"><i class="fa fa-eye fa-lg" style="color:black" aria-hidden="true"></i></a>
                                         <a href="edit-blogs.aspx" class="action-icon-link"><i class="fas fa-edit fa-lg"  style="color:black" aria-hidden="true"></i></a>
-                                        <a href="#" class="action-icon-link"><i class="fas fa-trash-alt fa-lg" style="color:black" aria-hidden="true"></i></a>
+                                        <a href="#" class="action-icon-link" data-toggle="modal" data-target="#deletePost" onclick="deleteAdmin()"><i class="fas fa-trash-alt fa-lg" style="color:black" aria-hidden="true"></i></a>
                                      </div>
                              
                                   </th>
@@ -54,6 +55,35 @@
                      </table>
                  </div>
     </div>
+    
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="examplePostLabel">Delete Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure you want to delete this post?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" />
+            <asp:TextBox ID="txtDeletePost" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </form>
+  
+    <script>
+        function deletePost() {
+            var delete_post = document.getElementById("ContentPlaceHolder1_txtDeletePost");
+
+        }
+    </script>
         
     
 

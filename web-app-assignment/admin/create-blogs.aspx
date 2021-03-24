@@ -21,43 +21,54 @@
             $(dashboard).removeClass("active");
         });
     </script>
-    <div class="create-blogs-container">
-        <div class="create-blog-header">
-            <h2 class="create-blog-header-title">
-                Create Page
-            </h2>
+    
+  <div class="create-blogs-container">
+        <div class="create-header mb-3">
+            <h2>Create Post</h2>
         </div>
-        <div class="create-blog-content">
-            <h3 class="CreateBlogsAdminBodyContentsHeader">
-                Blog 1
-            </h3>
-        </div>
-        
+
         <form runat="server">
-            <h3 class="mb-3 desc-title">Main Description</h3>
-            <div class="form-group">
-                <div class="CreateBlogsAdminBodyDatabaseSpot">
-                    <div id="editor">
-                        <%--Database code comes here--%>
-                        <p>Hello World</p>
+            <div class="form-group row">
+                <label for="staticTitle" class="col-sm-2 col-form-label">Post Title:</label>
+                <div class="col-sm-10">
+                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
+                    <asp:TextBox ID="txtID" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
+                <div class="col-sm-10">
+                    <div class="EditBlogsAdminBodyDatabaseSpot">
+                        <div id="editor">
+                            <%--Database code comes here--%>
+                            <p>Hello World</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="select-category">
-                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="ddlcategory w-100">
+            <div class="form-group row">
+                <label for="staticCategory" class="col-sm-2 col-form-label">Category:</label>
+                <div class="col-sm-10">              
+            
+                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
                     <asp:ListItem Selected="True" Value="0"> Blog Category </asp:ListItem>
                     <asp:ListItem Value="Interview"> Interview </asp:ListItem>
                     <asp:ListItem Value="Recruiter"> Recruiter </asp:ListItem>
                 </asp:DropDownList>
+            
+                </div>
             </div>
+                
 
-            <div class="CreateBlogsAdminBodyButtonPosition">
-                <button type="submit" class="CreateBlogsAdminBodyButton">POST ARTICLE</button>
+            <div class="form-group text-center">
+                <a href="display-blogs.aspx" class="btn btn-secondary">Back</a>
+                <asp:Button ID="btnCreatePost" runat="server" Text="Update" class="btn btn-primary"/>
             </div>
         </form>
+    </div>       
         
-
         <script>
             ClassicEditor
                 .create(document.querySelector('#editor'))
@@ -65,5 +76,4 @@
                     console.error(error);
                 });
         </script>
-    </div>
 </asp:Content>

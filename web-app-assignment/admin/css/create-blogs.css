@@ -3,52 +3,7 @@
     padding: 2.5%;
 }
 
-.edit-blog-header {
-    font-style: italic;
-    margin-bottom: 25px;
-}
 
-form .desc-title {
-    font-size: 15px;
-    font-style: italic;
-}
 
-.create-blog-content {
-    border: 3px solid #0B8C7B;
-    background-color: white;
-    margin-bottom: 2.5%;
-}
 
-.CreateBlogsAdminBodyContentsHeader {
-    padding: 1%;
-}
 
-.CreateBlogsAdminBodyDatabaseSpot {
-    border: 3px solid #0B8C7B;
-    background-color: white;
-    margin-bottom: 2.5%;
-    margin-top: -.5%;
-}
-
-.CreateBlogsAdminBodyButtonPosition {
-    width: 100%;
-}
-
-.select-category .ddlcategory {
-    border: 3px solid #0B8C7B;
-    margin-bottom: 15px;
-    font-size: 20px;
-}
-
-.CreateBlogsAdminBodyButton {
-    background-color: #0B8C7B;
-    color: white;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    border-radius: 5px;
-    padding: 1%;
-}
-
-    .CreateBlogsAdminBodyButton:hover {
-        opacity: 80%;
-    }
