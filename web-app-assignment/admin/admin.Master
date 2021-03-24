@@ -161,7 +161,7 @@
 
                   <ul class="treeview-menu">
                     <li><a class="treeview-item" href="display-blogs.aspx"><i class="icon fa fa-circle-o"></i>Blog Post</a></li>
-                    <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>Blog Category</a></li>
+                    <li><a class="treeview-item" href="blog-category-management.aspx"><i class="icon fa fa-circle-o"></i>Blog Category</a></li>
                   </ul>
                 </li>
 
