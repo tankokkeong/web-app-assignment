@@ -35,25 +35,6 @@
                             </div>
                             <div class="JobListContentsLocationDropdown">
                                 <asp:ListBox ID="lstSearchLocation" CssClass="form-control selectStates custom-select" SelectionMode="Multiple" multiple="multiple" runat="server"></asp:ListBox>
-                                <%--<select class="form-control selectStates custom-select" id="selectStates" multiple="multiple" onchange="addLocation();">
-                                    <option value="Johor">Johor</option>
-                                    <option value="Kedah">Kedah</option>
-                                    <option value="Kelantan">Kelantan</option>
-                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
-                                    <option value="Labuan">Labuan</option>
-                                    <option value="Melacca">Melacca</option>
-                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                    <option value="Pahang">Pahang</option>
-                                    <option value="Perak">Perak</option>
-                                    <option value="Perlis">Perlis</option>
-                                    <option value="Pulau Pinang">Pulau Pinang</option>
-                                    <option value="Putrajaya">Putrajaya</option>
-                                    <option value="Sabah">Sabah</option>
-                                    <option value="Sarawak">Sarawak</option>
-                                    <option value="Selangor">Selangor</option>
-                                    <option value="Terengganu">Terengganu</option>
-                                </select>
-                                <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>--%>  
                             </div>
                         </div>
                     </div>
@@ -91,14 +72,13 @@
                             <div class="JobListContentsSalaryRange">
                                 <p>
                                   <label for="amount">Salary Range:</label>
-
-                                    <asp:TextBox ID="txt_amount" CssClass="amount" runat="server" BorderStyle="None"></asp:TextBox>
+                                    <input id="txt_amount" class="amount"/>
                                 </p>
                                 <div id="slider-range"></div>
                             </div>
                         </div>
                     </div>
-                    <asp:Button ID="btn_JobListContentsBackgroundInputsSearchButton" CssClass="JobListContentsBackgroundInputsSearchButton btn btn-info" OnClick="btn_JobListContentsBackgroundInputsSearchButton_Click" runat="server" Text="Search" />
+                    <button type="button" id="btn_JobListContentsBackgroundInputsSearchButton" class="JobListContentsBackgroundInputsSearchButton btn btn-info" onclick="JobListSearch()">Search</button>
                 </form>
             </div>
         </div>
@@ -174,46 +154,71 @@
             }
 
         }
-
-        function addLocation() {
-            var selected_industry = $('#selectStates').select2('data');
-            var industry_input = document.getElementById("ContentPlaceHolder1_txtLocation");
-
-            //Clear previous input
-            industry_input.value = "";
-
-            for (var i = 0; i < selected_industry.length; i++) {
-
-                if (i === 0) {
-                    industry_input.value = selected_industry[i].text
-                }
-                else {
-                    industry_input.value = industry_input.value + "," + selected_industry[i].text;
-                    console.log(industry_input.value)
-                }
-
-            }
-        }
     </script>
     
-    
-<script>
-    $(function () {
-        $("#slider-range").slider({
-            range: true,
-            min: 0,
-            max: 50000,
-            values: [0, 50000],
-            slide: function (event, ui) {
-                $(".amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-            }
+    <script>   
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 50000,
+                values: [0, 50000],
+                slide: function (event, ui) {
+                    $(".amount").val("RM " + ui.values[0] + " - RM " + ui.values[1]);
+                }
+            });
+            $(".amount").val("RM " + $("#slider-range").slider("values", 0) +
+                " - RM " + $("#slider-range").slider("values", 1));
         });
-        $(".amount").val("$" + $("#slider-range").slider("values", 0) +
-            " - $" + $("#slider-range").slider("values", 1));
-    });
-</script>
+    </script>
+    
+    <script>
+        function JobListSearch() {
+            var job_Title = document.getElementById('ContentPlaceHolder1_txt_SearchJobTitle').value;
+            var sliderInputs = document.getElementById('txt_amount').value;
+            var location_selected = $('.selectStates').select2('data');
+            var job_location = "";
+            var jobType_selected = $('.jobType').select2('data');
+            var job_type = "";
+            var spec_selected = $('.jobSpec').select2('data');
+            var job_spec = "";
+
+            for (var i = 0; i < location_selected.length; i++) {
+
+                if (i === 0) {
+                    job_location = location_selected[i].text;
+                }
+                else {
+                    job_location = job_location + "," + location_selected[i].text;
+                }
+            }
+
+            for (var i = 0; i < jobType_selected.length; i++) {
+
+                if (i === 0) {
+                    job_type = jobType_selected[i].text;
+                }
+                else {
+                    job_type = job_type + "," + jobType_selected[i].text;
+                }
+            }
+
+            for (var i = 0; i < spec_selected.length; i++) {
+
+                if (i === 0) {
+                    job_spec = spec_selected[i].text;
+                }
+                else {
+                    job_spec = job_spec + "," + spec_selected[i].text;
+                }
+            }
+
+            //Redirect to job list page
+            window.location.href = "candidate-list.aspx?job_title=" + job_Title + "&location=" + job_location + "&job_type=" + job_type + "&job_specializations=" + job_spec;
+        }
+    </script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </asp:Content>

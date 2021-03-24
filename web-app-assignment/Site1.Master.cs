@@ -258,16 +258,16 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                string searchAdmin = "SELECT admin_email FROM Admin WHERE deleted_at IS NULL";
+                //string searchAdmin = "SELECT admin_email FROM Admin WHERE deleted_at IS NULL";
 
-                SqlCommand command2 = new SqlCommand(searchAdmin, con);
+                //SqlCommand command2 = new SqlCommand(searchAdmin, con);
 
-                SqlDataReader dr = command2.ExecuteReader();
+                //SqlDataReader dr = command2.ExecuteReader();
 
-                while (dr.Read())
-                {
-                    txtAdmin.Text += dr["admin_email"].ToString() + " ";
-                }
+                //while (dr.Read())
+                //{
+                //    txtAdmin.Text += dr["admin_email"].ToString() + " ";
+                //}
 
                 con.Close();
             }

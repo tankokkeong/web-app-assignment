@@ -75,6 +75,7 @@
 .amount {
     color: #69A19A;
     font-weight: bold;
+    border-style:none;
 }
 
 .JobListContentsBackgroundInputsSearchButton {

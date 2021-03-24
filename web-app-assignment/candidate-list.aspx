@@ -83,6 +83,7 @@
                         Per Page
                     </div>
                     <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
+                    <asp:Label ID="txtPagination" runat="server"></asp:Label>
                 </div>
             </div>
         </div>
@@ -132,7 +133,7 @@
             var location_selected = $('.selectStates').select2('data');
             var job_location = "";
             var skils_selected = $('.selectSkills').select2('data');
-            var job_skils = "";
+            var job_skills = "";
             var industry_selected = $('.jobIndustry').select2('data');
             var job_industry = "";
             var profession_selected = $('.jobProfession').select2('data');
@@ -151,10 +152,10 @@
             for (var i = 0; i < skils_selected.length; i++) {
 
                 if (i === 0) {
-                    job_skils = skils_selected[i].text;
+                    job_skills = skils_selected[i].text;
                 }
                 else {
-                    job_skils = job_skils + "," + skils_selected[i].text;
+                    job_skills = job_skills + "," + skils_selected[i].text;
                 }
             }
 
@@ -179,7 +180,7 @@
             }
 
             //Redirect to job list page
-            window.location.href = "candidate-list.aspx?skills=" + job_skils + "&location=" + job_location + "&prefer_industry=" + job_industry + "&profession=" + job_profession;
+            window.location.href = "candidate-list.aspx?skills=" + job_skills + "&location=" + job_location + "&prefer_industry=" + job_industry + "&profession=" + job_profession;
 
         }
     </script>

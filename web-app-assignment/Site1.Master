@@ -357,12 +357,10 @@
         var verifyEmail = checkEmail.includes("@");
 
         //get admin email
-        var Ademail = String(document.getElementById("txtAdmin").value);
-        var Admailsplit = Ademail.split(' ');
-        var AdmailArr = Admailsplit.slice();
-        var Adlogn = AdmailArr.split('@');
-
-        console.log(Adlogn);
+        //var Ademail = String(document.getElementById("txtAdmin").value);
+        //var Admailsplit = Ademail.split(' ');
+        //var AdmailArr = Admailsplit.slice();
+        //var Adlogn = AdmailArr.split('@');
 
         if (verifyEmail) {
             //get recruiter and user email
@@ -425,22 +423,22 @@
         });
 
         //listen for admin messages
-        firebase.database().ref("adminMessages/" + logn + "/").on("child_added", function (snapshot) {
-            var html = "";
+        //firebase.database().ref("adminMessages/" + logn + "/").on("child_added", function (snapshot) {
+        //    var html = "";
 
-            if (snapshot.val().sender == logn) {
-                // give each message a unique ID
-                html += "<div class='sender-messagesContexts'>";
-                html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+        //    if (snapshot.val().sender == logn) {
+        //        // give each message a unique ID
+        //        html += "<div class='sender-messagesContexts'>";
+        //        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+        //        html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
 
-                html += "</div>";
+        //        html += "</div>";
 
-                document.getElementById("messages").innerHTML += html;
-                document.getElementById('message').value = "";
-            }
-        });
+        //        document.getElementById("messages").innerHTML += html;
+        //        document.getElementById('message').value = "";
+        //    }
+        //});
 
         //listen for incoming messages
         //firebase.database().ref("VisitorMessages/" + visitor + "/").on("child_added", function (snapshot) {
