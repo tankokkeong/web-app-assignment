@@ -25,7 +25,7 @@
                          </thead>
 
                          <tbody>
-                            <% for (int i = 0; i <= 5 ; i++)
+                            <% for (int i = 0; i <= 10 ; i++)
                                {
                             %>
                              <tr>
@@ -33,8 +33,8 @@
                                  <th class="content-blog">2021-02-04 20:20:20</th>
                                  <th>
                                      <div class="action-icon">
-<%--                                        <a href="#" class="action-icon-link"><i class="fa fa-eye fa-lg" style="color:black" aria-hidden="true"></i></a>
-                                        <a href="edit-blogs.aspx" class="action-icon-link" ><i class="fas fa-edit fa-lg"  style="color:black" aria-hidden="true"></i></a>--%>
+                                        <%--<a href="#" class="action-icon-link"><i class="fa fa-eye fa-lg" style="color:black" aria-hidden="true"></i></a>--%>
+                                        <a href="edit-blogs.aspx" class="action-icon-link" data-toggle="modal" data-target="#updateCategory"><i class="fas fa-edit fa-lg"  style="color:black" aria-hidden="true"></i></a>
                                         <a href="#" class="action-icon-link" data-toggle="modal" data-target="#deleteCategory" onclick="deleteCategory()"><i class="fas fa-trash-alt fa-lg" style="color:black" aria-hidden="true"></i></a>
                                      </div>
                              
@@ -48,7 +48,7 @@
                  </div>
     </div>
 
- <!-- New Admin Modal -->
+ <!-- New Post Modal -->
     <div class="modal fade" id="addCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -71,7 +71,36 @@
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <asp:Button ID="btnAddAdmin" runat="server" Text="Add" class="btn btn-primary" />
+              <asp:Button ID="btnAddCategory" runat="server" Text="Add" class="btn btn-primary" />
+           <%--<button type="button" class="btn btn-primary">Add</button>--%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="updateCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Update Category</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                 <div class="form-group row">
+                     <div class="col-sm-10">
+                     <asp:Label ID="Label1" runat="server" Text="Blogs Category"></asp:Label>
+                     <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control mt-2" Text="Career"></asp:TextBox>
+                    <%--<label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="email@example.com">--%>
+                     </div>
+                 </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <asp:Button ID="btnUpdateCategory" runat="server" Text="Update" class="btn btn-primary" />
            <%--<button type="button" class="btn btn-primary">Add</button>--%>
           </div>
         </div>
