@@ -71,6 +71,7 @@
     <Content Include="admin\admin-details-edit.aspx" />
     <Content Include="admin\admin-details.aspx" />
     <Content Include="admin\admin-management.aspx" />
+    <Content Include="admin\blog-category-edit.aspx" />
     <Content Include="admin\clients-details-r.aspx" />
     <Content Include="admin\clients-details.aspx" />
     <Content Include="admin\contact-message.aspx" />
@@ -1978,6 +1979,13 @@
     </Compile>
     <Compile Include="admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\blog-category-edit.aspx.cs">
+      <DependentUpon>blog-category-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\blog-category-edit.aspx.designer.cs">
+      <DependentUpon>blog-category-edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\clients-details-r.aspx.cs">
       <DependentUpon>clients-details-r.aspx</DependentUpon>
