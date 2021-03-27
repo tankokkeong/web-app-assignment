@@ -59,7 +59,6 @@ namespace web_app_assignment
             }
 
             //Get Seeker ID
-
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)HttpContext.Current.Session["User"];
 
             string seeker_id = "";
