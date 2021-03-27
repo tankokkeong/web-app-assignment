@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Check Login
@@ -280,14 +283,21 @@ namespace web_app_assignment
                         con.Open();
                     }
 
-                    string sql = "SELECT * FROM Recruiter";
+                    // Get Recruiter ID
+                    string recruiter_id = helper.getRecruiterID();
+
+                    string sql = "SELECT * FROM Recruiter where recruiter_id = @recruiter_id";
 
                     SqlCommand cmd = new SqlCommand(sql, con);
+
+                    //Insert Parameter
+                    cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
 
                     SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
                         imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        txtCompanyPhoto.Text = dr["company_photo"].ToString();
                         txtCompanyName.Text = dr["company_name"].ToString();
                         txtState.Text = dr["state"].ToString();
                         txtFacebookLink.Text = dr["facebook_link"].ToString();
@@ -315,15 +325,24 @@ namespace web_app_assignment
 
         protected void updateRecruiterProfile_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            if (Page.IsValid)
             {
-               
+
                 //Upload Profile Image Handled
                 string upload_path = MapPath("/Uploads/");
                 string file_name = fileCompanyPhoto.FileName;
+                string company_photo = "";
 
-                fileCompanyPhoto.SaveAs(upload_path + file_name);
-                var company_photo = "Uploads/" + file_name;
+                if (file_name != "")
+                {
+                    fileCompanyPhoto.SaveAs(upload_path + file_name);
+                    company_photo = "Uploads/" + file_name;
+                }
+                else
+                {
+                    company_photo = txtCompanyPhoto.Text;
+                }
+                
 
 
                 //Read inputs from the form

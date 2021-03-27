@@ -18,8 +18,9 @@
                     <asp:Image ID="imgRecruiterProfile" runat="server" class="edit-profile-pic"/><br />
                     
                     <label for="inputEmail4">Profile Photo</label>
-                    <asp:FileUpload ID="fileCompanyPhoto" runat="server" cssClass="form-control"/>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:FileUpload ID="fileCompanyPhoto" runat="server" cssClass="form-control" onchange="profilePhotoUpload()"/>
+                    <asp:TextBox ID="txtCompanyPhoto" runat="server" style="display:none;"/>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="txtCompanyPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
                 </div>
         
               </div>
@@ -178,22 +179,24 @@
             var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
             var select2_input = document.getElementById("industry-selection");
 
-            //Add Customize creation for the users
-            for (var i = 0; i < selected_industry.length; i++) {
+            if (document.getElementById("ContentPlaceHolder1_txtIndustry").value !== "") {
+                //Add Customize creation for the users
+                for (var i = 0; i < selected_industry.length; i++) {
 
-                //If the selected value didnt exist in the current option
-                if (document.getElementById(selected_industry[i]) == null) {
-                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
-                }
-            }
-
-            for (var i = 0; i < selected_industry.length; i++) {
-
-                if (document.getElementById(selected_industry[i]) != null) {
-                    document.getElementById(selected_industry[i]).selected = true;
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(selected_industry[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                    }
                 }
 
-            }
+                for (var i = 0; i < selected_industry.length; i++) {
+
+                    if (document.getElementById(selected_industry[i]) != null) {
+                        document.getElementById(selected_industry[i]).selected = true;
+                    }
+
+                }
+            }          
             
         }
 
@@ -214,6 +217,14 @@
                 }
 
             }
+        }
+
+        function profilePhotoUpload() {
+            var file_input = document.getElementById("ContentPlaceHolder1_fileCompanyPhoto").value;
+            var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtCompanyPhoto");
+
+            //assign file input to hidden field
+            hidden_photo_input.value = file_input;
         }
 
         //Print out the available industry
