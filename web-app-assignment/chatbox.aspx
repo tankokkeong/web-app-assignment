@@ -22,6 +22,7 @@
                     <ContentTemplate>
                         <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="1000"></asp:Timer>
                          <asp:Literal ID="lblContent" runat="server"></asp:Literal>
+                         <asp:TextBox ID="txtScriptTrigger" runat="server" style="display:none;"></asp:TextBox>
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
@@ -61,9 +62,7 @@
 
                     </div>
                 </div>--%>
-                
-                <asp:Literal ID="ltrScriptTrigger" runat="server"></asp:Literal>
-
+               
             </div>
             
 
@@ -81,6 +80,9 @@
         var seeker_value = document.getElementById("ContentPlaceHolder1_txtSeekerID").value;
         var recruiter_value = document.getElementById("ContentPlaceHolder1_txtRecruiterID").value;
 
+        //Check Scroll Down
+        var prev_msg_count = 0;
+
         $("#insert-chat-btn").click(function(){
             $.post("chat-post.aspx",
             {
@@ -91,9 +93,6 @@
             function () {
                 //Clear form
                 document.getElementById("chat-content").value = "";
-
-                //Scroll to bottom every time send out message
-                scrollToBottom();
 
             });
         });
@@ -113,9 +112,6 @@
                     //Clear form
                     document.getElementById("chat-content").value = "";
 
-                    //Scroll to bottom every time send out message
-                    scrollToBottom();
-
                 });
 
                 return false;
@@ -127,5 +123,19 @@
             var messages = document.getElementById("chat-content-container");
             messages.scrollTop = messages.scrollHeight;
         }
+
+        function checkScrollToBottom() {
+            var msg_count = document.getElementById("ContentPlaceHolder1_txtScriptTrigger").value;
+
+            if (msg_count != prev_msg_count) {
+                scrollToBottom();
+            }
+
+            //Assign the msg count to the prev msg count
+            prev_msg_count = msg_count;
+        }
+
+        //Check Scroll Down
+        setInterval(function () { checkScrollToBottom(); }, 500);
     </script>
 </asp:Content>

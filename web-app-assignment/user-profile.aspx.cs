@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -39,25 +42,7 @@ namespace web_app_assignment
                 else
                 {
                     //Get Seeker ID
-                    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
-
-                    string seeker_id = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-                    cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        seeker_id = dr["seeker_id"].ToString();
-                    }
-
-                    con.Close();
+                    string seeker_id = helper.getSeekerID();
 
                     //Reopen connection
                     if (con.State == ConnectionState.Closed)
@@ -68,12 +53,12 @@ namespace web_app_assignment
                     //Read User profile Details
                     string sql = "SELECT * FROM JobSeeker WHERE seeker_id = @seeker_id";
 
-                    cmd = new SqlCommand(sql, con);
+                    SqlCommand cmd = new SqlCommand(sql, con);
 
                     //Insert parameter
                     cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
 
-                    dr = cmd.ExecuteReader();
+                    SqlDataReader dr = cmd.ExecuteReader();
 
                     while (dr.Read())
                     {

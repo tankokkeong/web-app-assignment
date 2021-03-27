@@ -14,6 +14,7 @@ namespace web_app_assignment.admin
 {
     public partial class message_details : System.Web.UI.Page
     {
+        Helper helper = new Helper();
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,7 +59,7 @@ namespace web_app_assignment.admin
         {
             if(Page.IsValid)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+                string adminID = helper.getAdminID();
                 SqlConnection con = new SqlConnection(strcon);
 
                 string emailReply = txtEmailReply.Text.Trim();
@@ -70,28 +71,20 @@ namespace web_app_assignment.admin
 
                 string id = Request.QueryString["Id"] ?? "";
 
-                string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-                SqlCommand cmdSession = new SqlCommand(sqlSession, con);
-                con.Open();
-                cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
-                SqlDataReader drSession = cmdSession.ExecuteReader();
-
                 string sqlSubmit = @"UPDATE ContactMessage SET subject = @subject, reply_message = @replyMessage,
                                      replied_by = @reply , replied_date = @reply_date, deleted_at = @delete
                                     WHERE contact_id = @Id";
 
+                con.Open();
                 SqlCommand cmd = new SqlCommand(sqlSubmit, con);
                 cmd.Parameters.AddWithValue("@Id",id);
                 cmd.Parameters.AddWithValue("@subject", subjectReply);
                 cmd.Parameters.AddWithValue("@replyMessage", messageReply);
+                cmd.Parameters.AddWithValue("@reply", adminID);
                 cmd.Parameters.AddWithValue("@reply_date", DateTime.Now);
                 cmd.Parameters.AddWithValue("@delete", DateTime.Now);
 
-                while(drSession.Read())
-                {
-                    cmd.Parameters.AddWithValue("@reply", drSession["admin_id"]);
-                }
-                drSession.Close();
+
                 cmd.ExecuteNonQuery();
                 con.Close();
 

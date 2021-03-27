@@ -51,13 +51,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Literal lblContent;
 
         /// <summary>
-        /// ltrScriptTrigger control.
+        /// txtScriptTrigger control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrScriptTrigger;
+        protected global::System.Web.UI.WebControls.TextBox txtScriptTrigger;
 
         /// <summary>
         /// txtSeekerID control.

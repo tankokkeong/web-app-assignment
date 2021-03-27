@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -39,27 +42,8 @@ namespace web_app_assignment
                 else
                 {
                     //Get Recruiter ID
-
-                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-
-                    string recruiterID = "";
-                    string is_premium = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        recruiterID = dr["recruiter_id"].ToString();
-                    }
-
-                    con.Close();
+                    string recruiterID = helper.getRecruiterID();
+                    string is_premium = "";      
 
                     if (con.State == ConnectionState.Closed)
                     {
@@ -69,12 +53,12 @@ namespace web_app_assignment
                     //Read User profile Details
                     string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
 
-                    cmd = new SqlCommand(sql, con);
+                    SqlCommand cmd = new SqlCommand(sql, con);
 
                     //Insert parameter
                     cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
 
-                    dr = cmd.ExecuteReader();
+                    SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
                         lblRecruiterName.Text = dr["company_name"].ToString();
