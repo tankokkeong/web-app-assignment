@@ -12,11 +12,11 @@ namespace web_app_assignment.admin
     public partial class contact_message : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+        Helper helper = new Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
                 SqlConnection con = new SqlConnection(strcon);
 
@@ -50,8 +50,6 @@ namespace web_app_assignment.admin
 
         protected void btnDeleteMessage_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
             try
             {
 

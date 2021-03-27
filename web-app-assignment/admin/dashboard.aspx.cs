@@ -12,8 +12,8 @@ namespace web_app_assignment.admin
     public partial class dashboard : System.Web.UI.Page
     {
         Helper helper = new Helper();
-
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
         public int chartValue = 0;
         public int chartValue2 = 0;
         public int chartValue3 = 0;
@@ -166,35 +166,26 @@ namespace web_app_assignment.admin
 
         protected void btnAddTask_Click(object sender, EventArgs e)
         {
-            
+            string adminID = helper.getAdminID();
+
             string taskName = txtTaskName.Text;
             string taskRemarks = txtTaskRemarks.Text;
             string taskStatus = "active";
 
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlSession2 = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-            SqlCommand cmdSession2 = new SqlCommand(sqlSession2, con);
-            con.Open();
-            cmdSession2.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
-            SqlDataReader drSession2 = cmdSession2.ExecuteReader();
 
             string sqlInsert = @"INSERT INTO ToDoList(task_name,task_remarks,task_status,belongs_to,created_at)
                             VALUES (@task_name, @task_remarks, @task_status, @belongs_to, @created_at)";
-            
-            
+            con.Open();
+
             SqlCommand cmd = new SqlCommand(sqlInsert, con);
             cmd.Parameters.AddWithValue("@task_name", taskName);
             cmd.Parameters.AddWithValue("@task_remarks", taskRemarks);
             cmd.Parameters.AddWithValue("@task_status", taskStatus);
+            cmd.Parameters.AddWithValue("@belongs_to", adminID);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
-            while (drSession2.Read())
-            {
-                cmd.Parameters.AddWithValue("@belongs_to", drSession2["admin_id"]);
-            }
-            drSession2.Close();
             cmd.ExecuteNonQuery();
             con.Close();
 
