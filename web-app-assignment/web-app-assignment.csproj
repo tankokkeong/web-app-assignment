@@ -2246,6 +2246,7 @@
     <Compile Include="help.aspx.designer.cs">
       <DependentUpon>help.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

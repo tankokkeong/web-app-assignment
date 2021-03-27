@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -30,25 +33,7 @@ namespace web_app_assignment
                     }
 
                     //Get Recruiter ID
-                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-
-                    string recruiterID = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        recruiterID = dr["recruiter_id"].ToString();
-                    }
-
-                    con.Close();
+                    string recruiterID = helper.getRecruiterID();                
 
                     //Get Seeker ID
                     string seeker_id = Request.QueryString["seeker"] ?? "";
@@ -60,7 +45,6 @@ namespace web_app_assignment
                 }
                 else
                 {
-                    
 
                     SqlConnection con = new SqlConnection(strcon);
                     if (con.State == ConnectionState.Closed)
@@ -68,27 +52,9 @@ namespace web_app_assignment
                         con.Open();
                     }
 
-                    //Get Recruiter ID
+                    //Get Seeker ID
+                    string seeker_id = helper.getSeekerID();
 
-                    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
-
-                    string seeker_id = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-                    cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        seeker_id = dr["seeker_id"].ToString();
-                    }
-
-                    con.Close();
 
                     //Get Recruiter ID
                     string recruiterID = Request.QueryString["recruiter"] ?? "";
@@ -113,43 +79,23 @@ namespace web_app_assignment
             //Clear the container
             lblContent.Text = "";
 
+            //Create Cookies if not exist
+            if(Request.Cookies["msgQty"] == null)
+            {
+                HttpCookie msgCookie = Request.Cookies["msgQty"];
+            }
+
             try
             {
                 if (Session["Recruiter"] != null)
                 {
                     //Get Seeker ID
                     string seeker_id = Request.QueryString["seeker"] ?? "";
-
-
                     SqlConnection con = new SqlConnection(strcon);
 
-                    //Open Connection Again
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.Open();
-                    }
-
                     //Get Recruiter ID
-
-                    Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-
-                    string recruiterID = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-                    cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        recruiterID = dr["recruiter_id"].ToString();
-                    }
-
-                    con.Close();
+                    string recruiterID = helper.getRecruiterID();
+                    
 
                     if (con.State == ConnectionState.Closed)
                     {
@@ -162,10 +108,10 @@ namespace web_app_assignment
                                         "WHERE seen IS NULL " +
                                         "AND sent = @sent " +
                                         "AND recruiter_id = @recruiter_id " +
-                                        "AND seeker_id = @seeker_id"; 
+                                        "AND seeker_id = @seeker_id";
 
                     //Connect to the database
-                    cmd = new SqlCommand(update_seen, con);
+                    SqlCommand cmd = new SqlCommand(update_seen, con);
 
                     //Insert parameters
                     cmd.Parameters.AddWithValue("@seen", "seen");
@@ -198,7 +144,7 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
                     cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
 
-                    dr = cmd.ExecuteReader();
+                    SqlDataReader dr = cmd.ExecuteReader();
                     //Record Chat sent date
                     string sent_date = "";
 
@@ -288,36 +234,13 @@ namespace web_app_assignment
                 }
                 else
                 {
-                    //Get Seeker ID
-                    string recruiterID = Request.QueryString["recruiter"] ?? "";
-
-                    SqlConnection con = new SqlConnection(strcon);
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.Open();
-                    }
-
                     //Get Recruiter ID
+                    string recruiterID = Request.QueryString["recruiter"] ?? "";
+                    SqlConnection con = new SqlConnection(strcon);
 
-                    Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
 
-                    string seeker_id = "";
-
-                    //GET Seeker ID from the seeker table
-                    string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
-
-                    SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-                    cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        seeker_id = dr["seeker_id"].ToString();
-                    }
-
-                    con.Close();
+                    //Get Seeker ID
+                    string seeker_id = helper.getSeekerID();
 
                     if (con.State == ConnectionState.Closed)
                     {
@@ -333,7 +256,7 @@ namespace web_app_assignment
                                         "AND seeker_id = @seeker_id";
 
                     //Connect to the database
-                    cmd = new SqlCommand(update_seen, con);
+                    SqlCommand cmd = new SqlCommand(update_seen, con);
 
                     //Insert parameters
                     cmd.Parameters.AddWithValue("@seen", "seen");
@@ -365,7 +288,7 @@ namespace web_app_assignment
                     cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
                     cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
 
-                    dr = cmd.ExecuteReader();
+                    SqlDataReader dr = cmd.ExecuteReader();
                     //Record Chat sent date
                     string sent_date = "";
 
@@ -460,5 +383,13 @@ namespace web_app_assignment
             }
 
         }
+
+        protected int getMessageCount()
+        {
+            int message_count = 0;
+
+            return message_count;
+        }
+
     }
 }

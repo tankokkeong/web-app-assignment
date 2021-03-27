@@ -92,9 +92,6 @@
                 //Clear form
                 document.getElementById("chat-content").value = "";
 
-                //Scroll to bottom every time send out message
-                scrollToBottom();
-
             });
         });
 
@@ -113,9 +110,6 @@
                     //Clear form
                     document.getElementById("chat-content").value = "";
 
-                    //Scroll to bottom every time send out message
-                    scrollToBottom();
-
                 });
 
                 return false;
@@ -127,5 +121,6 @@
             var messages = document.getElementById("chat-content-container");
             messages.scrollTop = messages.scrollHeight;
         }
+
     </script>
 </asp:Content>
