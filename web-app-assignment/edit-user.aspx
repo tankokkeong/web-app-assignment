@@ -18,8 +18,9 @@
                     <asp:Image ID="imgSeekerProfile" runat="server" class="edit-profile-pic"/><br />
                     
                     <label for="inputEmail4">Profile Photo</label>
-                    <asp:FileUpload ID="fileSeekerPhoto" runat="server" cssClass="form-control"/>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="fileSeekerPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:FileUpload ID="fileSeekerPhoto" runat="server" cssClass="form-control" onchange="profilePhotoUpload()"/>
+                    <asp:TextBox ID="txtSeekerPhoto" runat="server" style="display:none;"/>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="txtSeekerPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
                 </div>
         
               </div>
@@ -283,6 +284,14 @@
                 }
 
             }
+        }
+
+        function profilePhotoUpload() {
+            var file_input = document.getElementById("ContentPlaceHolder1_fileSeekerPhoto").value;
+            var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtSeekerPhoto");
+
+            //assign file input to hidden field
+            hidden_photo_input.value = file_input;
         }
 
         //Print out the available industry

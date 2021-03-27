@@ -290,6 +290,7 @@ namespace web_app_assignment
                     while (dr.Read())
                     {
                         imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+                        txtSeekerPhoto.Text = dr["user_photo"].ToString();
                         txtSeekerName.Text = dr["full_name"].ToString();
                         txtFacebookLink.Text = dr["facebook_link"].ToString();
                         txtLinkedInLink.Text = dr["linkedin_link"].ToString();
@@ -322,9 +323,19 @@ namespace web_app_assignment
                 //Upload Profile Image Handled
                 string upload_path = MapPath("/Uploads/");
                 string file_name = fileSeekerPhoto.FileName;
+                string user_photo = "";
 
-                fileSeekerPhoto.SaveAs(upload_path + file_name);
-                var user_photo = "Uploads/" + file_name;
+                //If profile pic aldy exists
+                if(file_name != "")
+                {
+                    fileSeekerPhoto.SaveAs(upload_path + file_name);
+                    user_photo = "Uploads/" + file_name;
+                }
+                else
+                {
+                    user_photo = txtSeekerPhoto.Text;
+                }
+               
 
                 //Read inputs from the form
                 var seeker_name = txtSeekerName.Text;
