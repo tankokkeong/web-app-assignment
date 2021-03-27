@@ -118,5 +118,13 @@ namespace web_app_assignment
             return adminID;
 
         }
+
+        public void setCookies(string cookieName, string cookieValue, int cookieExpireDays)
+        {
+            HttpCookie set_cookie = new HttpCookie(cookieName, cookieValue);
+            set_cookie.Expires = DateTime.Now.AddDays(cookieExpireDays);
+
+            HttpContext.Current.Response.Cookies.Add(set_cookie);
+        }
     }
 }

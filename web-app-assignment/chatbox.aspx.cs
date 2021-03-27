@@ -79,14 +79,11 @@ namespace web_app_assignment
             //Clear the container
             lblContent.Text = "";
 
-            //Create Cookies if not exist
-            if(Request.Cookies["msgQty"] == null)
-            {
-                HttpCookie msgCookie = Request.Cookies["msgQty"];
-            }
-
             try
             {
+                //Get Message Count
+                txtScriptTrigger.Text = getMessageCount().ToString();
+
                 if (Session["Recruiter"] != null)
                 {
                     //Get Seeker ID
@@ -387,6 +384,69 @@ namespace web_app_assignment
         protected int getMessageCount()
         {
             int message_count = 0;
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            if (Session["Recruiter"] != null)
+            {
+                //Open Connection Again
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Seeker ID
+                string seeker_id = Request.QueryString["seeker"] ?? "";
+
+                //Get Recruiter ID
+                string recruiter_id = helper.getRecruiterID();
+
+                string sql = "SELECT COUNT(*) FROM ChatMessages CH, JobSeeker JS, Recruiter RT " +
+                                "WHERE CH.recruiter_id = @recruiter_id AND " +
+                                "CH.seeker_id = @seeker_id AND " +
+                                "JS.seeker_id = @seeker_id AND " +
+                                "RT.recruiter_id = @recruiter_id";
+
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+                message_count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+            }
+            else
+            {
+                //Open Connection Again
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Recruiter ID
+                string recruiterID = Request.QueryString["recruiter"] ?? "";
+
+                //Get Seeker ID
+                string seeker_id = helper.getSeekerID();
+
+                string sql = "SELECT COUNT(*) FROM ChatMessages CH, JobSeeker JS, Recruiter RT " +
+                                "WHERE CH.recruiter_id = @recruiter_id AND " +
+                                "CH.seeker_id = @seeker_id AND " +
+                                "JS.seeker_id = @seeker_id AND " +
+                                "RT.recruiter_id = @recruiter_id";
+
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@recruiter_id", recruiterID);
+                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+                message_count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+            }
 
             return message_count;
         }
