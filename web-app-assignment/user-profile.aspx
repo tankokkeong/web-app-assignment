@@ -165,6 +165,74 @@
                     <div class="application-container">
                        <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
 
+                        <asp:ListView ID="lvJobStatus" runat="server">
+                            <ItemTemplate>
+                                <div class='application-bar row mt-1'>
+                                    <div class='col-sm-3 mt-3'>
+                                        <img src ="<%#Eval("company_photo") %>" class='company-pic'/>
+                                    </div>
+
+                                    <div class='col-sm-3 mt-3'>
+                                        <div class='company-name text-lightgreen'><%#Eval("company_name") %></div>
+                                        <div class='company-location'>
+                                            <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>
+                                        </div>
+
+                                        <div class='hiring-position'>
+                                            <span class='hiring-details'>Graphic Designer</span>
+                                        </div>
+
+                                        <div class='view-profile'>
+                                            <button class='btn btn-info'>View Profile</button>
+                                        </div>
+                                    </div>
+
+                                   <div class='col-sm-3 mt-3'>
+                                        <div class='application-status text-info'>Applied</div>
+                                        <div>
+                                            <%#Eval("job_title") %>
+                                        </div>
+
+                                        <div class='employment-type badge badge-success'>
+                                            <%#Eval("job_type") %>
+                                        </div>
+                                    </div>
+
+                                    <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Pending" %>'>
+                                        <div class='mt-2 text-danger' style='font-size:20px;'>
+                                            Status: Pending
+                                        </div>
+
+                                        <div class='mt-2'>
+                                            <button class='btn btn-danger' data-toggle='modal' data-target='#cancelApplicationModal' type='button' onclick='cancelApplication("<%#Eval("post_id") %>")'>Cancel Application</button>
+                                        </div>
+                                    </div>
+
+
+
+                                      <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Approved" %>'>
+                                        <div class='mt-2'>
+                                            <a href = 'chatbox.aspx?recruiter= <%#Eval("recruiter_id") %>' class='btn btn-success'>Chat</a>
+                                        </div>
+
+                                        <div class='mt-2'>
+                                            <button class='btn btn-danger'>Remove</button>
+                                        </div>
+                                     </div>
+
+                                    
+                                </div>
+
+                            </ItemTemplate>
+                        </asp:ListView>
+
+                        <asp:DataPager ID="lvDataPager1" runat="server" PagedControlID="lvJobStatus" PageSize="5" OnPreRender="lvDataPager1_PreRender" QueryStringField="apply" class="pagination mt-3">
+                            <Fields >
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                                <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" RenderDisabledButtonsAsLabels="true"/>
+                            </Fields>
+                        </asp:DataPager>
                     </div>
                     
                 </div>
@@ -194,7 +262,18 @@
             }
         }
 
+        function checkApplyPagination() {
+            var link = window.location.href.split("?");
+
+            if (link[1].substring(0,5) === "apply") {
+
+                //Change to job application tab
+                userProfileSwitchTab("application");
+            }
+        }
+
         checkCancelledApplication();
+        checkApplyPagination();
     </script>
     <!-- Cancel Application Modal -->
     <div class="modal fade" id="cancelApplicationModal" tabindex="-1" aria-labelledby="cancelApplicationModalLabel" aria-hidden="true">

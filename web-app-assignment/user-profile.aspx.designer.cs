@@ -177,6 +177,24 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblJobStatus;
 
         /// <summary>
+        /// lvJobStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvJobStatus;
+
+        /// <summary>
+        /// lvDataPager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager lvDataPager1;
+
+        /// <summary>
         /// btnCancelApplication control.
         /// </summary>
         /// <remarks>

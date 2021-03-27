@@ -114,6 +114,16 @@
     background-color: #f1f1f1 !important;
 }
 
+.page-active {
+    background-color: #007bff!important;
+    color:white!important;
+}
+
+.aspNetDisabled {
+    background-color: #b2b2b2 !important;
+    color: #fff !important;
+}
+
 @media (min-width:850px) {
     .profile-container {
         padding: 40px 10%;

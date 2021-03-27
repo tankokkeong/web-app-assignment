@@ -98,97 +98,8 @@ namespace web_app_assignment
                     //Close connection
                     con.Close();
 
-                    //Open Connection
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.Open();
-                    }
-
-                    string sql_jobStatus = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
-                                            "WHERE ASS.seeker_id = @seeker_id AND " +
-                                            "ASS.deleted_at IS NULL AND " +
-                                            "ASS.post_id = JP.post_id AND " +
-                                            "JP.recruiter_id = RC.recruiter_id";
-
-                    cmd = new SqlCommand(sql_jobStatus, con);
-
-                    //Insert parameter
-                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
-
-                    dr = cmd.ExecuteReader();
-
-                    //Print out the application status
-                    while (dr.Read())
-                    {
-                        lblJobStatus.Text = lblJobStatus.Text +
-                        "<div class='application-bar row'>" +
-                            "<div class='col-sm-3 mt-3'>" +
-                                "<img src ='" + dr["company_photo"] + "' class='company-pic'/>" +
-                            "</div>" +
-
-                            "<div class='col-sm-3 mt-3'>" +
-                                "<div class='company-name text-lightgreen'>" + dr["company_name"] + "</div>" +
-                                "<div class='company-location'>" +
-                                    "<span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>" +
-                                "</div>" +
-
-                                "<div class='hiring-position'>" +
-                                    "<span class='hiring-details'>Graphic Designer</span>" +
-                                "</div>" +
-
-                                "<div class='view-profile'>" +
-                                    "<button class='btn btn-info'>View Profile</button>" +
-                                "</div>" +
-                            "</div>" +
-
-                            "<div class='col-sm-3 mt-3'>" +
-                                "<div class='application-status text-info'>Applied</div>" +
-                                "<div>" +
-                                    dr["job_title"] +
-                                "</div>" +
-
-                                "<div class='employment-type badge badge-success'>" +
-                                    dr["job_type"] +
-                            "</div>" +
-                        "</div>";
-
-                        if (dr["applied_status"].ToString() == "Pending")
-                        {
-                            lblJobStatus.Text = lblJobStatus.Text +
-                                "<div class='col-sm-3 mt-3'>" +
-                                "<div class='mt-2 text-danger' style='font-size:20px;'>" +
-                                    "Status: Pending" +
-                                "</div>" +
-
-                                "<div class='mt-2'>" +
-                                    "<button class='btn btn-danger' data-toggle='modal' data-target='#cancelApplicationModal' type='button' onclick='cancelApplication(" + dr["post_id"] + ")'>Cancel Application</button>" +
-                                "</div>" +
-                            "</div>" +
-                        "</div>";
-
-                        }
-                        else
-                        {
-                            lblJobStatus.Text = lblJobStatus.Text +
-                            "<div class='col-sm-3 mt-3'>" +
-                                "<div class='mt-2'>" +
-                                    "<a href = 'chatbox.aspx?recruiter=" + dr["recruiter_id"].ToString() + "' class='btn btn-success'>Chat</a>" +
-                                "</div>" +
-
-                                "<div class='mt-2'>" +
-                                    "<button class='btn btn-danger'>Remove</button>" +
-                                "</div>" +
-                            "</div>" +
-                        "</div>";
-                        }
-
-                        //Response.Write("<script>alert('" + dr["seeker_id"] + "');</script>");
-                        //Response.Write("<script>alert('fuck');</script>");
-                    }
-
-
-                    //Close connection
-                    con.Close();
+                   
+                       
                 }
 
                 //View Profile
@@ -226,7 +137,8 @@ namespace web_app_assignment
                     }
 
                     //Close connection
-                    con.Close();
+                    con.Close();                  
+
                 }
 
 
@@ -274,6 +186,40 @@ namespace web_app_assignment
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+        }
+
+        protected void lvDataPager1_PreRender(object sender, EventArgs e)
+        {
+
+                SqlConnection con = new SqlConnection(strcon);
+
+                //Get seeker id
+                string seeker_id = helper.getSeekerID();
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read Job Status
+                string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
+                                        "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
+                                        "ASS.deleted_at IS NULL AND " +
+                                        "ASS.post_id = JP.post_id AND " +
+                                        "JP.recruiter_id = RC.recruiter_id";
+                SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobStatusView, con);
+
+
+
+                DataTable dtbl = new DataTable();
+                cmd2.Fill(dtbl);
+                lvJobStatus.DataSource = dtbl;
+                lvJobStatus.DataBind();
+
+                //Close Connection
+                con.Close();
+
         }
     }
 }
