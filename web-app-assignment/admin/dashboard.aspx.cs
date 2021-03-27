@@ -11,6 +11,8 @@ namespace web_app_assignment.admin
 {
     public partial class dashboard : System.Web.UI.Page
     {
+        Helper helper = new Helper();
+
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         public int chartValue = 0;
         public int chartValue2 = 0;
@@ -18,14 +20,12 @@ namespace web_app_assignment.admin
         public int chartValueApp = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-            
-            if(Session["Admin"] != null)
+
+            if (Session["Admin"] != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
-                
-                
+                string adminID = helper.getAdminID();
+
                 //Google Chart Recruiter, JobSeeker and Visitors
                 string sqlChart = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
                 string sqlChart2 = "SELECT COUNT(*) FROM JobSeeker WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
@@ -48,25 +48,10 @@ namespace web_app_assignment.admin
 
 
                 //Get admin_id from database
-                string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-                SqlCommand cmdSession = new SqlCommand(sqlSession, con);             
-                
-                cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
-
-                SqlDataReader drSession = cmdSession.ExecuteReader();
-
                 string sqlDoList = @"SELECT * FROM ToDoList WHERE belongs_to = @id AND deleted_at IS NULL";
                 SqlCommand cmdDoList = new SqlCommand(sqlDoList, con);
 
-                int adminID = 0;
-
-                while (drSession.Read())
-                {
-                    adminID = Int32.Parse(drSession["admin_id"].ToString());
-                }
                 cmdDoList.Parameters.AddWithValue("@id", adminID);
-
-                drSession.Close();
 
                 //To-Do-List
                 string s = "";
