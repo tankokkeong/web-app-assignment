@@ -73,7 +73,7 @@
                         </div>
                         <div class="form-group dividerLoginGoogle">
                             <%-- Gmail and Facebook Button Comes here --%>
-                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_7247406223.png" style="height:45px; width:45px;"/></i>&nbsp Sign in With Google</button>                     
+                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>                     
                         </div>
                        
                     </div>
@@ -142,7 +142,7 @@
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
                         <div>
-                            <button type="button" id="Button1" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_7247406223.png" style="height:45px; width:45px;"/></i>&nbsp Sign in With Google</button>       
+                            <button type="button" id="googleRecruiter" runat="server" class="btn bg-white googleSignIn" onserverclick="googleRecruiter_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>       
                         </div>
                     </div>  
                             </div><%-- Recruiter Register Section End --%>
@@ -192,7 +192,7 @@
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
                         <div>
-                          <button type="button" id="Button2" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_7247406223.png" style="height:45px; width:45px;"/></i>&nbsp Sign in With Google</button>                           
+                          <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
                         </div>
                     </div>  
                             </div><%-- Job Seeker Register Section End --%>
