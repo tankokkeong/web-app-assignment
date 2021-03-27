@@ -98,115 +98,112 @@ namespace web_app_assignment
 
                 con.Open();
 
-                cmd.Parameters.AddWithValue("gmail_token", id);
+                cmd.Parameters.AddWithValue("@gmail_token", id);
 
-                string output = cmd.ExecuteScalar().ToString();
+                int output = (int) cmd.ExecuteScalar();
 
-                if (output == "1")
+                if(output == 1)
                 {
                     Dictionary<string, string> UserDetail = new Dictionary<string, string>();
 
                     SqlConnection conn = new SqlConnection(strcon);
 
-                    sql = "SELECT * FROM JobSeeker WHERE gmail_token = @gmail_token";
+                    string query = "SELECT * FROM JobSeeker WHERE gmail_token = @gmail_token";
 
-                    cmd = new SqlCommand(sql, conn);
+                    SqlCommand cm = new SqlCommand(query, conn);
 
                     conn.Open();
 
-                    cmd.Parameters.AddWithValue("gmail_token", id);
+                    cm.Parameters.AddWithValue("@gmail_token", id);
 
-                    SqlDataReader dread = cmd.ExecuteReader();
+                    SqlDataReader dr = cm.ExecuteReader();
 
-                    while (dread.Read())
+                    while (dr.Read())
                     {
-                        UserDetail.Add("user_name", dread["full_name"].ToString());
-                        UserDetail.Add("user_email", dread["email"].ToString());
-                        UserDetail.Add("user_skills", dread["skills"].ToString());
-                        UserDetail.Add("user_gender", dread["gender"].ToString());
-                        UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
-                        UserDetail.Add("user_location", dread["location"].ToString());
-                        UserDetail.Add("user_profession", dread["profession"].ToString());
-                        UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
-                        UserDetail.Add("user_country", dread["country"].ToString());
-                        UserDetail.Add("user_experience", dread["experience"].ToString());
-                        UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
+                        UserDetail.Add("user_name", dr["full_name"].ToString());
+                        UserDetail.Add("user_email", dr["email"].ToString());
+                        UserDetail.Add("user_skills", dr["skills"].ToString());
+                        UserDetail.Add("user_gender", dr["gender"].ToString());
+                        UserDetail.Add("user_mobile", dr["mobile_number"].ToString());
+                        UserDetail.Add("user_location", dr["location"].ToString());
+                        UserDetail.Add("user_profession", dr["profession"].ToString());
+                        UserDetail.Add("user_preferIndustry", dr["prefer_industry"].ToString());
+                        UserDetail.Add("user_country", dr["country"].ToString());
+                        UserDetail.Add("user_experience", dr["experience"].ToString());
+                        UserDetail.Add("user_fbLink", dr["facebook_link"].ToString());
                     }
 
                     Session["User"] = UserDetail;
 
-                    Response.Redirect("home.aspx");
-
                     conn.Close();
 
+                    Response.Redirect("Home.aspx");
                 }
-                else if (output == "0")
+                else if(output == 0)
                 {
+                    Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
 
+                    SqlConnection connection = new SqlConnection(strcon);
 
-                    sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+                    string qry = "SELECT COUNT(*) FROM Recruiter where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
 
-                    cmd = new SqlCommand(sql, con);
+                    SqlCommand comm = new SqlCommand(qry, connection);
 
-                    con.Open();
+                    connection.Open();
 
-                    cmd.Parameters.AddWithValue("gmail_token", id);
+                    comm.Parameters.AddWithValue("@gmail_token",id);
 
-                    int result = (int) cmd.ExecuteScalar();
+                    string result = comm.ExecuteScalar().ToString();
 
-                    if (result == 1)
+                    if (result == "1")
                     {
-                        Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+                        qry = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
 
-                        SqlConnection connection = new SqlConnection(strcon);
-
-                        string query = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
-
-                        cmd = new SqlCommand(query, connection);
+                        comm = new SqlCommand(qry, connection);
 
                         connection.Open();
 
-                        cmd.Parameters.AddWithValue("gmail_token", id);
+                        comm.Parameters.AddWithValue("@gmail_token", id);
 
-                        SqlDataReader dR = cmd.ExecuteReader();
+                        SqlDataReader dread = comm.ExecuteReader();
 
-                        while (dR.Read())
+                        while (dread.Read())
                         {
-                            RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
-                            RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
-                            RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
-                            RecruiterDetails.Add("recruiter_company", dR["company_name"].ToString());
-                            RecruiterDetails.Add("recruiter_contactEmail", dR["contact_email"].ToString());
-                            RecruiterDetails.Add("address_line1", dR["address_line1"].ToString());
-                            RecruiterDetails.Add("address_line2", dR["address_line2"].ToString());
-                            RecruiterDetails.Add("city", dR["city"].ToString());
-                            RecruiterDetails.Add("state", dR["state"].ToString());
-                            RecruiterDetails.Add("zip-code", dR["zip_code"].ToString());
-                            RecruiterDetails.Add("recruiter_country", dR["country"].ToString());
-                            RecruiterDetails.Add("recruiter_industry", dR["industry"].ToString());
-                            RecruiterDetails.Add("recruiter_fbLink", dR["facebook_link"].ToString());
-                            RecruiterDetails.Add("recruiter_linkedinLink", dR["linkedin_link"].ToString());
-                            RecruiterDetails.Add("introduction", dR["introduction"].ToString());
-                            RecruiterDetails.Add("rating", dR["rating"].ToString());
+                            RecruiterDetails.Add("recruiter_email", dread["email"].ToString());
+                            RecruiterDetails.Add("recruiter_mobile", dread["mobile_number"].ToString());
+                            RecruiterDetails.Add("recruiter_companyphoto", dread["company_photo"].ToString());
+                            RecruiterDetails.Add("recruiter_company", dread["company_name"].ToString());
+                            RecruiterDetails.Add("recruiter_contactEmail", dread["contact_email"].ToString());
+                            RecruiterDetails.Add("address_line1", dread["address_line1"].ToString());
+                            RecruiterDetails.Add("address_line2", dread["address_line2"].ToString());
+                            RecruiterDetails.Add("city", dread["city"].ToString());
+                            RecruiterDetails.Add("state", dread["state"].ToString());
+                            RecruiterDetails.Add("zip-code", dread["zip_code"].ToString());
+                            RecruiterDetails.Add("recruiter_country", dread["country"].ToString());
+                            RecruiterDetails.Add("recruiter_industry", dread["industry"].ToString());
+                            RecruiterDetails.Add("recruiter_fbLink", dread["facebook_link"].ToString());
+                            RecruiterDetails.Add("recruiter_linkedinLink", dread["linkedin_link"].ToString());
+                            RecruiterDetails.Add("introduction", dread["introduction"].ToString());
+                            RecruiterDetails.Add("rating", dread["rating"].ToString());
                         }
-
                         Session["Recruiter"] = RecruiterDetails;
-
-                        Response.Redirect("home.aspx");
 
                         connection.Close();
 
+                        Response.Redirect("home.aspx");
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Not Register'); window.open('login_signup.aspx');", true);
                     }
-                    con.Close();
+                    connection.Close();
                 }
+
+                con.Close();
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                Response.Write(e.Message);
+                Response.Write(error.Message);
             }
 
         }

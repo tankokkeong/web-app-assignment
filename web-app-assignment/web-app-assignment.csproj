@@ -1817,6 +1817,7 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
     <Content Include="forgotten_Password.aspx" />
+    <Content Include="google-signup-post-r.aspx" />
     <Content Include="google_login_post.aspx" />
     <Content Include="google_signup-post.aspx" />
     <Content Include="help.aspx" />
@@ -1877,6 +1878,7 @@
     <Content Include="images\JobsList\star.png" />
     <Content Include="images\JobsList\suitcase.png" />
     <Content Include="images\JobsList\working-position.png" />
+    <Content Include="images\login_signup\imageedit_1_7247406223.png" />
     <Content Include="images\logo\logo.png" />
     <Content Include="images\privacy-policy\writing-336370_1920-min3.png" />
     <Content Include="images\Signup_Login\cancel.png" />
@@ -2216,6 +2218,13 @@
     </Compile>
     <Compile Include="forgotten_Password.aspx.designer.cs">
       <DependentUpon>forgotten_Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="google-signup-post-r.aspx.cs">
+      <DependentUpon>google-signup-post-r.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="google-signup-post-r.aspx.designer.cs">
+      <DependentUpon>google-signup-post-r.aspx</DependentUpon>
     </Compile>
     <Compile Include="google_login_post.aspx.cs">
       <DependentUpon>google_login_post.aspx</DependentUpon>

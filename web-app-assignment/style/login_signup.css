@@ -243,7 +243,7 @@
 .googleSignIn {
     margin-left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+   width:50%;
 }
 
 @media(max-width: 1100px) {
@@ -305,5 +305,8 @@
         top: 56%;
         cursor: pointer;
         transform: translate(-90%, -55%);
+    }
+    .googleSignIn {
+        width: 70%;
     }
 }
