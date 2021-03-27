@@ -236,7 +236,7 @@
                 </div>
                 
 
-                <div id="job-posted-content" class="my-info row" style="display:none;">
+                <div id="job-posted-content" class="my-info" style="display:none;">
                     <div class="mb-3">
                         <asp:Label ID="lblPostJob" runat="server" Text=""></asp:Label>                        
                         
@@ -291,6 +291,7 @@
                             </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
+                    <asp:Literal ID="ltrNoJobPosted" runat="server"></asp:Literal>
                 </div>
 
                 <script>

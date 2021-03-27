@@ -274,12 +274,24 @@ namespace web_app_assignment
                     {
                         lblPostJob.Text = "<a class='btn btn-primary' href='post-job.aspx'>Post New Job</a>";
                     }
+
+                    //Check Job Posted
+                    int row_count = GridView1.Rows.Count;
+
+                    if (row_count == 0)
+                    {
+                        ltrNoJobPosted.Text = "No Job Posted yet";
+                    }
+
+                    //Check Application Received
+                    if(getApplicationCount(recruiterID) == 0)
+                    {
+                        lblJobStatus.Text = "No application yet";
+                    }
                 }
 
                 //View Profile
-
                 
-
                 if(Session["Recruiter"] == null && view_id != "")
                 {
                     //Read User profile Details
@@ -317,7 +329,6 @@ namespace web_app_assignment
                 }
 
 
-
             }
             catch (Exception error)
             {
@@ -344,6 +355,7 @@ namespace web_app_assignment
                 e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
                     "<button class='btn btn-danger p-1' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[4].Text + ")'>Delete</button>";
             }
+
         }
 
         protected void btnDeleteJob_Click(object sender, EventArgs e)
@@ -475,6 +487,33 @@ namespace web_app_assignment
             }
 
             return is_premium;
+        }
+
+        protected int getApplicationCount(string recruiter_id)
+        {
+            SqlConnection con = new SqlConnection(strcon);
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            int application_count = 0;
+            
+            string sql_jobStatus = "SELECT COUNT(*) FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP " +
+                                            "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                            "ASS.deleted_at IS NULL AND " +
+                                            "ASS.post_id = JP.post_id AND " +
+                                            "JP.recruiter_id = @recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(sql_jobStatus, con);
+
+            //Insert parameter
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+            application_count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+            return application_count;
         }
     }
 }
