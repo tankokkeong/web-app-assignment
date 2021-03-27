@@ -116,11 +116,6 @@
                     <label for="inputAddress">Skills:</label>   
                     
                     <select class="form-control" style="width:100%;" id="skill-selection" multiple="multiple" onchange="addSkills()">
-                        <option value="Public Speaking" id="Public Speaking">Public Speaking</option>
-                        <option value="Java" id="Java">Java</option>
-                        <option value="C#" id="C#">C#</option>
-                        <option value="Python" id="Python">Python</option>
-                        <option value="PHP" id="PHP">PHP</option>
                     </select>
 
                      <asp:TextBox ID="txtSkills" runat="server" CssClass="form-control" style="display:none;"></asp:TextBox>  
@@ -205,22 +200,25 @@
             var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
             var select2_input = document.getElementById("industry-selection");
 
-            //Add Customize creation for the users
-            for (var i = 0; i < selected_industry.length; i++) {
+            if (document.getElementById("ContentPlaceHolder1_txtIndustry").value !== "") {
+                //Add Customize creation for the users
+                for (var i = 0; i < selected_industry.length; i++) {
 
-                //If the selected value didnt exist in the current option
-                if (document.getElementById(selected_industry[i]) == null) {
-                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
-                }
-            }
-
-            for (var i = 0; i < selected_industry.length; i++) {
-
-                if (document.getElementById(selected_industry[i]) != null) {
-                    document.getElementById(selected_industry[i]).selected = true;
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(selected_industry[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                    }
                 }
 
+                for (var i = 0; i < selected_industry.length; i++) {
+
+                    if (document.getElementById(selected_industry[i]) != null) {
+                        document.getElementById(selected_industry[i]).selected = true;
+                    }
+
+                }
             }
+            
 
         }
 
@@ -228,23 +226,26 @@
             var selected_skills = document.getElementById("ContentPlaceHolder1_txtSkills").value.split(",");
             var select2_input = document.getElementById("skill-selection");
 
-            //Add Customize creation for the users
-            for (var i = 0; i < selected_skills.length; i++) {
+            if (document.getElementById("ContentPlaceHolder1_txtSkills").value !== "") {
+                //Add Customize creation for the users
+                for (var i = 0; i < selected_skills.length; i++) {
 
-                //If the selected value didnt exist in the current option
-                if (document.getElementById(selected_skills[i]) == null) {
-                    select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_skills[i] + "' selected id='" + selected_skills[i] + "'>" + selected_skills[i] + "</option>";
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(selected_skills[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_skills[i] + "' selected id='" + selected_skills[i] + "'>" + selected_skills[i] + "</option>";
+                    }
+                }
+
+
+                for (var i = 0; i < selected_skills.length; i++) {
+
+                    if (document.getElementById(selected_skills[i]) != null) {
+                        document.getElementById(selected_skills[i]).selected = true;
+                    }
+
                 }
             }
-
             
-            for (var i = 0; i < selected_skills.length; i++) {
-
-                if (document.getElementById(selected_skills[i]) != null) {
-                    document.getElementById(selected_skills[i]).selected = true;
-                }
-
-            }
 
         }
 
@@ -296,6 +297,7 @@
 
         //Print out the available industry
         printSelect2Industry("industry-selection");
+        printSelect2Skills("skill-selection");
 
         //Call stick form functions
         getSeekerIntroduction();        

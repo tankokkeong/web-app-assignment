@@ -1036,3 +1036,42 @@ function printSelect2Industry(id) {
         select_tag.innerHTML = select_tag.innerHTML + "<option value='" + industries[i] + "' id='" + industries[i]  +  "'>" + industries[i] + "</option>";
     }
 }
+
+function printSelect2Skills(id) {
+    select_tag = document.getElementById(id);
+
+    skills = [
+        "Public Speaking",
+        "C",
+        "C#",
+        "Python",
+        "Java",
+        "JavaScript",
+        "C++",
+        "PHP",
+        "Angular",
+        "React",
+        "Django",
+        "SQL",
+        "MySQL",
+        "NoSQL",
+        "Firebase",
+        "Vue.JS",
+        "Laravel",
+        "ASP.NET",
+        "Spring",
+        "Docker",
+        "AWS",
+        "CSS",
+        "Bootstrap",
+        "Taliwind CSS",
+        "WordPress",
+        "Sales",
+        "Recruitment"
+    ];
+
+    //Print out available timezones
+    for (var i = 0; i < skills.length; i++) {
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + skills[i] + "' id='" + skills[i] + "'>" + skills[i] + "</option>";
+    }
+}
