@@ -370,64 +370,73 @@ namespace web_app_assignment
 
         protected void DataPager1_PreRender(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(strcon);
-
-            //Open Connection
-            if (con.State == ConnectionState.Closed)
+            //Check Login
+            if(Session["Recruiter"] != null)
             {
-                con.Open();
+                SqlConnection con = new SqlConnection(strcon);
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //get Recruiter ID
+                string recruiter_id = helper.getRecruiterID();
+
+                string sql_jobStatus = "SELECT application_id, user_photo, full_name, ASS.seeker_id, job_title, job_type, applied_status, R.is_premium " +
+                                        "FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP, Recruiter R " +
+                                        "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                        "ASS.deleted_at IS NULL AND " +
+                                        "ASS.post_id = JP.post_id AND " +
+                                        "JP.recruiter_id = " + recruiter_id + " AND " +
+                                        "R.recruiter_id = " + recruiter_id;
+
+                SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
+
+
+
+                DataTable dtbl = new DataTable();
+                cmd.Fill(dtbl);
+                lvJobStatus.DataSource = dtbl;
+                lvJobStatus.DataBind();
+
+                //Close Connection
+                con.Close();
             }
-
-            //get Recruiter ID
-            string recruiter_id = helper.getRecruiterID();
-
-            string sql_jobStatus = "SELECT application_id, user_photo, full_name, ASS.seeker_id, job_title, job_type, applied_status, R.is_premium " +
-                                    "FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP, Recruiter R " +
-                                    "WHERE ASS.seeker_id = JS.seeker_id AND " +
-                                    "ASS.deleted_at IS NULL AND " +
-                                    "ASS.post_id = JP.post_id AND " +
-                                    "JP.recruiter_id = " + recruiter_id + " AND " +
-                                    "R.recruiter_id = " + recruiter_id;
-
-            SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
-
-
-
-            DataTable dtbl = new DataTable();
-            cmd.Fill(dtbl);
-            lvJobStatus.DataSource = dtbl;
-            lvJobStatus.DataBind();
-
-            //Close Connection
-            con.Close();
+            
         }
 
         protected void gvJobPosted_PreRender(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(strcon);
-
-            //Open Connection
-            if (con.State == ConnectionState.Closed)
+            if (Session["Recruiter"] != null)
             {
-                con.Open();
+                SqlConnection con = new SqlConnection(strcon);
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Recruiter ID
+                string recruiterID = helper.getRecruiterID();
+
+                //Read Job Posted
+                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
+                SqlDataAdapter cmd = new SqlDataAdapter(sql_jobposted, con);
+
+
+
+                DataTable dtbl = new DataTable();
+                cmd.Fill(dtbl);
+                gvJobPosted.DataSource = dtbl;
+                gvJobPosted.DataBind();
+
+                //Close Connection
+                con.Close();
             }
-
-            //Get Recruiter ID
-            string recruiterID = helper.getRecruiterID();
-
-            //Read Job Posted
-            string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
-            SqlDataAdapter cmd = new SqlDataAdapter(sql_jobposted, con);
-
-
-
-            DataTable dtbl = new DataTable();
-            cmd.Fill(dtbl);
-            gvJobPosted.DataSource = dtbl;
-            gvJobPosted.DataBind();
-
-            //Close Connection
-            con.Close();
+            
         }
 
         protected void gvJobPosted_PageIndexChanging(object sender, GridViewPageEventArgs e)

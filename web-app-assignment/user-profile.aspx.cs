@@ -194,35 +194,38 @@ namespace web_app_assignment
 
         protected void lvDataPager1_PreRender(object sender, EventArgs e)
         {
-
-            SqlConnection con = new SqlConnection(strcon);
-
-            //Get seeker id
-            string seeker_id = helper.getSeekerID();
-
-            //Open Connection
-            if (con.State == ConnectionState.Closed)
+            //Check login
+            if(Session["User"] != null)
             {
-                con.Open();
-            }
+                SqlConnection con = new SqlConnection(strcon);
 
-            //Read Job Status
-            string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
-                                    "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
-                                    "ASS.deleted_at IS NULL AND " +
-                                    "ASS.post_id = JP.post_id AND " +
-                                    "JP.recruiter_id = RC.recruiter_id";
-            SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobStatusView, con);
+                //Get seeker id
+                string seeker_id = helper.getSeekerID();
+
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Read Job Status
+                string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
+                                        "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
+                                        "ASS.deleted_at IS NULL AND " +
+                                        "ASS.post_id = JP.post_id AND " +
+                                        "JP.recruiter_id = RC.recruiter_id";
+                SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobStatusView, con);
 
 
 
-            DataTable dtbl = new DataTable();
-            cmd2.Fill(dtbl);
-            lvJobStatus.DataSource = dtbl;
-            lvJobStatus.DataBind();
+                DataTable dtbl = new DataTable();
+                cmd2.Fill(dtbl);
+                lvJobStatus.DataSource = dtbl;
+                lvJobStatus.DataBind();
 
-            //Close Connection
-            con.Close();
+                //Close Connection
+                con.Close();
+            }          
 
         }
 
