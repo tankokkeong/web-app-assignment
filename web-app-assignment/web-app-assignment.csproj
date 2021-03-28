@@ -1942,6 +1942,8 @@
     <Content Include="style\user-profile.css" />
     <Content Include="terms_conditions.aspx" />
     <Content Include="upgrade.aspx" />
+    <Content Include="Uploads\demo-recruiter.png" />
+    <Content Include="Uploads\demo-seeker.png" />
     <Content Include="user-profile.aspx" />
     <Content Include="verificationPost.aspx" />
     <Content Include="Web.config" />
@@ -2440,9 +2442,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Uploads\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="App_LocalResources\Default.aspx.resx" />
     <Content Include="App_LocalResources\Default.aspx.CN.resx" />
