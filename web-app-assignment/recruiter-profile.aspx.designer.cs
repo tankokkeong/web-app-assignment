@@ -186,6 +186,24 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblJobStatus;
 
         /// <summary>
+        /// lvJobStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvJobStatus;
+
+        /// <summary>
+        /// DataPager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPager1;
+
+        /// <summary>
         /// lblPostJob control.
         /// </summary>
         /// <remarks>
@@ -195,13 +213,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblPostJob;
 
         /// <summary>
-        /// GridView1 control.
+        /// gvJobPosted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gvJobPosted;
 
         /// <summary>
         /// ltrNoJobPosted control.

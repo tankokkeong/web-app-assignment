@@ -76,58 +76,8 @@
                 </div>
 
                 <div class="my-info row" id="about-content">
-                    <div class="brief-info col-sm-12 col-lg-6">
-                        <asp:Label ID="lblIntroduction" runat="server" Text=""></asp:Label>
-                        <%--<h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-
-                        <h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-
-                        <h3>
-                            My self-summary
-                        </h3>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and 
-                            typesetting industry. Lorem Ipsum has been the industry's standard 
-                            dummy text ever since the 1500s, when an unknown printer took a 
-                            galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, 
-                            but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the 
-                            release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing 
-                            software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>--%>
+                    <div class="brief-info col-sm-12 col-lg-6 mb-3">
+                        <asp:Label ID="lblIntroduction" runat="server" Text="" CssClass="pb-3"></asp:Label>
                     </div>
 
                     <div class="basic-info col-sm-12 col-lg-6">
@@ -213,18 +163,92 @@
                     </div>
                 </div>
 
-                <%-- Job Approval Alert --%>
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display:none" id="job-approved-alert">
-                    Job Application is approved!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+               
 
-                <div id="job-application-content" class="my-info row" style="display:none;">
-                    
-                    <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
-                    
+                <div id="job-application-content" class="my-info " style="display:none;">    
+                     <%-- Job Approval Alert --%>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="display:none" id="job-approved-alert">
+                        Job Application is approved!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <asp:Label ID="lblJobStatus" runat="server" Text=""></asp:Label>
+
+                    <asp:ListView ID="lvJobStatus" runat="server">
+                        <ItemTemplate>
+                            <div class='application-bar row mt-1'>
+                                <div class='col-sm-3 mt-3'>
+                                    <img src ="<%#Eval("user_photo") %>" class='company-pic'/>
+                                </div>
+
+                                <div class='col-sm-3 mt-3'>
+                                    <div class='company-name text-lightgreen'><%#Eval("full_name") %> </div>
+                                    <div class='company-location'>
+                                        <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>
+                                    </div>
+
+                                    <div class='hiring-position'>
+                                        <span class='hiring-details'>Graphic Designer</span>
+                                    </div>
+
+                                    <div class='view-profile'>
+                                        <a href='user-profile.aspx?view=<%#Eval("seeker_id") %>' class='btn btn-info'>View Profile</a>
+                                    </div>
+                                </div>
+
+                                <div class='col-sm-3 mt-3'>
+                                    <div class='application-status text-info'>Applied</div>
+                                    <div>
+                                        <%#Eval("job_title") %>
+                                    </div>
+
+                                    <div class='employment-type badge badge-success'>
+                                        <%#Eval("job_type") %>
+                                    </div>
+                               </div>
+
+                               <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Pending" %>'>
+                                <div class='mt-2'>
+                                    <button class='btn btn-success' data-toggle='modal' data-target='#approveModal' type='button' onclick='approveApplication("<%#Eval("application_id") %>")'>Approve</button>
+                                </div>
+
+                                <div class='mt-2'>
+                                    <button class='btn btn-danger'>Reject</button>
+                                </div>
+                              </div>
+                                
+                               <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Approved" %>'>
+                                    <div class='mt-2'>
+                                        <a href ="chatbox.aspx?seeker=<%#Eval("seeker_id") %>" class='btn btn-success'>Chat</a>
+                                    </div>
+
+                                    <div class='mt-2' runat="server" Visible='<%# Eval("is_premium") != System.DBNull.Value %>'>
+                                        <a href ="schedule.aspx?seeker=<%#Eval("seeker_id") %>" class='btn btn-primary'>Schedule</a>
+                                    </div>
+
+                                   <div class='mt-2' runat="server" Visible='<%# Eval("is_premium") == System.DBNull.Value %>'>
+                                       <span data-toggle='tooltip' data-placement='right' title='Premium only' tabindex='0'>
+                                            <button class='btn btn-primary' disabled>Schedule</button><i class='fas fa-lock' id='schedule-lock'></i>
+                                       </span>
+                                    </div>
+
+                                    <div class='mt-2'>
+                                        <button class='btn btn-danger'>Remove</button>
+                                    </div>
+                               </div>
+                           </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvJobStatus" PageSize="5" QueryStringField="apply" class="pagination mt-3" OnPreRender="DataPager1_PreRender">
+                         <Fields >
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                            <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" RenderDisabledButtonsAsLabels="true"/>
+                        </Fields>
+                    </asp:DataPager>
                 </div>
 
                 <%-- Delete Completed Alert --%>
@@ -242,63 +266,21 @@
                         
                     </div>
 
-                  <%--  <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">Job Title</th>
-                          <th scope="col">Categories</th>
-                          <th scope="col">Location</th>
-                          <th scope="col">Budget</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">Front End Developer</th>
-                          <td><span class="badge badge-success">Full-Time</span></td>
-                          <td>Subang Jaya</td>
-                          <td>RM 4,000/M</td>
-                          <td>
-                              <a class="badge badge-success p-2" role="button">Edit</a>
-                              <a class="badge badge-danger p-2" role="button">Delete</a>
-                          </td>
-                        </tr>
-                       <tr>
-                          <th scope="row">Front End Developer</th>
-                          <td><span class="badge badge-danger">Part-Time</span></td>
-                          <td>Subang Jaya</td>
-                          <td>RM 4,000/M</td>
-                          <td>
-                              <a class="badge badge-success p-2" role="button">Edit</a>
-                              <a class="badge badge-danger p-2" role="button">Delete</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>--%>
 
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered" AutoGenerateColumns="false" allowpaging="true" onrowdatabound="GridView1_RowDataBound">
+                    <asp:GridView ID="gvJobPosted" runat="server" class="table table-bordered" 
+                        AutoGenerateColumns="false" allowpaging="true" onrowdatabound="GridView1_RowDataBound" HeaderStyle-CssClass="bg-lightgreen text-light" OnPreRender="gvJobPosted_PreRender"
+                        PageSize="5" AllowSorting="true" OnPageIndexChanging="gvJobPosted_PageIndexChanging" OnSorting="gvJobPosted_Sorting" EmptyDataText="No Job Posted Yet">
                         <Columns>
-                            <asp:BoundField DataField="job_title" HeaderText="Job Title" />
-                            <asp:BoundField DataField="job_type" HeaderText="Job Type" />
-                            <asp:BoundField DataField="location" HeaderText="Job Location" />
-                            <asp:BoundField DataField="salary" HeaderText="Salary" />
-                            <asp:BoundField DataField="post_id" HeaderText="Action" />
-                            <%--<asp:TemplateField HeaderText="Action" >
-                                <ItemTemplate>
-                                    <a class="badge badge-success p-2" role="button" >Edit</a>
-                                    <a class="badge badge-danger p-2" role="button">Delete</a>
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
+                            <asp:BoundField DataField="job_title" HeaderText="Job Title" SortExpression="job_title"/>
+                            <asp:BoundField DataField="job_type" HeaderText="Job Type" SortExpression="job_type"/>
+                            <asp:BoundField DataField="location" HeaderText="Job Location" SortExpression="location"/>
+                            <asp:BoundField DataField="salary" HeaderText="Salary" SortExpression="salary"/>
+                            <asp:BoundField DataField="post_id" HeaderText="Action" SortExpression="post_id"/>
                         </Columns>
                     </asp:GridView>
+
                     <asp:Literal ID="ltrNoJobPosted" runat="server"></asp:Literal>
                 </div>
-
-                <script>
-                    //$(document).ready(function () {
-                    //    $('#ContentPlaceHolder1_GridView1').DataTable();
-                    //});
-                </script>
 
             </div>
         </div>
