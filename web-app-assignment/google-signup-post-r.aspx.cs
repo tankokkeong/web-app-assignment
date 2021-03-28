@@ -113,8 +113,60 @@ namespace web_app_assignment
 
                 con.Close();
 
+                SqlConnection conn = new SqlConnection(strcon);
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Register Successfully'); window.open('login_signup.aspx');", true);
+                string query = "SELECT COUNT(*) FROM Recruiter where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+
+                SqlCommand cm = new SqlCommand(query, conn);
+
+                conn.Open();
+
+                cm.Parameters.AddWithValue("@gmail_token", id);
+
+                int output = (int)cm.ExecuteScalar();
+
+                if (output == 1)
+                {
+                    Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+
+                    conn = new SqlConnection(strcon);
+
+                    query = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
+
+                    cm = new SqlCommand(query, conn);
+
+                    conn.Open();
+
+                    cm.Parameters.AddWithValue("@gmail_token", id);
+
+                    SqlDataReader dr = cm.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        RecruiterDetails.Add("recruiter_email", dr["email"].ToString());
+                        RecruiterDetails.Add("recruiter_mobile", dr["mobile_number"].ToString());
+                        RecruiterDetails.Add("recruiter_companyphoto", dr["company_photo"].ToString());
+                        RecruiterDetails.Add("recruiter_company", dr["company_name"].ToString());
+                        RecruiterDetails.Add("recruiter_contactEmail", dr["contact_email"].ToString());
+                        RecruiterDetails.Add("address_line1", dr["address_line1"].ToString());
+                        RecruiterDetails.Add("address_line2", dr["address_line2"].ToString());
+                        RecruiterDetails.Add("city", dr["city"].ToString());
+                        RecruiterDetails.Add("state", dr["state"].ToString());
+                        RecruiterDetails.Add("zip-code", dr["zip_code"].ToString());
+                        RecruiterDetails.Add("recruiter_country", dr["country"].ToString());
+                        RecruiterDetails.Add("recruiter_industry", dr["industry"].ToString());
+                        RecruiterDetails.Add("recruiter_fbLink", dr["facebook_link"].ToString());
+                        RecruiterDetails.Add("recruiter_linkedinLink", dr["linkedin_link"].ToString());
+                        RecruiterDetails.Add("introduction", dr["introduction"].ToString());
+                        RecruiterDetails.Add("rating", dr["rating"].ToString());
+                    }
+
+                    Session["Recruiter"] = RecruiterDetails;
+
+                    conn.Close();
+
+                    Response.Redirect("Home.aspx");
+                }
             }
             else
             {

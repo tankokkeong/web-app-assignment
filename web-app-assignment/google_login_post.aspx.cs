@@ -159,9 +159,11 @@ namespace web_app_assignment
                     {
                         qry = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
 
-                        comm = new SqlCommand(qry, connection);
+                        SqlConnection connect = new SqlConnection(strcon);
 
-                        connection.Open();
+                        comm = new SqlCommand(qry, connect);
+
+                        connect.Open();
 
                         comm.Parameters.AddWithValue("@gmail_token", id);
 
@@ -188,7 +190,7 @@ namespace web_app_assignment
                         }
                         Session["Recruiter"] = RecruiterDetails;
 
-                        connection.Close();
+                        connect.Close();
 
                         Response.Redirect("home.aspx");
                     }

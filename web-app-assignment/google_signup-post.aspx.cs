@@ -83,10 +83,12 @@ namespace web_app_assignment
 
 
             registerInfo(id, email, name);
+            
         }
 
         public void registerInfo(string id, string email, string name)
         {
+
             SqlConnection con = new SqlConnection(strcon);
 
             string sql = "SELECT COUNT(*) FROM JobSeeker WHERE gmail_token = '" + id + "'";
@@ -115,7 +117,57 @@ namespace web_app_assignment
 
                 con.Close();
 
-                
+                SqlConnection conn = new SqlConnection(strcon);
+
+                string query = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+
+                SqlCommand cm = new SqlCommand(query, conn);
+
+                conn.Open();
+
+                cm.Parameters.AddWithValue("@gmail_token", id);
+
+                int output = (int)cm.ExecuteScalar();
+
+                if (output == 1)
+                {
+                    Dictionary<string, string> UserDetail = new Dictionary<string, string>();
+
+                    conn = new SqlConnection(strcon);
+
+                    query = "SELECT * FROM JobSeeker WHERE gmail_token = @gmail_token";
+
+                    cm = new SqlCommand(query, conn);
+
+                    conn.Open();
+
+                    cm.Parameters.AddWithValue("@gmail_token", id);
+
+                    SqlDataReader dr = cm.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        UserDetail.Add("user_name", dr["full_name"].ToString());
+                        UserDetail.Add("user_email", dr["email"].ToString());
+                        UserDetail.Add("user_skills", dr["skills"].ToString());
+                        UserDetail.Add("user_gender", dr["gender"].ToString());
+                        UserDetail.Add("user_mobile", dr["mobile_number"].ToString());
+                        UserDetail.Add("user_location", dr["location"].ToString());
+                        UserDetail.Add("user_profession", dr["profession"].ToString());
+                        UserDetail.Add("user_preferIndustry", dr["prefer_industry"].ToString());
+                        UserDetail.Add("user_country", dr["country"].ToString());
+                        UserDetail.Add("user_experience", dr["experience"].ToString());
+                        UserDetail.Add("user_fbLink", dr["facebook_link"].ToString());
+                    }
+
+                    Session["User"] = UserDetail;
+
+                    conn.Close();
+
+                    Response.Redirect("Home.aspx");
+                }
+
+
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Register Successfully'); window.open('login_signup.aspx');", true);
             }
             else
@@ -123,7 +175,19 @@ namespace web_app_assignment
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered'); window.open('login_signup.aspx');", true);
             }
             con.Close();
+
+            
         }
+
+        //public void verifiedLogin(string isRegistered, string id) {
+
+        //    if (isRegistered == "true")
+        //    {
+        //        SqlConnection conn = new SqlConnection(strcon);
+
+               
+        //    }
+        //}
 
         public class Tokenclass
         {
