@@ -85,26 +85,44 @@ namespace web_app_assignment
                     if (ddlPageSize.SelectedItem.Value == "5")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 5 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
-                        sql = JobListSearchCriteria(sql);
+                        sql = "SELECT TOP 5 * FROM(" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) +")" +
+                            "UNION" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
+                            ") result";
+                        //sql = JobListSearchCriteria(sql);
                     }
                     else if (ddlPageSize.SelectedItem.Value == "10")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 10 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
-                        sql = JobListSearchCriteria(sql);
+                        sql = "SELECT TOP 10 * FROM(" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
+                            "UNION" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
+                            ") result";
+                        //sql = JobListSearchCriteria(sql);
                     }
                     else if (ddlPageSize.SelectedItem.Value == "15")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 15 * FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL";
-                        sql = JobListSearchCriteria(sql);
+                        sql = "SELECT TOP 15 * FROM(" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
+                            "UNION" +
+                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
+                            ") result";
+                        //sql = JobListSearchCriteria(sql);
                     }
                 }
                 else
                 {
                     lbl_JobListContentsAllCompanies.Text = "";
-                    sql = "SELECT * FROM (SELECT ROW_NUMBER() Over (Order By post_id) AS ROW_NUMBER, * FROM JobPost JP) t , Recruiter R WHERE" +
+                    sql = "SELECT * FROM (SELECT ROW_NUMBER() Over (Order By post_id) AS ROW_NUMBER, * FROM JobPost JP) t, Recruiter R WHERE" +
                         " t.recruiter_id = R.recruiter_id AND t.ROW_NUMBER BETWEEN @first_page AND @end_page AND t.deleted_at IS NULL";
                     sql = JobListSearchCriteria(sql);
                 }
