@@ -279,7 +279,7 @@
                         </Columns>
                     </asp:GridView>
 
-                    <asp:Literal ID="ltrNoJobPosted" runat="server"></asp:Literal>
+                    <asp:HiddenField ID="hfJobPagination" runat="server" />
                 </div>
 
             </div>
@@ -504,8 +504,32 @@
             }
         }
 
+        function checkJobPostPagination() {
+            var pagination_field = document.getElementById("ContentPlaceHolder1_hfJobPagination").value;
+
+            if (pagination_field === "job-posted") {
+                //Change to job posted tab
+                recruiterProfileSwitchTab('job-posted');
+            }
+            else {
+                checkApplyPagination();
+            }
+        }
+
+        function checkApplyPagination() {
+            var link = window.location.href.split("?");
+
+            if (link[1].substring(0, 5) === "apply") {
+
+                //Change to job application tab
+                userProfileSwitchTab("application");
+            }
+        }
+
         checkDeleteJob();
         checkApprovedApplication();
+        checkJobPostPagination();
+        
 
     </script>
 </asp:Content>

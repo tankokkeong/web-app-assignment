@@ -135,14 +135,6 @@ namespace web_app_assignment
                         lblPostJob.Text = "<a class='btn btn-primary' href='post-job.aspx'>Post New Job</a>";
                     }
 
-                    //Check Job Posted
-                    int row_count = gvJobPosted.Rows.Count;
-
-                    if (row_count == 0)
-                    {
-                        ltrNoJobPosted.Text = "No Job Posted yet";
-                    }
-
                     //Check Application Received
                     if (getApplicationCount(recruiterID) == 0)
                     {
@@ -442,6 +434,8 @@ namespace web_app_assignment
         {
             gvJobPosted.PageIndex = e.NewPageIndex;
             gvJobPosted.DataBind();
+
+            hfJobPagination.Value = "job-posted";
         }
 
         protected void gvJobPosted_Sorting(object sender, GridViewSortEventArgs e)
