@@ -98,8 +98,12 @@ namespace web_app_assignment
                     //Close connection
                     con.Close();
 
-                   
-                       
+                    //Check Application Received
+                    if (getApplicationCount() == 0)
+                    {
+                        lblJobStatus.Text = "No application yet";
+                    }
+
                 }
 
                 //View Profile
@@ -191,34 +195,67 @@ namespace web_app_assignment
         protected void lvDataPager1_PreRender(object sender, EventArgs e)
         {
 
-                SqlConnection con = new SqlConnection(strcon);
+            SqlConnection con = new SqlConnection(strcon);
 
-                //Get seeker id
-                string seeker_id = helper.getSeekerID();
+            //Get seeker id
+            string seeker_id = helper.getSeekerID();
 
-                //Open Connection
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+            //Open Connection
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
-                //Read Job Status
-                string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
-                                        "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
-                                        "ASS.deleted_at IS NULL AND " +
-                                        "ASS.post_id = JP.post_id AND " +
-                                        "JP.recruiter_id = RC.recruiter_id";
-                SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobStatusView, con);
+            //Read Job Status
+            string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
+                                    "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
+                                    "ASS.deleted_at IS NULL AND " +
+                                    "ASS.post_id = JP.post_id AND " +
+                                    "JP.recruiter_id = RC.recruiter_id";
+            SqlDataAdapter cmd2 = new SqlDataAdapter(sql_jobStatusView, con);
 
 
 
-                DataTable dtbl = new DataTable();
-                cmd2.Fill(dtbl);
-                lvJobStatus.DataSource = dtbl;
-                lvJobStatus.DataBind();
+            DataTable dtbl = new DataTable();
+            cmd2.Fill(dtbl);
+            lvJobStatus.DataSource = dtbl;
+            lvJobStatus.DataBind();
 
-                //Close Connection
-                con.Close();
+            //Close Connection
+            con.Close();
+
+        }
+
+        protected int getApplicationCount()
+        {
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Get seeker id
+            string seeker_id = helper.getSeekerID();
+
+            int application_count = 0;
+
+            //Open Connection
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Read Job Status
+            string sql_jobStatusView = "SELECT COUNT(*) FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
+                                    "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
+                                    "ASS.deleted_at IS NULL AND " +
+                                    "ASS.post_id = JP.post_id AND " +
+                                    "JP.recruiter_id = RC.recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(sql_jobStatusView, con);
+
+            application_count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+            //Close Connection
+            con.Close();
+
+            return application_count;
 
         }
     }

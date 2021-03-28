@@ -163,7 +163,7 @@
                 <div id="job-application-content" class="my-info row" style="display:none;">
                     
                     <div class="application-container">
-                       <asp:Label ID="lblJobStatus" runat="server" Text="" class="application-container"></asp:Label>
+                       <asp:Label ID="lblJobStatus" runat="server" Text="" ></asp:Label>
 
                         <asp:ListView ID="lvJobStatus" runat="server">
                             <ItemTemplate>
