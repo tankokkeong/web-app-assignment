@@ -16,6 +16,7 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie coo = new HttpCookie("PageSize");
+            HttpCookie coo2 = new HttpCookie("PreviousPage");
 
             List<string> LocationStatesItems = new List<string>
             {
@@ -77,12 +78,32 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                string page_num = Request.QueryString["page"];
+
                 if (Request.Cookies["PageSize"] != null)
                 {
-                    coo.Value = ddlPageSize.SelectedItem.Value;
-                    ddlPageSize.SelectedValue = Request.Cookies["PageSize"].Value;
-                    coo.Expires = DateTime.Now.AddDays(7);
-                    Response.Cookies.Add(coo);
+                    if(ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && Request.QueryString["page"] == null)
+                    {
+                        //User change limit page number in page 1
+
+                        coo.Value = ddlPageSize.SelectedItem.Value;
+                        coo.Expires = DateTime.Now.AddDays(7);
+                        Response.Cookies.Add(coo);
+                    }
+                    else if (ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && page_num == Request.Cookies["PreviousPage"].Value)
+                    {
+                        //User change limit page number in other than page 1
+
+                        coo.Value = ddlPageSize.SelectedItem.Value;
+                        coo.Expires = DateTime.Now.AddDays(7);
+                        Response.Cookies.Add(coo);
+                    }
+                    else
+                    {
+                        //Retain user prefer limit page number
+                        ddlPageSize.SelectedValue = Request.Cookies["PageSize"].Value;
+                    }
+                    
                 }
                 else
                 {
@@ -91,9 +112,9 @@ namespace web_app_assignment
                     Response.Cookies.Add(coo);
                 }
 
-                string page_num = Request.QueryString["page"];
+                
 
-                int limit_per_page = Convert.ToInt32(coo.Value);
+                int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedValue);
 
                 int current_page = Convert.ToInt32(page_num);
 
@@ -200,6 +221,11 @@ namespace web_app_assignment
                 Pagination(current_page);
 
                 con.Close();
+
+                //Set Previous page cookies
+                coo2.Value = Request.QueryString["page"] ?? "1";
+                coo2.Expires = DateTime.Now.AddDays(7);
+                Response.Cookies.Add(coo2);
             }
             catch (Exception error)
             {
