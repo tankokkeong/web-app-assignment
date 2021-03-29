@@ -15,6 +15,8 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie coo = new HttpCookie("PageSize");
+
             List<string> LocationStatesItems = new List<string>
             {
                 "Johor",
@@ -75,14 +77,28 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                if (Request.Cookies["PageSize"] != null)
+                {
+                    coo.Value = ddlPageSize.SelectedItem.Value;
+                    ddlPageSize.SelectedValue = Request.Cookies["PageSize"].Value;
+                    coo.Expires = DateTime.Now.AddDays(7);
+                    Response.Cookies.Add(coo);
+                }
+                else
+                {
+                    coo.Value = ddlPageSize.SelectedItem.Value;
+                    coo.Expires = DateTime.Now.AddDays(7);
+                    Response.Cookies.Add(coo);
+                }
+
                 string page_num = Request.QueryString["page"];
 
-                int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedItem.Value);
+                int limit_per_page = Convert.ToInt32(coo.Value);
 
                 int current_page = Convert.ToInt32(page_num);
 
                 int end_page = current_page * limit_per_page;
-                int first_page = end_page - limit_per_page;
+                int first_page = end_page - limit_per_page + 1;
 
                 string sql = "";
 
@@ -238,7 +254,7 @@ namespace web_app_assignment
 
             SqlCommand cmdCountSeekers = new SqlCommand(countItems, con);
 
-            endPage = (Convert.ToInt32(cmdCountSeekers.ExecuteScalar()) / Convert.ToInt32(ddlPageSize.SelectedItem.Value)) + 1;
+            endPage = (Convert.ToInt32(cmdCountSeekers.ExecuteScalar()) / Convert.ToInt32(ddlPageSize.SelectedItem.Value));
 
             con.Close();
 

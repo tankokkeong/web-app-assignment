@@ -76,7 +76,7 @@
                     <div class="PageSizeLimit">
                         Limit
                         <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="btn btn-sm bg-lightgreen text-white PageSizeLimitPosition" AutoPostBack="true">
-                            <asp:ListItem Selected="True" Value="5">5</asp:ListItem>
+                            <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="10">10</asp:ListItem>
                             <asp:ListItem Value="15">15</asp:ListItem>
                         </asp:DropDownList>
