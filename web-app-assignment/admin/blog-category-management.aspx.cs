@@ -11,6 +11,7 @@ namespace web_app_assignment
 {
     public partial class blog_category_management : System.Web.UI.Page
     {
+        Helper helper = new Helper();
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,29 +40,19 @@ namespace web_app_assignment
         {
             string category = txtCategory.Text;
 
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+            string adminID = helper.getAdminID();
             SqlConnection con = new SqlConnection(strcon);
-
-            string sqlSession = @"SELECT admin_id FROM Admin WHERE admin_email = @email";
-            SqlCommand cmdSession = new SqlCommand(sqlSession, con);
-            con.Open();
-            cmdSession.Parameters.AddWithValue("@email", UserDetails["Admin_Email"]);
-            SqlDataReader drSession = cmdSession.ExecuteReader();
 
             string sqlInsert = @"INSERT INTO BlogCategory(category_title,edited_by,last_updated,created_at)
                             VALUES (@title, @edited_by, @last_updated, @created_at)";
 
-
+            con.Open();
             SqlCommand cmd = new SqlCommand(sqlInsert, con);
             cmd.Parameters.AddWithValue("@title", category);
             cmd.Parameters.AddWithValue("@last_updated", DateTime.Now);
             cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+            cmd.Parameters.AddWithValue("@edited_by", adminID);
 
-            while (drSession.Read())
-            {
-                cmd.Parameters.AddWithValue("@edited_by", drSession["admin_id"]);
-            }
-            drSession.Close();
             cmd.ExecuteNonQuery();
             con.Close();
 

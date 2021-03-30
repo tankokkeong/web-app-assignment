@@ -22,7 +22,7 @@
 
             var options = {
                 chart: {
-                    title: 'People Visited',
+                    title: 'People Registered',
                     subtitle: 'Visitors, Recruiters, and Job Seeker: 2020-2023',
                 },
 
