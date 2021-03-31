@@ -16,7 +16,13 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            //Check Login
+            if (Session["User"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
+
+            if (!Page.IsPostBack)
             {
                 List<string> countryListItems = new List<string>{
             "Afghanistan",
