@@ -306,7 +306,24 @@ namespace web_app_assignment
                 conSearchTotal.Open();
             }
 
-            string countItems = "SELECT COUNT(*) FROM JobPost";
+            string jobTitlequery = Request.QueryString["job_title"] ?? "";
+            string locationsquery = Request.QueryString["location"] ?? "";
+            string jobTypequery = Request.QueryString["job_type"] ?? "";
+            string JobSpecquery = Request.QueryString["job_spec"] ?? "";
+            string rangeFromquery = Request.QueryString["rangeFrom"] ?? "";
+            string rangeEndquery = Request.QueryString["rangeEnd"] ?? "";
+
+            string countItems = "";
+
+            if (jobTitlequery == "" && locationsquery == "" && jobTypequery == "" && JobSpecquery == "" && rangeFromquery == "" && rangeEndquery == "")
+            {
+                countItems = "SELECT COUNT(*) FROM JobPost";
+            }
+            else if (jobTitlequery != "" || locationsquery != "" || jobTypequery != "" || JobSpecquery != "" || rangeFromquery != "" || rangeEndquery != "")
+            {
+                countItems = "SELECT COUNT(*) FROM JobPost WHERE job_title LIKE '%" + jobTitlequery + "%' AND location LIKE '%" + locationsquery + "%' AND job_type LIKE '%" + jobTypequery + "%'" +
+                    " AND job_specializations LIKE '%" + JobSpecquery + "%' AND salary BETWEEN " + rangeFromquery + " AND " + rangeEndquery;
+            }
 
             SqlCommand cmdCountJobs = new SqlCommand(countItems, conSearchTotal);
 
@@ -320,116 +337,202 @@ namespace web_app_assignment
             int secondPage = firstPage + 1;
             int secondLastPage = endPage - 1;
 
-            if (currentPage > firstPage && currentPage < endPage)
-            {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
-            if (currentPage == firstPage)
-            {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
-            if (currentPage == endPage)
-            {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
-            if (currentPage <= 0)
-            {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
-            if (currentPage <= 0)
-            {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
+            string querys = "&job_title=" + jobTitlequery + "&location=" + locationsquery + "&job_type=" + jobTypequery + "&job_spec=" + JobSpecquery + "&rangeFrom=" + rangeFromquery + "&rangeEnd=" + rangeEndquery;
 
-            if (currentPage == secondPage)
+            //if no query
+            if(jobTitlequery == "" && locationsquery == "" && jobTypequery == "" && JobSpecquery == "" && rangeFromquery == "" && rangeEndquery == "")
             {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
-            }
+                if (currentPage > firstPage && currentPage < endPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage == firstPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage == endPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage <= 0)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage <= 0)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
 
-            if (currentPage == secondLastPage)
+                if (currentPage == secondPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+
+                if (currentPage == secondLastPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+            }//if got query
+            else if (jobTitlequery != "" || locationsquery != "" || jobTypequery != "" || JobSpecquery != "" || rangeFromquery != "" || rangeEndquery != "")
             {
-                txtPagination.Text = "";
-                txtPagination.Text += "<nav aria-label='Page navigation example'>" +
-                                      "<ul class='pagination justify-content-end'>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='#'>...</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
-                                        "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
-                                        "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
-                                      "</ul>" +
-                                    "</nav>";
+                if (currentPage > firstPage && currentPage < endPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage == firstPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage == endPage)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage <= 0)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
+                if (currentPage <= 0)
+                {
+                    txtPagination.Text = "";
+                    txtPagination.Text += "<nav aria-label='Page navigation example'>" +
+                                          "<ul class='pagination justify-content-end'>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                          "</ul>" +
+                                        "</nav>";
+                }
             }
         }
     }

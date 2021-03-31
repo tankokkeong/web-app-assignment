@@ -233,7 +233,8 @@
                 document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
             });
         });
-    </script>    
+    </script>  
+    
     <script>
         function JobListSearch() {
             var location_selected = $('.selectStates').select2('data');

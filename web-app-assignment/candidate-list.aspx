@@ -184,4 +184,56 @@
 
         }
     </script>
+
+    <script>
+        //Sticky form script
+        function getSelectedSkills() {
+            var selected_skills = document.getElementById("ContentPlaceHolder1_txtSkills").value.split(",");
+            var select2_input = document.getElementById("skill-selection");
+
+            if (document.getElementById("ContentPlaceHolder1_txtSkills").value !== "") {
+                //Add Customize creation for the users
+                for (var i = 0; i < selected_skills.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(selected_skills[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_skills[i] + "' selected id='" + selected_skills[i] + "'>" + selected_skills[i] + "</option>";
+                    }
+                }
+
+
+                for (var i = 0; i < selected_skills.length; i++) {
+
+                    if (document.getElementById(selected_skills[i]) != null) {
+                        document.getElementById(selected_skills[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        function getSelectedIndustry() {
+            var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
+            var select2_input = document.getElementById("industry-selection");
+
+            if (document.getElementById("ContentPlaceHolder1_txtIndustry").value !== "") {
+                //Add Customize creation for the users
+                for (var i = 0; i < selected_industry.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(selected_industry[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < selected_industry.length; i++) {
+
+                    if (document.getElementById(selected_industry[i]) != null) {
+                        document.getElementById(selected_industry[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+    </script>
 </asp:Content>
