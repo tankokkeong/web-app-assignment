@@ -177,12 +177,48 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionBenefitOther;
 
         /// <summary>
-        /// btn_JobDescriptionContentsReviewsPostButton control.
+        /// lvJobReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_JobDescriptionContentsReviewsPostButton;
+        protected global::System.Web.UI.WebControls.ListView lvJobReview;
+
+        /// <summary>
+        /// DataPager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPager1;
+
+        /// <summary>
+        /// txtStarRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStarRating;
+
+        /// <summary>
+        /// txtUserReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUserReview;
+
+        /// <summary>
+        /// btnPostReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPostReview;
     }
 }
