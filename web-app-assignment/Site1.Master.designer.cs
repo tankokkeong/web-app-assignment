@@ -147,7 +147,7 @@ namespace web_app_assignment
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink logoutLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutLink;
 
         /// <summary>
         /// form1 control.

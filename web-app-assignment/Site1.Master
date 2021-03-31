@@ -113,8 +113,9 @@
             <li class="nav-item">
             <asp:Label ID="lblSignIn" runat="server"></asp:Label>
             <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true">Sign In</asp:HyperLink>
-            <asp:Label ID="lblSignOut" runat="server"></asp:Label>              
-            <asp:HyperLink ID="logoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" OnClick="logoutLink_Click">Sign Out</asp:HyperLink>
+            <asp:Label ID="lblSignOut" runat="server"></asp:Label>
+                 <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" onserverclick="logoutLink_Click">Sign Out</a>
+            <%--<asp:HyperLink ID="logoutLink" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="false" OnClick="logoutLink_Click">Sign Out</asp:HyperLink>--%>
           </li>
 
         </ul>
