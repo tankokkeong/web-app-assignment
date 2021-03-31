@@ -83,25 +83,8 @@
         //Check Scroll Down
         var prev_msg_count = 0;
 
-        $("#insert-chat-btn").click(function(){
-            $.post("chat-post.aspx",
-            {
-                chat_content: $("#chat-content").val(),
-                seeker_id: seeker_value,
-                recruiter_id: recruiter_value,
-            },
-            function () {
-                //Clear form
-                document.getElementById("chat-content").value = "";
-
-            });
-        });
-
-        //Enter key to send message
-        function enterSendMessage() {
-            if (event.keyCode === 13) {
-                event.preventDefault();              
-
+        $("#insert-chat-btn").click(function () {
+            if ($("#chat-content").val().trim().length > 0) {
                 $.post("chat-post.aspx",
                 {
                     chat_content: $("#chat-content").val(),
@@ -113,7 +96,29 @@
                     document.getElementById("chat-content").value = "";
 
                 });
+            }
+            
+        });
 
+        //Enter key to send message
+        function enterSendMessage() {
+            if (event.keyCode === 13) {
+                event.preventDefault();              
+
+                if ($("#chat-content").val().trim().length > 0) {
+                    $.post("chat-post.aspx",
+                    {
+                        chat_content: $("#chat-content").val(),
+                        seeker_id: seeker_value,
+                        recruiter_id: recruiter_value,
+                    },
+                    function () {
+                        //Clear form
+                        document.getElementById("chat-content").value = "";
+
+                    });
+                }
+                
                 return false;
 
             }
