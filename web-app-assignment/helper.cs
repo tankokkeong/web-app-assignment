@@ -126,5 +126,100 @@ namespace web_app_assignment
 
             HttpContext.Current.Response.Cookies.Add(set_cookie);
         }
+
+        public Dictionary<string, string> getRecruiterInfo(string recruiter_id)
+        {
+            Dictionary<string, string> Recruiter_Details = new Dictionary<string, string>();
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string recruiter_sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(recruiter_sql, con);
+
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                Recruiter_Details.Add("email", dr["email"].ToString());
+                Recruiter_Details.Add("is_premium", dr["is_premium"].ToString());
+                Recruiter_Details.Add("mobile_number", dr["mobile_number"].ToString());
+                Recruiter_Details.Add("company_photo", dr["company_photo"].ToString());
+                Recruiter_Details.Add("company_name", dr["company_name"].ToString());
+                Recruiter_Details.Add("contact_email", dr["contact_email"].ToString());
+                Recruiter_Details.Add("address_line1", dr["address_line1"].ToString());
+                Recruiter_Details.Add("address_line2", dr["address_line2"].ToString());
+                Recruiter_Details.Add("city", dr["city"].ToString());
+                Recruiter_Details.Add("state", dr["state"].ToString());
+                Recruiter_Details.Add("zip_code", dr["zip_code"].ToString());
+                Recruiter_Details.Add("country", dr["country"].ToString());
+                Recruiter_Details.Add("industry", dr["industry"].ToString());
+                Recruiter_Details.Add("facebook_link", dr["facebook_link"].ToString());
+                Recruiter_Details.Add("linkedin_link", dr["linkedin_link"].ToString());
+                Recruiter_Details.Add("introduction", dr["introduction"].ToString());
+                Recruiter_Details.Add("rating", dr["rating"].ToString());
+                Recruiter_Details.Add("active", dr["active"].ToString());
+            }
+
+            con.Close();
+
+            return Recruiter_Details;
+        }
+
+        public Dictionary<string, string> getSeekerInfo(string seeker_id)
+        {
+            Dictionary<string, string> Seeker_Details = new Dictionary<string, string>();
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string recruiter_sql = "SELECT * FROM JobSeeker WHERE seeker_id = @seeker_id";
+
+            SqlCommand cmd = new SqlCommand(recruiter_sql, con);
+
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                Seeker_Details.Add("full_name", dr["full_name"].ToString());
+                Seeker_Details.Add("email", dr["email"].ToString());
+                Seeker_Details.Add("is_premium", dr["is_premium"].ToString());
+                Seeker_Details.Add("skills", dr["skills"].ToString());
+                Seeker_Details.Add("gender", dr["gender"].ToString());
+                Seeker_Details.Add("mobile_number", dr["mobile_number"].ToString());
+                Seeker_Details.Add("user_photo", dr["user_photo"].ToString());
+                Seeker_Details.Add("contact_email", dr["contact_email"].ToString());
+                Seeker_Details.Add("location", dr["location"].ToString());
+                Seeker_Details.Add("profession", dr["profession"].ToString());
+                Seeker_Details.Add("prefer_industry", dr["prefer_industry"].ToString());
+                Seeker_Details.Add("country", dr["country"].ToString());
+                Seeker_Details.Add("experience", dr["experience"].ToString());
+                Seeker_Details.Add("facebook_link", dr["facebook_link"].ToString());
+                Seeker_Details.Add("linkedin_link", dr["linkedin_link"].ToString());
+                Seeker_Details.Add("introduction", dr["introduction"].ToString());
+                Seeker_Details.Add("active", dr["active"].ToString());
+            }
+
+            con.Close();
+
+            return Seeker_Details;
+        }
     }
 }
