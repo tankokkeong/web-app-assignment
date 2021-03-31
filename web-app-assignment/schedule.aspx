@@ -322,6 +322,18 @@
                 error_prompt[6].innerHTML = "";
             }
 
+            if (!IsEmptyFieldVerification(meeting_startDate) && !IsEmptyFieldVerification(meeting_endDate)) {
+
+                //Event time validation
+                if (!startDateEndDateValidation(meeting_startDate, meeting_endDate)) {
+                    error_prompt[6].innerHTML = "meeting end date cannot be set before the start date!";
+                }
+                else {
+                    error_prompt[6].innerHTML = "";
+                }
+
+            }
+
             //meeting end time validation
             if (IsEmptyFieldVerification(meeting_endTime)) {
                 error_prompt[7].innerHTML = "Meeting end time is required!";
