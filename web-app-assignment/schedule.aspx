@@ -36,6 +36,7 @@
                     <label for="staticEmail" class="col-sm-2 col-form-label">Meeting Name:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="meeting-name">
+                        <span class="schedule-error text-danger"></span>
                     </div>
                 </div>
 
@@ -43,6 +44,7 @@
                     <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Location:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="meeting-location">
+                        <span class="schedule-error text-danger"></span>
                     </div>
                 </div>
 
@@ -50,6 +52,7 @@
                     <label for="inputPassword" class="col-sm-2 col-form-label">Meeting Description:</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" id="meeting-description" rows="10"></textarea>
+                        <span class="schedule-error text-danger"></span>
                     </div>
                 </div>
 
@@ -57,10 +60,15 @@
                     <label for="inputPassword" class="col-sm-2 col-form-label">Start Date:</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control mb-2" id="meeting-startDate">
+                        <span class="schedule-error text-danger"></span>
+
                         <input type="time" class="form-control mb-2" id="meeting-startTime">
+                        <span class="schedule-error text-danger"></span>
+
                         <select class="form-control" id="meeting-startTimeZone" style="width:100%;">
                             <option value="">Select the timezone</option>
                         </select>
+                        <span class="schedule-error text-danger"></span>
 
                         <script>
                             $("#meeting-startTimeZone").select2({
@@ -75,10 +83,15 @@
                     <label for="inputPassword" class="col-sm-2 col-form-label">End Date:</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control mb-2" id="meeting-endDate">
+                        <span class="schedule-error text-danger"></span>
+
                         <input type="time" class="form-control mb-2" id="meeting-endTime">
+                        <span class="schedule-error text-danger"></span>
+
                         <select class="form-control" id="meeting-endTimeZone" style="width:100%;">
                             <option value="">Select the timezone</option>
                         </select>
+                        <span class="schedule-error text-danger"></span>
 
                         <script>
                             $("#meeting-endTimeZone").select2({
@@ -97,6 +110,7 @@
                         <div id="attendees-container">
 
                         </div>
+                        <span class="schedule-error text-danger"></span>
                         <div class="text-right mt-3 mb-3">
                             <button class="btn btn-info" onclick="addMoreMeetingAttendees('attendees-container', 'meeting-attendees')" type="button">Add More</button>
                         </div>
@@ -114,7 +128,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <button type="button" class="btn btn-info" type="button" onclick="createScheduleMeeting()">Schedule</button>
+                    <button type="button" class="btn btn-info" type="button" onclick="scheduleValidation()">Schedule</button>
                     <a href="recruiter-profile.aspx" class="btn btn-secondary">Back</a>
                 </div>
             </form>
@@ -125,16 +139,6 @@
     <button id="authorize_button" style="display: none;" type="button">Authorize</button>
     <button id="signout_button" style="display: none;" type="button">Sign Out</button>
     <!-- <button onclick="create()">Create</button> -->
-
-<%--    <div class="mt-3">
-        <button id="authorize_button2" style="display: none;" type="button">Authorize</button>
-        <button id="signout_button2" style="display: none;" type="button">Sign Out</button>
-    </div>--%>
-
-    <%--<pre id="content" style="white-space: pre-wrap;"></pre>--%>
-
-    <%-- Google Calendar API --%>
-    <%--<pre id="content" style="white-space: pre-wrap;"></pre>--%>
 
     <script type="text/javascript">
         // Client ID and API key from the Developer Console
@@ -218,6 +222,153 @@
         //Print out timezones for the form inputs
         timeZonePrintOut("meeting-startTimeZone");
         timeZonePrintOut("meeting-endTimeZone");
+
+        function scheduleValidation() {
+            //validation variable
+            var valid_schedule = 0;
+
+            //Error Prompt
+            var error_prompt = document.getElementsByClassName("schedule-error");
+
+            //Get inputs from the users
+            var meeting_name = document.getElementById("meeting-name").value;
+            var meeting_location = document.getElementById("meeting-location").value;
+            var meeting_description = document.getElementById("meeting-description").value;
+            var meeting_startDate = document.getElementById("meeting-startDate").value;
+            var meeting_startTime = document.getElementById("meeting-startTime").value;
+            var meeting_startTimeZone = document.getElementById("meeting-startTimeZone").value;
+            var meeting_endDate = document.getElementById("meeting-endDate").value;
+            var meeting_endTime = document.getElementById("meeting-endTime").value;
+            var meeting_endTimeZone = document.getElementById("meeting-endTimeZone").value;
+            var meeting_attendees = document.getElementsByClassName("extra-attendees");
+
+            //Empty field validation
+
+            //Meeting name validation
+            if (IsEmptyFieldVerification(meeting_name)) {
+                error_prompt[0].innerHTML = "Meeting name is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else
+            {
+                error_prompt[0].innerHTML = "";
+            }
+
+            //Meeting location validation
+            if (IsEmptyFieldVerification(meeting_location)) {
+                error_prompt[1].innerHTML = "Meeting location is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[1].innerHTML = "";
+            }
+
+            //meeting description validation
+            if (IsEmptyFieldVerification(meeting_description)) {
+                error_prompt[2].innerHTML = "Meeting description is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[2].innerHTML = "";
+            }
+
+            //meeting start date validation
+            if (IsEmptyFieldVerification(meeting_startDate)) {
+                error_prompt[3].innerHTML = "Meeting start date is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[3].innerHTML = "";
+            }
+
+            //meeting start time validation
+            if (IsEmptyFieldVerification(meeting_startTime)) {
+                error_prompt[4].innerHTML = "Meeting start date is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[4].innerHTML = "";
+            }
+
+            //meeting start timezone validation
+            if (IsEmptyFieldVerification(meeting_startTimeZone)) {
+                error_prompt[5].innerHTML = "Meeting start timezone is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[5].innerHTML = "";
+            }
+
+            //meeting end date validation
+            if (IsEmptyFieldVerification(meeting_endDate)) {
+                error_prompt[6].innerHTML = "Meeting end date is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[6].innerHTML = "";
+            }
+
+            //meeting end time validation
+            if (IsEmptyFieldVerification(meeting_endTime)) {
+                error_prompt[7].innerHTML = "Meeting end time is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[7].innerHTML = "";
+            }
+
+            if (!IsEmptyFieldVerification(meeting_endTime) && !IsEmptyFieldVerification(meeting_startTime)) {
+
+                //Event time validation
+                if (!startTimeEndTimeValidation(meeting_startTime, meeting_endTime)) {
+                    error_prompt[7].innerHTML = "meeting end time cannot be same with or before the start time!";
+                }
+                else {
+                    error_prompt[7].innerHTML = "";
+                }
+
+            }
+
+            //meeting end timezone validation
+            if (IsEmptyFieldVerification(meeting_endTimeZone)) {
+                error_prompt[8].innerHTML = "Meeting end timezone is required!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+            else {
+                error_prompt[8].innerHTML = "";
+            }
+
+            //meeting attendees validation
+            for (var i = 0; i < meeting_attendees.length; i++) {
+                if (IsEmptyFieldVerification(meeting_attendees[i].value)) {
+                    error_prompt[9].innerHTML = "Meeting attendee is required!";
+
+                    //Increase error count
+                    valid_schedule++;
+                }
+                else {
+                    error_prompt[9].innerHTML = "";
+                }
+            }
+        }
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"

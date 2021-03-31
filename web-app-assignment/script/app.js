@@ -1075,3 +1075,70 @@ function printSelect2Skills(id) {
         select_tag.innerHTML = select_tag.innerHTML + "<option value='" + skills[i] + "' id='" + skills[i] + "'>" + skills[i] + "</option>";
     }
 }
+
+function IsEmptyFieldVerification(input) {
+    if (input === "" || input == "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function startTimeEndTimeValidation(start_time, end_time) {
+    //valid variable
+    valid_time = true;
+
+    //Get hours and minutes
+    start_hours = parseInt(start_time.substring(0, 2));
+    end_hours = parseInt(end_time.substring(0, 2));
+    start_minutes = parseInt(start_time.substring(3, 5));
+    end_minutes = parseInt(end_time.substring(3, 5));
+
+    //Hour comparison
+    if (start_hours > end_hours) {
+        valid_time = false;
+    }
+    else if (start_hours === end_hours && start_minutes >= end_minutes) {
+        valid_time = false;
+    }
+
+
+    if (valid_time === false || valid_time == false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function startDateEndDateValidation(start_date, end_date) {
+    //valid variable
+    valid_time = true;
+
+    //get years, month, and days
+    start_year = parseInt(start_date.substring(0, 4));
+    start_month = parseInt(start_date.substring(5, 7));
+    start_date = parseInt(start_date.substring(8, 10));
+    end_year = parseInt(end_date.substring(0, 4));
+    end_month = parseInt(end_date.substring(5, 7));
+    end_date = parseInt(end_date.substring(8, 10));
+
+    //time comparison
+    if (start_year > end_year) {
+        valid_time = false;
+    }
+    else if (start_year === end_year && start_month > end_month) {
+        valid_time = false;
+    }
+    else if (start_year === end_year && start_month === end_month && start_date > end_date) {
+        valid_time = false;
+    }
+
+    if (valid_time === false || valid_time == false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
