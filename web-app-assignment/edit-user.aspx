@@ -21,6 +21,7 @@
                     <asp:FileUpload ID="fileSeekerPhoto" runat="server" cssClass="form-control" onchange="profilePhotoUpload()"/>
                     <asp:TextBox ID="txtSeekerPhoto" runat="server" style="display:none;"/>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Company photo is required!" ControlToValidate="txtSeekerPhoto" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .jpg, .png and gif are allowed!" ControlToValidate="fileSeekerPhoto" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.PNG|.JPG|.GIF)$" style="position:absolute; left:10px;"></asp:RegularExpressionValidator>
                 </div>
         
               </div>
@@ -36,7 +37,9 @@
                     <label for="inputPassword4">Contact Email:</label>
                     <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control" placeholder="Contact Email"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Contact Email is required!" ControlToValidate="txtContactEmail" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid email format!" ControlToValidate="txtContactEmail" CssClass="text-danger" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" style="position:absolute; left:10px;"></asp:RegularExpressionValidator>
                 </div>
+                  
               </div>
 
              <div class="form-row">
@@ -44,6 +47,7 @@
                     <label for="inputAddress">Phone:</label>                    
                     <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Phone"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Phone number is required!" ControlToValidate="txtPhone" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Invalid phone format!" ControlToValidate="txtPhone" CssClass="text-danger" ValidationExpression="^([\+]?(?:00)?[0-9]{1,3}[\s.-]?[0-9]{1,12})([\s.-]?[0-9]{1,4}?)$" style="position:absolute; left:10px;"></asp:RegularExpressionValidator>
                 </div>
                 
                  <div class="form-group col-md-6 m-0">
@@ -102,6 +106,7 @@
                     <label for="inputAddress">Profession:</label>
                     <asp:TextBox ID="txtProfession" runat="server" CssClass="form-control" placeholder="ex: Software Engineer"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Profession is required!" ControlToValidate="txtProfession" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Profession can only have characters!" ControlToValidate="txtProfession" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]*$" style="position:absolute; left:10px;"></asp:RegularExpressionValidator>
                 </div>
             </div>
 

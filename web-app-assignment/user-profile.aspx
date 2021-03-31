@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="my-info row" id="about-content">
-                    <div class="brief-info col-sm-12 col-lg-6">
+                    <div class="brief-info col-sm-12 col-lg-6 mb-3">
                         <asp:Label ID="lblSeekerIntroduction" runat="server" Text="Label"></asp:Label>
                     </div>
 

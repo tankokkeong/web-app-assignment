@@ -16,7 +16,13 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            //Check Login
+            if (Session["User"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
+
+            if (!Page.IsPostBack)
             {
                 List<string> countryListItems = new List<string>{
             "Afghanistan",
@@ -344,7 +350,7 @@ namespace web_app_assignment
                 var gender = ddlGender.Text;
                 var location = txtLocation.Text;
                 var country = ddlCountry.SelectedValue;
-                var profession = txtPhone.Text;
+                var profession = txtProfession.Text;
                 var experience = txtExperience.Text;
                 var industry_list = txtIndustry.Text;
                 var skills_list = txtSkills.Text;
