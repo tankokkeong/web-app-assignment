@@ -344,7 +344,7 @@ namespace web_app_assignment
                 var gender = ddlGender.Text;
                 var location = txtLocation.Text;
                 var country = ddlCountry.SelectedValue;
-                var profession = txtPhone.Text;
+                var profession = txtProfession.Text;
                 var experience = txtExperience.Text;
                 var industry_list = txtIndustry.Text;
                 var skills_list = txtSkills.Text;
