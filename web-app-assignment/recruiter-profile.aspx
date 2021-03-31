@@ -186,11 +186,11 @@
                                 <div class='col-sm-3 mt-3'>
                                     <div class='company-name text-lightgreen'><%#Eval("full_name") %> </div>
                                     <div class='company-location'>
-                                        <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>
+                                        <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> <%#Eval("location") %>, <%#Eval("country") %></span>
                                     </div>
 
                                     <div class='hiring-position'>
-                                        <span class='hiring-details'>Graphic Designer</span>
+                                        <span class='hiring-details'><%#Eval("job_title") %></span>
                                     </div>
 
                                     <div class='view-profile'>

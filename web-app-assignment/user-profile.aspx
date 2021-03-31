@@ -175,15 +175,15 @@
                                     <div class='col-sm-3 mt-3'>
                                         <div class='company-name text-lightgreen'><%#Eval("company_name") %></div>
                                         <div class='company-location'>
-                                            <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> Kuala Lumpur, Selangor</span>
+                                            <span class='company-location-details text-secondary'><i class='fas fa-map-marker-alt'></i> <%#Eval("state") %>, <%#Eval("city") %></span>
                                         </div>
 
                                         <div class='hiring-position'>
-                                            <span class='hiring-details'>Graphic Designer</span>
+                                            <span class='hiring-details'><%#Eval("contact_email") %></span>
                                         </div>
 
                                         <div class='view-profile'>
-                                            <button class='btn btn-info'>View Profile</button>
+                                            <a href="recruiter-profile.aspx?view=<%#Eval("recruiter_id") %>" class='btn btn-info'>View Profile</a>
                                         </div>
                                     </div>
 
