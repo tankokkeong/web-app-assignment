@@ -1037,6 +1037,22 @@ function printSelect2Industry(id) {
     }
 }
 
+function printSelect2Profession(id) {
+    select_tag = document.getElementById(id);
+
+    professions = [
+        "Marketing Manager",
+        "IT Manager",
+        "Production Manager",
+        "Accounting Manager",
+    ];
+
+    //Print out available timezones
+    for (var i = 0; i < professions.length; i++) {
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + professions[i] + "' id='" + professions[i] + "'>" + professions[i] + "</option>";
+    }
+}
+
 function printSelect2Skills(id) {
     select_tag = document.getElementById(id);
 
@@ -1073,6 +1089,65 @@ function printSelect2Skills(id) {
     //Print out available timezones
     for (var i = 0; i < skills.length; i++) {
         select_tag.innerHTML = select_tag.innerHTML + "<option value='" + skills[i] + "' id='" + skills[i] + "'>" + skills[i] + "</option>";
+    }
+}
+
+function printSelect2State(id) {
+    select_tag = document.getElementById(id);
+
+    stateLocation = [
+        "Perak",
+        "Pulau Pinang",
+        "Kedah",
+        "Perlis",
+        "Johor",
+        "Kelantan",
+        "Melaka",
+        "Negeri Sembilan",
+        "Pahang",
+        "Selangor",
+        "Terengganu",
+        "Sabah",
+        "Sarawak",
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Labuan"
+    ];
+
+    //Print out available states
+    for (var i = 0; i < stateLocation.length; i++) {
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + stateLocation[i] + "' id='" + stateLocation[i] + "'>" + stateLocation[i] + "</option>";
+    }
+}
+
+function printSelect2JobType(id) {
+    select_tag = document.getElementById(id);
+
+    jobType = [
+        "All",
+        "Full Time",
+        "Part Time",
+    ];
+
+    //Print out available states
+    for (var i = 0; i < jobType.length; i++) {
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + jobType[i] + "' id='" + jobType[i] + "'>" + jobType[i] + "</option>";
+    }
+}
+
+function printSelect2JobSpec(id) {
+    select_tag = document.getElementById(id);
+
+    jobSpec = [
+        "Design platform",
+        "Front end",
+        "Back end",
+        "Full stack",
+    ];
+
+    //Print out available states
+    for (var i = 0; i < jobSpec.length; i++) {
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + jobSpec[i] + "' id='" + jobSpec[i] + "'>" + jobSpec[i] + "</option>";
     }
 }
 

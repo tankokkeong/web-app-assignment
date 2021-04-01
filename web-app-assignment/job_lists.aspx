@@ -34,7 +34,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:ListBox ID="lstSearchLocation" CssClass="form-control selectStates custom-select" SelectionMode="Multiple" multiple="multiple" runat="server"></asp:ListBox>
+                                <select class="form-control selectStates custom-select" style="width:100%;" id="location-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobTypeDropdown">
-                                <asp:ListBox ID="lstSearchJobType" runat="server" CssClass="form-control jobType custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control jobType custom-select" style="width:100%;" id="jobtype-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobSpecDropdown">
-                                <asp:ListBox ID="lstSearchJobSpec" runat="server" CssClass="form-control jobSpec custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control jobSpec custom-select" style="width:100%;" id="jobSpec-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -120,16 +120,16 @@
     </div>
 
     <script type="text/javascript">
-        $(".selectStates").select2({
+        $("#location-selection").select2({
             placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
         });
-        $('.jobType').select2({
+        $('#jobtype-selection').select2({
             placeholder: "Job Type",
         });
         
-        $(".jobSpec").select2({
+        $("#jobSpec-selection").select2({
             placeholder: "Job Specialization or Position eg. Accounting",
             allowClear: true,
             tags: true,
@@ -224,7 +224,6 @@
         $(document).ready(function () {
             $("#input-left").on("input change", function () {
                 document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
-                console.log(document.getElementById('txt_amountLeft').value);
             });
         });
 
@@ -237,7 +236,7 @@
     
     <script>
         function JobListSearch() {
-            var location_selected = $('.selectStates').select2('data');
+            var location_selected = $('#location-selection').select2('data');
             var job_location = "";
             var jobType_selected = $('.jobType').select2('data');
             var job_type = "";
@@ -282,5 +281,131 @@
             window.location.href = "job_lists.aspx?job_title=" + job_Title + "&location=" + job_location +
                 "&job_type=" + job_type + "&job_spec=" + job_spec + "&rangeFrom=" + rangeFrom + "&rangeEnd=" + rangeEnd;
         }
+
+        function getSelectedLocation() {
+            var locationQuery = window.location.href.split('?')[1];
+            locationQuery = locationQuery.split('&')[1];
+            locationQuery = locationQuery.split('=')[1];
+
+            var location = locationQuery.split(',');
+            var select2_input = document.getElementById("location-selection");
+
+            if (location !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < location.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(location[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(location[i]) + "' selected id='" + unescape(location[i]) + "'>" + unescape(location[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < location.length; i++) {
+
+                    if (document.getElementById(location[i]) != null) {
+                        document.getElementById(location[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        function getJobTitle() {
+            var titleQuery = window.location.href.split('?')[1];
+            titleQuery = titleQuery.split('=')[1];
+
+            var title = titleQuery.split('&')[0];
+            title = title.split(',');
+            var job_titleText = document.getElementById("ContentPlaceHolder1_txt_SearchJobTitle");
+
+            if (title !== " ") {
+                job_titleText.value = title;
+            }
+        }
+
+        function getSelectedJobType() {
+            var jobTypeQuery = window.location.href.split('?')[1];
+            jobTypeQuery = jobTypeQuery.split('&')[2];
+            jobTypeQuery = jobTypeQuery.split('=')[1];
+
+            var jobType = jobTypeQuery.split(',');
+            var select2_input = document.getElementById("jobtype-selection");
+
+            if (jobType !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < jobType.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(jobType[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(jobType[i]) + "' selected id='" + unescape(jobType[i]) + "'>" + unescape(jobType[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < jobType.length; i++) {
+
+                    if (document.getElementById(jobType[i]) != null) {
+                        document.getElementById(jobType[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        function getSelectedJobSpec() {
+            var jobSpecQuery = window.location.href.split('?')[1];
+            jobSpecQuery = jobSpecQuery.split('&')[3];
+            jobSpecQuery = jobSpecQuery.split('=')[1];
+
+            var jobSpec = jobSpecQuery.split(',');
+            var select2_input = document.getElementById("jobSpec-selection");
+
+            if (jobSpec !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < jobSpec.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(jobSpec[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(jobSpec[i]) + "' selected id='" + unescape(jobSpec[i]) + "'>" + unescape(jobSpec[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < jobSpec.length; i++) {
+
+                    if (document.getElementById(jobSpec[i]) != null) {
+                        document.getElementById(jobSpec[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        //function getSalaryRange() {
+        //    var salaryQuery = window.location.href.split('?')[1];
+
+        //    var salaryQueryFrom = salaryQuery.split('&')[4];
+        //    var salaryQueryEnd = salaryQuery.split('&')[5];
+
+        //    salaryQueryFrom = salaryQueryFrom.split('=')[1];
+        //    salaryQueryEnd = salaryQueryEnd.split('=')[1];
+
+        //    var salaryLeft = document.getElementById("input-left");
+        //    var salaryRight = document.getElementById("input-right");
+
+        //    if (salaryQueryEnd !== " " || salaryQueryFrom !== " ") {
+        //        salaryLeft.value = salaryQueryFrom;
+        //        salaryRight.value = salaryQueryEnd;
+        //    }
+        //}
+
+        //Print out the available industry
+        printSelect2State("location-selection");
+        printSelect2JobType("jobtype-selection");
+        printSelect2JobSpec("jobSpec-selection");
+
+        getSelectedLocation();
+        getJobTitle();
+        getSelectedJobType();
+        getSelectedJobSpec();
+        //getSalaryRange();
     </script>
 </asp:Content>

@@ -23,7 +23,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsSkillsDropdown">
-                                <asp:ListBox ID="lstSearchSkills" runat="server" CssClass="form-control selectSkills custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control selectSkills custom-select" style="width:100%;" id="skills-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsLocationDropdown">
-                                <asp:ListBox ID="lstSearchLocation" runat="server" CssClass="form-control selectStates custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control selectStates custom-select" style="width:100%;" id="location-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsIndustryDropdown">
-                                <asp:ListBox ID="lstSearchIndustry" runat="server" CssClass="form-control jobIndustry custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control jobIndustry custom-select" style="width:100%;" id="industry-selection" multiple="multiple"></select>
                             </div>
                         </div>  
                     </div>
@@ -59,7 +59,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobProfessionDropdown">
-                                <asp:ListBox ID="lstSearchJobProfession" runat="server" CssClass="form-control jobProfession custom-select" multiple="multiple" SelectionMode ="Multiple"></asp:ListBox>
+                                <select class="form-control jobProfession custom-select" style="width:100%;" id="profession-selection" multiple="multiple"></select>
                             </div>
                         </div>
                     </div>
@@ -90,25 +90,25 @@
     </div>
 
     <script type="text/javascript">
-        $(".selectSkills").select2({
+        $("#skills-selection").select2({
             placeholder: "Skills",
             allowClear: true,
             tags: true,
         });
 
-        $(".selectStates").select2({
+        $("#location-selection").select2({
             placeholder: "Select Location or Write Location",
             allowClear: true,
             tags: true,
         });
 
-        $('.jobIndustry').select2({
+        $('#industry-selection').select2({
             placeholder: "Industry",
             allowClear: true,
             tags: true,
         });
 
-        $(".jobProfession").select2({
+        $("#profession-selection").select2({
             placeholder: "Job Profession",
             allowClear: true,
             tags: true,
@@ -130,13 +130,13 @@
     <script>
         function CandidateSearch() {
             //Get Search Input
-            var location_selected = $('.selectStates').select2('data');
+            var location_selected = $('#location-selection').select2('data');
             var job_location = "";
-            var skils_selected = $('.selectSkills').select2('data');
+            var skills_selected = $('#skills-selection').select2('data');
             var job_skills = "";
-            var industry_selected = $('.jobIndustry').select2('data');
+            var industry_selected = $('#industry-selection').select2('data');
             var job_industry = "";
-            var profession_selected = $('.jobProfession').select2('data');
+            var profession_selected = $('#profession-selection').select2('data');
             var job_profession = "";
 
             for (var i = 0; i < location_selected.length; i++) {
@@ -149,13 +149,13 @@
                 }
             }
 
-            for (var i = 0; i < skils_selected.length; i++) {
+            for (var i = 0; i < skills_selected.length; i++) {
 
                 if (i === 0) {
-                    job_skills = skils_selected[i].text;
+                    job_skills = skills_selected[i].text;
                 }
                 else {
-                    job_skills = job_skills + "," + skils_selected[i].text;
+                    job_skills = job_skills + "," + skills_selected[i].text;
                 }
             }
 
@@ -183,57 +183,130 @@
             window.location.href = "candidate-list.aspx?skills=" + job_skills + "&location=" + job_location + "&prefer_industry=" + job_industry + "&profession=" + job_profession;
 
         }
-    </script>
 
-    <script>
         //Sticky form script
-        function getSelectedSkills() {
-            var selected_skills = document.getElementById("ContentPlaceHolder1_txtSkills").value.split(",");
-            var select2_input = document.getElementById("skill-selection");
-
-            if (document.getElementById("ContentPlaceHolder1_txtSkills").value !== "") {
-                //Add Customize creation for the users
-                for (var i = 0; i < selected_skills.length; i++) {
-
-                    //If the selected value didnt exist in the current option
-                    if (document.getElementById(selected_skills[i]) == null) {
-                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_skills[i] + "' selected id='" + selected_skills[i] + "'>" + selected_skills[i] + "</option>";
-                    }
-                }
-
-
-                for (var i = 0; i < selected_skills.length; i++) {
-
-                    if (document.getElementById(selected_skills[i]) != null) {
-                        document.getElementById(selected_skills[i]).selected = true;
-                    }
-
-                }
-            }
-        }
-
         function getSelectedIndustry() {
-            var selected_industry = document.getElementById("ContentPlaceHolder1_txtIndustry").value.split(",");
+            var industriesQuery = window.location.href.split('?')[1];
+            industriesQuery = industriesQuery.split('&')[2];
+            industriesQuery = industriesQuery.split('=')[1];
+
+            var industries = industriesQuery.split(',');
             var select2_input = document.getElementById("industry-selection");
 
-            if (document.getElementById("ContentPlaceHolder1_txtIndustry").value !== "") {
+            if (industries !== " ") {
                 //Add Customize creation for the users
-                for (var i = 0; i < selected_industry.length; i++) {
+                for (var i = 0; i < industries.length; i++) {
 
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(selected_industry[i]) == null) {
-                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + selected_industry[i] + "' selected id='" + selected_industry[i] + "'>" + selected_industry[i] + "</option>";
+                    if (document.getElementById(industries[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(industries[i]) + "' selected id='" + unescape(industries[i]) + "'>" + unescape(industries[i]) + "</option>";
                     }
                 }
 
-                for (var i = 0; i < selected_industry.length; i++) {
+                for (var i = 0; i < industries.length; i++) {
 
-                    if (document.getElementById(selected_industry[i]) != null) {
-                        document.getElementById(selected_industry[i]).selected = true;
+                    if (document.getElementById(industries[i]) != null) {
+                        document.getElementById(industries[i]).selected = true;
                     }
 
                 }
             }
         }
+
+        function getSelectedSkills() {
+            var skillsQuery = window.location.href.split('?')[1];
+            skillsQuery = skillsQuery.split('=')[1];
+
+            var skills = skillsQuery.split('&')[0];
+            skills = skills.split(',');
+            var select2_input = document.getElementById("skills-selection");
+
+            if (skills !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < skills.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(skills[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(skills[i]) + "' selected id='" + unescape(skills[i]) + "'>" + unescape(skills[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < skills.length; i++) {
+
+                    if (document.getElementById(skills[i]) != null) {
+                        document.getElementById(skills[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        function getSelectedLocation() {
+            var locationQuery = window.location.href.split('?')[1];
+            locationQuery = locationQuery.split('&')[1];
+            locationQuery = locationQuery.split('=')[1];
+
+            var location = locationQuery.split(',');
+            var select2_input = document.getElementById("location-selection");
+
+            if (location !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < location.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(location[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(location[i]) + "' selected id='" + unescape(location[i]) + "'>" + unescape(location[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < location.length; i++) {
+
+                    if (document.getElementById(location[i]) != null) {
+                        document.getElementById(location[i]).selected = true;
+                    }
+
+                }
+            }
+        }
+
+        function getSelectedProfession() {
+            var professionQuery = window.location.href.split('?')[1];
+            professionQuery = professionQuery.split('&')[3];
+            professionQuery = professionQuery.split('=')[1];
+            console.log(professionQuery);
+
+            var profession = professionQuery.split(',');
+            var select2_input = document.getElementById("profession-selection");
+
+            if (profession !== " ") {
+                //Add Customize creation for the users
+                for (var i = 0; i < profession.length; i++) {
+
+                    //If the selected value didnt exist in the current option
+                    if (document.getElementById(profession[i]) == null) {
+                        select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(profession[i]) + "' selected id='" + unescape(profession[i]) + "'>" + unescape(profession[i]) + "</option>";
+                    }
+                }
+
+                for (var i = 0; i < profession.length; i++) {
+
+                    if (document.getElementById(profession[i]) != null) {
+                        document.getElementById(profession[i]).selected = true;
+                    }
+
+                }
+            } 
+        }
+
+        //Print out the available industry
+        printSelect2Industry("industry-selection");
+        printSelect2Skills("skills-selection");
+        printSelect2State("location-selection");
+        printSelect2Profession("profession-selection");
+
+        getSelectedIndustry();
+        getSelectedSkills();
+        getSelectedLocation();
+        getSelectedProfession();
     </script>
 </asp:Content>

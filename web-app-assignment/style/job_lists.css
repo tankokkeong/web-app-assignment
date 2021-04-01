@@ -69,7 +69,7 @@
     color: #69A19A;
     font-weight: bold;
     border-style: none;
-    width: 10%;
+    width: 15%;
 }
 
 .amount label {
@@ -171,8 +171,8 @@
     position: relative;
     width: 95%;
     max-width: 500px;
-    margin-left: -15%;
-    margin-right: 15%;
+    margin-left: -5%;
+    margin-right: 5%;
 }
 
 .slider {

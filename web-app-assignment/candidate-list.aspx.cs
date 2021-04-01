@@ -30,59 +30,7 @@ namespace web_app_assignment
 
             int endPage = (int)Math.Ceiling(Convert.ToDouble(cmdCountSeekers.ExecuteScalar()) / Convert.ToDouble(ddlPageSize.SelectedItem.Value));
 
-            conSearchTotal.Close();
-
-            List<string> LocationStatesItems = new List<string>
-            {
-                "Johor",
-                "Kedah",
-                "Kelantan",
-                "Kuala Lumpur",
-                "Labuan",
-                "Melacca",
-                "Negeri Sembilan",
-                "Pahang",
-                "Perak",
-                "Perlis",
-                "Pulau Pinang",
-                "Putrajaya",
-                "Sabah",
-                "Sarawak",
-                "Selangor",
-                "Terengganu",
-            };
-            lstSearchLocation.DataSource = LocationStatesItems;
-            lstSearchLocation.DataBind();
-
-            List<string> SkillItems = new List<string>
-            {
-                "Java",
-                "Python",
-                "C",
-                "C#",
-            };
-            lstSearchSkills.DataSource = SkillItems;
-            lstSearchSkills.DataBind();
-
-            List<string> IndustryItems = new List<string>
-            {
-                "IT",
-                "Accounting",
-                "Economics",
-                "Bio-Technology",
-            };
-            lstSearchIndustry.DataSource = IndustryItems;
-            lstSearchIndustry.DataBind();
-
-            List<string> ProfessionItems = new List<string>
-            {
-                "Marketing Manager",
-                "IT Manager",
-                "Production Manager",
-                "Accounting Manager",
-            };
-            lstSearchJobProfession.DataSource = ProfessionItems;
-            lstSearchJobProfession.DataBind();
+            conSearchTotal.Close();  
 
             try
             {
@@ -142,7 +90,7 @@ namespace web_app_assignment
                 }
 
                 int end_page = current_page * limit_per_page;
-                int first_page = end_page - limit_per_page + 1;
+                int first_page = end_page - limit_per_page;
 
                 string sql = "";
 
@@ -270,22 +218,22 @@ namespace web_app_assignment
 
             if(skillsquery != "")
             {
-                sql += " AND skills LIKE '%" + skillsquery + "%'";
+                sql += " OR skills LIKE '%" + skillsquery + "%' OR skills IN('" + skillsquery + "')";
             }
 
             if (locationsquery != "")
             {
-                sql += " AND location LIKE '%" + locationsquery + "%'";
+                sql += " OR location LIKE '%" + locationsquery + "%' OR location IN('" + locationsquery + "')";
             }
 
             if (industriesquery != "")
             {
-                sql += " AND prefer_industry LIKE '%" + industriesquery + "%'";
+                sql += " OR prefer_industry LIKE '%" + industriesquery + "%' OR prefer_industry IN('" + industriesquery + "')";
             }
 
             if (professionsquery != "")
             {
-                sql += " AND profession LIKE '%" + professionsquery + "%'";
+                sql += " OR profession LIKE '%" + professionsquery + "%' OR profession IN('" + professionsquery + "')";
             }
 
             return sql;
@@ -327,7 +275,17 @@ namespace web_app_assignment
             int secondPage = firstPage + 1;
             int secondLastPage = endPage - 1;
 
-            string querys = "&skills=" + skillsquery + "&location=" + locationsquery + "&prefer_industry=" + industriesquery + "&profession=" + professionsquery;
+            string querys = "skills=" + skillsquery + "&location=" + locationsquery + "&prefer_industry=" + industriesquery + "&profession=" + professionsquery;
+
+            // ensure current page isn't out of range
+            if (currentPage < firstPage)
+            {
+                currentPage = firstPage;
+            }
+            else if (currentPage > endPage)
+            {
+                currentPage = endPage;
+            }
 
             //if no query
             if (skillsquery == "" && locationsquery == "" && industriesquery == "" && professionsquery == "")
@@ -436,15 +394,15 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -453,13 +411,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -468,13 +426,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -483,13 +441,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='candidate-list.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }

@@ -32,53 +32,6 @@ namespace web_app_assignment
 
             conSearchTotal.Close();
 
-            if (!Page.IsPostBack)
-            {
-                List<string> LocationStatesItems = new List<string>
-                {
-                    "Johor",
-                    "Kedah",
-                    "Kelantan",
-                    "Kuala Lumpur",
-                    "Labuan",
-                    "Melacca",
-                    "Negeri Sembilan",
-                    "Pahang",
-                    "Perak",
-                    "Perlis",
-                    "Pulau Pinang",
-                    "Putrajaya",
-                    "Sabah",
-                    "Sarawak",
-                    "Selangor",
-                    "Terengganu",
-                };
-
-                List<string> JobTypeItems = new List<string>
-                {
-                    "All",
-                    "Full Time",
-                    "Part Time",
-                };
-
-                List<string> JobSpecialization = new List<string>
-                {
-                    "Design platform",
-                    "Front end",
-                    "Back end",
-                    "Full stack",
-                };
-
-                lstSearchJobType.DataSource = JobTypeItems;
-                lstSearchJobType.DataBind();
-
-                lstSearchLocation.DataSource = LocationStatesItems;
-                lstSearchLocation.DataBind();
-
-                lstSearchJobSpec.DataSource = JobSpecialization;
-                lstSearchJobSpec.DataBind();
-            }
-
             try
             {
                 SqlConnection con = new SqlConnection(strcon);
@@ -145,7 +98,7 @@ namespace web_app_assignment
                     if (ddlPageSize.SelectedItem.Value == "5")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 5 * FROM(" +
+                        sql = "SELECT TOP 5 * FROM (" +
                             "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) +")" +
                             "UNION" +
@@ -156,7 +109,7 @@ namespace web_app_assignment
                     else if (ddlPageSize.SelectedItem.Value == "10")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 10 * FROM(" +
+                        sql = "SELECT TOP 10 * FROM (" +
                             "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
                             "UNION" +
@@ -167,7 +120,7 @@ namespace web_app_assignment
                     else if (ddlPageSize.SelectedItem.Value == "15")
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 15 * FROM(" +
+                        sql = "SELECT TOP 15 * FROM (" +
                             "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
                             "UNION" +
@@ -180,12 +133,12 @@ namespace web_app_assignment
                 {
                     lbl_JobListContentsAllCompanies.Text = "";
                     sql = "SELECT * FROM (" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
-                            " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
-                            "UNION" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
-                            " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
-                            ") result ORDER BY(SELECT NULL) OFFSET " + first_page + " ROWS FETCH NEXT " + limit_per_page + " ROWS ONLY";
+                        "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
+                        " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
+                        "UNION" +
+                        "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
+                        " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
+                        ") result ORDER BY(SELECT NULL) OFFSET " + first_page + " ROWS FETCH NEXT " + limit_per_page + " ROWS ONLY";
                 }
 
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -272,27 +225,27 @@ namespace web_app_assignment
 
             if (jobTitlequery != "")
             {
-                sql += " AND job_title LIKE '%" + jobTitlequery + "%'";
+                sql += " OR job_title LIKE '%" + jobTitlequery + "%' OR job_title IN('" + jobTitlequery + "')";
             }
 
             if (locationsquery != "")
             {
-                sql += " AND location LIKE '%" + locationsquery + "%'";
+                sql += " OR location LIKE '%" + locationsquery + "%' OR location IN('" + locationsquery + "')";
             }
 
             if (jobTypequery != "")
             {
-                sql += " AND job_type LIKE '%" + jobTypequery + "%'";
+                sql += " OR job_type LIKE '%" + jobTypequery + "%' OR job_type IN('" + jobTypequery + "')";
             }
 
             if (JobSpecquery != "")
             {
-                sql += " AND job_specializations LIKE '%" + JobSpecquery + "%'";
+                sql += " OR job_specializations LIKE '%" + JobSpecquery + "%' OR job_specializations IN('" + JobSpecquery + "')";
             }
 
             if (rangeFromquery != "" && rangeEndquery != "")
             {
-                sql += " AND salary BETWEEN " + rangeFromquery + " AND " + rangeEndquery;
+                sql += " OR salary BETWEEN " + rangeFromquery + " OR " + rangeEndquery;
             }
 
             return sql;
@@ -337,10 +290,20 @@ namespace web_app_assignment
             int secondPage = firstPage + 1;
             int secondLastPage = endPage - 1;
 
-            string querys = "&job_title=" + jobTitlequery + "&location=" + locationsquery + "&job_type=" + jobTypequery + "&job_spec=" + JobSpecquery + "&rangeFrom=" + rangeFromquery + "&rangeEnd=" + rangeEndquery;
+            string querys = "job_title=" + jobTitlequery + "&location=" + locationsquery + "&job_type=" + jobTypequery + "&job_spec=" + JobSpecquery + "&rangeFrom=" + rangeFromquery + "&rangeEnd=" + rangeEndquery ;
+
+            // ensure current page isn't out of range
+            if (currentPage < 1)
+            {
+                currentPage = 1;
+            }
+            else if (currentPage > endPage)
+            {
+                currentPage = endPage;
+            }
 
             //if no query
-            if(jobTitlequery == "" && locationsquery == "" && jobTypequery == "" && JobSpecquery == "" && rangeFromquery == "" && rangeEndquery == "")
+            if (jobTitlequery == "" && locationsquery == "" && jobTypequery == "" && JobSpecquery == "" && rangeFromquery == "" && rangeEndquery == "")
             {
                 if (currentPage > firstPage && currentPage < endPage)
                 {
@@ -461,15 +424,15 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(firstPage) +"'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -478,13 +441,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -493,13 +456,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>" + Convert.ToString(switchPrevious) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -508,13 +471,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
@@ -523,13 +486,13 @@ namespace web_app_assignment
                     txtPagination.Text = "";
                     txtPagination.Text += "<nav aria-label='Page navigation example'>" +
                                           "<ul class='pagination justify-content-end'>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(firstPage) + querys + "'>First Page</a></li>" +
-                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchPrevious) + querys + "'>Previous</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(firstPage) + "'>First Page</a></li>" +
+                                            "<li class='page-item disabled'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchPrevious) + "'>Previous</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link'>" + Convert.ToString(currentPage) + "</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>" + Convert.ToString(switchNext) + "</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>" + Convert.ToString(switchNext) + "</a></li>" +
                                             "<li class='page-item disabled'><a class='page-link' href='#'>...</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(switchNext) + querys + "'>Next</a></li>" +
-                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?page=" + Convert.ToString(endPage) + querys + "'>Last Page</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(switchNext) + "'>Next</a></li>" +
+                                            "<li class='page-item'><a class='page-link' href='job_lists.aspx?" + querys + "&page=" + Convert.ToString(endPage) + "'>Last Page</a></li>" +
                                           "</ul>" +
                                         "</nav>";
                 }
