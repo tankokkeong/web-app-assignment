@@ -59,6 +59,7 @@ namespace web_app_assignment
                 Languages.Add("Home", "主页");
                 Languages.Add("Jobs", "职位");
                 Languages.Add("About Us", "关于我们");
+                Languages.Add("Blog", "部落格");
                 Languages.Add("Sign Up", "登记");
                 Languages.Add("Sign In", "登入");
                 Languages.Add("Privacy Policy", "隐私政策");
@@ -71,19 +72,23 @@ namespace web_app_assignment
                 Languages.Add("User Profile", "用户资料");
                 Languages.Add("Search Jobs", "职位搜索");
                 Languages.Add("Resume", "简历");
-                Languages.Add("Email", "电子邮件");
-                Languages.Add("Call", "联络");
+                Languages.Add("Email:", "电子邮件:");
+                Languages.Add("Call:", "联络:");
                 Languages.Add("Job Seekers", "求职者");
                 Languages.Add("Employers", "雇主");
                 Languages.Add("Sign Out", "登出");
                 Languages.Add("Recruiter", "招聘人员");
                 Languages.Add("Full-Time Job Posted", "全职工作发布");
-                Languages.Add("Languages", "语言");
+                Languages.Add("Part-Time Job Posted", "兼职工作发布");
+                Languages.Add("Job Seeker", "求职者");
+                Languages.Add("Languages", "语言"); 
+                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020求职由肯尼团队设计。版权所有");
 
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
                 lblAboutUs2.Text = Languages["About Us"];
+                lblBlogs.Text = Languages["Blog"];
                 //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
@@ -96,22 +101,24 @@ namespace web_app_assignment
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
                 lblResume.Text = Languages["Resume"];
-                lblEmail.Text = Languages["Email"];
-                lblCall.Text = Languages["Call"];
+                lblEmail.Text = Languages["Email:"];
+                lblCall.Text = Languages["Call:"];
                 lblJobSeeker.Text = Languages["Job Seekers"];
                 lblEmployers.Text = Languages["Employers"];
                 lblSignOut.Text = Languages["Sign Out"];
-                //lblJobPosted.Text = Languages["Full-Time Job Posted"]; 
-                //lblJobPosted2.Text = Languages["Full-Time Job Posted"];
-                //lblJobPosted3.Text = Languages["Full-Time Job Posted"];
-                //lblJobPosted4.Text = Languages["Full-Time Job Posted"];
+                lblFullTimeJobPosted2.Text = Languages["Full-Time Job Posted"];
+                lblPartTimeJobPosted2.Text = Languages["Part-Time Job Posted"];
+                lblTotalJobSeeker2.Text = Languages["Job Seeker"];
+                lblTotalRecruiter2.Text = Languages["Recruiter"];
                 lblLanguages.Text = Languages["Languages"];
+                lblKenny.Text = Languages["@2020 Job Searching Designed By Kenny's Team. All Rights Reserved"];
             }
             else if (Session["Languages_EN"] != null)
             {
                 Languages.Add("Home", "Home");
                 Languages.Add("Jobs", "Jobs");
                 Languages.Add("About Us", "About Us");
+                Languages.Add("Blog", "Blog");
                 Languages.Add("Sign Up", "Sign Up");
                 Languages.Add("Sign In", "Sign In");
                 Languages.Add("Privacy Policy", "Privacy Policy");
@@ -124,19 +131,23 @@ namespace web_app_assignment
                 Languages.Add("User Profile", "User Profile");
                 Languages.Add("Search Jobs", "Search Jobs");
                 Languages.Add("Resume", "Resume");
-                Languages.Add("Email", "Email");
-                Languages.Add("Call", "Call");
+                Languages.Add("Email:", "Email:");
+                Languages.Add("Call:", "Call:");
                 Languages.Add("Job Seekers", "Job Seekers");
                 Languages.Add("Employers", "Employers");
                 Languages.Add("Sign Out", "Sign Out");
                 Languages.Add("Recruiter", "Recruiter");
                 Languages.Add("Full-Time Job Posted", "Full-Time Job Posted");
+                Languages.Add("Part-Time Job Posted", "Part-Time Job Posted");
+                Languages.Add("Job Seeker", "Job Seeker");
                 Languages.Add("Languages", "Languages");
+                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020 Job Searching Designed By Kenny's Team. All Rights Reserved");
 
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
                 lblAboutUs2.Text = Languages["About Us"];
+                lblBlogs.Text = Languages["Blog"];
                 //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
@@ -149,16 +160,17 @@ namespace web_app_assignment
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
                 lblResume.Text = Languages["Resume"];
-                lblEmail.Text = Languages["Email"];
-                lblCall.Text = Languages["Call"];
+                lblEmail.Text = Languages["Email:"];
+                lblCall.Text = Languages["Call:"];
                 lblJobSeeker.Text = Languages["Job Seekers"];
                 lblEmployers.Text = Languages["Employers"];
                 lblSignOut.Text = Languages["Sign Out"];
-                //lblJobPosted.Text = Languages["Full-Time Job Posted"];
-                //lblJobPosted2.Text = Languages["Full-Time Job Posted"];
-                //lblJobPosted3.Text = Languages["Full-Time Job Posted"];
-                //lblJobPosted4.Text = Languages["Full-Time Job Posted"];
+                lblFullTimeJobPosted2.Text = Languages["Full-Time Job Posted"];
+                lblPartTimeJobPosted2.Text = Languages["Part-Time Job Posted"];
+                lblTotalJobSeeker2.Text = Languages["Job Seeker"];
+                lblTotalRecruiter2.Text = Languages["Recruiter"];
                 lblLanguages.Text = Languages["Languages"];
+                lblKenny.Text = Languages["@2020 Job Searching Designed By Kenny's Team. All Rights Reserved"];
             }
 
             try

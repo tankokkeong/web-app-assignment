@@ -35,6 +35,18 @@ namespace web_app_assignment.admin
                     txtID.Text = (dr["seeker_id"].ToString());
                     txtName.Text = (string)dr["full_name"];
                     txtEmail.Text = (string)dr["email"];
+                    txtSkills.Text = (string)dr["skills"];
+                    txtGender.Text = (string)dr["gender"];
+                    txtContactNumber.Text = (string)dr["mobile_number"];
+                    txtContactEmail.Text = (string)dr["contact_email"];
+                    txtLocation.Text = (string)dr["location"];
+                    txtProfession.Text = (string)dr["profession"];
+                    txtPreferIndustry.Text = (string)dr["prefer_industry"];
+                    txtCountry.Text = (string)dr["country"];
+                    txtExperience.Text = (string)dr["experience"];
+                    txtFacebook.Text = (string)dr["facebook_link"];
+                    txtLinkedin.Text = (string)dr["linkedin_link"];
+                    txtIntroduction.Text = (string)dr["introduction"];
                 }
 
                 dr.Close();

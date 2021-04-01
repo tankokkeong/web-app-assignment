@@ -35,10 +35,10 @@
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
                     <Columns>
-                        <asp:BoundField runat="server" DataField="admin_id" HeaderText="Admin ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="admin_name" HeaderText="Admin Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="admin_email" HeaderText="Admin Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="admin_right" HeaderText="Role" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_id" HeaderText="Admin ID" HeaderStyle-CssClass="bg-lightgreen text-light" ></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_name" HeaderText="Admin Name" HeaderStyle-CssClass="bg-lightgreen text-light" ></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_email" HeaderText="Admin Email" HeaderStyle-CssClass="bg-lightgreen text-light" ></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="admin_right" HeaderText="Role" HeaderStyle-CssClass="bg-lightgreen text-light" ></asp:BoundField>
                         <asp:BoundField runat="server" DataField="admin_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>

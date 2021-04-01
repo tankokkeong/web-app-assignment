@@ -27,29 +27,110 @@
         </div>
 
         <form runat="server">
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">User ID:</label>
-            <div class="col-sm-10">
-              <%--<input type="text" readonly class="form-control"  value="email@example.com">--%>
-                <asp:TextBox ID="txtID" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+            <div class="form-group row">
+                <label for="staticID" class="col-sm-2 col-form-label">User ID:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtID" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
             </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">User Name:</label>
-            <div class="col-sm-10">
-              <%--<input type="text" readonly class="form-control"  value="email@example.com">--%>
-                <asp:TextBox ID="txtName" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
-            </div>
-          </div>
 
             <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">User Email:</label>
-            <div class="col-sm-10">
-              <%--<input type="text" readonly class="form-control"  value="email@example.com">--%>
-                <asp:TextBox ID="txtEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                <label for="staticName" class="col-sm-2 col-form-label">User Name:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtName" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
             </div>
-          </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">User Email:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticSkills" class="col-sm-2 col-form-label">Skills:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtSkills" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticGender" class="col-sm-2 col-form-label">Gender:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtGender" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticContactNumber" class="col-sm-2 col-form-label">Contact Number:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtContactNumber" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticContactEmail" class="col-sm-2 col-form-label">Contact Email:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtContactEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticLocation" class="col-sm-2 col-form-label">Location:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtLocation" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticProfession" class="col-sm-2 col-form-label">Profession:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtProfession" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticPreferIndustry" class="col-sm-2 col-form-label">Prefer Industry:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtPreferIndustry" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticCountry" class="col-sm-2 col-form-label">Country:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtCountry" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticExperience" class="col-sm-2 col-form-label">Experience:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtExperience" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticFacebook" class="col-sm-2 col-form-label">Facebook:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtFacebook" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticLinkedin" class="col-sm-2 col-form-label">Linkedin:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtLinkedin" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticIntroduction" class="col-sm-2 col-form-label">Introduction:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtIntroduction" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
 
             <div class="form-group text-center">
                 <a href="clients-management.aspx" class="btn btn-secondary">Back</a>
