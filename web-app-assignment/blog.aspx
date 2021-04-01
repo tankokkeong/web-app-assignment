@@ -16,6 +16,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="blog-container">
+         <div class="col-6">
+             <a href="blog-explore.aspx?category=2" class="btn bg-lightgreen">Explore More</a>
+         </div>
         <div class="blog-category latest-category">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
@@ -87,7 +90,7 @@
                 
                 <div class="col-6">
                     <div class="explore-more-container text-right text-lightgreen">
-                         <a href="blog.aspx?additional=display">Explore More ></a>                   
+                         <a href="blog-explore.aspx?additional=display">Explore More ></a>                   
                     </div>
                 </div>
                 
@@ -137,7 +140,7 @@
                 
                 <div class="col-6">
                     <div class="explore-more-container text-right text-lightgreen">
-                         <a href="blog.aspx?career=display">Explore More ></a>                   
+                         <a href="blog-explore.aspx?career=display">Explore More ></a>                   
                     </div>
                 </div>
                 

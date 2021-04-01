@@ -53,7 +53,7 @@ namespace web_app_assignment
             con.Close();
 
 
-            string sqlAdditional = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 2 AND deleted_at IS NULL";
+            string sqlAdditional = @"SELECT top 5 BP.blog_id, BP.blog_title, BP.blog_content, BP.blog_image, BP.last_updated, BC.category_title FROM BlogPost BP, BlogCategory BC WHERE BC.category_title = 'Additional' AND BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id";
             SqlCommand cmdAdditional = new SqlCommand(sqlAdditional, con);
             con.Open();
 
@@ -80,7 +80,7 @@ namespace web_app_assignment
             drAdditional.Close();
             con.Close();
 
-            string sqlCareer = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE blog_category_id = 1 AND deleted_at IS NULL";
+            string sqlCareer = @"SELECT top 3 BP.blog_id, BP.blog_title, BP.blog_content, BP.blog_image, BP.last_updated, BC.category_title FROM BlogPost BP, BlogCategory BC WHERE BC.category_title = 'Career' AND BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id";
             SqlCommand cmdCareer = new SqlCommand(sqlCareer, con);
             con.Open();
 
