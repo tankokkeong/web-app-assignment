@@ -5,7 +5,7 @@
     <link href="style/job_description.css" rel="stylesheet" type="text/css"/>
 
     <%-- CK EDITOR --%>
-    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -153,25 +153,82 @@
             </div>
             <div class="JobDescriptionContentsReviews">
                 <div>
-                    <div class="JobDescriptionContentsReviewsHeader row">
-                        <h4 class="ml-4 col-sm">Job Review</h4>
+                    <div class="user-review-container">
+                        <div class="user-review-title">
+                            <h4>Job Reviews(5)</h4>
+                        </div>
+
+                        <div class="user-review-display">
+                            <asp:ListView ID="lvJobReview" runat="server">
+                                <ItemTemplate>
+                                    <div class="user-review-list">
+                                        <div class="user-review-info row">
+                                            <div class="col">
+                                                <img src="<%#Eval("user_photo") %>" class="user-review-img rounded"/>                      
+
+                                                <div class="user-rating-review ml-2">
+                                                    <h5 class=""><%#Eval("full_name") %></h5>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star <%# Convert.ToInt32(Eval("rating").ToString().Substring(0,1)) > 1 ? "text-warning" : "" %> "></i>
+                                                    <i class="fas fa-star <%# Convert.ToInt32(Eval("rating").ToString().Substring(0,1)) > 2 ? "text-warning" : "" %>"></i>
+                                                    <i class="fas fa-star <%# Convert.ToInt32(Eval("rating").ToString().Substring(0,1)) > 3 ? "text-warning" : "" %>"></i>
+                                                    <i class="fas fa-star <%# Convert.ToInt32(Eval("rating").ToString().Substring(0,1)) > 4 ? "text-warning" : "" %>"></i>
+                                                </div>
+                                        
+                                            </div>
+
+                                            <div class="col">
+                                                <div class="review-date float-right text-secondary">
+                                                    <%#Eval("review_date") %>
+                                                </div>
+                                            </div>
+                                    
+                                        </div>
+
+                                        <div class="user-review-content mt-3 pb-3">
+                                            <%#Eval("review_content") %>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:ListView>
+
+                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvJobReview" PageSize="5" class="pagination mt-3" OnPreRender="DataPager1_PreRender">
+                                <Fields >
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                                    <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
+                                </Fields>
+                            </asp:DataPager>
+
+                        </div>
+                    </div>
+
+                    <div class="JobDescriptionContentsReviewsHeader row mt-3">
+                        <h4 class="ml-4 col-sm">Your Review</h4>
                             <div class="ml-4 form-group rating col-sm"> 
-                                <input type="radio" class="form-control" name="rating" value="5" id="5">
-                                <label for="5">☆</label>
-                                <input type="radio" class="form-control" name="rating" value="4" id="4">
-                                <label for="4">☆</label>
-                                <input type="radio" class="form-control" name="rating" value="3" id="3">
-                                <label for="3">☆</label>
-                                <input type="radio" class="form-control" name="rating" value="2" id="2">
-                                <label for="2">☆</label>
-                                <input type="radio" class="form-control" name="rating" value="1" id="1">
-                                <label for="1">☆</label>
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rate" class="star-rate" value="5" onclick="userStarRating(5)"/>
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" class="star-rate" value="4" onclick="userStarRating(4)"/>
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" class="star-rate" value="3" onclick="userStarRating(3)"/>
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" class="star-rate" value="2" onclick="userStarRating(2)"/>
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" class="star-rate" value="1" onclick="userStarRating(1)"/>
+                                    <label for="star1" title="text">1 star</label>
+                                    <asp:TextBox ID="txtStarRating" runat="server" style="display:none;"></asp:TextBox>
+                                  </div>
                             </div>
                         </div>
                         <div class="form-group col-sm">
-                          <div id="ck-editor1" class="form-control"></div>
+                            <textarea id="job_review_editor"></textarea>
+                            <asp:TextBox ID="txtUserReview" runat="server" style="display:none;"></asp:TextBox>
                         </div>
-                        <asp:Button ID="btn_JobDescriptionContentsReviewsPostButton" CssClass="btn btn-primary JobDescriptionContentsReviewsPostButton" runat="server" Text="Post" />
+
+                        <div class="text-center">
+                            <asp:Button ID="btnPostReview" runat="server" Text="Post" class="btn btn-primary" OnClick="btnPostReview_Click"/>
+                        </div>
                 </div>
             </div>
         </div>
@@ -179,10 +236,21 @@
 
 
 <script type="text/javascript">
-    ClassicEditor
-        .create(document.querySelector('#ck-editor1'))
-        .catch(error => {
-            console.error(error);
-        });
+    editor = CKEDITOR.replace('job_review_editor');
+    review_input = document.getElementById("ContentPlaceHolder1_txtUserReview");
+
+    // editor is object of your CKEDITOR
+    editor.on('change', function () {
+        review_input.value = window.escape(CKEDITOR.instances.job_review_editor.getData());
+        console.log(review_input.value)
+    });
+
+    function userStarRating(value) {
+        rating_input = document.getElementById("ContentPlaceHolder1_txtStarRating");
+
+        //star rating
+        rating_input.value = value;
+        console.log(rating_input.value)
+    }
 </script>
 </asp:Content>

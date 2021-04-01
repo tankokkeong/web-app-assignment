@@ -4,7 +4,6 @@
 
 <html>
 <head runat="server">
-    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
     <!-- Twitter meta-->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@pratikborsadiya">
@@ -12,7 +11,6 @@
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Vali Admin">
-    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
@@ -48,7 +46,7 @@
 <body class="app sidebar-mini rtl">
         <div>
             <!-- Navbar-->
-            <header class="app-header"><a class="app-header__logo" href="index.html">Logo</a>
+            <header class="app-header"><a class="app-header__logo" href="dashboard.aspx">Logo</a>
               <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
               <!-- Navbar Right Menu-->
               <ul class="app-nav">

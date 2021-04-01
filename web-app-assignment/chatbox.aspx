@@ -9,9 +9,20 @@
         <div class="chatbox-box">
             <div class="chatbox-header-container">
                 <div class="chatbox-header text-center text-light">
-                    <h3>Festus Ho Hon Chuang</h3>
+                    <h3>
+                        <asp:Label ID="lblContactName" runat="server" Text=""></asp:Label>
+                    </h3>
                     <button type="button" class="close chatbox-close" aria-label="Close">
-                        <a href="user-profile.aspx" aria-hidden="true" class="text-dark text-decoration-none">&times;</a>
+                        <%
+                            if(Session["Recruiter"] != null)
+                            {
+                                Response.Write("<a href='recruiter-profile.aspx' aria-hidden='true' class='text-dark text-decoration-none'>&times;</a>");
+                            }
+                            else
+                            {
+                               Response.Write("<a href='user-profile.aspx' aria-hidden='true' class='text-dark text-decoration-none'>&times;</a>");
+                            }
+                        %>               
                     </button>
                 </div>
             </div>

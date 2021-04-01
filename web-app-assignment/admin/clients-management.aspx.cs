@@ -21,7 +21,7 @@ namespace web_app_assignment.admin
 
                 SqlConnection con = new SqlConnection(strcon);
 
-                string sql = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL";
+                string sql = "SELECT TOP 50 * FROM JobSeeker WHERE deleted_at IS NULL";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 

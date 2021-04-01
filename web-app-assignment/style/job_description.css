@@ -1,37 +1,46 @@
-﻿.rating {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center
+﻿.rate {
+    float: right;
+    height: 46px;
+    padding: 0 10px;
 }
 
-.rating > input {
-    display: none
+.star-rate {
+    display: none;
 }
 
-.rating > label {
-    position: relative;
-    font-size: 2.5vh;
-    color: #FFD600;
-    cursor: pointer
-}
-
-.rating > label::before {
-    content: "\2605";
+.rate:not(:checked) > input {
     position: absolute;
-    opacity: 0
 }
 
-    .rating > label:hover:before,
-    .rating > label:hover ~ label:before {
-        opacity: 1 !important
-    }
-
-.rating > input:checked ~ label:before {
-    opacity: 1
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
 
-.rating:hover > input:checked ~ label:before {
-    opacity: 0.4
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }
 
 .JobDescriptionDetails {
@@ -125,4 +134,31 @@
 .JobDescriptionContentsReviewsPostButton{
     margin-left: 50%;
     transform:translateX(-50%);
+}
+
+.user-review-container{
+    width:100%;
+}
+
+.user-review-img{
+    width:55px;
+    padding:5px;
+}
+
+.user-review-list, .user-review-title {
+    padding: 10px 20px;
+}
+
+.user-review-list{
+    border-bottom:1px solid black;
+}
+
+.page-active {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.aspNetDisabled {
+    background-color: #b2b2b2 !important;
+    color: #fff !important;
 }
