@@ -322,6 +322,21 @@
                 error_prompt[6].innerHTML = "";
             }
 
+            if (!IsEmptyFieldVerification(meeting_startDate) && !IsEmptyFieldVerification(meeting_endDate)) {
+
+                //Event time validation
+                if (!startDateEndDateValidation(meeting_startDate, meeting_endDate)) {
+                    error_prompt[6].innerHTML = "meeting end date cannot be set before the start date!";
+
+                    //Increase error count
+                    valid_schedule++;
+                }
+                else {
+                    error_prompt[6].innerHTML = "";
+                }
+
+            }
+
             //meeting end time validation
             if (IsEmptyFieldVerification(meeting_endTime)) {
                 error_prompt[7].innerHTML = "Meeting end time is required!";
@@ -338,6 +353,9 @@
                 //Event time validation
                 if (!startTimeEndTimeValidation(meeting_startTime, meeting_endTime)) {
                     error_prompt[7].innerHTML = "meeting end time cannot be same with or before the start time!";
+
+                    //Increase error count
+                    valid_schedule++;
                 }
                 else {
                     error_prompt[7].innerHTML = "";
@@ -356,6 +374,13 @@
                 error_prompt[8].innerHTML = "";
             }
 
+            if (meeting_startTimeZone != meeting_endTimeZone) {
+                error_prompt[8].innerHTML = "set the same timezone as start date timezone to avoid time difference!";
+
+                //Increase error count
+                valid_schedule++;
+            }
+
             //meeting attendees validation
             for (var i = 0; i < meeting_attendees.length; i++) {
                 if (IsEmptyFieldVerification(meeting_attendees[i].value)) {
@@ -367,6 +392,15 @@
                 else {
                     error_prompt[9].innerHTML = "";
                 }
+            }
+
+            if (meeting_attendees.length === 0) {
+                error_prompt[9].innerHTML = "";
+            }
+
+            //If the schedule is valid
+            if (valid_schedule === 0) {
+                createScheduleMeeting();
             }
         }
     </script>

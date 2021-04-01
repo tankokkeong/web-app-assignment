@@ -384,7 +384,7 @@ namespace web_app_assignment
                 //get Recruiter ID
                 string recruiter_id = helper.getRecruiterID();
 
-                string sql_jobStatus = "SELECT application_id, user_photo, full_name, ASS.seeker_id, job_title, job_type, applied_status, R.is_premium " +
+                string sql_jobStatus = "SELECT application_id, user_photo, full_name, ASS.seeker_id, job_title, job_type, applied_status, R.is_premium, JS.location, JS.country " +
                                         "FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP, Recruiter R " +
                                         "WHERE ASS.seeker_id = JS.seeker_id AND " +
                                         "ASS.deleted_at IS NULL AND " +

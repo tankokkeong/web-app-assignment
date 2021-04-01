@@ -38,9 +38,15 @@ namespace web_app_assignment
                     //Get Seeker ID
                     string seeker_id = Request.QueryString["seeker"] ?? "";
 
+                    //Get Seeker information
+                    Dictionary<string, string> Seeker_Details = helper.getSeekerInfo(seeker_id);
+
                     //Insert id to the hidden field
                     txtSeekerID.Text = seeker_id;
                     txtRecruiterID.Text = recruiterID;
+
+                    //Display Contact Name
+                    lblContactName.Text = Seeker_Details["full_name"];
 
                 }
                 else
@@ -59,9 +65,15 @@ namespace web_app_assignment
                     //Get Recruiter ID
                     string recruiterID = Request.QueryString["recruiter"] ?? "";
 
+                    //Get Recruiter Information
+                    Dictionary<string, string> Recruiter_Details = helper.getRecruiterInfo(recruiterID);
+
                     //Insert id to the hidden field
                     txtSeekerID.Text = seeker_id;
                     txtRecruiterID.Text = recruiterID;
+
+                    //Display Contact Name
+                    lblContactName.Text = Recruiter_Details["company_name"];
                 }
                 
 

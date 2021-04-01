@@ -264,7 +264,83 @@ namespace web_app_assignment
                 applicationSent = false;
             }
 
+            //Close Connection
+            con.Close();
+
             return applicationSent;
+        }
+
+        protected void btnPostReview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var star_rating = txtStarRating.Text;
+                var review_content = HttpUtility.UrlDecode(txtUserReview.Text);
+                string post_id = Request.QueryString["post_id"] ?? "";
+                string seeker_id = helper.getSeekerID();
+
+                //Open Connection
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string insert_review = "INSERT INTO JobReview (review_content, rating, review_date, post_id, seeker_id, created_at) " +
+                    "VALUES(@review_content, @rating, @review_date, @post_id, @seeker_id, @created_at)";
+
+                SqlCommand cmd = new SqlCommand(insert_review, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@review_content", review_content);
+                cmd.Parameters.AddWithValue("@rating", star_rating);
+                cmd.Parameters.AddWithValue("@review_date", DateTime.Now);
+                cmd.Parameters.AddWithValue("@post_id", post_id);
+                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                cmd.ExecuteNonQuery();
+
+                //Close Connection
+                con.Close();
+
+                Response.Write("<script>alert('Review Inserted!');</script>");
+            }
+            catch (Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
+            
+        }
+
+        protected void DataPager1_PreRender(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //get Seeker ID
+            string seeker_id = helper.getSeekerID();
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
+
+
+            SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
+
+
+
+            DataTable dtbl = new DataTable();
+            cmd.Fill(dtbl);
+            lvJobReview.DataSource = dtbl;
+            lvJobReview.DataBind();
+
+            //Close Connection
+            con.Close();
         }
     }
 }

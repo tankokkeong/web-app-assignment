@@ -27,28 +27,14 @@
                 <h3>User Management</h3>
             </div>
 
-            <div>
-                <style>
-                    ul {
-                        list-style-type: none;
-                        margin: 0;
-                        padding: 0;
-                        overflow: hidden;
-                    }
-
-                    li {
-                        float: left;
-                    }
-
-                        li a {
-                            display: block;
-                            padding: 8px;
-                        }
-                </style>
-                <ul>
-                    <li><a href="clients-management.aspx">Job Seeker</a></li>
-                    <li><a href="clients-management-r.aspx">Recruiter</a></li>
-                </ul>
+            <div class="form-group row mt-3 mb-3">
+                <label class="col-sm-2 col-form-label">User Type:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" onchange="changeClientsType()" id="client-management-option">
+                        <option value="Job Seeker">Job Seeker</option>
+                        <option value="Recruiter" selected>Recruiter</option>
+                    </select>
+                </div>
             </div>
 
             <%--display--%>
@@ -57,9 +43,9 @@
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
                     <Columns>
-                        <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="company_name" HeaderText="Company Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="company_name" HeaderText="Company Name" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>

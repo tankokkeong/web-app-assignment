@@ -27,28 +27,14 @@
                 <h3>User Management</h3>
             </div>
 
-            <div>
-                <style>
-                    ul {
-                        list-style-type: none;
-                        margin: 0;
-                        padding: 0;
-                        overflow: hidden;
-                    }
-
-                    li {
-                        float: left;
-                    }
-
-                        li a {
-                            display: block;
-                            padding: 8px;
-                        }
-                </style>
-                <ul>
-                    <li><a href="clients-management.aspx">Job Seeker</a></li>
-                    <li><a href="clients-management-r.aspx">Recruiter</a></li>
-                </ul>
+            <div class="form-group row mt-3 mb-3">
+                <label class="col-sm-2 col-form-label">User Type:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="client-management-option" onchange="changeClientsType()">
+                        <option value="Job Seeker">Job Seeker</option>
+                        <option value="Recruiter">Recruiter</option>
+                    </select>
+                </div>
             </div>
 
             <%--display--%>

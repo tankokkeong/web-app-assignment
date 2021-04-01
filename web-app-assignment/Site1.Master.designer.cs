@@ -33,15 +33,6 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblHome;
 
         /// <summary>
-        /// lblJobs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblJobs;
-
-        /// <summary>
         /// jobList control.
         /// </summary>
         /// <remarks>
@@ -51,13 +42,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.HtmlControls.HtmlAnchor jobList;
 
         /// <summary>
-        /// lblCandidatesList control.
+        /// lblJobs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCandidatesList;
+        protected global::System.Web.UI.WebControls.Label lblJobs;
 
         /// <summary>
         /// candidatesList control.
@@ -67,6 +58,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor candidatesList;
+
+        /// <summary>
+        /// lblCandidatesList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCandidatesList;
 
         /// <summary>
         /// lblBlogs control.
@@ -96,15 +96,6 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// lblMyProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMyProfile;
-
-        /// <summary>
         /// ProfileLink control.
         /// </summary>
         /// <remarks>
@@ -114,13 +105,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ProfileLink;
 
         /// <summary>
-        /// lblSignIn control.
+        /// lblMyProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSignIn;
+        protected global::System.Web.UI.WebControls.Label lblMyProfile;
 
         /// <summary>
         /// LoginLink control.
@@ -132,13 +123,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.HyperLink LoginLink;
 
         /// <summary>
-        /// lblSignOut control.
+        /// lblSignIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSignOut;
+        protected global::System.Web.UI.WebControls.Label lblSignIn;
 
         /// <summary>
         /// logoutLink control.
@@ -148,6 +139,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutLink;
+
+        /// <summary>
+        /// lblSignOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSignOut;
 
         /// <summary>
         /// form1 control.
@@ -204,6 +204,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblFullTimeJobPosted;
 
         /// <summary>
+        /// lblFullTimeJobPosted2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFullTimeJobPosted2;
+
+        /// <summary>
         /// lblPartTimeJobPosted control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPartTimeJobPosted;
+
+        /// <summary>
+        /// lblPartTimeJobPosted2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPartTimeJobPosted2;
 
         /// <summary>
         /// lblTotalJobSeeker control.
@@ -222,6 +240,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblTotalJobSeeker;
 
         /// <summary>
+        /// lblTotalJobSeeker2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalJobSeeker2;
+
+        /// <summary>
         /// lblTotalRecruiter control.
         /// </summary>
         /// <remarks>
@@ -229,6 +256,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotalRecruiter;
+
+        /// <summary>
+        /// lblTotalRecruiter2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRecruiter2;
 
         /// <summary>
         /// lblAboutUs2 control.
@@ -373,5 +409,14 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCall;
+
+        /// <summary>
+        /// lblKenny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblKenny;
     }
 }
