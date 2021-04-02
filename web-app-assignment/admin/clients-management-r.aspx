@@ -34,6 +34,19 @@
                         <option value="Job Seeker">Job Seeker</option>
                         <option value="Recruiter" selected>Recruiter</option>
                     </select>
+
+                    <script>
+                        function changeClientsType() {
+                            var x = document.getElementById("client-management-option").value;
+
+                            if (x === "Job Seeker") {
+                                window.location = "clients-management.aspx";
+                            }
+                            else if (x === "Recruiter") {
+                                window.location = "clients-management-r.aspx";
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
@@ -68,10 +81,17 @@
                                 <tr>
                                     <td>User Status</td>
                                     <td>
-                                        <select class="form-control">
+                                        <asp:DropDownList ID="ddlStatus" runat="server" class="form-control">
+                                            <asp:ListItem Value="Active">Active</asp:ListItem>
+                                            <asp:ListItem Value="Inactive">Inactive</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <%--<select class="form-control">
                                             <option value="Active">Active</option>
                                             <option value="Inactive">Inactive</option>
-                                        </select>
+                                        </select>--%>
+                                        <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus"
+                                            ErrorMessage="Please choose a status" InitialValue="Please choose a status">
+                                        </asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                             </tbody>

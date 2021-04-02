@@ -68,7 +68,8 @@ namespace web_app_assignment
                 Languages.Add("Help", "使用与帮助");
                 Languages.Add("Terms & Conditions", "条款及细则");
                 Languages.Add("Company Profile", "公司资料");
-                Languages.Add("Candidate List", "候选人名单");
+                Languages.Add("My Profile", "我的户口");
+                Languages.Add("Candidates List", "候选人名单");
                 Languages.Add("User Profile", "用户资料");
                 Languages.Add("Search Jobs", "职位搜索");
                 Languages.Add("Resume", "简历");
@@ -95,9 +96,11 @@ namespace web_app_assignment
                 lblCareerCenter.Text = Languages["Career Center"];
                 lblContactUs.Text = Languages["Contact Us"];
                 lblHelp.Text = Languages["Help"];
+                lblMyProfile.Text = Languages["My Profile"];
                 lblTerms.Text = Languages["Terms & Conditions"];
                 lblCompanyProfile.Text = Languages["Company Profile"];
-                lblCandidateList.Text = Languages["Candidate List"];
+                lblCandidatesList.Text = Languages["Candidates List"];
+                lblCandidatesList2.Text = Languages["Candidates List"];
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
                 lblResume.Text = Languages["Resume"];
@@ -127,7 +130,8 @@ namespace web_app_assignment
                 Languages.Add("Help", "Help");
                 Languages.Add("Terms & Conditions", "Terms & Conditions");
                 Languages.Add("Company Profile", "Company Profile");
-                Languages.Add("Candidate List", "Candidate List");
+                Languages.Add("Candidates List", "Candidates List");
+                Languages.Add("My Profile", "My Profile");
                 Languages.Add("User Profile", "User Profile");
                 Languages.Add("Search Jobs", "Search Jobs");
                 Languages.Add("Resume", "Resume");
@@ -148,6 +152,7 @@ namespace web_app_assignment
                 lblAboutUs.Text = Languages["About Us"];
                 lblAboutUs2.Text = Languages["About Us"];
                 lblBlogs.Text = Languages["Blog"];
+                lblMyProfile.Text = Languages["My Profile"];
                 //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
@@ -156,7 +161,8 @@ namespace web_app_assignment
                 lblHelp.Text = Languages["Help"];
                 lblTerms.Text = Languages["Terms & Conditions"];
                 lblCompanyProfile.Text = Languages["Company Profile"];
-                lblCandidateList.Text = Languages["Candidate List"];
+                lblCandidatesList.Text = Languages["Candidates List"];
+                lblCandidatesList2.Text = Languages["Candidates List"];
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
                 lblResume.Text = Languages["Resume"];

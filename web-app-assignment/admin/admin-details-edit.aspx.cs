@@ -39,7 +39,7 @@ namespace web_app_assignment.admin
                     txtID.Text = (dr["admin_id"].ToString());
                     txtName.Text = (string)dr["admin_name"];
                     txtEmail.Text = (string)dr["admin_email"];
-                    txtRight.Text = (string)dr["admin_right"];
+                    listRight.Text = (string)dr["admin_right"];
                 }
 
                 dr.Close();
@@ -59,7 +59,7 @@ namespace web_app_assignment.admin
             string id = Request.QueryString["editId"] ?? "";
             string admin_name = txtName.Text;
             string admin_email = txtEmail.Text;
-            string admin_right = txtRight.Text;
+            string admin_right = listRight.Text;
 
             string sql = @"SELECT admin_id FROM Admin WHERE admin_email = @admin_email AND deleted_at IS NULL";
             
