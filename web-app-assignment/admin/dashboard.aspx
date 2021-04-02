@@ -262,6 +262,7 @@
                    <%-- <input type="text" class="form-control" > --%>
                     <asp:Label ID="lblTaskName" runat="server" Text="Task Name"></asp:Label>
                     <asp:TextBox ID="txtTaskName" runat="server" class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValTaskName" runat="server"  ErrorMessage="Task Name is required to fill in!" CssClass="text-danger" ControlToValidate="txtTaskName" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
@@ -269,6 +270,7 @@
                    <%-- <input type="text" class="form-control" > --%>
                     <asp:Label ID="lblTaskRemarks" runat="server" Text="Task Remarks"></asp:Label>
                     <asp:TextBox ID="txtTaskRemarks" runat="server" class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValTaskRemarks" runat="server"  ErrorMessage="Task Remarks is required to fill in!" CssClass="text-danger" ControlToValidate="txtTaskRemarks" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
                 <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

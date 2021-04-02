@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace web_app_assignment.admin
 {
@@ -14,25 +15,38 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!this.IsPostBack)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-                SqlConnection con = new SqlConnection(strcon);
-
-                string sql = "SELECT * FROM BlogPost WHERE deleted_at IS NULL";
-
-                SqlCommand cmd = new SqlCommand(sql, con);
-
-                con.Open();
-                SqlDataReader read = cmd.ExecuteReader();
-
-                GridViewBlog.DataSource = read;
-                GridViewBlog.DataBind();
-
-                read.Close();
-                con.Close();
+                this.SearchBlog();
             }
+        }
+
+        private void SearchBlog()
+        {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            using (SqlConnection con = new SqlConnection(strcon))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    string sql = "SELECT * FROM BlogPost WHERE deleted_at IS NULL";
+                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
+                    {
+                        sql += " AND blog_title LIKE @blogtitle + '%' AND deleted_at IS NULL";
+                        cmd.Parameters.AddWithValue("@blogtitle", txtSearch.Text.Trim());
+                    }
+                    cmd.CommandText = sql;
+                    cmd.Connection = con;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        GridViewBlog.DataSource = dt;
+                        GridViewBlog.DataBind();
+                    }
+                }
+            }
+        
         }
 
         protected void GridViewBlog_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -92,6 +106,11 @@ namespace web_app_assignment.admin
             {
                 Response.Write("<script>alert('" + error.Message + "');</script>");
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.SearchBlog();
         }
     }
 }

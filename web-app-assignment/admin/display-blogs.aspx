@@ -11,26 +11,25 @@
           </div>
 
         <div class="blogpost-search-container">
-
-                    <div class="blogpost-search-bar">
-                        <input type="text" placeholder="Search.." name="searchpost">
-                        <button type="submit" class="btn bg-lightgreen"><i class="fa fa-search"></i></button>
-                    </div>
-                 </div>
+            <div class="blogpost-search-bar">
+               <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.."></asp:TextBox>
+               <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click"/>
+             </div>
+        </div>
 
                     <div class="float-right mb-4 mt-1">
                          <a href="create-blogs.aspx" class="btn bg-lightgreen text-white btn-lg">New Post</a>
                     </div>
 
                  <div class="post-table-container">
-                    <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered" >
+                    <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered">
                         <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                             <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
                             <Columns>
-                                <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="700px"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="150px"></asp:BoundField>
                                 <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                             </Columns>
                     </asp:GridView>
@@ -77,7 +76,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeletePost_Click"/>
-            <asp:TextBox ID="txtDeletePost" runat="server" style="display:none;"></asp:TextBox>
+            <asp:TextBox ID="txtDeletePost" runat="server"></asp:TextBox>
           </div>
         </div>
       </div>

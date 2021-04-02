@@ -70,6 +70,7 @@
                      <div class="col-sm-10">
                      <asp:Label ID="lblCategory" runat="server" Text="Blogs Category"></asp:Label>
                      <asp:TextBox ID="txtCategory" runat="server" CssClass="form-control mt-2"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="reqValCategory" runat="server"  ErrorMessage="Category is required to fill in!" CssClass="text-danger" ControlToValidate="txtCategory" Display="Dynamic"></asp:RequiredFieldValidator>
                     <%--<label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" placeholder="email@example.com">--%>

@@ -15,8 +15,7 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             string blogDisplayLatest = "";
-            string blogDisplayAdditional = "";
-            string blogDisplayCareer = "";
+            string blogDisplayBlog = "";
 
             SqlConnection con = new SqlConnection(strcon);
 
@@ -53,61 +52,63 @@ namespace web_app_assignment
             con.Close();
 
 
-            string sqlAdditional = @"SELECT top 5 BP.blog_id, BP.blog_title, BP.blog_content, BP.blog_image, BP.last_updated, BC.category_title FROM BlogPost BP, BlogCategory BC WHERE BC.category_title = 'Additional' AND BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id";
-            SqlCommand cmdAdditional = new SqlCommand(sqlAdditional, con);
+            string sqlHeader = @"SELECT * FROM ( SELECT BP.blog_content, BP.blog_category_id, BP.blog_title, BP.blog_image, 
+                                BP.created_at, BP.blog_id, BC.category_title, BP.last_updated,
+                                ROW_NUMBER() over(partition by BP.blog_category_id ORDER BY BP.blog_id DESC) as blog_row
+                                FROM BlogPost BP, BlogCategory BC 
+                                WHERE BP.blog_category_id = BC.blog_category_id) as t
+                                WHERE t.blog_row <= 6";
+            
+            SqlCommand cmdHeader = new SqlCommand(sqlHeader, con);
             con.Open();
 
-            SqlDataReader drAdditional = cmdAdditional.ExecuteReader();
+            SqlDataReader drHeader = cmdHeader.ExecuteReader();
 
-            while (drAdditional.Read())
+            while (drHeader.Read())
             {
-                blogDisplayAdditional += string.Format(
-                                                    "<div class='swiper-slide'>" +
-                                                        "<div class='card' style='width: 100%; height: 100%;'>" +
-                                                            "<img src='Uploads/{0}' style='width:100%; height:400px;' class='card-img-top' alt='...'>" +
-                                                            "<div class='card-body text-center'>" +
-                                                                "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                                "<p class='text-muted text-center'>{2}</p>" +
-                                                            "</div>" +
+                blogDisplayBlog += string.Format(
+                                                        "<div class='blog-category common-category'>" +
+                                                            "<div class='common-cat-title mb-3 row'>" +
+                                                                "<div class='col-6'>" +
+                                                                    "<h3>{0}</h3>" +
+                                                                "</div>" +
 
-                                                                "<div class='card-footer text-muted text-center'>" +
-                                                                    "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
+                                                                "<div class='col-6'>" +
+                                                                    "<div class='explore-more-container text-right text-lightgreen'>" +
+                                                                        "<a href='blog-explore.aspx?category={1}'> Explore More ></a>" +
+                                                                    "</div>" +
                                                                 "</div>" +
                                                         "</div>" +
-                                                    "</div>",drAdditional["blog_image"],drAdditional["blog_title"],drAdditional["last_updated"],drAdditional["blog_id"]);
-            }
 
-            drAdditional.Close();
-            con.Close();
+                                                        "<div class='common-list-container'>" +
+                                                            "<div class='swiper-box'>" +
+                                                                "<div class='swiper-container sw'>" +
+                                                                    "<div class='swiper-wrapper'>" +
+                                                                        "<div class='swiper-slide'>" +
+                                                                            "<div class='card' style='width: 100%;'>" +
+                                                                                "<img src='../Uploads/{2}' class='card-img-top' alt='...'>" +
+                                                                                "<div class='card-body text-center'>" +
+                                                                                    "<p class='card-text font-weight-bold'>{3}</p>" +
+                                                                                    "<p href='{4}' class='text-muted text-center'>{4}</p>" +
+                                                                                "</div>" +
 
-            string sqlCareer = @"SELECT top 3 BP.blog_id, BP.blog_title, BP.blog_content, BP.blog_image, BP.last_updated, BC.category_title FROM BlogPost BP, BlogCategory BC WHERE BC.category_title = 'Career' AND BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id";
-            SqlCommand cmdCareer = new SqlCommand(sqlCareer, con);
-            con.Open();
-
-            SqlDataReader drCareer = cmdCareer.ExecuteReader();
-
-            while (drCareer.Read())
-            {
-                blogDisplayCareer += string.Format("<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
-                                                    "<div class='card' style='width: 100%; height: 100%;'>" +
-                                                        "<img src='Uploads/{0}' style='width:100%; height:400px;' class='card-img-top' alt='...'>" +
-                                                        "<div class='card-body text-center'>" +
-                                                            "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                            "<p class='text-muted text-center'>{2}</p>" +
-                                                        "</div>" +
-
-                                                            "<div class='card-footer text-muted text-center'>" +
-                                                                "<a href='blog_description.aspx?career={3}' class='btn btn-info'>Details</a>" +
+                                                                                "<div class='card-footer text-muted text-center'>" +
+                                                                                    "<a href='blog_description.aspx?blog={5}' class='btn bg-lightgreen'>Details</a>" +
+                                                                                "</div>" +
+                                                                            "</div>" +
+                                                                        "</div>" +
+                                                                    "</div>" +                        
+                                                                "</div>" +
                                                             "</div>" +
-                                                    "</div>" +
-                                                "</div>", drCareer["blog_image"], drCareer["blog_title"],drCareer["last_updated"], drCareer["blog_id"]);
+                                                        "</div>" +
+                                                    "</div>",drHeader["category_title"],drHeader["category_title"],drHeader["blog_image"],drHeader["blog_title"],drHeader["last_updated"],drHeader["blog_id"]);
             }
-            drCareer.Close();
+
+            drHeader.Close();
             con.Close();
 
             litResultLatest.Text = blogDisplayLatest;
-            litResultAdditional.Text = blogDisplayAdditional;
-            litResultCareer.Text = blogDisplayCareer;
+            litResultBlog.Text = blogDisplayBlog;
 
         }
     }
