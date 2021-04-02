@@ -12,13 +12,16 @@
 
         <div class="blogpost-search-container">
             <div class="blogpost-search-bar">
-               <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.."></asp:TextBox>
-               <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click"/>
+                <div class="input-group row">          
+                   <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.." CssClass="form-control w-75 ml-2"></asp:TextBox>
+                   <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen form-control text-white" OnClick="btnSearch_Click"/>
+
+                </div>
              </div>
         </div>
 
                     <div class="float-right mb-4 mt-1">
-                         <a href="create-blogs.aspx" class="btn bg-lightgreen text-white btn-lg">New Post</a>
+                         <a href="create-blogs.aspx" class="btn bg-lightgreen text-white">New Post</a>
                     </div>
 
                  <div class="post-table-container">

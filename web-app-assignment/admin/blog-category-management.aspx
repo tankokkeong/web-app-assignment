@@ -7,7 +7,7 @@
     <form runat="server">
  <div class="display-blogpost-container">
          <div class="float-right mb-4 mt-1">
-             <a href="#" class="btn bg-lightgreen text-white btn-lg"  data-toggle="modal" data-target="#addCategory">New Category</a>
+             <a href="#" class="btn bg-lightgreen text-white"  data-toggle="modal" data-target="#addCategory">New Category</a>
          </div>
          <div class="blog-title">
                 <h3>Blog Category</h3>
