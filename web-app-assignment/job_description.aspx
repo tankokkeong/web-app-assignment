@@ -159,6 +159,90 @@
                             <h4>Job Reviews(<asp:Label ID="lblJobReviewCount" runat="server" Text=""></asp:Label>)</h4>
                         </div>
 
+                        <div class="user-rating-board">
+
+                            <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    5 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    4 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    3 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    2 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    1 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+                                                       
+                        </div>
+
                         <div class="user-review-display">
                             <asp:ListView ID="lvJobReview" runat="server">
                                 <ItemTemplate>
