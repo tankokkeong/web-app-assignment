@@ -102,7 +102,7 @@ namespace web_app_assignment
                             lblJobReviewCount.Text = getTotalJobReview().ToString();
 
                             //Check if leave review before
-                            if(isReviewedBefore(seeker_id) == false)
+                            if(isReviewedBefore(seeker_id) == false && isApprovedByRecruiter(seeker_id))
                             {
                                 divReviewInput.Visible = true;
                             }
@@ -412,6 +412,36 @@ namespace web_app_assignment
             }
 
             return reviewed_before;
+        }
+
+        protected bool isApprovedByRecruiter(string seeker_id)
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+            bool is_approved = false;
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM ApplicationStatus WHERE post_id = @post_id AND seeker_id = @seeker_id AND applied_status = @applied_status";
+
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+            cmd.Parameters.AddWithValue("@applied_status", "Approved");
+
+            //Check if record exists
+            if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                is_approved = true;
+            }
+            return is_approved;
         }
     }
 }
