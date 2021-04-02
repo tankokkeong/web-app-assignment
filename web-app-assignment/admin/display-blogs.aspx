@@ -76,7 +76,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeletePost_Click"/>
-            <asp:TextBox ID="txtDeletePost" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDeletePost" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
       </div>
