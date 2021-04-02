@@ -11,16 +11,16 @@
                 <h3>Blog Posts</h3>
             </div>
 
-            <div class="blogpost-search-container">
-                <div class="blogpost-search-bar">
-                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.."></asp:TextBox>
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click" />
-                </div>
-            </div>
+        <div class="blogpost-search-container">
+            <div class="blogpost-search-bar">
+               <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.."></asp:TextBox>
+               <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click"/>
+             </div>
+        </div>
 
-            <div class="float-right mb-4 mt-1">
-                <a href="create-blogs.aspx" id="newPost" runat="server" class="btn bg-lightgreen text-white btn-lg">New Post</a>
-            </div>
+                    <div class="float-right mb-4 mt-1">
+                         <a href="create-blogs.aspx" class="btn bg-lightgreen text-white btn-lg">New Post</a>
+                    </div>
 
             <div class="post-table-container">
                 <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered">
@@ -60,28 +60,28 @@
                          </tbody>
                      </table>
                      --%>
-            </div>
+                 </div>
+    </div>
+    
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="examplePostLabel">Delete Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure you want to delete this post?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeletePost_Click"/>
+            <asp:TextBox ID="txtDeletePost" runat="server"></asp:TextBox>
+          </div>
         </div>
-
-        <!-- Delete Modal -->
-        <div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="examplePostLabel">Delete Post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Are you sure you want to delete this post?</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeletePost_Click" />
-                        <asp:TextBox ID="txtDeletePost" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>
 
     </form>
 

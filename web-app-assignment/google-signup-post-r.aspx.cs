@@ -106,22 +106,8 @@ namespace web_app_assignment
                 con.Open();
 
 
-
-                //cmd.Parameters.AddWithValue("@email", email);
-                //cmd.Parameters.AddWithValue("@gmail_token", id);
-
-                if (String.IsNullOrEmpty(email))
-                {
-                    cmd.Parameters.AddWithValue("@email", DBNull.Value);
-                }
-                else
-                    cmd.Parameters.AddWithValue("@email", email);
-                if (String.IsNullOrEmpty(id))
-                {
-                    cmd.Parameters.AddWithValue("@gmail_token", DBNull.Value);
-                }
-                else
-                    cmd.Parameters.AddWithValue("@gmail_token", id);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@gmail_token", id);
 
                 cmd.ExecuteNonQuery();
 

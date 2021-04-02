@@ -4,7 +4,7 @@
     <title>Edit Blogs</title>
 
     <%-- CK EDITOR --%>
-    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  <%-- Change navbar active --%>
@@ -68,11 +68,7 @@
     </div>       
         
         <script>
-            ClassicEditor
-                .create(document.querySelector('#editor'))
-                .catch(error => {
-                    console.error(error);
-                });
+            editor = CKEDITOR.replace('editor');
         </script>
 
 </asp:Content>

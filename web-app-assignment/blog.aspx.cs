@@ -64,9 +64,12 @@ namespace web_app_assignment
 
             SqlDataReader drHeader = cmdHeader.ExecuteReader();
 
+            string preCategory = "";
             while (drHeader.Read())
             {
-                blogDisplayBlog += string.Format(
+                if(preCategory == drHeader["category_title"].ToString())
+                {
+                    blogDisplayBlog += string.Format(
                                                         "<div class='blog-category common-category'>" +
                                                             "<div class='common-cat-title mb-3 row'>" +
                                                                 "<div class='col-6'>" +
@@ -97,11 +100,52 @@ namespace web_app_assignment
                                                                                 "</div>" +
                                                                             "</div>" +
                                                                         "</div>" +
-                                                                    "</div>" +                        
+                                                                    "</div>" +
                                                                 "</div>" +
                                                             "</div>" +
                                                         "</div>" +
-                                                    "</div>",drHeader["category_title"],drHeader["category_title"],drHeader["blog_image"],drHeader["blog_title"],drHeader["last_updated"],drHeader["blog_id"]);
+                                                    "</div>", drHeader["category_title"], drHeader["category_title"], drHeader["blog_image"], drHeader["blog_title"], drHeader["last_updated"], drHeader["blog_id"]);
+                }
+                else
+                {
+                    blogDisplayBlog += string.Format(
+                                                        "<div class='blog-category common-category'>" +
+                                                            "<div class='common-cat-title mb-3 row'>" +
+                                                                "<div class='col-6'>" +
+                                                                    "<h3>{0}</h3>" +
+                                                                "</div>" +
+
+                                                                "<div class='col-6'>" +
+                                                                    "<div class='explore-more-container text-right text-lightgreen'>" +
+                                                                        "<a href='blog-explore.aspx?category={1}'> Explore More ></a>" +
+                                                                    "</div>" +
+                                                                "</div>" +
+                                                        "</div>" +
+
+                                                        "<div class='common-list-container'>" +
+                                                            "<div class='swiper-box'>" +
+                                                                "<div class='swiper-container sw'>" +
+                                                                    "<div class='swiper-wrapper'>" +
+                                                                        "<div class='swiper-slide'>" +
+                                                                            "<div class='card' style='width: 100%;'>" +
+                                                                                "<img src='../Uploads/{2}' class='card-img-top' alt='...'>" +
+                                                                                "<div class='card-body text-center'>" +
+                                                                                    "<p class='card-text font-weight-bold'>{3}</p>" +
+                                                                                    "<p href='{4}' class='text-muted text-center'>{4}</p>" +
+                                                                                "</div>" +
+
+                                                                                "<div class='card-footer text-muted text-center'>" +
+                                                                                    "<a href='blog_description.aspx?blog={5}' class='btn bg-lightgreen'>Details</a>" +
+                                                                                "</div>" +
+                                                                            "</div>" +
+                                                                        "</div>" +
+                                                                    "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>", drHeader["category_title"], drHeader["category_title"], drHeader["blog_image"], drHeader["blog_title"], drHeader["last_updated"], drHeader["blog_id"]);
+                }
+                
             }
 
             drHeader.Close();

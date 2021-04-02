@@ -45,11 +45,12 @@
                             <div class="form-group">
                                 <asp:TextBox ID="sign_login_emailUser" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Email" aria-describedby="emailHelp" Placeholder="Email"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="login_emailReq" runat ="server" ControlToValidate="sign_login_emailUser" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                <asp:RegularExpressionValidator ID="revLogin_email" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="sign_login_emailUser" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                             <div class="form-group">
                                 <asp:TextBox ID="sign_login_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Password"></asp:TextBox>
                                 <img src="images/Signup_Login/eye.png" alt="eye" class="LogineyeImagePasswordLogin" onclick="showPassword()"/>
-                                <asp:RequiredFieldValidator id="login_passwordReq" runat ="server" ControlToValidate="sign_login_password" validationgroup="login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                <asp:RequiredFieldValidator id="login_passwordReq" runat ="server" ControlToValidate="sign_login_password" validationgroup="login" ErrorMessage="Password is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                             </div>
                             <div class="form-group form-check" id="inputsFormSign_LoginFormCheck">
                                 <div class="inputsFormSign_LoginFormCheckbox">
@@ -117,7 +118,8 @@
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="recruiterCompEmailReq" runat ="server" ControlToValidate="sign_recruiter_companyEmail" ErrorMessage="Company Email is required!" Forecolor="Red" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic"/>
-                                        </div>
+                                            <asp:RegularExpressionValidator ID="revRecruiterCompEmail" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="sign_recruiter_companyEmail" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                        
+                                    </div>
                                     <div class="row form-group-row">
                                         <div class="col">                                          
                                             <asp:TextBox ID="sign_recruiter_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
@@ -166,6 +168,7 @@
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_email" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="seekerEmailReq" runat ="server" ControlToValidate="sign_seeker_email" validationgroup="seeker" ErrorMessage="Email is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic" />
+                                            <asp:RegularExpressionValidator ID="revSeekerEmail" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="sign_seeker_email" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                
                                         </div>
                                     </div>
                                     <div class="row form-group-row">
