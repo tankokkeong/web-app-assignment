@@ -27,10 +27,10 @@
                         <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                             <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
                             <Columns>
-                                <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="700px"></asp:BoundField>
-                                <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="150px"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                                <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                                 <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                             </Columns>
                     </asp:GridView>
