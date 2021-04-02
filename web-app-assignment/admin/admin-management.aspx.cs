@@ -18,10 +18,15 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")
+            {
+                btnNewAdmin.Visible = false;
+            }
+
             if (!Page.IsPostBack)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
                 SqlConnection con = new SqlConnection(strcon);
 
                 string sql = "SELECT * FROM Admin WHERE deleted_at IS NULL";

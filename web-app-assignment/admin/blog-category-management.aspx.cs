@@ -15,10 +15,15 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")
+            {
+                newCat.Visible = false;
+            }
+
             if (!Page.IsPostBack)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
                 SqlConnection con = new SqlConnection(strcon);
 
                 string sql = "SELECT * FROM BlogCategory WHERE deleted_at IS NULL";
@@ -67,7 +72,7 @@ namespace web_app_assignment
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {

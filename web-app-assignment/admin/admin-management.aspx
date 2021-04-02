@@ -27,7 +27,7 @@
             </div>
 
             <div class="float-right mb-3 mt-3">
-                <button type="button" class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin">New Admin</button>
+                <button id="btnNewAdmin" type="button" class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin" runat="server">New Admin</button>
             </div>
 
             <%--display--%>
