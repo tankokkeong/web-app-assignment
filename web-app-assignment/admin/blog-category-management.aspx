@@ -18,9 +18,9 @@
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
                     <Columns>
-                        <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Category ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="category_title" HeaderText="Category Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="800px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Category ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="category_title" HeaderText="Category Title" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>

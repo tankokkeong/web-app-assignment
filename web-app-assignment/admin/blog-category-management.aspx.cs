@@ -58,14 +58,26 @@ namespace web_app_assignment
 
             Response.Redirect("blog-category-management.aspx");
         }
-
         protected void GridViewCategory_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
-                e.Row.Cells[3].Text ="<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                if (UserDetails["Admin_Right"] == "Viewer")
+                {
+                    e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                }
+                else if (UserDetails["Admin_Right"] == "Editor")
+                {
+                    e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                }
+                else if (UserDetails["Admin_Right"] == "Super Admin")
+                {
+                    e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                                      "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteCategory(" + e.Row.Cells[3].Text + ")'><i class='fas fa-trash'></i></span>";
+                }
             }
         }
 

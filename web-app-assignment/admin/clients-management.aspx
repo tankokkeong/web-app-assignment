@@ -30,10 +30,23 @@
             <div class="form-group row mt-3 mb-3">
                 <label class="col-sm-2 col-form-label">User Type:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="client-management-option" onchange="changeClientsType()">
+                    <select class="form-control" onchange="changeClientsType()" id="client-management-option">
                         <option value="Job Seeker">Job Seeker</option>
                         <option value="Recruiter">Recruiter</option>
                     </select>
+
+                    <script>
+                        function changeClientsType() {
+                            var x = document.getElementById("client-management-option").value;
+
+                            if (x === "Job Seeker") {
+                                window.location = "clients-management.aspx";
+                            }
+                            else if (x === "Recruiter") {
+                                window.location = "clients-management-r.aspx";
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
@@ -43,9 +56,9 @@
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
                     <Columns>
-                        <asp:BoundField runat="server" DataField="seeker_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="100px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="full_name" HeaderText="User Name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="400px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="seeker_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="full_name" HeaderText="User Name" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="seeker_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>

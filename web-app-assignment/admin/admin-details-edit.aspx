@@ -30,7 +30,6 @@
             <div class="form-group row">
                 <label for="staticID" class="col-sm-2 col-form-label">Admin ID:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtID" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -38,7 +37,6 @@
             <div class="form-group row">
                 <label for="staticName" class="col-sm-2 col-form-label">Admin Name:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="Festus">--%>
                     <asp:TextBox ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -46,22 +44,23 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="email@example.com">--%>
-                    <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="staticRight" class="col-sm-2 col-form-label">Role:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="Super Admin">--%>
-                    <asp:TextBox ID="txtRight" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="listRight" CssClass="form-control" runat="server">
+                        <asp:ListItem Value="Editor">Editor</asp:ListItem>
+                        <asp:ListItem Value="Viewer">Viewer</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
             </div>
 
             <div class="form-group text-center">
                 <a href="admin-management.aspx" class="btn btn-secondary">Back</a>
-                <asp:Button ID="btnEditAdmin" runat="server" Text="Update" class="btn btn-primary" OnClick="btnEditAdmin_Click"/>
+                <asp:Button ID="btnEditAdmin" runat="server" Text="Update" class="btn btn-primary" OnClick="btnEditAdmin_Click" />
             </div>
         </form>
     </div>

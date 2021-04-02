@@ -86,7 +86,7 @@
           <li class="nav-item">
               <a class="nav-link text-light" href="job_lists.aspx" runat="server" id="jobList" visible="true"><asp:Label ID="lblJobs" runat="server" Text="Jobs"></asp:Label></a>
               
-              <a class="nav-link text-light" href="candidate-list.aspx" id="candidatesList" runat="server" visible="false"><asp:Label ID="lblCandidatesList" runat="server" Text="Candidates"></asp:Label></a>
+              <a class="nav-link text-light" href="candidate-list.aspx" id="candidatesList" runat="server" visible="false"><asp:Label ID="lblCandidatesList" runat="server" Text="Candidates List"></asp:Label></a>
 <%--            <asp:HyperLink ID="Jobs" navigateUrl="jobs_lists.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="Jobs">Jobs</asp:HyperLink>--%>
           </li>
 
@@ -242,7 +242,7 @@
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblCandidateList" runat="server" Text="Candidate List"></asp:Label>
+                           <asp:Label ID="lblCandidatesList2" runat="server" Text="Candidates List"></asp:Label>
                         </div>
                     </div>
 

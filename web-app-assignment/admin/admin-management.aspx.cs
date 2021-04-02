@@ -40,83 +40,105 @@ namespace web_app_assignment.admin
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
-                e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                if (UserDetails["Admin_Right"] == "Viewer")
+                {
+                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                }
+                else if (UserDetails["Admin_Right"] == "Editor")
+                {
+                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                                        "<a class='badge badge-primary action-btn mr-1'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                }
+                else if (UserDetails["Admin_Right"] == "Super Admin")
+                {
+                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
                     "<a class='badge badge-primary action-btn mr-1'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                     "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteAdmin' onclick='deleteAdmin(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></span>";
+                }
             }
         }
         protected void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            string admin_email = txtAdminEmail.Text;
-            string admin_right = listAdminRight.Text;
-            Random random = new Random();
-            int length = 16;
-            var vkey2 = "";
-            for (var i = 0; i < length; i++)
-            {
-                vkey2 += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
-            }
-
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-            SqlConnection con = new SqlConnection(strcon);
 
-            string sqlSession2 = @"SELECT admin_id FROM Admin WHERE admin_email = @admin_email";
-            SqlCommand cmd2 = new SqlCommand(sqlSession2, con);
-            con.Open();
-            cmd2.Parameters.AddWithValue("@admin_email", UserDetails["Admin_Email"]);
-            SqlDataReader read2 = cmd2.ExecuteReader();
+            if (UserDetails["Admin_Right"] == "Super Admin")
+            {
+                string admin_email = txtAdminEmail.Text;
+                string admin_right = listAdminRight.Text;
+                Random random = new Random();
+                int length = 16;
+                var vkey2 = "";
+                for (var i = 0; i < length; i++)
+                {
+                    vkey2 += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
+                }
 
-            string sqlInsert = @"INSERT INTO Admin(admin_email, admin_right, created_at, verify_key)
+                SqlConnection con = new SqlConnection(strcon);
+
+                string sqlSession2 = @"SELECT admin_id FROM Admin WHERE admin_email = @admin_email";
+                SqlCommand cmd2 = new SqlCommand(sqlSession2, con);
+                con.Open();
+                cmd2.Parameters.AddWithValue("@admin_email", UserDetails["Admin_Email"]);
+                SqlDataReader read2 = cmd2.ExecuteReader();
+
+                string sqlInsert = @"INSERT INTO Admin(admin_email, admin_right, created_at, verify_key)
                                VALUES (@admin_email, @admin_right, @created_at, @verify_key)";
 
-            SqlCommand cmd = new SqlCommand(sqlInsert, con);
-            cmd.Parameters.AddWithValue("@admin_email", admin_email);
-            cmd.Parameters.AddWithValue("@admin_right", admin_right);
-            cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
-            cmd.Parameters.AddWithValue("@verify_key", vkey2);
+                SqlCommand cmd = new SqlCommand(sqlInsert, con);
+                cmd.Parameters.AddWithValue("@admin_email", admin_email);
+                cmd.Parameters.AddWithValue("@admin_right", admin_right);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@verify_key", vkey2);
 
-            Session["admin_verify_key"] = vkey2;
+                Session["admin_verify_key"] = vkey2;
 
-            //email
-            string from = "webissue.emailus@gmail.com";
+                //email
+                string from = "webissue.emailus@gmail.com";
 
-            MailMessage message = new MailMessage(from, admin_email);
+                MailMessage message = new MailMessage(from, admin_email);
 
-            //Mail Subject
-            message.Subject = "Jobs4U Admin Registration";
-            message.Body = "Signup yourself " +
-                "<a href = 'https://localhost:44329/admin/signup.aspx?v-key=" + vkey2 + "'" + " >here</a> <br />" +
-                "Thanks, Jobs4U Team <br />" +
-                "***This is a system generated email. Please do not reply to this address***";
-            message.BodyEncoding = Encoding.UTF8;
-            message.IsBodyHtml = true;
+                //Mail Subject
+                message.Subject = "Jobs4U Admin Registration";
+                message.Body = "Signup yourself " +
+                    "<a href = 'https://localhost:44329/admin/signup.aspx?v-key=" + vkey2 + "'" + " >here</a> <br />" +
+                    "Thanks, Jobs4U Team <br />" +
+                    "***This is a system generated email. Please do not reply to this address***";
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
 
-            //SMTP Client port 587 for gmail
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                //SMTP Client port 587 for gmail
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
 
-            System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential("webissue.emailus@gmail.com", "webissue123");
+                System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential("webissue.emailus@gmail.com", "webissue123");
 
-            client.EnableSsl = true;
-            client.UseDefaultCredentials = false;
-            client.Credentials = basicCredential1;
-            try
-            {
-                //send email
-                client.Send(message);
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+                try
+                {
+                    //send email
+                    client.Send(message);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                read2.Close();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Redirect("admin-management.aspx");
             }
-            catch (Exception ex)
+            else
             {
-                
+
             }
-
-            read2.Close();
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            Response.Redirect("admin-management.aspx");
         }
 
         protected void btnDeleteAdmin_Click(object sender, EventArgs e)
