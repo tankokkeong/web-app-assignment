@@ -152,11 +152,11 @@
                     </div>
                 </div>
             </div>
-            <div class="JobDescriptionContentsReviews">
+            <div class="JobDescriptionContentsReviews" runat="server"  id="divReview">
                 <div>
                     <div class="user-review-container">
                         <div class="user-review-title">
-                            <h4>Job Reviews(5)</h4>
+                            <h4>Job Reviews(<asp:Label ID="lblJobReviewCount" runat="server" Text=""></asp:Label>)</h4>
                         </div>
 
                         <div class="user-review-display">
@@ -204,7 +204,7 @@
                         </div>
                     </div>
 
-                    <div runat="server" visible="" id="divReview">
+                    <div runat="server" id="divReviewInput" visible="false">
                         <div class="JobDescriptionContentsReviewsHeader row mt-3" >
                             <h4 class="ml-4 col-sm">Your Review</h4>
                             <div class="ml-4 form-group rating col-sm"> 

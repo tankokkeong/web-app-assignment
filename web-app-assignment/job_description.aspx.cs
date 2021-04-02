@@ -90,10 +90,22 @@ namespace web_app_assignment
                             }
                         }
 
+                        //Get seeker id
+                        string seeker_id = helper.getSeekerID();
+
                         //Show Job Review Section if is premium
-                        if(Session["User"] != null && helper.getSeekerIsPremium(helper.getSeekerID()) == true)
+                        if (Session["User"] != null && helper.getSeekerIsPremium(seeker_id) == true)
                         {
                             divReview.Visible = true;
+
+                            //Display total job review number
+                            lblJobReviewCount.Text = getTotalJobReview().ToString();
+
+                            //Check if leave review before
+                            if(isReviewedBefore(seeker_id) == false)
+                            {
+                                divReviewInput.Visible = true;
+                            }
                         }
                         else
                         {
@@ -349,6 +361,57 @@ namespace web_app_assignment
 
             //Close Connection
             con.Close();
+        }
+
+        protected int getTotalJobReview()
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+
+            int total_review = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return total_review;
+        }
+
+        protected bool isReviewedBefore(string seeker_id)
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+            bool reviewed_before = false;
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM JobReview JR, JobSeeker JS WHERE JR.post_id = @post_id AND JR.seeker_id = @seeker_id";
+
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            //Check if record exists
+            if(Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                reviewed_before = true;
+            }
+
+            return reviewed_before;
         }
     }
 }
