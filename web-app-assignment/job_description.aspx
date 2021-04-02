@@ -6,6 +6,7 @@
 
     <%-- CK EDITOR --%>
     <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -203,8 +204,9 @@
                         </div>
                     </div>
 
-                    <div class="JobDescriptionContentsReviewsHeader row mt-3">
-                        <h4 class="ml-4 col-sm">Your Review</h4>
+                    <div runat="server" visible="" id="divReview">
+                        <div class="JobDescriptionContentsReviewsHeader row mt-3" >
+                            <h4 class="ml-4 col-sm">Your Review</h4>
                             <div class="ml-4 form-group rating col-sm"> 
                                 <div class="rate">
                                     <input type="radio" id="star5" name="rate" class="star-rate" value="5" onclick="userStarRating(5)"/>
@@ -229,6 +231,8 @@
                         <div class="text-center">
                             <asp:Button ID="btnPostReview" runat="server" Text="Post" class="btn btn-primary" OnClick="btnPostReview_Click"/>
                         </div>
+                    </div>
+                      
                 </div>
             </div>
         </div>

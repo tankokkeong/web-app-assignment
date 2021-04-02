@@ -15,71 +15,85 @@ namespace web_app_assignment
 
         public string getRecruiterID()
         {
-
-            SqlConnection con = new SqlConnection(strcon);
-
-            //Open Connection Again
-            if (con.State == ConnectionState.Closed)
+            if (HttpContext.Current.Session["User"] != null)
             {
-                con.Open();
+                SqlConnection con = new SqlConnection(strcon);
+
+                //Open Connection Again
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Recruiter ID
+                Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)HttpContext.Current.Session["Recruiter"];
+
+                string recruiterID = "";
+
+                //GET Recruiter ID from the seeker table
+                string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
+
+                SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
+
+                cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    recruiterID = dr["recruiter_id"].ToString();
+                }
+
+                con.Close();
+
+                return recruiterID;
             }
-
-            //Get Recruiter ID
-            Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)HttpContext.Current.Session["Recruiter"];
-
-            string recruiterID = "";
-
-            //GET Recruiter ID from the seeker table
-            string selectRecruiterID = "SELECT recruiter_id FROM Recruiter WHERE email = @email";
-
-            SqlCommand cmd = new SqlCommand(selectRecruiterID, con);
-
-            cmd.Parameters.AddWithValue("@email", RecruiterDetails["recruiter_email"].ToString());
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            else
             {
-                recruiterID = dr["recruiter_id"].ToString();
+                return "";
             }
-
-            con.Close();
-
-            return recruiterID;
+            
 
         }
 
         public string getSeekerID()
         {
-
-            SqlConnection con = new SqlConnection(strcon);
-            if (con.State == ConnectionState.Closed)
+            if(HttpContext.Current.Session["User"] != null)
             {
-                con.Open();
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Seeker ID
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)HttpContext.Current.Session["User"];
+
+                string seeker_id = "";
+
+                //GET Seeker ID from the seeker table
+                string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
+
+                SqlCommand cmd = new SqlCommand(selectSeekerID, con);
+
+                cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    seeker_id = dr["seeker_id"].ToString();
+                }
+
+                con.Close();
+
+                return seeker_id;
             }
-
-            //Get Seeker ID
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)HttpContext.Current.Session["User"];
-
-            string seeker_id = "";
-
-            //GET Seeker ID from the seeker table
-            string selectSeekerID = "SELECT seeker_id FROM JobSeeker WHERE email = @email";
-
-            SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-            cmd.Parameters.AddWithValue("@email", UserDetails["user_email"].ToString());
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            else
             {
-                seeker_id = dr["seeker_id"].ToString();
+                return "";
             }
-
-            con.Close();
-
-            return seeker_id;
+            
 
         }
 
@@ -220,6 +234,41 @@ namespace web_app_assignment
             con.Close();
 
             return Seeker_Details;
+        }
+
+        public bool getSeekerIsPremium(string seeker_id)
+        {
+            bool is_premium = false;
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string seeker_sql = "SELECT * FROM JobSeeker WHERE seeker_id = @seeker_id";
+
+            SqlCommand cmd = new SqlCommand(seeker_sql, con);
+
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                if(dr["is_premium"].ToString() == "true")
+                {
+                    is_premium = true;
+                }
+            }
+
+            con.Close();
+
+
+            return is_premium;
         }
     }
 }

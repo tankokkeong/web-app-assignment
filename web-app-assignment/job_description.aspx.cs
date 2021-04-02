@@ -89,6 +89,16 @@ namespace web_app_assignment
                                 lbl_JobDescriptionJobSpec.Text += "<button class='btn btn-info mr-3 JobDescriptionContentsBodySubHeadersTagsButton' disabled='true'>" + jobSpecs.ToString() + "</button>";
                             }
                         }
+
+                        //Show Job Review Section if is premium
+                        if(Session["User"] != null && helper.getSeekerIsPremium(helper.getSeekerID()) == true)
+                        {
+                            divReview.Visible = true;
+                        }
+                        else
+                        {
+                            divReview.Visible = false;
+                        }
                     }
                     else
                     {
@@ -323,8 +333,6 @@ namespace web_app_assignment
                 con.Open();
             }
 
-            //get Seeker ID
-            string seeker_id = helper.getSeekerID();
             string post_id = Request.QueryString["post_id"] ?? "";
 
             string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
