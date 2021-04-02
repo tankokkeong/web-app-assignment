@@ -225,27 +225,27 @@ namespace web_app_assignment
 
             if (jobTitlequery != "")
             {
-                sql += " OR job_title LIKE '%" + jobTitlequery + "%' OR job_title IN('" + jobTitlequery + "')";
+                sql += " AND job_title LIKE '%" + jobTitlequery + "%' AND job_title IN('" + jobTitlequery + "')";
             }
 
             if (locationsquery != "")
             {
-                sql += " OR location LIKE '%" + locationsquery + "%' OR location IN('" + locationsquery + "')";
+                sql += " AND location LIKE '%" + locationsquery + "%' AND location IN('" + locationsquery + "')";
             }
 
             if (jobTypequery != "")
             {
-                sql += " OR job_type LIKE '%" + jobTypequery + "%' OR job_type IN('" + jobTypequery + "')";
+                sql += " AND job_type LIKE '%" + jobTypequery + "%' AND job_type IN('" + jobTypequery + "')";
             }
 
             if (JobSpecquery != "")
             {
-                sql += " OR job_specializations LIKE '%" + JobSpecquery + "%' OR job_specializations IN('" + JobSpecquery + "')";
+                sql += " AND job_specializations LIKE '%" + JobSpecquery + "%' AND job_specializations IN('" + JobSpecquery + "')";
             }
 
             if (rangeFromquery != "" && rangeEndquery != "")
             {
-                sql += " OR salary BETWEEN " + rangeFromquery + " OR " + rangeEndquery;
+                sql += " AND salary BETWEEN " + rangeFromquery + " AND " + rangeEndquery;
             }
 
             return sql;

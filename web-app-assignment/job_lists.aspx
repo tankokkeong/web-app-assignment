@@ -123,6 +123,7 @@
         $("#location-selection").select2({
             placeholder: "Select Location or Write Location",
             allowClear: true,
+            newTag: false,
             tags: true,
         });
         $('#jobtype-selection').select2({
@@ -131,7 +132,8 @@
         
         $("#jobSpec-selection").select2({
             placeholder: "Job Specialization or Position eg. Accounting",
-            allowClear: true,
+            allowClear: false,
+            newTag: false,
             tags: true,
         });
 
@@ -147,92 +149,6 @@
             document.getElementById('textInputMax').value = val;
         }
     </script>
-
-    <script>
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
-
-        var thumbLeft = document.querySelector(".slider > .thumb.left");
-        var thumbRight = document.querySelector(".slider > .thumb.right");
-        var range = document.querySelector(".slider > .range");
-
-        function setLeftValue() {
-            var _this = inputLeft,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
-
-            var percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbLeft.style.left = percent + "%";
-            range.style.left = percent + "%";
-        }
-        setLeftValue();
-
-        function setRightValue() {
-            var _this = inputRight,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
-
-            var percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbRight.style.right = (100 - percent) + "%";
-            range.style.right = (100 - percent) + "%";
-        }
-        setRightValue();
-
-        inputLeft.addEventListener("input", setLeftValue);
-        inputRight.addEventListener("input", setRightValue); 
-
-        inputLeft.addEventListener("mouseover", function () {
-            thumbLeft.classList.add("hover");
-        })
-
-        inputLeft.addEventListener("mouseout", function () {
-            thumbLeft.classList.remove("hover");
-        })
-
-        inputLeft.addEventListener("mousedown", function () {
-            thumbLeft.classList.add("active");
-        })
-
-        inputLeft.addEventListener("mouseup", function () {
-            thumbLeft.classList.remove("active");
-        })
-
-        inputRight.addEventListener("mouseover", function () {
-            thumbRight.classList.add("hover");
-        })
-
-        inputRight.addEventListener("mouseout", function () {
-            thumbRight.classList.remove("hover");
-        })
-
-        inputRight.addEventListener("mousedown", function () {
-            thumbRight.classList.add("active");
-        })
-
-        inputRight.addEventListener("mouseup", function () {
-            thumbRight.classList.remove("active");
-        })
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $("#input-left").on("input change", function () {
-                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
-            });
-        });
-
-        $(document).ready(function () {
-            $("#input-right").on("input change", function () {
-                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
-            });
-        });
-    </script>  
     
     <script>
         function JobListSearch() {
@@ -290,7 +206,7 @@
             var location = locationQuery.split(',');
             var select2_input = document.getElementById("location-selection");
 
-            if (location !== " ") {
+            if (location !== null) {
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
@@ -318,7 +234,7 @@
             title = title.split(',');
             var job_titleText = document.getElementById("ContentPlaceHolder1_txt_SearchJobTitle");
 
-            if (title !== " ") {
+            if (title !== "") {
                 job_titleText.value = title;
             }
         }
@@ -331,7 +247,7 @@
             var jobType = jobTypeQuery.split(',');
             var select2_input = document.getElementById("jobtype-selection");
 
-            if (jobType !== " ") {
+            if (jobType !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < jobType.length; i++) {
 
@@ -359,7 +275,7 @@
             var jobSpec = jobSpecQuery.split(',');
             var select2_input = document.getElementById("jobSpec-selection");
 
-            if (jobSpec !== " ") {
+            if (jobSpec !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < jobSpec.length; i++) {
 
@@ -379,23 +295,25 @@
             }
         }
 
-        //function getSalaryRange() {
-        //    var salaryQuery = window.location.href.split('?')[1];
+        function getSalaryRange() {
+            var salaryQuery = window.location.href.split('?')[1];
 
-        //    var salaryQueryFrom = salaryQuery.split('&')[4];
-        //    var salaryQueryEnd = salaryQuery.split('&')[5];
+            var salaryQueryFrom = salaryQuery.split('&')[4];
+            var salaryQueryEnd = salaryQuery.split('&')[5];
 
-        //    salaryQueryFrom = salaryQueryFrom.split('=')[1];
-        //    salaryQueryEnd = salaryQueryEnd.split('=')[1];
+            salaryQueryFrom = salaryQueryFrom.split('=')[1];
+            salaryQueryEnd = salaryQueryEnd.split('=')[1];
 
-        //    var salaryLeft = document.getElementById("input-left");
-        //    var salaryRight = document.getElementById("input-right");
+            var salaryLeft = document.getElementById("input-left");
+            var salaryRight = document.getElementById("input-right");
 
-        //    if (salaryQueryEnd !== " " || salaryQueryFrom !== " ") {
-        //        salaryLeft.value = salaryQueryFrom;
-        //        salaryRight.value = salaryQueryEnd;
-        //    }
-        //}
+            if (salaryQueryEnd !== "" || salaryQueryFrom !== "") {
+                salaryLeft.value = salaryQueryFrom;
+                salaryRight.value = salaryQueryEnd;
+                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
+                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
+            }
+        }
 
         //Print out the available industry
         printSelect2State("location-selection");
@@ -406,6 +324,92 @@
         getJobTitle();
         getSelectedJobType();
         getSelectedJobSpec();
-        //getSalaryRange();
+        getSalaryRange();
+    </script>    
+
+    <script>
+        var inputLeft = document.getElementById("input-left");
+        var inputRight = document.getElementById("input-right");
+
+        var thumbLeft = document.querySelector(".slider > .thumb.left");
+        var thumbRight = document.querySelector(".slider > .thumb.right");
+        var range = document.querySelector(".slider > .range");
+
+        function setLeftValue() {
+            var _this = inputLeft,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
+
+            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+            var percent = ((_this.value - min) / (max - min)) * 100;
+
+            thumbLeft.style.left = percent + "%";
+            range.style.left = percent + "%";
+        }
+        setLeftValue();
+
+        function setRightValue() {
+            var _this = inputRight,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
+
+            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+            var percent = ((_this.value - min) / (max - min)) * 100;
+
+            thumbRight.style.right = (100 - percent) + "%";
+            range.style.right = (100 - percent) + "%";
+        }
+        setRightValue();
+
+        inputLeft.addEventListener("input", setLeftValue);
+        inputRight.addEventListener("input", setRightValue);
+
+        inputLeft.addEventListener("mouseover", function () {
+            thumbLeft.classList.add("hover");
+        })
+
+        inputLeft.addEventListener("mouseout", function () {
+            thumbLeft.classList.remove("hover");
+        })
+
+        inputLeft.addEventListener("mousedown", function () {
+            thumbLeft.classList.add("active");
+        })
+
+        inputLeft.addEventListener("mouseup", function () {
+            thumbLeft.classList.remove("active");
+        })
+
+        inputRight.addEventListener("mouseover", function () {
+            thumbRight.classList.add("hover");
+        })
+
+        inputRight.addEventListener("mouseout", function () {
+            thumbRight.classList.remove("hover");
+        })
+
+        inputRight.addEventListener("mousedown", function () {
+            thumbRight.classList.add("active");
+        })
+
+        inputRight.addEventListener("mouseup", function () {
+            thumbRight.classList.remove("active");
+        })
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#input-left").on("input change", function () {
+                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
+            });
+        });
+
+        $(document).ready(function () {
+            $("#input-right").on("input change", function () {
+                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
+            });
+        });
+    </script>  
 </asp:Content>
