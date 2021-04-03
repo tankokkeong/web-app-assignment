@@ -182,6 +182,14 @@
                         </button>
                     </div>
 
+                    <%-- Job Applicant rejected Alert --%>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="applicant-reject-alert">
+                        Job applicant is rejected!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
                     <asp:Label ID="lblJobStatus" runat="server" Text=""></asp:Label>
 
                     <asp:ListView ID="lvJobStatus" runat="server">
@@ -223,7 +231,7 @@
                                 </div>
 
                                 <div class='mt-2'>
-                                    <button class='btn btn-danger' type="button">Reject</button>
+                                    <button class='btn btn-danger' type="button" data-toggle='modal' data-target='#rejectModal' onclick="rejectApplicants('<%#Eval("application_id") %>')">Reject</button>
                                 </div>
                               </div>
                                 
@@ -355,6 +363,28 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <asp:Button ID="btnApproveJob" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnApproveJob_Click"/>
             <asp:TextBox ID="txtApproveApplication" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reject Job Modal -->
+    <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Approval Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to reject this job application?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnRejectApplicant" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnRejectApplicant_Click"/>
+            <asp:TextBox ID="txtRejectApplicant" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
       </div>
@@ -529,6 +559,13 @@
             delete_applicants_input.value = id;
         }
 
+        function rejectApplicants(id) {
+            var reject_applicants_input = document.getElementById("ContentPlaceHolder1_txtRejectApplicant");
+
+            //Change the id
+            reject_applicants_input.value = id;
+        }
+
         //Check Approve Job Application
         function checkApprovedApplication() {
             var link = window.location.href.split("?");
@@ -538,6 +575,19 @@
                 //Change to job posted tab
                 recruiterProfileSwitchTab('application');
                 approved_alert.style.display = "";
+            }
+        }
+
+        //Check Reject Job Applicant 
+        function checkRejectedApplicant() {
+            var link = window.location.href.split("?");
+            var reject_alert = document.getElementById("applicant-reject-alert");
+
+            if (link[1] === "rejectApplicants") {
+
+                //Change to job posted tab
+                recruiterProfileSwitchTab('application');
+                reject_alert.style.display = "";
             }
         }
 
@@ -575,10 +625,11 @@
             }
         }
 
+        //Query string functions
         checkDeleteJob();
         checkApprovedApplication();
         checkJobPostPagination();
         checkDeletedApplicant();
-
+        checkRejectedApplicant();
     </script>
 </asp:Content>

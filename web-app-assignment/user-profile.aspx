@@ -300,6 +300,7 @@
             }
         }
 
+        //Query string function
         checkCancelledApplication();
         checkApplyPagination();
         checkRemovedApplication();
