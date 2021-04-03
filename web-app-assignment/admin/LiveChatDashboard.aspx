@@ -171,5 +171,27 @@
 
             document.getElementById("table-contents").innerHTML += html;
         });
+
+        //listen for incoming messages
+        firebase.database().ref("VisitorMessages/").on("child_added", function (snapshot) {
+            var html = "";
+
+            // give each message a unique ID
+            html += "<tr class='table-rowLiveChat'>" +
+                "<th scope='row'>" +
+                "<input type='checkbox' />" +
+                "</th>" +
+                "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
+                "<td>" +
+                "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
+                "</td>" +
+                "<td>" + snapshot.val().message + "</td>" +
+                "<td>" +
+                "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
+                "</td>" +
+                "</tr>";
+
+            document.getElementById("table-contents").innerHTML += html;
+        });
     </script>
 </asp:Content>

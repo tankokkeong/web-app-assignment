@@ -18,11 +18,6 @@ namespace web_app_assignment.admin
             {
                 Dictionary<string, string> AdminDetail = (Dictionary<string, string>)Session["Admin"];
 
-                if (AdminDetail["Admin_Email"] == null)
-                {
-                    Response.Write("<script>alert('Empty Email');</script>");
-                }
-
                 lblUsername.Text = Request.QueryString["chat"] ?? "";
                 lblAdminName.Text = AdminDetail["Admin_Email"].ToString();
             }
