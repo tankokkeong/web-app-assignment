@@ -11,7 +11,7 @@ namespace web_app_assignment.admin
 {
 
 
-    public partial class admin_details_edit
+    public partial class client_edit
     {
 
         /// <summary>
@@ -24,33 +24,6 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.TextBox txtID;
 
         /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
-
-        /// <summary>
-        /// reqValName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValName;
-
-        /// <summary>
-        /// regExValName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExValName;
-
-        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -60,21 +33,21 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// listRight control.
+        /// listStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listRight;
+        protected global::System.Web.UI.WebControls.DropDownList listStatus;
 
         /// <summary>
-        /// btnEditAdmin control.
+        /// btnEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditAdmin;
+        protected global::System.Web.UI.WebControls.Button btnEditUser;
     }
 }
