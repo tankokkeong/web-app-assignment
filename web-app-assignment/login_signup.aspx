@@ -114,6 +114,7 @@
                                     <div class="form-group">
                                         <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="recruiterCompanyReq" runat ="server" ControlToValidate="sign_recruiter_companyName" validationgroup="recruiter" ErrorMessage="Company Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                        <asp:RegularExpressionValidator ID="revrecruiterCompany" runat="server" ValidationExpression="^[A-Za-z0-9]+$" ErrorMessage="Symbol is not allowed" ControlToValidate="sign_recruiter_companyName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                                                           
                                     </div>
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
@@ -125,6 +126,7 @@
                                             <asp:TextBox ID="sign_recruiter_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
                                             <asp:RequiredFieldValidator id="recruiterPasswordReq" runat ="server" ControlToValidate="sign_recruiter_password" ErrorMessage="Password is required!" forecolor="Red" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RegularExpressionValidator ID="revRecruiterPassword" runat="server" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ErrorMessage="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" ControlToValidate="sign_recruiter_password" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                    
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_recruiter_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
@@ -162,6 +164,7 @@
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_FullName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Full Name"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="seekerFullNameReq" runat ="server" ControlToValidate="sign_seeker_FullName" validationgroup="seeker" ErrorMessage="Full Name is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RegularExpressionValidator ID="revSeekerFullName" runat="server" ValidationExpression="^[A-Za-z]+$" ErrorMessage="Symbol and number is not allowed" ControlToValidate="sign_seeker_FullName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                        
                                         </div>
                                      </div>
                                     <div class="row form-group-row">
@@ -176,6 +179,7 @@
                                             <asp:TextBox ID="sign_seeker_password" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                                             <img src="images/Signup_Login/eye.png" alt="eye" class="eyeImagePasswordSignUp" onclick="showPassword()"/>
                                             <asp:RequiredFieldValidator id="seekerPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" validationgroup="seeker" ErrorMessage="Password is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                                            <asp:RegularExpressionValidator ID="revseekerPassword" runat="server" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ErrorMessage="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" ControlToValidate="sign_seeker_password" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                    
                                         </div>
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_confirmPassword" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
