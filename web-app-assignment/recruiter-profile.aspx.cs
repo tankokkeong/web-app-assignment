@@ -390,7 +390,8 @@ namespace web_app_assignment
                                         "ASS.deleted_at IS NULL AND " +
                                         "ASS.post_id = JP.post_id AND " +
                                         "JP.recruiter_id = " + recruiter_id + " AND " +
-                                        "R.recruiter_id = " + recruiter_id;
+                                        "R.recruiter_id = " + recruiter_id +
+                                        "ORDER BY ASS.created_at DESC";
 
                 SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
 
@@ -423,7 +424,7 @@ namespace web_app_assignment
                 string recruiterID = helper.getRecruiterID();
 
                 //Read Job Posted
-                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL";
+                string sql_jobposted = "SELECT * FROM JobPost WHERE recruiter_id = " + recruiterID + " AND deleted_at IS NULL ORDER BY created_at DESC";
                 SqlDataAdapter cmd = new SqlDataAdapter(sql_jobposted, con);
 
 
