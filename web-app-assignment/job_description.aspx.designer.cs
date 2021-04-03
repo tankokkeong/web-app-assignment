@@ -177,6 +177,42 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lbl_JobDescriptionBenefitOther;
 
         /// <summary>
+        /// divReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReview;
+
+        /// <summary>
+        /// lblJobReviewCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJobReviewCount;
+
+        /// <summary>
+        /// divUserRatingBoard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUserRatingBoard;
+
+        /// <summary>
+        /// ltrUserRatingBoard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrUserRatingBoard;
+
+        /// <summary>
         /// lvJobReview control.
         /// </summary>
         /// <remarks>
@@ -195,13 +231,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.DataPager DataPager1;
 
         /// <summary>
-        /// divReview control.
+        /// divReviewInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReview;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReviewInput;
 
         /// <summary>
         /// txtStarRating control.
@@ -213,6 +249,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox txtStarRating;
 
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
         /// txtUserReview control.
         /// </summary>
         /// <remarks>
@@ -220,6 +265,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUserReview;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// btnPostReview control.

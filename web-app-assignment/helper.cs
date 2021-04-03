@@ -15,7 +15,7 @@ namespace web_app_assignment
 
         public string getRecruiterID()
         {
-            if (HttpContext.Current.Session["User"] != null)
+            if (HttpContext.Current.Session["Recruiter"] != null)
             {
                 SqlConnection con = new SqlConnection(strcon);
 

@@ -21,6 +21,7 @@
                     <div class="form-group">
                          <asp:TextBox ID="new_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="New Password"></asp:TextBox>
                          <asp:RequiredFieldValidator id="new_passwordReq" runat ="server" ControlToValidate="new_password" validationgroup="reset_password" ErrorMessage="Password is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                         <asp:RegularExpressionValidator ID="revnew_password" runat="server" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ErrorMessage="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" ControlToValidate="new_password"  validationgroup="reset_password" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                     
                     </div>
                     <div class="form-group">
                          <asp:TextBox ID="confirm_password" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="password" Placeholder="Confirm Password"></asp:TextBox>

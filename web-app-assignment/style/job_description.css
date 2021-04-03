@@ -162,3 +162,15 @@
     background-color: #b2b2b2 !important;
     color: #fff !important;
 }
+
+.user-rating-board{
+    padding:20px;
+}
+
+.four-star-bg {
+    background-color: #b1cbbb !important;
+}
+
+.two-star-bg {
+    background-color: #eca1a6 !important;
+}

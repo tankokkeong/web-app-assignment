@@ -90,10 +90,27 @@ namespace web_app_assignment
                             }
                         }
 
+                        //Get seeker id
+                        string seeker_id = helper.getSeekerID();
+
                         //Show Job Review Section if is premium
-                        if(Session["User"] != null && helper.getSeekerIsPremium(helper.getSeekerID()) == true)
+                        if (Session["User"] != null && helper.getSeekerIsPremium(seeker_id) == true)
                         {
                             divReview.Visible = true;
+
+                            //Display total job review number
+                            lblJobReviewCount.Text = getTotalJobReview().ToString();
+
+                            //Display user rating score board
+                            getUserRatingBoard();
+
+                            //Check if leave review before
+                            if (isReviewedBefore(seeker_id) == false && isApprovedByRecruiter(seeker_id))
+                            {
+                                divReviewInput.Visible = true;
+                                
+                            }
+
                         }
                         else
                         {
@@ -314,7 +331,29 @@ namespace web_app_assignment
                 //Close Connection
                 con.Close();
 
-                Response.Write("<script>alert('Review Inserted!');</script>");
+                //Open Connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Update job post rating
+                string job_rating = "UPDATE JobPost " +
+                                    "SET job_rating = @job_rating " +
+                                    "WHERE post_id = @post_id ";
+
+                cmd = new SqlCommand(job_rating, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@job_rating", calculateLatestJobRating());
+                cmd.Parameters.AddWithValue("@post_id", post_id);
+
+                //Execute the queries
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+                Response.Redirect("job_description.aspx?post_id=" + post_id + "&reviewSuccess");
             }
             catch (Exception error)
             {
@@ -335,7 +374,7 @@ namespace web_app_assignment
 
             string post_id = Request.QueryString["post_id"] ?? "";
 
-            string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
+            string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id ORDER BY JR.created_at DESC";
 
 
             SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
@@ -349,6 +388,293 @@ namespace web_app_assignment
 
             //Close Connection
             con.Close();
+        }
+
+        protected int getTotalJobReview()
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+
+            int total_review = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return total_review;
+        }
+
+        protected bool isReviewedBefore(string seeker_id)
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+            bool reviewed_before = false;
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM JobReview JR, JobSeeker JS WHERE JR.post_id = @post_id AND JR.seeker_id = @seeker_id";
+
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            //Check if record exists
+            if(Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                reviewed_before = true;
+            }
+
+            return reviewed_before;
+        }
+
+        protected bool isApprovedByRecruiter(string seeker_id)
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+            bool is_approved = false;
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT COUNT(*) FROM ApplicationStatus WHERE post_id = @post_id AND seeker_id = @seeker_id AND applied_status = @applied_status";
+
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+            cmd.Parameters.AddWithValue("@applied_status", "Approved");
+
+            //Check if record exists
+            if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                is_approved = true;
+            }
+            return is_approved;
+        }
+
+        protected void getUserRatingBoard()
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT (SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 5.0) AS five_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 4.0) AS four_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 3.0) AS three_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 2.0) AS two_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 1.0) AS one_star ";
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+
+            SqlDataReader dread = cmd.ExecuteReader();
+
+            while (dread.Read())
+            {
+                //Retrieve the value
+                int five_star = Convert.ToInt32(dread["five_star"].ToString());
+                int four_star = Convert.ToInt32(dread["four_star"].ToString());
+                int three_star = Convert.ToInt32(dread["three_star"].ToString());
+                int two_star = Convert.ToInt32(dread["two_star"].ToString());
+                int one_star = Convert.ToInt32(dread["one_star"].ToString());
+
+                //Calculate average rating
+                int total_review = five_star + four_star + three_star + two_star + one_star;
+                int total_five_star = five_star * 5;
+                int total_four_star = four_star * 4;
+                int total_three_star = three_star * 3;
+                int total_two_star = two_star * 2;
+                int total_one_star = one_star * 1;
+
+                int total_stars = total_five_star + total_four_star + total_three_star + total_two_star + total_one_star;
+
+                //Calculate Total rating percentage
+                double five_star_pecent = ((double)five_star / (double)total_review) * 100;
+                double four_star_pecent = ((double)four_star / (double)total_review) * 100;
+                double three_star_pecent = ((double)three_star / (double)total_review) * 100;
+                double two_star_pecent = ((double)two_star / (double)total_review) * 100;
+                double one_star_pecent = ((double)one_star / (double)total_review) * 100;
+                double average_rating = 0.0;
+
+                if (getTotalJobReview() > 0)
+                {
+                    //Round off to 2 decimal places
+                    average_rating = Math.Round(((double)total_stars / (double)(total_review * 5)) * 5, 2);
+                }
+
+                
+
+                ltrUserRatingBoard.Text =
+                    "<div class='total-rating'>" +
+                                "<h5>Job Rating: " + average_rating + "<i class='fas fa-star text-warning'></i></h5>" +
+                            "</div>" +
+
+                            "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "5 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-success' role='progressbar' style='width:" + five_star_pecent + "%;' aria-valuenow='" + five_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    five_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "4 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar four-star-bg' role='progressbar' style='width:" + four_star_pecent + "%;' aria-valuenow='" + four_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    four_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "3 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-warning' role='progressbar' style='width:" + three_star_pecent +"%;' aria-valuenow='" + three_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    three_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "2 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar two-star-bg' role='progressbar' style='width:" + two_star_pecent + "%;' aria-valuenow='" + two_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    two_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                            "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "1 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-danger' role='progressbar' style='width:" + one_star_pecent + "%;' aria-valuenow='" + one_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                     one_star.ToString() +
+                                "</div>" +
+                            "</div>";
+            }
+
+            //Close Connection
+            con.Close();
+        }
+
+        protected double calculateLatestJobRating()
+        {
+            double job_rating = 0.0;
+
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT (SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 5.0) AS five_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 4.0) AS four_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 3.0) AS three_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 2.0) AS two_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 1.0) AS one_star ";
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+
+            SqlDataReader dread = cmd.ExecuteReader();
+
+            while (dread.Read())
+            {
+                //Retrieve the value
+                int five_star = Convert.ToInt32(dread["five_star"].ToString());
+                int four_star = Convert.ToInt32(dread["four_star"].ToString());
+                int three_star = Convert.ToInt32(dread["three_star"].ToString());
+                int two_star = Convert.ToInt32(dread["two_star"].ToString());
+                int one_star = Convert.ToInt32(dread["one_star"].ToString());
+
+                //Calculate average rating
+                int total_review = five_star + four_star + three_star + two_star + one_star;
+                int total_five_star = five_star * 5;
+                int total_four_star = four_star * 4;
+                int total_three_star = three_star * 3;
+                int total_two_star = two_star * 2;
+                int total_one_star = one_star * 1;
+
+                int total_stars = total_five_star + total_four_star + total_three_star + total_two_star + total_one_star;
+
+
+                if (getTotalJobReview() > 0)
+                {
+                    //Round off to 2 decimal places
+                    job_rating = Math.Round(((double)total_stars / (double)(total_review * 5)) * 5, 2);
+                }
+                    
+            }
+
+            return job_rating;
         }
     }
 }

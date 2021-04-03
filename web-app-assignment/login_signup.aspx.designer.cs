@@ -123,6 +123,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator recruiterCompanyReq;
 
         /// <summary>
+        /// revrecruiterCompany control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revrecruiterCompany;
+
+        /// <summary>
         /// sign_recruiter_companyEmail control.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator recruiterPasswordReq;
+
+        /// <summary>
+        /// revRecruiterPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revRecruiterPassword;
 
         /// <summary>
         /// sign_recruiter_confirmPassword control.
@@ -231,6 +249,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerFullNameReq;
 
         /// <summary>
+        /// revSeekerFullName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revSeekerFullName;
+
+        /// <summary>
         /// sign_seeker_email control.
         /// </summary>
         /// <remarks>
@@ -274,6 +301,15 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator seekerPasswordReq;
+
+        /// <summary>
+        /// revseekerPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revseekerPassword;
 
         /// <summary>
         /// sign_seeker_confirmPassword control.

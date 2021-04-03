@@ -152,11 +152,105 @@
                     </div>
                 </div>
             </div>
-            <div class="JobDescriptionContentsReviews">
+            <div class="JobDescriptionContentsReviews" runat="server"  id="divReview">
                 <div>
                     <div class="user-review-container">
                         <div class="user-review-title">
-                            <h4>Job Reviews(5)</h4>
+                            <h4>Job Reviews(<asp:Label ID="lblJobReviewCount" runat="server" Text=""></asp:Label>)</h4>
+                        </div>
+
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;" id="success-review">
+                          Thanks for your review!
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="user-rating-board" runat="server" id="divUserRatingBoard">
+                            <asp:Literal ID="ltrUserRatingBoard" runat="server"></asp:Literal>
+                            <%--<div class="total-rating">
+                                <h5>Job Rating: 3.8 <i class="fas fa-star text-warning"></i></h5>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-lg-2 text-center">
+                                    5 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" style="width:50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row mt-3">
+                                <div class="col-lg-2 text-center">
+                                    4 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar four-star-bg" role="progressbar" style="width:30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row mt-3">
+                                <div class="col-lg-2 text-center">
+                                    3 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar bg-warning" role="progressbar" style="width:10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row mt-3">
+                                <div class="col-lg-2 text-center">
+                                    2 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar two-star-bg" role="progressbar" style="width:7%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>
+
+                             <div class="row mt-3">
+                                <div class="col-lg-2 text-center">
+                                    1 stars
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="progress">
+                                      <div class="progress-bar bg-danger" role="progressbar" style="width:7%;" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                    15
+                                </div>
+                            </div>--%>
+                                                       
                         </div>
 
                         <div class="user-review-display">
@@ -204,7 +298,7 @@
                         </div>
                     </div>
 
-                    <div runat="server" visible="" id="divReview">
+                    <div runat="server" id="divReviewInput" visible="false">
                         <div class="JobDescriptionContentsReviewsHeader row mt-3" >
                             <h4 class="ml-4 col-sm">Your Review</h4>
                             <div class="ml-4 form-group rating col-sm"> 
@@ -219,13 +313,16 @@
                                     <label for="star2" title="text">2 stars</label>
                                     <input type="radio" id="star1" name="rate" class="star-rate" value="1" onclick="userStarRating(1)"/>
                                     <label for="star1" title="text">1 star</label>
-                                    <asp:TextBox ID="txtStarRating" runat="server" style="display:none;"></asp:TextBox>
-                                  </div>
+                                    <asp:TextBox ID="txtStarRating" runat="server" style="display:none;"></asp:TextBox>              
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Rating is required!" ControlToValidate="txtStarRating" CssClass="text-danger" style="position:relative; top:15px; right:5px;"></asp:RequiredFieldValidator>
+                                 </div>                                 
+                                  
                             </div>
                         </div>
                         <div class="form-group col-sm">
                             <textarea id="job_review_editor"></textarea>
                             <asp:TextBox ID="txtUserReview" runat="server" style="display:none;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Review message is required!" ControlToValidate="txtUserReview" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="text-center">
@@ -238,6 +335,21 @@
         </div>
     </div>
 
+<script>
+    function checkReviewSuccess() {
+        review_alert = document.getElementById("success-review");
+        link = window.location.href.split("&");
+
+        if (link[1] === "reviewSuccess") {
+            review_alert.style.display = "";
+        }
+
+        console.log("hi")
+    }
+
+    //Check review success every time the page is refreshed
+    checkReviewSuccess();
+</script>
 
 <script type="text/javascript">
     editor = CKEDITOR.replace('job_review_editor');
