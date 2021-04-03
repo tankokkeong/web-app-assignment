@@ -308,6 +308,28 @@
       </div>
     </div>
 
+    <!-- Delete Applicants Modal -->
+    <div class="modal fade" id="deleteApplicants" tabindex="-1" aria-labelledby="deleteApplicantsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Delete Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this applicant?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <asp:Button ID="btnDeleteApplicants" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteApplicants_Click"/>
+            <asp:TextBox ID="txtApplicantionID" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Approve Job Modal -->
     <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -490,6 +512,10 @@
 
             //Change the id
             approve_input.value = id;
+        }
+
+        function deleteApplicants(id) {
+            var delete_applicants_input = document.getElementById("ContentPlaceHolder1_txtApplicantionID");
         }
 
         //Check Approve Job Application

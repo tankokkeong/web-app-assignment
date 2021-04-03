@@ -479,5 +479,10 @@ namespace web_app_assignment
 
             return newSortDirection;
         }
+
+        protected void btnDeleteApplicants_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

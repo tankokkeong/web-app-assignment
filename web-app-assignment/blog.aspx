@@ -5,20 +5,10 @@
 
     <%-- CSS --%>
     <link href="style/blog.css" rel="stylesheet" />
-
-    <%-- Swiper Slides Plugins --%>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="blog-container">
-         <div class="col-6">
-             <a href="blog-explore.aspx?category=2" class="btn bg-lightgreen">Explore More</a>
-         </div>
         <div class="blog-category latest-category">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
@@ -82,128 +72,6 @@
         </div>
      </div>
         
-    <asp:Literal ID="litResultBlog" runat="server"></asp:Literal>
-        <%-- 
-    <div class="blog-category common-category">
-            <div class="common-cat-title mb-3 row">
-                <div class="col-6">
-                    <h3>Additional</h3>
-                </div>
-                
-                <div class="col-6">
-                    <div class="explore-more-container text-right text-lightgreen">
-                         <a href="blog-explore.aspx?additional=display">Explore More ></a>                   
-                    </div>
-                </div>
-                
-            </div>
-         
-            <div class="common-list-container">
-                <div class="swiper-box">
-                    <!-- Swiper -->
-                      <div class="swiper-container sw">
-                        <div class="swiper-wrapper">
-                            <asp:Literal ID="litResultAdditional" runat="server"></asp:Literal>
-                                <div class="swiper-slide">
-                                    <div class="card" style="width: 100%;">
-                                      <img src="https://jobmajestic.com/blog/media/2020/09/Malaysian-Fresh-Graduates-Guide-To-Writing-An-Effective-Cover-Letter-Templates-8-Tips-768x512.jpg" class="card-img-top" alt="...">
-                                      <div class="card-body text-center">
-                                        <p class="card-text font-weight-bold">Malaysian Fresh Graduate’s Guide to Writing An Effective Cover Letter (Templates + 8 Tips)	</p>
-                                     </div>
-                      
-                                        <div class="card-footer text-muted text-center">
-                                            17 March 2021
-                                         </div>
-                                    </div>
-                                </div>
-                        </div>                        
-                      </div>
-                    
-                      <!-- Add Arrows -->
-                       <div class="swiper-nav-container">
-                           <div class="swiper-button-next swiper-nav-next text-lightgreen"></div>
-                            <div class="swiper-button-prev swiper-nav-prev text-lightgreen"></div>
-                       </div>
-                        
-                </div>
-            </div>
-        </div>
-      --%>
+    <asp:Literal ID="litResultBlog" runat="server"></asp:Literal>   
 
-     <!-- Initialize Swiper -->
-      <script>
-          $(document).ready(function () {
-              if ($(window).width() < 800) {
-
-                  var swiper = new Swiper('.sw', {
-                      autoHeight: true, //enable auto height
-                      slidesPerView: 2,
-                      spaceBetween: 30,
-                      pagination: {
-                          el: '.swiper-pagination',
-                          clickable: true,
-                      },
-                      navigation: {
-                          nextEl: '.swiper-button-next',
-                          prevEl: '.swiper-button-prev',
-                      },
-                  });
-
-              }
-              else {
-                  var swiper = new Swiper('.sw', {
-                      autoHeight: true, //enable auto height
-                      slidesPerView: 3,
-                      spaceBetween: 30,
-                      pagination: {
-                          el: '.swiper-pagination',
-                          clickable: true,
-                      },
-                      navigation: {
-                          nextEl: '.swiper-button-next',
-                          prevEl: '.swiper-button-prev',
-                      },
-                  });
-
-              }
-
-              $(window).resize(function () {
-                  if ($(window).width() < 800) {
-                      var swiper = new Swiper('.sw', {
-                          autoHeight: true, //enable auto height
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                          pagination: {
-                              el: '.swiper-pagination',
-                              clickable: true,
-                          },
-                          navigation: {
-                              nextEl: '.swiper-button-next',
-                              prevEl: '.swiper-button-prev',
-                          },
-                      });
-
-                  }
-                  else {
-                      var swiper = new Swiper('.sw', {
-                          autoHeight: true, //enable auto height
-                          slidesPerView: 3,
-                          spaceBetween: 30,
-                          pagination: {
-                              el: '.swiper-pagination',
-                              clickable: true,
-                          },
-                          navigation: {
-                              nextEl: '.swiper-button-next',
-                              prevEl: '.swiper-button-prev',
-                          },
-                      });
-
-                  }
-              });
-
-          });
-
-          
-      </script>
 </asp:Content>
