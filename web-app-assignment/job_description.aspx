@@ -160,15 +160,18 @@
                         </div>
 
                         <div class="user-rating-board">
+                            <div class="total-rating">
+                                <h5>Job Rating: 3.8 <i class="fas fa-star text-warning"></i></h5>
+                            </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-lg-2 text-center">
                                     5 stars
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                      <div class="progress-bar bg-success" role="progressbar" style="width:50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
 
@@ -177,14 +180,14 @@
                                 </div>
                             </div>
 
-                             <div class="row">
+                             <div class="row mt-3">
                                 <div class="col-lg-2 text-center">
                                     4 stars
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                      <div class="progress-bar four-star-bg" role="progressbar" style="width:30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
 
@@ -193,14 +196,14 @@
                                 </div>
                             </div>
 
-                             <div class="row">
+                             <div class="row mt-3">
                                 <div class="col-lg-2 text-center">
                                     3 stars
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                      <div class="progress-bar bg-warning" role="progressbar" style="width:10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
 
@@ -209,14 +212,14 @@
                                 </div>
                             </div>
 
-                             <div class="row">
+                             <div class="row mt-3">
                                 <div class="col-lg-2 text-center">
                                     2 stars
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                      <div class="progress-bar two-star-bg" role="progressbar" style="width:7%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
 
@@ -225,14 +228,14 @@
                                 </div>
                             </div>
 
-                             <div class="row">
+                             <div class="row mt-3">
                                 <div class="col-lg-2 text-center">
                                     1 stars
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                      <div class="progress-bar bg-danger" role="progressbar" style="width:7%;" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
 

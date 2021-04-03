@@ -347,7 +347,7 @@ namespace web_app_assignment
 
             string post_id = Request.QueryString["post_id"] ?? "";
 
-            string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id";
+            string sql_jobStatus = "SELECT * FROM JobReview JR, JobSeeker JS WHERE JR.post_id = " + post_id + " AND JR.seeker_id = JS.seeker_id ORDER BY JR.created_at DESC";
 
 
             SqlDataAdapter cmd = new SqlDataAdapter(sql_jobStatus, con);
