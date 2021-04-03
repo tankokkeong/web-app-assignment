@@ -237,7 +237,8 @@ namespace web_app_assignment
                 }
                 else
                 {
-                    Response.Write("<script>alert('Email does not exist');</script>");
+                    lblNoResult.Text = "Email does not exist. Please enter a correct email";
+                    //Response.Write("<script>alert('Email does not exist');</script>");
                 }
                 conn.Close();
             }
@@ -265,13 +266,15 @@ namespace web_app_assignment
                 }
                 else
                 {
-                    Response.Write("<script>alert('Email does not exist');</script>");
+                    lblNoResult.Text = "Email does not exist. Please enter a correct email";
+                    //Response.Write("<script>alert('Email does not exist');</script>");
                 }
                 connection.Close();
             }
             else
             {
-                Response.Write("<script>alert('The Please choose a role');</script>");
+                lblRoleSelect.Text = "Please Choose a role";
+
             }
         }
     }

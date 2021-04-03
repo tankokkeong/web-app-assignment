@@ -33,6 +33,15 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator new_passwordReq;
 
         /// <summary>
+        /// revnew_password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revnew_password;
+
+        /// <summary>
         /// confirm_password control.
         /// </summary>
         /// <remarks>

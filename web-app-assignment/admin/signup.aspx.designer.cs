@@ -42,6 +42,15 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator admin_NameReq;
 
         /// <summary>
+        /// revAdminFullName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revAdminFullName;
+
+        /// <summary>
         /// admin_newPassword control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace web_app_assignment.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator admin_newPasswordReq;
+
+        /// <summary>
+        /// revafminPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revafminPassword;
 
         /// <summary>
         /// admin_confirmPassword control.

@@ -26,19 +26,23 @@
                     <form>
                       <div class="form-group">
                           <asp:TextBox ID="txtEmail" runat="server" cssclass="form-control bg-login" placeholder="Email Address"></asp:TextBox>
+                           <asp:RequiredFieldValidator id="adminlogin_emailReq" runat ="server" ControlToValidate="txtEmail" validationgroup="admin_login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
                         <%--<input type="email" class="form-control bg-login" placeholder="Email Address">--%>
                       </div>
 
                       <div class="form-group">
                           <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" cssclass="form-control bg-login" placeholder="Password"></asp:TextBox>           
-                        <%--<input type="password" class="form-control bg-login" placeholder="Password">--%>
+                           <asp:RequiredFieldValidator id="adminLogin_PasswordReq" runat ="server" ControlToValidate="txtPassword" validationgroup="admin_login" ErrorMessage="Passoword is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>                       
+                          <%--<input type="password" class="form-control bg-login" placeholder="Password">--%>
                       </div>
 
                        <div class="text-center">
-                           <asp:Button ID="btnLogin" runat="server" Text="Login" cssclass="btn btn-dark" OnClick="btnLogin_Click"/>
+                           <asp:Button ID="btnLogin" runat="server" Text="Login" cssclass="btn btn-dark" validationgroup="admin_login" OnClick="btnLogin_Click"/>
                            <%--<button type="submit" class="btn btn-dark">Login</button>--%>
                        </div>
-                      
+                       <div class="text-align">
+
+                       </div>
                     </form>
                 </div>
             </div>
