@@ -72,6 +72,8 @@
     <Content Include="admin\admin-details.aspx" />
     <Content Include="admin\admin-management.aspx" />
     <Content Include="admin\blog-category-edit.aspx" />
+    <Content Include="admin\client-edit-r.aspx" />
+    <Content Include="admin\client-edit.aspx" />
     <Content Include="admin\clients-details-r.aspx" />
     <Content Include="admin\clients-details.aspx" />
     <Content Include="admin\contact-message.aspx" />
@@ -1991,6 +1993,20 @@
     </Compile>
     <Compile Include="admin\blog-category-edit.aspx.designer.cs">
       <DependentUpon>blog-category-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\client-edit-r.aspx.cs">
+      <DependentUpon>client-edit-r.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\client-edit-r.aspx.designer.cs">
+      <DependentUpon>client-edit-r.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\client-edit.aspx.cs">
+      <DependentUpon>client-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\client-edit.aspx.designer.cs">
+      <DependentUpon>client-edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\clients-details-r.aspx.cs">
       <DependentUpon>clients-details-r.aspx</DependentUpon>

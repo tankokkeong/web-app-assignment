@@ -72,7 +72,7 @@ namespace web_app_assignment
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[3].Visible = false;
+                    e.Row.Cells[3].Text = "";
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {

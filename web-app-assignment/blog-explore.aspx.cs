@@ -14,107 +14,46 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string additional = Request.QueryString["additional"] ?? "";
-            string career = Request.QueryString["career"] ?? "";
-            string category = Request.QueryString["category"] ?? "";
-
-            string blogHeader = litResultHeader.Text;
-            string blogContent = litResultBlog.Text;
+            string explore = Request.QueryString["explore"] ?? "";
 
             SqlConnection con = new SqlConnection(strcon);
 
-            if (additional == "display")
+            if (explore != null)
             {
-                string catAdd = "additional";
-                string sqlAdditional = @"SELECT * FROM BlogCategory BC, BlogPost BP WHERE BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id AND BC.category_title = @category";
-                SqlCommand cmdAdditional = new SqlCommand(sqlAdditional, con);
+
+                string sqlExplore = @"SELECT * FROM BlogCategory BC, BlogPost BP WHERE BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id AND BC.category_title = @category";
+                SqlCommand cmdExplore = new SqlCommand(sqlExplore, con);
                 con.Open();
 
-                cmdAdditional.Parameters.AddWithValue("@category", catAdd);
-                SqlDataReader drAdditional = cmdAdditional.ExecuteReader();
-
-                while (drAdditional.Read())
+                cmdExplore.Parameters.AddWithValue("@category", explore);
+                SqlDataReader drExplore = cmdExplore.ExecuteReader();
+                while(drExplore.Read())
                 {
-                    blogHeader = string.Format("<h3>{0}</h3>",drAdditional["category_title"]);
+                    if (drExplore["category_title"].ToString() == explore)
+                    {
+                        litResultHeader.Text = "<h3>" + drExplore["category_title"] + "</h3>";
 
-                    blogContent += string.Format("<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
-                                                    "<div class='card' style='width: 100%;'>" +
-                                                        "<img src='../Uploads/{0}' class='card-img-top' alt='...'>" +
+                        litResultBlog.Text +=       "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                                                        "<div class='card' style='width: 100%;'>" +
+                                                            "<img src='" + drExplore["blog_image"] + "' class='card-img-top' alt='...'>" +
                                                             "<div class='card-body text-center'>" +
-                                                                "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                                "<p class='text-muted text-center'>{2}</p>" +
+                                                                "<p class='card-text font-weight-bold'>" + drExplore["blog_title"] + "</p>" +
+                                                                "<p class='text-muted text-center'>" + drExplore["last_updated"] + "</p>" +
                                                             "</div>" +
+
                                                             "<div class='card-footer text-muted text-center'>" +
-                                                                "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
+                                                                "<a href='blog_description.aspx?blog=" + drExplore["blog_id"] + "' class='btn bg-lightgreen'>Details</a>" +
                                                             "</div>" +
-                                                    "</div>" +
-                                                "</div>",drAdditional["blog_image"], drAdditional["blog_title"], drAdditional["last_updated"], drAdditional["blog_id"]);
+                                                        "</div>" +
+                                                    "</div>"+
+                                                        "<br/>";
+                    }
                 }
-                drAdditional.Close();
-                con.Close();
-            }
-            else if (career == "display")
-            {
-                string catCar = "career";
-                string sqlCareer = @"SELECT * FROM BlogCategory BC, BlogPost BP WHERE BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id AND BC.category_title = @category";
-                SqlCommand cmdCareer = new SqlCommand(sqlCareer, con);
-                con.Open();
-
-                cmdCareer.Parameters.AddWithValue("@category", catCar);
-                SqlDataReader drCareer = cmdCareer.ExecuteReader();
-
-                while (drCareer.Read())
-                {
-                    blogHeader = string.Format("<h3>{0}</h3>", drCareer["category_title"]);
-
-                    blogContent += string.Format("<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
-                                                    "<div class='card' style='width: 100%;'>" +
-                                                        "<img src='../Uploads/{0}' class='card-img-top' alt='...'>" +
-                                                            "<div class='card-body text-center'>" +
-                                                                "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                                "<p class='text-muted text-center'>{2}</p>" +
-                                                            "</div>" +
-                                                            "<div class='card-footer text-muted text-center'>" +
-                                                                "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
-                                                            "</div>" +
-                                                    "</div>" +
-                                                "</div>", drCareer["blog_image"], drCareer["blog_title"], drCareer["last_updated"], drCareer["blog_id"]);
-                }
-                drCareer.Close();
-                con.Close();
-            }
-            else if (category != null)
-            {
-                string sqlCategory = @"SELECT * FROM BlogCategory BC, BlogPost BP WHERE BP.deleted_at IS NULL AND BP.blog_category_id = BC.blog_category_id AND BC.blog_category_id = @id";
-                SqlCommand cmdCategory = new SqlCommand(sqlCategory, con);
-                con.Open();
-
-                cmdCategory.Parameters.AddWithValue("@id", category);
-                SqlDataReader drCategory = cmdCategory.ExecuteReader();
-
-                while (drCategory.Read())
-                {
-                    blogHeader = string.Format("<h3>{0}</h3>", drCategory["category_title"]);
-
-                    blogContent += string.Format("<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
-                                                    "<div class='card' style='width: 100%;'>" +
-                                                        "<img src='../Uploads/{0}' class='card-img-top' alt='...'>" +
-                                                            "<div class='card-body text-center'>" +
-                                                                "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                                "<p class='text-muted text-center'>{2}</p>" +
-                                                            "</div>" +
-                                                            "<div class='card-footer text-muted text-center'>" +
-                                                                "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
-                                                            "</div>" +
-                                                    "</div>" +
-                                                "</div>", drCategory["blog_image"], drCategory["blog_title"], drCategory["last_updated"], drCategory["blog_id"]);
-                }
-                drCategory.Close();
+                
+                drExplore.Close();
                 con.Close();
             }
 
-            litResultHeader.Text = blogHeader;
-            litResultBlog.Text = blogContent;
         }
     }
 }

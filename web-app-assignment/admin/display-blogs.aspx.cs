@@ -65,7 +65,7 @@ namespace web_app_assignment.admin
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                    e.Row.Cells[4].Text = "";
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {
