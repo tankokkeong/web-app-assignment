@@ -213,6 +213,24 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox txtApplicationID;
 
         /// <summary>
+        /// btnDeleteRecruiter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteRecruiter;
+
+        /// <summary>
+        /// txtRemoveRecruiterID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRemoveRecruiterID;
+
+        /// <summary>
         /// lblFreePlan control.
         /// </summary>
         /// <remarks>

@@ -174,6 +174,14 @@
                         </button>
                     </div>
 
+                    <%-- Job Applicant deleted Alert --%>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="applicant-deleted-alert">
+                        Job applicant is deleted!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
                     <asp:Label ID="lblJobStatus" runat="server" Text=""></asp:Label>
 
                     <asp:ListView ID="lvJobStatus" runat="server">
@@ -215,7 +223,7 @@
                                 </div>
 
                                 <div class='mt-2'>
-                                    <button class='btn btn-danger'>Reject</button>
+                                    <button class='btn btn-danger' type="button">Reject</button>
                                 </div>
                               </div>
                                 
@@ -235,7 +243,7 @@
                                     </div>
 
                                     <div class='mt-2'>
-                                        <button class='btn btn-danger'>Remove</button>
+                                        <button class='btn btn-danger' type="button" data-toggle="modal" data-target="#deleteApplicants" onclick="deleteApplicants('<%#Eval("application_id") %>')">Remove</button>
                                     </div>
                                </div>
                            </div>
@@ -291,7 +299,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+            <h5 class="modal-title" id="">Delete Confirmation</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -323,7 +331,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <asp:Button ID="btnDeleteApplicants" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteApplicants_Click"/>
+            <asp:Button ID="btnDeleteApplicants" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeleteApplicants_Click"/>
             <asp:TextBox ID="txtApplicantionID" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
@@ -516,6 +524,9 @@
 
         function deleteApplicants(id) {
             var delete_applicants_input = document.getElementById("ContentPlaceHolder1_txtApplicantionID");
+
+            //Change the id
+            delete_applicants_input.value = id;
         }
 
         //Check Approve Job Application
@@ -527,6 +538,18 @@
                 //Change to job posted tab
                 recruiterProfileSwitchTab('application');
                 approved_alert.style.display = "";
+            }
+        }
+
+        //Check Delete Job Applicant
+        function checkDeletedApplicant() {
+            var link = window.location.href.split("?");
+            var delete_alert = document.getElementById("applicant-deleted-alert");
+
+            if (link[1] === "deleteApplicants") {
+                //Change to job posted tab
+                recruiterProfileSwitchTab('application');
+                delete_alert.style.display = "";
             }
         }
 
@@ -555,7 +578,7 @@
         checkDeleteJob();
         checkApprovedApplication();
         checkJobPostPagination();
-        
+        checkDeletedApplicant();
 
     </script>
 </asp:Content>

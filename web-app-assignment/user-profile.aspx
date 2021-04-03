@@ -160,6 +160,14 @@
                     </button>
                 </div>
 
+                <%-- Delete Completed Alert --%>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none" id="recruiter-deleted-alert">
+                    Recruiter deleted successful!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
                 <div id="job-application-content" class="my-info row" style="display:none;">
                     
                     <div class="application-container">
@@ -204,7 +212,7 @@
                                         </div>
 
                                         <div class='mt-2'>
-                                            <button class='btn btn-danger' data-toggle='modal' data-target='#cancelApplicationModal' type='button' onclick='cancelApplication("<%#Eval("post_id") %>")'>Cancel Application</button>
+                                            <button class='btn btn-danger' data-toggle='modal' data-target='#cancelApplicationModal' type='button' onclick='cancelApplication("<%#Eval("application_id") %>")'>Cancel Application</button>
                                         </div>
                                     </div>
 
@@ -216,7 +224,7 @@
                                         </div>
 
                                         <div class='mt-2'>
-                                            <button class='btn btn-danger'>Remove</button>
+                                            <button class='btn btn-danger' type="button" data-toggle="modal" data-target="#deleteRecruiterModel" onclick="removeRecruiter('<%#Eval("application_id") %>')">Remove</button>
                                         </div>
                                      </div>
 
@@ -249,12 +257,32 @@
             cancel_input.value = id;
         }
 
+        function removeRecruiter(id) {
+            var remove_input = document.getElementById("ContentPlaceHolder1_txtRemoveRecruiterID");
+
+            //Change the id
+            remove_input.value = id;
+        }
+
         //Check Cancelled Job Application
         function checkCancelledApplication() {
             var link = window.location.href.split("?");
             var deleted_alert = document.getElementById("job-cancel-alert");
 
             if (link[1] === "cancelApplication") {
+
+                //Change to job application tab
+                userProfileSwitchTab("application");
+                deleted_alert.style.display = "";
+            }
+        }
+
+        //Check Removed Job Application
+        function checkRemovedApplication() {
+            var link = window.location.href.split("?");
+            var deleted_alert = document.getElementById("recruiter-deleted-alert");
+
+            if (link[1] === "removeApplication") {
 
                 //Change to job application tab
                 userProfileSwitchTab("application");
@@ -274,7 +302,9 @@
 
         checkCancelledApplication();
         checkApplyPagination();
+        checkRemovedApplication();
     </script>
+
     <!-- Cancel Application Modal -->
     <div class="modal fade" id="cancelApplicationModal" tabindex="-1" aria-labelledby="cancelApplicationModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -292,6 +322,28 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <asp:Button ID="btnCancelApplication" runat="server" Text="Cancel" class="btn btn-danger" OnClick="btnCancelApplication_Click"/>
             <asp:TextBox ID="txtApplicationID" runat="server" style="display:none;"></asp:TextBox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Application Modal -->
+    <div class="modal fade" id="deleteRecruiterModel" tabindex="-1" aria-labelledby="deleteRecruiterModelLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to remove this recruiter?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <asp:Button ID="btnDeleteRecruiter" class="btn btn-danger" runat="server" Text="Yes" OnClick="btnDeleteRecruiter_Click"/>
+            <asp:TextBox ID="txtRemoveRecruiterID" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
       </div>

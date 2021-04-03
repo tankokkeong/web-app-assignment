@@ -223,7 +223,7 @@ namespace web_app_assignment
                     con.Open();
                 }
 
-                //Read User profile Details
+                //Delete Job Posted
                 string sql = "Update JobPost " +
                         "SET deleted_at = @deleted_at " +
                         "WHERE post_id = @post_id";
@@ -482,7 +482,29 @@ namespace web_app_assignment
 
         protected void btnDeleteApplicants_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
+            //Job posted
+            string sql = "Update ApplicationStatus " +
+                        "SET deleted_at = @deleted_at " +
+                        "WHERE application_id = @application_id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
+            cmd.Parameters.AddWithValue("@application_id", txtApplicantionID.Text);
+
+            //Execute the queries
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            //Redirect back with query string
+            Response.Redirect("recruiter-profile.aspx?deleteApplicants");
         }
     }
 }
