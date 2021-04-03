@@ -24,14 +24,14 @@
 
             <div class="post-table-container">
                 <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered">
-                    <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
-                    <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
+                    <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center"/>
+                    <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" Width="600px"/>
                     <Columns>
                         <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="blog_category_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="250px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="blog_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
                 <%--
@@ -77,7 +77,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <asp:Button ID="btnDeletePost" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeletePost_Click"/>
-            <asp:TextBox ID="txtDeletePost" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDeletePost" runat="server" style="display:none;"></asp:TextBox>
           </div>
         </div>
       </div>

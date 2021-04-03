@@ -17,7 +17,7 @@ namespace web_app_assignment
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlLatest = @"SELECT top 3 blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
+            string sqlLatest = @"SELECT top 3 blog_id, blog_title, blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
             SqlCommand cmdLatest = new SqlCommand(sqlLatest, con);
             con.Open();
 
@@ -31,7 +31,7 @@ namespace web_app_assignment
 
                                                 "<div class='col-5'>" +
                                                     "<div class='list-thumbnail'>" +
-                                                        "<img src='Uploads/" + drLatest["blog_image"] + "' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
+                                                        "<img src='../" + drLatest["blog_image"] + "' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
                                                     "</div>" +
                                                 "</div>" +
 
@@ -41,7 +41,8 @@ namespace web_app_assignment
                                                     "</div>" +
 
                                                     "<div class='latest-list-description'>" +
-                                                        "<h6 class='text-secondary'>"+drLatest["blog_content"]+"</h6>" +
+                                                        "<h6 class='text-secondary'>"+drLatest["last_updated"]+"</h6>" +
+                                                        "<a href='blog_description.aspx?blog="+ drLatest["blog_id"] +"' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                     "</div>" +
                                                 "</div>" +
 
@@ -138,14 +139,14 @@ namespace web_app_assignment
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
                                             "<div class='card'>" +
-                                                 "<img src='../Uploads/" + drCategory["blog_image"] + "' class='card-img-top' alt='...'>" +
+                                                 "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
                                                      "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                      "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                  "</div>" +
 
                                                  "<div class='card-footer text-muted text-center'>" +
-                                                      "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen'>Details</a>" +
+                                                      "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                  "</div>" +
                                             "</div>" +
                                           "</div>" +
@@ -157,14 +158,14 @@ namespace web_app_assignment
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
                                             "<div class='card'>" +
-                                                 "<img src='../Uploads/" + drCategory["blog_image"] + "' class='card-img-top' alt='...'>" +
+                                                 "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
                                                      "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                      "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                  "</div>" +
 
                                                  "<div class='card-footer text-muted text-center'>" +
-                                                      "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen'>Details</a>" +
+                                                      "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                  "</div>" +
                                             "</div>" +
                                           "</div>" +
@@ -176,14 +177,14 @@ namespace web_app_assignment
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
                                                "<div class='card'>" +
-                                                    "<img src='../Uploads/" + drCategory["blog_image"] + "' class='card-img-top' alt='...'>" +
+                                                    "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                     "<div class='card-body text-center'>" +
                                                         "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                         "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                     "</div>" +
 
                                                     "<div class='card-footer text-muted text-center'>" +
-                                                         "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen'>Details</a>" +
+                                                         "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                     "</div>" +
                                                "</div>" +
                                             "</div>";

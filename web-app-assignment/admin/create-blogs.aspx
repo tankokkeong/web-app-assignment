@@ -40,7 +40,8 @@
             <div class="form-group row">
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
-                    
+                    <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
+                    <asp:TextBox ID="txtPhotoUpload" runat="server" style="display:none;"/>
                 </div>
             </div>
 
@@ -51,7 +52,7 @@
                         <div>
                             <textarea id="blogDescription_editor"></textarea>
                             <asp:TextBox ID="txtBlogDescription" runat="server" style="display:none;"></asp:TextBox>
-                            <%-- <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtBlogDescription" CssClass="text-danger"></asp:RequiredFieldValidator> --%>
+                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtBlogDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -87,5 +88,14 @@
             console.log(content_input.value)
             console.log(unescape(content_input.value))
         });
+
+        function photoUpload() {
+            var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
+            var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
+
+            //assign file input to hidden field
+            hidden_photo_input.value = file_input;
+        }
+
     </script>
 </asp:Content>

@@ -40,25 +40,37 @@ namespace web_app_assignment.admin
             try 
             {
                 string title = txtTitle.Text;
-                //string content = HttpUtility.UrlDecode(txtBlogDescription.Text);
+                string content = HttpUtility.UrlDecode(txtBlogDescription.Text);
                 string category_id = ddlCategory.SelectedValue;
                 string admin_id = helper.getAdminID();
 
-                //FileUpload1.SaveAs(@"../Uploads/" + FileUpload1.FileName);
-                //string image = "Uploads/" + Path.GetFileName(FileUpload1.FileName);
-                //lblUpload.Text = "File Uploaded: " + FileUpload1.FileName;
+                //Upload Profile Image Handled
+                string upload_path = MapPath("/Uploads/");
+                string file_name = blogPhotoUpload.FileName;
+                string blog_photo = "";
+
+                if (file_name != "")
+                {
+                    blogPhotoUpload.SaveAs(upload_path + file_name);
+                    blog_photo = "Uploads/" + file_name;
+                }
+                else
+                {
+                    blog_photo = txtPhotoUpload.Text;
+                }
 
 
                 SqlConnection con = new SqlConnection(strcon);
 
-                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_category_id, edited_by, last_updated, created_at)VALUES(@blogTitle, @blogCatId, @editBy, @lastUpdated, @created_at)";
+                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_content, blog_image, blog_category_id, edited_by, last_updated, created_at)VALUES(@blogTitle, @blogContent, @blogImage, @blogCatId, @editBy, @lastUpdated, @created_at)";
 
                 SqlCommand cmdInsert = new SqlCommand(sqlInsert, con);
+                con.Open();
 
                 //Insert parameters
                 cmdInsert.Parameters.AddWithValue("@blogTitle", title);
-                //cmdInsert.Parameters.AddWithValue("@blogContent", content);
-                //cmdInsert.Parameters.AddWithValue("@blogImage", image);
+                cmdInsert.Parameters.AddWithValue("@blogContent", content);
+                cmdInsert.Parameters.AddWithValue("@blogImage", blog_photo);
                 cmdInsert.Parameters.AddWithValue("@blogCatId", category_id);
                 cmdInsert.Parameters.AddWithValue("@editBy", admin_id);
                 cmdInsert.Parameters.AddWithValue("@lastUpdated", DateTime.Now);

@@ -35,7 +35,7 @@ namespace web_app_assignment
 
                         litResultBlog.Text +=       "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
                                                         "<div class='card' style='width: 100%;'>" +
-                                                            "<img src='" + drExplore["blog_image"] + "' class='card-img-top' alt='...'>" +
+                                                            "<img src='../" + drExplore["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                             "<div class='card-body text-center'>" +
                                                                 "<p class='card-text font-weight-bold'>" + drExplore["blog_title"] + "</p>" +
                                                                 "<p class='text-muted text-center'>" + drExplore["last_updated"] + "</p>" +

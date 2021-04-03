@@ -24,6 +24,24 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
+        /// blogPhotoUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload blogPhotoUpload;
+
+        /// <summary>
+        /// txtPhotoUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPhotoUpload;
+
+        /// <summary>
         /// txtBlogDescription control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace web_app_assignment.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBlogDescription;
+
+        /// <summary>
+        /// ReqValDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqValDescription;
 
         /// <summary>
         /// ddlCategory control.
