@@ -159,8 +159,9 @@
                             <h4>Job Reviews(<asp:Label ID="lblJobReviewCount" runat="server" Text=""></asp:Label>)</h4>
                         </div>
 
-                        <div class="user-rating-board">
-                            <div class="total-rating">
+                        <div class="user-rating-board" runat="server" id="divUserRatingBoard">
+                            <asp:Literal ID="ltrUserRatingBoard" runat="server"></asp:Literal>
+                            <%--<div class="total-rating">
                                 <h5>Job Rating: 3.8 <i class="fas fa-star text-warning"></i></h5>
                             </div>
 
@@ -242,7 +243,7 @@
                                 <div class="col-lg-2 text-center">
                                     15
                                 </div>
-                            </div>
+                            </div>--%>
                                                        
                         </div>
 

@@ -195,6 +195,24 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblJobReviewCount;
 
         /// <summary>
+        /// divUserRatingBoard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUserRatingBoard;
+
+        /// <summary>
+        /// ltrUserRatingBoard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrUserRatingBoard;
+
+        /// <summary>
         /// lvJobReview control.
         /// </summary>
         /// <remarks>

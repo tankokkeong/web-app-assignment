@@ -101,11 +101,16 @@ namespace web_app_assignment
                             //Display total job review number
                             lblJobReviewCount.Text = getTotalJobReview().ToString();
 
+                            //Display user rating score board
+                            getUserRatingBoard();
+
                             //Check if leave review before
-                            if(isReviewedBefore(seeker_id) == false && isApprovedByRecruiter(seeker_id))
+                            if (isReviewedBefore(seeker_id) == false && isApprovedByRecruiter(seeker_id))
                             {
                                 divReviewInput.Visible = true;
+                                
                             }
+
                         }
                         else
                         {
@@ -442,6 +447,149 @@ namespace web_app_assignment
                 is_approved = true;
             }
             return is_approved;
+        }
+
+        protected void getUserRatingBoard()
+        {
+            string post_id = Request.QueryString["post_id"] ?? "";
+
+            //Open Connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string selectJobReview = "SELECT (SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 5.0) AS five_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 4.0) AS four_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 3.0) AS three_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 2.0) AS two_star, " +
+                                     "(SELECT COUNT(*) FROM JobReview JR WHERE JR.post_id = @post_id AND rating = 1.0) AS one_star ";
+
+            SqlCommand cmd = new SqlCommand(selectJobReview, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@post_id", post_id);
+
+            SqlDataReader dread = cmd.ExecuteReader();
+
+            while (dread.Read())
+            {
+                //Retrieve the value
+                int five_star = Convert.ToInt32(dread["five_star"].ToString());
+                int four_star = Convert.ToInt32(dread["four_star"].ToString());
+                int three_star = Convert.ToInt32(dread["three_star"].ToString());
+                int two_star = Convert.ToInt32(dread["two_star"].ToString());
+                int one_star = Convert.ToInt32(dread["one_star"].ToString());
+
+                //Calculate average rating
+                int total_review = five_star + four_star + three_star + two_star + one_star;
+                int total_five_star = five_star * 5;
+                int total_four_star = four_star * 4;
+                int total_three_star = three_star * 3;
+                int total_two_star = two_star * 2;
+                int total_one_star = one_star * 1;
+
+                int total_stars = total_five_star + total_four_star + total_three_star + total_two_star + total_one_star;
+
+                //Calculate Total rating percentage
+                double five_star_pecent = ((double)five_star / (double)total_review) * 100;
+                double four_star_pecent = ((double)four_star / (double)total_review) * 100;
+                double three_star_pecent = ((double)three_star / (double)total_review) * 100;
+                double two_star_pecent = ((double)two_star / (double)total_review) * 100;
+                double one_star_pecent = ((double)one_star / (double)total_review) * 100;
+
+                //Round off to 2 decimal places
+                double average_rating = Math.Round(((double)total_stars / (double)(total_review * 5)) * 5, 2);
+
+                ltrUserRatingBoard.Text =
+                    "<div class='total-rating'>" +
+                                "<h5>Job Rating: " + average_rating + "<i class='fas fa-star text-warning'></i></h5>" +
+                            "</div>" +
+
+                            "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "5 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-success' role='progressbar' style='width:" + five_star_pecent + "%;' aria-valuenow='" + five_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    five_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "4 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar four-star-bg' role='progressbar' style='width:" + four_star_pecent + "%;' aria-valuenow='" + four_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    four_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "3 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-warning' role='progressbar' style='width:" + three_star_pecent +"%;' aria-valuenow='" + three_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    three_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                             "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "2 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar two-star-bg' role='progressbar' style='width:" + two_star_pecent + "%;' aria-valuenow='" + two_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                    two_star.ToString() +
+                                "</div>" +
+                            "</div>" +
+
+                            "<div class='row mt-3'>" +
+                                "<div class='col-lg-2 text-center'>" +
+                                    "1 stars" +
+                                "</div>" +
+
+                                "<div class='col-lg-8'>" +
+                                    "<div class='progress'>" +
+                                      "<div class='progress-bar bg-danger' role='progressbar' style='width:" + one_star_pecent + "%;' aria-valuenow='" + one_star_pecent + "' aria-valuemin='0' aria-valuemax='100'></div>" +
+                                    "</div>" +
+                                "</div>" +
+
+                                "<div class='col-lg-2 text-center'>" +
+                                     one_star.ToString() +
+                                "</div>" +
+                            "</div>";
+            }
+
+            //Close Connection
+            con.Close();
         }
     }
 }
