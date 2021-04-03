@@ -56,8 +56,15 @@ namespace web_app_assignment.admin
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                    if(e.Row.Cells[3].Text == "Super Admin")
+                    {
+                        e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                    }
+                    else
+                    {
+                        e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
                                         "<a class='badge badge-primary action-btn mr-1'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                    }
                 }
                 else if (UserDetails["Admin_Right"] == "Super Admin")
                 {

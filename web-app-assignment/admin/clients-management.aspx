@@ -63,34 +63,6 @@
                     </Columns>
                 </asp:GridView>
             </div>
-
-            <%--<div class="table-container">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr class="bg-lightgreen text-light">
-                        <th scope="col">User ID</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%for (int i = 0; i < 5; i++)
-                        { %>
-
-                    <tr>
-                        <th scope="row">U0002</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <a href="clients-details.aspx?edit" class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                            <a href="clients-details.aspx?view" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    <%}; %>
-                </tbody>
-            </table>
-        </div>--%>
         </div>
 
         <!-- Edit User Modal -->

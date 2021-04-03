@@ -89,9 +89,6 @@
                                             <option value="Active">Active</option>
                                             <option value="Inactive">Inactive</option>
                                         </select>--%>
-                                        <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus"
-                                            ErrorMessage="Please choose a status" InitialValue="Please choose a status">
-                                        </asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                             </tbody>
