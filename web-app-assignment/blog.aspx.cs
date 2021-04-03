@@ -71,7 +71,7 @@ namespace web_app_assignment
 
                                               "<div class='col-6'>" +
                                                   "<div class='explore-more-container text-right text-lightgreen'>" +
-                                                      "<a href='blog-explore.aspx?additional=display'>Explore More ></a>" +
+                                                      "<a href='blog-explore.aspx?explore="+ drHeader["category_title"] +"'>Explore More ></a>" +
                                                   "</div>" +
                                               "</div>" +
                                           "</div>" +
