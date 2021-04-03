@@ -19,7 +19,7 @@
         </div>
 
                     <div class="float-right mb-4 mt-1">
-                         <a href="create-blogs.aspx" class="btn bg-lightgreen text-white btn-lg">New Post</a>
+                         <a href="create-blogs.aspx" runat="server" id="newPost" class="btn bg-lightgreen text-white btn-lg">New Post</a>
                     </div>
 
             <div class="post-table-container">
