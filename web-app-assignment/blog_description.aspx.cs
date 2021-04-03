@@ -69,7 +69,7 @@ namespace web_app_assignment
                                                         "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
                                                      "</div>" +
                                              "</div>" +
-                                         "</div>",drLike["blog_image"],drLike["blog_title"],drLike["last_updated"],drLike["blog_id"]);
+                                         "</div>", drLike["blog_image"],drLike["blog_title"],drLike["last_updated"],drLike["blog_id"]);
             }
 
             drLike.Close();

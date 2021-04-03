@@ -19,7 +19,7 @@
         </div>
          <div class="blogDescriptionBody"> 
              <asp:Label ID="lblDescription" runat="server" Text=""></asp:Label>
-
+             <br/><br/><br/>
             <h3>You Might Also Like</h3>
 
             <div class="common-list-container">

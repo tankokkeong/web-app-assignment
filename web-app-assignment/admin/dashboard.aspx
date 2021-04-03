@@ -72,6 +72,33 @@
         });
     </script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
+
+            var options = {
+                title: 'My Daily Activities'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+
     <%-- CSS --%>
     <link href="css/dashboard.css" rel="stylesheet" />
 
@@ -161,7 +188,11 @@
 
             </div>
         </div>
+
+
     </div>
+
+       <div id="piechart" style="width: 900px; height: 500px;"></div>
 
     <div class="row mt-3" style="height:1000px;" id="draggable-wrapper">
         <div id="draggable1" class="col-md-6 col-lg-4 mt-3">
