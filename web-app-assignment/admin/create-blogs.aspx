@@ -45,7 +45,7 @@
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
                     <asp:TextBox ID="txtPhotoUpload" runat="server" Style="display: none;" />
                     <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg & .png files are allowed" ControlToValidate="blogPhotoUpload" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG)$"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg & .png files are allowed!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG)$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
