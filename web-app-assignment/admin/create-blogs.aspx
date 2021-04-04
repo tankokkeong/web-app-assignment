@@ -70,7 +70,7 @@
                         <asp:ListItem Value="0">--Blog Category--</asp:ListItem>
                         <%--<asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" InitialValue=" Blog Category " ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
                     </asp:DropDownList>
-
+                    <asp:Label ID="lblList" runat="server" CssClass="text-danger" Text=""></asp:Label>
                 </div>
             </div>
 
