@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Check Login
@@ -326,16 +329,33 @@ namespace web_app_assignment
         {
             if (Page.IsValid)
             {
-                //Upload Profile Image Handled
-                string upload_path = MapPath("/Uploads/");
-                string file_name = fileSeekerPhoto.FileName;
+                string file_upload = fileSeekerPhoto.FileName;
                 string user_photo = "";
 
                 //If profile pic aldy exists
-                if(file_name != "")
+                if(file_upload != "")
                 {
-                    fileSeekerPhoto.SaveAs(upload_path + file_name);
-                    user_photo = "Uploads/" + file_name;
+                    if(txtSeekerPhoto.Text == getSeekerPhotoPath(helper.getSeekerID()))
+                    {
+                        //Upload Profile Image Handled
+                        string upload_path = MapPath("~/");
+                        string file_name = txtSeekerPhoto.Text;
+
+                        fileSeekerPhoto.SaveAs(upload_path + file_name);
+                        user_photo =  file_name;
+                    }
+                    else
+                    {
+                        //Upload Profile Image Handled
+                        string upload_path = MapPath("~/Uploads/");
+                        string unique_value = Guid.NewGuid().ToString("N");
+                        string file_extension = "." + fileSeekerPhoto.FileName.Split('.')[1];
+                        string file_name = unique_value + file_extension;
+
+                        fileSeekerPhoto.SaveAs(upload_path + file_name);
+                        user_photo = "Uploads/" + file_name;
+                    }
+                   
                 }
                 else
                 {
@@ -414,8 +434,7 @@ namespace web_app_assignment
                     con.Close();
 
 
-                    Response.Write("<script>alert('Profile Updated Successful!');</script>");
-                    imgSeekerProfile.ImageUrl = user_photo;
+                    Response.Redirect("edit-user.aspx?updated");
                 }
                 catch (Exception error)
                 {
@@ -455,6 +474,37 @@ namespace web_app_assignment
 
             //Return seeker id
             return seeker_id;
+        }
+
+        protected string getSeekerPhotoPath(string seeker_id)
+        {
+            string photo_path = "";
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string seeker_sql = "SELECT user_photo FROM JobSeeker WHERE seeker_id = @seeker_id";
+
+            SqlCommand cmd = new SqlCommand(seeker_sql, con);
+
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                photo_path = dr["user_photo"].ToString();
+            }
+
+            con.Close();
+
+            return photo_path;
         }
     }
 }
