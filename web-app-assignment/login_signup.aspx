@@ -97,10 +97,10 @@
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <div class="nav-pillsTabs">
                                     <li class="nav-item" role="presentation">
-                                        <asp:HyperLink ID="recruiterTab" ClientIDMode="Static" CssClass="nav-link badge-info active_selected active" onclick="showRecruiter()" runat="server" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" Text="Are You A Recruiter?"></asp:HyperLink>
+                                        <asp:HyperLink ID="recruiterTab" ClientIDMode="Static" CssClass="nav-link badge-info active_selected active" onclick="showRecruiter('Recruiter')" runat="server" data-toggle="pill" href="#recruiter" role="tab" aria-controls="recruiter" aria-selected="true" Text="Are You A Recruiter?"></asp:HyperLink>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link badge-info" onclick="showSeeker()" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
+                                        <a class="nav-link badge-info" onclick="showSeeker('Seeker')" id="seekerTab" data-toggle="pill" href="#seeker" role="tab" aria-controls="seeker" aria-selected="false">Are You A Job Seeker?</a>
                                     </li>
                                 </div>
                             </ul>
@@ -148,6 +148,7 @@
                         <div>
                             <button type="button" id="googleRecruiter" runat="server" class="btn bg-white googleSignIn" onserverclick="googleRecruiter_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>       
                         </div>
+                        <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="45px" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                     </div>  
                             </div><%-- Recruiter Register Section End --%>
 
@@ -207,7 +208,7 @@
                     
                     </div>
                 
-
+                    <input type="hidden" id="JobRole" />
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
                         <a class="LoginFree" id="login_tabatag" onclick="showLoginTab()" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Log In Now</a>
@@ -219,6 +220,9 @@
     </div>
     </div>
 
+<!-- Load the JS SDK asynchronously -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=866342063923372&autoLogAppEvents=1" nonce="8b6StL5d"></script>
 
     <script>
         var signUpTab = document.getElementById("signup-tab");
@@ -250,22 +254,28 @@
             $(loginatag).removeClass("active");
         };
 
-        function showRecruiter() {
+        function showRecruiter(Recruiter) {
 
             $(recruiterTab).addClass("active_selected");
             $(seekerTab).removeClass("active_selected");
 
             $(recruiterTab).removeClass("active");
             $(seekerTab).removeClass("active");
+
+            document.getElementById("JobRole").value = Recruiter;
+            console.log(document.getElementById("JobRole").value);
         };
 
-        function showSeeker() {
+        function showSeeker(Seeker) {
 
             $(seekerTab).addClass("active_selected");
             $(recruiterTab).removeClass("active_selected");
 
             $(seekerTab).removeClass("active");
             $(recruiterTab).removeClass("active");
+
+            document.getElementById("JobRole").value = Seeker;
+            console.log(document.getElementById("JobRole").value);
         };
 
         function showTabContentsLogin() {
@@ -306,5 +316,72 @@
                 sign_login_password.type = "password";
             }
         }
+    </script>
+
+    <script>
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('statusChangeCallback');
+            console.log(response);                   // The current login status of the person.
+            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                testAPI();
+            } else {                                 // Not logged into your webpage or we are unable to tell.
+                console.log('Please log into the webpage');
+            }
+        }
+
+
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '866342063923372',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: 'v10.0'           // Use this Graph API version for this call.
+            });
+
+
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me?fields=name,id,email', function (response) {
+                console.log('Successful login for: ' + response.name + ' and' + response.id + ' and' + response.email);
+                document.getElementById('status').innerHTML =
+                    'Successful login for: ' + response.name + ' and ' + response.id + ' and ' + response.email;
+
+                //assign facebook user value into variable
+                var name = response.name;
+                var id = response.id;
+                var email = response.email
+
+                var role = document.getElementById("JobRole").value;
+                //Post to other web page for data insertion into database
+                if (role == "Recruiter") {
+                    $.post("fb-signup-post-r.aspx",
+                        {
+                            fb_name: name,
+                            fb_id: id,
+                            fb_email: email,
+                        });
+                    window.location.href("fb-signup-post-r.aspx");
+                }
+               
+                
+
+            });
+        }
+
+
+
+
     </script>
 </asp:Content>
