@@ -42,6 +42,10 @@ namespace web_app_assignment.admin
                         sql += " AND blog_title LIKE @blogtitle + '%' AND deleted_at IS NULL ORDER BY blog_id DESC";
                         cmd.Parameters.AddWithValue("@blogtitle", txtSearch.Text.Trim());
                     }
+                    else
+                    {
+                        sql += " ORDER BY blog_id DESC";
+                    }
                     cmd.CommandText = sql;
                     cmd.Connection = con;
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
