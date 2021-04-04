@@ -53,11 +53,11 @@
             <div class="form-group row">
                 <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
                 <div class="col-sm-10">
-                    <div>
-                        <textarea id="blogDescription_editor"></textarea>
-                        <asp:TextBox ID="txtEditDescription" runat="server" Style="display: none;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
-                    </div>
+                        <div>
+                            <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>
+                            <asp:TextBox ID="txtEditDescription" runat="server" style="display:none;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
+                        </div>
                 </div>
             </div>
 
@@ -85,20 +85,20 @@
         editor = CKEDITOR.replace('blogDescription_editor');
         content_input = document.getElementById("ContentPlaceHolder1_txtEditDescription");
 
-        // editor is object of your CKEDITOR
-        editor.on('change', function () {
-            content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
-            console.log(content_input.value)
-            console.log(unescape(content_input.value))
-        });
+            // editor is object of your CKEDITOR
+            editor.on('change', function () {
+                content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
+                console.log(content_input.value)
+                console.log(unescape(content_input.value))
+            });
 
-        function photoUpload() {
-            var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
-            var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
+            function photoUpload() {
+                var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
+                var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
 
-            //assign file input to hidden field
-            hidden_photo_input.value = file_input;
-        }
-    </script>
+                //assign file input to hidden field
+                hidden_photo_input.value = file_input;
+            }
+        </script>
 
 </asp:Content>

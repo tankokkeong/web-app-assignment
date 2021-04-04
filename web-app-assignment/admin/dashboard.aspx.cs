@@ -150,7 +150,12 @@ namespace web_app_assignment.admin
 
                 //Top 5 companies
 
-                string sqlTopCompany = "SELECT top 5 company_name, company_photo,rating FROM Recruiter WHERE rating IS NOT NULL ORDER BY rating desc; ";
+                string sqlTopCompany = "SELECT TOP 5 * FROM (SELECT AVG(job_rating) as average_rating, " +
+                                        "JP.recruiter_id, R.company_name, R.company_photo " +
+                                        "FROM JobPost JP, Recruiter R " +
+                                        "WHERE JP.recruiter_id = R.recruiter_id " +
+                                        "GROUP BY JP.recruiter_id, R.company_name, R.company_photo) " +
+                                        "AS result ORDER BY average_rating DESC ";
 
                 SqlCommand cmdTopCompany = new SqlCommand(sqlTopCompany, con);
                 con.Open();
@@ -162,9 +167,9 @@ namespace web_app_assignment.admin
                                                 "<img src='../"+ drTopCompany["company_photo"] +"' class='mr-3 top-company-pic'/>" +
                                                 "<div class='media-body'>" +
                                                     "<h5 class='mt-0'>"+ drTopCompany["company_name"] + "</h5>" +
-                                                    "<p class='text-secondary'>"+ drTopCompany["rating"] + "</p>" +
+                                                    "<p class='text-secondary'>"+ drTopCompany["average_rating"] + "</p>" +
                                                 "</div>" +
-                                            "</div>";
+                                             "</div>";
                 }
                 drTopCompany.Close();
                 con.Close();

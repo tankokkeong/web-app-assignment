@@ -35,11 +35,9 @@ namespace web_app_assignment.admin
 
                 while (dr.Read())
                 {
-                    txtTitle.Text = (string)dr["blog_title"];
-                    txtPhotoUpload.Text = (string)dr["blog_image"];
-                    txtEditDescription.Text = (string)dr["blog_content"];
-                    //txtPhotoUpload.Text = dr["blog_image"].ToString();
-                    //txtEditDescription.Text = dr["blog_content"].ToString();
+                    txtTitle.Text = dr["blog_title"].ToString();
+                    txtPhotoUpload.Text = dr["blog_image"].ToString();
+                    txtEditDescription.Text = dr["blog_content"].ToString();
                 }
 
                 dr.Close();
