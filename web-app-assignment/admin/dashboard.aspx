@@ -48,9 +48,9 @@
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Total Application'],
-                ['2018', 300],
-                ['2019', 130],
-                ['2020', 500],
+                ['2018', 30510],
+                ['2019', 13030],
+                ['2020', 10500],
                 ['2021', dataChartApp]
             ]);
 
