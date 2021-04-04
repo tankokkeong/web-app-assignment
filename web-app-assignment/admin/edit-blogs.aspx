@@ -49,7 +49,7 @@
                 <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
                 <div class="col-sm-10">
                         <div>
-                            <textarea id="blogDescription_editor"></textarea>
+                            <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>
                             <asp:TextBox ID="txtEditDescription" runat="server" style="display:none;"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
@@ -83,9 +83,17 @@
             // editor is object of your CKEDITOR
             editor.on('change', function () {
                 content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
-                console.log(content_input.value)
                 console.log(unescape(content_input.value))
             });
+
+            //Sticky form script
+            function getBlogDescription() {
+                var  description_value = document.getElementById("ContentPlaceHolder1_txtEditDescription");
+                var ck_editor = document.getElementById("blogDescription_editor");
+
+                //Assign the value to CK EDITOR
+                ck_editor.value = window.unescape(description_value.value);
+            }
 
             function photoUpload() {
                 var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
@@ -94,6 +102,9 @@
                 //assign file input to hidden field
                 hidden_photo_input.value = file_input;
             }
+
+            //Call stick form functions
+            getBlogDescription();
         </script>
 
 </asp:Content>

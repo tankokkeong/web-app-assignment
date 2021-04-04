@@ -169,7 +169,7 @@ namespace web_app_assignment.admin
                                                     "<h5 class='mt-0'>"+ drTopCompany["company_name"] + "</h5>" +
                                                     "<p class='text-secondary'>"+ drTopCompany["average_rating"] + "</p>" +
                                                 "</div>" +
-                                            "</div>";
+                                             "</div>";
                 }
                 drTopCompany.Close();
                 con.Close();
