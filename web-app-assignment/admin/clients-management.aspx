@@ -27,6 +27,13 @@
                 <h3>User Management</h3>
             </div>
 
+            <div>
+                <div>
+                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.." CssClass="form-control"></asp:TextBox>
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click" />
+                </div>
+            </div>
+
             <div class="form-group row mt-3 mb-3">
                 <label class="col-sm-2 col-form-label">User Type:</label>
                 <div class="col-sm-10">
@@ -52,7 +59,8 @@
 
             <%--display--%>
             <div class="table-container">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView2_RowDataBound" CssClass="table table-striped table-bordered">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView2_RowDataBound" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView2_PageIndexChanging">
+                    <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
                     <Columns>

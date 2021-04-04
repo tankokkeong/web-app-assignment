@@ -257,8 +257,15 @@ namespace web_app_assignment
                         MailMessage message = new MailMessage(from, sign_recruiter_companyEmail.Text);
 
                         //Mail Body
-                        string mailbody = "<button style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
-                        "<a href='https://localhost:44329/verificationPost.aspx?vkRecruiter=" + vkey + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></button>";
+                        string mailbody = "Dear "+ sign_recruiter_companyName.Text + " Company,<br/>" +
+                                          "Your Email with Jobs4u requires you to validate your email address.<br/><br/>" +
+                                          "Please Click on the button below to validate your email address.<br/><br/>" +
+                                          "<span style='background-color:#008CBA; border:none; font-size:20px; cursor:pointer; text-align:center; padding: 14px 100px;'>" +
+                                          "<a href='https://localhost:44329/verificationPost.aspx?vkRecruiter=" + vkey + "'"+ "style='color:white; text-decoration:none;'>Click Here To Verify Your Email Address</a></span><br/><br/>" +
+                                          "<br/>(If the link does not work, copy the full address and paste it to your Internet browser)<br/></br>" +
+                                          "Best Regards,<br/>" +
+                                          "Festus, Your Personal Career Agent<br/>" +
+                                          "<a href='https://localhost:44329/home.aspx'>Jobs4u.com</a>";
 
                         //Mail Subject
                         message.Subject = "Email Verification";

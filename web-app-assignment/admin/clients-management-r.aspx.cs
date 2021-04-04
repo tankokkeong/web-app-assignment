@@ -15,52 +15,46 @@ namespace web_app_assignment.admin
 {
     public partial class clients_management_r : System.Web.UI.Page
     {
-        //string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+        string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 this.BindGrid();
-                //Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];
-
-                //SqlConnection con = new SqlConnection(strcon);
-
-                //string sql = "SELECT TOP 50 * FROM Recruiter WHERE deleted_at IS NULL";
-
-                //SqlCommand cmd = new SqlCommand(sql, con);
-
-                //con.Open();
-                //SqlDataReader read = cmd.ExecuteReader();
-
-                //GridView3.DataSource = read;
-                //GridView3.DataBind();
-
-                //read.Close();
-                //con.Close();
             }
         }
 
         private void BindGrid()
         {
-            string constr = ConfigurationManager.ConnectionStrings["constr"].ToString();
-            using (SqlConnection con = new SqlConnection(constr))
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT TOP 50 * FROM Recruiter WHERE deleted_at IS NULL"))
+                using (SqlCommand cmd = new SqlCommand())
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    string sql = "SELECT * FROM Recruiter WHERE deleted_at IS NULL";
+                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
                     {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            GridView3.DataSource = dt;
-                            GridView3.DataBind();
-                        }
+                        sql += " AND company_name LIKE '%' + @name + '%' AND deleted_at IS NULL ORDER BY recruiter_id DESC";
+                        cmd.Parameters.AddWithValue("@name", txtSearch.Text.Trim());
+                    }
+                    else
+                    {
+                        sql += " ORDER BY recruiter_id DESC";
+                    }
+                    cmd.CommandText = sql;
+                    cmd.Connection = con;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        GridView3.DataSource = dt;
+                        GridView3.DataBind();
                     }
                 }
             }
+
         }
         //protected void GridView3_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
@@ -85,6 +79,17 @@ namespace web_app_assignment.admin
         protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
             GridView3.PageIndex = e.NewPageIndex;
+            this.BindGrid();
+        }
+
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView3.PageIndex = e.NewPageIndex;
+            this.BindGrid();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
             this.BindGrid();
         }
     }

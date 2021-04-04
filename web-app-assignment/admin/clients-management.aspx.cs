@@ -20,20 +20,7 @@ namespace web_app_assignment.admin
             {
                 Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
 
-                SqlConnection con = new SqlConnection(strcon);
-
-                string sql = "SELECT TOP 50 * FROM JobSeeker WHERE deleted_at IS NULL";
-
-                SqlCommand cmd = new SqlCommand(sql, con);
-
-                con.Open();
-                SqlDataReader read = cmd.ExecuteReader();
-
-                GridView2.DataSource = read;
-                GridView2.DataBind();
-
-                read.Close();
-                con.Close();
+                this.SearchSeeker();
             }
         }
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -53,6 +40,49 @@ namespace web_app_assignment.admin
                     "<a class='badge badge-primary action-btn mr-1'  href='client-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
                 }
             }
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            this.SearchSeeker();
+        }
+
+        private void SearchSeeker()
+        {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
+            using (SqlConnection con = new SqlConnection(strcon))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    string sql = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL";
+                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
+                    {
+                        sql += " AND full_name LIKE '%' + @name + '%' AND deleted_at IS NULL ORDER BY seeker_id DESC";
+                        cmd.Parameters.AddWithValue("@name", txtSearch.Text.Trim());
+                    }
+                    else
+                    {
+                        sql += " ORDER BY seeker_id DESC";
+                    }
+                    cmd.CommandText = sql;
+                    cmd.Connection = con;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        GridView2.DataSource = dt;
+                        GridView2.DataBind();
+                    }
+                }
+            }
+
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.SearchSeeker();
         }
     }
 }
