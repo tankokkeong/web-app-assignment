@@ -9,7 +9,7 @@
         <div class="display-blogpost-container">
 
             <div class="float-right mb-4 mt-1">
-                <a href="#" id="newCat" runat="server" class="btn bg-lightgreen text-white btn-lg" data-toggle="modal" data-target="#addCategory">New Category</a>
+                <a href="blog-category-create.aspx" id="newCat" runat="server" class="btn bg-lightgreen text-white btn-lg">New Category</a>
             </div>
             <div class="blog-title">
                 <h3>Blog Category</h3>
@@ -29,32 +29,6 @@
             </div>
         </div>
 
-        <!-- New Post Modal -->
-        <div class="modal fade" id="addCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Add New Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <asp:Label ID="lblCategory" runat="server" Text="Blogs Category"></asp:Label>
-                                <asp:TextBox ID="txtCategory" runat="server" CssClass="form-control mt-2"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <asp:Button ID="btnAddCategory" runat="server" Text="Add" class="btn btn-primary" OnClick="btnAddCategory_Click" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -69,7 +43,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <asp:Button ID="btnDeleteCategory" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeleteCategory_Click" />
-                        <asp:TextBox ID="txtDeleteCategory" runat="server" style="display:none;"></asp:TextBox>
+                        <asp:TextBox ID="txtDeleteCategory" runat="server" Style="display: none;"></asp:TextBox>
                     </div>
                 </div>
             </div>

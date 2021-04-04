@@ -11,43 +11,43 @@ namespace web_app_assignment.admin
 {
 
 
-    public partial class admin_management
+    public partial class blog_category_create
     {
 
         /// <summary>
-        /// newAdmin control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor newAdmin;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// GridView1 control.
+        /// reqValTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValTitle;
 
         /// <summary>
-        /// btnDeleteAdmin control.
+        /// regExValTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteAdmin;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExValTitle;
 
         /// <summary>
-        /// txtDeleteAdmin control.
+        /// btnAddCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteAdmin;
+        protected global::System.Web.UI.WebControls.Button btnAddCategory;
     }
 }

@@ -68,9 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About_Us.aspx" />
+    <Content Include="admin\admin-create.aspx" />
     <Content Include="admin\admin-details-edit.aspx" />
     <Content Include="admin\admin-details.aspx" />
     <Content Include="admin\admin-management.aspx" />
+    <Content Include="admin\blog-category-create.aspx" />
     <Content Include="admin\blog-category-edit.aspx" />
     <Content Include="admin\client-edit-r.aspx" />
     <Content Include="admin\client-edit.aspx" />
@@ -1960,6 +1962,13 @@
     <Compile Include="About_Us.aspx.designer.cs">
       <DependentUpon>About_Us.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\admin-create.aspx.cs">
+      <DependentUpon>admin-create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin-create.aspx.designer.cs">
+      <DependentUpon>admin-create.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\admin-details-edit.aspx.cs">
       <DependentUpon>admin-details-edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1987,6 +1996,13 @@
     </Compile>
     <Compile Include="admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\blog-category-create.aspx.cs">
+      <DependentUpon>blog-category-create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\blog-category-create.aspx.designer.cs">
+      <DependentUpon>blog-category-create.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\blog-category-edit.aspx.cs">
       <DependentUpon>blog-category-edit.aspx</DependentUpon>

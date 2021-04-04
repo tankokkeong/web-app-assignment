@@ -41,29 +41,6 @@ namespace web_app_assignment
                 con.Close();
             }
         }
-
-        protected void btnAddCategory_Click(object sender, EventArgs e)
-        {
-            string category = txtCategory.Text;
-
-            string adminID = helper.getAdminID();
-            SqlConnection con = new SqlConnection(strcon);
-
-            string sqlInsert = @"INSERT INTO BlogCategory(category_title,edited_by,last_updated,created_at)
-                            VALUES (@title, @edited_by, @last_updated, @created_at)";
-
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sqlInsert, con);
-            cmd.Parameters.AddWithValue("@title", category);
-            cmd.Parameters.AddWithValue("@last_updated", DateTime.Now);
-            cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
-            cmd.Parameters.AddWithValue("@edited_by", adminID);
-
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            Response.Redirect("blog-category-management.aspx");
-        }
         protected void GridViewCategory_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];

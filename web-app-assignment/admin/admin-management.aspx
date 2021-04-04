@@ -27,7 +27,7 @@
             </div>
 
             <div class="float-right mb-3 mt-3">
-                <button id="btnNewAdmin" type="button" class="btn bg-lightgreen text-light" data-toggle="modal" data-target="#addAdmin" runat="server">New Admin</button>
+                <a href="admin-create.aspx" id="newAdmin" type="button" class="btn bg-lightgreen text-light" runat="server">New Admin</a>
             </div>
 
             <%--display--%>
@@ -43,46 +43,6 @@
                         <asp:BoundField runat="server" DataField="admin_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
-            </div>
-        </div>
-
-        <!-- New Admin Modal -->
-        <div class="modal fade" id="addAdmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Add New Admin</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <asp:Label ID="lblAdminEmail" runat="server" Text="Admin Email"></asp:Label>
-                                <asp:TextBox ID="txtAdminEmail" runat="server" class="form-control"></asp:TextBox>
-                                <%--                                <asp:RequiredFieldValidator ID="reqValEmail" runat="server" ErrorMessage="Email is required to fill in!" ControlToValidate="txtAdminEmail" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                                <%--<asp:RegularExpressionValidator ID="regExValEmail" runat="server" ErrorMessage="Invalid Email!" ControlToValidate="txtAdminEmail" CssClass="text-danger" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display="Dynamic"></asp:RegularExpressionValidator>--%>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <asp:Label ID="lblAdminRight" runat="server" Text="Admin Roles"></asp:Label>
-                                <asp:DropDownList ID="listAdminRight" runat="server" class="form-control">
-                                    <asp:ListItem Selected="True">Please Select</asp:ListItem>
-                                    <asp:ListItem Value="Editor">Editor</asp:ListItem>
-                                    <asp:ListItem Value="Viewer">Viewer</asp:ListItem>
-                                </asp:DropDownList>
-                                <%--asp:RequiredFieldValidator ID="reqAdminRight" runat="server" ErrorMessage="Please choose a role!" InitialValue="Please Select" ControlToValidate="listAdminRight" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <asp:Button ID="btnAddAdmin" runat="server" Text="Add" class="btn btn-primary" OnClick="btnAddAdmin_Click"  /> <%--onkeyup="addAdmin()"--%>
-                    </div>
-                </div>
             </div>
         </div>
 
