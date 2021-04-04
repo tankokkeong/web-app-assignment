@@ -153,9 +153,9 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Rating:</td>
+                                    <td>My Rating:</td>
                                     <td class="text-lightgreen">
-                                        <asp:Label ID="lblRecruiterRating" runat="server" Text=""></asp:Label>
+                                        <asp:Label ID="lblRecruiterRating" runat="server" Text=""></asp:Label> <i class="fas fa-star text-warning"></i>
                                     </td>
                                 </tr>
                             </tbody>

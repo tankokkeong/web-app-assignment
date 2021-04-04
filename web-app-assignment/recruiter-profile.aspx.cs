@@ -77,7 +77,7 @@ namespace web_app_assignment
                         lblRecruiterState2.Text = dr["state"].ToString();
                         lblRecruiterZip.Text = dr["zip_code"].ToString();
                         lblRecruiterCountry.Text = dr["country"].ToString();
-                        lblRecruiterRating.Text = dr["rating"].ToString();
+                        lblRecruiterRating.Text = getCompanyAverageRating(dr["recruiter_id"].ToString());
 
                         //Check premium user
                         if (dr["is_premium"].ToString() != "true")
@@ -532,6 +532,54 @@ namespace web_app_assignment
 
             //Redirect back with query string
             Response.Redirect("recruiter-profile.aspx?rejectApplicants");
+        }
+
+        protected string getCompanyAverageRating(string recruiter_id)
+        {
+            string company_rating = "No Rating Yet";
+
+            try
+            {
+                
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Job posted
+                string sql = "SELECT * FROM" +
+                            "(SELECT AVG(job_rating) as average_rating, " +
+                            "JP.recruiter_id, R.company_name, R.company_photo " +
+                            "FROM JobPost JP, Recruiter R " +
+                            "WHERE JP.recruiter_id = R.recruiter_id " +
+                            "GROUP BY JP.recruiter_id, R.company_name, R.company_photo) " +
+                            "AS result WHERE result.recruiter_id = @recruiter_id " +
+                            "ORDER BY average_rating DESC";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    company_rating = dr["average_rating"].ToString().Substring(0, 4);
+                }
+
+                //close connection
+                con.Close();
+
+                return company_rating;
+            }
+            catch(Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+                return company_rating;
+            }
+            
         }
     }
 }
