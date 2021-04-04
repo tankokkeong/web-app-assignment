@@ -18,6 +18,9 @@ namespace web_app_assignment.admin
         public int chartValue2 = 0;
         public int chartValue3 = 0;
         public int chartValueApp = 0;
+        public int chartValuePremium = 0;
+        public int chartValuePremium2 = 0;
+        public string chartValuePayment = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -45,7 +48,20 @@ namespace web_app_assignment.admin
 
                 this.chartValueApp = (int)(cmdChartApp.ExecuteScalar());
 
+                //Google Chart Premium
+                string sqlChartPremium1 = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium = 'true'";
+                string sqlChartPremium2 = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium IS NULL";
+                SqlCommand cmdChartPremium1 = new SqlCommand(sqlChartPremium1, con);
+                SqlCommand cmdChartPremium2 = new SqlCommand(sqlChartPremium2, con);
 
+                this.chartValuePremium = (int)(cmdChartPremium1.ExecuteScalar());
+                this.chartValuePremium2 = (int)(cmdChartPremium2.ExecuteScalar());
+
+                //Google Chart Payment
+                string sqlChartPayment = "SELECT SUM(payment_amount) FROM PaymentRecord WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";
+                SqlCommand cmdChartPayment = new SqlCommand(sqlChartPayment, con);
+
+                this.chartValuePayment = cmdChartPayment.ExecuteScalar().ToString();
 
                 //Get admin_id from database
                 string sqlDoList = @"SELECT * FROM ToDoList WHERE belongs_to = @id AND deleted_at IS NULL";
@@ -134,7 +150,6 @@ namespace web_app_assignment.admin
 
                 //Top 5 companies
 
-                string company = "";
                 string sqlTopCompany = "SELECT top 5 company_name, company_photo,rating FROM Recruiter WHERE rating IS NOT NULL ORDER BY rating desc; ";
 
                 SqlCommand cmdTopCompany = new SqlCommand(sqlTopCompany, con);
@@ -143,18 +158,17 @@ namespace web_app_assignment.admin
 
                 while (drTopCompany.Read())
                 {
-                    company += string.Format("<div class='media'>" +
-                                                "<img src='../{0}' class='mr-3 top-company-pic'/>" +
+                    litResultCompany.Text += "<div class='media'>" +
+                                                "<img src='../"+ drTopCompany["company_photo"] +"' class='mr-3 top-company-pic'/>" +
                                                 "<div class='media-body'>" +
-                                                    "<h5 class='mt-0'>{1}</h5>" +
-                                                    "<p class='text-secondary'>{2}</p>" +
+                                                    "<h5 class='mt-0'>"+ drTopCompany["company_name"] + "</h5>" +
+                                                    "<p class='text-secondary'>"+ drTopCompany["rating"] + "</p>" +
                                                 "</div>" +
-                                            "</div>", drTopCompany["company_photo"], drTopCompany["company_name"], drTopCompany["rating"]);
+                                            "</div>";
                 }
                 drTopCompany.Close();
                 con.Close();
 
-                litResultCompany.Text = company;
             }
             else 
             {

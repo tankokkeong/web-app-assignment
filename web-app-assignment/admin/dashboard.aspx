@@ -48,10 +48,10 @@
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Total Application'],
+                ['2018', 300],
+                ['2019', 130],
                 ['2020', 500],
-                ['2021', dataChartApp],
-                ['2022', 300],
-                ['2023', 130]
+                ['2021', dataChartApp]
             ]);
 
             var options = {
@@ -72,29 +72,64 @@
         });
     </script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    <script>
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
 
+            var chartPremium = <%=chartValuePremium%>;
+            var chartPremium2 = <%=chartValuePremium2%>;
+
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 11],
-                ['Eat', 2],
-                ['Commute', 2],
-                ['Watch TV', 2],
-                ['Sleep', 7]
+                ['Premium', 'Year'],
+                ['Premium', chartPremium],
+                ['Non-Premium', chartPremium2],
             ]);
 
             var options = {
-                title: 'My Daily Activities'
+                title: 'Premium Recruiter'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
             chart.draw(data, options);
+        }
+    </script>
+
+    <script>
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var chartPayment = <%=chartValuePayment%>;
+
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Payment Amount(RM)', { role: 'style' }],
+                ['2018', 20000, 'color: gray'],
+                ['2019', 25000, 'color: #76A7FA'],
+                ['2020', 30000, 'opacity: 0.2'],
+                ['2021', chartPayment, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF']
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Payment Amount In A Year",
+                bar: { groupWidth: "95%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+            chart.draw(view, options);
         }
     </script>
 
@@ -189,8 +224,20 @@
             </div>
         </div>
 
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
+    </div>
 
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 mt-3">
+            <div id="piechart" class="chart-display">
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mt-3">
+            <div id="barchart_values" class="chart-display">
+
+            </div>
+        </div>
     </div>
 
        
