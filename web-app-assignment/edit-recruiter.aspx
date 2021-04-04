@@ -13,6 +13,13 @@
                     <h2>Company Information</h2>
                 </div>
 
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;" id="updated-alert">
+                  Profile updated successful!
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
                <div class="form-row">
                 <div class="form-group col-md-6 m-0">
                     <asp:Image ID="imgRecruiterProfile" runat="server" class="edit-profile-pic"/><br />
@@ -226,11 +233,25 @@
         }
 
         function profilePhotoUpload() {
-            var file_input = document.getElementById("ContentPlaceHolder1_fileCompanyPhoto").value;
+            var file_input = document.getElementById("ContentPlaceHolder1_fileCompanyPhoto");
             var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtCompanyPhoto");
 
-            //assign file input to hidden field
-            hidden_photo_input.value = file_input;
+            if (hidden_photo_input.value === "") {
+                //assign file input to hidden field
+                hidden_photo_input.value = file_input.files[0].name;
+            }
+            
+        }
+
+        function checkUpdated() {
+            var link = window.location.href.split("?");
+            var updated_alert = document.getElementById("updated-alert");
+
+            if (link[1] === "updated") {
+
+                //Change to job application tab
+                updated_alert.style.display = "";
+            }
         }
 
         //Print out the available industry
@@ -239,6 +260,9 @@
         //Call stick form functions
         getCompanyIntroduction();
         getSelectedIndustry();
+
+        //Check Updated alert
+        checkUpdated();
        
     </script>
 </asp:Content>
