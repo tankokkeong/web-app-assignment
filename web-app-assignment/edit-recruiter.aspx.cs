@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -328,22 +329,39 @@ namespace web_app_assignment
             if (Page.IsValid)
             {
 
-                //Upload Profile Image Handled
-                string upload_path = MapPath("/Uploads/");
-                string file_name = fileCompanyPhoto.FileName;
+               
+                string file_upload = fileCompanyPhoto.FileName;
                 string company_photo = "";
 
-                if (file_name != "")
+                if (file_upload != "")
                 {
-                    fileCompanyPhoto.SaveAs(upload_path + file_name);
-                    company_photo = "Uploads/" + file_name;
+                    if(txtCompanyPhoto.Text == getRecruiterPhotoPath(helper.getRecruiterID()))
+                    {
+                        //Upload Profile Image Handled
+                        string upload_path = MapPath("~/");
+                        string file_name = txtCompanyPhoto.Text;
+
+                        fileCompanyPhoto.SaveAs(upload_path + file_name);
+
+                        company_photo = file_name;
+                    }
+                    else
+                    {
+                        //Upload Profile Image Handled
+                        string upload_path = MapPath("~/Uploads/");
+                        string unique_value = Guid.NewGuid().ToString("N");
+                        string file_extension = "." + fileCompanyPhoto.FileName.Split('.')[1];
+                        string file_name = unique_value + file_extension;
+
+                        fileCompanyPhoto.SaveAs(upload_path + file_name);
+                        company_photo = "Uploads/" + file_name;
+                    }
+                    
                 }
                 else
                 {
                     company_photo = txtCompanyPhoto.Text;
                 }
-                
-
 
                 //Read inputs from the form
                 var company_name = txtCompanyName.Text;
@@ -439,9 +457,7 @@ namespace web_app_assignment
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-
-                    Response.Write("<script>alert('Profile Updated Successful!');</script>");
-                    imgRecruiterProfile.ImageUrl = company_photo;
+                    Response.Redirect("edit-recruiter.aspx?updated");
 
 
                 }
@@ -455,6 +471,37 @@ namespace web_app_assignment
                 lblError.Text = "FAILED";
             }
 
+        }
+
+        protected string getRecruiterPhotoPath(string recruiter_id)
+        {
+            string photo_path = "";
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string seeker_sql = "SELECT company_photo FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(seeker_sql, con);
+
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                photo_path = dr["company_photo"].ToString();
+            }
+
+            con.Close();
+
+            return photo_path;
         }
     }
 }
