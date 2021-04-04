@@ -31,7 +31,6 @@ namespace web_app_assignment.admin
                 sda.Fill(dt);
                 ddlCategory.DataSource = dt;
                 ddlCategory.DataBind();
-
             }
         }
 
@@ -80,6 +79,11 @@ namespace web_app_assignment.admin
 
                 //Close Connection
                 con.Close();
+
+                if (ddlCategory.SelectedValue == "0")
+                {
+                    lblList.Text = "Please Select A Category!";
+                }
 
                 Response.Redirect("display-blogs.aspx");
 
