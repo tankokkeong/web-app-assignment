@@ -28,9 +28,8 @@ namespace web_app_assignment
                 litResultLatest.Text +=
                                         "<div class='latest-list-container'>" +
                                             "<div class='row latest-list-row'>" +
-
                                                 "<div class='col-5'>" +
-                                                    "" +
+                                                "<a href='blog_description.aspx?blog=" + drLatest["blog_id"] + "'>" +
                                                     "<div class='list-thumbnail'>" +
                                                         "<img src='../" + drLatest["blog_image"] + "' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
                                                     "</div>" +
@@ -46,7 +45,7 @@ namespace web_app_assignment
                                                         "<a href='blog_description.aspx?blog="+ drLatest["blog_id"] +"' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                     "</div>" +
                                                 "</div>" +
-
+                                              "</a>" + 
                                             "</div>" +
                                         "</div>";
 
@@ -139,6 +138,7 @@ namespace web_app_assignment
                 if(row_count == total_category)
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
+                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] +"'>" +
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
@@ -150,6 +150,7 @@ namespace web_app_assignment
                                                       "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                  "</div>" +
                                             "</div>" +
+                                            "</a>" +
                                           "</div>" +
 
                                         "</div>" +
@@ -158,6 +159,7 @@ namespace web_app_assignment
                 else if(row_count % 3 == 0)
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
+                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] +"'>" +
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
@@ -169,6 +171,7 @@ namespace web_app_assignment
                                                       "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                  "</div>" +
                                             "</div>" +
+                                            "</a>" +
                                           "</div>" +
 
                                         "</div>" +
@@ -177,6 +180,7 @@ namespace web_app_assignment
                 else
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
+                                              "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] +"'>" +
                                                "<div class='card'>" +
                                                     "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                     "<div class='card-body text-center'>" +
@@ -188,6 +192,7 @@ namespace web_app_assignment
                                                          "<a href='blog_description.aspx?blog=" + drCategory["blog_id"] + "' class='btn bg-lightgreen' style='color:white;'>Details</a>" +
                                                     "</div>" +
                                                "</div>" +
+                                              "</a>" +
                                             "</div>";
                 }
                 

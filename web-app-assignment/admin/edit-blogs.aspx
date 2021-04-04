@@ -92,6 +92,15 @@
                 console.log(unescape(content_input.value))
             });
 
+            //Sticky form script
+            function getBlogDescription() {
+                var description_value = document.getElementById("ContentPlaceHolder1_txtEditDescription");
+                var ck_editor = document.getElementById("blogDescription_editor");
+
+                //Assign the value to CK EDITOR
+                ck_editor.value = window.unescape(description_value.value);
+            }
+
             function photoUpload() {
                 var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
                 var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
@@ -99,6 +108,8 @@
                 //assign file input to hidden field
                 hidden_photo_input.value = file_input;
             }
-        </script>
+
+        getBlogDescription()
+    </script>
 
 </asp:Content>

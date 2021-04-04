@@ -16,7 +16,6 @@ namespace web_app_assignment
         {
 
             string displayHeader = "";
-            string displayLike = "";
             
             SqlConnection con = new SqlConnection(strcon);
 
@@ -57,26 +56,27 @@ namespace web_app_assignment
 
             while (drLike.Read())
             {
-                displayLike += string.Format("<div class='swiper-slide'>" +
+                litResultLike.Text += "<div class='swiper-slide'>" +
                                              "<div class='card' style='width: 100%;'>" +
-                                                 "<img src='../{0}' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
+                                             "<a href='blog_description.aspx?blog=" + drLike["blog_id"] + "'>" +
+                                                 "<img src='../" + drLike["blog_image"] +"' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
-                                                     "<p class='card-text font-weight-bold'>{1}</p>" +
-                                                     "<p class='text-muted text-center'>{2}</p>" +
+                                                     "<p class='card-text font-weight-bold'>"+ drLike["blog_title"] +"</p>" +
+                                                     "<p class='text-muted text-center'>"+ drLike["last_updated"] +"</p>" +
                                                  "</div>" +
 
                                                      "<div class='card-footer text-muted text-center'>" +
-                                                        "<a href='blog_description.aspx?blog={3}' class='btn btn-info'>Details</a>" +
+                                                        "<a href='blog_description.aspx?blog="+ drLike["blog_id"] +"' class='btn btn-info'>Details</a>" +
                                                      "</div>" +
+                                             "</a>" +
                                              "</div>" +
-                                         "</div>", drLike["blog_image"],drLike["blog_title"],drLike["last_updated"],drLike["blog_id"]);
+                                         "</div>";
             }
 
             drLike.Close();
             con.Close();
 
             litResultHeader.Text = displayHeader;
-            litResultLike.Text = displayLike;
             
         }
     }
