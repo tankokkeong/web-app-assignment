@@ -70,13 +70,13 @@
             drawBarChart();
             drawLineChart();
             drawPremiumChart();
-            drawPaymentChart()
+            drawPaymentChart();
         });
     </script>
 
     <script>
         google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawPremiumChart);
 
         function drawPremiumChart() {
 
@@ -101,7 +101,7 @@
 
     <script>
         google.charts.load("current", { packages: ["corechart"] });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawPaymentChart);
 
         function drawPaymentChart() {
 

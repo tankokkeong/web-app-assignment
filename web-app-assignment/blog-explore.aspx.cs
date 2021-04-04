@@ -33,7 +33,8 @@ namespace web_app_assignment
                     {
                         litResultHeader.Text = "<h3>" + drExplore["category_title"] + "</h3>";
 
-                        litResultBlog.Text +=       "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                        litResultBlog.Text += "<div class='col-sm-12 col-md-6 col-lg-4 mt-3'>" +
+                                                       "<a href='blog_description.aspx?blog=" + drExplore["blog_id"] + "'>" +
                                                         "<div class='card' style='width: 100%;'>" +
                                                             "<img src='../" + drExplore["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                             "<div class='card-body text-center'>" +
@@ -45,6 +46,7 @@ namespace web_app_assignment
                                                                 "<a href='blog_description.aspx?blog=" + drExplore["blog_id"] + "' class='btn bg-lightgreen'>Details</a>" +
                                                             "</div>" +
                                                         "</div>" +
+                                                       "</a>" +
                                                     "</div>"+
                                                         "<br/>";
                     }
