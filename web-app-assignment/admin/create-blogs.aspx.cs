@@ -52,7 +52,7 @@ namespace web_app_assignment.admin
                 if (file_name != "")
                 {
                     blogPhotoUpload.SaveAs(upload_path + file_name);
-                    blog_photo = "Uploads/" + file_name;
+                    blog_photo = "../Uploads/" + file_name;
                 }
                 else
                 {

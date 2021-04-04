@@ -29,7 +29,7 @@
                     <Columns>
                         <asp:BoundField runat="server" DataField="blog_id" HeaderText="Blog ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="blog_title" HeaderText="Blog Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="blog_content" HeaderText="Blog Content" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:ImageField runat="server" DataImageUrlField="blog_image" HeaderText="Blog Image" HeaderStyle-CssClass="bg-lightgreen text-light" ControlStyle-Width="250px" ControlStyle-Height="250px"></asp:ImageField>
                         <asp:BoundField runat="server" DataField="last_updated" HeaderText="Last Updated" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="250px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="blog_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                     </Columns>
