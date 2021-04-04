@@ -58,6 +58,7 @@ namespace web_app_assignment.admin
                     blog_photo = txtPhotoUpload.Text;
                 }
 
+                Response.Redirect("display-blogs.aspx");
 
                 SqlConnection con = new SqlConnection(strcon);
 
@@ -79,14 +80,6 @@ namespace web_app_assignment.admin
 
                 //Close Connection
                 con.Close();
-
-                if (ddlCategory.SelectedValue == "0")
-                {
-                    lblList.Text = "Please Select A Category!";
-                }
-
-                Response.Redirect("display-blogs.aspx");
-
             }
             catch (Exception error)
             {

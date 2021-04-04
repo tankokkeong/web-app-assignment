@@ -35,7 +35,6 @@
                     <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtTitle" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -53,11 +52,11 @@
             <div class="form-group row">
                 <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
                 <div class="col-sm-10">
-                        <div>
-                            <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>
-                            <asp:TextBox ID="txtEditDescription" runat="server" style="display:none;"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
-                        </div>
+                    <div>
+                        <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>
+                        <asp:TextBox ID="txtEditDescription" runat="server" Style="display: none;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
             </div>
 
@@ -66,10 +65,9 @@
                 <div class="col-sm-10">
 
                     <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" DataTextField="category_title" DataValueField="blog_category_id">
-                        <asp:ListItem Value="0">--Blog Category--</asp:ListItem>
-                        <%--<asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" InitialValue=" Blog Category " ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
-
+                    <asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
             </div>
 
@@ -85,29 +83,29 @@
         editor = CKEDITOR.replace('blogDescription_editor');
         content_input = document.getElementById("ContentPlaceHolder1_txtEditDescription");
 
-            // editor is object of your CKEDITOR
-            editor.on('change', function () {
-                content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
-                console.log(content_input.value)
-                console.log(unescape(content_input.value))
-            });
+        // editor is object of your CKEDITOR
+        editor.on('change', function () {
+            content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
+            console.log(content_input.value)
+            console.log(unescape(content_input.value))
+        });
 
-            //Sticky form script
-            function getBlogDescription() {
-                var description_value = document.getElementById("ContentPlaceHolder1_txtEditDescription");
-                var ck_editor = document.getElementById("blogDescription_editor");
+        //Sticky form script
+        function getBlogDescription() {
+            var description_value = document.getElementById("ContentPlaceHolder1_txtEditDescription");
+            var ck_editor = document.getElementById("blogDescription_editor");
 
-                //Assign the value to CK EDITOR
-                ck_editor.value = window.unescape(description_value.value);
-            }
+            //Assign the value to CK EDITOR
+            ck_editor.value = window.unescape(description_value.value);
+        }
 
-            function photoUpload() {
-                var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
-                var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
+        function photoUpload() {
+            var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
+            var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
 
-                //assign file input to hidden field
-                hidden_photo_input.value = file_input;
-            }
+            //assign file input to hidden field
+            hidden_photo_input.value = file_input;
+        }
 
         getBlogDescription()
     </script>

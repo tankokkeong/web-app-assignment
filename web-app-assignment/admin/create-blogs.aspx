@@ -32,10 +32,8 @@
             <div class="form-group row">
                 <label for="staticTitle" class="col-sm-2 col-form-label">Post Title:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtTitle" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -44,8 +42,8 @@
                 <div class="col-sm-10">
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
                     <asp:TextBox ID="txtPhotoUpload" runat="server" Style="display: none;" />
-                    <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg & .png files are allowed!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG)$" Display="Dynamic"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg, .png & .gif files are allowed!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG|.gif|.GIF)$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -56,7 +54,7 @@
                         <div>
                             <textarea id="blogDescription_editor"></textarea>
                             <asp:TextBox ID="txtBlogDescription" runat="server" Style="display: none;"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtBlogDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtBlogDescription" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -67,10 +65,9 @@
                 <div class="col-sm-10">
 
                     <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" DataTextField="category_title" DataValueField="blog_category_id">
-                        <asp:ListItem Value="0">--Blog Category--</asp:ListItem>
-                        <%--<asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" InitialValue=" Blog Category " ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Label ID="lblList" runat="server" CssClass="text-danger" Text=""></asp:Label>
+                    <asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
             </div>
 
