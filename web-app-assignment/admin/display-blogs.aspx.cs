@@ -116,5 +116,11 @@ namespace web_app_assignment.admin
         {
             this.SearchBlog();
         }
+
+        protected void GridViewBlog_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewBlog.PageIndex = e.NewPageIndex;
+            this.SearchBlog();
+        }
     }
 }

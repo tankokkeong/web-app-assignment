@@ -30,6 +30,7 @@ namespace web_app_assignment
                                             "<div class='row latest-list-row'>" +
 
                                                 "<div class='col-5'>" +
+                                                    "" +
                                                     "<div class='list-thumbnail'>" +
                                                         "<img src='../" + drLatest["blog_image"] + "' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
                                                     "</div>" +

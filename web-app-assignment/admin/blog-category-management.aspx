@@ -44,8 +44,6 @@
                             <div class="col-sm-10">
                                 <asp:Label ID="lblCategory" runat="server" Text="Blogs Category"></asp:Label>
                                 <asp:TextBox ID="txtCategory" runat="server" CssClass="form-control mt-2"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="reqValCategory" runat="server" ErrorMessage="Category is required to fill in!" CssClass="text-danger" ControlToValidate="txtCategory" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtCategory" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
@@ -71,7 +69,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <asp:Button ID="btnDeleteCategory" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeleteCategory_Click" />
-                        <asp:TextBox ID="txtDeleteCategory" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDeleteCategory" runat="server" style="display:none;"></asp:TextBox>
                     </div>
                 </div>
             </div>

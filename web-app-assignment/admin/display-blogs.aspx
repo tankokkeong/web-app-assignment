@@ -13,7 +13,7 @@
 
             <div class="blogpost-search-container">
                 <div class="blogpost-search-bar">
-                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.."></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.." CssClass="form-control"></asp:TextBox>
                     <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click" />
                 </div>
             </div>
@@ -23,7 +23,8 @@
             </div>
 
             <div class="post-table-container">
-                <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered">
+                <asp:GridView ID="GridViewBlog" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridViewBlog_RowDataBound" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="4" OnPageIndexChanging="GridViewBlog_PageIndexChanging">
+                    <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" Width="600px" />
                     <Columns>

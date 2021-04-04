@@ -69,6 +69,8 @@
         $(window).resize(function () {
             drawBarChart();
             drawLineChart();
+            drawPremiumChart();
+            drawPaymentChart()
         });
     </script>
 
@@ -76,7 +78,7 @@
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+        function drawPremiumChart() {
 
             var chartPremium = <%=chartValuePremium%>;
             var chartPremium2 = <%=chartValuePremium2%>;
@@ -101,7 +103,7 @@
         google.charts.load("current", { packages: ["corechart"] });
         google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+        function drawPaymentChart() {
 
             var chartPayment = <%=chartValuePayment%>;
 
@@ -125,8 +127,6 @@
 
             var options = {
                 title: "Payment Amount In A Year",
-                bar: { groupWidth: "95%" },
-                legend: { position: "none" },
             };
             var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
             chart.draw(view, options);
