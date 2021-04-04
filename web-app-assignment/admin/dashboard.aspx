@@ -189,10 +189,11 @@
             </div>
         </div>
 
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
 
     </div>
 
-       <div id="piechart" style="width: 900px; height: 500px;"></div>
+       
 
     <div class="row mt-3" style="height:1000px;" id="draggable-wrapper">
         <div id="draggable1" class="col-md-6 col-lg-4 mt-3">

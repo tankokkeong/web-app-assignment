@@ -32,16 +32,26 @@
                 <label for="staticTitle" class="col-sm-2 col-form-label">Post Title:</label>
                 <div class="col-sm-10">
                     <%--<input type="text" readonly class="form-control" value="U0001">--%>
-                    <asp:TextBox ID="txtID" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
+                <div class="col-sm-10">
+                    <br />
+                    <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
+                    <asp:TextBox ID="txtPhotoUpload" runat="server" style="display:none;"/>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
                 <div class="col-sm-10">
-                        <div id="editor">
-                            <%--Database code comes here--%>
-                            <p>Hello World</p>
+                        <div>
+                            <textarea id="blogDescription_editor"></textarea>
+                            <asp:TextBox ID="txtEditDescription" runat="server" style="display:none;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtEditDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                 </div>
             </div>
@@ -50,10 +60,9 @@
                 <label for="staticCategory" class="col-sm-2 col-form-label">Category:</label>
                 <div class="col-sm-10">              
             
-                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
-                    <asp:ListItem Selected="True" Value="0"> Blog Category </asp:ListItem>
-                    <asp:ListItem Value="Interview"> Interview </asp:ListItem>
-                    <asp:ListItem Value="Recruiter"> Recruiter </asp:ListItem>
+                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" DataTextField="category_title" DataValueField="blog_category_id">
+                    <asp:ListItem Value="0">--Blog Category--</asp:ListItem>
+                    <%--<asp:RequiredFieldValidator ID="reqCategory" runat="server" ErrorMessage="Please choose a category!" InitialValue=" Blog Category " ControlToValidate="ddlCategory" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>--%>
                 </asp:DropDownList>
             
                 </div>
@@ -62,13 +71,29 @@
 
             <div class="form-group text-center">
                 <a href="display-blogs.aspx" class="btn btn-secondary">Back</a>
-                <asp:Button ID="btnCreatePost" runat="server" Text="Update" class="btn btn-primary"/>
+                <asp:Button ID="btnEditPost" runat="server" Text="Update" class="btn btn-primary" OnClick="btnEditPost_Click"/>
             </div>
         </form>
     </div>       
         
         <script>
-            editor = CKEDITOR.replace('editor');
+            editor = CKEDITOR.replace('blogDescription_editor');
+            content_input = document.getElementById("ContentPlaceHolder1_txtEditDescription");
+
+            // editor is object of your CKEDITOR
+            editor.on('change', function () {
+                content_input.value = window.escape(CKEDITOR.instances.blogDescription_editor.getData());
+                console.log(content_input.value)
+                console.log(unescape(content_input.value))
+            });
+
+            function photoUpload() {
+                var file_input = document.getElementById("ContentPlaceHolder1_blogPhotoUpload").value;
+                var hidden_photo_input = document.getElementById("ContentPlaceHolder1_txtPhotoUpload");
+
+                //assign file input to hidden field
+                hidden_photo_input.value = file_input;
+            }
         </script>
 
 </asp:Content>

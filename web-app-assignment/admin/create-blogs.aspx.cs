@@ -24,7 +24,7 @@ namespace web_app_assignment.admin
                 SqlConnection con = new SqlConnection(strcon);
 
                 //drop down list
-                string sqlList = "SELECT * FROM BlogCategory";
+                string sqlList = "SELECT * FROM BlogCategory WHERE deleted_at IS NULL";
                 SqlCommand cmdList = new SqlCommand(sqlList, con);
                 SqlDataAdapter sda = new SqlDataAdapter(cmdList);
                 DataTable dt = new DataTable();
