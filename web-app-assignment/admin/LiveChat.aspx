@@ -54,11 +54,11 @@
 
     <script type="text/javascript">
 
-        //get admin email
-        var userName = String(document.getElementById("ContentPlaceHolder1_lblUsername").innerHTML)
-        var admin_email = String(document.getElementById("ContentPlaceHolder1_lblAdminName").innerHTML);
-        var mailArr = admin_email.split('@');
-        var logn = mailArr[0];
+        //get user id or visitor id
+        var query = window.location.href.split('?')[1];
+        query = query.split('=')[1];
+
+        //get date
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         var time = today.getHours() + ":" + today.getMinutes();
@@ -69,21 +69,22 @@
             var message = document.getElementById("message").value;
 
             if (message != "") {
-                //save in database
-                firebase.database().ref("adminMessages/" + logn + "/").push({
-                    "sender": logn,
-                    "message": message,
-                    "timeSent": sentTime,
-                });
-                count++;
+                if (query != "") {
+                    //save in database
+                    firebase.database().ref("adminMessages/" + query + "/").push({
+                        "sendTo": query,
+                        "message": message,
+                        "timeSent": sentTime,
+                    });
+                }
             }
         }
 
-        //listen for admin messages
-        firebase.database().ref("adminMessages/" + logn + "/").on("child_added", function (snapshot) {
+        //listen for user messages or visitor messages
+        firebase.database().ref("adminMessages/" + query + "/").on("child_added", function (snapshot) {
             var html = "";
 
-            if (snapshot.val().sender == logn) {
+            if (snapshot.val().sendTo == query) {
                 // give each message a unique ID
                 html += "<div class='sender-messagesContexts'>";
                 html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
@@ -97,11 +98,29 @@
             }
         });
 
-        //listen for user messages
-        firebase.database().ref("UserMessages/" + userName + "/").on("child_added", function (snapshot) {
+        //listen for incoming messages from user
+        firebase.database().ref("UserMessages/" + query + "/").on("child_added", function (snapshot) {
             var html = "";
 
-            if (snapshot.val().sender == userName) {
+            if (snapshot.val().sender == query) {
+                // give each message a unique ID
+                html += "<div class='replier-messagesContexts'>";
+                html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
+
+                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+
+                html += "</div>";
+
+                document.getElementById("messages").innerHTML += html;
+                document.getElementById('message').value = "";
+            }
+        });
+
+        //listen for incoming messages from visitor
+        firebase.database().ref("VisitorMessages/" + query + "/").on("child_added", function (snapshot) {
+            var html = "";
+
+            if (snapshot.val().sender == query) {
                 // give each message a unique ID
                 html += "<div class='replier-messagesContexts'>";
                 html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";

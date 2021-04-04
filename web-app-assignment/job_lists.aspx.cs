@@ -99,10 +99,10 @@ namespace web_app_assignment
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 5 * FROM (" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) +")" +
                             "UNION" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                             "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
                             ") result";
                     }
@@ -110,10 +110,10 @@ namespace web_app_assignment
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 10 * FROM (" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
                             "UNION" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                             "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
                             ") result";
                     }
@@ -121,10 +121,10 @@ namespace web_app_assignment
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
                         sql = "SELECT TOP 15 * FROM (" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                             " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
                             "UNION" +
-                            "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                            "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                             "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
                             ") result";
                     }
@@ -133,10 +133,10 @@ namespace web_app_assignment
                 {
                     lbl_JobListContentsAllCompanies.Text = "";
                     sql = "SELECT * FROM (" +
-                        "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
+                        "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
                         " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true'" + JobListSearchCriteria(sql) + ")" +
                         "UNION" +
-                        "(SELECT company_name, company_photo, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
+                        "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP," +
                         " Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL" + JobListSearchCriteria(sql) + ")" +
                         ") result ORDER BY(SELECT NULL) OFFSET " + first_page + " ROWS FETCH NEXT " + limit_per_page + " ROWS ONLY";
                 }
@@ -163,8 +163,11 @@ namespace web_app_assignment
                                 "<div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'>" +
                                     "<img src='" + dr["company_photo"].ToString() + "' alt='company' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>" +
                                     "<div class='JobListContentsAllCompaniesBoxesDetailsStars'>" +
-                                        "<%--Stars Here--%>" +
-                                        "<p>Stars</p>" +
+                                        "<div class='jobRating ml-2'>" +
+                                            "<p>" +
+                                                dr["job_rating"].ToString() + "<i class='fas fa-star text-warning ml-2'></i> " +
+                                            "</p>" +
+                                        "</div>" +
                                     "</div>" +
                                 "</div>" +
                                 "<div class='JobListContentsAllCompaniesBoxesDetails'>" +
@@ -192,7 +195,7 @@ namespace web_app_assignment
                                     "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
                                         "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
                                             "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + dr["post_id"].ToString() + ")'> More Details </button> " +
-                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(" + dr["recruiter_id"].ToString() +")'> Contact Now </button> " +
+                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(" + dr["recruiter_id"].ToString() + ")'> Contact Now </button> " +
                                         "</div>" +
                                     "</div>" +
                                 "</div>" +

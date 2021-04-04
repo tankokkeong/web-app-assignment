@@ -61,21 +61,21 @@
                             <div class="col-sm-10">
                                 <asp:Label ID="lblAdminEmail" runat="server" Text="Admin Email"></asp:Label>
                                 <asp:TextBox ID="txtAdminEmail" runat="server" class="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="reqValEmail" runat="server" ErrorMessage="Email is required to fill in!" ControlToValidate="txtAdminEmail" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="regExValEmail" runat="server" ErrorMessage="Invalid Email!" ControlToValidate="txtAdminEmail" CssClass="text-danger" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <asp:Label ID="lblAdminRight" runat="server" Text="Admin Role "></asp:Label>
                                 <asp:DropDownList ID="listAdminRight" runat="server">
-                                    <asp:ListItem>Please Select</asp:ListItem>
+                                    <asp:ListItem Selected="True">Please Select</asp:ListItem>
                                     <asp:ListItem Value="Editor">Editor</asp:ListItem>
                                     <asp:ListItem Value="Viewer">Viewer</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="reqAdminRight" runat="server" ErrorMessage="Please choose a role!" InitialValue="Please Select" ControlToValidate="listAdminRight" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        <asp:RequiredFieldValidator ID="rfvAdminRight" runat="server" ControlToValidate="listAdminRight"
-                            ErrorMessage="Please choose a role" InitialValue="Please choose a role">
-                        </asp:RequiredFieldValidator>
 
                     </div>
                     <div class="modal-footer">

@@ -242,52 +242,11 @@ namespace web_app_assignment
                         }
                     }
                 }
-                //else
-                //{
-                //    string sql = "INSERT INTO Visitors (date_of_visit, created_at) VALUES (CURDATE(), GETDATE());";
-
-                //    SqlCommand command = new SqlCommand(sql, con);
-
-                //    command.ExecuteNonQuery();
-
-                //    con.Close();
-
-                //    con.Open();
-
-                //    string getVisitorID = "SELECT visitor_id FROM Visitors WHERE date_of_visit = CURDATE()";
-
-                //    SqlCommand cmd = new SqlCommand(getVisitorID, con);
-
-                //    SqlDataReader dr = cmd.ExecuteReader();
-
-                //    while (dr.Read())
-                //    {
-                //        lblUsername.Text = dr["visitor_id"].ToString();
-                //    }
-                //}
 
                 con.Close();
 
                 //Display Current Site information
                 getCurrentSiteJobDetails();
-
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-
-                //string searchAdmin = "SELECT admin_email FROM Admin WHERE deleted_at IS NULL";
-
-                //SqlCommand command2 = new SqlCommand(searchAdmin, con);
-
-                //SqlDataReader dr = command2.ExecuteReader();
-
-                //while (dr.Read())
-                //{
-                //    txtAdmin.Text += dr["admin_email"].ToString() + " ";
-                //}
-
-                con.Close();
             }
 
             catch (Exception error)

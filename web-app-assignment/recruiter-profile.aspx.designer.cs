@@ -249,6 +249,24 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.TextBox txtDeleteJob;
 
         /// <summary>
+        /// btnDeleteApplicants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteApplicants;
+
+        /// <summary>
+        /// txtApplicantionID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantionID;
+
+        /// <summary>
         /// btnApproveJob control.
         /// </summary>
         /// <remarks>
@@ -265,6 +283,24 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApproveApplication;
+
+        /// <summary>
+        /// btnRejectApplicant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRejectApplicant;
+
+        /// <summary>
+        /// txtRejectApplicant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRejectApplicant;
 
         /// <summary>
         /// lblFreePlan control.

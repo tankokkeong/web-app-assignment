@@ -38,6 +38,8 @@
                 <label for="staticName" class="col-sm-2 col-form-label">Admin Name:</label>
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValName" runat="server" ErrorMessage="Required to fill in name!" CssClass="text-danger" ControlToValidate="txtName" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="regExValName" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtName" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 

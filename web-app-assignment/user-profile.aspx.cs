@@ -158,7 +158,7 @@ namespace web_app_assignment
             try
             {
 
-                var post_id = txtApplicationID.Text;
+                var application_id = txtApplicationID.Text;
 
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
@@ -169,13 +169,13 @@ namespace web_app_assignment
                 //Read User profile Details
                 string sql = "Update ApplicationStatus " +
                         "SET deleted_at = @deleted_at " +
-                        "WHERE application_id = @post_id";
+                        "WHERE application_id = @application_id";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 //Insert parameters
                 cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
-                cmd.Parameters.AddWithValue("@post_id", post_id);
+                cmd.Parameters.AddWithValue("@application_id", application_id);
 
                 //Execute the queries
                 cmd.ExecuteNonQuery();
@@ -260,6 +260,35 @@ namespace web_app_assignment
 
             return application_count;
 
+        }
+
+        protected void btnDeleteRecruiter_Click(object sender, EventArgs e)
+        {
+            var application_id = txtRemoveRecruiterID.Text;
+
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Read User profile Details
+            string sql = "Update ApplicationStatus " +
+                    "SET deleted_at = @deleted_at " +
+                    "WHERE application_id = @application_id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            //Insert parameters
+            cmd.Parameters.AddWithValue("@deleted_at", DateTime.Now);
+            cmd.Parameters.AddWithValue("@application_id", application_id);
+
+            //Execute the queries
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            //Redirect back to profile page with query string
+            Response.Redirect("user-profile.aspx?removeApplication");
         }
     }
 }

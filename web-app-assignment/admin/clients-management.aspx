@@ -59,70 +59,10 @@
                         <asp:BoundField runat="server" DataField="seeker_id" HeaderText="User ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="full_name" HeaderText="User Name" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="email" HeaderText="User Email" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="active" HeaderText="User Status" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="seeker_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
-            </div>
-
-            <%--<div class="table-container">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr class="bg-lightgreen text-light">
-                        <th scope="col">User ID</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%for (int i = 0; i < 5; i++)
-                        { %>
-
-                    <tr>
-                        <th scope="row">U0002</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <a href="clients-details.aspx?edit" class="badge badge-primary action-btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                            <a href="clients-details.aspx?view" class="badge badge-success action-btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    <%}; %>
-                </tbody>
-            </table>
-        </div>--%>
-        </div>
-
-        <!-- Edit User Modal -->
-        <div class="modal fade" id="editUser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">User Status</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>User Status</td>
-                                    <td>
-                                        <select class="form-control">
-                                            <option value="Active">Active</option>
-                                            <option value="Inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Update</button>
-                    </div>
-                </div>
             </div>
         </div>
     </form>

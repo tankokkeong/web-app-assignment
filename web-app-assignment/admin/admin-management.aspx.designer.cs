@@ -51,6 +51,24 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.TextBox txtAdminEmail;
 
         /// <summary>
+        /// reqValEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValEmail;
+
+        /// <summary>
+        /// regExValEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExValEmail;
+
+        /// <summary>
         /// lblAdminRight control.
         /// </summary>
         /// <remarks>
@@ -69,13 +87,13 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.DropDownList listAdminRight;
 
         /// <summary>
-        /// rfvAdminRight control.
+        /// reqAdminRight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAdminRight;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqAdminRight;
 
         /// <summary>
         /// btnAddAdmin control.

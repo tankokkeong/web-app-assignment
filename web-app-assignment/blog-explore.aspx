@@ -8,12 +8,11 @@
             <div class="common-list-container">
                 <br />
                 <div class="col-6">
-                   <%-- <h3>Additional</h3> --%>
                     <asp:Literal ID="litResultHeader" runat="server"></asp:Literal>
                </div>
                 <div class="row">
                     <asp:Literal ID="litResultBlog" runat="server"></asp:Literal>
-                    <%--
+                    <%-- 
                     <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
                         <div class="card" style="width: 100%;">
                           <img src="https://jobmajestic.com/blog/media/2021/02/3-Tips-for-Building-Employee-Engagement-Right-Now-Featured-Image-1-768x512.jpg" class="card-img-top" alt="...">
@@ -23,10 +22,10 @@
 
                             <div class="card-footer text-muted text-center">
                                 17 March 2021
-                             </div>
+                            </div>
                         </div>
-                    </div>    
-                    --%>
+                    </div> 
+                        --%>
                 </div>
                 <br />
             </div>

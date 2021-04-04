@@ -39,8 +39,12 @@ namespace web_app_assignment.admin
                     string sql = "SELECT * FROM BlogPost WHERE deleted_at IS NULL";
                     if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
                     {
-                        sql += " AND blog_title LIKE @blogtitle + '%' AND deleted_at IS NULL";
+                        sql += " AND blog_title LIKE @blogtitle + '%' AND deleted_at IS NULL ORDER BY blog_id DESC";
                         cmd.Parameters.AddWithValue("@blogtitle", txtSearch.Text.Trim());
+                    }
+                    else
+                    {
+                        sql += " ORDER BY blog_id DESC";
                     }
                     cmd.CommandText = sql;
                     cmd.Connection = con;
@@ -65,7 +69,7 @@ namespace web_app_assignment.admin
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                    e.Row.Cells[4].Text = "";
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {
@@ -85,7 +89,6 @@ namespace web_app_assignment.admin
 
             try
             {
-
                 int id = Convert.ToInt32(txtDeletePost.Text);
 
                 SqlConnection con = new SqlConnection(strcon);
@@ -106,8 +109,6 @@ namespace web_app_assignment.admin
 
                 Response.Write("<script>alert('Record Deleted successful!');</script>");
                 Response.Redirect("display-blogs.aspx");
-
-
             }
             catch (Exception error)
             {
@@ -117,6 +118,12 @@ namespace web_app_assignment.admin
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            this.SearchBlog();
+        }
+
+        protected void GridViewBlog_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewBlog.PageIndex = e.NewPageIndex;
             this.SearchBlog();
         }
     }
