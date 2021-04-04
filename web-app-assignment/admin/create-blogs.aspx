@@ -34,6 +34,8 @@
                 <div class="col-sm-10">
                     <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtTitle" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -41,7 +43,9 @@
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
-                    <asp:TextBox ID="txtPhotoUpload" runat="server" style="display:none;"/>
+                    <asp:TextBox ID="txtPhotoUpload" runat="server" Style="display: none;" />
+                    <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg & .png files are allowed" ControlToValidate="blogPhotoUpload" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG)$"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -51,7 +55,7 @@
                     <div class="EditBlogsAdminBodyDatabaseSpot">
                         <div>
                             <textarea id="blogDescription_editor"></textarea>
-                            <asp:TextBox ID="txtBlogDescription" runat="server" style="display:none;"></asp:TextBox>
+                            <asp:TextBox ID="txtBlogDescription" runat="server" Style="display: none;"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Blog Content is required!" ControlToValidate="txtBlogDescription" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -73,7 +77,7 @@
 
             <div class="form-group text-center">
                 <a href="display-blogs.aspx" class="btn btn-secondary">Back</a>
-                <asp:Button ID="btnCreatePost" runat="server" Text="Create" class="btn btn-primary" OnClick="btnCreatePost_Click"/>
+                <asp:Button ID="btnCreatePost" runat="server" Text="Create" class="btn btn-primary" OnClick="btnCreatePost_Click" />
             </div>
         </form>
     </div>

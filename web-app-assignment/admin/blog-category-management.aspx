@@ -27,34 +27,6 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            <%-- 
-                 <div class="post-table-container">
-                     <table class="table table-striped table-bordered">
-                         <thead class="bg-lightgreen thead-post text-white">
-                            <tr class="table-head-title">                        
-                                 <th>Category</th>
-                                 <th>Created at</th>
-                                 <th>Action</th>
-                            </tr>
-                         </thead>
-
-                         <tbody>
-                             <tr>
-                                 <th class="content-blog">Career</th>
-                                 <th class="content-blog">2021-02-04 20:20:20</th>
-                                 <th>
-                                     <div class="action-icon">
-                                        <a href="#" class="action-icon-link"><i class="fa fa-eye fa-lg" style="color:black" aria-hidden="true"></i></a>
-                                        <a href="edit-blogs.aspx" class="action-icon-link" data-toggle="modal" data-target="#updateCategory"><i class="fas fa-edit fa-lg"  style="color:black" aria-hidden="true"></i></a>
-                                        <a href="#" class="action-icon-link" data-toggle="modal" data-target="#deleteCategory" onclick="deleteCategory()"><i class="fas fa-trash-alt fa-lg" style="color:black" aria-hidden="true"></i></a>
-                                     </div>
-                             
-                                  </th>
-                             </tr>
-                         </tbody>
-                     </table>
-                 </div>
-              --%>
         </div>
 
         <!-- New Post Modal -->
@@ -73,16 +45,13 @@
                                 <asp:Label ID="lblCategory" runat="server" Text="Blogs Category"></asp:Label>
                                 <asp:TextBox ID="txtCategory" runat="server" CssClass="form-control mt-2"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="reqValCategory" runat="server" ErrorMessage="Category is required to fill in!" CssClass="text-danger" ControlToValidate="txtCategory" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <%--<label for="staticEmail" class="col-sm-2 col-form-label">Admin Email</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="email@example.com">--%>
+                                <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Only alphabets are allowed!" ControlToValidate="txtCategory" CssClass="text-danger" ValidationExpression="^[a-zA-Z ]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <asp:Button ID="btnAddCategory" runat="server" Text="Add" class="btn btn-primary" OnClick="btnAddCategory_Click" />
-                        <%--<button type="button" class="btn btn-primary">Add</button>--%>
                     </div>
                 </div>
             </div>
@@ -93,18 +62,15 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete this category record?
-         
-                    </div>
+                    <div class="modal-body">Are you sure you want to delete this category record?</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <asp:Button ID="btnDeleteCategory" runat="server" Text="Yes" class="btn btn-primary" OnClick="btnDeleteCategory_Click" />
+                        <asp:Button ID="btnDeleteCategory" runat="server" Text="Yes" class="btn btn-danger" OnClick="btnDeleteCategory_Click" />
                         <asp:TextBox ID="txtDeleteCategory" runat="server" Style="display: none;"></asp:TextBox>
                     </div>
                 </div>

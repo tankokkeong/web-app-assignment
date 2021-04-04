@@ -85,7 +85,6 @@ namespace web_app_assignment.admin
 
             try
             {
-
                 int id = Convert.ToInt32(txtDeletePost.Text);
 
                 SqlConnection con = new SqlConnection(strcon);
@@ -106,8 +105,6 @@ namespace web_app_assignment.admin
 
                 Response.Write("<script>alert('Record Deleted successful!');</script>");
                 Response.Redirect("display-blogs.aspx");
-
-
             }
             catch (Exception error)
             {

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace web_app_assignment
 {
@@ -92,29 +93,26 @@ namespace web_app_assignment
 
             try
             {
-
                 int id = Convert.ToInt32(txtDeleteCategory.Text);
 
                 SqlConnection con = new SqlConnection(strcon);
 
                 //Read User profile Details
-                string sql = "UPDATE BlogCategory SET deleted_at = @delete WHERE blog_category_id = @Id";
+                string sqlDelete = "UPDATE BlogCategory SET deleted_at = @delete WHERE blog_category_id = @Id";
 
-                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlCommand cmdDelete = new SqlCommand(sqlDelete, con);
 
                 con.Open();
                 //Insert parameters
-                cmd.Parameters.AddWithValue("@delete", DateTime.Now);
-                cmd.Parameters.AddWithValue("@Id", id);
+                cmdDelete.Parameters.AddWithValue("@delete", DateTime.Now);
+                cmdDelete.Parameters.AddWithValue("@Id", id);
 
                 //Execute the queries
-                cmd.ExecuteNonQuery();
+                cmdDelete.ExecuteNonQuery();
                 con.Close();
 
-                Response.Write("<script>alert('Record Deleted successful!');</script>");
+                Response.Write("<script>alert('Record deleted successfully!');</script>");
                 Response.Redirect("blog-category-management.aspx");
-
-
             }
             catch (Exception error)
             {

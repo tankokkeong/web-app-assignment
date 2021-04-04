@@ -29,7 +29,7 @@
                         <div class="form-group">  
                           <asp:TextBox ID="admin_Name" cssclass="form-control bg-login" ClientIDMode="Static" runat="server" Placeholder="Full Name"></asp:TextBox>
                           <asp:RequiredFieldValidator id="admin_NameReq" runat ="server" ControlToValidate="admin_Name" validationgroup="admin_signup" ErrorMessage="Full Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
-                          <asp:RegularExpressionValidator ID="revAdminFullName" runat="server" ValidationExpression="^[A-Za-z]+$" ErrorMessage="Symbol and number is not allowed" ControlToValidate="admin_Name" validationgroup="admin_signup" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                        
+                          <asp:RegularExpressionValidator ID="revAdminFullName" runat="server" ValidationExpression="^[a-zA-Z ]+$" ErrorMessage="Symbol and number is not allowed" ControlToValidate="admin_Name" validationgroup="admin_signup" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                        
          
                         </div>
                       <div class="form-group">  

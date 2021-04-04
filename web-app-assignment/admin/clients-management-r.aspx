@@ -52,7 +52,7 @@
 
             <%--display--%>
             <div class="table-container">
-                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView3_PageIndexChanging" PageSize="10" OnRowDataBound="GridView3_RowDataBound" CssClass="table table-striped table-bordered">
+                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="OnPaging" PageSize="10" CssClass="table table-striped table-bordered">
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
                     <Columns>
