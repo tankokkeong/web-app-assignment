@@ -39,19 +39,19 @@
     padding: 0 10%;
 }
 
-    .contact-info-container.contact-info {
-        width: 100%;
-    }
+.contact-info-container.contact-info {
+    width: 100%;
+}
 
-    .contact-info-container .box {
-        text-align: center;
-    }
+.contact-info-container .box {
+    text-align: center;
+}
 
-        .contact-info-container .box p {
-            margin-top: 50px;
-            font-size: 24px;
-            word-wrap: break-word;
-        }
+.contact-info-container .box p {
+    margin-top: 50px;
+    font-size: 24px;
+    word-wrap: break-word;
+}
 /*Contact info end*/
 
 /*Contact Form*/
@@ -65,32 +65,32 @@
     margin-top:10px;
 }
 
-    .contact-form-container h1 {
-        font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
-        font-weight:bold;
-        font-size: 54px;
-        margin-bottom: 10px;
-    }
+.contact-form-container h1 {
+    font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
+    font-weight:bold;
+    font-size: 54px;
+    margin-bottom: 10px;
+}
 
-    .contact-form-container h3 {
-        font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
-        font-size:48px;
-        margin-bottom: 20px;
-    }
+.contact-form-container h3 {
+    font-family: GillSansMT-Italic,GillSansMT,GillSansMT-Bold,AdobeInvisFont,MyriadPro-Regular;
+    font-size:48px;
+    margin-bottom: 20px;
+}
 
-    .contact-form-container h1, h3{
-        padding:0 10%;
-    }
+.contact-form-container h1, .contact-form-container h3 {
+    padding: 0 10%;
+}
 
-    .contact-form-container input{
-        height:50px;
-    }
+.contact-form-container input{
+    height:50px;
+}
 
 
-    .contact-form-container #txtName, #txtContactNum, #txtEmail, #txtSubject, #txtMessage {
-        background-color: #7CAEA7;
-        color: white;
-    }
+.contact-form-container #txtName, #txtContactNum, #txtEmail, #txtSubject, #txtMessage {
+    background-color: #7CAEA7;
+    color: white;
+}
 
 .contact-form-container #txtName::placeholder{
     color:white;
@@ -101,17 +101,17 @@
 
 }
 
-    .contact-form-container #txtEmail::placeholder {
-        color: white;
-    }
+.contact-form-container #txtEmail::placeholder {
+    color: white;
+}
 
-    .contact-form-container #txtSubject::placeholder {
-        color: white;
-    }
+.contact-form-container #txtSubject::placeholder {
+    color: white;
+}
 
-    .contact-form-container #txtMessage::placeholder {
-        color: white;
-    }
+.contact-form-container #txtMessage::placeholder {
+    color: white;
+}
 
 .contact-form-container button {
     height: 80px;
