@@ -37,7 +37,7 @@ namespace web_app_assignment
 
                                                 "<div class='col-7'>" +
                                                     "<div class='latest-list-title'>" +
-                                                        "<h5>" + drLatest["blog_title"] +"</h5>" +
+                                                        "<h5>" + drLatest["blog_title"].ToString().Substring(0,20)+ "....." +"</h5>" +
                                                     "</div>" +
 
                                                     "<div class='latest-list-description'>" +
@@ -142,7 +142,7 @@ namespace web_app_assignment
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
-                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
+                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"].ToString().Substring(0,20) + "....." + "</p>" +
                                                      "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                  "</div>" +
 
@@ -163,7 +163,7 @@ namespace web_app_assignment
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
-                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
+                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"].ToString().Substring(0,20) + "....." + "</p>" +
                                                      "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                  "</div>" +
 
@@ -184,7 +184,7 @@ namespace web_app_assignment
                                                "<div class='card'>" +
                                                     "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                     "<div class='card-body text-center'>" +
-                                                        "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
+                                                        "<p class='card-text font-weight-bold'>" + drCategory["blog_title"].ToString().Substring(0,20) + "....." + "</p>" +
                                                         "<p class='text-muted text-center'>" + drCategory["last_updated"] + "</p>" +
                                                     "</div>" +
 
