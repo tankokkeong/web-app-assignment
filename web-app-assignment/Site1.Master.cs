@@ -89,13 +89,13 @@ namespace web_app_assignment
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
-                lblAboutUs2.Text = Languages["About Us"];
                 lblBlogs.Text = Languages["Blog"];
                 //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
                 lblContactUs.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
                 lblHelp.Text = Languages["Help"];
                 lblMyProfile.Text = Languages["My Profile"];
                 lblTerms.Text = Languages["Terms & Conditions"];
@@ -152,7 +152,6 @@ namespace web_app_assignment
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
-                lblAboutUs2.Text = Languages["About Us"];
                 lblBlogs.Text = Languages["Blog"];
                 lblMyProfile.Text = Languages["My Profile"];
                 //lblSignUp.Text = Languages["Sign Up"];
@@ -160,6 +159,7 @@ namespace web_app_assignment
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
                 lblContactUs.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
                 lblHelp.Text = Languages["Help"];
                 lblTerms.Text = Languages["Terms & Conditions"];
                 lblCompanyProfile.Text = Languages["Company Profile"];

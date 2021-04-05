@@ -78,13 +78,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblBlogs;
 
         /// <summary>
-        /// lblAboutUs control.
+        /// lblContactUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAboutUs;
+        protected global::System.Web.UI.WebControls.Label lblContactUs;
 
         /// <summary>
         /// Label1 control.
@@ -258,13 +258,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblTotalRecruiter2;
 
         /// <summary>
-        /// lblAboutUs2 control.
+        /// lblAboutUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAboutUs2;
+        protected global::System.Web.UI.WebControls.Label lblAboutUs;
 
         /// <summary>
         /// lblPrivacyPolicy control.
@@ -285,13 +285,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblCareerCenter;
 
         /// <summary>
-        /// lblContactUs control.
+        /// lblContactUs2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactUs;
+        protected global::System.Web.UI.WebControls.Label lblContactUs2;
 
         /// <summary>
         /// lblHelp control.

@@ -96,7 +96,7 @@
           </li>
 
           <li class="nav-item">
-              <a class="nav-link text-light" href="contact-us.aspx"><asp:Label ID="lblAboutUs" runat="server" Text="Contact Us"></asp:Label></a>
+              <a class="nav-link text-light" href="contact-us.aspx"><asp:Label ID="lblContactUs" runat="server" Text="Contact Us"></asp:Label></a>
 <%--            <asp:HyperLink ID="About_Us" navigateUrl="About_Us.aspx" cssclass="nav-link text-light" runat="server" Visible="true" meta:resourceKey="About Us">About Us</asp:HyperLink>--%>
           </li>
 
@@ -189,7 +189,7 @@
                         </div>
                        
                         <div class="text-lightblue mt-2 footer-nav">
-                            <a href="About Us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblAboutUs2" runat="server" Text="About Us"></asp:Label></a>                           
+                            <a href="About Us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblAboutUs" runat="server" Text="About Us"></asp:Label></a>                           
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
@@ -201,7 +201,7 @@
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">
-                             <a href="contact-us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblContactUs" runat="server" Text="Contact Us"></asp:Label></a>
+                             <a href="contact-us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblContactUs2" runat="server" Text="Contact Us"></asp:Label></a>
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
