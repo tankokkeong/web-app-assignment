@@ -17,19 +17,40 @@ namespace web_app_assignment
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlLatest = @"SELECT top 3 blog_id, blog_title, blog_description,blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
+            string sqlLatest = @"SELECT top 4 blog_id, blog_title, blog_description,blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
             SqlCommand cmdLatest = new SqlCommand(sqlLatest, con);
             con.Open();
 
             SqlDataReader drLatest = cmdLatest.ExecuteReader();
 
+            int blog_count = 1;
+
             while (drLatest.Read())
             {
-                litResultLatest.Text +=
+                if(blog_count == 1)
+                {
+                    ltrLeftlatest.Text =
+                        "<a href='blog_description.aspx?blog=" + drLatest["blog_id"] + "' style='text-decoration: none;' class='text-lightgreen-link'>" +
+                        "<div class='left-latest'>" +
+                            "<div class='left-thumbnail-container'>" +
+                                "<img src ='" + drLatest["blog_image"] + "' id='latest-thumbnail'/>" +
+                            "</div>" +
+
+                            "<div class='left-latest-title mt-3'>" +
+                                "<h2>" + drLatest["blog_title"] + "</h2>" +
+                            "</div>" +
+
+                        "</div>" +
+
+                        "</a>";
+                }
+                else
+                {
+                    litResultLatest.Text +=
                                         "<div class='latest-list-container'>" +
                                             "<div class='row latest-list-row'>" +
                                                 "<div class='col-5'>" +
-                                                "<a href='blog_description.aspx?blog=" + drLatest["blog_id"] + "' style='text-decoration: none;'>" +
+                                                "<a href='blog_description.aspx?blog=" + drLatest["blog_id"] + "' style='text-decoration: none;' class='text-lightgreen-link'>" +
                                                     "<div class='list-thumbnail'>" +
                                                         "<img src='../" + drLatest["blog_image"] + "' style='width:100%; height:200px;' class='list-thumbnail-pic'/>" +
                                                     "</div>" +
@@ -37,17 +58,22 @@ namespace web_app_assignment
 
                                                 "<div class='col-7'>" +
                                                     "<div class='latest-list-title'>" +
-                                                        "<h5>" + drLatest["blog_description"] +"</h5>" +
+                                                        "<h5>" + drLatest["blog_description"] + "</h5>" +
                                                     "</div>" +
 
                                                     "<div class='latest-list-description'>" +
-                                                        "<h6 class='text-secondary'>"+drLatest["last_updated"]+"</h6>" +
-                                                        "<p>"+ drLatest["blog_content"].ToString().Substring(0,20) + "......" +"</p>" +
+                                                        "<h6 class='text-secondary'>" + drLatest["last_updated"] + "</h6>" +
+                                                        "<p>" + drLatest["blog_content"].ToString().Substring(0, 20) + "......" + "</p>" +
                                                     "</div>" +
                                                 "</div>" +
-                                              "</a>" + 
+                                              "</a>" +
                                             "</div>" +
                                         "</div>";
+                }
+
+
+                //Increase blog count
+                blog_count++; 
 
             }
             drLatest.Close();
@@ -138,7 +164,7 @@ namespace web_app_assignment
                 if(row_count == total_category)
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
-                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;'>" +
+                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;' class='text-lightgreen-link'>" +
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
@@ -158,7 +184,7 @@ namespace web_app_assignment
                 else if(row_count % 3 == 0)
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
-                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;'>" +
+                                            "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;' class='text-lightgreen-link'>" +
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
@@ -178,7 +204,7 @@ namespace web_app_assignment
                 else
                 {
                     litResultBlog.Text += "<div class='col-lg-4'>" +
-                                              "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;'>" +
+                                              "<a href='blog_description.aspx?blog="+ drCategory["blog_id"] + "' style='text-decoration:none;' class='text-lightgreen-link'>" +
                                                "<div class='card'>" +
                                                     "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                     "<div class='card-body text-center'>" +

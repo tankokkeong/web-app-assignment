@@ -12,16 +12,8 @@
         <div class="blog-category latest-category">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                    <div class="left-latest">
-                        <div class="left-thumbnail-container">
-                            <img src="https://jobmajestic.com/blog/media/2021/03/Cover-Ultimate-Elevator-Pitch-CH-768x512.jpg" id="latest-thumbnail"/>
-                        </div>
-                        
-                        <div class="left-latest-title mt-3">
-                            <h2>毕业生自我推荐(Elevator Pitch)讲稿指南 (附上5个贴士)</h2>
-                        </div>
-
-                    </div>
+                    <asp:Literal ID="ltrLeftlatest" runat="server"></asp:Literal>
+                    
                 </div>
 
                 <div class="col-sm-12 col-lg-6">

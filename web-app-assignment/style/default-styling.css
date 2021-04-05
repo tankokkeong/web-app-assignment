@@ -25,6 +25,14 @@ body {
     color: #577488 !important;
 }
 
+.text-lightgreen-link {
+    color: #0B8C7B !important;
+}
+
+.text-lightgreen-link:hover {
+    color: #085e53 !important;
+}
+
 /*background colours*/
 .bg-lightgreen {
     background-color: #0B8C7B !important;
