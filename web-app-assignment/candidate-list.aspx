@@ -242,20 +242,22 @@
             var industries = industriesQuery.split(',');
             var select2_input = document.getElementById("industry-selection");
 
-            if (industries !== " ") {
+            if (industriesQuery !== " " && industries !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < industries.length; i++) {
 
+                    //Preserve query string
+                    industries[i] = industries[i].replace("+", " ");
+
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(industries[i]) == null) {
+                    if (document.getElementById(unescape(industries[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(industries[i]) + "' selected id='" + unescape(industries[i]) + "'>" + unescape(industries[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < industries.length; i++) {
-
-                    if (document.getElementById(industries[i]) != null) {
-                        document.getElementById(industries[i]).selected = true;
+                    if (document.getElementById(unescape(industries[i])) != null) {
+                        document.getElementById(unescape(industries[i])).selected = true;
                     }
 
                 }
@@ -270,20 +272,23 @@
             skills = skills.split(',');
             var select2_input = document.getElementById("skills-selection");
 
-            if (skills !== " ") {
+            if (skillsQuery != " " && skills !== " ") {
                 //Add Customize creation for the users
                 for (var i = 0; i < skills.length; i++) {
 
+                    //Preserve query string
+                    skills[i] = skills[i].replace("+", " ");
+
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(skills[i]) == null) {
+                    if (document.getElementById(unescape(skills[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(skills[i]) + "' selected id='" + unescape(skills[i]) + "'>" + unescape(skills[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < skills.length; i++) {
 
-                    if (document.getElementById(skills[i]) != null) {
-                        document.getElementById(skills[i]).selected = true;
+                    if (document.getElementById(unescape(skills[i])) != null) {
+                        document.getElementById(unescape(skills[i])).selected = true;
                     }
 
                 }
@@ -298,20 +303,23 @@
             var location = locationQuery.split(',');
             var select2_input = document.getElementById("location-selection");
 
-            if (location !== " ") {
+            if (locationQuery != " " && location !== " ") {
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
+                    //Preserve query string
+                    location[i] = location[i].replace("+", " ");
+
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(location[i]) == null) {
+                    if (document.getElementById(unescape(location[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(location[i]) + "' selected id='" + unescape(location[i]) + "'>" + unescape(location[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < location.length; i++) {
 
-                    if (document.getElementById(location[i]) != null) {
-                        document.getElementById(location[i]).selected = true;
+                    if (document.getElementById(unescape(location[i])) != null) {
+                        document.getElementById(unescape(location[i])).selected = true;
                     }
 
                 }
@@ -322,12 +330,11 @@
             var professionQuery = window.location.href.split('?')[1];
             professionQuery = professionQuery.split('&')[3];
             professionQuery = professionQuery.split('=')[1];
-            console.log(professionQuery);
 
             var profession = professionQuery.split(',');
             var select2_input = document.getElementById("profession-selection");
 
-            if (profession !== " ") {
+            if (professionQuery != " " && profession !== " ") {
                 //Add Customize creation for the users
                 for (var i = 0; i < profession.length; i++) {
 

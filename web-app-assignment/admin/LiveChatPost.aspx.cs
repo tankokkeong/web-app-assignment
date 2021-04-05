@@ -18,8 +18,8 @@ namespace web_app_assignment.admin
             //Read chat content from post submit
             var chat_content = Request.Form["chat_content"];
             var admin_id = Request.Form["admin_id"];
-            var user_id = Request.Form["user_id"];
-            var visitor_id = Request.Form["visitor_id"];
+            //var user_id = Request.Form["user_id"];
+            //var visitor_id = Request.Form["visitor_id"];
 
             //Insert Chat Record
             try

@@ -81,7 +81,7 @@
                         $.post("LiveChatPost.aspx",
                             {
                                 chat_content: $("#message").val(),
-                                admin_id: $("#ContentPlaceHolder1_lblAdminID"),
+                                admin_id: $("#ContentPlaceHolder1_lblAdminID").val(),
                             });
                     }
                 }
