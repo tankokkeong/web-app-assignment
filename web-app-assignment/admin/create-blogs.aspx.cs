@@ -39,9 +39,11 @@ namespace web_app_assignment.admin
             try 
             {
                 string title = txtTitle.Text;
+                string desc = txtSDesc.Text;
                 string content = HttpUtility.UrlDecode(txtBlogDescription.Text);
                 string category_id = ddlCategory.SelectedValue;
                 string admin_id = helper.getAdminID();
+
 
                 //Upload Profile Image Handled
                 string upload_path = MapPath("/Uploads/");
@@ -61,13 +63,14 @@ namespace web_app_assignment.admin
                 SqlConnection con = new SqlConnection(strcon);
                 con.Open();
 
-                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_content, blog_image, blog_category_id, edited_by, last_updated, created_at)" +
-                    "VALUES(@blogTitle, @blogContent, @blogImage, @blogCatId, @editBy, @lastUpdated, @created_at)";
+                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_description, blog_content, blog_image, blog_category_id, edited_by, last_updated, created_at)" +
+                    "VALUES(@blogTitle, @blogDesc,@blogContent, @blogImage, @blogCatId, @editBy, @lastUpdated, @created_at)";
 
                 SqlCommand cmdInsert = new SqlCommand(sqlInsert, con);
                 
                 //Insert parameters
                 cmdInsert.Parameters.AddWithValue("@blogTitle", title);
+                cmdInsert.Parameters.AddWithValue("@blogDesc", desc);
                 cmdInsert.Parameters.AddWithValue("@blogContent", content);
                 cmdInsert.Parameters.AddWithValue("@blogImage", blog_photo);
                 cmdInsert.Parameters.AddWithValue("@blogCatId", category_id);

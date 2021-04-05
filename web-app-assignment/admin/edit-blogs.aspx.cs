@@ -36,6 +36,7 @@ namespace web_app_assignment.admin
                 while (dr.Read())
                 {
                     txtTitle.Text = dr["blog_title"].ToString();
+                    txtSDesc.Text = dr["blog_description"].ToString();
                     txtPhotoUpload.Text = dr["blog_image"].ToString();
                     txtEditDescription.Text = dr["blog_content"].ToString();
                 }
@@ -58,6 +59,7 @@ namespace web_app_assignment.admin
         {
             string id = Request.QueryString["Id"] ?? "";
             string title = txtTitle.Text;
+            string desc = txtSDesc.Text;
             string content = HttpUtility.UrlDecode(txtEditDescription.Text);
             string category_id = ddlCategory.SelectedValue;
             string admin_id = helper.getAdminID();
@@ -79,7 +81,7 @@ namespace web_app_assignment.admin
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlEdit = @"UPDATE BlogPost SET blog_title = @title, blog_content = @content, 
+            string sqlEdit = @"UPDATE BlogPost SET blog_title = @title, blog_description = @blogDesc, blog_content = @content, 
                               blog_image = @image, blog_category_id = @categoryID, edited_by = @editBy, 
                               last_updated = @last_updated WHERE blog_id = @Id";
 
@@ -89,6 +91,7 @@ namespace web_app_assignment.admin
             //Insert parameters
             cmdEdit.Parameters.AddWithValue("@Id", id);
             cmdEdit.Parameters.AddWithValue("@title", title);
+            cmdEdit.Parameters.AddWithValue("@blogDesc", desc);
             cmdEdit.Parameters.AddWithValue("@content", content);
             cmdEdit.Parameters.AddWithValue("@image", blog_photo);
             cmdEdit.Parameters.AddWithValue("@categoryID", category_id);
