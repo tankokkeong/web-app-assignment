@@ -45,7 +45,7 @@ namespace web_app_assignment
 
 
                     cmd.Parameters.AddWithValue("@email", fb_email);
-                    cmd.Parameters.AddWithValue("@gmail_token", fb_id);
+                    cmd.Parameters.AddWithValue("@facebook_token", fb_id);
 
                     cmd.ExecuteNonQuery();
 
@@ -59,7 +59,7 @@ namespace web_app_assignment
 
                     conn.Open();
 
-                    cm.Parameters.AddWithValue("@gmail_token", fb_id);
+                    cm.Parameters.AddWithValue("@facebook_token", fb_id);
 
                     int output = (int)cm.ExecuteScalar();
 
@@ -75,7 +75,7 @@ namespace web_app_assignment
 
                         conn.Open();
 
-                        cm.Parameters.AddWithValue("@gmail_token", fb_id);
+                        cm.Parameters.AddWithValue("@facebook_token", fb_id);
 
                         SqlDataReader dr = cm.ExecuteReader();
 
@@ -109,7 +109,7 @@ namespace web_app_assignment
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered'); window.location('login_signup.aspx');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Facebook Account Has Been Registered'); window.location('login_signup.aspx');", true);
                 }
                 con.Close();
             }

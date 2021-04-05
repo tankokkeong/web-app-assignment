@@ -209,6 +209,7 @@
                     </div>
                 
                     <input type="hidden" id="JobRole" />
+
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
                         <a class="LoginFree" id="login_tabatag" onclick="showLoginTab()" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Log In Now</a>
@@ -355,10 +356,8 @@
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me?fields=name,id,email', function (response) {
                 console.log('Successful login for: ' + response.name + ' and' + response.id + ' and' + response.email);
-                document.getElementById('status').innerHTML =
-                    'Successful login for: ' + response.name + ' and ' + response.id + ' and ' + response.email;
 
-
+                saveUserData(response);
             });
         }
 
@@ -375,6 +374,7 @@
                     },
                     function () {
                         alert("Success!");
+                        window.location.href("fb-signup-post.aspx");
                     });
             }
         }
