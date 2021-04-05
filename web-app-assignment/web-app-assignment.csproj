@@ -1922,6 +1922,7 @@
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="sqldb.txt" />
     <Content Include="style\about_us.css" />
+    <Content Include="style\blog-explore.css" />
     <Content Include="style\blog.css" />
     <Content Include="style\blog_description.css" />
     <Content Include="style\candidate-list.css" />

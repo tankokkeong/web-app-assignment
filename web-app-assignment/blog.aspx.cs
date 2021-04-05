@@ -17,7 +17,7 @@ namespace web_app_assignment
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlLatest = @"SELECT top 4 blog_id, blog_title, blog_description,blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
+            string sqlLatest = @"SELECT top 4 blog_id, blog_title, blog_description, blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
             SqlCommand cmdLatest = new SqlCommand(sqlLatest, con);
             con.Open();
 
@@ -63,7 +63,6 @@ namespace web_app_assignment
 
                                                     "<div class='latest-list-description'>" +
                                                         "<h6 class='text-secondary'>" + drLatest["last_updated"] + "</h6>" +
-                                                        "<p>" + drLatest["blog_content"].ToString().Substring(0, 20) + "......" + "</p>" +
                                                     "</div>" +
                                                 "</div>" +
                                               "</a>" +
@@ -168,7 +167,9 @@ namespace web_app_assignment
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
+                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                      "<p class='card-text font-weight-bold'>" + drCategory["blog_description"] + "</p>" +
+
                                                  "</div>" +
 
                                                  "<div class='card-footer text-muted text-center'>" +
@@ -188,6 +189,7 @@ namespace web_app_assignment
                                             "<div class='card'>" +
                                                  "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
+                                                     "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                      "<p class='card-text font-weight-bold'>" + drCategory["blog_description"] + "</p>" +
                                                  "</div>" +
 
@@ -208,6 +210,7 @@ namespace web_app_assignment
                                                "<div class='card'>" +
                                                     "<img src='../" + drCategory["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                     "<div class='card-body text-center'>" +
+                                                        "<p class='card-text font-weight-bold'>" + drCategory["blog_title"] + "</p>" +
                                                         "<p class='card-text font-weight-bold'>" + drCategory["blog_description"] + "</p>" +
                                                     "</div>" +
 
