@@ -12,14 +12,14 @@ namespace web_app_assignment.admin
 {
     public partial class LiveChat1 : System.Web.UI.Page
     {
+        Helper helper = new Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 Dictionary<string, string> AdminDetail = (Dictionary<string, string>)Session["Admin"];
 
-                lblUsername.Text = Request.QueryString["chat"] ?? "";
-                lblAdminName.Text = AdminDetail["Admin_Email"].ToString();
+                lblAdminID.Text = helper.getAdminID();
             }
             catch(Exception error)
             {

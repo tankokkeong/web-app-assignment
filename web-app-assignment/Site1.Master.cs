@@ -13,6 +13,7 @@ namespace web_app_assignment
     public partial class Site1 : System.Web.UI.MasterPage
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        Helper helper = new Helper();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -197,59 +198,48 @@ namespace web_app_assignment
 
                 if (Session["User"] != null)
                 {
-                    if (UserDetail["user_email"] == "")
+                    string seeker_email = UserDetail["user_email"];
+
+                    string sql = "SELECT * FROM JobSeeker WHERE email = @email";
+
+                    SqlCommand command = new SqlCommand(sql, con);
+
+                    command.Parameters.AddWithValue("@email", seeker_email);
+
+                    SqlDataReader dread = command.ExecuteReader();
+
+                    while (dread.Read())
                     {
-                        Response.Write("<script>alert('Empty Email');</script>");
-                        Response.Redirect("login_signup.aspx");
+                        txtUsername.Text = dread["email"].ToString();
                     }
-                    else
-                    {
-                        string seeker_email = UserDetail["user_email"];
 
-                        string sql = "SELECT * FROM JobSeeker WHERE email = @email";
-
-                        SqlCommand command = new SqlCommand(sql, con);
-
-                        command.Parameters.AddWithValue("@email", seeker_email);
-
-                        SqlDataReader dread = command.ExecuteReader();
-
-                        while (dread.Read())
-                        {
-                            txtUsername.Text = dread["email"].ToString();
-                        }
-                    }
+                    lblUsername.Text = helper.getSeekerID();
                 }
                 else if (Session["Recruiter"] != null)
                 {
-                    if (RecruiterDetail["recruiter_email"] == "")
+                    string recruiter_email = RecruiterDetail["recruiter_email"];
+
+                    string sql = "SELECT * FROM Recruiter WHERE email = @email";
+
+                    SqlCommand command = new SqlCommand(sql, con);
+
+                    command.Parameters.AddWithValue("@email", recruiter_email);
+
+                    SqlDataReader dread = command.ExecuteReader();
+
+                    while (dread.Read())
                     {
-                        Response.Write("<script>alert('Empty Email');</script>");
-                        Response.Redirect("login_signup.aspx");
+                        txtUsername.Text = dread["email"].ToString();
                     }
-                    else
-                    {
-                        string recruiter_email = RecruiterDetail["recruiter_email"];
 
-                        string sql = "SELECT * FROM Recruiter WHERE email = @email";
-
-                        SqlCommand command = new SqlCommand(sql, con);
-
-                        command.Parameters.AddWithValue("@email", recruiter_email);
-
-                        SqlDataReader dread = command.ExecuteReader();
-
-                        while (dread.Read())
-                        {
-                            txtUsername.Text = dread["email"].ToString();
-                        }
-                    }
+                    lblUsername.Text = helper.getRecruiterID();
                 }
 
                 con.Close();
 
                 //Display Current Site information
                 getCurrentSiteJobDetails();
+
             }
 
             catch (Exception error)

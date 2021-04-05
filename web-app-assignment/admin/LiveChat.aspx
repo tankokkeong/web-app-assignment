@@ -45,8 +45,7 @@
         <div id="messages" class="LiveChatContainerContents"></div>
 
         <div class="sendMessages">
-            <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
-            <asp:Label ID="lblAdminName" class="LCusername" runat="server"></asp:Label>
+            <asp:Label ID="lblAdminID" class="LCusername" runat="server"></asp:Label>
             <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
             <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
         </div>
@@ -76,6 +75,15 @@
                         "message": message,
                         "timeSent": sentTime,
                     });
+
+                    //send form request to livechat post
+                    if ($("#message").val().trim().length > 0) {
+                        $.post("LiveChatPost.aspx",
+                            {
+                                chat_content: $("#message").val(),
+                                admin_id: $("#ContentPlaceHolder1_lblAdminID"),
+                            });
+                    }
                 }
             }
         }
