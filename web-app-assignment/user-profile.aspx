@@ -204,6 +204,10 @@
                                         <div class='employment-type badge badge-success'>
                                             <%#Eval("job_type") %>
                                         </div>
+
+                                       <div class="mt-1">
+                                           <a href="job_description.aspx?post_id=<%#Eval("post_id") %>" class="btn btn-primary">View Post</a>
+                                       </div>
                                     </div>
 
                                     <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Pending" %>'>

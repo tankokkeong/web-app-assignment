@@ -49,13 +49,16 @@
                 </div>
 
                 <br />
-                <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="6" class="pagination mt-3" OnPreRender="DataPager1_PreRender">
-                    <Fields >
-                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
-                        <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
-                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
-                    </Fields>
+                <div class="pagination-container text-center">
+                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="6" class="pagination mt-3 mb-3 text-center" OnPreRender="DataPager1_PreRender">
+                        <Fields >
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                            <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
+                        </Fields>
                     </asp:DataPager>
+                </div>
+                
             </div>
             <br />
         </div>
