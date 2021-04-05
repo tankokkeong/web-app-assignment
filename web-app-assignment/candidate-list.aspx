@@ -82,8 +82,57 @@
                         </asp:DropDownList>
                         Per Page
                     </div>
-                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
-                    <asp:Label ID="txtPagination" runat="server"></asp:Label>
+
+                    <div class="row">
+                        <asp:ListView ID="lvJobListContentsAllCompanies" runat="server">
+                            <ItemTemplate>
+                                <div class='col-sm-6 mt-3'>
+                                    <div class='JobListContentsAllCompaniesBoxes row mr-1 ml-1'>
+                                        <div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition col'>
+                                            <img src='<%#Eval("user_photo") %>' alt='job seeker' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>
+                                        </div>
+                                        <div class='JobListContentsAllCompaniesBoxesDetails col'>
+                                            <h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>
+                                                <%#Eval("full_name") %>
+                                            </h4>
+                                            <div class='JobListContentsAllCompaniesBoxesDetailsBody'>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("profession") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("location") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("prefer_industry") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages' />
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("experience") %></p>
+                                                </div>
+                                            </div>
+                                            <div class='JobListContentsAllCompaniesBoxesDetailsFooter'>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>
+                                                    <button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(<%#Eval("seeker_id") %>)'> More Details </button> 
+                                                    <button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
+
+                    <asp:DataPager ID="dpPagination" runat="server" class="row pagination" OnPreRender="dpPagination_PreRender" PagedControlID="lvJobListContentsAllCompanies">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                            <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
+                        </Fields>
+                    </asp:DataPager>
                 </div>
             </div>
         </div>

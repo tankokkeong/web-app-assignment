@@ -24,21 +24,21 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
 
         /// <summary>
-        /// lbl_JobListContentsAllCompanies control.
+        /// lvJobListContentsAllCompanies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListContentsAllCompanies;
+        protected global::System.Web.UI.WebControls.ListView lvJobListContentsAllCompanies;
 
         /// <summary>
-        /// txtPagination control.
+        /// dpPagination control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtPagination;
+        protected global::System.Web.UI.WebControls.DataPager dpPagination;
     }
 }

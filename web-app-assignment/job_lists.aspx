@@ -141,9 +141,7 @@
                         </Fields>
                     </asp:DataPager>
 
-                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server">
-                    </asp:Label>
-                    <asp:Label ID="txtPagination" runat="server"></asp:Label>
+                    <asp:Label ID="Label1" runat="server"></asp:Label>
                 </div>
             </div>
         </div>
