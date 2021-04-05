@@ -44,20 +44,26 @@ namespace web_app_assignment
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
+                    
+
                     cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
-                    cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));                  
+                    cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
+                    
+
 
                     String output = cmd.ExecuteScalar().ToString();
 
                     if (output == "1") //if the result found
                     {
-                        query = "select count(*) from JobSeeker where email= @email AND password = @password AND verified_at IS NOT NULL";
+                        query = "select count(*) from JobSeeker where email= @email AND password = @password AND verified_at IS NOT NULL AND active = @active";
 
                         cmd = new SqlCommand(query, con);
 
+                        string active = "active";
+
                         cmd.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
                         cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
-                        
+                        cmd.Parameters.AddWithValue("@active", active);
 
                         output = cmd.ExecuteScalar().ToString();
 
@@ -100,7 +106,7 @@ namespace web_app_assignment
                         }
                         else
                         {
-                            Response.Write(@"<script language='javascript'>alert('Your account is not verify')</script>");
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active')</script>");
                         }
 
                     }
@@ -129,12 +135,14 @@ namespace web_app_assignment
 
                     if (result == "1") // if the result found
                     {
-                        qry = "select count(*) from Recruiter where email= @email AND password = @password AND verified_at IS NOT NULL";
+                        qry = "select count(*) from Recruiter where email= @email AND password = @password AND verified_at IS NOT NULL AND active = @active";
 
                         cm = new SqlCommand(qry, conn);
 
+                        string active = "active";
                         cm.Parameters.AddWithValue("@email", sign_login_emailUser.Text);
                         cm.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_login_password.Text));
+                        cm.Parameters.AddWithValue("@active", active);
 
 
                         result = cm.ExecuteScalar().ToString();
@@ -184,7 +192,7 @@ namespace web_app_assignment
                         }
                         else
                         {
-                            Response.Write(@"<script language='javascript'>alert('Your account is not verify')</script>");
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active')</script>");
                         }
                     }
                     else
@@ -237,7 +245,7 @@ namespace web_app_assignment
 
                         sqlcon.Open();
 
-                        String sqlquery = "INSERT INTO Recruiter (company_name, email, password, verify_key, created_at) VALUES (@company_name, @email, @password, @vkey, GETDATE())";
+                        String sqlquery = "INSERT INTO Recruiter (company_name, email, password, verify_key, active, created_at) VALUES (@company_name, @email, @password, @vkey, @active, GETDATE())";
 
                         SqlCommand sqlcmd = new SqlCommand(sqlquery, sqlcon);
 
@@ -246,6 +254,7 @@ namespace web_app_assignment
                         sqlcmd.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_recruiter_password.Text));
 
                         sqlcmd.Parameters.AddWithValue("@vkey", vkey);
+                        sqlcmd.Parameters.AddWithValue("@active", "active");
 
                         sqlcmd.ExecuteNonQuery();
                         sqlcon.Close();
@@ -335,7 +344,7 @@ namespace web_app_assignment
 
                         connectionSql.Open();
 
-                        String sqlqry = "INSERT INTO JobSeeker (full_name, email, password, verify_key, created_at) VALUES (@full_name, @email, @password, @vkey, GETDATE())";
+                        String sqlqry = "INSERT INTO JobSeeker (full_name, email, password, verify_key, active, created_at) VALUES (@full_name, @email, @password, @vkey, @active, GETDATE())";
 
                         SqlCommand commandSql = new SqlCommand(sqlqry, connectionSql);
 
@@ -343,6 +352,7 @@ namespace web_app_assignment
                         commandSql.Parameters.AddWithValue("@email", sign_seeker_email.Text);
                         commandSql.Parameters.AddWithValue("@password", pwHash.hashPassword(sign_seeker_password.Text));
                         commandSql.Parameters.AddWithValue("@vkey", vkey2);
+                        commandSql.Parameters.AddWithValue("@active", "active");
 
                         commandSql.ExecuteNonQuery();
                         connectionSql.Close();

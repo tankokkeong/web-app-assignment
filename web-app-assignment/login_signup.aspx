@@ -114,7 +114,7 @@
                                     <div class="form-group">
                                         <asp:TextBox ID="sign_recruiter_companyName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Name"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="recruiterCompanyReq" runat ="server" ControlToValidate="sign_recruiter_companyName" validationgroup="recruiter" ErrorMessage="Company Name is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
-                                        <asp:RegularExpressionValidator ID="revrecruiterCompany" runat="server" ValidationExpression="^[A-Za-z0-9]+$" ErrorMessage="Symbol is not allowed" ControlToValidate="sign_recruiter_companyName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                                                           
+                                        <asp:RegularExpressionValidator ID="revrecruiterCompany" runat="server" ValidationExpression="^[A-Za-z0-9 ]+$" ErrorMessage="Symbol is not allowed" ControlToValidate="sign_recruiter_companyName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                                                           
                                     </div>
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
@@ -165,7 +165,7 @@
                                         <div class="col">
                                             <asp:TextBox ID="sign_seeker_FullName" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Full Name"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="seekerFullNameReq" runat ="server" ControlToValidate="sign_seeker_FullName" validationgroup="seeker" ErrorMessage="Full Name is required!" forecolor="Red" SetFocusOnError="True" Display="Dynamic"/>
-                                            <asp:RegularExpressionValidator ID="revSeekerFullName" runat="server" ValidationExpression="^[A-Za-z]+$" ErrorMessage="Symbol and number is not allowed" ControlToValidate="sign_seeker_FullName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                        
+                                            <asp:RegularExpressionValidator ID="revSeekerFullName" runat="server" ValidationExpression="^[a-zA-Z ]*$" ErrorMessage="Symbol and number is not allowed" ControlToValidate="sign_seeker_FullName" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                                                        
                                         </div>
                                      </div>
                                     <div class="row form-group-row">
@@ -358,21 +358,24 @@
                 document.getElementById('status').innerHTML =
                     'Successful login for: ' + response.name + ' and ' + response.id + ' and ' + response.email;
 
-                //assign facebook user value into variable
+                ////assign facebook user value into variable
                 var name = response.name;
                 var id = response.id;
                 var email = response.email
 
                 var role = document.getElementById("JobRole").value;
+
                 //Post to other web page for data insertion into database
                 if (role == "Recruiter") {
-                    $.post("fb-signup-post-r.aspx",
-                        {
-                            fb_name: name,
-                            fb_id: id,
-                            fb_email: email,
-                        });
-                    window.location.href("fb-signup-post-r.aspx");
+                    $.ajax({
+                        url: "fb-signup-post-r.aspx",
+                        type: "POST",
+                        data: name, id, email,
+                        dataType: "json",
+                        sucess: function () {
+                            window.location.href("fb-signup-post-r.aspx");
+                        }
+                    })
                 }
                
                 
