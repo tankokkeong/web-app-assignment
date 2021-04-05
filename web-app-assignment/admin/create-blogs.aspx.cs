@@ -58,15 +58,14 @@ namespace web_app_assignment.admin
                     blog_photo = txtPhotoUpload.Text;
                 }
 
-                Response.Redirect("display-blogs.aspx");
-
                 SqlConnection con = new SqlConnection(strcon);
-
-                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_content, blog_image, blog_category_id, edited_by, last_updated, created_at)VALUES(@blogTitle, @blogContent, @blogImage, @blogCatId, @editBy, @lastUpdated, @created_at)";
-
-                SqlCommand cmdInsert = new SqlCommand(sqlInsert, con);
                 con.Open();
 
+                string sqlInsert = "INSERT INTO BlogPost(blog_title, blog_content, blog_image, blog_category_id, edited_by, last_updated, created_at)" +
+                    "VALUES(@blogTitle, @blogContent, @blogImage, @blogCatId, @editBy, @lastUpdated, @created_at)";
+
+                SqlCommand cmdInsert = new SqlCommand(sqlInsert, con);
+                
                 //Insert parameters
                 cmdInsert.Parameters.AddWithValue("@blogTitle", title);
                 cmdInsert.Parameters.AddWithValue("@blogContent", content);
@@ -80,6 +79,7 @@ namespace web_app_assignment.admin
 
                 //Close Connection
                 con.Close();
+                Response.Redirect("display-blogs.aspx");
             }
             catch (Exception error)
             {

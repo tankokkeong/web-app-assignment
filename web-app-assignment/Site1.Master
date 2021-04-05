@@ -251,7 +251,7 @@
                         </div>
                         
                         <div class="text-light mt-2 footer-nav">
-                           <select id="language" class="form-control mt-3 mb-3" onchange="languageFunction()">
+                           <select id="language" class="form-control mt-3 mb-3" runat="server" onchange="languageFunction()">
                                 <option value="">Select Language</option>
                                 <option value="EN">English</option>
                                 <option value="CN">Chinese</option>
