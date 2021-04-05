@@ -17,9 +17,9 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             //Read chat content from post submit
-            var fb_name = Request.Form["fb_name"];
-            var fb_id = Request.Form["fb_id"];
-            var fb_email = Request.Form["fb_email"];
+            var fb_name = Request.QueryString["fb_name"] ?? "NULL";
+            var fb_id = Request.QueryString["fb_id"] ?? "NULL";
+            var fb_email = Request.QueryString["fb_email"] ?? "NULL";
 
             try
             {
