@@ -26,6 +26,7 @@
                             <asp:TextBox ID="txt_SearchJobTitle" placeholder="Job Title, Keyword or Company" CssClass="form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
+
                     <div class="form-group JobListContentsBackgroundInputs">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -38,6 +39,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group JobListContentsBackgroundInputs">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -46,7 +48,7 @@
                                 </span>
                             </div>
                             <div class="JobListContentsJobTypeDropdown">
-                                <select class="form-control jobType custom-select" style="width:100%;" id="jobtype-selection" multiple="multiple"></select>
+                                <select class="form-control jobType custom-select" style="width:100%;" id="jobtype-selection"></select>
                             </div>
                         </div>
                     </div>
@@ -235,20 +237,20 @@
             var location = locationQuery.split(',');
             var select2_input = document.getElementById("location-selection");
 
-            if (location !== null) {
+            if (locationQuery !== "" && location !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(location[i]) == null) {
+                    if (document.getElementById(unescape(location[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(location[i]) + "' selected id='" + unescape(location[i]) + "'>" + unescape(location[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < location.length; i++) {
 
-                    if (document.getElementById(location[i]) != null) {
-                        document.getElementById(location[i]).selected = true;
+                    if (document.getElementById(unescape(location[i])) != null) {
+                        document.getElementById(unescape(location[i])).selected = true;
                     }
 
                 }
@@ -276,20 +278,21 @@
             var jobType = jobTypeQuery.split(',');
             var select2_input = document.getElementById("jobtype-selection");
 
-            if (jobType !== "") {
+            if (jobTypeQuery !== "" && jobType !== "" ) {
+
                 //Add Customize creation for the users
                 for (var i = 0; i < jobType.length; i++) {
 
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(jobType[i]) == null) {
+                    if (document.getElementById(unescape(jobType[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(jobType[i]) + "' selected id='" + unescape(jobType[i]) + "'>" + unescape(jobType[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < jobType.length; i++) {
 
-                    if (document.getElementById(jobType[i]) != null) {
-                        document.getElementById(jobType[i]).selected = true;
+                    if (document.getElementById(unescape(jobType[i])) != null) {
+                        document.getElementById(unescape(jobType[i])).selected = true;
                     }
 
                 }
@@ -304,20 +307,20 @@
             var jobSpec = jobSpecQuery.split(',');
             var select2_input = document.getElementById("jobSpec-selection");
 
-            if (jobSpec !== "") {
+            if (jobSpecQuery !== "" && jobSpec !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < jobSpec.length; i++) {
 
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(jobSpec[i]) == null) {
+                    if (document.getElementById(unescape(jobSpec[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(jobSpec[i]) + "' selected id='" + unescape(jobSpec[i]) + "'>" + unescape(jobSpec[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < jobSpec.length; i++) {
 
-                    if (document.getElementById(jobSpec[i]) != null) {
-                        document.getElementById(jobSpec[i]).selected = true;
+                    if (document.getElementById(unescape(jobSpec[i])) != null) {
+                        document.getElementById(unescape(jobSpec[i])).selected = true;
                     }
 
                 }

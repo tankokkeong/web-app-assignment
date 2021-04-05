@@ -1131,7 +1131,14 @@ function printSelect2JobType(id) {
 
     //Print out available states
     for (var i = 0; i < jobType.length; i++) {
-        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + jobType[i] + "' id='" + jobType[i] + "'>" + jobType[i] + "</option>";
+        if (jobType[i] === "All") {
+            select_tag.innerHTML = select_tag.innerHTML + "<option id='All'>" + jobType[i] + "</option>";
+        }
+        else
+        {
+            select_tag.innerHTML = select_tag.innerHTML + "<option value='" + jobType[i] + "' id='" + jobType[i] + "'>" + jobType[i] + "</option>";
+        }
+        
     }
 }
 

@@ -89,7 +89,7 @@ namespace web_app_assignment
 
             string sql = "";
 
-            if(jobTitlequery != "" || locationsquery != "" || jobTypequery != "" || JobSpecquery != "" )
+            if(jobTitlequery != "" || locationsquery != "" || (jobTypequery != "All" && jobTypequery != "") || JobSpecquery != "" )
             {
                 sql += " WHERE";
             }
@@ -127,9 +127,9 @@ namespace web_app_assignment
                     
             }
 
-            if (jobTypequery != "")
+            if (jobTypequery != "All" && jobTypequery != "")
             {
-                if(jobTitlequery!= "" || locationsquery!= "")
+                if (jobTitlequery != "" || locationsquery != "")
                 {
                     sql += " AND job_type LIKE '%" + jobTypequery + "%'";
                 }
@@ -141,7 +141,7 @@ namespace web_app_assignment
 
             if (JobSpecquery != "")
             {
-                if(jobTitlequery != "" || locationsquery != "" || jobTitlequery != "")
+                if(jobTitlequery != "" || locationsquery != "" || (jobTypequery != "All" && jobTypequery != ""))
                 {
                     if (JobSpecquery.Contains(','))
                     {
@@ -173,6 +173,7 @@ namespace web_app_assignment
         {
             string locationsquery = Request.QueryString["location"] ?? "";
             string JobSpecquery = Request.QueryString["job_spec"] ?? "";
+            string jobTypequery = Request.QueryString["job_type"] ?? "";
 
             string sql = "";
 
