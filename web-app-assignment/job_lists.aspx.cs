@@ -38,7 +38,7 @@ namespace web_app_assignment
                     "UNION" +
                     "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql);
+                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 5;
             }
@@ -50,7 +50,7 @@ namespace web_app_assignment
                     "UNION" +
                     "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql);
+                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 10;
             }
@@ -62,7 +62,7 @@ namespace web_app_assignment
                     "UNION" +
                     "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql);
+                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 15;
             }
@@ -87,7 +87,7 @@ namespace web_app_assignment
 
             if(jobTitlequery != "" && locationsquery != "" && jobTypequery != "" && JobSpecquery != "" )
             {
-                sql += " WHERE ";
+                sql += " WHERE";
             }
 
             if (jobTitlequery != "")
@@ -99,7 +99,7 @@ namespace web_app_assignment
             {
                 if (locationsquery.Contains(','))
                 {
-                    sql += JobListSearchAmount(sql);
+                    sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount(sql);
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace web_app_assignment
             {
                 if (JobSpecquery.Contains(','))
                 {
-                    sql += JobListSearchAmount(sql);
+                    sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount(sql);
                 }
                 else
                 {
@@ -138,7 +138,7 @@ namespace web_app_assignment
                 string[] SpecArr = JobSpecquery.Split(',');
 
                 //loop for all job spec
-                for (int i = 0; i < SpecArr.Length; i++)
+                for (int i = 1; i < SpecArr.Length; i++)
                 {
                     sql += " OR job_specializations LIKE '%" + SpecArr[i] + "%'";
                 }
@@ -150,7 +150,7 @@ namespace web_app_assignment
                 string[] locationArr = locationsquery.Split(',');
 
                 //loop for all location
-                for (int i = 0; i < locationArr.Length; i++)
+                for (int i = 1; i < locationArr.Length; i++)
                 {
                     sql += " OR location LIKE '%" + locationArr[i] + "%'";
                 }

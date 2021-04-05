@@ -44,7 +44,7 @@ namespace web_app_assignment
                                     "UNION" +
                                     "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql);
+                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 5;
                 }
@@ -56,7 +56,7 @@ namespace web_app_assignment
                                     "UNION" +
                                     "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql);
+                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 10;
                 }
@@ -68,7 +68,7 @@ namespace web_app_assignment
                                     "UNION" +
                                     "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql);
+                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 15;
                 }
