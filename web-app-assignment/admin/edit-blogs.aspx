@@ -49,7 +49,7 @@
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
                     <div class="picture-container">
-                        <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" />
+                        <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" style="width:500px; height:500px;" />
                     </div>
                     <br />
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
