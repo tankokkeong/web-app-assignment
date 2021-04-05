@@ -212,7 +212,7 @@ namespace web_app_assignment
                         txtUsername.Text = dread["email"].ToString();
                     }
 
-                    lblUsername.Text = helper.getSeekerID();
+                    txtSeeker.Text = helper.getSeekerID();
                 }
                 else if (Session["Recruiter"] != null)
                 {
@@ -231,7 +231,7 @@ namespace web_app_assignment
                         txtUsername.Text = dread["email"].ToString();
                     }
 
-                    lblUsername.Text = helper.getRecruiterID();
+                    txtRecruiter.Text = helper.getRecruiterID();
                 }
 
                 con.Close();

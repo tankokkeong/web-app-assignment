@@ -134,7 +134,8 @@
 
                         <div class="sendMessages">
                             <asp:TextBox ID="txtUsername" class="LCusername" runat="server"></asp:TextBox>
-                            <asp:Label ID="lblUsername" class="LCusername" runat="server"></asp:Label>
+                            <asp:TextBox ID="txtRecruiter" class="LCusername" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSeeker" class="LCusername" runat="server"></asp:TextBox>
                             <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessages()"/>
                             <button type="button" class="bg-lightgreen text-light btn btn-send" onclick="enterMessagesUser()">Send</button>
                         </div>
@@ -320,6 +321,9 @@
         
     </footer>
         </form>
+
+     <%-- JQuery Plugin--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script type="text/javascript">
          function openChat() {
              document.getElementById('chatbox').style.display = 'block';
@@ -359,38 +363,45 @@
 
             if (message != "") {
                 if (verifyEmail) {
+                    //send form request to livechat post
+                    if ($("#message").val().trim().length > 0) {
+                        $.post("admin/LiveChatPost.aspx",
+                            {
+                                chat_contentUR: $("#message").val(),
+                                user_id: $("#ContentPlaceHolder1_txtSeeker").val(),
+                                recruiter_id: $("#ContentPlaceHolder1_txtRecruiter").val(),
+                            },
+                            function (data, status) {
+                                console.log("Data: " + data + "\nStatus: " + status);
+                            });
+                        console.log("IN SR");
+                    }
                     //save in firebase
                     firebase.database().ref("UserMessages/" + logn + "/").push({
                         "sender": logn,
                         "message": message,
                         "timeSent": sentTime,
                     });
-
-                    //send form request to livechat post
-                    if ($("#message").val().trim().length > 0) {
-                        $.post("~/admin/LiveChatPost.aspx",
-                            {
-                                chat_content: $("#message").val(),
-                                user_id: $("#ContentPlaceHolder1_lblUsername"),
-                            });
-                    }
                 }
                 else {
+                    //send form request to livechat post
+                    if ($("#message").val().trim().length > 0) {
+                        $.post("admin/LiveChatPost.aspx",
+                            {
+                                chat_content: $("#message").val(),
+                                visitor_id: visitor.split('r')[1],
+                            },
+                            function (data, status) {
+                                console.log("Data: " + data + "\nStatus: " + status);
+                            });
+                        console.log("IN V");
+                    }
                     //save in database
                     firebase.database().ref("VisitorMessages/" + visitor + "/").push({
                         "sender":  visitor,
                         "message": message,
                         "timeSent": sentTime,
                     });
-
-                    //send form request to livechat post
-                    if ($("#message").val().trim().length > 0) {
-                        $.post("~/admin/LiveChatPost.aspx",
-                            {
-                                chat_content: $("#message").val(),
-                                visitor_id: visitor.split('r')[1],
-                            });
-                    }
                 }
             }
         }

@@ -58,7 +58,6 @@
     </div>
 
     <script type="text/javascript">
-
         //get user id or visitor id
         var query = window.location.href.split('?')[1];
         query = query.split('=')[1];
@@ -75,19 +74,13 @@
 
             if (message != "") {
                 if (query != "") {
-                    console.log("IN QUERY")
-
                     //send form request to livechat post
                     if ($("#message").val().trim().length > 0) {
-
-                        console.log("IN")
 
                         $.post("LiveChatPost.aspx",
                         {
                             chat_content: $("#message").val(),
                             admin_id: $("#ContentPlaceHolder1_txtAdminID").val(),
-                        }, function () {
-                            alert("Success!");
                         });
                     }
 
@@ -97,8 +90,6 @@
                         "message": message,
                         "timeSent": sentTime,
                     });
-
-                    
                 }
             }
         }

@@ -116,7 +116,6 @@
                                             <div class='JobListContentsAllCompaniesBoxesDetailsFooter'>
                                                 <div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>
                                                     <button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(<%#Eval("seeker_id") %>)'> More Details </button> 
-                                                    <button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -338,16 +337,19 @@
                 //Add Customize creation for the users
                 for (var i = 0; i < profession.length; i++) {
 
+                    //Preserve query string
+                    profession[i] = profession[i].replace("+", " ");
+
                     //If the selected value didnt exist in the current option
-                    if (document.getElementById(profession[i]) == null) {
+                    if (document.getElementById(unescape(profession[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(profession[i]) + "' selected id='" + unescape(profession[i]) + "'>" + unescape(profession[i]) + "</option>";
                     }
                 }
 
                 for (var i = 0; i < profession.length; i++) {
 
-                    if (document.getElementById(profession[i]) != null) {
-                        document.getElementById(profession[i]).selected = true;
+                    if (document.getElementById(unescape(profession[i])) != null) {
+                        document.getElementById(unescape(profession[i])).selected = true;
                     }
 
                 }
