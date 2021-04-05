@@ -80,6 +80,8 @@ namespace web_app_assignment.admin
 
                 //Close Connection
                 con.Close();
+
+                Response.Redirect("display-blog.aspx");
             }
             catch (Exception error)
             {

@@ -312,7 +312,6 @@
                 <div class="top-company-content">
                     <div class="media">
                       <%--<img src="../images/home/partner5-min.png" class="mr-3 top-company-pic" alt="..." /> --%>
-                        <asp:Image ID="imgCompany" runat="server" class="mr-3 top-company-pic"/>
                       <div class="media-body">
                         <%--<h5 class="mt-0">Netflix</h5> --%>
                         <%--<p class="text-secondary">Will you do the same for me? It's time to face the music I'm no longer your muse.</p> --%>
