@@ -15,7 +15,20 @@ namespace web_app_assignment
 
                 Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-                if (Session["Languages_EN"] != null)
+                var languages_selected = Request.QueryString["language"];
+
+                if (languages_selected == "EN")
+                {
+                    Session["Languages_EN"] = true;
+                    Session.Remove("Languages_CN");
+                }
+                else if (languages_selected == "CN")
+                {
+                    Session["Languages_CN"] = true;
+                    Session.Remove("Languages_EN");
+                }
+
+                if (Session["Languages_CN"] != null)
                 {
                     Languages.Add("5,000+ Browse Jobs", "5,000+个浏览职位");
                     Languages.Add("Working Partners", "工作伙伴");
@@ -62,7 +75,7 @@ namespace web_app_assignment
                     lblIpsum7.Text = Languages["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."];
                     lblIpsum8.Text = Languages["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."];
                 }
-                else if (Session["Languages_CN"] != null)
+                else if (Session["Languages_EN"] != null)
                 {
                     Languages.Add("5,000+ Browse Jobs", "5,000+ Browse Jobs");
                     Languages.Add("Working Partners", "Working Partners");

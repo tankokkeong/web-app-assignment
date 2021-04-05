@@ -17,7 +17,20 @@ namespace web_app_assignment
         {
             Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            if (Session["Languages_EN"] != null)
+            var languages_selected = Request.QueryString["language"];
+
+            if (languages_selected == "EN")
+            {
+                Session["Languages_EN"] = true;
+                Session.Remove("Languages_CN");
+            }
+            else if (languages_selected == "CN")
+            {
+                Session["Languages_CN"] = true;
+                Session.Remove("Languages_EN");
+            }
+
+            if (Session["Languages_CN"] != null)
             {
                 Languages.Add("Message", "信息");
                 Languages.Add("Subject", "标题");
@@ -36,7 +49,7 @@ namespace web_app_assignment
                 lblContactUs1.Text = Languages["Contact Us"];
                 lblContactUs2.Text = Languages["Contact Us"];
             }
-            else if (Session["Languages_CN"] != null)
+            else if (Session["Languages_EN"] != null)
             {
                 Languages.Add("Message", "Message");
                 Languages.Add("Subject", "Subject");

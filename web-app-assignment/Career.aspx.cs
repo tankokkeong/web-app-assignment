@@ -13,7 +13,20 @@ namespace web_app_assignment
         {
             Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            if (Session["Languages_EN"] != null)
+            var languages_selected = Request.QueryString["language"];
+
+            if (languages_selected == "EN")
+            {
+                Session["Languages_EN"] = true;
+                Session.Remove("Languages_CN");
+            }
+            else if (languages_selected == "CN")
+            {
+                Session["Languages_CN"] = true;
+                Session.Remove("Languages_EN");
+            }
+
+            if (Session["Languages_CN"] != null)
             {
                 Languages.Add("Upload Your Resume", "上传您的简历");
                 Languages.Add("Specific Your current employment status", "您目前的具体就业状况");
@@ -41,7 +54,7 @@ namespace web_app_assignment
                 lblLorem4.Text = Languages["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."];
                 lblLorem5.Text = Languages["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."];
             }
-            else if (Session["Languages_CN"] != null)
+            else if (Session["Languages_EN"] != null)
             {
                 Languages.Add("Upload Your Resume", "Upload Your Resume");
                 Languages.Add("Specific Your current employment status", "Specific Your current employment status");

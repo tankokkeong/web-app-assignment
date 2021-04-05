@@ -13,7 +13,20 @@ namespace web_app_assignment
         {
             Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            if (Session["Languages_EN"] != null)
+            var languages_selected = Request.QueryString["language"];
+
+            if (languages_selected == "EN")
+            {
+                Session["Languages_EN"] = true;
+                Session.Remove("Languages_CN");
+            }
+            else if (languages_selected == "CN")
+            {
+                Session["Languages_CN"] = true;
+                Session.Remove("Languages_EN");
+            }
+
+            if (Session["Languages_CN"] != null)
             {
                 Languages.Add("Vision", "愿景");
                 Languages.Add("Mission", "宗旨");
@@ -34,7 +47,7 @@ namespace web_app_assignment
                 lblLorem7.Text = Languages["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."];
                 lblLorem8.Text = Languages["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."];
             }
-            else if (Session["Languages_CN"] != null)
+            else if (Session["Languages_EN"] != null)
             {
                 Languages.Add("Vision", "Vision");
                 Languages.Add("Mission", "Mission");

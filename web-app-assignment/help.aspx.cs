@@ -13,7 +13,20 @@ namespace web_app_assignment
         {
             //Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            //if (Session["Languages_EN"] != null)
+            //var languages_selected = Request.QueryString["language"];
+
+            //if (languages_selected == "EN")
+            //{
+            //    Session["Languages_EN"] = true;
+            //    Session.Remove("Languages_CN");
+            //}
+            //else if (languages_selected == "CN")
+            //{
+            //    Session["Languages_CN"] = true;
+            //    Session.Remove("Languages_EN");
+            //}
+
+            //if (Session["Languages_CN"] != null)
             //{
             //    Languages.Add("Privacy Policy", "使用与帮助");
             //    Languages.Add("Pellentesque Elit Eget Gravida", "屠隐雌闺");
@@ -39,7 +52,7 @@ namespace web_app_assignment
             //    lblVolutpat5.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
 
             //}
-            //else if (Session["Languages_CN"] != null)
+            //else if (Session["Languages_EN"] != null)
             //{
             //    Languages.Add("Privacy Policy", "Privacy Policy");
             //    Languages.Add("Pellentesque Elit Eget Gravida", "Pellentesque Elit Eget Gravida");
