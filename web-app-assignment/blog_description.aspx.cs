@@ -58,15 +58,14 @@ namespace web_app_assignment
             {
                 litResultLike.Text += "<div class='swiper-slide'>" +
                                              "<div class='card' style='width: 100%;'>" +
-                                             "<a href='blog_description.aspx?blog=" + drLike["blog_id"] + "'>" +
+                                             "<a href='blog_description.aspx?blog=" + drLike["blog_id"] + "' style='text-decoration: none;'>" +
                                                  "<img src='../" + drLike["blog_image"] +"' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
                                                      "<p class='card-text font-weight-bold'>"+ drLike["blog_title"] +"</p>" +
-                                                     "<p class='text-muted text-center'>"+ drLike["last_updated"] +"</p>" +
                                                  "</div>" +
 
                                                      "<div class='card-footer text-muted text-center'>" +
-                                                        "<a href='blog_description.aspx?blog="+ drLike["blog_id"] +"' class='btn btn-info'>Details</a>" +
+                                                        "<p class='text-muted text-center'>" + drLike["last_updated"] + "</p>" +
                                                      "</div>" +
                                              "</a>" +
                                              "</div>" +
