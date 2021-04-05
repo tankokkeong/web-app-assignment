@@ -161,13 +161,14 @@ namespace web_app_assignment.admin
                 con.Open();
                 SqlDataReader drTopCompany = cmdTopCompany.ExecuteReader();
 
+
                 while (drTopCompany.Read())
                 {
                     litResultCompany.Text += "<div class='media'>" +
                                                 "<img src='../"+ drTopCompany["company_photo"] +"' class='mr-3 top-company-pic'/>" +
                                                 "<div class='media-body'>" +
                                                     "<h5 class='mt-0'>"+ drTopCompany["company_name"] + "</h5>" +
-                                                    "<p class='text-secondary'>"+ drTopCompany["average_rating"] + "</p>" +
+                                                    "<p class='text-secondary'>" +"Rating: "+ drTopCompany["average_rating"].ToString().Substring(0,4) + " <i class='fas fa-star text-warning'></i>" +  "</p>" +
                                                 "</div>" +
                                              "</div>";
                 }

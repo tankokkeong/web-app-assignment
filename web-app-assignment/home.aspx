@@ -166,9 +166,6 @@
                 
                 <div class="job-services-row row">
 
-                    <% for (int i = 0; i < 2; i++)
-                        {
-                    %>
                     <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
                         <div class="card job-services-card">
                           <div class="card-body">
@@ -256,16 +253,95 @@
                           </div>
                         </div>
                       </div>
-                    <% 
-                        }
-                    %>
 
-                </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-code text-lightgreen"></i>
+                              </div>
 
-                <div class="browse-all">
-                    <div class="browse-btn-container text-center">
-                        <button class="btn bg-lightgreen text-light text-center">Browser All Categories</button>
-                    </div>
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Software Engineering</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-calculator text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Accounting</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-landmark text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Banking</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-3 mb-3">
+                        <div class="card job-services-card">
+                          <div class="card-body">
+                              <div class="card-icon">
+                                  <i class="fas fa-money-bill text-lightgreen"></i>
+                              </div>
+
+                              <div class="card-title text-center">
+                                  <h3 class="text-dark">Finance</h3>
+                              </div>
+                            
+                              <div class="card-text">
+                                  <p>
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                  </p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
                 </div>
                                       
             </div>
