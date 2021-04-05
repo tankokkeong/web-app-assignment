@@ -20,6 +20,7 @@ namespace web_app_assignment
 
             if (languages_selected == "EN")
             {
+                
                 Session["Languages_EN"] = true;
                 Session.Remove("Languages_CN");
             }
@@ -56,6 +57,7 @@ namespace web_app_assignment
 
             if (Session["Languages_CN"] != null)
             {
+                language.SelectedIndex = 2;
                 Languages.Add("Home", "主页");
                 Languages.Add("Jobs", "职位");
                 Languages.Add("About Us", "关于我们");
@@ -118,6 +120,7 @@ namespace web_app_assignment
             }
             else if (Session["Languages_EN"] != null)
             {
+                language.SelectedIndex = 1;
                 Languages.Add("Home", "Home");
                 Languages.Add("Jobs", "Jobs");
                 Languages.Add("About Us", "About Us");

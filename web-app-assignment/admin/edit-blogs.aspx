@@ -42,6 +42,9 @@
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
                     <br />
+                    <div class="picture-container">
+                        <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" />
+                    </div>
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
                     <asp:TextBox ID="txtPhotoUpload" runat="server" Style="display: none;" />
                     <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
