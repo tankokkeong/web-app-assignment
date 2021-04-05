@@ -15,12 +15,50 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Dictionary<string, string> Languages = new Dictionary<string, string>();
 
+            if (Session["Languages_EN"] != null)
+            {
+                Languages.Add("Message", "信息");
+                Languages.Add("Subject", "标题");
+                Languages.Add("Email", "电子邮件");
+                Languages.Add("Contact Number", "联系电话");
+                Languages.Add("Name", "姓名");
+                Languages.Add("We'd love to hear from you.", "我们很乐意听取您的意见。");
+                Languages.Add("Contact Us", "联系我们");
+
+                lblMessage.Text = Languages["Message"];
+                lblSubject.Text = Languages["Subject"];
+                lblEmail.Text = Languages["Email"];
+                lblContactNum.Text = Languages["Contact Number"];
+                lblName.Text = Languages["Name"];
+                lblWe.Text = Languages["We'd love to hear from you."];
+                lblContactUs1.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
+            }
+            else if (Session["Languages_CN"] != null)
+            {
+                Languages.Add("Message", "Message");
+                Languages.Add("Subject", "Subject");
+                Languages.Add("Email", "Email");
+                Languages.Add("Contact Number", "Contact Number");
+                Languages.Add("Name", "Name");
+                Languages.Add("We'd love to hear from you.", "We'd love to hear from you.");
+                Languages.Add("Contact Us", "Contact Us");
+
+                lblMessage.Text = Languages["Message"];
+                lblSubject.Text = Languages["Subject"];
+                lblEmail.Text = Languages["Email"];
+                lblContactNum.Text = Languages["Contact Number"];
+                lblName.Text = Languages["Name"];
+                lblWe.Text = Languages["We'd love to hear from you."];
+                lblContactUs1.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
+            }
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            if (Page.IsValid)
             {
                 //read from contact-us textBox
                 string name = txtName.Text;
@@ -29,7 +67,7 @@ namespace web_app_assignment
                 string subject = txtSubject.Text;
                 string message = txtMessage.Text;
 
-                try 
+                try
                 {
 
                     if (Session["Recruiter"] != null)
@@ -65,7 +103,7 @@ namespace web_app_assignment
                         ClearForm();
 
                     }
-                    else if(Session["User"] != null)
+                    else if (Session["User"] != null)
                     {
                         string seekerID = helper.getSeekerID();
                         SqlConnection con = new SqlConnection(strcon);
@@ -97,7 +135,7 @@ namespace web_app_assignment
                         //Clear the form
                         ClearForm();
                     }
-                    else 
+                    else
                     {
                         SqlConnection con = new SqlConnection(strcon);
 
@@ -131,12 +169,12 @@ namespace web_app_assignment
 
 
 
-                  
+
 
 
 
                 }
-                catch(Exception error)
+                catch (Exception error)
                 {
                     lblError.Text = error.Message;
                 }

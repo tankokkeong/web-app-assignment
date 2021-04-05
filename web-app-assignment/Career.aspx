@@ -8,82 +8,94 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="background-section">
         <div class="background-banner-text">
-           <h1>Career Center</h1>
+            <h1>
+                <asp:Label ID="lblCareerCenter" runat="server" Text="Career Center"></asp:Label>
+            </h1>
         </div>
     </div>
 
     <div class="our-team">
-         <div class="our-team-header-container">
-            <h2 class="text-lightgreen text-center">Our Team</h2>
-         </div>
+        <div class="our-team-header-container">
+            <h2>
+                <asp:Label ID="lblOurTeam" runat="server" class="text-lightgreen text-center" Text="Our Team"></asp:Label></h2>
+        </div>
 
         <div class="container">
             <div class="row">
                 <div id="testimonial-slider" class="owl-carousel">
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
-                        <p class="description">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/career/3.jpg"/></div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
-                        <p class="description">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/career/3.jpg"/></div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
-                        <p class="description">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/career/3.jpg"/></div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
-                        <p class="description">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        <p>
+                            <asp:Label ID="lblLorem1" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" /></div>
+                                <img src="images/career/3.jpg" />
+                            </div>
                             <h3 class="title">Jenny Hing</h3>
                             <span class="post">Founder</span>
                         </div>
                     </div>
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
-                        <p class="description">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        <p>
+                            <asp:Label ID="lblLorem2" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
                         </p>
                         <div class="testimonial-content">
-                            <div class="pic"><img src="images/career/3.jpg"/></div>
+                            <div class="pic">
+                                <img src="images/career/3.jpg" />
+                            </div>
+                            <h3 class="title">Jenny Hing</h3>
+                            <span class="post">Founder</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
+                        <p>
+                            <asp:Label ID="lblLorem3" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="images/career/3.jpg" />
+                            </div>
+                            <h3 class="title">Jenny Hing</h3>
+                            <span class="post">Founder</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
+                        <p>
+                            <asp:Label ID="lblLorem4" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="images/career/3.jpg" />
+                            </div>
+                            <h3 class="title">Jenny Hing</h3>
+                            <span class="post">Founder</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="carousel-control-next-icon fa fa-quote-left"></span>
+                        <p>
+                            <asp:Label ID="lblLorem5" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="images/career/3.jpg" />
+                            </div>
                             <h3 class="title">Jenny Hing</h3>
                             <span class="post">Founder</span>
                         </div>
@@ -102,25 +114,24 @@
             <div class="col-lg-6">
                 <div class="ui">
                     <form class="form-group">
-                            <h2>Application Form</h2>
-                            <p>Fill out the below for job opportunies</p>
+                        <h2><asp:Label ID="lblApplication" runat="server" Text="Application Form"></asp:Label></h2>
+                        <p><asp:Label ID="lblFill" runat="server" Text="Fill out the below for job opportunies"></asp:Label></p>
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Full Name</label>
-                                <input type="text" name="fullname" class="form-control" id="fullname" required/>
+                                <asp:Label ID="lblFullName" runat="server" Text="Full Name"></asp:Label>
+                                <input type="text" name="fullname" class="form-control" id="fullname" required />
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Email</label>
-                                <input type="text" name="email" class="form-control" id="email" required/>
+                                <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
+                                <input type="text" name="email" class="form-control" id="email" required />
                             </div>
-
                         </div>
 
-                        <label>What Position are you looking for</label>
-                        <input type="text" name="position" class="form-control" id="position" required/>
+                        <asp:Label ID="lblWhat" runat="server" Text="What Position are you looking for"></asp:Label>
+                        <input type="text" name="position" class="form-control" id="position" required />
 
-                        <label>Specific Your current employment status</label>
+                        <asp:Label ID="lblSpecific" runat="server" Text="Specific Your current employment status"></asp:Label>
                         <div class="radio-container">
                             <input type="radio" id="employed" name="status" value="Employed" required />
                             <label for="Employed">Employed</label>
@@ -131,10 +142,10 @@
                             <input type="radio" id="stud" name="stud" value="Student" required />
                             <label for="Student">Student</label>
                         </div>
-                        <label>Upload Your Resume</label><br />
-                            <input type="file" id="file" hidden="hidden" />
+                        <asp:Label ID="lblUpload" runat="server" Text="Upload Your Resume"></asp:Label><br />
+                        <input type="file" id="file" hidden="hidden" />
                         <button type="button" id="upload">CHOOSE A FILE</button>
-                        <span id="upload-text">No file chosen, yet.</span> 
+                        <span id="upload-text">No file chosen, yet.</span>
 
                         <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success btn-block btn-lg" />
                     </form>
@@ -144,8 +155,8 @@
         </div>
     </div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
     <script>
         $(document).ready(function () {

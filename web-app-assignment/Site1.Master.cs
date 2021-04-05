@@ -20,7 +20,6 @@ namespace web_app_assignment
 
             if (languages_selected == "EN")
             {
-                
                 Session["Languages_EN"] = true;
                 Session.Remove("Languages_CN");
             }
@@ -85,7 +84,7 @@ namespace web_app_assignment
                 Languages.Add("Part-Time Job Posted", "兼职工作发布");
                 Languages.Add("Job Seeker", "求职者");
                 Languages.Add("Languages", "语言"); 
-                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020求职由肯尼团队设计。版权所有");
+                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020求职由Kenny团队设计。版权所有");
 
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
