@@ -241,6 +241,9 @@
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
+                    //Preserve query string
+                    location[i] = location[i].replace("+", " ");
+
                     //If the selected value didnt exist in the current option
                     if (document.getElementById(unescape(location[i])) == null) {
                         select2_input.innerHTML = select2_input.innerHTML + "<option value='" + unescape(location[i]) + "' selected id='" + unescape(location[i]) + "'>" + unescape(location[i]) + "</option>";
@@ -262,7 +265,10 @@
             titleQuery = titleQuery.split('=')[1];
 
             var title = titleQuery.split('&')[0];
-            title = title.split(',');
+
+            //Preserve query string
+            title = title.replace("+", " ");
+
             var job_titleText = document.getElementById("ContentPlaceHolder1_txt_SearchJobTitle");
 
             if (title !== "") {
@@ -282,6 +288,9 @@
 
                 //Add Customize creation for the users
                 for (var i = 0; i < jobType.length; i++) {
+
+                    //Preserve query string
+                    jobType[i] = jobType[i].replace("+", " ");
 
                     //If the selected value didnt exist in the current option
                     if (document.getElementById(unescape(jobType[i])) == null) {
@@ -307,9 +316,13 @@
             var jobSpec = jobSpecQuery.split(',');
             var select2_input = document.getElementById("jobSpec-selection");
 
-            if (jobSpecQuery !== "" && jobSpec !== "") {
+            if (jobSpecQuery !== "" && jobSpec !== "") {               
+
                 //Add Customize creation for the users
                 for (var i = 0; i < jobSpec.length; i++) {
+
+                    //Preserve query string
+                    jobSpec[i] = jobSpec[i].replace("+", " ");
 
                     //If the selected value didnt exist in the current option
                     if (document.getElementById(unescape(jobSpec[i])) == null) {
