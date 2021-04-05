@@ -33,22 +33,13 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValTitle;
 
         /// <summary>
-        /// txtSDesc control.
+        /// regExValTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSDesc;
-
-        /// <summary>
-        /// reqValSDesc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValSDesc;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExValTitle;
 
         /// <summary>
         /// blogPhotoUpload control.

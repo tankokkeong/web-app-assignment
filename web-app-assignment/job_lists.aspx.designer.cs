@@ -51,21 +51,12 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.DataPager dpPagination;
 
         /// <summary>
-        /// lbl_JobListContentsAllCompanies control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_JobListContentsAllCompanies;
-
-        /// <summary>
-        /// txtPagination control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtPagination;
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }
