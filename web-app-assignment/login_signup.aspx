@@ -370,9 +370,13 @@
                     $.ajax({
                         url: "fb-signup-post-r.aspx",
                         type: "POST",
-                        data: name, id, email,
+                        data: {
+                            fb_name: response.name,
+                            fb_id: response.id,
+                            fb_email: response.email
+                        },
                         dataType: "json",
-                        sucess: function () {
+                        success: function () {
                             window.location.href("fb-signup-post-r.aspx");
                         }
                     })
