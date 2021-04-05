@@ -29,7 +29,9 @@ namespace web_app_assignment
 
         protected void forgotPasswordFormEmailButtonSubmit_Click(object sender, EventArgs e)
         {
+            //Set requested query string into variable
             string requestRole = Request.QueryString["Role"];
+
 
             if(requestRole == "job-seeker")
             {
@@ -37,16 +39,22 @@ namespace web_app_assignment
 
                 string query = "UPDATE JobSeeker SET password = @password where verify_key = @verify_key";
 
+                //Connect to the database
                 SqlCommand cmd = new SqlCommand(query, con);
 
+                //Connnection Open
                 con.Open();
 
+                //Insert Parameters
                 cmd.Parameters.AddWithValue("@password", pwHash.hashPassword(new_password.Text));
                 cmd.Parameters.AddWithValue("@verify_key", Session["seeker_verify_key"].ToString());
 
+                //Execute the queries
                 cmd.ExecuteNonQuery();
 
+                //Connection Close
                 con.Close();
+
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);
 
@@ -57,15 +65,20 @@ namespace web_app_assignment
 
                 string query = "UPDATE Recruiter SET password = @password where verify_key = @verify_key";
 
+                //Connect to the database
                 SqlCommand comm = new SqlCommand(query, conn);
 
+                //Connection Open
                 conn.Open();
 
+                //Insert Parameters
                 comm.Parameters.AddWithValue("@password", pwHash.hashPassword(new_password.Text));
                 comm.Parameters.AddWithValue("@verify_key", Session["recruiter_verify_key"].ToString());
 
+                //Execute the queries
                 comm.ExecuteNonQuery();
 
+                //Connection Close
                 conn.Close();
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);

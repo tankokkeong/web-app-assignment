@@ -101,7 +101,7 @@
 
                 <div class='text-center'>
                     <%-- <button class="btn btn-success">Submit</button> --%>
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-success w-100" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnSubmit" CssClass="btn bg-lightgreen w-100 text-white" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 </div>
             </form>

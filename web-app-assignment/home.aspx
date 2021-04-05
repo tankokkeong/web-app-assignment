@@ -64,8 +64,8 @@
 
         <div class="work-process">
             <div class="work-process-container">
-                <h2>
-                    <asp:Label ID="lblOurWorkProcess" runat="server" CssClass="text-lightgreen text-center" Text="Our Work Process"></asp:Label>
+                <h2 class="text-lightgreen text-center">
+                    <asp:Label ID="lblOurWorkProcess" runat="server" Text="Our Work Process"></asp:Label>
                 </h2>
 
                 <div class="process-card">

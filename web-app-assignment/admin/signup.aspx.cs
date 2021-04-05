@@ -16,6 +16,7 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if the permission granted
             if(Session["admin_verify_key"] != null)
             {
                 string admin_key = Session["admin_verify_key"].ToString();
@@ -29,31 +30,42 @@ namespace web_app_assignment.admin
 
             string query = "SELECT COUNT(*) FROM Admin WHERE verify_key = @verify_key";
 
+            //Connect to the databse
             SqlCommand cmd = new SqlCommand(query, con);
 
+            //Connection Open
             con.Open();
 
+            //Inser Parameter
             cmd.Parameters.AddWithValue("@verify_key", Session["admin_verify_key"].ToString());
 
+            //Check result
             string output = cmd.ExecuteScalar().ToString();
 
+            //if the result found
             if(output == "1")
             {
                 SqlConnection conn = new SqlConnection(strcon);
 
+                //Update data 
                 string qry = "UPDATE Admin SET admin_name = @admin_name, admin_password = @admin_password, verified_at = @verified_at where verify_key = @verify_key";
                 
+                //Connect to the database
                 SqlCommand cm = new SqlCommand(qry, conn);
 
+                //Connection Open
                 conn.Open();
                
+                //Insert Parameters
                 cm.Parameters.AddWithValue("@admin_name", admin_Name.Text);
                 cm.Parameters.AddWithValue("@admin_password", pwHash.hashPassword(admin_newPassword.Text));
                 cm.Parameters.AddWithValue("@verify_key", Session["admin_verify_key"].ToString());
                 cm.Parameters.AddWithValue("@verified_at", DateTime.Now);
 
+                //Execute the queries
                 cm.ExecuteNonQuery();
 
+                //Connection Close
                 conn.Close();
 
               
@@ -61,6 +73,7 @@ namespace web_app_assignment.admin
 
                 Response.Redirect("login.aspx");
             }
+            //Connection Close
             con.Close();
         }
     }
