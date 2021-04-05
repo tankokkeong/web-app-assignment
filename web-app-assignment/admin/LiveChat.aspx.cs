@@ -17,9 +17,7 @@ namespace web_app_assignment.admin
         {
             try
             {
-                Dictionary<string, string> AdminDetail = (Dictionary<string, string>)Session["Admin"];
-
-                lblAdminID.Text = helper.getAdminID();
+                txtAdminID.Text = helper.getAdminID();
             }
             catch(Exception error)
             {

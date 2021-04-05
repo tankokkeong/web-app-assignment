@@ -15,12 +15,12 @@ namespace web_app_assignment.admin
     {
 
         /// <summary>
-        /// lblAdminID control.
+        /// txtAdminID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdminID;
+        protected global::System.Web.UI.WebControls.TextBox txtAdminID;
     }
 }

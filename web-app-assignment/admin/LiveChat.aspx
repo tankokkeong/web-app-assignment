@@ -29,6 +29,9 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
+
+     <%-- JQuery Plugin--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -45,9 +48,12 @@
         <div id="messages" class="LiveChatContainerContents"></div>
 
         <div class="sendMessages">
-            <asp:Label ID="lblAdminID" class="LCusername" runat="server"></asp:Label>
-            <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
-            <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
+            <form runat="server">
+                <asp:TextBox ID="txtAdminID" runat="server" style="display:none;"></asp:TextBox>
+                <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
+                <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
+            </form>
+           
         </div>
     </div>
 
@@ -69,6 +75,22 @@
 
             if (message != "") {
                 if (query != "") {
+                    console.log("IN QUERY")
+
+                    //send form request to livechat post
+                    if ($("#message").val().trim().length > 0) {
+
+                        console.log("IN")
+
+                        $.post("LiveChatPost.aspx",
+                        {
+                            chat_content: $("#message").val(),
+                            admin_id: $("#ContentPlaceHolder1_txtAdminID").val(),
+                        }, function () {
+                            alert("Success!");
+                        });
+                    }
+
                     //save in database
                     firebase.database().ref("adminMessages/" + query + "/").push({
                         "sendTo": query,
@@ -76,14 +98,7 @@
                         "timeSent": sentTime,
                     });
 
-                    //send form request to livechat post
-                    if ($("#message").val().trim().length > 0) {
-                        $.post("LiveChatPost.aspx",
-                            {
-                                chat_content: $("#message").val(),
-                                admin_id: $("#ContentPlaceHolder1_lblAdminID").val(),
-                            });
-                    }
+                    
                 }
             }
         }
