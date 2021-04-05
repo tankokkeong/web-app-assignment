@@ -22,6 +22,15 @@ namespace web_app_assignment.admin
             {
                 SqlConnection con = new SqlConnection(strcon);
 
+                //drop down list
+                string sqlList = "SELECT * FROM BlogCategory WHERE deleted_at IS NULL";
+                SqlCommand cmdList = new SqlCommand(sqlList, con);
+                SqlDataAdapter sda = new SqlDataAdapter(cmdList);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                ddlCategory.DataSource = dt;
+                ddlCategory.DataBind();
+
                 //display data from database
                 string id = Request.QueryString["Id"] ?? "";
 
@@ -39,19 +48,12 @@ namespace web_app_assignment.admin
                     imgBlogPhoto.ImageUrl = dr["blog_image"].ToString();
                     txtPhotoUpload.Text = dr["blog_image"].ToString();
                     txtEditDescription.Text = dr["blog_content"].ToString();
+                    ddlCategory.Items.FindByValue(dr["blog_category_id"].ToString()).Selected = true;
                 }
 
                 dr.Close();
                 con.Close();
 
-                //drop down list
-                string sqlList = "SELECT * FROM BlogCategory WHERE deleted_at IS NULL";
-                SqlCommand cmdList = new SqlCommand(sqlList, con);
-                SqlDataAdapter sda = new SqlDataAdapter(cmdList);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                ddlCategory.DataSource = dt;
-                ddlCategory.DataBind();
             }
         }
 

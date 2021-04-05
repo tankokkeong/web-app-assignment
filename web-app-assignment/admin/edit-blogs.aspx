@@ -98,6 +98,9 @@
 
             //Assign the value to CK EDITOR
             ck_editor.value = window.unescape(description_value.value);
+
+            //Escape the text
+            description_value.value = window.escape(description_value.value);
         }
 
         function photoUpload() {
@@ -108,7 +111,7 @@
             hidden_photo_input.value = file_input;
         }
 
-        getBlogDescription()
+        getBlogDescription();
     </script>
 
 </asp:Content>
