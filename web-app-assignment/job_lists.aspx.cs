@@ -33,36 +33,36 @@ namespace web_app_assignment
             if (ddlPageSize.SelectedItem.Value == "5")
             {
                 sql = "SELECT * FROM (" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                     " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
                     "UNION" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                    ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 5;
             }
             else if (ddlPageSize.SelectedItem.Value == "10")
             {
                 sql = "SELECT * FROM (" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                     " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
                     "UNION" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                    ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 10;
             }
             else if (ddlPageSize.SelectedItem.Value == "15")
             {
                 sql = "SELECT * FROM (" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
                     " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
                     "UNION" +
-                    "(SELECT company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
+                    "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
                     "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
-                    ") result " + JobListSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                    ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 15;
             }
@@ -76,16 +76,20 @@ namespace web_app_assignment
 
             //Close Connection
             con.Close();
+        
+
         }
 
-        protected string JobListSearchCriteria(string sql)
+        protected string JobListSearchCriteria()
         {
             string jobTitlequery = Request.QueryString["job_title"] ?? "";
             string locationsquery = Request.QueryString["location"] ?? "";
             string jobTypequery = Request.QueryString["job_type"] ?? "";
             string JobSpecquery = Request.QueryString["job_spec"] ?? "";
 
-            if(jobTitlequery != "" && locationsquery != "" && jobTypequery != "" && JobSpecquery != "" )
+            string sql = "";
+
+            if(jobTitlequery != "" || locationsquery != "" || jobTypequery != "" || JobSpecquery != "" )
             {
                 sql += " WHERE";
             }
@@ -97,40 +101,80 @@ namespace web_app_assignment
 
             if (locationsquery != "")
             {
-                if (locationsquery.Contains(','))
+                if (jobTitlequery != "")
                 {
-                    sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount(sql);
+                    if (locationsquery.Contains(','))
+                    {
+                        sql += " AND location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " AND location LIKE '%" + locationsquery + "%'";
+                    }
                 }
                 else
                 {
-                    sql += " location LIKE '%" + locationsquery + "%'";
+                    if (locationsquery.Contains(','))
+                    {
+                        sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " location LIKE '%" + locationsquery + "%'";
+                    }
+
                 }
+                    
             }
 
             if (jobTypequery != "")
             {
-                sql += " job_type LIKE '%" + jobTypequery;
+                if(jobTitlequery!= "" || locationsquery!= "")
+                {
+                    sql += " AND job_type LIKE '%" + jobTypequery + "%'";
+                }
+                else
+                {
+                    sql += " job_type LIKE '%" + jobTypequery + "%'";
+                }
             }
 
             if (JobSpecquery != "")
             {
-                if (JobSpecquery.Contains(','))
+                if(jobTitlequery != "" || locationsquery != "" || jobTitlequery != "")
                 {
-                    sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount(sql);
+                    if (JobSpecquery.Contains(','))
+                    {
+                        sql += " AND job_specializations LIKE '%" + JobSpecquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " AND job_specializations LIKE '%" + JobSpecquery + "%'";
+                    }
                 }
                 else
                 {
-                    sql += " job_specializations LIKE '%" + JobSpecquery + "%'";
+                    if (JobSpecquery.Contains(','))
+                    {
+                        sql += " job_specializations LIKE '%" + JobSpecquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " job_specializations LIKE '%" + JobSpecquery + "%'";
+                    }
                 }
+                
             }
 
             return sql;
         }
 
-        protected string JobListSearchAmount(string sql)
+        protected string JobListSearchAmount()
         {
             string locationsquery = Request.QueryString["location"] ?? "";
             string JobSpecquery = Request.QueryString["job_spec"] ?? "";
+
+            string sql = "";
 
             if (JobSpecquery != "")
             {
