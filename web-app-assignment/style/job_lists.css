@@ -181,6 +181,15 @@
     color: #fff !important;
 }
 
+.select2-selection {
+    height: 100% !important;
+}
+
+.select2-selection__rendered{
+    position:relative;
+    top:2px;
+}
+
 @media screen {
     .select2 {
         width: 100% !important;

@@ -21,65 +21,6 @@ namespace web_app_assignment
 
         }
 
-        //protected void forgotPasswordFormEmailButtonSubmit_Click (object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        SqlConnection conn = new SqlConnection(strcon);
-
-        //        SqlDataAdapter adp = new SqlDataAdapter("select * from JobSeeker where email = @email ", conn);
-
-        //        conn.Open();
-
-        //        adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
-
-        //        adp.Fill(dt);
-
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            Session["seeker_verify_key"] = getSeeker_vkey(forgotPasswordFormEmail.Text);
-
-        //            sendSeekerEmail();
-
-        //            lblresult.Text = "Successfully sent reset link on your email! Thank you.";
-
-        //            forgotPasswordFormEmail.Text = "";
-
-        //        }
-        //        else
-        //        {
-        //            adp = new SqlDataAdapter("select * from Recruiter where email = @email ", conn);
-
-        //            adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
-
-        //            adp.Fill(dt);
-
-        //            if (dt.Rows.Count > 0)
-        //            {
-        //                Session["recruiter_verify_key"] = getRecruiter_vkey(forgotPasswordFormEmail.Text);
-
-        //                sendRecruiterEmail();
-
-        //                lblresult.Text = "Successfully sent reset link on your email! Thank you.";
-
-        //                forgotPasswordFormEmail.Text = "";
-
-        //            }
-        //            else
-        //            {
-        //                lblresult.Text = "The email mail You entered does not exist.";
-        //            }
-        //            conn.Close();
-        //        }
-
-        //    }
-
-        //    catch (Exception error)
-        //    {
-        //        Response.Write(error.Message);
-        //    }
-        //}
-
         private void sendSeekerEmail()
         {
             try
@@ -116,7 +57,7 @@ namespace web_app_assignment
                 }
                 catch (Exception ex)
                 {
-
+                    Response.Write(ex.Message);
                 }
             }
             catch (Exception error)
@@ -170,34 +111,61 @@ namespace web_app_assignment
             }
         }
 
+        //Get JobSeeker verify_key
         private string getSeeker_vkey(string Email)
         {
 
             SqlConnection con = new SqlConnection(strcon);
+
+            //Connection Open
             con.Open();
             String query = "select verify_key from JobSeeker where email= @email";
+
+            //Connection Close
             SqlCommand cmd = new SqlCommand(query, con);
+
+            //Insert Parameters
             cmd.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+
+            //Get verify key
             string seekvkey = cmd.ExecuteScalar().ToString();
+
+            //Connection Close
             con.Close();
+            
+            //return verify key
             return seekvkey;
             
         }
 
+        //get recruiter verify key
         private string getRecruiter_vkey(string Email)
         {
 
             SqlConnection con = new SqlConnection(strcon);
+
+            //Connection Open
             con.Open();
             String query = "select verify_key from Recruiter where email= @email";
+
+            //Connect to the database
             SqlCommand cmd = new SqlCommand(query, con);
+
+            //Add Parameter
             cmd.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
+
+            //Get output
             string output = cmd.ExecuteScalar().ToString();
+
+            //Connection Close
             con.Close();
+
+            //return output
             return output;
             
         }
 
+        //get role
         private string getSeekerRole()
         {
             string seekerrole = "job-seeker";
@@ -213,14 +181,17 @@ namespace web_app_assignment
 
         protected void forgotPasswordFormEmailButtonSubmit_Click(object sender, EventArgs e)
         {
+            
             if (Role.SelectedItem.Value == "job_seeker")
             {
                 SqlConnection conn = new SqlConnection(strcon);
 
                 SqlDataAdapter adp = new SqlDataAdapter("select * from JobSeeker where email = @email ", conn);
 
+                //Connection Open
                 conn.Open();
 
+                //Add Parameter
                 adp.SelectCommand.Parameters.AddWithValue("@email", forgotPasswordFormEmail.Text);
 
                 adp.Fill(dt);

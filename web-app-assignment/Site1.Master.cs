@@ -21,7 +21,6 @@ namespace web_app_assignment
 
             if (languages_selected == "EN")
             {
-                
                 Session["Languages_EN"] = true;
                 Session.Remove("Languages_CN");
             }
@@ -86,18 +85,18 @@ namespace web_app_assignment
                 Languages.Add("Part-Time Job Posted", "兼职工作发布");
                 Languages.Add("Job Seeker", "求职者");
                 Languages.Add("Languages", "语言"); 
-                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020求职由肯尼团队设计。版权所有");
+                Languages.Add("@2020 Job Searching Designed By Kenny's Team. All Rights Reserved", "@2020求职由Kenny团队设计。版权所有");
 
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
-                lblAboutUs2.Text = Languages["About Us"];
                 lblBlogs.Text = Languages["Blog"];
                 //lblSignUp.Text = Languages["Sign Up"];
                 lblSignIn.Text = Languages["Sign In"];
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
                 lblContactUs.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
                 lblHelp.Text = Languages["Help"];
                 lblMyProfile.Text = Languages["My Profile"];
                 lblTerms.Text = Languages["Terms & Conditions"];
@@ -154,7 +153,6 @@ namespace web_app_assignment
                 lblHome.Text = Languages["Home"];
                 lblJobs.Text = Languages["Jobs"];
                 lblAboutUs.Text = Languages["About Us"];
-                lblAboutUs2.Text = Languages["About Us"];
                 lblBlogs.Text = Languages["Blog"];
                 lblMyProfile.Text = Languages["My Profile"];
                 //lblSignUp.Text = Languages["Sign Up"];
@@ -162,6 +160,7 @@ namespace web_app_assignment
                 lblPrivacyPolicy.Text = Languages["Privacy Policy"];
                 lblCareerCenter.Text = Languages["Career Center"];
                 lblContactUs.Text = Languages["Contact Us"];
+                lblContactUs2.Text = Languages["Contact Us"];
                 lblHelp.Text = Languages["Help"];
                 lblTerms.Text = Languages["Terms & Conditions"];
                 lblCompanyProfile.Text = Languages["Company Profile"];
