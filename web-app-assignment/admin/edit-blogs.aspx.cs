@@ -36,6 +36,7 @@ namespace web_app_assignment.admin
                 while (dr.Read())
                 {
                     txtTitle.Text = dr["blog_title"].ToString();
+                    imgBlogPhoto.ImageUrl = dr["blog_image"].ToString();
                     txtPhotoUpload.Text = dr["blog_image"].ToString();
                     txtEditDescription.Text = dr["blog_content"].ToString();
                 }
@@ -70,7 +71,7 @@ namespace web_app_assignment.admin
             if (file_name != "")
             {
                 blogPhotoUpload.SaveAs(upload_path + file_name);
-                blog_photo = "Uploads/" + file_name;
+                blog_photo = "../Uploads/" + file_name;
             }
             else
             {

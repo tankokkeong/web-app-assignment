@@ -32,7 +32,6 @@
             <div class="form-group row">
                 <label for="staticTitle" class="col-sm-2 col-form-label">Post Title:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
@@ -41,13 +40,12 @@
             <div class="form-group row">
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
-                    <br />
                     <div class="picture-container">
                         <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" />
                     </div>
+                    <br />
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />
                     <asp:TextBox ID="txtPhotoUpload" runat="server" Style="display: none;" />
-                    <asp:RequiredFieldValidator ID="reqValPhoto" runat="server" ErrorMessage="Blog Image is required!" ControlToValidate="blogPhotoUpload" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="regExValPhoto" runat="server" ErrorMessage="Only .jpg, .png & .gif files are allowed" ControlToValidate="blogPhotoUpload" CssClass="text-danger" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.JPG|.png|.PNG|.gif|.GIF)$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
