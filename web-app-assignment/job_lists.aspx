@@ -62,36 +62,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group JobListContentsBackgroundInputs">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="JobListContentsSalaryPosition">
-                                    <img src="images/JobsList/salary.png" alt="search" class="JobListContentsSalaryImage"/>
-                                </span>
-                            </div>
-
-                            <div class="JobListContentsSalaryRange row">
-                                <p class="col amount">
-                                  <label>Salary Range:</label>
-                                    RM <input id="txt_amountLeft" type="text" value="0" readonly="readonly"/> -
-                                    RM <input id="txt_amountRight" type="text" value="50000" readonly="readonly"/>
-                                </p>
-                                <div class="col middle">
-                                    <div class="multi-range-slider">
-                                        <input type="range" id="input-left" class="rangeSlider" min="0" max="50000" value="0"/>
-                                        <input type="range" id="input-right" class="rangeSlider" min="0" max="50000" value="50000"/>
-                                        <div class="slider">
-                                            <div class="track"></div>
-                                            <div class="range"></div>
-                                            <div class="thumb left"></div>
-                                            <div class="thumb right"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <button type="button" id="btn_JobListContentsBackgroundInputsSearchButton" class="JobListContentsBackgroundInputsSearchButton btn btn-info" onclick="JobListSearch()">Search</button>
                 </form>
             </div>
@@ -112,7 +82,67 @@
                         </asp:DropDownList>
                         Per Page
                     </div>
-                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server"></asp:Label>
+
+                    <div class="row">
+                        <asp:ListView ID="lvJobListContentsAllCompanies" runat="server">
+                            <ItemTemplate>
+                                <div class='col-sm-6 mt-3'>
+                                    <div class='JobListContentsAllCompaniesBoxes row mr-2'>
+                                        <div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition col'>
+                                            <img src='<%#Eval("company_photo") %>' alt='company' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>
+                                            <div class='JobListContentsAllCompaniesBoxesDetailsStars'>
+                                                <div class='jobRating ml-2'>
+                                                    <p>
+                                                        <%#Eval("job_rating") %><i class='fas fa-star text-warning ml-2'></i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='JobListContentsAllCompaniesBoxesDetails col'>
+                                            <h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>
+                                                <%#Eval("job_title") %>
+                                            </h4>
+                                            <div class='JobListContentsAllCompaniesBoxesDetailsBody'>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("company_name") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("location") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>MYR <%#Eval("salary") %></p>
+                                                </div>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>
+                                                    <img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages'/>
+                                                    <p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'><%#Eval("job_type") %></p>
+                                                </div>
+                                            </div>
+                                            <div class='JobListContentsAllCompaniesBoxesDetailsFooter'>
+                                                <div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>
+                                                    <button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(<%#Eval("post_id") %>)'> More Details </button>
+                                                    <button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact(<%#Eval("recruiter_id") %>)'> Contact Now </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
+
+                    <asp:DataPager ID="dpPagination" runat="server" class="row pagination" OnPreRender="dpPagination_PreRender" PagedControlID="lvJobListContentsAllCompanies" PageSize="15">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" ButtonCssClass="page-link page-item"/>
+                            <asp:NumericPagerField ButtonType="Button" NumericButtonCssClass="page-link page-item" CurrentPageLabelCssClass="page-link page-active" NextPreviousButtonCssClass="page-link page-item"/>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
+                        </Fields>
+                    </asp:DataPager>
+
+                    <asp:Label ID="lbl_JobListContentsAllCompanies" CssClass="row" runat="server">
+                    </asp:Label>
                     <asp:Label ID="txtPagination" runat="server"></asp:Label>
                 </div>
             </div>
@@ -122,12 +152,15 @@
     <script type="text/javascript">
         $("#location-selection").select2({
             placeholder: "Select Location or Write Location",
-            allowClear: true,
+            allowClear: false,
             newTag: false,
             tags: true,
         });
         $('#jobtype-selection').select2({
             placeholder: "Job Type",
+            allowClear: false,
+            newTag: false,
+            tags: true,
         });
         
         $("#jobSpec-selection").select2({
@@ -159,8 +192,6 @@
             var spec_selected = $('.jobSpec').select2('data');
             var job_spec = "";
             var job_Title = document.getElementById('ContentPlaceHolder1_txt_SearchJobTitle').value;
-            var rangeFrom = document.getElementById('txt_amountLeft').value;
-            var rangeEnd = document.getElementById('txt_amountRight').value;
 
 
             for (var i = 0; i < location_selected.length; i++) {
@@ -195,7 +226,7 @@
 
             //Redirect to job list page
             window.location.href = "job_lists.aspx?job_title=" + job_Title + "&location=" + job_location +
-                "&job_type=" + job_type + "&job_spec=" + job_spec + "&rangeFrom=" + rangeFrom + "&rangeEnd=" + rangeEnd;
+                "&job_type=" + job_type + "&job_spec=" + job_spec;
         }
 
         function getSelectedLocation() {
@@ -235,7 +266,7 @@
             var job_titleText = document.getElementById("ContentPlaceHolder1_txt_SearchJobTitle");
 
             if (title !== "") {
-                job_titleText.value = title;
+                job_titleText.value = unescape(title);
             }
         }
 
@@ -295,26 +326,6 @@
             }
         }
 
-        function getSalaryRange() {
-            var salaryQuery = window.location.href.split('?')[1];
-
-            var salaryQueryFrom = salaryQuery.split('&')[4];
-            var salaryQueryEnd = salaryQuery.split('&')[5];
-
-            salaryQueryFrom = salaryQueryFrom.split('=')[1];
-            salaryQueryEnd = salaryQueryEnd.split('=')[1];
-
-            var salaryLeft = document.getElementById("input-left");
-            var salaryRight = document.getElementById("input-right");
-
-            if (salaryQueryEnd !== "" || salaryQueryFrom !== "") {
-                salaryLeft.value = salaryQueryFrom;
-                salaryRight.value = salaryQueryEnd;
-                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
-                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
-            }
-        }
-
         //Print out the available industry
         printSelect2State("location-selection");
         printSelect2JobType("jobtype-selection");
@@ -324,92 +335,5 @@
         getJobTitle();
         getSelectedJobType();
         getSelectedJobSpec();
-        getSalaryRange();
-    </script>    
-
-    <script>
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
-
-        var thumbLeft = document.querySelector(".slider > .thumb.left");
-        var thumbRight = document.querySelector(".slider > .thumb.right");
-        var range = document.querySelector(".slider > .range");
-
-        function setLeftValue() {
-            var _this = inputLeft,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
-
-            var percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbLeft.style.left = percent + "%";
-            range.style.left = percent + "%";
-        }
-        setLeftValue();
-
-        function setRightValue() {
-            var _this = inputRight,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
-
-            var percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbRight.style.right = (100 - percent) + "%";
-            range.style.right = (100 - percent) + "%";
-        }
-        setRightValue();
-
-        inputLeft.addEventListener("input", setLeftValue);
-        inputRight.addEventListener("input", setRightValue);
-
-        inputLeft.addEventListener("mouseover", function () {
-            thumbLeft.classList.add("hover");
-        })
-
-        inputLeft.addEventListener("mouseout", function () {
-            thumbLeft.classList.remove("hover");
-        })
-
-        inputLeft.addEventListener("mousedown", function () {
-            thumbLeft.classList.add("active");
-        })
-
-        inputLeft.addEventListener("mouseup", function () {
-            thumbLeft.classList.remove("active");
-        })
-
-        inputRight.addEventListener("mouseover", function () {
-            thumbRight.classList.add("hover");
-        })
-
-        inputRight.addEventListener("mouseout", function () {
-            thumbRight.classList.remove("hover");
-        })
-
-        inputRight.addEventListener("mousedown", function () {
-            thumbRight.classList.add("active");
-        })
-
-        inputRight.addEventListener("mouseup", function () {
-            thumbRight.classList.remove("active");
-        })
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $("#input-left").on("input change", function () {
-                document.getElementById('txt_amountLeft').value = document.getElementById('input-left').value;
-            });
-        });
-
-        $(document).ready(function () {
-            $("#input-right").on("input change", function () {
-                document.getElementById('txt_amountRight').value = document.getElementById('input-right').value;
-            });
-        });
     </script>  
 </asp:Content>

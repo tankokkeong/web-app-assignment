@@ -13,202 +13,213 @@ namespace web_app_assignment
     public partial class candidate_list : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        Helper helper = new Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie coo = new HttpCookie("PageSize");
-            HttpCookie coo2 = new HttpCookie("PreviousPage");
+            var validRecruiter = helper.getRecruiterID();
 
-            SqlConnection conSearchTotal = new SqlConnection(strcon);
-            if (conSearchTotal.State == ConnectionState.Closed)
+            if (validRecruiter != "")
             {
-                conSearchTotal.Open();
-            }
+                HttpCookie coo = new HttpCookie("PageSize");
+                HttpCookie coo2 = new HttpCookie("PreviousPage");
 
-            string countItems = "SELECT COUNT(*) FROM JobSeeker";
-
-            SqlCommand cmdCountSeekers = new SqlCommand(countItems, conSearchTotal);
-
-            int endPage = (int)Math.Ceiling(Convert.ToDouble(cmdCountSeekers.ExecuteScalar()) / Convert.ToDouble(ddlPageSize.SelectedItem.Value));
-
-            conSearchTotal.Close();  
-
-            try
-            {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                SqlConnection conSearchTotal = new SqlConnection(strcon);
+                if (conSearchTotal.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    conSearchTotal.Open();
                 }
 
-                string page_num = Request.QueryString["page"];
+                string countItems = "SELECT COUNT(*) FROM JobSeeker";
 
-                if (Request.Cookies["PageSize"] != null)
+                SqlCommand cmdCountSeekers = new SqlCommand(countItems, conSearchTotal);
+
+                int endPage = (int)Math.Ceiling(Convert.ToDouble(cmdCountSeekers.ExecuteScalar()) / Convert.ToDouble(ddlPageSize.SelectedItem.Value));
+
+                conSearchTotal.Close();  
+
+                try
                 {
-                    if(ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && Request.QueryString["page"] == null)
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
                     {
-                        //User change limit page number in page 1
-
-                        coo.Value = ddlPageSize.SelectedItem.Value;
-                        coo.Expires = DateTime.Now.AddDays(7);
-                        Response.Cookies.Add(coo);
+                        con.Open();
                     }
-                    else if (ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && page_num == Request.Cookies["PreviousPage"].Value)
-                    {
-                        //User change limit page number in other than page 1
 
-                        coo.Value = ddlPageSize.SelectedItem.Value;
-                        coo.Expires = DateTime.Now.AddDays(7);
-                        Response.Cookies.Add(coo);
+                    string page_num = Request.QueryString["page"];
+
+                    if (Request.Cookies["PageSize"] != null)
+                    {
+                        if(ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && Request.QueryString["page"] == null)
+                        {
+                            //User change limit page number in page 1
+
+                            coo.Value = ddlPageSize.SelectedItem.Value;
+                            coo.Expires = DateTime.Now.AddDays(7);
+                            Response.Cookies.Add(coo);
+                        }
+                        else if (ddlPageSize.SelectedValue != Request.Cookies["PageSize"].Value && page_num == Request.Cookies["PreviousPage"].Value)
+                        {
+                            //User change limit page number in other than page 1
+
+                            coo.Value = ddlPageSize.SelectedItem.Value;
+                            coo.Expires = DateTime.Now.AddDays(7);
+                            Response.Cookies.Add(coo);
+                        }
+                        else
+                        {
+                            //Retain user prefer limit page number
+                            ddlPageSize.SelectedValue = Request.Cookies["PageSize"].Value;
+                        }
+                    
                     }
                     else
                     {
-                        //Retain user prefer limit page number
-                        ddlPageSize.SelectedValue = Request.Cookies["PageSize"].Value;
+                        coo.Value = ddlPageSize.SelectedItem.Value;
+                        coo.Expires = DateTime.Now.AddDays(7);
+                        Response.Cookies.Add(coo);
+                    }                
+
+                    int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedValue);
+
+                    int current_page = Convert.ToInt32(page_num);
+
+                    // ensure current page isn't out of range
+                    if (current_page < 1)
+                    {
+                        current_page = 1;
                     }
-                    
-                }
-                else
-                {
-                    coo.Value = ddlPageSize.SelectedItem.Value;
-                    coo.Expires = DateTime.Now.AddDays(7);
-                    Response.Cookies.Add(coo);
-                }                
+                    else if (current_page > endPage)
+                    {
+                        current_page = endPage;
+                        Response.Redirect("candidate-list.aspx?page=" + endPage);
+                    }
 
-                int limit_per_page = Convert.ToInt32(ddlPageSize.SelectedValue);
+                    int end_page = current_page * limit_per_page;
+                    int first_page = end_page - limit_per_page;
 
-                int current_page = Convert.ToInt32(page_num);
+                    string sql = "";
 
-                // ensure current page isn't out of range
-                if (current_page < 1)
-                {
-                    current_page = 1;
-                }
-                else if (current_page > endPage)
-                {
-                    current_page = endPage;
-                    Response.Redirect("candidate-list.aspx?page=" + endPage);
-                }
-
-                int end_page = current_page * limit_per_page;
-                int first_page = end_page - limit_per_page;
-
-                string sql = "";
-
-                if (current_page <= 0)
-                {
-                    if (ddlPageSize.SelectedItem.Value == "5")
+                    if (current_page <= 0)
+                    {
+                        if (ddlPageSize.SelectedItem.Value == "5")
+                        {
+                            lbl_JobListContentsAllCompanies.Text = "";
+                            sql = "SELECT TOP 5 * FROM (" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
+                                "UNION" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
+                                ") result";
+                        }
+                        else if (ddlPageSize.SelectedItem.Value == "10")
+                        {
+                            lbl_JobListContentsAllCompanies.Text = "";
+                            sql = "SELECT TOP 10 * FROM (" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
+                                "UNION" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
+                                ") result";
+                        }
+                        else if (ddlPageSize.SelectedItem.Value == "15")
+                        {
+                            lbl_JobListContentsAllCompanies.Text = "";
+                            sql = "SELECT TOP 15 * FROM (" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
+                                "UNION" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
+                                ") result";
+                        }
+                    }
+                    else
                     {
                         lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 5 * FROM (" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
-                            "UNION" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
-                            ") result";
+                        sql = "SELECT * FROM (" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
+                                "UNION" +
+                                "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
+                                ") result ORDER BY(SELECT NULL) OFFSET " + first_page + " ROWS FETCH NEXT " + limit_per_page + " ROWS ONLY";
                     }
-                    else if (ddlPageSize.SelectedItem.Value == "10")
+
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+                    cmd.Parameters.AddWithValue("@first_page", first_page);
+                    cmd.Parameters.AddWithValue("@end_page", end_page);
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
                     {
-                        lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 10 * FROM (" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
-                            "UNION" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
-                            ") result";
-                    }
-                    else if (ddlPageSize.SelectedItem.Value == "15")
-                    {
-                        lbl_JobListContentsAllCompanies.Text = "";
-                        sql = "SELECT TOP 15 * FROM (" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
-                            "UNION" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
-                            ") result";
-                    }
-                }
-                else
-                {
-                    lbl_JobListContentsAllCompanies.Text = "";
-                    sql = "SELECT * FROM (" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium = 'true'" + candidateSearchCriteria(sql) + ")" +
-                            "UNION" +
-                            "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
-                            " WHERE deleted_at IS NULL AND is_premium IS NULL" + candidateSearchCriteria(sql) + ")" +
-                            ") result ORDER BY(SELECT NULL) OFFSET " + first_page + " ROWS FETCH NEXT " + limit_per_page + " ROWS ONLY";
-                }
-
-                SqlCommand cmd = new SqlCommand(sql, con);
-
-                cmd.Parameters.AddWithValue("@first_page", first_page);
-                cmd.Parameters.AddWithValue("@end_page", end_page);
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    txtPagination.Text = "";
-                    lbl_JobListContentsAllCompanies.Text +=
-                        "<div class='col-sm-6 mt-3'>" +
-                            "<div class='JobListContentsAllCompaniesBoxes'> " +
-                                "<div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'>" +
-                                    "<img src='" + dr["user_photo"].ToString() + "' alt='job seeker' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsStars'>" +
-                                        "<%--Stars Here--%>" +
-                                        "<p>Stars</p>" +
-                                    "</div>" +
-                                "</div>" +
-                                "<div class='JobListContentsAllCompaniesBoxesDetails'>" +
-                                    "<h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>" +
-                                        dr["full_name"].ToString() +
-                                    "</h4>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsBody'>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["profession"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["location"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["prefer_industry"].ToString() + "</p>" +
-                                        "</div>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
-                                            "<img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages'/>" +
-                                            "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["experience"].ToString() + "</p>" +
+                        txtPagination.Text = "";
+                        lbl_JobListContentsAllCompanies.Text +=
+                            "<div class='col-sm-6 mt-3'>" +
+                                "<div class='JobListContentsAllCompaniesBoxes row mr-2'> " +
+                                    "<div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition col'>" +
+                                        "<img src='" + dr["user_photo"].ToString() + "' alt='job seeker' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsStars'>" +
+                                            "<%--Stars Here--%>" +
+                                            "<p>Stars</p>" +
                                         "</div>" +
                                     "</div>" +
-                                    "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
-                                        "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
-                                            "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + dr["seeker_id"].ToString() + ")'> More Details </button> " +
-                                            "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button> " +
+                                    "<div class='JobListContentsAllCompaniesBoxesDetails col'>" +
+                                        "<h4 class='JobListContentsAllCompaniesBoxesDetailsTitle'>" +
+                                            dr["full_name"].ToString() +
+                                        "</h4>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsBody'>" +
+                                            "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                                "<img src='images/JobsList/working-position.png' alt='position' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                                "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["profession"].ToString() + "</p>" +
+                                            "</div>" +
+                                            "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                                "<img src='images/JobsList/pin.png' alt='location' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                                "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["location"].ToString() + "</p>" +
+                                            "</div>" +
+                                            "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                                "<img src='images/JobsList/salary.png' alt='salary' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                                "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["prefer_industry"].ToString() + "</p>" +
+                                            "</div>" +
+                                            "<div class='JobListContentsAllCompaniesBoxesDetailsBodyContents'>" +
+                                                "<img src='images/JobsList/clock.png' alt='employee status' class='JobListContentsAllCompaniesBoxesImages'/>" +
+                                                "<p class='JobListContentsAllCompaniesBoxesDetailsBodyContentsDescription'>" + dr["experience"].ToString() + "</p>" +
+                                            "</div>" +
+                                        "</div>" +
+                                        "<div class='JobListContentsAllCompaniesBoxesDetailsFooter'>" +
+                                            "<div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>" +
+                                                "<button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directDetails(" + dr["seeker_id"].ToString() + ")'> More Details </button> " +
+                                                "<button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow' onclick='directContact()'> Contact Now </button> " +
+                                            "</div>" +
                                         "</div>" +
                                     "</div>" +
                                 "</div>" +
-                            "</div>" +
-                        "</div>";
+                            "</div>";
+                    }
+
+                    Pagination(current_page);
+
+                    con.Close();
+
+                    //Set Previous page cookies
+                    coo2.Value = Request.QueryString["page"] ?? "1";
+                    coo2.Expires = DateTime.Now.AddDays(7);
+                    Response.Cookies.Add(coo2);
+                }
+                catch (Exception error)
+                {
+                    Response.Write("<script>alert('" + error.Message + "');</script>");
                 }
 
-                Pagination(current_page);
-
-                con.Close();
-
-                //Set Previous page cookies
-                coo2.Value = Request.QueryString["page"] ?? "1";
-                coo2.Expires = DateTime.Now.AddDays(7);
-                Response.Cookies.Add(coo2);
-            }
-            catch (Exception error)
-            {
-                Response.Write("<script>alert('" + error.Message + "');</script>");
-            }
         }
+            else
+            {
+                Response.Redirect("home.aspx");
+            }
+}
         protected string candidateSearchCriteria(string sql)
         {
             string skillsquery = Request.QueryString["skills"] ?? "";

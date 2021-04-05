@@ -92,25 +92,29 @@
     <script type="text/javascript">
         $("#skills-selection").select2({
             placeholder: "Skills",
-            allowClear: true,
+            allowClear: false,
+            newTag: false,
             tags: true,
         });
 
         $("#location-selection").select2({
             placeholder: "Select Location or Write Location",
-            allowClear: true,
+            allowClear: false,
+            newTag: false,
             tags: true,
         });
 
         $('#industry-selection').select2({
             placeholder: "Industry",
-            allowClear: true,
+            allowClear: false,
+            newTag: false,
             tags: true,
         });
 
         $("#profession-selection").select2({
             placeholder: "Job Profession",
-            allowClear: true,
+            allowClear: false,
+            newTag: false,
             tags: true,
         });
 
@@ -120,10 +124,6 @@
 
         function directDetails(count) {
             window.location = 'user-profile.aspx?view=' + count;
-        }
-
-        function updateTextInput(val) {
-            document.getElementById('textInputMax').value = val;
         }
     </script>
 
