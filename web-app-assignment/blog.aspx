@@ -21,12 +21,7 @@
                             <h2>毕业生自我推荐(Elevator Pitch)讲稿指南 (附上5个贴士)</h2>
                         </div>
 
-                        <a href="blog_description.aspx" class="left-latest-readmore text-lightgreen mt-3">
-                            Read More >>
-                        </a>
-
                     </div>
-                    
                 </div>
 
                 <div class="col-sm-12 col-lg-6">
