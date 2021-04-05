@@ -358,33 +358,25 @@
                 document.getElementById('status').innerHTML =
                     'Successful login for: ' + response.name + ' and ' + response.id + ' and ' + response.email;
 
-                ////assign facebook user value into variable
-                var name = response.name;
-                var id = response.id;
-                var email = response.email
-
-                var role = document.getElementById("JobRole").value;
-
-                //Post to other web page for data insertion into database
-                if (role == "Recruiter") {
-                    $.ajax({
-                        url: "fb-signup-post-r.aspx",
-                        type: "POST",
-                        data: {
-                            fb_name: response.name,
-                            fb_id: response.id,
-                            fb_email: response.email
-                        },
-                        dataType: "json",
-                        success: function () {
-                            window.location.href("fb-signup-post-r.aspx");
-                        }
-                    })
-                }
-               
-                
 
             });
+        }
+
+        function saveUserData(response) {
+
+            var role = document.getElementById("JobRole").value;
+
+            if (role == "Recruiter") {
+                $.post("fb-signup-post.aspx",
+                    {
+                        fb_name: response.name,
+                        fb_id: response.id,
+                        fb_email : response.email,
+                    },
+                    function () {
+                        alert("Success!");
+                    });
+            }
         }
 
 
