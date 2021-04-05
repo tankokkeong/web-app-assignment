@@ -32,13 +32,13 @@
 
         <div class="about-us-desc">
             <p>
-                <asp:Label ID="lblLorem1" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                <asp:Label ID="lblDesc1" runat="server" Text="Founded in Malaysia in 2020, Jobs4U now has a team of 800 talented individuals, giving us a strong local presence in every country in which we operate."></asp:Label>
             </p>
             <p>
-                <asp:Label ID="lblLorem2" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                <asp:Label ID="lblDesc2" runat="server" Text="With our understanding and insights on each market, as well our passion for technology, we provide jobseekers the best opportunities and deliver exceptional value to employers."></asp:Label>
             </p>
             <p>
-                <asp:Label ID="lblLorem3" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                <asp:Label ID="lblDesc3" runat="server" Text="We are committed to continuously improving the value we provide to jobseekers and employers. To deliver on this, we continue to evolve our product and service offerings to better facilitate the matching of jobseekers to employers."></asp:Label>
             </p>
         </div>
 
@@ -54,7 +54,7 @@
                 <div class="col-sm-10">
                     <div class="about-us-container-text">
                         <p>
-                            <asp:Label ID="lblLorem4" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                            <asp:Label ID="lblPpl1" runat="server" Text="I build great teams and then try to point everyone in the right direction."></asp:Label>
                         </p>
                         <div class="cite">
                             <br />
@@ -68,7 +68,7 @@
                 <div class="col-sm-10">
                     <div class="about-us-container-text">
                         <p>
-                            <asp:Label ID="lblLorem5" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                            <asp:Label ID="lblPpl2" runat="server" Text="The fact that you’re reading this means we did something right. Awesome branding and content brought to you via social media, ads, emails and events, powered by memes and coffee."></asp:Label>
                         </p>
                         <div class="cite">
                             <br />
@@ -93,7 +93,7 @@
                 <div class="col-sm-10">
                     <div class="about-us-container-text">
                         <p>
-                            <asp:Label ID="lblLorem6" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                            <asp:Label ID="lblPpl3" runat="server" Text="We are the secret sauce - a branding content studio consisting of a team of talented creative individuals. We specialize in attracting talented young jobseekers through hassle free content creation and creative solutions. To put it simply, we make things helpful & pretty!"></asp:Label>
                         </p>
                         <div class="cite">
                             <br />
@@ -114,7 +114,7 @@
             </div>
             <div class="mission-desc">
                 <p>
-                    <asp:Label ID="lblLorem7" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                    <asp:Label ID="lblMissionDesc" runat="server" Text="Helps people discover any job with any employer in the market."></asp:Label>
                 </p>
             </div>
         </div>
@@ -127,7 +127,7 @@
             </div>
             <div class="vision-desc">
                 <p>
-                    <asp:Label ID="lblLorem8" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. In hac habitasse platea dictumst. Proin fermentum leo vel orci. Diam in arcu cursus euismod quis."></asp:Label>
+                    <asp:Label ID="lblVisionDesc" runat="server" Text="To connect businesses with talent and improve lives through better careers."></asp:Label>
                 </p>
             </div>
         </div>

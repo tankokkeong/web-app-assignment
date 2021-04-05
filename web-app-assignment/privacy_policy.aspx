@@ -20,33 +20,33 @@
             <asp:Label ID="lblPrivacyPolicy2" runat="server" Text="Privacy Policy"></asp:Label></h1>
 
         <p class="privacy-intro">
-            <asp:Label ID="lblLacus" runat="server" Text="lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque"></asp:Label>
+            <asp:Label ID="lblIntro" runat="server" Text="Your privacy is important to Jobs4U. Please read this Privacy Notice carefully as it forms part of the Terms of Use which govern the use of the Jobs4U.com Services and the Jobs4U.com Websites."></asp:Label>
         </p>
 
         <h2>
-            <asp:Label ID="lblPellentesque" runat="server" Text="Pellentesque Elit Eget Gravida"></asp:Label></h2>
+            <asp:Label ID="lblPrivacy1" runat="server" Text="COLLECTION OF PERSONAL INFORMATION"></asp:Label></h2>
         <p class="privacy-text">
-            <asp:Label ID="lblVolutpat1" runat="server" Text="volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"></asp:Label>
+            <asp:Label ID="lblPrivacy11" runat="server" Text="We collect personal information directly from you when you choose to engage any of the Jobs4U.com Services and/or to use the Jobs4U.com Websites. The following are examples of personal information Jobs4U.com may collect directly from you:- <br> i) Age; <br> ii) Date of birth; <br> iii) Contact number; <br> iv) Your image; <br> v) Academic qualifications; <br> vi) Resume; <br> vii) Personal interests and preferences; <br> viii) Credit card or debit card details; <br> ix) Other information associated with a resume for job applications"></asp:Label>
         </p>
 
-        <h2><asp:Label ID="lblTurpis" runat="server" Text="Turpis Egestas Sed Tempus Urna"></asp:Label></h2>
+        <h2><asp:Label ID="lblPrivacy2" runat="server" Text="PURPOSES OF COLLECTING AND USE OF PERSONAL INFORMATION"></asp:Label></h2>
         <p class="privacy-text">
-            <asp:Label ID="lblVolutpat2" runat="server" Text="volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"></asp:Label>
+            <asp:Label ID="lblPrivacy21" runat="server" Text="The purposes for which Jobs4U processes your personal information are as follows:- <br> 1) To verify your identity; <br> 2) To assess and/or verify your employability and credit worthiness; <br> 3) To administer and manage the Jobs4U.com Services provided to you; <br> 4) To contact you in respect of Jobs4U.com Services; <br> 5) To detect and prevent fraudulent activity. <br> 6) To assist Jobs4U.com in understanding your browsing preferences on the Jobs4U.com Websites so that Jobs4U.com can tailor content accordingly; <br> 7) To maintain and develop the Jobs4U.com Websites and Jobs4U.com Services; <br> 8) To process your order for the Jobs4U.com Services which you have requested;"></asp:Label>
         </p>
 
-        <h2><asp:Label ID="lblLorem" runat="server" Text="Lorem Mollis Aliquam"></asp:Label></h2>
+        <h2><asp:Label ID="lblPrivacy3" runat="server" Text="Jobs4U.COM PROFILE"></asp:Label></h2>
         <p class="privacy-text">
-            <asp:Label ID="lblVolutpat3" runat="server" Text="volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"></asp:Label>
+            <asp:Label ID="lblPrivacy31" runat="server" Text="Jobs4U.com uses its best effort to restrict access to the Jobs4U.com Resume Database only to those who have subscribed to the Jobs4U.com Services, these parties may retain a copy of your Jobs4U.com Profile in their own files or databases."></asp:Label>
         </p>
 
-        <h2><asp:Label ID="lblPharetara" runat="server" Text="Pharetara Massa"></asp:Label></h2>
+        <h2><asp:Label ID="lblPrivacy4" runat="server" Text="SECURITY OF PERSONAL INFORMATION"></asp:Label></h2>
         <p class="privacy-text">
-            <asp:Label ID="lblVolutpat4" runat="server" Text="volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"></asp:Label>
+            <asp:Label ID="lblPrivacy41" runat="server" Text="Jobs4U.com is committed to keeping personal information secure. Jobs4U.com has appropriate technical, administrative and physical procedures in place to protect personal information from loss, theft and misuse, as well as against unauthorized access, disclosure, alteration and destruction. Sensitive information (such as a credit card number) entered on our payment gateway services are encrypted during the transmission of that information using secure socket layer technology (SSL)."></asp:Label>
         </p>
 
-        <h2><asp:Label ID="lblImperdier" runat="server" Text="Imperdier dui Accumsan"></asp:Label></h2>
+        <h2><asp:Label ID="lblPrivacy5" runat="server" Text="TRANSFER OF YOUR PERSONAL INFORMATION OUTSIDE OF YOUR LOCAL JURISDICTION"></asp:Label></h2>
         <p class="privacy-text">
-            <asp:Label ID="lblVolutpat5" runat="server" Text="volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"></asp:Label>
+            <asp:Label ID="lblPrivacy51" runat="server" Text="It may be necessary for Jobs4U.com to transfer your personal information outside of your local jurisdiction if any of Jobs4U.com’s service providers or strategic partners (“overseas entities”) is involved in providing part of the Jobs4U.com Services, including but not limited to cloud service providers."></asp:Label>
         </p>
     </div>
 </asp:Content>

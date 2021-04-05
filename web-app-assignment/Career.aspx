@@ -38,66 +38,66 @@
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
                         <p>
-                            <asp:Label ID="lblLorem1" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                            <asp:Label ID="lblDesc1" runat="server" class="description" Text="I build great teams and then try to point everyone in the right direction."></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
                                 <img src="images/career/3.jpg" />
                             </div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
+                            <h3 class="title">Kenny Tan</h3>
+                            <span class="post"><asp:Label ID="lblPpl1" runat="server" class="text-lightgreen text-center" Text="Founder"></asp:Label></span>
                         </div>
                     </div>
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
                         <p>
-                            <asp:Label ID="lblLorem2" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                            <asp:Label ID="lblDesc2" runat="server" class="description" Text="The fact that you’re reading this means we did something right. Awesome branding and content brought to you via social media, ads, emails and events, powered by memes and coffee."></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
                                 <img src="images/career/3.jpg" />
                             </div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
+                            <h3 class="title">Hon Siong</h3>
+                            <span class="post"><asp:Label ID="lblPpl2" runat="server" class="text-lightgreen text-center" Text="Marketing Teams"></asp:Label></span>
                         </div>
                     </div>
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
                         <p>
-                            <asp:Label ID="lblLorem3" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                            <asp:Label ID="lblDesc3" runat="server" class="description" Text="We are the secret sauce - a branding content studio consisting of a team of talented creative individuals. We specialize in attracting talented young jobseekers through hassle free content creation and creative solutions. To put it simply, we make things helpful & pretty!"></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
                                 <img src="images/career/3.jpg" />
                             </div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
+                            <h3 class="title">Suk Chuang</h3>
+                            <span class="post"><asp:Label ID="lblPpl3" runat="server" class="text-lightgreen text-center" Text="Creative Teams"></asp:Label></span>
                         </div>
                     </div>
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
                         <p>
-                            <asp:Label ID="lblLorem4" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                            <asp:Label ID="lblDesc4" runat="server" class="description" Text="If a picture is worth a thousand words, employer branding will leave your competitors speechless and job seekers amazed. With experienced consultants at the ready, don’t leave things to chance. Reach out to us and get started!"></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
                                 <img src="images/career/3.jpg" />
                             </div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
+                            <h3 class="title">Festus Chen</h3>
+                            <span class="post"><asp:Label ID="lblPpl4" runat="server" class="text-lightgreen text-center" Text="Sales Teams"></asp:Label></span>
                         </div>
                     </div>
                     <div class="testimonial">
                         <span class="carousel-control-next-icon fa fa-quote-left"></span>
                         <p>
-                            <asp:Label ID="lblLorem5" runat="server" class="description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent."></asp:Label>
+                            <asp:Label ID="lblDesc5" runat="server" class="description" Text="A group of passionate and people-oriented headhunters who desire to help employers find quality talents, not only based on their working experiences and education level, but also emphasize on culture and attitude."></asp:Label>
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
                                 <img src="images/career/3.jpg" />
                             </div>
-                            <h3 class="title">Jenny Hing</h3>
-                            <span class="post">Founder</span>
+                            <h3 class="title">Anson Ho</h3>
+                            <span class="post"><asp:Label ID="lblPpl5" runat="server" class="text-lightgreen text-center" Text="Recruitment Teams"></asp:Label></span>
                         </div>
                     </div>
 

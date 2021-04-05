@@ -11,72 +11,82 @@ namespace web_app_assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Dictionary<string, string> Languages = new Dictionary<string, string>();
+            Dictionary<string, string> Languages = new Dictionary<string, string>();
 
-            //var languages_selected = Request.QueryString["language"];
+            var languages_selected = Request.QueryString["language"];
 
-            //if (languages_selected == "EN")
-            //{
-            //    Session["Languages_EN"] = true;
-            //    Session.Remove("Languages_CN");
-            //}
-            //else if (languages_selected == "CN")
-            //{
-            //    Session["Languages_CN"] = true;
-            //    Session.Remove("Languages_EN");
-            //}
+            if (languages_selected == "EN")
+            {
+                Session["Languages_EN"] = true;
+                Session.Remove("Languages_CN");
+            }
+            else if (languages_selected == "CN")
+            {
+                Session["Languages_CN"] = true;
+                Session.Remove("Languages_EN");
+            }
 
-            //if (Session["Languages_CN"] != null)
-            //{
-            //    Languages.Add("Privacy Policy", "使用与帮助");
-            //    Languages.Add("Pellentesque Elit Eget Gravida", "屠隐雌闺");
-            //    Languages.Add("Turpis Egestas Sed Tempus Urna", "奠鹰先啉椅");
-            //    Languages.Add("Lorem Mollis Aliquam", "脊宣明");
-            //    Languages.Add("Pharetara Massa", "锤鼎");
-            //    Languages.Add("Imperdier dui Accumsan", "魁限嗨");
-            //    Languages.Add("lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque", "贾肌洋栖轧张位织萨湘舰，警爬廉剩槐削蹈藤获束铅末维塘邱刷沫昂圃微窜跑婆容昏滴均专陷！渠宜疫规炼艇梢景腋屠猖烘页俩悬…兆嘛纤惧？迅利咬请毫拥旱故巷娃族穆扎乐蛭赔器摔市坝肆地氟院佐浦洼熬涕寇搞驶宅煽按严演？");
-            //    Languages.Add("volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum", "它试作膝溢采泥阳渡滴嗓北抓秀销辛毅渣恐嫂俘巷疑酸。派保钠泵彪将足渗套验量活惜八携？");
+            if (Session["Languages_CN"] != null)
+            {
+                Languages.Add("Frequent Asked Questions", "常问问题");
+                Languages.Add("Q1. Sign Up", "Q1. 登记");
+                Languages.Add("1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.", "1. 点击“登录”按钮 <br> 2. 选择“登记”，选择您的角色并填写您的个​​人信息。");
+                Languages.Add("Q2. Search for a Job", "Q2. 寻找工作");
+                Languages.Add("Explore the 'Jobs' page. Type in the keywords in the search box by Job Title, Company, Location, Job Type & Specialization.", "探索‘职位’页面。在搜索框中按职位，公司，位置，职位类型和专业类别键入关键字。");
+                Languages.Add("Q3. Update my profile", "Q3. 更新个人资料");
+                Languages.Add("To update your profile <br> 1. Click on the 'User Profile'.<br> 2. After you have made the necessary changes, click on the ‘Update’ button.", "更新个人资料<br> 1. 点击‘用户资料’。<br> 2. 进行必要的更改后，单击‘Update’按钮。");
+                Languages.Add("Q4. Forgot Password", "Q4. 忘记密码");
+                Languages.Add("Click on 'Forgot Your Password ?' on our 'Login' PAGE and your new password will be sent to you via email shortly! If you did not received the email at your inbox, kindly check your junk mail folder!", "点击‘Forgot Your Password ?’在我们的“登录”页面上，您的新密码将很快通过电子邮件发送给您！如果您没有在收件箱中收到电子邮件，请检查您的垃圾邮件文件夹！");
+                Languages.Add("Q5. Want to know more about us?", "Q5. 想知道更多关于我们？");
+                Languages.Add("1. Can explore our 'About Us'. <br> 2. Please feel free to drop us a message via our Contact Us Page form. We'll get back to you as soon as possible.", "1. 可以浏览我们的‘关于我们’。 <br> 2. 请随时通过‘联系我们’页面表单给我们留言。我们会尽快与您联系。");
+                Languages.Add("Q6. What are the payment methods accepted by Jobs4U?", "Q6. Jobs4U接受哪些付款方式？");
+                Languages.Add("We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.", "我们接受以下付款方式：<br> Google Pay，PayPal和信用卡/借记卡。");
 
-            //    lblPrivacyPolicy1.Text = Languages["Privacy Policy"];
-            //    lblPrivacyPolicy2.Text = Languages["Privacy Policy"];
-            //    lblLacus.Text = Languages["lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque"];
-            //    lblPellentesque.Text = Languages["Pellentesque Elit Eget Gravida"];
-            //    lblTurpis.Text = Languages["Turpis Egestas Sed Tempus Urna"];
-            //    lblLorem.Text = Languages["Lorem Mollis Aliquam"];
-            //    lblPharetara.Text = Languages["Pharetara Massa"];
-            //    lblImperdier.Text = Languages["Imperdier dui Accumsan"];
-            //    lblVolutpat1.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat2.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat3.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat4.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat5.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
+                lblFrequent.Text = Languages["Frequent Asked Questions"];
+                lblQ1.Text = Languages["Q1. Sign Up"];
+                lblA1.Text = Languages["1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information."];
+                lblQ2.Text = Languages["Q2. Search for a Job"];
+                lblA2.Text = Languages["Explore the 'Jobs' page. Type in the keywords in the search box by Job Title, Company, Location, Job Type & Specialization."];
+                lblQ3.Text = Languages["Q3. Update my profile"];
+                lblA3.Text = Languages["To update your profile <br> 1. Click on the 'User Profile'.<br> 2. After you have made the necessary changes, click on the ‘Update’ button."];
+                lblQ4.Text = Languages["Q4. Forgot Password"];
+                lblA4.Text = Languages["Click on 'Forgot Your Password ?' on our 'Login' PAGE and your new password will be sent to you via email shortly! If you did not received the email at your inbox, kindly check your junk mail folder!"];
+                lblQ5.Text = Languages["Q5. Want to know more about us?"];
+                lblA5.Text = Languages["1. Can explore our 'About Us'. <br> 2. Please feel free to drop us a message via our Contact Us Page form. We'll get back to you as soon as possible."];
+                lblQ6.Text = Languages["Q6. What are the payment methods accepted by Jobs4U?"];
+                lblA6.Text = Languages["We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card."];
+            }
+            else if (Session["Languages_EN"] != null)
+            {
+                Languages.Add("Frequent Asked Questions", "Frequent Asked Questions");
+                Languages.Add("Q1. Sign Up", "Q1. Sign Up");
+                Languages.Add("1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.", "1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.");
+                Languages.Add("Q2. Search for a Job", "Q2. Search for a Job");
+                Languages.Add("Explore the 'Jobs' page. Type in the keywords in the search box by Job Title, Company, Location, Job Type & Specialization.", "Explore the 'Jobs' page. Type in the keywords in the search box by Job Title, Company, Location, Job Type & Specialization.");
+                Languages.Add("Q3. Update my profile", "Q3. Update my profile");
+                Languages.Add("To update your profile <br> 1. Click on the 'User Profile'.<br> 2. After you have made the necessary changes, click on the ‘Update’ button.", "To update your profile <br> 1. Click on the 'User Profile'.<br> 2. After you have made the necessary changes, click on the ‘Update’ button.");
+                Languages.Add("Q4. Forgot Password", "Q4. Forgot Password");
+                Languages.Add("Click on 'Forgot Your Password ?' on our 'Login' PAGE and your new password will be sent to you via email shortly! If you did not received the email at your inbox, kindly check your junk mail folder!", "Click on 'Forgot Your Password ?' on our 'Login' PAGE and your new password will be sent to you via email shortly! If you did not received the email at your inbox, kindly check your junk mail folder!");
+                Languages.Add("Q5. Want to know more about us?", "Q5. Want to know more about us?");
+                Languages.Add("1. Can explore our 'About Us'. <br> 2. Please feel free to drop us a message via our Contact Us Page form. We'll get back to you as soon as possible.", "1. Can explore our 'About Us'. <br> 2. Please feel free to drop us a message via our Contact Us Page form. We'll get back to you as soon as possible.");
+                Languages.Add("Q6. What are the payment methods accepted by Jobs4U?", "Q6. What are the payment methods accepted by Jobs4U?");
+                Languages.Add("We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.", "We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.");
 
-            //}
-            //else if (Session["Languages_EN"] != null)
-            //{
-            //    Languages.Add("Privacy Policy", "Privacy Policy");
-            //    Languages.Add("Pellentesque Elit Eget Gravida", "Pellentesque Elit Eget Gravida");
-            //    Languages.Add("Turpis Egestas Sed Tempus Urna", "Turpis Egestas Sed Tempus Urna");
-            //    Languages.Add("Lorem Mollis Aliquam", "Lorem Mollis Aliquam");
-            //    Languages.Add("Pharetara Massa", "Pharetara Massa");
-            //    Languages.Add("Imperdier dui Accumsan", "Imperdier dui Accumsan");
-            //    Languages.Add("lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque", "lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque");
-            //    Languages.Add("volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum", "volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum");
 
-            //    lblPrivacyPolicy1.Text = Languages["Privacy Policy"];
-            //    lblPrivacyPolicy2.Text = Languages["Privacy Policy"];
-            //    lblLacus.Text = Languages["lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque"];
-            //    lblPellentesque.Text = Languages["Pellentesque Elit Eget Gravida"];
-            //    lblTurpis.Text = Languages["Turpis Egestas Sed Tempus Urna"];
-            //    lblLorem.Text = Languages["Lorem Mollis Aliquam"];
-            //    lblPharetara.Text = Languages["Pharetara Massa"];
-            //    lblImperdier.Text = Languages["Imperdier dui Accumsan"];
-            //    lblVolutpat1.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat2.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat3.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat4.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //    lblVolutpat5.Text = Languages["volutpat sed cras ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum"];
-            //}
+                lblFrequent.Text = Languages["Frequent Asked Questions"];
+                lblQ1.Text = Languages["Q1. Sign Up"];
+                lblA1.Text = Languages["1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information."];
+                lblQ2.Text = Languages["Q2. Search for a Job"];
+                lblA2.Text = Languages["Explore the 'Jobs' page. Type in the keywords in the search box by Job Title, Company, Location, Job Type & Specialization."];
+                lblQ3.Text = Languages["Q3. Update my profile"];
+                lblA3.Text = Languages["To update your profile <br> 1. Click on the 'User Profile'.<br> 2. After you have made the necessary changes, click on the ‘Update’ button."];
+                lblQ4.Text = Languages["Q4. Forgot Password"];
+                lblA4.Text = Languages["Click on 'Forgot Your Password ?' on our 'Login' PAGE and your new password will be sent to you via email shortly! If you did not received the email at your inbox, kindly check your junk mail folder!"];
+                lblQ5.Text = Languages["Q5. Want to know more about us?"];
+                lblA5.Text = Languages["1. Can explore our 'About Us'. <br> 2. Please feel free to drop us a message via our Contact Us Page form. We'll get back to you as soon as possible."];
+                lblQ6.Text = Languages["Q6. What are the payment methods accepted by Jobs4U?"];
+                lblA6.Text = Languages["We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card."];
+            }
         }
     }
 }

@@ -33,13 +33,13 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblTerms2;
 
         /// <summary>
-        /// lblLacus control.
+        /// lblIntro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLacus;
+        protected global::System.Web.UI.WebControls.Label lblIntro;
 
         /// <summary>
         /// lbl10 control.
@@ -60,15 +60,6 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lbl11;
 
         /// <summary>
-        /// lblVolut1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolut1;
-
-        /// <summary>
         /// lbl12 control.
         /// </summary>
         /// <remarks>
@@ -76,15 +67,6 @@ namespace web_app_assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl12;
-
-        /// <summary>
-        /// lblVolut2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolut2;
 
         /// <summary>
         /// lbl20 control.
@@ -105,15 +87,6 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lbl21;
 
         /// <summary>
-        /// lblVolut3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolut3;
-
-        /// <summary>
         /// lbl22 control.
         /// </summary>
         /// <remarks>
@@ -123,30 +96,21 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lbl22;
 
         /// <summary>
-        /// lblVolut4 control.
+        /// lbl30 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolut4;
+        protected global::System.Web.UI.WebControls.Label lbl30;
 
         /// <summary>
-        /// lbl23 control.
+        /// lbl31 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl23;
-
-        /// <summary>
-        /// lblVolut5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolut5;
+        protected global::System.Web.UI.WebControls.Label lbl31;
     }
 }

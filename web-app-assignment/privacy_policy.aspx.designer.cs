@@ -33,102 +33,102 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblPrivacyPolicy2;
 
         /// <summary>
-        /// lblLacus control.
+        /// lblIntro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLacus;
+        protected global::System.Web.UI.WebControls.Label lblIntro;
 
         /// <summary>
-        /// lblPellentesque control.
+        /// lblPrivacy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPellentesque;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy1;
 
         /// <summary>
-        /// lblVolutpat1 control.
+        /// lblPrivacy11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolutpat1;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy11;
 
         /// <summary>
-        /// lblTurpis control.
+        /// lblPrivacy2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTurpis;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy2;
 
         /// <summary>
-        /// lblVolutpat2 control.
+        /// lblPrivacy21 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolutpat2;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy21;
 
         /// <summary>
-        /// lblLorem control.
+        /// lblPrivacy3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy3;
 
         /// <summary>
-        /// lblVolutpat3 control.
+        /// lblPrivacy31 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolutpat3;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy31;
 
         /// <summary>
-        /// lblPharetara control.
+        /// lblPrivacy4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPharetara;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy4;
 
         /// <summary>
-        /// lblVolutpat4 control.
+        /// lblPrivacy41 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolutpat4;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy41;
 
         /// <summary>
-        /// lblImperdier control.
+        /// lblPrivacy5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImperdier;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy5;
 
         /// <summary>
-        /// lblVolutpat5 control.
+        /// lblPrivacy51 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVolutpat5;
+        protected global::System.Web.UI.WebControls.Label lblPrivacy51;
     }
 }

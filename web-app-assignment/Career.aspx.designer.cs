@@ -33,49 +33,94 @@ namespace web_app_assignment
         protected global::System.Web.UI.WebControls.Label lblOurTeam;
 
         /// <summary>
-        /// lblLorem1 control.
+        /// lblDesc1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem1;
+        protected global::System.Web.UI.WebControls.Label lblDesc1;
 
         /// <summary>
-        /// lblLorem2 control.
+        /// lblPpl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem2;
+        protected global::System.Web.UI.WebControls.Label lblPpl1;
 
         /// <summary>
-        /// lblLorem3 control.
+        /// lblDesc2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem3;
+        protected global::System.Web.UI.WebControls.Label lblDesc2;
 
         /// <summary>
-        /// lblLorem4 control.
+        /// lblPpl2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem4;
+        protected global::System.Web.UI.WebControls.Label lblPpl2;
 
         /// <summary>
-        /// lblLorem5 control.
+        /// lblDesc3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLorem5;
+        protected global::System.Web.UI.WebControls.Label lblDesc3;
+
+        /// <summary>
+        /// lblPpl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPpl3;
+
+        /// <summary>
+        /// lblDesc4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDesc4;
+
+        /// <summary>
+        /// lblPpl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPpl4;
+
+        /// <summary>
+        /// lblDesc5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDesc5;
+
+        /// <summary>
+        /// lblPpl5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPpl5;
 
         /// <summary>
         /// lblApplication control.
