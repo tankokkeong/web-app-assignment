@@ -126,7 +126,6 @@
                     function () {
                         //Clear form
                         document.getElementById("chat-content").value = "";
-
                     });
                 }
                 

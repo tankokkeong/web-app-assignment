@@ -363,7 +363,6 @@
                         "sender": logn,
                         "message": message,
                         "timeSent": sentTime,
-                        "seen":"unseen",
                     });
                 }
                 else {
@@ -372,7 +371,6 @@
                         "sender":  visitor,
                         "message": message,
                         "timeSent": sentTime,
-                        "seen": "unseen",
                     });
                 }
             }

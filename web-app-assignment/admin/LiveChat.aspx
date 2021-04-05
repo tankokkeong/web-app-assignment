@@ -75,19 +75,6 @@
                         "sendTo": query,
                         "message": message,
                         "timeSent": sentTime,
-                        "seen": "unseen",
-                    });
-                }
-
-                if (query.includes("Visitor") == true){
-                    //Update seen unseen in database visitor
-                    firebase.database().ref("VisitorMessages/" + query + "/").update({
-                        "seen": "seen",
-                    });
-                } else {
-                    //Update seen unseen in database user
-                    firebase.database().ref("UserMessages/" + query + "/").update({
-                        "seen": "seen",
                     });
                 }
             }

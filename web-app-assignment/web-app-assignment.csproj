@@ -143,6 +143,7 @@
     <Content Include="admin\js\popper.min.js" />
     <Content Include="admin\LiveChat.aspx" />
     <Content Include="admin\LiveChatDashboard.aspx" />
+    <Content Include="admin\LiveChatPost.aspx" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\edit_termsConditions.aspx" />
     <Content Include="admin\clients-management.aspx" />
@@ -2122,6 +2123,13 @@
     </Compile>
     <Compile Include="admin\LiveChatDashboard.aspx.designer.cs">
       <DependentUpon>LiveChatDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\LiveChatPost.aspx.cs">
+      <DependentUpon>LiveChatPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\LiveChatPost.aspx.designer.cs">
+      <DependentUpon>LiveChatPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
