@@ -203,9 +203,23 @@ namespace web_app_assignment
                     e.Row.Cells[1].Text = "<span class='badge badge-danger'>" + e.Row.Cells[1].Text + "</span>";
                 }
 
-                //Query String
-                e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
-                    "<button class='btn btn-danger p-1' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[4].Text + ")'>Delete</button>";
+                if(getIsPremium() == "true")
+                {
+                    //Query String
+                    e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
+                        "<button class='btn btn-danger p-1 mr-2' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[4].Text + ")'>Delete</button>" +
+                        "<a class='btn btn-primary p-1' href='job_description.aspx?post_id=" + e.Row.Cells[4].Text + "'>Review</button>";
+                }
+                else
+                {
+                    //Query String
+                    e.Row.Cells[4].Text = "<a class='btn btn-success p-1 mr-2'  href='edit-postjob.aspx?job=" + e.Row.Cells[4].Text + "'> Edit</a>" +
+                        "<button class='btn btn-danger p-1 mr-2' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[4].Text + ")'>Delete</button>" +
+                        "<span data-toggle ='tooltip' data-placement ='right' title ='Premium only' tabindex ='0' >" +
+                        "<button class='btn btn-primary p-1' disabled>Review</button><i class='fas fa-lock' id='schedule-lock'></i>" +
+                        "</span>";
+                }
+
             }
 
         }
@@ -289,6 +303,11 @@ namespace web_app_assignment
         protected string getIsPremium()
         {
             SqlConnection con = new SqlConnection(strcon);
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
             //Get Recruiter ID
             Dictionary<string, string> RecruiterDetails = (Dictionary<string, string>)Session["Recruiter"];

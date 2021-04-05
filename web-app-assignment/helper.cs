@@ -270,5 +270,40 @@ namespace web_app_assignment
 
             return is_premium;
         }
+
+        public bool getRecruiterIsPremium(string recruiter_id)
+        {
+            bool is_premium = false;
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection 
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            //Get Recruiter info
+            string recruiter_sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(recruiter_sql, con);
+
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                if (dr["is_premium"].ToString() == "true")
+                {
+                    is_premium = true;
+                }
+            }
+
+            con.Close();
+
+
+            return is_premium;
+        }
     }
 }

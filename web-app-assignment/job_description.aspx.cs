@@ -112,6 +112,25 @@ namespace web_app_assignment
                             }
 
                         }
+                        else if(Session["Recruiter"] != null)
+                        {
+                            string recruiter_id = helper.getRecruiterID();
+
+                            if (helper.getRecruiterIsPremium(recruiter_id))
+                            {
+                                //Display Job seeker_review
+                                divReview.Visible = true;
+
+                                //Display total job review number
+                                lblJobReviewCount.Text = getTotalJobReview().ToString();
+
+                                //Display user rating score board
+                                getUserRatingBoard();
+
+                                //Remove apply now button
+                                btn_JobDescriptionDetailsApplyNowButton.Visible = false;
+                            }
+                        }
                         else
                         {
                             divReview.Visible = false;
