@@ -20,6 +20,7 @@ namespace web_app_assignment.admin
         public int chartValueApp = 0;
         public int chartValuePremium = 0;
         public int chartValuePremium2 = 0;
+        public int chartValuePremium3 = 0;
         public string chartValuePayment = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,12 +51,15 @@ namespace web_app_assignment.admin
 
                 //Google Chart Premium
                 string sqlChartPremium1 = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium = 'true'";
-                string sqlChartPremium2 = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium IS NULL";
+                string sqlChartPremium2 = "SELECT COUNT(*) FROM JobSeeker WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium = 'true'";
+                string sqlChartPremium3 = "SELECT COUNT(*) FROM Recruiter WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31' AND is_premium IS NULL";
                 SqlCommand cmdChartPremium1 = new SqlCommand(sqlChartPremium1, con);
                 SqlCommand cmdChartPremium2 = new SqlCommand(sqlChartPremium2, con);
+                SqlCommand cmdChartPremium3 = new SqlCommand(sqlChartPremium3, con);
 
                 this.chartValuePremium = (int)(cmdChartPremium1.ExecuteScalar());
                 this.chartValuePremium2 = (int)(cmdChartPremium2.ExecuteScalar());
+                this.chartValuePremium3 = (int)(cmdChartPremium3.ExecuteScalar());
 
                 //Google Chart Payment
                 string sqlChartPayment = "SELECT SUM(payment_amount) FROM PaymentRecord WHERE created_at BETWEEN '2021-01-01' AND '2021-12-31'";

@@ -82,15 +82,17 @@
 
             var chartPremium = <%=chartValuePremium%>;
             var chartPremium2 = <%=chartValuePremium2%>;
+            var chartPremium3 = <%=chartValuePremium3%>;
 
             var data = google.visualization.arrayToDataTable([
                 ['Premium', 'Year'],
-                ['Premium', chartPremium],
-                ['Non-Premium', chartPremium2],
+                ['Recruiter Premium', chartPremium],
+                ['Job Seeker Premium', chartPremium2],
+                ['Non-Premium', chartPremium3]
             ]);
 
             var options = {
-                title: 'Premium Recruiter'
+                title: 'Premium User'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
