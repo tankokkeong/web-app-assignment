@@ -74,7 +74,7 @@
                     <div class="row mt-2">
                         <div class="col">
                             <button class="btn btn-info" onclick="paymentFilter()" type="button">Search</button>
-                            <button class="btn btn-danger" type="button">Clear</button>
+                            <button class="btn btn-danger" type="button" onclick="clearFilters()">Clear</button>
                         </div>
                         
                     </div>
@@ -149,7 +149,7 @@
             var user_role = document.getElementById("payment-user-role");
             var username = document.getElementById("payment-username");
             var payment_from_date = document.getElementById("payment-from-date");
-            var payment_to_date = document.getElementById("payment-to-date")
+            var payment_to_date = document.getElementById("payment-to-date");
 
             var query = window.location.href.split("?")[1].split("&");
 
@@ -162,6 +162,24 @@
             payment_to_date.value = query[5].split("=")[1].replace("+", " ");
 
             console.log(query[0].split("=")[1])
+        }
+
+        function clearFilters() {
+            //User input
+            var payment_id = document.getElementById("payment-id");
+            var payment_method = document.getElementById("payment-methods");
+            var user_role = document.getElementById("payment-user-role");
+            var username = document.getElementById("payment-username");
+            var payment_from_date = document.getElementById("payment-from-date");
+            var payment_to_date = document.getElementById("payment-to-date");
+
+            //Clear form
+            payment_id.value = "";
+            payment_method.value = "";
+            user_role.value = "";
+            username.value = "";
+            payment_from_date.value = "";
+            payment_to_date.value = "";
         }
 
         //Call sticky form function
