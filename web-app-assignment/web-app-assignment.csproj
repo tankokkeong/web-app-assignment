@@ -142,6 +142,7 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\clients-management.aspx" />
     <Content Include="admin\message-details.aspx" />
+    <Content Include="admin\payments.aspx" />
     <Content Include="admin\signup.aspx" />
     <Content Include="admin\task-post.aspx" />
     <Content Include="admin\blog-category-management.aspx" />
@@ -2111,6 +2112,13 @@
     </Compile>
     <Compile Include="admin\message-details.aspx.designer.cs">
       <DependentUpon>message-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\payments.aspx.cs">
+      <DependentUpon>payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\payments.aspx.designer.cs">
+      <DependentUpon>payments.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\signup.aspx.cs">
       <DependentUpon>signup.aspx</DependentUpon>

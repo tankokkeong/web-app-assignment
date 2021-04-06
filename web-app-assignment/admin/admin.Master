@@ -165,7 +165,7 @@
 
 
                 <li class="treeview">
-                    <a class="app-menu__item" href="LiveChatDashboard.aspx">
+                    <a class="app-menu__item" href="payments.aspx">
                         <i class="app-menu__icon far fa-credit-card"></i><span class="app-menu__label">Payments</span>
                     </a>
                 </li>
