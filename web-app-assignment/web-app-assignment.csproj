@@ -99,6 +99,7 @@
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\css\message-details.css" />
+    <Content Include="admin\css\payments.css" />
     <Content Include="admin\css\privacy.css" />
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />

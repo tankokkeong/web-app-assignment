@@ -1,2 +1,14 @@
-﻿body {
+﻿.payment-container {
+    background-color: white;
+    padding: 20px;
+}
+
+.page-active {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.aspNetDisabled {
+    background-color: #b2b2b2 !important;
+    color: #fff !important;
 }
