@@ -165,12 +165,9 @@
 
 
                 <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview">
-                        <i class="app-menu__icon fas fa-cog"></i><span class="app-menu__label">Settings</span><i class="treeview-indicator fa fa-angle-right"></i>
+                    <a class="app-menu__item" href="payments.aspx">
+                        <i class="app-menu__icon far fa-credit-card"></i><span class="app-menu__label">Payments</span>
                     </a>
-
-                    <ul class="treeview-menu">
-                    </ul>
                 </li>
 
               </ul>

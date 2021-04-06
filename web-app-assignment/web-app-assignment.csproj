@@ -99,17 +99,13 @@
     <Content Include="admin\css\login.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\css\message-details.css" />
+    <Content Include="admin\css\payments.css" />
     <Content Include="admin\css\privacy.css" />
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\display-blogs.aspx" />
     <Content Include="admin\edit-blogs.aspx" />
-    <Content Include="admin\edit_aboutUs.aspx" />
-    <Content Include="admin\edit_career.aspx" />
-    <Content Include="admin\edit_contactUs.aspx" />
-    <Content Include="admin\edit_helpCenter.aspx" />
-    <Content Include="admin\edit_privacy.aspx" />
     <Content Include="admin\images\Admin-LiveMessage\chatting.png" />
     <Content Include="admin\images\Admin-LiveMessage\email.png" />
     <Content Include="admin\images\Admin-LiveMessage\more.png" />
@@ -145,9 +141,9 @@
     <Content Include="admin\LiveChatDashboard.aspx" />
     <Content Include="admin\LiveChatPost.aspx" />
     <Content Include="admin\login.aspx" />
-    <Content Include="admin\edit_termsConditions.aspx" />
     <Content Include="admin\clients-management.aspx" />
     <Content Include="admin\message-details.aspx" />
+    <Content Include="admin\payments.aspx" />
     <Content Include="admin\signup.aspx" />
     <Content Include="admin\task-post.aspx" />
     <Content Include="admin\blog-category-management.aspx" />
@@ -2076,41 +2072,6 @@
     <Compile Include="admin\edit-blogs.aspx.designer.cs">
       <DependentUpon>edit-blogs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\edit_aboutUs.aspx.cs">
-      <DependentUpon>edit_aboutUs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_aboutUs.aspx.designer.cs">
-      <DependentUpon>edit_aboutUs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\edit_career.aspx.cs">
-      <DependentUpon>edit_career.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_career.aspx.designer.cs">
-      <DependentUpon>edit_career.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\edit_contactUs.aspx.cs">
-      <DependentUpon>edit_contactUs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_contactUs.aspx.designer.cs">
-      <DependentUpon>edit_contactUs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\edit_helpCenter.aspx.cs">
-      <DependentUpon>edit_helpCenter.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_helpCenter.aspx.designer.cs">
-      <DependentUpon>edit_helpCenter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\edit_privacy.aspx.cs">
-      <DependentUpon>edit_privacy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_privacy.aspx.designer.cs">
-      <DependentUpon>edit_privacy.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\LiveChat.aspx.cs">
       <DependentUpon>LiveChat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2152,6 +2113,13 @@
     </Compile>
     <Compile Include="admin\message-details.aspx.designer.cs">
       <DependentUpon>message-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\payments.aspx.cs">
+      <DependentUpon>payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\payments.aspx.designer.cs">
+      <DependentUpon>payments.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\signup.aspx.cs">
       <DependentUpon>signup.aspx</DependentUpon>
@@ -2201,13 +2169,6 @@
     </Compile>
     <Compile Include="candidate-list.aspx.designer.cs">
       <DependentUpon>candidate-list.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\edit_termsConditions.aspx.cs">
-      <DependentUpon>edit_termsConditions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\edit_termsConditions.aspx.designer.cs">
-      <DependentUpon>edit_termsConditions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Career.aspx.cs">
       <DependentUpon>Career.aspx</DependentUpon>
