@@ -17,7 +17,7 @@ namespace web_app_assignment.admin
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")
+            if (UserDetails["Admin_Right"] == "Viewer")
             {
                 newPost.Visible = false;
             }
@@ -71,11 +71,7 @@ namespace web_app_assignment.admin
                 {
                     e.Row.Cells[4].Text = "";
                 }
-                else if (UserDetails["Admin_Right"] == "Editor")
-                {
-                    e.Row.Cells[4].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
-                }
-                else if (UserDetails["Admin_Right"] == "Super Admin")
+                else if (UserDetails["Admin_Right"] == "Super Admin" || UserDetails["Admin_Right"] == "Editor")
                 {
                     e.Row.Cells[4].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                                      "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deletePost' type='button' onclick='deletePost(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></span>";

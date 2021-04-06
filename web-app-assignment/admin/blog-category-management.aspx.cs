@@ -18,7 +18,7 @@ namespace web_app_assignment
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")
+            if (UserDetails["Admin_Right"] == "Viewer")
             {
                 newCat.Visible = false;
             }
@@ -52,11 +52,7 @@ namespace web_app_assignment
                 {
                     e.Row.Cells[3].Text = "";
                 }
-                else if (UserDetails["Admin_Right"] == "Editor")
-                {
-                    e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
-                }
-                else if (UserDetails["Admin_Right"] == "Super Admin")
+                else if (UserDetails["Admin_Right"] == "Super Admin" || UserDetails["Admin_Right"] == "Editor")
                 {
                     e.Row.Cells[3].Text = "<a class='badge badge-primary action-btn mr-1'  href='blog-category-edit.aspx?Id=" + e.Row.Cells[3].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                                      "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteCategory(" + e.Row.Cells[3].Text + ")'><i class='fas fa-trash'></i></span>";
