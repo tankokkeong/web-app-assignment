@@ -19,7 +19,6 @@
             $(dashboard).removeClass("active");
         });
     </script>
-
     <form runat="server">
         <div class="payment-container">
         <div class="payment-title">
@@ -35,7 +34,7 @@
                 <div class="col-lg-11">
                     <div class="row">
                         <div class="col-sm-12 col-lg-3 payment-filter-container">
-                            <input class="form-control" type="text" placeholder="Blog ID" id="blog-id"/>
+                            <input class="form-control" type="text" placeholder="Payment ID" id="payment-id"/>
                         </div>
 
                         <div class="col-sm-12 col-lg-3 payment-filter-container">
@@ -95,7 +94,7 @@
                 </tr>
               </thead>
               <tbody>
-            <asp:ListView ID="lvPaymentRecords" runat="server">
+            <asp:ListView ID="lvPaymentRecords" runat="server" >
                 <ItemTemplate>
                     
               
@@ -110,6 +109,14 @@
                 </tr>
               
                 </ItemTemplate>
+
+                <EmptyDataTemplate>
+                    <tr>
+                        <td colspan="5">
+                            No Data Found
+                        </td>
+                    </tr>
+                </EmptyDataTemplate>
             </asp:ListView>
 
                   </tbody>
