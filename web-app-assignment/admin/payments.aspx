@@ -165,21 +165,7 @@
         }
 
         function clearFilters() {
-            //User input
-            var payment_id = document.getElementById("payment-id");
-            var payment_method = document.getElementById("payment-methods");
-            var user_role = document.getElementById("payment-user-role");
-            var username = document.getElementById("payment-username");
-            var payment_from_date = document.getElementById("payment-from-date");
-            var payment_to_date = document.getElementById("payment-to-date");
-
-            //Clear form
-            payment_id.value = "";
-            payment_method.value = "";
-            user_role.value = "";
-            username.value = "";
-            payment_from_date.value = "";
-            payment_to_date.value = "";
+            window.location.href = "payments.aspx";
         }
 
         //Call sticky form function
