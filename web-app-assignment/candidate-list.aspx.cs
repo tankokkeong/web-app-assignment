@@ -23,9 +23,8 @@ namespace web_app_assignment
         {
             var validRecruiter = helper.getRecruiterID();
 
-            if (validRecruiter != "")
-            {
-
+            //if (validRecruiter != "")
+            //{
                 SqlConnection con = new SqlConnection(strcon);
 
                 string sql = "";
@@ -39,36 +38,36 @@ namespace web_app_assignment
                 if (ddlPageSize.SelectedItem.Value == "5")
                 {
                     sql = "SELECT * FROM (" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium = 'true')" +
                                     "UNION" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                                    ") result" + candidateSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 5;
                 }
                 else if (ddlPageSize.SelectedItem.Value == "10")
                 {
                     sql = "SELECT * FROM (" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium = 'true')" +
                                     "UNION" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                                    ") result" + candidateSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 10;
                 }
                 else if (ddlPageSize.SelectedItem.Value == "15")
                 {
                     sql = "SELECT * FROM (" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium = 'true')" +
                                     "UNION" +
-                                    "(SELECT full_name, user_photo, location, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
+                                    "(SELECT full_name, user_photo, location, skills, profession, prefer_industry, is_premium, experience, seeker_id FROM JobSeeker" +
                                     " WHERE deleted_at IS NULL AND is_premium IS NULL)" +
-                                    ") result" + candidateSearchCriteria(sql) + " ORDER BY (SELECT NULL)";
+                                    ") result" + candidateSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                     dpPagination.PageSize = 15;
                 }
@@ -82,30 +81,32 @@ namespace web_app_assignment
 
                 //Close Connection
                 con.Close();
-            }
-            else
-            {
-                Response.Redirect("home.aspx");
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("home.aspx");
+            //}
         }
 
-        protected string candidateSearchCriteria(string sql)
+        protected string candidateSearchCriteria()
         {
             string skillsquery = Request.QueryString["skills"] ?? "";
             string locationsquery = Request.QueryString["location"] ?? "";
             string industriesquery = Request.QueryString["prefer_industry"] ?? "";
             string professionsquery = Request.QueryString["profession"] ?? "";
 
-            if (skillsquery != "" && locationsquery != "" && industriesquery != "" && professionsquery != "")
+            string sql = "";
+
+            if (skillsquery != "" || locationsquery != "" || industriesquery != "" || professionsquery != "")
             {
-                sql += " WHERE ";
+                sql += " WHERE";
             }
 
             if (skillsquery != "")
             {
                 if (skillsquery.Contains(','))
                 {
-                    sql += JobListSearchAmount(sql);
+                    sql += " skills LIKE '%" + skillsquery.Split(',')[0] + "%'" + JobListSearchAmount();
                 }
                 else
                 {
@@ -115,49 +116,93 @@ namespace web_app_assignment
 
             if (locationsquery != "")
             {
-                if (locationsquery.Contains(','))
+                if(skillsquery != "")
                 {
-                    sql += JobListSearchAmount(sql);
+                    if (locationsquery.Contains(','))
+                    {
+                        sql += " AND location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " AND location LIKE '%" + locationsquery + "%'";
+                    }
                 }
                 else
                 {
-                    sql += " location LIKE '%" + locationsquery + "%'";
+                    if (locationsquery.Contains(','))
+                    {
+                        sql += " location LIKE '%" + locationsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " location LIKE '%" + locationsquery + "%'";
+                    }
                 }
             }
 
             if (industriesquery != "")
             {
-                if (industriesquery.Contains(','))
+                if(skillsquery != "" || locationsquery != "")
                 {
-                    sql += JobListSearchAmount(sql);
+                    if (industriesquery.Contains(','))
+                    {
+                        sql += " AND prefer_industry LIKE '%" + industriesquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " AND prefer_industry LIKE '%" + industriesquery + "%'";
+                    }
                 }
                 else
                 {
-                    sql += " prefer_industry LIKE '%" + industriesquery + "%'";
+                    if (industriesquery.Contains(','))
+                    {
+                        sql += " prefer_industry LIKE '%" + industriesquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " prefer_industry LIKE '%" + industriesquery + "%'";
+                    }
                 }
             }
 
             if (professionsquery != "")
             {
-                if (professionsquery.Contains(','))
+                if(skillsquery != "" || locationsquery != "" || industriesquery != "")
                 {
-                    sql += JobListSearchAmount(sql);
+                    if (professionsquery.Contains(','))
+                    {
+                        sql += " AND profession LIKE '%" + professionsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " AND profession LIKE '%" + professionsquery + "%'";
+                    }
                 }
                 else
                 {
-                    sql += " profession LIKE '%" + professionsquery + "%'";
+                    if (professionsquery.Contains(','))
+                    {
+                        sql += " profession LIKE '%" + professionsquery.Split(',')[0] + "%'" + JobListSearchAmount();
+                    }
+                    else
+                    {
+                        sql += " profession LIKE '%" + professionsquery + "%'";
+                    }
                 }
             }
 
             return sql;
         }
 
-        protected string JobListSearchAmount(string sql)
+        protected string JobListSearchAmount()
         {
             string skillsquery = Request.QueryString["skills"] ?? "";
             string locationsquery = Request.QueryString["location"] ?? "";
             string industriesquery = Request.QueryString["prefer_industry"] ?? "";
             string professionsquery = Request.QueryString["profession"] ?? "";
+
+            string sql = "";
 
             if (skillsquery != "")
             {

@@ -166,10 +166,6 @@
             tags: true,
         });
 
-        function directContact() {
-            window.location = 'recruiter-profile.aspx';
-        }
-
         function directDetails(count) {
             window.location = 'user-profile.aspx?view=' + count;
         }
@@ -241,7 +237,7 @@
             var industries = industriesQuery.split(',');
             var select2_input = document.getElementById("industry-selection");
 
-            if (industriesQuery !== " " && industries !== "") {
+            if (industriesQuery !== "" && industries !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < industries.length; i++) {
 
@@ -271,7 +267,7 @@
             skills = skills.split(',');
             var select2_input = document.getElementById("skills-selection");
 
-            if (skillsQuery != " " && skills !== " ") {
+            if (skillsQuery != "" && skills !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < skills.length; i++) {
 
@@ -302,7 +298,7 @@
             var location = locationQuery.split(',');
             var select2_input = document.getElementById("location-selection");
 
-            if (locationQuery != " " && location !== " ") {
+            if (locationQuery != "" && location !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
@@ -333,7 +329,7 @@
             var profession = professionQuery.split(',');
             var select2_input = document.getElementById("profession-selection");
 
-            if (professionQuery != " " && profession !== " ") {
+            if (professionQuery != "" && profession !== "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < profession.length; i++) {
 

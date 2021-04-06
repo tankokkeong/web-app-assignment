@@ -142,8 +142,6 @@
                             <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="false" ShowLastPageButton="true" ShowPreviousPageButton="false" ShowNextPageButton="true" ButtonCssClass="page-link page-item" />
                         </Fields>
                     </asp:DataPager>
-
-                    <asp:Label ID="Label1" runat="server"></asp:Label>
                 </div>
             </div>
         </div>
