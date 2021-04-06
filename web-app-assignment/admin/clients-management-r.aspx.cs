@@ -36,8 +36,8 @@ namespace web_app_assignment.admin
                     string sql = "SELECT * FROM Recruiter WHERE deleted_at IS NULL";
                     if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
                     {
-                        sql += " AND company_name LIKE '%' + @name + '%' AND deleted_at IS NULL ORDER BY recruiter_id DESC";
-                        cmd.Parameters.AddWithValue("@name", txtSearch.Text.Trim());
+                        sql += " AND recruiter_id = @id AND deleted_at IS NULL ORDER BY recruiter_id DESC";
+                        cmd.Parameters.AddWithValue("@id", txtSearch.Text.Trim());
                     }
                     else
                     {

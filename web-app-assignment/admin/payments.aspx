@@ -34,7 +34,7 @@
                 <div class="col-lg-11">
                     <div class="row">
                         <div class="col-sm-12 col-lg-3 payment-filter-container">
-                            <input class="form-control" type="number" placeholder="Payment ID" id="payment-id"/>
+                            <input class="form-control" type="number" placeholder="Payment ID" id="payment-id" min="1"/>
                         </div>
 
                         <div class="col-sm-12 col-lg-3 payment-filter-container">

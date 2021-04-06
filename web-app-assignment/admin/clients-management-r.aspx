@@ -27,16 +27,20 @@
                 <h3>User Management</h3>
             </div>
 
-            <div>
-                <div>
-                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Search.." CssClass="form-control"></asp:TextBox>
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn" OnClick="btnSearch_Click" />
+            <div class="row">
+                <label class="col-sm-12 col-lg-2 col-form-label">User ID:</label>
+                <div class="col-sm-12 col-lg-3 pr-1">
+                    <asp:TextBox ID="txtSearch" runat="server" placeholder="User ID" CssClass="form-control" TextMode="Number" min="1"></asp:TextBox>     
+                </div>
+
+                <div class="col pl-0">
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn text-light" OnClick="btnSearch_Click" />
                 </div>
             </div>
 
             <div class="form-group row mt-3 mb-3">
                 <label class="col-sm-2 col-form-label">User Type:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-12 col-lg-3">
                     <select class="form-control" onchange="changeClientsType()" id="client-management-option">
                         <option value="Job Seeker">Job Seeker</option>
                         <option value="Recruiter" selected>Recruiter</option>

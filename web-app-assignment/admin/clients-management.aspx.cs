@@ -59,8 +59,8 @@ namespace web_app_assignment.admin
                     string sql = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL";
                     if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
                     {
-                        sql += " AND full_name LIKE '%' + @name + '%' AND deleted_at IS NULL ORDER BY seeker_id DESC";
-                        cmd.Parameters.AddWithValue("@name", txtSearch.Text.Trim());
+                        sql += " AND seeker_id = @id  AND deleted_at IS NULL ORDER BY seeker_id DESC";
+                        cmd.Parameters.AddWithValue("@id", txtSearch.Text.Trim());
                     }
                     else
                     {
