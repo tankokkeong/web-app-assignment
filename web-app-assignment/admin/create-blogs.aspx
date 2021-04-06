@@ -41,8 +41,9 @@
             <div class="form-group row">
                 <label for="staticDesc" class="col-sm-2 col-form-label">Post Simple Description:</label>
                 <div class="col-sm-10">
-                    <asp:TextBox ID="txtSDesc" CssClass="form-control" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSDesc" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtSimpleDesc" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSimpleDesc" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Maximum 40 characters allowed!" ControlToValidate="txtSimpleDesc" CssClass="text-danger" ValidationExpression="^[\s\S]{0,40}$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 

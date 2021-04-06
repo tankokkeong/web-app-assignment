@@ -34,14 +34,16 @@
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Maximum 20 characters allowed!" ControlToValidate="txtTitle" CssClass="text-danger" ValidationExpression="^[\s\S]{0,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="staticDesc" class="col-sm-2 col-form-label">Post Simple Description:</label>
                 <div class="col-sm-10">
-                    <asp:TextBox ID="txtSDesc" CssClass="form-control" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSDesc" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtSimpleDesc" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSimpleDesc" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Maximum 40 characters allowed!" ControlToValidate="txtSimpleDesc" CssClass="text-danger" ValidationExpression="^[\s\S]{0,40}$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -49,7 +51,7 @@
                 <label for="blogImageDisplay" class="col-sm-2 col-form-label">Blog Image:</label>
                 <div class="col-sm-10">
                     <div class="picture-container">
-                        <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" style="width:500px; height:500px;" />
+                        <asp:Image ID="imgBlogPhoto" runat="server" class="blogPhoto" Style="width: 500px; height: 500px;" />
                     </div>
                     <br />
                     <asp:FileUpload ID="blogPhotoUpload" runat="server" CssClass="form-control" onchange="photoUpload()" />

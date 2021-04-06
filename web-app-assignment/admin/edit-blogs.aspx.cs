@@ -45,7 +45,7 @@ namespace web_app_assignment.admin
                 while (dr.Read())
                 {
                     txtTitle.Text = dr["blog_title"].ToString();
-                    txtSDesc.Text = dr["blog_description"].ToString();
+                    txtSimpleDesc.Text = dr["blog_description"].ToString();
                     imgBlogPhoto.ImageUrl = dr["blog_image"].ToString();
                     txtPhotoUpload.Text = dr["blog_image"].ToString();
                     txtEditDescription.Text = dr["blog_content"].ToString();
@@ -62,7 +62,7 @@ namespace web_app_assignment.admin
         {
             string id = Request.QueryString["Id"] ?? "";
             string title = txtTitle.Text;
-            string desc = txtSDesc.Text;
+            string desc = txtSimpleDesc.Text;
             string content = HttpUtility.UrlDecode(txtEditDescription.Text);
             string category_id = ddlCategory.SelectedValue;
             string admin_id = helper.getAdminID();

@@ -39,7 +39,7 @@ namespace web_app_assignment.admin
             try 
             {
                 string title = txtTitle.Text;
-                string desc = txtSDesc.Text;
+                string desc = txtSimpleDesc.Text;
                 string content = HttpUtility.UrlDecode(txtBlogDescription.Text);
                 string category_id = ddlCategory.SelectedValue;
                 string admin_id = helper.getAdminID();
