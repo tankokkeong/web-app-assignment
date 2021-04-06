@@ -27,9 +27,9 @@
     </div>
 
     <div class="our-team">
-        <div class="our-team-header-container">
+        <div class="our-team-header-container text-center">
             <h2>
-                <asp:Label ID="lblOurTeam" runat="server" class="text-lightgreen text-center" Text="Our Team"></asp:Label></h2>
+                <asp:Label ID="lblOurTeam" runat="server" class="text-lightgreen" Text="Our Team"></asp:Label></h2>
         </div>
 
         <div class="container">

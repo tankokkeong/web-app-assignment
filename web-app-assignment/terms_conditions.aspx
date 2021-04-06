@@ -34,7 +34,6 @@
             <p class="terms-text">
                 <asp:Label ID="lbl22" runat="server" Text="If Jobs4U.com has reason to believe that there is likely to be a breach of security or misuse of the Jobs4U.com Website, we may require you to change your password or we may suspend your account."></asp:Label></p>
 
-
             <h2>
                 <asp:Label ID="lbl30" runat="server" Text="3. Intellectual Property"></asp:Label></h2>
             <p class="terms-text">
