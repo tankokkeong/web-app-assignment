@@ -77,6 +77,10 @@
         var query = window.location.href.split('?')[1];
         query = query.split('=')[1];
 
+        //firebase.database().ref("seenMessages/UserMessages/" + logn + "/").update({
+        //    seen: "seen",
+        //});
+
         //get date
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -101,10 +105,42 @@
 
                     //save in database
                     firebase.database().ref("adminMessages/" + query + "/").push({
-                        "sendTo": query,
+                        "sender": query,
                         "message": message,
                         "timeSent": sentTime,
+                        "sent": 1,
+                        "received": 0,
                     });
+
+                    if (query.includes("Visitor")) {
+                        //save in database
+                        firebase.database().ref("VisitorMessages/" + query + "/").push({
+                            "sender": query,
+                            "message": message,
+                            "timeSent": sentTime,
+                            "sent": 0,
+                            "received": 1,
+                        });
+
+                        //save in firebase
+                        firebase.database().ref("seenMessages/Admin/" + query + "/").set({
+                            "seen": "unseen",
+                        });
+                    } else {
+                        //save in firebase
+                        firebase.database().ref("UserMessages/" + query + "/").push({
+                            "sender": query,
+                            "message": message,
+                            "timeSent": sentTime,
+                            "sent": 0,
+                            "received": 1,
+                        });
+
+                        //save in firebase
+                        firebase.database().ref("seenMessages/Admin/" + query + "/").set({
+                            "seen": "unseen",
+                        });
+                    }
                 }
             }
         }
@@ -113,7 +149,7 @@
         firebase.database().ref("adminMessages/" + query + "/").on("child_added", function (snapshot) {
             var html = "";
 
-            if (snapshot.val().sendTo == query) {
+            if (snapshot.val().sent == 1) {
                 // give each message a unique ID
                 html += "<div class='sender-messagesContexts'>";
                 html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
@@ -124,14 +160,7 @@
 
                 document.getElementById("messages").innerHTML += html;
                 document.getElementById('message').value = "";
-            }
-        });
-
-        //listen for incoming messages from user
-        firebase.database().ref("UserMessages/" + query + "/").on("child_added", function (snapshot) {
-            var html = "";
-
-            if (snapshot.val().sender == query) {
+            } else {
                 // give each message a unique ID
                 html += "<div class='replier-messagesContexts'>";
                 html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
@@ -142,24 +171,16 @@
 
                 document.getElementById("messages").innerHTML += html;
                 document.getElementById('message').value = "";
-            }
-        });
 
-        //listen for incoming messages from visitor
-        firebase.database().ref("VisitorMessages/" + query + "/").on("child_added", function (snapshot) {
-            var html = "";
-
-            if (snapshot.val().sender == query) {
-                // give each message a unique ID
-                html += "<div class='replier-messagesContexts'>";
-                html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
-
-                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
-
-                html += "</div>";
-
-                document.getElementById("messages").innerHTML += html;
-                document.getElementById('message').value = "";
+                if (query.includes("Visitor")) {
+                    firebase.database().ref("seenMessages/" + query + "/").set({
+                        seen: "seen",
+                    });
+                } else {
+                    firebase.database().ref("seenMessages/User/" + query + "/").set({
+                        seen: "seen",
+                    });
+                }
             }
         });
 
@@ -176,5 +197,7 @@
             var messages = document.getElementById("messages");
             messages.scrollTop = messages.scrollHeight;
         }
+
+        scrollToBottomMessage();
     </script>
 </asp:Content>
