@@ -361,17 +361,30 @@
 
             if (message != "") {
                 if (verifyEmail) {
-                    //send form request to livechat post
-                    if ($("#message").val().trim().length > 0) {
-                        $.post("admin/LiveChatPost.aspx",
-                            {
-                                chat_contentUR: $("#message").val(),
-                                user_id: $("#txtSeeker").val(),
-                                recruiter_id: $("#txtRecruiter").val(),
-                            },
-                            function (data, status) {
-                                console.log("Data: " + data + "\nStatus: " + status);
-                            });
+                    if ($("#txtRecruiter").val() != "" && $("#txtSeeker").val() == "") {
+                        //send form request to livechat post
+                        if ($("#message").val().trim().length > 0) {
+                            $.post("admin/LiveChatPost.aspx",
+                                {
+                                    chat_contentUR: $("#message").val(),
+                                    recruiter_id: $("#txtRecruiter").val(),
+                                },
+                                function (data, status) {
+                                    console.log("Data: " + data + "\nStatus: " + status);
+                                });
+                        }
+                    } else if ($("#txtSeeker").val() != "" && $("#txtRecruiter").val() == "") {
+                        //send form request to livechat post
+                        if ($("#message").val().trim().length > 0) {
+                            $.post("admin/LiveChatPost.aspx",
+                                {
+                                    chat_contentUR: $("#message").val(),
+                                    user_id: $("#txtSeeker").val(),
+                                },
+                                function (data, status) {
+                                    console.log("Data: " + data + "\nStatus: " + status);
+                                });
+                        }
                     }
                     //save in firebase
                     firebase.database().ref("UserMessages/" + logn + "/").push({
@@ -412,7 +425,7 @@
                     html += "<div class='sender-messagesContexts'>";
                     html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                     html += "</div>";
 
@@ -431,7 +444,7 @@
                     html += "<div class='replier-messagesContexts'>";
                     html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                     html += "</div>";
 
@@ -450,7 +463,7 @@
                     html += "<div class='sender-messagesContexts'>";
                     html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                     html += "</div>";
 
@@ -469,7 +482,7 @@
                     html += "<div class='replier-messagesContexts'>";
                     html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                     html += "</div>";
 

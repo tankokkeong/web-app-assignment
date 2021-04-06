@@ -18,6 +18,13 @@ namespace web_app_assignment.admin
             try
             {
                 txtAdminID.Text = helper.getAdminID();
+
+                string querychat = Request.QueryString["chat"] ?? "";
+
+                if(querychat == "")
+                {
+                    Response.Redirect("LiveChatDashboard.aspx");
+                }
             }
             catch(Exception error)
             {

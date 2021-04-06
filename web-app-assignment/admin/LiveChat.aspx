@@ -35,6 +35,21 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- Change navbar active --%>
+    <script>
+        $(document).ready(function () {
+            navbarActive();
+
+            //Add active to user management
+            live_chat = nav_option[1];
+            $(live_chat).addClass("active");
+
+            //Remove active from dashboard
+            dashboard = nav_option[0];
+            $(dashboard).removeClass("active");
+        });
+    </script>
+
     <div class="LiveChatContainer">
         <div class="LiveChatContainerHeader">
             <div class="LiveChatHeader text-center text-light">
@@ -103,7 +118,7 @@
                 html += "<div class='sender-messagesContexts'>";
                 html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                 html += "</div>";
 
@@ -121,7 +136,7 @@
                 html += "<div class='replier-messagesContexts'>";
                 html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                 html += "</div>";
 
@@ -139,7 +154,7 @@
                 html += "<div class='replier-messagesContexts'>";
                 html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + sentTime + "</div>";
+                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
 
                 html += "</div>";
 

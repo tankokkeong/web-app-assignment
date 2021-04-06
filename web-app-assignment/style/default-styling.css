@@ -117,7 +117,7 @@ footer {
 }
 
 .form-container {
-    max-width: 450px;
+    min-width: 400px;
     padding: 10px;
     background: #F7F7F7;
     height: 100%;
@@ -167,14 +167,13 @@ footer {
     display: flex;
 }
 
-.LCusername, .LCadmin {
+.LCusername {
     display: none;
 }
 
 .sender-messagesContexts {
     display: flex;
     justify-content: flex-end;
-    position: relative;
 }
 
 .sender-messagesContents {

@@ -72,6 +72,13 @@ namespace web_app_assignment.admin
 
                 //Close connection
                 con.Close();
+
+                chat_content = "";
+                chat_contentUR = "";
+                visitor_id = "";
+                user_id = "";
+                recruiter_id = "";
+
             }
             catch (Exception error)
             {

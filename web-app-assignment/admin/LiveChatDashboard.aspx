@@ -78,69 +78,72 @@
                 <button type="button" class="btn btn-secondary btn-sm">Unread</button>
             </div>
         </div>
-        <div class="LiveChat_MessagesData">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm LiveChat_MessagesDataDetails">
-                    <img src="images/Admin-LiveMessage/chatting.png" alt="chat" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Overall Messages
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    2000 Messages
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+        <form runat="server">
+            <div class="LiveChat_MessagesData">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm LiveChat_MessagesDataDetails">
+                        <img src="images/Admin-LiveMessage/chatting.png" alt="chat" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Total Messages
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <asp:TextBox ID="txtTotalMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm LiveChat_MessagesDataDetails">
+                        <img src="images/Admin-LiveMessage/email.png" alt="plane" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Sent Messages
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <asp:TextBox ID="txtSentMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm LiveChat_MessagesDataDetails">
+                        <img src="images/Admin-LiveMessage/receive-mail.png" alt="email" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Received Messages
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <asp:TextBox ID="txtReceivedMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm LiveChat_MessagesDataDetails">
-                    <img src="images/Admin-LiveMessage/email.png" alt="plane" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Sent Messages
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    2000 Messages
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-sm LiveChat_MessagesDataDetails">
-                    <img src="images/Admin-LiveMessage/receive-mail.png" alt="email" class="img-fluid img-thumbnail LiveChat_MessagesDataImages" />
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Received Messages
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    2000 Messages
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-              </div>
             </div>
-        </div>
+        </form>
 
         <div class="LiveChat_MessagesInput">
             <table class="table">
@@ -153,6 +156,10 @@
         //listen for incoming messages
         firebase.database().ref("UserMessages/").on("child_added", function (snapshot) {
             var html = "";
+            var messages = "";
+            snapshot.forEach(function (childSnapshot) {
+                messages = childSnapshot.val().message;
+            })
 
             // give each message a unique ID
             html += "<tr class='table-rowLiveChat'>" +
@@ -163,7 +170,7 @@
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
                 "</td>" +
-                "<td>" + snapshot.val().message + "</td>" +
+                "<td>" + messages + "</td>" +
                 "<td>" +
                 "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
                 "</td>" +
@@ -175,6 +182,10 @@
         //listen for incoming messages
         firebase.database().ref("VisitorMessages/").on("child_added", function (snapshot) {
             var html = "";
+            var messages = "";
+            snapshot.forEach(function (childSnapshot) {
+                messages = childSnapshot.val().message;
+            })
 
             // give each message a unique ID
             html += "<tr class='table-rowLiveChat'>" +
@@ -185,7 +196,7 @@
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
                 "</td>" +
-                "<td>" + snapshot.val().message + "</td>" +
+                "<td>" + messages + "</td>" +
                 "<td>" +
                 "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
                 "</td>" +

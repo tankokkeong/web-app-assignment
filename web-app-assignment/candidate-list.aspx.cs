@@ -23,8 +23,8 @@ namespace web_app_assignment
         {
             var validRecruiter = helper.getRecruiterID();
 
-            //if (validRecruiter != "")
-            //{
+            if (validRecruiter != "")
+            {
                 SqlConnection con = new SqlConnection(strcon);
 
                 string sql = "";
@@ -81,11 +81,11 @@ namespace web_app_assignment
 
                 //Close Connection
                 con.Close();
-            //}
-            //else
-            //{
-            //    Response.Redirect("home.aspx");
-            //}
+            }
+            else
+            {
+                Response.Redirect("home.aspx");
+            }
         }
 
         protected string candidateSearchCriteria()
