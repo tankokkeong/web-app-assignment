@@ -387,7 +387,7 @@
                     },
                     function () {
                         window.location.href = "fb-signup-post-js.aspx";
-                    });
+                });
             }
         }
 
