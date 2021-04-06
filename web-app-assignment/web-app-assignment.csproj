@@ -170,6 +170,7 @@
     <Content Include="edit-postjob.aspx" />
     <Content Include="edit-recruiter.aspx" />
     <Content Include="edit-user.aspx" />
+    <Content Include="fb-signup-post-js.aspx" />
     <Content Include="fb-signup-post-r.aspx" />
     <Content Include="fontawesome-free-5.15.1-web\attribution.js" />
     <Content Include="fontawesome-free-5.15.1-web\css\all.css" />
@@ -2225,6 +2226,13 @@
     </Compile>
     <Compile Include="edit-user.aspx.designer.cs">
       <DependentUpon>edit-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fb-signup-post-js.aspx.cs">
+      <DependentUpon>fb-signup-post-js.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fb-signup-post-js.aspx.designer.cs">
+      <DependentUpon>fb-signup-post-js.aspx</DependentUpon>
     </Compile>
     <Compile Include="fb-signup-post-r.aspx.cs">
       <DependentUpon>fb-signup-post-r.aspx</DependentUpon>

@@ -17,9 +17,10 @@ namespace web_app_assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             //Read chat content from post submit
-            var fb_name = Request.QueryString["fb_name"] ?? "NULL";
-            var fb_id = Request.QueryString["fb_id"] ?? "NULL";
-            var fb_email = Request.QueryString["fb_email"] ?? "NULL";
+            var fb_name = Request.Form["fb_name"] ?? "NULL";
+            var fb_id = Request.Form["fb_id"] ?? "NULL";
+            var fb_email = Request.Form["fb_email"] ?? "NULL";
+
 
             try
             {
@@ -105,11 +106,11 @@ namespace web_app_assignment
 
                         Response.Redirect("Home.aspx");
                     }
-
+                    conn.Close();
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Facebook Account Has Been Registered'); window.location('login_signup.aspx');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Facebook Account Has Been Registered'); window.location.href = 'home.aspx';", true);
                 }
                 con.Close();
             }

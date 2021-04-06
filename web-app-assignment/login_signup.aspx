@@ -202,6 +202,8 @@
                         <div>
                           <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
                         </div>
+                        <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="45px" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
                     </div>  
                             </div><%-- Job Seeker Register Section End --%>
                         </div>
@@ -366,15 +368,25 @@
             var role = document.getElementById("JobRole").value;
 
             if (role == "Recruiter") {
-                $.post("fb-signup-post.aspx",
+                $.post("fb-signup-post-r.aspx",
                     {
                         fb_name: response.name,
                         fb_id: response.id,
-                        fb_email : response.email,
+                        fb_email: response.email,
                     },
                     function () {
-                        alert("Success!");
-                        window.location.href("fb-signup-post.aspx");
+                        window.location.href = "fb-signup-post-r.aspx";
+                    });
+            }
+            else if (role == "Seeker") {
+                $.post("fb-signup-post-js.aspx",
+                    {
+                        fb_name: response.name,
+                        fb_id: response.id,
+                        fb_email: response.email,
+                    },
+                    function () {
+                        window.location.href = "fb-signup-post-js.aspx";
                     });
             }
         }
