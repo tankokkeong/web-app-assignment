@@ -34,7 +34,6 @@ namespace web_app_assignment.admin
 
                 string sql = "";
 
-
                 if (user_id != (object)DBNull.Value)
                 {
                     sql = "INSERT INTO LiveMessages(chat_content, admin_id, created_at, seeker_id) " +
@@ -57,10 +56,10 @@ namespace web_app_assignment.admin
                 //Insert parameters
                 cmd.Parameters.AddWithValue("@chat_content", chat_content);
                 cmd.Parameters.AddWithValue("@chat_contentUR", chat_contentUR);
-                cmd.Parameters.AddWithValue("@admin_id", admin_id);
                 cmd.Parameters.AddWithValue("@visitor_id", visitor_id);
                 cmd.Parameters.AddWithValue("@user_id", user_id);
                 cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+                cmd.Parameters.AddWithValue("@admin_id", admin_id);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
 
                 //Execute the queries

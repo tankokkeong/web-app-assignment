@@ -4,6 +4,7 @@
     <title>Edit Recruiter</title>
     <link href="style/edit-recruiter.css" rel="stylesheet" />
     <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>   
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -214,7 +215,7 @@
         }
 
         function addIndustry() {
-            var selected_industry = $('#industry-selection').select2('data');
+            var selected_industry = $('#industry-selection').select2("data");
             var industry_input = document.getElementById("ContentPlaceHolder1_txtIndustry");
 
             //Clear previous input

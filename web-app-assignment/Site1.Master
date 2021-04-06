@@ -322,8 +322,6 @@
     </footer>
         </form>
 
-     <%-- JQuery Plugin--%>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script type="text/javascript">
          function openChat() {
              document.getElementById('chatbox').style.display = 'block';
@@ -368,13 +366,12 @@
                         $.post("admin/LiveChatPost.aspx",
                             {
                                 chat_contentUR: $("#message").val(),
-                                user_id: $("#ContentPlaceHolder1_txtSeeker").val(),
-                                recruiter_id: $("#ContentPlaceHolder1_txtRecruiter").val(),
+                                user_id: $("#txtSeeker").val(),
+                                recruiter_id: $("#txtRecruiter").val(),
                             },
                             function (data, status) {
                                 console.log("Data: " + data + "\nStatus: " + status);
                             });
-                        console.log("IN SR");
                     }
                     //save in firebase
                     firebase.database().ref("UserMessages/" + logn + "/").push({
@@ -394,7 +391,6 @@
                             function (data, status) {
                                 console.log("Data: " + data + "\nStatus: " + status);
                             });
-                        console.log("IN V");
                     }
                     //save in database
                     firebase.database().ref("VisitorMessages/" + visitor + "/").push({
