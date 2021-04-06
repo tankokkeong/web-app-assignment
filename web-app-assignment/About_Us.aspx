@@ -123,7 +123,7 @@
         <div class="vision-container">
             <div class="vision-title">
                 <h1>
-                    <asp:Label ID="lblVision" runat="server" Text="Vision"></asp:Label></h1>
+                    <asp:Label ID="lblVision1" runat="server" Text="Vision"></asp:Label></h1>
             </div>
             <div class="vision-desc">
                 <p>

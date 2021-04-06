@@ -28,6 +28,7 @@ namespace web_app_assignment
 
             if (Session["Languages_CN"] != null)
             {
+                Languages.Add("Hi! How Can We Help?", "你好！我们能帮你什么吗？");
                 Languages.Add("Frequent Asked Questions", "常问问题");
                 Languages.Add("Q1. Sign Up", "Q1. 登记");
                 Languages.Add("1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.", "1. 点击“登录”按钮 <br> 2. 选择“登记”，选择您的角色并填写您的个​​人信息。");
@@ -42,6 +43,7 @@ namespace web_app_assignment
                 Languages.Add("Q6. What are the payment methods accepted by Jobs4U?", "Q6. Jobs4U接受哪些付款方式？");
                 Languages.Add("We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.", "我们接受以下付款方式：<br> Google Pay，PayPal和信用卡/借记卡。");
 
+                lblHi.Text = Languages["Hi! How Can We Help?"];
                 lblFrequent.Text = Languages["Frequent Asked Questions"];
                 lblQ1.Text = Languages["Q1. Sign Up"];
                 lblA1.Text = Languages["1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information."];
@@ -58,6 +60,7 @@ namespace web_app_assignment
             }
             else if (Session["Languages_EN"] != null)
             {
+                Languages.Add("Hi! How Can We Help?", "Hi! How Can We Help?");
                 Languages.Add("Frequent Asked Questions", "Frequent Asked Questions");
                 Languages.Add("Q1. Sign Up", "Q1. Sign Up");
                 Languages.Add("1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.", "1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information.");
@@ -72,7 +75,7 @@ namespace web_app_assignment
                 Languages.Add("Q6. What are the payment methods accepted by Jobs4U?", "Q6. What are the payment methods accepted by Jobs4U?");
                 Languages.Add("We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.", "We accept the following payment methods: <br> Google Pay, PayPal & Credit/Debit Card.");
 
-
+                lblHi.Text = Languages["Hi! How Can We Help?"];
                 lblFrequent.Text = Languages["Frequent Asked Questions"];
                 lblQ1.Text = Languages["Q1. Sign Up"];
                 lblA1.Text = Languages["1. Click on the 'Sign In' button <br> 2. Choose 'Sign Up', select your role & fill in your personal information."];

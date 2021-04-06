@@ -191,7 +191,7 @@
                         </div>
                        
                         <div class="text-lightblue mt-2 footer-nav">
-                            <a href="About Us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblAboutUs" runat="server" Text="About Us"></asp:Label></a>                           
+                            <a href="About_Us.aspx" class="text-lightblue text-decoration-none"><asp:Label ID="lblAboutUs" runat="server" Text="About Us"></asp:Label></a>                           
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">

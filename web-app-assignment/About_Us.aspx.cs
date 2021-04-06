@@ -41,7 +41,7 @@ namespace web_app_assignment
                 Languages.Add("Helps people discover any job with any employer in the market.", "帮助人们找到市场上任何雇主的任何工作。");
                 Languages.Add("To connect businesses with talent and improve lives through better careers.", "使企业与人才建立联系，并通过更好的职业生涯改善生活。");
 
-                lblVision.Text = Languages["Vision"];
+                lblVision1.Text = Languages["Vision"];
                 lblMission.Text = Languages["Mission"];
                 lblWhoWeAre.Text = Languages["Who We Are?"];
                 lblAboutUs.Text = Languages["About Us"];
@@ -69,7 +69,7 @@ namespace web_app_assignment
                 Languages.Add("Helps people discover any job with any employer in the market.", "");
                 Languages.Add("To connect businesses with talent and improve lives through better careers.", "To connect businesses with talent and improve lives through better careers.");
 
-                lblVision.Text = Languages["Vision"];
+                lblVision1.Text = Languages["Vision"];
                 lblMission.Text = Languages["Mission"];
                 lblWhoWeAre.Text = Languages["Who We Are?"];
                 lblAboutUs.Text = Languages["About Us"];
@@ -81,7 +81,6 @@ namespace web_app_assignment
                 lblPpl3.Text = Languages["We are the secret sauce - a branding content studio consisting of a team of talented creative individuals. We specialize in attracting talented young jobseekers through hassle free content creation and creative solutions. To put it simply, we make things helpful & pretty!"];
                 lblMissionDesc.Text = Languages["Helps people discover any job with any employer in the market."];
                 lblVisionDesc.Text = Languages["To connect businesses with talent and improve lives through better careers."];
-
             }
         }
     }

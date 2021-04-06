@@ -9,7 +9,7 @@
     <div class="help-container">
         <div class="help-area bg-lightgreen">
             <div class="help-search-container text-center">
-                <h1 class="text-light mb-3">Hi! How Can We Help?</h1>
+                <h1 class="text-light mb-3"><asp:Label ID="lblHi" runat="server" Text="Hi! How Can We Help?"></asp:Label></h1>
                 <input type="text" class="form-control" placeholder="Search" id="question-input" oninput="helpQuestionFilter()" />
             </div>
         </div>
