@@ -15,49 +15,59 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-            if (UserDetails["Admin_Right"] == "Viewer")
+            try
             {
-                newPost.Visible = false;
-            }
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
-            if (!this.IsPostBack)
-            {
-                this.SearchBlog();
+                if (UserDetails["Admin_Right"] == "Viewer")
+                {
+                    newPost.Visible = false;
+                }
+
+                //Open connection
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string sql_blog = "SELECT blog_id, blog_title, last_updated, admin_name, BP.created_at " +
+                                " FROM BlogPost BP, Admin AD " +
+                                " WHERE BP.edited_by = AD.admin_id " +
+                                " AND BP.deleted_at IS NULL" + SearchBlogQuery() +  " ORDER BY blog_id DESC";
+
+                SqlDataAdapter cmd = new SqlDataAdapter(sql_blog, con);
+
+                DataTable dtbl = new DataTable();
+                cmd.Fill(dtbl);
+                gvBlog.DataSource = dtbl;
+                gvBlog.DataBind();
+
+                //Close Connection
+                con.Close();
             }
+            catch(Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
+           
         }
 
-        private void SearchBlog()
+        protected string SearchBlogQuery()
         {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+            string sql = "";
 
-            using (SqlConnection con = new SqlConnection(strcon))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    string sql = "SELECT * FROM BlogPost WHERE deleted_at IS NULL";
-                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
-                    {
-                        sql += " AND blog_title LIKE '%' + @blogtitle + '%' AND deleted_at IS NULL ORDER BY blog_id DESC";
-                        cmd.Parameters.AddWithValue("@blogtitle", txtSearch.Text.Trim());
-                    }
-                    else
-                    {
-                        sql += " ORDER BY blog_id DESC";
-                    }
-                    cmd.CommandText = sql;
-                    cmd.Connection = con;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        GridViewBlog.DataSource = dt;
-                        GridViewBlog.DataBind();
-                    }
-                }
+
             }
-        
+            catch(Exception error)
+            {
+                Response.Write("<script>alert('" + error.Message + "');</script>");
+            }
+
+            return sql;
+
         }
 
         protected void GridViewBlog_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -69,11 +79,11 @@ namespace web_app_assignment.admin
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[4].Text = "";
+                    e.Row.Cells[5].Text = "";
                 }
                 else if (UserDetails["Admin_Right"] == "Super Admin" || UserDetails["Admin_Right"] == "Editor")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                    e.Row.Cells[5].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[4].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                                      "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deletePost' type='button' onclick='deletePost(" + e.Row.Cells[4].Text + ")'><i class='fas fa-trash'></i></span>";
                 }
             }
@@ -112,15 +122,10 @@ namespace web_app_assignment.admin
             }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            this.SearchBlog();
-        }
-
         protected void GridViewBlog_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridViewBlog.PageIndex = e.NewPageIndex;
-            this.SearchBlog();
+            gvBlog.PageIndex = e.NewPageIndex;
+            gvBlog.DataBind();
         }
     }
 }

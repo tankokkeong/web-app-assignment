@@ -35,3 +35,13 @@
 .eye-display{
     color:black;
 }
+
+.blog-filter-container {
+    padding: 5px !important;
+}
+
+@media (min-width:850px) {
+    .blog-filter-container {
+        padding: 5px 10px !important;
+    }
+}
