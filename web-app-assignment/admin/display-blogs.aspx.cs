@@ -87,7 +87,7 @@ namespace web_app_assignment.admin
                 //Check payment id query
                 if (blog_id != "")
                 {
-                    sql += " blog_id =" + blog_id;
+                    sql += " blog_id ='" + blog_id + "'";
                 }
 
                 if (blog_title != "")

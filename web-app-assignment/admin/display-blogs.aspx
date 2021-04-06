@@ -36,7 +36,7 @@
                     <div class="col-lg-11">
                         <div class="row">
                             <div class="col-sm-12 col-lg-3 blog-filter-container">
-                                <input class="form-control" type="text" placeholder="Blog ID" id="blog-id"/>
+                                <input class="form-control" type="number" placeholder="Blog ID" id="blog-id"/>
                             </div>
 
                             <div class="col-sm-12 col-lg-3 blog-filter-container">
@@ -161,8 +161,8 @@
             var query = window.location.href.split("?")[1].split("&");
 
             //Place the sticky values
-            blog_id.value = query[0].split("=")[1].replace("+", " ");
-            blog_title.value = query[1].split("=")[1].replace("+", " ");
+            blog_id.value = unescape(query[0].split("=")[1].replace("+", " "));
+            blog_title.value = unescape(query[1].split("=")[1].replace("+", " "));
             blog_category.value = unescape(query[2].split("=")[1]).replace("+", " ");
             updated_by.value = unescape(query[3].split("=")[1]).replace("+", " ");
             blog_from_date.value = query[4].split("=")[1].replace("+", " ");
