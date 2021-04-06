@@ -22,3 +22,8 @@
     padding:5px!important;
     cursor:pointer;
 }
+
+.table-container{
+    overflow-x: scroll;
+    padding: 10px 0;
+}

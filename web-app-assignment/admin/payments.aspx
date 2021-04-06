@@ -25,6 +25,63 @@
             <h2>Payment Records</h2>
         </div>
 
+        <div class="payment-filter mt-3 mb-3">
+            <div class="row">
+                <div class="filter-title col-lg-1 font-weight-bold">
+                    Filters:
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-3 payment-filter-container">
+                            <input class="form-control" type="text" placeholder="Payment ID" id="payment-id"/>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 payment-filter-container">
+                            <select class="form-control" id="payment-methods">
+                                <option value="">Payment Methods</option>
+                                <option value="Google Pay">Google Pay</option>
+                                <option value="PayPal">PayPal</option>
+                                <option value="Credit Card">Credit Card</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 payment-filter-container">
+                            <select class="form-control" id="payment-user-role">
+                                <option value="">User Role</option>
+                                <option value="Recruiter">Recruiter</option>
+                                <option value="Job Seeker">Job Seeker</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 payment-filter-container">
+                            <input class="form-control" type="text" placeholder="Username" id="payment-username"/>
+                        </div>
+                                               
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-2 payment-filter-container">     
+                            <span class="pl-1">From :</span> <input class="form-control" type="date" id="payment-from-date"/>
+                        </div>
+                            
+
+                        <div class="col-sm-12 col-lg-2 payment-filter-container">
+                            <span class="pl-1">To:</span> <input class="form-control" type="date" id="payment-to-date"/>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button class="btn btn-info" onclick="paymentFilter()" type="button">Search</button>
+                            <button class="btn btn-danger" type="button">Clear</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="table-container">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -53,6 +110,7 @@
               
                 </ItemTemplate>
             </asp:ListView>
+
                   </tbody>
             </table>
 
@@ -67,4 +125,46 @@
     </div>
     </form>
     
+    <script>
+        function paymentFilter() {
+            //Retrive User input
+            var payment_id = document.getElementById("payment-id").value;
+            var payment_method = document.getElementById("payment-methods").value;
+            var user_role = document.getElementById("payment-user-role").value;
+            var username = document.getElementById("payment-username").value;
+            var payment_from_date = document.getElementById("payment-from-date").value;
+            var payment_to_date = document.getElementById("payment-to-date").value;
+
+            //Generate searching query string
+
+            window.location.href = "payments.aspx?payment_id=" + payment_id + "&payment_method=" + payment_method +
+                "&user_role=" + user_role + "&username=" + username + "&from=" + payment_from_date + "&to=" + payment_to_date;
+        }
+
+        function filterSticky() {
+
+            //User input
+            var payment_id = document.getElementById("payment-id");
+            var payment_method = document.getElementById("payment-methods");
+            var user_role = document.getElementById("payment-user-role");
+            var username = document.getElementById("payment-username");
+            var payment_from_date = document.getElementById("payment-from-date");
+            var payment_to_date = document.getElementById("payment-to-date")
+
+            var query = window.location.href.split("?")[1].split("&");
+
+            //Place the sticky values
+            payment_id.value = query[0].split("=")[1];
+            payment_method.value = query[1].split("=")[1];
+            user_role.value = unescape(query[2].split("=")[1]); 
+            username.value = unescape(query[3].split("=")[1]);
+            payment_from_date.value = query[4].split("=")[1];
+            payment_to_date.value = query[5].split("=")[1];
+
+            console.log(query[0].split("=")[1])
+        }
+
+        //Call sticky form function
+        filterSticky();
+    </script>
 </asp:Content>

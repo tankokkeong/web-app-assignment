@@ -12,3 +12,13 @@
     background-color: #b2b2b2 !important;
     color: #fff !important;
 }
+
+.payment-filter-container{
+    padding: 5px!important;
+}
+
+@media (min-width:850px){
+    .payment-filter-container {
+        padding: 5px 10px !important;
+    }
+}
