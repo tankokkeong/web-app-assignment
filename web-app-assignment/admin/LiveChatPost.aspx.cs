@@ -36,18 +36,23 @@ namespace web_app_assignment.admin
 
                 if (user_id != (object)DBNull.Value)
                 {
-                    sql = "INSERT INTO LiveMessages(chat_content, admin_id, created_at, seeker_id) " +
-                                    "VALUES(@chat_contentUR, @admin_id, @created_at, @user_id)";
+                    sql = "INSERT INTO LiveMessages(chat_content, created_at, seeker_id) " +
+                                    "VALUES(@chat_contentUR, @created_at, @user_id)";
                 }
-                else if (recruiter_id != (object)DBNull.Value)
+                if (recruiter_id != (object)DBNull.Value)
                 {
-                    sql = "INSERT INTO LiveMessages(chat_content, admin_id, created_at, recruiter_id) " +
-                                    "VALUES(@chat_contentUR, @admin_id, @created_at, @recruiter_id)";
+                    sql = "INSERT INTO LiveMessages(chat_content, created_at, recruiter_id) " +
+                                    "VALUES(@chat_contentUR, @created_at, @recruiter_id)";
                 }
-                else
+                if(visitor_id != (object)DBNull.Value)
                 {
-                    sql = "INSERT INTO LiveMessages(chat_content, admin_id, created_at, visitor_id) " +
-                                 "VALUES(@chat_content, @admin_id, @created_at, @visitor_id)";
+                    sql = "INSERT INTO LiveMessages(chat_content, created_at, visitor_id) " +
+                                 "VALUES(@chat_content, @created_at, @visitor_id)";
+                }
+                if (admin_id != (object)DBNull.Value)
+                {
+                    sql = "INSERT INTO LiveMessages(chat_content, admin_id, created_at) " +
+                                 "VALUES(@chat_content, @admin_id, @created_at)";
                 }
 
                 //Connect to the database

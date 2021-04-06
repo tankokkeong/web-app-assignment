@@ -46,15 +46,15 @@
         </div>
 
         <div id="messages" class="LiveChatContainerContents"></div>
-
-        <div class="sendMessages">
-            <form runat="server">
-                <asp:TextBox ID="txtAdminID" runat="server" style="display:none;"></asp:TextBox>
-                <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
-                <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
-            </form>
+        
+        <form runat="server">
+            <div class="sendMessages">
+                    <asp:TextBox ID="txtAdminID" runat="server" style="display:none;"></asp:TextBox>
+                    <input id="message" class="form-control" placeholder="Enter message" autocomplete="off" onkeydown="enterMessagesLiveChatAdmin()"/>
+                    <button type="button" class="bg-lightgreen text-light btn" onclick="sendMessage()">Send Message</button>
            
-        </div>
+            </div>
+        </form>
     </div>
 
     <script type="text/javascript">
