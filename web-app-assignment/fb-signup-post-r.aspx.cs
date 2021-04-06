@@ -16,11 +16,11 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //Read chat content from post submit
             var fb_name = Request.Form["fb_name"] ?? "NULL";
             var fb_id = Request.Form["fb_id"] ?? "NULL";
             var fb_email = Request.Form["fb_email"] ?? "NULL";
-
 
             try
             {
@@ -38,7 +38,7 @@ namespace web_app_assignment
                 {
                     con = new SqlConnection(strcon);
 
-                    sql = "INSERT INTO Recruiter (email, facebook_token, verified_at, created_at) VALUES (@email, @facebook_token, GETDATE(), GETDATE())";
+                    sql = "INSERT INTO Recruiter (email, facebook_token, active, verified_at, created_at) VALUES (@email, @facebook_token, @active, GETDATE(), GETDATE())";
 
                     cmd = new SqlCommand(sql, con);
 
@@ -47,6 +47,7 @@ namespace web_app_assignment
 
                     cmd.Parameters.AddWithValue("@email", fb_email);
                     cmd.Parameters.AddWithValue("@facebook_token", fb_id);
+                    cmd.Parameters.AddWithValue("@active", "active");
 
                     cmd.ExecuteNonQuery();
 
@@ -54,13 +55,14 @@ namespace web_app_assignment
 
                     SqlConnection conn = new SqlConnection(strcon);
 
-                    string query = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL";
+                    string query = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL AND active = @active";
 
                     SqlCommand cm = new SqlCommand(query, conn);
 
                     conn.Open();
 
                     cm.Parameters.AddWithValue("@facebook_token", fb_id);
+                    cm.Parameters.AddWithValue("@active", "active");
 
                     int output = (int)cm.ExecuteScalar();
 
@@ -104,13 +106,69 @@ namespace web_app_assignment
 
                         conn.Close();
 
-                        Response.Redirect("Home.aspx");
+                        //Response.Redirect("Home.aspx");
                     }
                     conn.Close();
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Facebook Account Has Been Registered'); window.location.href = 'home.aspx';", true);
+                    SqlConnection connect = new SqlConnection(strcon);
+
+                    string sqlquery = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL AND active = @active";
+
+                    SqlCommand command = new SqlCommand(sqlquery, connect);
+
+                    connect.Open();
+
+                    command.Parameters.AddWithValue("@facebook_token", fb_id);
+                    command.Parameters.AddWithValue("@active", "active");
+
+                    int output = (int)command.ExecuteScalar();
+
+                    if (output == 1)
+                    {
+                        Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+
+                        connect = new SqlConnection(strcon);
+
+                        sqlquery = "SELECT * FROM Recruiter WHERE facebook_token = @facebook_token";
+
+                        command = new SqlCommand(sqlquery, connect);
+
+                        connect.Open();
+
+                        command.Parameters.AddWithValue("@facebook_token", fb_id);
+
+                        SqlDataReader dread = command.ExecuteReader();
+
+                        while (dread.Read())
+                        {
+                            RecruiterDetails.Add("recruiter_email", dread["email"].ToString());
+                            RecruiterDetails.Add("recruiter_mobile", dread["mobile_number"].ToString());
+                            RecruiterDetails.Add("recruiter_companyphoto", dread["company_photo"].ToString());
+                            RecruiterDetails.Add("recruiter_company", dread["company_name"].ToString());
+                            RecruiterDetails.Add("recruiter_contactEmail", dread["contact_email"].ToString());
+                            RecruiterDetails.Add("address_line1", dread["address_line1"].ToString());
+                            RecruiterDetails.Add("address_line2", dread["address_line2"].ToString());
+                            RecruiterDetails.Add("city", dread["city"].ToString());
+                            RecruiterDetails.Add("state", dread["state"].ToString());
+                            RecruiterDetails.Add("zip-code", dread["zip_code"].ToString());
+                            RecruiterDetails.Add("recruiter_country", dread["country"].ToString());
+                            RecruiterDetails.Add("recruiter_industry", dread["industry"].ToString());
+                            RecruiterDetails.Add("recruiter_fbLink", dread["facebook_link"].ToString());
+                            RecruiterDetails.Add("recruiter_linkedinLink", dread["linkedin_link"].ToString());
+                            RecruiterDetails.Add("introduction", dread["introduction"].ToString());
+                            RecruiterDetails.Add("rating", dread["rating"].ToString());
+                        }
+
+                        Session["Recruiter"] = RecruiterDetails;
+
+                        connect.Close();
+
+                        //Response.Redirect("Home.aspx");
+                    }
+                    connect.Close();
+
                 }
                 con.Close();
             }

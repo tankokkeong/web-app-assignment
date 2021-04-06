@@ -20,10 +20,10 @@
         <div class="col-sm-6 pr-4 pl-4 Login_signUpForms">
             <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link badge-info active_selected active" onclick="showTabContentsLogin()" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                    <a class="nav-link badge-info active_selected active" onclick="showTabContentsLogin('Login')" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link badge-info" onclick="showTabContentsSignUp()" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
+                    <a class="nav-link badge-info" onclick="showTabContentsSignUp('signup')" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -74,8 +74,13 @@
                         </div>
                         <div class="form-group dividerLoginGoogle">
                             <%-- Gmail and Facebook Button Comes here --%>
-                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>                     
+                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:30px; width:30px;"/>&nbsp &nbsp Sign in With Google</button>                     
+                            <div class="fb-button mt-2">
+                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="10000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                            </div>
                         </div>
+
+
                        
                     </div>
 
@@ -211,7 +216,7 @@
                     </div>
                 
                     <input type="hidden" id="JobRole" />
-
+                    
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
                         <a class="LoginFree" id="login_tabatag" onclick="showLoginTab()" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Log In Now</a>
@@ -220,6 +225,7 @@
                 <%-- Register Session End --%>
             </div>
         </div>
+        <input type="text" id="LoginSignUp" />
     </div>
     </div>
 
@@ -244,6 +250,7 @@
 
             $(loginatag).addClass("active");
             $(signUpatag).removeClass("active");
+
         };
 
         function showLoginTab() {
@@ -281,20 +288,26 @@
             console.log(document.getElementById("JobRole").value);
         };
 
-        function showTabContentsLogin() {
+        function showTabContentsLogin(Login) {
             $(signUpTab).removeClass("active_selected");
             $(loginTab).addClass("active_selected");
 
             $(loginTab).removeClass("active");
             $(signUpTab).addClass("active");
+
+            document.getElementById("LoginSignUp").value = Login;
+            console.log(document.getElementById("LoginSignUp").value);
         }
 
-        function showTabContentsSignUp() {
+        function showTabContentsSignUp(signup) {
             $(signUpTab).addClass("active_selected");
             $(loginTab).removeClass("active_selected");
 
             $(loginTab).addClass("active");
             $(signUpTab).removeClass("active");
+
+            document.getElementById("LoginSignUp").value = signup;
+            console.log(document.getElementById("LoginSignUp").value);
         }
 
         function showPassword() {
@@ -359,14 +372,25 @@
             FB.api('/me?fields=name,id,email', function (response) {
                 console.log('Successful login for: ' + response.name + ' and' + response.id + ' and' + response.email);
 
-                saveUserData(response);
+                var method = document.getElementById("LoginSignUp").value;
+
+                if (method == "Login") {
+                    loginUserData(response);
+                } else if (method == "signup") {
+                    saveUserData(response);
+                }
+                
+                
             });
         }
 
+        //Get User Data and send to the server for data insertion
         function saveUserData(response) {
 
+            //Declare Variable
             var role = document.getElementById("JobRole").value;
 
+            //Post data to client-server
             if (role == "Recruiter") {
                 $.post("fb-signup-post-r.aspx",
                     {
@@ -375,7 +399,8 @@
                         fb_email: response.email,
                     },
                     function () {
-                        window.location.href = "fb-signup-post-r.aspx";
+                        alert("Hi " + response.name);
+                        window.location.href = "home.aspx";
                     });
             }
             else if (role == "Seeker") {
@@ -385,14 +410,28 @@
                         fb_id: response.id,
                         fb_email: response.email,
                     },
-                    function () {
-                        window.location.href = "fb-signup-post-js.aspx";
+                    function () { 
+                        alert("Hi " + response.name);
+                        window.location.href = "home.aspx";
+                        
                 });
             }
         }
 
+        //Post for login purpose
+        function loginUserData(response) {
 
-
+            $.post("fb-login-post.aspx",
+                {
+                    fb_name: response.name,
+                    fb_id: response.id,
+                    fb_email: response.email,
+                },
+                function () {      
+                    alert("Hi " + response.name);
+                    window.location.href = "home.aspx";
+                });
+        }
 
     </script>
 </asp:Content>
