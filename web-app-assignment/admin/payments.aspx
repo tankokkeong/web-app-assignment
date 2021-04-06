@@ -154,12 +154,12 @@
             var query = window.location.href.split("?")[1].split("&");
 
             //Place the sticky values
-            payment_id.value = query[0].split("=")[1];
-            payment_method.value = query[1].split("=")[1];
-            user_role.value = unescape(query[2].split("=")[1]); 
-            username.value = unescape(query[3].split("=")[1]);
-            payment_from_date.value = query[4].split("=")[1];
-            payment_to_date.value = query[5].split("=")[1];
+            payment_id.value = query[0].split("=")[1].replace("+", " ");
+            payment_method.value = query[1].split("=")[1].replace("+", " ");
+            user_role.value = unescape(query[2].split("=")[1]).replace("+", " "); 
+            username.value = unescape(query[3].split("=")[1]).replace("+", " ");
+            payment_from_date.value = query[4].split("=")[1].replace("+", " ");
+            payment_to_date.value = query[5].split("=")[1].replace("+", " ");
 
             console.log(query[0].split("=")[1])
         }
