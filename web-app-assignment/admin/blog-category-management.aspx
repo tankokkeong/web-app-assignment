@@ -25,7 +25,7 @@
         <div class="display-blogpost-container">
 
             <div class="float-right mb-4 mt-1">
-                <a href="blog-category-create.aspx" id="newCat" runat="server" class="btn bg-lightgreen text-white btn-lg">New Category</a>
+                <a href="blog-category-create.aspx" id="newCat" runat="server" class="btn bg-lightgreen text-white">New Category</a>
             </div>
             <div class="blog-title">
                 <h3>Blog Category</h3>

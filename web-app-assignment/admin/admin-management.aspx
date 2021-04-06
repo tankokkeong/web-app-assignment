@@ -26,8 +26,10 @@
                 <h3>Admin Management</h3>
             </div>
 
-            <div class="float-right mb-3 mt-3">
-                <a href="admin-create.aspx" id="newAdmin" type="button" class="btn bg-lightgreen text-light" runat="server">New Admin</a>
+            <div class="row mb-3 mt-3">
+                <div class="col">
+                    <a href="admin-create.aspx" id="newAdmin" type="button" class="btn bg-lightgreen text-light float-right" runat="server">New Admin</a>
+                </div>
             </div>
 
             <%--display--%>
