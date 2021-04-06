@@ -41,7 +41,7 @@ namespace web_app_assignment.admin
                                     " (SELECT payment_id, payment_method, company_name as username, 'Recruiter' as user_role, PR.created_at" +
                                     " FROM PaymentRecord PR, Recruiter R" +
                                     " WHERE PR.premium_recruiter = R.recruiter_id))" +
-                                    " AS result";
+                                    " AS result ORDER by payment_id DESC";
 
                 SqlDataAdapter cmd = new SqlDataAdapter(sql_payment, con);
 
