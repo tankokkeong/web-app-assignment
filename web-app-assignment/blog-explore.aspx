@@ -20,7 +20,7 @@
                                    <img src='../<%#Eval("blog_image") %>' style='width:100%; height:300px' class='card-img-top' alt='...'>
                                 <div class='card-body text-center'>
                                    <p class='card-text font-weight-bold'><%#Eval("blog_title") %></p> 
-                                    <p class='card-text font-weight-bold'><%#Eval("blog_description") %></p> 
+                                    <p class='card-text font-weight-bold'><%#Eval("blog_description").ToString().Substring(0,20) %>...</p> 
                                 </div>
 
                                 <div class='card-footer text-muted text-center'>

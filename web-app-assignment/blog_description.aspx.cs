@@ -48,7 +48,7 @@ namespace web_app_assignment
             }
             drContent.Close();
 
-            string sqlLike = @"SELECT top 5 blog_id, blog_title, blog_content, blog_image, last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
+            string sqlLike = @"SELECT top 5 blog_id, blog_title, blog_description, blog_content, blog_image, last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
 
             SqlCommand cmdLike = new SqlCommand(sqlLike, con);
 
@@ -62,6 +62,7 @@ namespace web_app_assignment
                                                  "<img src='../" + drLike["blog_image"] +"' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
                                                      "<p class='card-text font-weight-bold'>"+ drLike["blog_title"] +"</p>" +
+                                                     "<p class='card-text font-weight-bold'>" + drLike["blog_description"].ToString().Substring(0, 20) + "...</p>" +
                                                  "</div>" +
 
                                                      "<div class='card-footer text-muted text-center'>" +
