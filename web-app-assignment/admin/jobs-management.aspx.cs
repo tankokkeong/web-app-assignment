@@ -27,7 +27,8 @@ namespace web_app_assignment.admin
                                    "WHERE JP.recruiter_id = R.recruiter_id " +
                                    "AND JP.deleted_at IS NULL " +
                                    "AND JP.deleted_by_admin IS NULL " +
-                                   "ORDER BY post_id DESC";
+                                   jobSearchQuery() +
+                                   " ORDER BY post_id DESC";
 
             SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
 
@@ -91,6 +92,54 @@ namespace web_app_assignment.admin
             con.Close();
 
             Response.Redirect("jobs-management.aspx?deleted");
+        }
+
+        protected string jobSearchQuery()
+        {
+            string sql = "";
+
+            //Retrieve Query Strings
+            string post_id = Request.QueryString["post_id"] ?? "";
+            string job_type = Request.QueryString["job_type"] ?? "";
+            string company_id = Request.QueryString["company_id"] ?? "";
+            string company_name = Request.QueryString["company_name"] ?? "";
+            string from_date = Request.QueryString["from"] ?? "";
+            string to_date = Request.QueryString["to"] ?? "";
+
+
+
+            if (post_id != "")
+            {
+                sql += " AND post_id =" + post_id;
+            }
+
+            if (job_type != "")
+            {
+                sql += " AND job_type ='" + job_type + "'";
+            }
+
+            if (company_id != "")
+            {
+                sql += " AND JP.recruiter_id ='" + company_id + "'";
+            }
+
+            if (company_name != "")
+            {
+                sql += " AND company_name LIKE '%" + company_name + "%'";
+            }
+
+
+            if (from_date != "")
+            {
+               sql += " AND JP.created_at > '" + from_date + "'";
+            }
+
+            if (to_date != "")
+            {
+               sql += " AND JP.created_at < '" + to_date + "'";
+            }
+
+            return sql;
         }
     }
 }

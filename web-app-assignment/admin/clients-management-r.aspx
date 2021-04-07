@@ -77,7 +77,7 @@
 
             <%--display--%>
             <div class="table-container">
-                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="GridView3_RowDataBound"  OnPageIndexChanging="GridView3_PageIndexChanging" PageSize="10" CssClass="table table-striped table-bordered">
+                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="GridView3_RowDataBound"  OnPageIndexChanging="GridView3_PageIndexChanging" PageSize="50" CssClass="table table-striped table-bordered">
                     <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />

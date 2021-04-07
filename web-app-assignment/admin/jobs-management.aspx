@@ -35,6 +35,58 @@
               </button>
             </div>
 
+            <div class="payment-filter mt-3 mb-3">
+                <div class="row">
+                    <div class="filter-title col-lg-1 font-weight-bold">
+                        Filters:
+                    </div>
+
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-3 job-filter-container">
+                                <input class="form-control" type="number" placeholder="Post ID" id="post-id" min="1"/>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3 job-filter-container">
+                                <select class="form-control" id="job-type">
+                                    <option value="">Job Type</option>
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3 job-filter-container">
+                                <input class="form-control" type="number" placeholder="Company ID" id="company-id" min="1"/>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3 job-filter-container">
+                                <input class="form-control" type="text" placeholder="Company Name" id="company-name"/>
+                            </div>
+                                               
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-2 job-filter-container">     
+                                <span class="pl-1">From :</span> <input class="form-control" type="date" id="job-from-date"/>
+                            </div>
+                            
+
+                            <div class="col-sm-12 col-lg-2 job-filter-container">
+                                <span class="pl-1">To:</span> <input class="form-control" type="date" id="job-to-date"/>
+                            </div>
+                        </div>
+                    
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button class="btn btn-info" onclick="jobFilter()" type="button">Search</button>
+                                <button class="btn btn-danger" type="button" onclick="clearFilters()">Clear</button>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="table-container">
                 <asp:GridView ID="gvJobPosted" runat="server" AutoGenerateColumns="False" 
                     CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="50" OnPageIndexChanging="gvJobPosted_PageIndexChanging"
@@ -47,7 +99,7 @@
                         <asp:BoundField runat="server" DataField="job_title" HeaderText="Job Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="salary" HeaderText="Salary" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="job_type" HeaderText="Job Type" HeaderStyle-CssClass="bg-lightgreen text-light" ControlStyle-Width="200px" ControlStyle-Height="250px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="rating" HeaderText="Rating" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="created_at" HeaderText="Date Published" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="company_name" HeaderText="Company_name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="Company ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="post_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
@@ -109,5 +161,50 @@
         }
 
         checkRemovedJob();
+
+        function jobFilter() {
+            //Retrive User input
+            var post_id = document.getElementById("post-id").value;
+            var job_type = document.getElementById("job-type").value;
+            var company_id = document.getElementById("company-id").value;
+            var company_name = document.getElementById("company-name").value;
+            var job_from_date = document.getElementById("job-from-date").value;
+            var job_to_date = document.getElementById("job-to-date").value;
+
+            //Generate searching query string
+
+            window.location.href = "jobs-management.aspx?post_id=" + post_id + "&job_type=" + job_type +
+                "&company_id=" + company_id + "&company_name=" + company_name + "&from=" + job_from_date + "&to=" + job_to_date;
+        }
+
+        function filterSticky() {
+
+            //User input
+            var post_id = document.getElementById("post-id");
+            var job_type = document.getElementById("job-type");
+            var company_id = document.getElementById("company-id");
+            var company_name = document.getElementById("company-name");
+            var job_from_date = document.getElementById("job-from-date");
+            var job_to_date = document.getElementById("job-to-date");
+
+            var query = window.location.href.split("?")[1].split("&");
+
+            //Place the sticky values
+            post_id.value = unescape(query[0].split("=")[1].replace("+", " "));
+            job_type.value = unescape(query[1].split("=")[1].replace("+", " "));
+            company_id.value = unescape(query[2].split("=")[1]).replace("+", " ");
+            company_name.value = unescape(query[3].split("=")[1]).replace("+", " ");
+            job_from_date.value = query[4].split("=")[1].replace("+", " ");
+            job_to_date.value = query[5].split("=")[1].replace("+", " ");
+
+            console.log(query[0].split("=")[1])
+        }
+
+        function clearFilters() {
+            window.location.href = "jobs-management.aspx";
+        }
+
+        //Call sticky form function
+        filterSticky();
     </script>
 </asp:Content>
