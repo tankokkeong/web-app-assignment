@@ -18,7 +18,7 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Post Back to Home if there is now Session in the page
+            //Post Back to Home if there is no Session in the page
             if (!Page.IsPostBack)
             {
                 if (Session["Email"] !=null && Session["Password"]!= null)

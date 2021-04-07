@@ -170,6 +170,7 @@
     <Content Include="edit-postjob.aspx" />
     <Content Include="edit-recruiter.aspx" />
     <Content Include="edit-user.aspx" />
+    <Content Include="fb-login-post-js.aspx" />
     <Content Include="fb-login-post.aspx" />
     <Content Include="fb-signup-post-js.aspx" />
     <Content Include="fb-signup-post-r.aspx" />
@@ -2227,6 +2228,13 @@
     </Compile>
     <Compile Include="edit-user.aspx.designer.cs">
       <DependentUpon>edit-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fb-login-post-js.aspx.cs">
+      <DependentUpon>fb-login-post-js.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fb-login-post-js.aspx.designer.cs">
+      <DependentUpon>fb-login-post-js.aspx</DependentUpon>
     </Compile>
     <Compile Include="fb-login-post.aspx.cs">
       <DependentUpon>fb-login-post.aspx</DependentUpon>

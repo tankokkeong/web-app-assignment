@@ -92,13 +92,14 @@ namespace web_app_assignment
             {
                 SqlConnection con = new SqlConnection(strcon);
 
-                string sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+                string sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND active = @active";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 con.Open();
 
                 cmd.Parameters.AddWithValue("@gmail_token", id);
+                cmd.Parameters.AddWithValue("@active", "active");
 
                 int output = (int) cmd.ExecuteScalar();
 
@@ -145,13 +146,14 @@ namespace web_app_assignment
 
                     SqlConnection connection = new SqlConnection(strcon);
 
-                    string qry = "SELECT COUNT(*) FROM Recruiter where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+                    string qry = "SELECT COUNT(*) FROM Recruiter where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND active = @active";
 
                     SqlCommand comm = new SqlCommand(qry, connection);
 
                     connection.Open();
 
                     comm.Parameters.AddWithValue("@gmail_token",id);
+                    comm.Parameters.AddWithValue("@active", "active");
 
                     string result = comm.ExecuteScalar().ToString();
 
