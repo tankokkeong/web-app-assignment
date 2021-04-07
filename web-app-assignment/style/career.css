@@ -181,7 +181,7 @@
     margin: 0 20px;
 }
 
-.application-container .ui #fullname, #email, #position {
+.application-container .ui #txtFullName, #txtEmail, #txtPosition {
     background-color: #63666A;
     color: white;
 }
@@ -229,7 +229,7 @@
     color: white;
 }
 
-.ui #submit {
+.ui #btnSubmit {
     margin-bottom: 20px;
 }
 
@@ -241,7 +241,7 @@
         /* margin-bottom:20px;*/
     }
 
-    #submit {
+    #btnSubmit {
         margin-bottom: 20px;
     }
 }

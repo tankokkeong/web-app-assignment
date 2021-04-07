@@ -2489,7 +2489,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resume\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Default.aspx.resx" />
     <Content Include="App_LocalResources\Default.aspx.CN.resx" />

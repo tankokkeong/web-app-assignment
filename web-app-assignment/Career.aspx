@@ -5,9 +5,6 @@
     <link href="style/career.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
     <!-- jQuery library -->
@@ -114,40 +111,54 @@
             <div class="col-lg-6">
                 <div class="ui">
                     <form class="form-group">
-                        <h2><asp:Label ID="lblApplication" runat="server" Text="Application Form"></asp:Label></h2>
+                        <h2><asp:Label ID="lblApplication" runat="server" CssClass="text-light" Text="Application Form"></asp:Label></h2>
                         <p><asp:Label ID="lblFill" runat="server" Text="Fill out the below for job opportunies"></asp:Label></p>
                         <div class="row">
                             <div class="col-lg-6">
-                                <asp:Label ID="lblFullName" runat="server" Text="Full Name"></asp:Label>
-                                <input type="text" name="fullname" class="form-control" id="fullname" required />
+                                <asp:Label ID="lblFullName" runat="server" CssClass="text-light" Text="Full Name"></asp:Label>
+                                <%--<input type="text" name="fullname" class="form-control" id="fullname" required />--%>
+                                <asp:TextBox ID="txtFullName" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Full Name is required!" ControlToValidate="txtFullName" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
-                                <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
-                                <input type="text" name="email" class="form-control" id="email" required />
+                                <asp:Label ID="lblEmail" runat="server" CssClass="text-light" Text="Email"></asp:Label>
+                                <asp:TextBox ID="txtEmail" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Emaail is required!" ControlToValidate="txtEmail" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid email format!" ControlToValidate="txtEmail" CssClass="text-danger" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
 
-                        <asp:Label ID="lblWhat" runat="server" Text="What Position are you looking for"></asp:Label>
-                        <input type="text" name="position" class="form-control" id="position" required />
-
-                        <asp:Label ID="lblSpecific" runat="server" Text="Specific Your current employment status"></asp:Label>
-                        <div class="radio-container">
-                            <input type="radio" id="employed" name="status" value="Employed" required />
-                            <label for="Employed">Employed</label>
-                            <input type="radio" id="unemployed" name="unemployed" value="Umemployed" required />
-                            <label for="Umemployed">Umemployed</label>
-                            <input type="radio" id="self" name="self" value="Self-Employmeny" required />
-                            <label for="Self-Employmeny">Self-Employmeny</label>
-                            <input type="radio" id="stud" name="stud" value="Student" required />
-                            <label for="Student">Student</label>
+                        <div>
+                            <asp:Label ID="lblWhat" runat="server" CssClass="text-light" Text="What Position are you looking for"></asp:Label>
+                            <asp:TextBox ID="txtPosition" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Position is required!" ControlToValidate="txtPosition" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
-                        <asp:Label ID="lblUpload" runat="server" Text="Upload Your Resume"></asp:Label><br />
-                        <input type="file" id="file" hidden="hidden" />
-                        <button type="button" id="upload">CHOOSE A FILE</button>
-                        <span id="upload-text">No file chosen, yet.</span>
 
-                        <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success btn-block btn-lg" />
+
+                        <div>
+                            <asp:Label ID="lblSpecific" runat="server" CssClass="text-light" Text="Specific Your current employment status"></asp:Label>
+                            <div class="radio-container">
+                                <asp:RadioButtonList ID="employmentStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                                    <asp:ListItem Value="Employed">&nbsp Employed &nbsp</asp:ListItem>
+                                    <asp:ListItem Value="Unemployed">&nbsp Unemployed &nbsp</asp:ListItem>
+                                    <asp:ListItem Value="Self-Employment">&nbsp Self-Employment &nbsp</asp:ListItem>
+                                    <asp:ListItem Value="Student">&nbsp Student &nbsp</asp:ListItem>
+                                </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Status is required!" ControlToValidate="employmentStatus" CssClass="text-danger"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+
+                        <div>
+                            <asp:Label ID="lblUpload" runat="server" CssClass="text-light" Text="Upload Your Resume"></asp:Label><br />
+                            <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2" onchange="fileResumeUpload()"/>
+                            <asp:TextBox ID="txtResumeFile" runat="server" style="display:none;"/>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Resume is required!" ControlToValidate="fileResume" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .pdf are allowed!" ControlToValidate="fileResume" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.pdf)$" Display="Dynamic"></asp:RegularExpressionValidator>     
+                        </div>
+
+                      
+                        <asp:Button ID="btnSubmit" ClientIDMode="Static" runat="server" CssClass="btn btn-success btn-block btn-lg" Text="Submit" OnClick="btnSubmit_Click"/>
                     </form>
                 </div>
             </div>
@@ -171,24 +182,18 @@
             });
         });
     </script>
+
     <script>
-        const realFileBtn = document.getElementById("file");
-        const customBtn = document.getElementById("upload");
-        const customTxt = document.getElementById("upload-text");
+        function fileResumeUpload() {
+            var file_input = document.getElementById("ContentPlaceHolder1_fileResume");
+            var hidden_file_input = document.getElementById("ContentPlaceHolder1_txtResumeFile");
 
-        customBtn.addEventListener("click", function () {
-            realFileBtn.click();
-        });
-
-        realFileBtn.addEventListener("change", function () {
-            if (realFileBtn.value) {
-                customTxt.innerHTML = realFileBtn.value.match(
-                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
-                )[1];
-            } else {
-                customTxt.innerHTML = "No file chosen, yet.";
+            if (hidden_file_input.value === "") {
+                //assign file input to hidden field
+                hidden_file_input.value = file_input.files[0].name;
             }
-        });
+
+        }
 
     </script>
 

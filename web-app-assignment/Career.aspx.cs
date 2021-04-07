@@ -4,11 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace web_app_assignment
 {
     public partial class Career : System.Web.UI.Page
     {
+        string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
+        //Create Helper Class
+        Helper helper = new Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<string, string> Languages = new Dictionary<string, string>();
@@ -111,5 +118,91 @@ namespace web_app_assignment
                 lblPpl5.Text = Languages["Recruitment Teams"];
             }
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["User"] != null)
+                {
+                    string seeker_id = helper.getSeekerID();
+
+                    string filename = fileResume.FileName;
+                    string upload_path = MapPath("~/Resume/");
+                    string file_name = txtResumeFile.Text;
+
+                    fileResume.SaveAs(upload_path + file_name);
+                    string resume = "Uploads/" + file_name;
+
+                    SqlConnection con = new SqlConnection(strcon);
+
+                    string sql = "INSERT INTO Applicants (applicant_name, applicant_email,applicant_position, resume, seeker_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @resume, @seeker_id, GETDATE())";
+
+                    //Connection Open
+                    con.Open();
+
+                    //Connect to the database
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+                    cmd.Parameters.AddWithValue("@applicant_name", txtFullName.Text);
+                    cmd.Parameters.AddWithValue("@applicant_email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@applicant_position", employmentStatus.SelectedValue);
+                    cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+                    cmd.Parameters.AddWithValue("@resume", resume);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+
+                    //close connection
+                    con.Close();
+
+                    Response.Write("<script>alert('Application Sent! We will approach to you shortly');</script>");
+                }
+                else if (HttpContext.Current.Request.Cookies["jobs4uVtr"] != null)
+                {
+                    string visitor_id = helper.getVistorID();
+
+                    string fileName = fileResume.FileName;
+                    string uploadpath = MapPath("~/Resume/");
+                    string pdfName = txtResumeFile.Text;
+
+                    fileResume.SaveAs(uploadpath + pdfName);
+                    string resumeName = "Uploads/" + pdfName;
+
+                    SqlConnection conn = new SqlConnection(strcon);
+
+                    string query = "INSERT INTO Applicants (applicant_name, applicant_email,applicant_position, resume, visitor_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @resume, @visitor_id, GETDATE())";
+
+                    //Connection Open
+                    conn.Open();
+
+                    //Connect to the database
+                    SqlCommand cm = new SqlCommand(query, conn);
+
+                    cm.Parameters.AddWithValue("@applicant_name", txtFullName.Text);
+                    cm.Parameters.AddWithValue("@applicant_email", txtEmail.Text);
+                    cm.Parameters.AddWithValue("@applicant_position", employmentStatus.SelectedValue);
+                    cm.Parameters.AddWithValue("@visitor_id", visitor_id);
+                    cm.Parameters.AddWithValue("@resume", resumeName);
+
+                    //Execute the queries
+                    cm.ExecuteNonQuery();
+
+                    //close connection
+                    conn.Close();
+
+                    Response.Write("<script>alert('Application Sent! We will approach to you shortly'); window.location.href = 'home.aspx' </script>");
+                }
+
+
+            }
+            catch(Exception error)
+            {
+                Response.Write(error.Message);
+            }
+           
+
+        }
+
     }
 }
