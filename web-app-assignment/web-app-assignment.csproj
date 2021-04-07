@@ -74,6 +74,7 @@
     <Content Include="admin\admin-management.aspx" />
     <Content Include="admin\blog-category-create.aspx" />
     <Content Include="admin\blog-category-edit.aspx" />
+    <Content Include="admin\careers.aspx" />
     <Content Include="admin\client-edit-r.aspx" />
     <Content Include="admin\client-edit.aspx" />
     <Content Include="admin\clients-details-r.aspx" />
@@ -83,6 +84,7 @@
     <Content Include="admin\css\admin-details.css" />
     <Content Include="admin\css\admin-management.css" />
     <Content Include="admin\css\blog-category-management.css" />
+    <Content Include="admin\css\careers.css" />
     <Content Include="admin\css\client-details.css" />
     <Content Include="admin\css\contact-message.css" />
     <Content Include="admin\css\create-blogs.css" />
@@ -2021,6 +2023,13 @@
     </Compile>
     <Compile Include="admin\blog-category-edit.aspx.designer.cs">
       <DependentUpon>blog-category-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\careers.aspx.cs">
+      <DependentUpon>careers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\careers.aspx.designer.cs">
+      <DependentUpon>careers.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\client-edit-r.aspx.cs">
       <DependentUpon>client-edit-r.aspx</DependentUpon>
