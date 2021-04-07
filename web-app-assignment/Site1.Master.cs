@@ -253,6 +253,8 @@ namespace web_app_assignment
                 //Display Current Site information
                 getCurrentSiteJobDetails();
 
+                txtVisitorID.Text = helper.getVistorID();
+
             }
 
             catch (Exception error)

@@ -77,10 +77,6 @@
         var query = window.location.href.split('?')[1];
         query = query.split('=')[1];
 
-        //firebase.database().ref("seenMessages/UserMessages/" + logn + "/").set({
-        //    seen: "seen",
-        //});
-
         //get date
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -145,21 +141,36 @@
             }
         }
 
+        var checkSeen = checkSeenMessages();
+
         //listen for user messages or visitor messages
         firebase.database().ref("adminMessages/" + query + "/").on("child_added", function (snapshot) {
             var html = "";
 
             if (snapshot.val().sent == 1) {
-                // give each message a unique ID
-                html += "<div class='sender-messagesContexts'>";
-                html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                if (checkSeen == "seen") {
+                    // give each message a unique ID
+                    html += "<div class='sender-messagesContexts'>";
+                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
+                    html += snapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
 
-                html += "</div>";
+                    html += "</div>";
 
-                document.getElementById("messages").innerHTML += html;
-                document.getElementById('message').value = "";
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                } else {
+                    // give each message a unique ID
+                    html += "<div class='sender-messagesContexts'>";
+                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+
+                    html += snapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
+
+                    html += "</div>";
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById('message').value = "";
+                }
             } else {
                 // give each message a unique ID
                 html += "<div class='replier-messagesContexts'>";
@@ -196,6 +207,17 @@
         function scrollToBottomMessage() {
             var messages = document.getElementById("messages");
             messages.scrollTop = messages.scrollHeight;
+        }
+
+        function checkSeenMessages() {
+
+            var checkSeen = "";
+
+            firebase.database().ref("seenMessages/Admin/" + query + "/").on("value", function (snapshot) {
+                checkSeen = snapshot.val().seen;
+            });
+
+            return checkSeen
         }
 
         scrollToBottomMessage();
