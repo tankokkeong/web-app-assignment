@@ -32,7 +32,7 @@ namespace web_app_assignment.admin
                 ddlCategory.DataBind();
 
                 //display data from database
-                string id = Request.QueryString["Id"] ?? "";
+                string id = Request.QueryString["editId"] ?? "";
 
                 string sql = "SELECT * FROM BlogPost WHERE blog_id = @Id AND deleted_at IS NULL";
 

@@ -39,6 +39,7 @@ namespace web_app_assignment.admin
                     txtGender.Text = (string)dr["gender"];
                     txtContactNumber.Text = (string)dr["mobile_number"];
                     txtContactEmail.Text = (string)dr["contact_email"];
+                    txtPremium.Text = (dr["is_premium"] == (object)DBNull.Value) ? "Non Premium" : "Premium";
                     txtLocation.Text = (string)dr["location"];
                     txtProfession.Text = (string)dr["profession"];
                     txtPreferIndustry.Text = (string)dr["prefer_industry"];

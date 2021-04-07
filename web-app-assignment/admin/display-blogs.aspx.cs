@@ -174,11 +174,12 @@ namespace web_app_assignment.admin
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[6].Text = "";
+                    e.Row.Cells[6].Text = "<a class='badge badge-success action-btn mr-1'  href='view-blogs.aspx?viewId=" + e.Row.Cells[6].Text + "' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
                 }
                 else if (UserDetails["Admin_Right"] == "Super Admin" || UserDetails["Admin_Right"] == "Editor")
                 {
-                    e.Row.Cells[6].Text = "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?Id=" + e.Row.Cells[6].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
+                    e.Row.Cells[6].Text = "<a class='badge badge-success action-btn mr-1'  href='view-blogs.aspx?viewId=" + e.Row.Cells[6].Text + "' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                                     "<a class='badge badge-primary action-btn mr-1'  href='edit-blogs.aspx?editId=" + e.Row.Cells[6].Text + "' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>" +
                                      "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deletePost' type='button' onclick='deletePost(" + e.Row.Cells[6].Text + ")'><i class='fas fa-trash'></i></span>";
                 }
             }

@@ -63,6 +63,13 @@
             </div>
 
             <div class="form-group row">
+                <label for="staticContactEmail" class="col-sm-2 col-form-label">Premium:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtPremium" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="staticAddress1" class="col-sm-2 col-form-label">Address Line 1:</label>
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtAddress1" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
