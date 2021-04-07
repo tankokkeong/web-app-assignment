@@ -125,7 +125,7 @@ namespace web_app_assignment
                     }
                     else
                     {
-                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password! Please try again.')</script>");
                     }
 
                     con.Close();
@@ -222,7 +222,7 @@ namespace web_app_assignment
                     }
                     else //if user enter invalid password or email
                     {
-                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password! Please try again.')</script>");
                     }
 
                     conn.Close();
