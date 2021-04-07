@@ -20,6 +20,9 @@ namespace web_app_assignment
             //Check logout
             checkLogout();
 
+            //Check visitor
+            checkVisitor();
+
             var languages_selected = Request.QueryString["language"];
 
             if (languages_selected == "EN")
@@ -313,6 +316,44 @@ namespace web_app_assignment
 
             //Close Connection
             con.Close();
+        }
+
+        protected void checkVisitor()
+        {
+            if(Session["User"] == null && Session["Recruiter"] == null)
+            {
+                if(Request.Cookies["jobs4uVtr"] == null)
+                {
+                    //Set visitor Cookies
+                    HttpCookie coo = new HttpCookie("jobs4uVtr");
+                    coo.Value = Guid.NewGuid().ToString("N");
+                    coo.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(coo);
+
+                    //Insert to database
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    string sql = "INSERT INTO Visitors(visitor_id, date_of_visit, created_at)" +
+                                "VALUES(@visitor_id, @date_of_visit, @created_at)";
+
+                    //Connect to the database
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@visitor_id", coo.Value);
+                    cmd.Parameters.AddWithValue("@date_of_visit", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }              
+            }
         }
     }
 }
