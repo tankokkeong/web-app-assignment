@@ -25,7 +25,7 @@
 
     <div class="edit-blogs-container">
         <div class="edit-header mb-3">
-            <h2>Edit Post</h2>
+            <h2>View Post</h2>
         </div>
 
         <form runat="server">
@@ -56,8 +56,8 @@
                 <label for="staticDesc" class="col-sm-2 col-form-label">Main Description:</label>
                 <div class="col-sm-10">
                     <div>
-                        <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>
-                        <asp:TextBox ID="txtEditDescription" ReadOnly="true" runat="server" Style="display: none;"></asp:TextBox>
+<%--                        <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>--%>
+                        <asp:TextBox ID="txtEditDescription" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                 </div>
             </div>
