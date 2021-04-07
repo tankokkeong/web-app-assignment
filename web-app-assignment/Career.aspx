@@ -151,7 +151,7 @@
 
                         <div>
                             <asp:Label ID="lblUpload" runat="server" CssClass="text-light" Text="Upload Your Resume"></asp:Label><br />
-                            <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2" onchange="fileResumeUpload()"/>
+                            <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2"/>
                             <asp:TextBox ID="txtResumeFile" runat="server" style="display:none;"/>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Resume is required!" ControlToValidate="fileResume" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .pdf are allowed!" ControlToValidate="fileResume" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.pdf)$" Display="Dynamic"></asp:RegularExpressionValidator>     
@@ -181,20 +181,6 @@
                 autoPlay: true
             });
         });
-    </script>
-
-    <script>
-        function fileResumeUpload() {
-            var file_input = document.getElementById("ContentPlaceHolder1_fileResume");
-            var hidden_file_input = document.getElementById("ContentPlaceHolder1_txtResumeFile");
-
-            if (hidden_file_input.value === "") {
-                //assign file input to hidden field
-                hidden_file_input.value = file_input.files[0].name;
-            }
-
-        }
-
     </script>
 
 </asp:Content>

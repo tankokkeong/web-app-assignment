@@ -129,10 +129,9 @@ namespace web_app_assignment
 
                     string filename = fileResume.FileName;
                     string upload_path = MapPath("~/Resume/");
-                    string file_name = txtResumeFile.Text;
 
-                    fileResume.SaveAs(upload_path + file_name);
-                    string resume = "Uploads/" + file_name;
+                    fileResume.SaveAs(upload_path + filename);
+                    string resume = "Resume/" + filename;
 
                     SqlConnection con = new SqlConnection(strcon);
 
@@ -164,10 +163,10 @@ namespace web_app_assignment
 
                     string fileName = fileResume.FileName;
                     string uploadpath = MapPath("~/Resume/");
-                    string pdfName = txtResumeFile.Text;
 
-                    fileResume.SaveAs(uploadpath + pdfName);
-                    string resumeName = "Uploads/" + pdfName;
+
+                    fileResume.SaveAs(uploadpath + fileName);
+                    string resumeName = "Resume/" + fileName;
 
                     SqlConnection conn = new SqlConnection(strcon);
 
