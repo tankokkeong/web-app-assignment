@@ -23,7 +23,7 @@ namespace web_app_assignment
             //Check Login
             if (Session["Recruiter"] == null)
             {
-                Response.Redirect("home.aspx");
+                Response.Redirect("login_signup.aspx");
             }
 
             if (!Page.IsPostBack)
