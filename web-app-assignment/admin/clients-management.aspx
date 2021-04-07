@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="form-group row mt-3 mb-3">
+            <div class="form-group row mt-3 mb-1">
                 <label class="col-sm-12 col-lg-2 col-form-label">User Type:</label>
                 <div class="col-sm-12 col-lg-3">
                     <select class="form-control" onchange="changeClientsType()" id="client-management-option">
@@ -58,6 +58,20 @@
                             }
                         }
                     </script>
+                </div>
+            </div>
+
+            <div class="row">
+               <label class="col-sm-12 col-lg-2 col-form-label">Premium:</label>
+                <div class="col-sm-12 col-lg-3 pr-1">
+                    150 Users
+                </div>
+            </div>
+
+            <div class="row">
+               <label class="col-sm-12 col-lg-2 col-form-label">Non Premium:</label>
+                <div class="col-sm-12 col-lg-3 pr-1">
+                    850 Users
                 </div>
             </div>
 
