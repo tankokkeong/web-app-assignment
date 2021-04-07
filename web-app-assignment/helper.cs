@@ -97,6 +97,18 @@ namespace web_app_assignment
 
         }
 
+        public string getVistorID()
+        {
+            string visitorID = "";
+
+            if (HttpContext.Current.Request.Cookies["jobs4uVtr"] != null)
+            {
+                visitorID = HttpContext.Current.Request.Cookies["jobs4uVtr"].Value;
+            }
+
+            return visitorID;
+        }
+
         public string getAdminID()
         {
 

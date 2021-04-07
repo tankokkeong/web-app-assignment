@@ -66,7 +66,7 @@ namespace web_app_assignment
                 Languages.Add("I build great teams and then try to point everyone in the right direction.", "I build great teams and then try to point everyone in the right direction.");
                 Languages.Add("The fact that you’re reading this means we did something right. Awesome branding and content brought to you via social media, ads, emails and events, powered by memes and coffee.", "The fact that you’re reading this means we did something right. Awesome branding and content brought to you via social media, ads, emails and events, powered by memes and coffee.");
                 Languages.Add("We are the secret sauce - a branding content studio consisting of a team of talented creative individuals. We specialize in attracting talented young jobseekers through hassle free content creation and creative solutions. To put it simply, we make things helpful & pretty!", "We are the secret sauce - a branding content studio consisting of a team of talented creative individuals. We specialize in attracting talented young jobseekers through hassle free content creation and creative solutions. To put it simply, we make things helpful & pretty!");
-                Languages.Add("Helps people discover any job with any employer in the market.", "");
+                Languages.Add("Helps people discover any job with any employer in the market.", "Helps people discover any job with any employer in the market.");
                 Languages.Add("To connect businesses with talent and improve lives through better careers.", "To connect businesses with talent and improve lives through better careers.");
 
                 lblVision1.Text = Languages["Vision"];

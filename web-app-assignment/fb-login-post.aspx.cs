@@ -26,7 +26,7 @@ namespace web_app_assignment
 
                 conn.Open();
 
-                String qry = "select count(*) from Recruiter where facebook_token = @facebook_token AND verified_at IS NOT NULL AND active = @active";
+                string qry = "select count(*) from Recruiter where facebook_token = @facebook_token AND verified_at IS NOT NULL AND active = @active";
 
                 //Connect to the database
                 SqlCommand cm = new SqlCommand(qry, conn);
@@ -36,9 +36,9 @@ namespace web_app_assignment
                 cm.Parameters.AddWithValue("@active", "active");
 
                 //Get Result
-                String result = cm.ExecuteScalar().ToString();
+                int result = Convert.ToInt32(cm.ExecuteScalar().ToString());
 
-                if (result == "1") // if the result found
+                if (result > 0) // if the result found
                 {
                     //Dictionary for storing data
                     Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
@@ -82,14 +82,13 @@ namespace web_app_assignment
                     Session["Recruiter"] = RecruiterDetails;
                     Session.Timeout = 43200;
 
-                    Response.Write(@"<script language='javascript'>alert('Hi" + fb_name +".'); window.location.href = 'home.aspx'; </script>");
-
-                    con.Open();
+                    Response.Write("Login Successful");
                 }
                 else
                 {
                     Response.Write(@"<script language='javascript'>alert('Your Facebook Account is not registered.'); window.location.href = 'home.aspx'; </script>");
                 }
+
                 conn.Close();
             }catch (Exception error)
             {

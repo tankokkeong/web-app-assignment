@@ -107,26 +107,26 @@
         </div>
 
         <%-- Mission Container --%>
-        <div class="mission-container">
+        <div class="mission-container mb-3">
             <div class="mission-title">
                 <h1>
                     <asp:Label ID="lblMission" runat="server" Text="Mission"></asp:Label></h1>
             </div>
             <div class="mission-desc">
-                <p>
+                <p class="text-center">
                     <asp:Label ID="lblMissionDesc" runat="server" Text="Helps people discover any job with any employer in the market."></asp:Label>
                 </p>
             </div>
         </div>
 
         <%-- Vision Container --%>
-        <div class="vision-container">
+        <div class="vision-container mt-3">
             <div class="vision-title">
                 <h1>
                     <asp:Label ID="lblVision1" runat="server" Text="Vision"></asp:Label></h1>
             </div>
-            <div class="vision-desc">
-                <p>
+            <div class="vision-desc text-center">
+                <p class="text-center">
                     <asp:Label ID="lblVisionDesc" runat="server" Text="To connect businesses with talent and improve lives through better careers."></asp:Label>
                 </p>
             </div>

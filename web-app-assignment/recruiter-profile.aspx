@@ -256,6 +256,10 @@
                                </div>
                            </div>
                         </ItemTemplate>
+
+                        <EmptyDataTemplate>
+                            No application yet
+                        </EmptyDataTemplate>
                     </asp:ListView>
 
                     <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvJobStatus" PageSize="5" QueryStringField="apply" class="pagination mt-3" OnPreRender="DataPager1_PreRender">
