@@ -16,12 +16,30 @@ namespace web_app_assignment.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if(!Page.IsPostBack)
             {
-                Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["User"];
+                //Open connection
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
 
-                this.SearchSeeker();
+                string sql_jobPosted = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL " +
+
+                                       " ORDER BY seeker_id DESC";
+
+                SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
+
+                DataTable dtbl = new DataTable();
+                cmd.Fill(dtbl);
+                GridView2.DataSource = dtbl;
+                GridView2.DataBind();
+
+                //Close Connection
+                con.Close();
             }
+            
         }
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -45,44 +63,60 @@ namespace web_app_assignment.admin
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView2.PageIndex = e.NewPageIndex;
-            this.SearchSeeker();
-        }
-
-        private void SearchSeeker()
-        {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-            using (SqlConnection con = new SqlConnection(strcon))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    string sql = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL";
-                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
-                    {
-                        sql += " AND seeker_id = @id  AND deleted_at IS NULL ORDER BY seeker_id DESC";
-                        cmd.Parameters.AddWithValue("@id", txtSearch.Text.Trim());
-                    }
-                    else
-                    {
-                        sql += " ORDER BY seeker_id DESC";
-                    }
-                    cmd.CommandText = sql;
-                    cmd.Connection = con;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        GridView2.DataSource = dt;
-                        GridView2.DataBind();
-                    }
-                }
-            }
-
+            GridView2.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            this.SearchSeeker();
+            //Open connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string sql = "";
+
+            //Retrive User value
+            if(txtUserID.Text != "")
+            {
+                sql += " AND seeker_id = " + txtUserID.Text;
+            }
+
+            if (txtUserEmail.Text != "")
+            {
+                sql += " AND email LIKE '%" + txtUserEmail.Text + "%'";
+            }
+
+            if(ddlUserStatus.SelectedValue != "")
+            {
+                sql += " AND active = '" + ddlUserStatus.SelectedValue + "'";
+            }
+
+            if(txtFromDate.Text != "")
+            {
+                sql += " AND created_at > '" + txtFromDate.Text + "'";
+            }
+
+            if(txtToDate.Text != "")
+            {
+                sql += " AND created_at < '" + txtToDate.Text + "'";
+            }
+
+            string sql_jobPosted = "SELECT * FROM JobSeeker WHERE deleted_at IS NULL " +
+                                    sql +
+                                   " ORDER BY seeker_id DESC" ;
+
+            SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
+
+            DataTable dtbl = new DataTable();
+            cmd.Fill(dtbl);
+            GridView2.DataSource = dtbl;
+            GridView2.DataBind();
+
+            //Close Connection
+            con.Close();
+          
         }
     }
 }

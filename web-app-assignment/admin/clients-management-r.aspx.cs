@@ -21,41 +21,30 @@ namespace web_app_assignment.admin
         {
             if (!Page.IsPostBack)
             {
-                this.BindGrid();
-            }
-        }
-
-        private void BindGrid()
-        {
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
-
-            using (SqlConnection con = new SqlConnection(strcon))
-            {
-                using (SqlCommand cmd = new SqlCommand())
+                //Open connection
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
                 {
-                    string sql = "SELECT * FROM Recruiter WHERE deleted_at IS NULL";
-                    if (!string.IsNullOrEmpty(txtSearch.Text.Trim()))
-                    {
-                        sql += " AND recruiter_id = @id AND deleted_at IS NULL ORDER BY recruiter_id DESC";
-                        cmd.Parameters.AddWithValue("@id", txtSearch.Text.Trim());
-                    }
-                    else
-                    {
-                        sql += " ORDER BY recruiter_id DESC";
-                    }
-                    cmd.CommandText = sql;
-                    cmd.Connection = con;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        GridView3.DataSource = dt;
-                        GridView3.DataBind();
-                    }
+                    con.Open();
                 }
-            }
 
+                string sql_jobPosted = "SELECT * FROM Recruiter WHERE deleted_at IS NULL " +
+
+                                       " ORDER BY recruiter_id DESC";
+
+                SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
+
+                DataTable dtbl = new DataTable();
+                cmd.Fill(dtbl);
+                GridView3.DataSource = dtbl;
+                GridView3.DataBind();
+
+                //Close Connection
+                con.Close();
+
+            }
         }
+
         protected void GridView3_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
@@ -78,18 +67,65 @@ namespace web_app_assignment.admin
         protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
             GridView3.PageIndex = e.NewPageIndex;
-            this.BindGrid();
+            GridView3.DataBind();
         }
 
         protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView3.PageIndex = e.NewPageIndex;
-            this.BindGrid();
+            GridView3.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            this.BindGrid();
+            //Open connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string sql = "";
+
+            //Retrive User value
+            if (txtUserID.Text != "")
+            {
+                sql += " AND recruiter_id = " + txtUserID.Text;
+            }
+
+            if (txtUserEmail.Text != "")
+            {
+                sql += " AND email LIKE '%" + txtUserEmail.Text + "%'";
+            }
+
+            if (ddlUserStatus.SelectedValue != "")
+            {
+                sql += " AND active = '" + ddlUserStatus.SelectedValue + "'";
+            }
+
+            if (txtFromDate.Text != "")
+            {
+                sql += " AND created_at > '" + txtFromDate.Text + "'";
+            }
+
+            if (txtToDate.Text != "")
+            {
+                sql += " AND created_at < '" + txtToDate.Text + "'";
+            }
+
+            string sql_jobPosted = "SELECT * FROM Recruiter WHERE deleted_at IS NULL " +
+                                    sql +
+                                   " ORDER BY recruiter_id DESC";
+
+            SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
+
+            DataTable dtbl = new DataTable();
+            cmd.Fill(dtbl);
+            GridView3.DataSource = dtbl;
+            GridView3.DataBind();
+
+            //Close Connection
+            con.Close();
         }
     }
 }

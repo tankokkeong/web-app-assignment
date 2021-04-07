@@ -2,3 +2,13 @@
     background-color:white;
     padding:20px;
 }
+
+.user-filter-container {
+    padding: 5px !important;
+}
+
+@media (min-width:850px) {
+    .user-filter-container {
+        padding: 5px 10px !important;
+    }
+}

@@ -27,39 +27,79 @@
                 <h3>User Management</h3>
             </div>
 
-            <div class="row">
-                <label class="col-sm-12 col-lg-2 col-form-label">User ID:</label>
-                <div class="col-sm-12 col-lg-3 pr-1">
-                    <asp:TextBox ID="txtSearch" runat="server" placeholder="User ID" CssClass="form-control" TextMode="Number" min="1"></asp:TextBox>     
+            <div class="user-filter mt-3 mb-3">
+                <div class="row">
+                    <div class="filter-title col-lg-1 font-weight-bold">
+                        Filters:
+                    </div>
+
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-3 user-filter-container">                                
+                                <asp:TextBox ID="txtUserID" runat="server" TextMode="Number" min="1" CssClass="form-control" placeholder="User Id"></asp:TextBox>
+                            </div>
+                            
+                            <div class="col-sm-12 col-lg-3 user-filter-container">
+                                <asp:TextBox ID="txtUserEmail" runat="server" CssClass="form-control" placeholder="User Email"></asp:TextBox>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3 user-filter-container">
+                                <asp:DropDownList ID="ddlUserStatus" runat="server" CssClass="form-control">
+                                    <asp:ListItem Value="">User Status</asp:ListItem>
+                                    <asp:ListItem Value="active">Active</asp:ListItem>
+                                    <asp:ListItem Value="inactive">Inactive</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3 user-filter-container">
+                                 <select class="form-control" onchange="changeClientsType()" id="client-management-option">
+                                    <option value="Job Seeker">Job Seeker</option>
+                                    <option value="Recruiter" selected>Recruiter</option>
+                                </select>
+
+                                <script>
+                                    function changeClientsType() {
+                                        var x = document.getElementById("client-management-option").value;
+
+                                        if (x === "Job Seeker") {
+                                            window.location = "clients-management.aspx";
+                                        }
+                                        else if (x === "Recruiter") {
+                                            window.location = "clients-management-r.aspx";
+                                        }
+                                    }
+
+                                    function clearFilter() {
+                                        window.location.href = "clients-management-r.aspx";
+                                    }
+                                </script>
+                            </div>
+                                               
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-2 user-filter-container">     
+                                <span class="pl-1">From :</span>                                 
+                                <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" class="form-control"></asp:TextBox>
+                            </div>
+                            
+
+                            <div class="col-sm-12 col-lg-2 user-filter-container">
+                                <span class="pl-1">To:</span>
+                                <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" class="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                    
+                        <div class="row mt-2">
+                            <div class="col">
+                                <asp:Button ID="btnUserSearch" runat="server" Text="Search" class="btn btn-info" OnClick="btnSearch_Click"/>
+                                <button class="btn btn-danger" type="button" onclick="clearFilter()">Clear</button>
+                            </div>
+                        
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col pl-0">
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn bg-lightgreen searchBtn text-light" OnClick="btnSearch_Click" />
-                </div>
-            </div>
-
-            <div class="form-group row mt-3 mb-3">
-                <label class="col-sm-2 col-form-label">User Type:</label>
-                <div class="col-sm-12 col-lg-3">
-                    <select class="form-control" onchange="changeClientsType()" id="client-management-option">
-                        <option value="Job Seeker">Job Seeker</option>
-                        <option value="Recruiter" selected>Recruiter</option>
-                    </select>
-
-                    <script>
-                        function changeClientsType() {
-                            var x = document.getElementById("client-management-option").value;
-
-                            if (x === "Job Seeker") {
-                                window.location = "clients-management.aspx";
-                            }
-                            else if (x === "Recruiter") {
-                                window.location = "clients-management-r.aspx";
-                            }
-                        }
-                    </script>
-                </div>
-            </div>
+            </div>          
 
             <div class="row">
                <label class="col-sm-12 col-lg-2 col-form-label">Premium:</label>
