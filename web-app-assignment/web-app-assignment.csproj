@@ -1835,11 +1835,16 @@
     <Content Include="images\About Us\writing-336370_1920-min3.png" />
     <Content Include="images\candidate list\example-candidate.png" />
     <Content Include="images\career\3.jpg" />
+    <Content Include="images\career\anson.jpg" />
     <Content Include="images\career\arrow-down-sign-to-navigate-min.png" />
+    <Content Include="images\career\bee-choo.PNG" />
     <Content Include="images\career\business-suit-690048_1920.jpg-min.png" />
+    <Content Include="images\career\festus.png" />
+    <Content Include="images\career\honsiong.jpg" />
     <Content Include="images\career\line-min.png" />
     <Content Include="images\career\search-min.png" />
     <Content Include="images\career\startup-594091_1920-min.jpg" />
+    <Content Include="images\career\sukChuang.png" />
     <Content Include="images\contact-us\writing-336370_1920-min3.png" />
     <Content Include="images\help center\arrow-down-sign-to-navigate-min.png" />
     <Content Include="images\help center\line-min.png" />

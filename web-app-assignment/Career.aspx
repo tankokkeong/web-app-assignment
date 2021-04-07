@@ -42,7 +42,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" />
+                                <img src="images/career/bee-choo.PNG" />
                             </div>
                             <h3 class="title">Kenny Tan</h3>
                             <span class="post"><asp:Label ID="lblPpl1" runat="server" class="text-lightgreen text-center" Text="Founder"></asp:Label></span>
@@ -55,7 +55,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" />
+                                <img src="images/career/honsiong.jpg" />
                             </div>
                             <h3 class="title">Hon Siong</h3>
                             <span class="post"><asp:Label ID="lblPpl2" runat="server" class="text-lightgreen text-center" Text="Marketing Teams"></asp:Label></span>
@@ -68,7 +68,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" />
+                                <img src="images/career/sukChuang.png" />
                             </div>
                             <h3 class="title">Suk Chuang</h3>
                             <span class="post"><asp:Label ID="lblPpl3" runat="server" class="text-lightgreen text-center" Text="Creative Teams"></asp:Label></span>
@@ -81,7 +81,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" />
+                                <img src="images/career/festus.png" />
                             </div>
                             <h3 class="title">Festus Chen</h3>
                             <span class="post"><asp:Label ID="lblPpl4" runat="server" class="text-lightgreen text-center" Text="Sales Teams"></asp:Label></span>
@@ -94,7 +94,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/3.jpg" />
+                                <img src="images/career/anson.jpg" />
                             </div>
                             <h3 class="title">Anson Ho</h3>
                             <span class="post"><asp:Label ID="lblPpl5" runat="server" class="text-lightgreen text-center" Text="Recruitment Teams"></asp:Label></span>
