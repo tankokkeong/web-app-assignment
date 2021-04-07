@@ -103,7 +103,7 @@ namespace web_app_assignment
             {
                  con = new SqlConnection(strcon);
 
-                 sql = "INSERT INTO JobSeeker (full_name, email, gmail_token, verified_at, created_at) VALUES (@full_name, @email, @gmail_token, GETDATE(), GETDATE())";
+                 sql = "INSERT INTO JobSeeker (full_name, email, gmail_token, active, verified_at, created_at) VALUES (@full_name, @email, @gmail_token, @active, GETDATE(), GETDATE())";
 
                  cmd = new SqlCommand(sql, con);
 
@@ -112,6 +112,7 @@ namespace web_app_assignment
                 cmd.Parameters.AddWithValue("@full_name", name);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@gmail_token", id);
+                cmd.Parameters.AddWithValue("@active", "active");
 
                 cmd.ExecuteNonQuery();
 
@@ -119,13 +120,14 @@ namespace web_app_assignment
 
                 SqlConnection conn = new SqlConnection(strcon);
 
-                string query = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL";
+                string query = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND @active = active";
 
                 SqlCommand cm = new SqlCommand(query, conn);
 
                 conn.Open();
 
                 cm.Parameters.AddWithValue("@gmail_token", id);
+                cm.Parameters.AddWithValue("@active", "active");
 
                 int output = (int)cm.ExecuteScalar();
 
@@ -172,7 +174,7 @@ namespace web_app_assignment
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered'); window.open('login_signup.aspx');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered'); window.location.href = 'home.aspx';", true);
             }
             con.Close();
 

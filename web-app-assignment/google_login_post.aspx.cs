@@ -198,7 +198,7 @@ namespace web_app_assignment
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Not Register'); window.open('login_signup.aspx');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Your Google Account Has Been Registered Or No Longer Active. To activate the account back, kindly contact customer services.'); window.location.href = 'login_signup.aspx';", true);
                     }
                     connection.Close();
                 }
