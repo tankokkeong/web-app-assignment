@@ -16,12 +16,20 @@
             $(live_chat).addClass("active");
 
             //Remove active from dashboard
-            dashboard = nav_option[7];
+            dashboard = nav_option[0];
             $(dashboard).removeClass("active");
         });
     </script>
 
     <form runat="server">
+        <div class="career-container">
+            <div class="career-title">
+                <h2>Applicants Records</h2>
+            </div>
 
+            <div class="table-container">
+
+            </div>
+        </div>
     </form>
 </asp:Content>
