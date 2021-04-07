@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="form-group row mt-3 mb-1">
+            <div class="form-group row mt-3 mb-3">
                 <label class="col-sm-12 col-lg-2 col-form-label">User Type:</label>
                 <div class="col-sm-12 col-lg-3">
                     <select class="form-control" onchange="changeClientsType()" id="client-management-option">
