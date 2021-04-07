@@ -132,6 +132,10 @@
                                     </div>
                                 </div>
                             </ItemTemplate>
+
+                            <EmptyDataTemplate>
+                                <div class="ml-3">No job found</div>
+                            </EmptyDataTemplate>
                         </asp:ListView>
                     </div>
 

@@ -406,6 +406,7 @@ namespace web_app_assignment
                 string sql_jobStatus = "SELECT application_id, user_photo, full_name, ASS.seeker_id, job_title, job_type, applied_status, R.is_premium, JS.location, JS.country " +
                                         "FROM ApplicationStatus ASS, JobSeeker JS, JobPost JP, Recruiter R " +
                                         "WHERE ASS.seeker_id = JS.seeker_id AND " +
+                                        "JP.deleted_at IS NULL AND " +
                                         "ASS.deleted_at IS NULL AND " +
                                         "ASS.post_id = JP.post_id AND " +
                                         "JP.recruiter_id = " + recruiter_id + " AND " +
