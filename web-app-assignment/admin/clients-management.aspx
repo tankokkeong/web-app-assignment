@@ -61,6 +61,20 @@
                 </div>
             </div>
 
+            <div class="row">
+               <label class="col-sm-12 col-lg-2 col-form-label">Premium:</label>
+                <div class="col-sm-12 col-lg-3 pr-1">
+                    150 Users
+                </div>
+            </div>
+
+            <div class="row">
+               <label class="col-sm-12 col-lg-2 col-form-label">Non Premium:</label>
+                <div class="col-sm-12 col-lg-3 pr-1">
+                    850 Users
+                </div>
+            </div>
+
             <%--display--%>
             <div class="table-container">
                 <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView2_RowDataBound" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView2_PageIndexChanging">

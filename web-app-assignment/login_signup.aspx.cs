@@ -18,7 +18,7 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Post Back to Home if there is now Session in the page
+            //Post Back to Home if there is no Session in the page
             if (!Page.IsPostBack)
             {
                 if (Session["Email"] !=null && Session["Password"]!= null)
@@ -125,7 +125,7 @@ namespace web_app_assignment
                     }
                     else
                     {
-                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password! Please try again.')</script>");
                     }
 
                     con.Close();
@@ -222,7 +222,7 @@ namespace web_app_assignment
                     }
                     else //if user enter invalid password or email
                     {
-                        Response.Write(@"<script language='javascript'>alert('Invalid email or password')</script>");
+                        Response.Write(@"<script language='javascript'>alert('Invalid email or password! Please try again.')</script>");
                     }
 
                     conn.Close();

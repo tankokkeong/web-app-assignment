@@ -17,6 +17,12 @@ namespace web_app_assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check logout
+            checkLogout();
+
+            //Check visitor
+            checkVisitor();
+
             var languages_selected = Request.QueryString["language"];
 
             if (languages_selected == "EN")
@@ -33,7 +39,15 @@ namespace web_app_assignment
             if (Session["User"] != null || Session["Recruiter"]!= null)
             {
                
-                ProfileLink.Visible = true;
+                if(Session["User"] != null)
+                {
+                    ProfileLink.HRef = "user-profile.aspx";
+                }
+                else if(Session["Recruiter"] != null)
+                {
+                    ProfileLink.HRef = "recruiter-profile.aspx";
+                }
+                ProfileLink.Visible = true;            
                 LoginLink.Visible = false;
                 logoutLink.Visible = true;
             }
@@ -249,51 +263,25 @@ namespace web_app_assignment
            
         }
 
-        protected void logoutLink_Click(object sender, EventArgs e)
+        protected void checkLogout()
         {
-            if (Session["User"] != null)
+            string logout = Request.QueryString["logout"] ?? "None";
+
+            if(logout != "None")
             {
-                Session.Remove("User");
-                Response.Redirect("home.aspx");
-            }
-            else if (Session["Recruiter"] != null)
-            {
-                Session.Remove("Recruiter");
-                Response.Redirect("home.aspx");
-            }
-
-           
-        }
-
-        protected void ProfileLink_Click(object sender, EventArgs e)
-        {
-            
-            try
-            {
-
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-
                 if (Session["User"] != null)
                 {
-                    Response.Redirect("user-profile.aspx");
+                    Session.Remove("User");
+                    Response.Redirect("home.aspx");
                 }
                 else if (Session["Recruiter"] != null)
                 {
-
-                    Response.Redirect("recruiter-profile.aspx");
-
+                    Session.Remove("Recruiter");
+                    Response.Redirect("home.aspx");
                 }
-            }
-            catch(Exception error)
-            {
-                Response.Write("<script>alert('" + error.Message + "');</script>"); 
-            }
-
-        }
+            }          
+           
+        }   
         
         protected void getCurrentSiteJobDetails()
         {
@@ -328,6 +316,44 @@ namespace web_app_assignment
 
             //Close Connection
             con.Close();
+        }
+
+        protected void checkVisitor()
+        {
+            if(Session["User"] == null && Session["Recruiter"] == null)
+            {
+                if(Request.Cookies["jobs4uVtr"] == null)
+                {
+                    //Set visitor Cookies
+                    HttpCookie coo = new HttpCookie("jobs4uVtr");
+                    coo.Value = Guid.NewGuid().ToString("N");
+                    coo.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(coo);
+
+                    //Insert to database
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    string sql = "INSERT INTO Visitors(visitor_id, date_of_visit, created_at)" +
+                                "VALUES(@visitor_id, @date_of_visit, @created_at)";
+
+                    //Connect to the database
+                    SqlCommand cmd = new SqlCommand(sql, con);
+
+
+                    //Insert parameters
+                    cmd.Parameters.AddWithValue("@visitor_id", coo.Value);
+                    cmd.Parameters.AddWithValue("@date_of_visit", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                    //Execute the queries
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }              
+            }
         }
     }
 }

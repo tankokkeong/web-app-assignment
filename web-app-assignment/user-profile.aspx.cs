@@ -211,6 +211,7 @@ namespace web_app_assignment
                 //Read Job Status
                 string sql_jobStatusView = "SELECT * FROM ApplicationStatus ASS, JobPost JP, Recruiter RC " +
                                         "WHERE ASS.seeker_id = '" + seeker_id + "' AND " +
+                                        "JP.deleted_at IS NULL AND " +
                                         "ASS.deleted_at IS NULL AND " +
                                         "ASS.post_id = JP.post_id AND " +
                                         "JP.recruiter_id = RC.recruiter_id";

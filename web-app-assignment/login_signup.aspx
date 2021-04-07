@@ -36,7 +36,7 @@
                     <div class="inputsFormSign_Login" id="inputsFormSign_Logins">
                         <form>
                             <div class="form-group">
-                                    <asp:DropDownList ID="Role" runat="server" CssClass="form-control bg-info text-white">
+                                    <asp:DropDownList ID="Role" ClientIDMode="Static" runat="server" CssClass="form-control bg-info text-white" onchange="ddlRoles()">
                                         <asp:ListItem Selected="True" Value="0"> Select Your Role </asp:ListItem>
                                         <asp:ListItem Value="job_seeker"> Job Seeker </asp:ListItem>
                                         <asp:ListItem Value="recruiter"> Recruiter </asp:ListItem>
@@ -74,9 +74,9 @@
                         </div>
                         <div class="form-group dividerLoginGoogle">
                             <%-- Gmail and Facebook Button Comes here --%>
-                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:30px; width:30px;"/>&nbsp &nbsp Sign in With Google</button>                     
-                            <div class="fb-button mt-2">
-                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="10000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                            <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/>&nbsp &nbsp Sign in With Google</button>                     
+                            <div class="fb-button-login mt-2">
+                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                             </div>
                         </div>
 
@@ -151,9 +151,11 @@
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
                         <div>
-                            <button type="button" id="googleRecruiter" runat="server" class="btn bg-white googleSignIn" onserverclick="googleRecruiter_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>       
+                            <button type="button" id="googleRecruiter" runat="server" class="btn bg-white googleSignIn-r" onserverclick="googleRecruiter_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>       
                         </div>
-                        <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="45px" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                        <div class="fb-button-r mt-2">
+                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                        </div>
                     </div>  
                             </div><%-- Recruiter Register Section End --%>
 
@@ -205,17 +207,21 @@
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
                         <div>
-                          <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:45px; width:45px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
+                          <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn-js" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
                         </div>
-                        <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="45px" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
+                        <div class="fb-button-js mt-2">
+                             <button type="button" id="Button1" runat="server" class="btn bg-white googleSignIn-js" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>    
+                            <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                        </div>                        
                     </div>  
+
+
                             </div><%-- Job Seeker Register Section End --%>
                         </div>
                     
                     </div>
                 
-                    <input type="hidden" id="JobRole" />
+                    
                     
                     <p class="inputsFormSign_LoginFree">
                         Already a Member ? 
@@ -225,7 +231,8 @@
                 <%-- Register Session End --%>
             </div>
         </div>
-        <input type="text" id="LoginSignUp" />
+        <input type="hidden" id="JobRole" value="Recruiter"/>
+        <input type="hidden" id="LoginSignUp" value="Login"/>
     </div>
     </div>
 
@@ -332,6 +339,12 @@
                 sign_login_password.type = "password";
             }
         }
+
+        function ddlRoles() {
+            var loginRole = document.getElementById("Role").value;
+            console.log(loginRole);
+        }
+
     </script>
 
     <script>
@@ -421,16 +434,32 @@
         //Post for login purpose
         function loginUserData(response) {
 
-            $.post("fb-login-post.aspx",
-                {
-                    fb_name: response.name,
-                    fb_id: response.id,
-                    fb_email: response.email,
-                },
-                function () {      
-                    alert("Hi " + response.name);
-                    window.location.href = "home.aspx";
-                });
+            var roleLogin = document.getElementById("Role").value;
+
+            if (roleLogin == "recruiter") {
+                $.post("fb-login-post.aspx",
+                    {
+                        fb_name: response.name,
+                        fb_id: response.id,
+                        fb_email: response.email,
+                    },
+                    function () {
+                        //alert("Hi " + response.name);
+                        window.location.href = "fb-login-post.aspx";
+                    });
+            } else if (roleLogin == "job_seeker") {
+                $.post("fb-login-post-js.aspx",
+                    {
+                        fb_name: response.name,
+                        fb_id: response.id,
+                        fb_email: response.email,
+                    },
+                    function () {
+                        //alert("Hi " + response.name);
+                        window.location.href = "fb-login-post-js.aspx";
+                    });
+            }
+
         }
 
     </script>

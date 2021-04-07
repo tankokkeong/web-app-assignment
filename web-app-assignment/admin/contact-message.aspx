@@ -27,7 +27,10 @@
      <form runat="server">
 
      <div class="table-container">
-        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvContactMessage_RowDataBound" CssClass="table table-striped table-bordered" AllowPaging="false">
+        <asp:GridView ID="gvContactMessage" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvContactMessage_RowDataBound"
+            CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="5"
+            OnPageIndexChanging="gvContactMessage_PageIndexChanging">
+            <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
             <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
             <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke"/>
             <Columns>
