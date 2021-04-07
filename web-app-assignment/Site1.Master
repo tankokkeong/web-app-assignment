@@ -216,15 +216,21 @@
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblUserProfile" runat="server" Text="User Profile"></asp:Label>
+                            <a href="user-profile.aspx" class="text-lightblue text-decoration-none">
+                                 <asp:Label ID="lblUserProfile" runat="server" Text="User Profile"></asp:Label>
+                            </a>                         
                         </div>
 
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblSearchJobs" runat="server" Text="Search Jobs"></asp:Label>
+                            <a href="job_lists.aspx" class="text-lightblue text-decoration-none">
+                                <asp:Label ID="lblSearchJobs" runat="server" Text="Search Jobs"></asp:Label>
+                            </a>                           
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblResume" runat="server" Text="Resume"></asp:Label>
+                            <a href="blog.aspx" class="text-lightblue text-decoration-none">
+                                <asp:Label ID="lblResume" runat="server" Text="Resume"></asp:Label>
+                            </a>                           
                         </div>
                     </div>
 
@@ -234,11 +240,15 @@
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblCompanyProfile" runat="server" Text="Company Profile"></asp:Label>
+                            <a href="recruiter-profile.aspx" class="text-lightblue text-decoration-none">
+                                 <asp:Label ID="lblCompanyProfile" runat="server" Text="Company Profile"></asp:Label>
+                            </a>                         
                         </div>
                         
                         <div class="text-lightblue mt-2 footer-nav">
-                           <asp:Label ID="lblCandidatesList2" runat="server" Text="Candidates List"></asp:Label>
+                            <a href="candidate-list.aspx" class="text-lightblue text-decoration-none">
+                                <asp:Label ID="lblCandidatesList2" runat="server" Text="Candidates List"></asp:Label>
+                            </a>                           
                         </div>
                     </div>
 
