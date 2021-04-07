@@ -37,11 +37,12 @@
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" Width="600px" />
                     <Columns>
                         <asp:BoundField runat="server" DataField="post_id" HeaderText="Post ID" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="job_title" HeaderText="Job Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="industry" HeaderText="Industry" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="300px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="salary" HeaderText="Salary" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="250px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="job_type" HeaderText="Job Type" HeaderStyle-CssClass="bg-lightgreen text-light" ControlStyle-Width="250px" ControlStyle-Height="250px"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="rating" HeaderText="Rating" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="250px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="job_title" HeaderText="Job Title" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="salary" HeaderText="Salary" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="job_type" HeaderText="Job Type" HeaderStyle-CssClass="bg-lightgreen text-light" ControlStyle-Width="200px" ControlStyle-Height="250px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="rating" HeaderText="Rating" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="company_name" HeaderText="Company_name" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
+                        <asp:BoundField runat="server" DataField="recruiter_id" HeaderText="Company ID" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="post_id" HeaderText="Action" HeaderStyle-CssClass="bg-lightgreen text-light" HeaderStyle-Width="200px"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
