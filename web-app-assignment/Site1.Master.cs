@@ -23,8 +23,6 @@ namespace web_app_assignment
             //Check visitor
             checkVisitor();
 
-            Response.Write("<script>console.log('" + helper.getVistorID() + "')</script>");
-
             var languages_selected = Request.QueryString["language"];
 
             if (languages_selected == "EN")
