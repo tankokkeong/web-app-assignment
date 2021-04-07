@@ -205,12 +205,12 @@
                                             <%#Eval("job_type") %>
                                         </div>
 
-                                       <div class="mt-1">
+                                       <div class="mt-1" runat="server" Visible='<%# Eval("deleted_by_admin") == (object)DBNull.Value %>'>
                                            <a href="job_description.aspx?post_id=<%#Eval("post_id") %>" class="btn btn-primary">View Post</a>
                                        </div>
                                     </div>
 
-                                    <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Pending" %>'>
+                                    <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Pending" && Eval("deleted_by_admin") == (object)DBNull.Value %>'>
                                         <div class='mt-2 text-danger' style='font-size:20px;'>
                                             Status: Pending
                                         </div>
@@ -222,7 +222,7 @@
 
 
 
-                                      <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Approved" %>'>
+                                    <div class='col-sm-3 mt-3' runat="server" Visible='<%# (string)Eval("applied_status") == "Approved" && Eval("deleted_by_admin") == (object)DBNull.Value %>'>
                                         <div class='mt-2'>
                                             <a href = 'chatbox.aspx?recruiter= <%#Eval("recruiter_id") %>' class='btn btn-success'>Chat</a>
                                         </div>
@@ -230,7 +230,15 @@
                                         <div class='mt-2'>
                                             <button class='btn btn-danger' type="button" data-toggle="modal" data-target="#deleteRecruiterModel" onclick="removeRecruiter('<%#Eval("application_id") %>')">Remove</button>
                                         </div>
-                                     </div>
+                                    </div>
+
+                                    <div class='col-sm-3 mt-3' runat="server" Visible='<%# Eval("deleted_by_admin") != (object)DBNull.Value %>'>                 
+                                        <div class='mt-2'>
+                                            <span class="text-danger">Posted deleted by Admin
+                                                Reason: <%# Eval("deleted_reason") %>
+                                            </span>
+                                        </div>
+                                    </div>
 
                                     
                                 </div>

@@ -34,10 +34,10 @@ namespace web_app_assignment
             {
                 sql = "SELECT * FROM (" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
-                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
+                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true' AND JP.deleted_by_admin IS NULL)" +
                     "UNION" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
-                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
+                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL AND JP.deleted_by_admin IS NULL)" +
                     ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 5;
@@ -46,10 +46,10 @@ namespace web_app_assignment
             {
                 sql = "SELECT * FROM (" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
-                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
+                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true' AND JP.deleted_by_admin IS NULL)" +
                     "UNION" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
-                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
+                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL AND JP.deleted_by_admin IS NULL)" +
                     ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 10;
@@ -58,10 +58,10 @@ namespace web_app_assignment
             {
                 sql = "SELECT * FROM (" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id" +
-                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true')" +
+                    " FROM JobPost JP, Recruiter R WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium = 'true' AND JP.deleted_by_admin IS NULL)" +
                     "UNION" +
                     "(SELECT job_specializations, company_name, company_photo, job_rating, job_title, location, salary, job_type, is_premium, R.recruiter_id, post_id FROM JobPost JP, Recruiter R " +
-                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL)" +
+                    "WHERE JP.recruiter_id = R.recruiter_id AND JP.deleted_at IS NULL AND R.is_premium IS NULL AND JP.deleted_by_admin IS NULL)" +
                     ") result " + JobListSearchCriteria() + " ORDER BY (SELECT NULL)";
 
                 dpPagination.PageSize = 15;
