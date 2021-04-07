@@ -234,7 +234,7 @@
 
                                     <div class='col-sm-3 mt-3' runat="server" Visible='<%# Eval("deleted_by_admin") != (object)DBNull.Value %>'>                 
                                         <div class='mt-2'>
-                                            <span class="text-danger">Posted deleted by Admin
+                                            <span class="text-danger">Post deleted by Admin
                                                 Reason: <%# Eval("deleted_reason") %>
                                             </span>
                                         </div>

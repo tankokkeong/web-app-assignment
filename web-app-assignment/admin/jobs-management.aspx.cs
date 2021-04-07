@@ -89,6 +89,8 @@ namespace web_app_assignment.admin
             //Execute the queries
             cmdDelete.ExecuteNonQuery();
             con.Close();
+
+            Response.Redirect("jobs-management.aspx?deleted");
         }
     }
 }

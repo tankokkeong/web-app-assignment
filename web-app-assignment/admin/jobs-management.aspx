@@ -27,6 +27,13 @@
                 <h2>Jobs Posted</h2>
             </div>
         
+            <%-- Delete Alert --%>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;" id="job-removed-alert">
+              Job removed successful!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
             <div class="table-container">
                 <asp:GridView ID="gvJobPosted" runat="server" AutoGenerateColumns="False" 
@@ -88,5 +95,19 @@
 
             delete_input.value = id;
         }
+
+        //Check Removed Job
+        function checkRemovedJob() {
+            var link = window.location.href.split("?");
+            var deleted_alert = document.getElementById("job-removed-alert");
+
+            if (link[1] === "deleted") {
+
+                //Change to job application tab
+                deleted_alert.style.display = "";
+            }
+        }
+
+        checkRemovedJob();
     </script>
 </asp:Content>
