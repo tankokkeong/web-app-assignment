@@ -229,7 +229,7 @@
                         
                         <div class="text-lightblue mt-2 footer-nav">
                             <a href="blog.aspx" class="text-lightblue text-decoration-none">
-                                <asp:Label ID="lblResume" runat="server" Text="Resume"></asp:Label>
+                                <asp:Label ID="lblResume" runat="server" Text="Career Tips"></asp:Label>
                             </a>                           
                         </div>
                     </div>
