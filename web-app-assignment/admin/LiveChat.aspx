@@ -77,7 +77,7 @@
         var query = window.location.href.split('?')[1];
         query = query.split('=')[1];
 
-        //firebase.database().ref("seenMessages/UserMessages/" + logn + "/").update({
+        //firebase.database().ref("seenMessages/UserMessages/" + logn + "/").set({
         //    seen: "seen",
         //});
 
