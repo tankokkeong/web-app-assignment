@@ -190,11 +190,15 @@ namespace web_app_assignment
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+               
+                //Hide the deleted by admin column
+                e.Row.Cells[5].Visible = false;
+
                 // Display the job type in colours.
-                if(e.Row.Cells[1].Text == "Full Time")
+                if (e.Row.Cells[1].Text == "Full Time")
                 {
                     e.Row.Cells[1].Text = "<span class='badge badge-success'>" + e.Row.Cells[1].Text + "</span>";
                 }
@@ -218,6 +222,11 @@ namespace web_app_assignment
                         "<span data-toggle ='tooltip' data-placement ='right' title ='Premium only' tabindex ='0' >" +
                         "<button class='btn btn-primary p-1' disabled>Review</button><i class='fas fa-lock' id='schedule-lock'></i>" +
                         "</span>";
+                }
+
+                if(e.Row.Cells[5].Text != "")
+                {
+                    e.Row.Cells[4].Text = "<span class='text-danger'>Deleted by admin <br> Reason: " + e.Row.Cells[5].Text + "</span>";
                 }
 
             }

@@ -296,6 +296,7 @@
                             <asp:BoundField DataField="location" HeaderText="Job Location" SortExpression="location"/>
                             <asp:BoundField DataField="salary" HeaderText="Salary" SortExpression="salary"/>
                             <asp:BoundField DataField="post_id" HeaderText="Action" SortExpression="post_id"/>
+                            <asp:BoundField DataField="deleted_reason" HeaderText="Suspended" SortExpression="post_id" HeaderStyle-CssClass="d-none"/>
                         </Columns>
                     </asp:GridView>
 

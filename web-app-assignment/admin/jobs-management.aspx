@@ -48,5 +48,45 @@
                 </asp:GridView>
             </div>
         </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="JobDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Jobs Removal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Reason:</label>
+                    <div class="col-sm-10">
+                        <asp:DropDownList ID="ddlReasonSuspended" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="Spam">Spam</asp:ListItem>
+                            <asp:ListItem Value="Abusive Job Post behavior">Abusive Job Post behavior</asp:ListItem>
+                            <asp:ListItem Value="Violated rules and regulations">Violated rules and regulations</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:HiddenField ID="hfJobID" runat="server" />
+                    </div>
+                </div>
+        
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <asp:Button ID="btnRemoveJob" runat="server" Text="Remove" class="btn btn-danger" OnClick="btnRemoveJob_Click"/>
+              </div>
+            </div>
+          </div>
+        </div>
     </form>
+
+    <script>
+        function deleteJob(id) {
+            var delete_input = document.getElementById("ContentPlaceHolder1_hfJobID");
+
+            delete_input.value = id;
+        }
+    </script>
 </asp:Content>

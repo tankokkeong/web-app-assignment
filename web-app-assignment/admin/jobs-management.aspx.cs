@@ -25,6 +25,8 @@ namespace web_app_assignment.admin
 
             string sql_jobPosted = "SELECT * FROM JobPost JP, Recruiter R " +
                                    "WHERE JP.recruiter_id = R.recruiter_id " +
+                                   "AND JP.deleted_at IS NULL " +
+                                   "AND JP.deleted_by_admin IS NULL " +
                                    "ORDER BY post_id DESC";
 
             SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
@@ -58,9 +60,35 @@ namespace web_app_assignment.admin
                 else if (UserDetails["Admin_Right"] == "Super Admin" || UserDetails["Admin_Right"] == "Editor")
                 {
                     e.Row.Cells[7].Text = "<a class='badge badge-success action-btn mr-1'  href='view-jobs-management.aspx?viewId=" + e.Row.Cells[7].Text + "' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
-                                     "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deletePost' type='button' onclick='deletePost(" + e.Row.Cells[7].Text + ")'><i class='fas fa-trash'></i></span>";
+                                     "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#JobDeleteModal' type='button' onclick='deleteJob(" + e.Row.Cells[7].Text + ")'><i class='fas fa-trash'></i></span>";
                 }
             }
+        }
+
+        protected void btnRemoveJob_Click(object sender, EventArgs e)
+        {
+            //Open connection
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string sql_jobDeleted = "UPDATE JobPost " +
+                                    "SET deleted_by_admin = @deleted_by_admin, "+
+                                    "deleted_reason = @deleted_reason " +
+                                    "WHERE post_id = @post_id";
+
+            SqlCommand cmdDelete = new SqlCommand(sql_jobDeleted, con);
+
+            //Insert parameters
+            cmdDelete.Parameters.AddWithValue("@deleted_by_admin", DateTime.Now);
+            cmdDelete.Parameters.AddWithValue("@deleted_reason", ddlReasonSuspended.SelectedValue);
+            cmdDelete.Parameters.AddWithValue("@post_id", hfJobID.Value);
+
+            //Execute the queries
+            cmdDelete.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
