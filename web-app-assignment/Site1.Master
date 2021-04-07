@@ -343,6 +343,18 @@
             var visitor = "Visitor" + 1;
         }
 
+        var checkSeen = "";
+
+        if (verifyEmail) {
+            firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
+                checkSeen = snapshot.val().seen;
+            });
+        } else {
+            firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
+                checkSeen = snapshot.val().seen;
+            });
+        }
+
         function openChat() {
             document.getElementById('chatbox').style.display = 'block';
             $('.btn-chat').hide();
@@ -451,16 +463,29 @@
                 var html = "";
 
                 if (snapshot.val().sent == 1) {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                    if (checkSeen == "seen") {
+                        // give each message a unique ID
+                        html += "<div class='sender-messagesContexts'>";
+                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
+                        html += snapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
 
-                    html += "</div>";
+                        html += "</div>";
 
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
+                        document.getElementById("messages").innerHTML += html;
+                        document.getElementById('message').value = "";
+                    } else {
+                        // give each message a unique ID
+                        html += "<div class='sender-messagesContexts'>";
+                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+
+                        html += snapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
+
+                        html += "</div>";
+
+                        document.getElementById("messages").innerHTML += html;
+                        document.getElementById('message').value = "";
+                    }
                 }
                 else {
                     // give each message a unique ID
@@ -488,16 +513,29 @@
                 var html = "";
 
                 if (snapshot.val().sent == 1) {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                    if (checkSeen == "seen") {
+                        // give each message a unique ID
+                        html += "<div class='sender-messagesContexts'>";
+                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
 
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
+                        html += snapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
 
-                    html += "</div>";
+                        html += "</div>";
 
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
+                        document.getElementById("messages").innerHTML += html;
+                        document.getElementById('message').value = "";
+                    } else {
+                        // give each message a unique ID
+                        html += "<div class='sender-messagesContexts'>";
+                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+
+                        html += snapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
+
+                        html += "</div>";
+
+                        document.getElementById("messages").innerHTML += html;
+                        document.getElementById('message').value = "";
+                    }
                 } else {
                     // give each message a unique ID
                     html += "<div class='replier-messagesContexts'>";
