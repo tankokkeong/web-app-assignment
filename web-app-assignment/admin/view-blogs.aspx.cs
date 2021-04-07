@@ -47,7 +47,7 @@ namespace web_app_assignment.admin
                     txtTitle.Text = dr["blog_title"].ToString();
                     txtSimpleDesc.Text = dr["blog_description"].ToString();
                     imgBlogPhoto.ImageUrl = dr["blog_image"].ToString();
-                    txtEditDescription.Text = dr["blog_content"].ToString();
+                    txtEditDescription.InnerHtml = dr["blog_content"].ToString();
                     txtCategory.Text = dr["category_title"].ToString();
                     ddlCategory.Items.FindByValue(dr["blog_category_id"].ToString()).Selected = true;
                 }

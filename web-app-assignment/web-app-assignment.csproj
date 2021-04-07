@@ -94,6 +94,7 @@
     <Content Include="admin\css\display-blogs.css" />
     <Content Include="admin\css\edit-blog.css" />
     <Content Include="admin\css\helpCenter.css" />
+    <Content Include="admin\css\jobs-management.css" />
     <Content Include="admin\css\LiveChat.css" />
     <Content Include="admin\css\LiveChatDashboard.css" />
     <Content Include="admin\css\login.css" />
@@ -103,6 +104,7 @@
     <Content Include="admin\css\privacy.css" />
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
+    <Content Include="admin\css\view-jobs-management.css" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\display-blogs.aspx" />
     <Content Include="admin\edit-blogs.aspx" />
@@ -117,6 +119,7 @@
     <Content Include="admin\images\dashboard\delete.png" />
     <Content Include="admin\images\login\admin-login.jpg" />
     <Content Include="admin\images\logo\logo.png" />
+    <Content Include="admin\jobs-management.aspx" />
     <Content Include="admin\js\app.js" />
     <Content Include="admin\js\bootstrap.min.js" />
     <Content Include="admin\js\calendar.js" />
@@ -148,6 +151,7 @@
     <Content Include="admin\task-post.aspx" />
     <Content Include="admin\blog-category-management.aspx" />
     <Content Include="admin\view-blogs.aspx" />
+    <Content Include="admin\view-jobs-management.aspx" />
     <Content Include="blog-explore.aspx" />
     <Content Include="blog.aspx" />
     <Content Include="blog_description.aspx" />
@@ -2081,6 +2085,13 @@
     <Compile Include="admin\edit-blogs.aspx.designer.cs">
       <DependentUpon>edit-blogs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\jobs-management.aspx.cs">
+      <DependentUpon>jobs-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\jobs-management.aspx.designer.cs">
+      <DependentUpon>jobs-management.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\LiveChat.aspx.cs">
       <DependentUpon>LiveChat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2157,6 +2168,13 @@
     </Compile>
     <Compile Include="admin\view-blogs.aspx.designer.cs">
       <DependentUpon>view-blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-jobs-management.aspx.cs">
+      <DependentUpon>view-jobs-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-jobs-management.aspx.designer.cs">
+      <DependentUpon>view-jobs-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="blog-explore.aspx.cs">
       <DependentUpon>blog-explore.aspx</DependentUpon>

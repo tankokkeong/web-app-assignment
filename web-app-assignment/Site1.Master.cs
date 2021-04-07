@@ -23,8 +23,6 @@ namespace web_app_assignment
             //Check visitor
             checkVisitor();
 
-            Response.Write("<script>console.log('" + helper.getVistorID() + "')</script>");
-
             var languages_selected = Request.QueryString["language"];
 
             if (languages_selected == "EN")
@@ -90,7 +88,7 @@ namespace web_app_assignment
                 Languages.Add("Candidates List", "候选人名单");
                 Languages.Add("User Profile", "用户资料");
                 Languages.Add("Search Jobs", "职位搜索");
-                Languages.Add("Resume", "简历");
+                Languages.Add("Career Tips", "职业建议");
                 Languages.Add("Email:", "电子邮件:");
                 Languages.Add("Call:", "联络:");
                 Languages.Add("Job Seekers", "求职者");
@@ -121,7 +119,7 @@ namespace web_app_assignment
                 lblCandidatesList2.Text = Languages["Candidates List"];
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
-                lblResume.Text = Languages["Resume"];
+                lblResume.Text = Languages["Career Tips"];
                 lblEmail.Text = Languages["Email:"];
                 lblCall.Text = Languages["Call:"];
                 lblJobSeeker.Text = Languages["Job Seekers"];
@@ -153,7 +151,7 @@ namespace web_app_assignment
                 Languages.Add("My Profile", "My Profile");
                 Languages.Add("User Profile", "User Profile");
                 Languages.Add("Search Jobs", "Search Jobs");
-                Languages.Add("Resume", "Resume");
+                Languages.Add("Career Tips", "Career Tips");
                 Languages.Add("Email:", "Email:");
                 Languages.Add("Call:", "Call:");
                 Languages.Add("Job Seekers", "Job Seekers");
@@ -184,7 +182,7 @@ namespace web_app_assignment
                 lblCandidatesList2.Text = Languages["Candidates List"];
                 lblUserProfile.Text = Languages["User Profile"];
                 lblSearchJobs.Text = Languages["Search Jobs"];
-                lblResume.Text = Languages["Resume"];
+                lblResume.Text = Languages["Career Tips"];
                 lblEmail.Text = Languages["Email:"];
                 lblCall.Text = Languages["Call:"];
                 lblJobSeeker.Text = Languages["Job Seekers"];

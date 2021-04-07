@@ -36,7 +36,7 @@ namespace web_app_assignment
                 {
                     if (view_id == "")
                     {
-                        Response.Redirect("home.aspx");
+                        Response.Redirect("login_signup.aspx");
                     }
                 }
                 else

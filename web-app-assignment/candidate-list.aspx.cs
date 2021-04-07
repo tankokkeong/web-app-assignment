@@ -84,7 +84,7 @@ namespace web_app_assignment
             }
             else
             {
-                Response.Redirect("home.aspx");
+                Response.Redirect("login_signup.aspx");
             }
         }
 

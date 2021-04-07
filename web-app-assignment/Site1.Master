@@ -229,7 +229,7 @@
                         
                         <div class="text-lightblue mt-2 footer-nav">
                             <a href="blog.aspx" class="text-lightblue text-decoration-none">
-                                <asp:Label ID="lblResume" runat="server" Text="Resume"></asp:Label>
+                                <asp:Label ID="lblResume" runat="server" Text="Career Tips"></asp:Label>
                             </a>                           
                         </div>
                     </div>
@@ -331,11 +331,21 @@
         var checkEmail = String(document.getElementById("txtUsername").value);
         var verifyEmail = checkEmail.includes("@");
 
+        function create_UUID() {
+            var dt = new Date().getTime();
+            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (dt + Math.random() * 16) % 16 | 0;
+                dt = Math.floor(dt / 16);
+                return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+            return uuid;
+        }
+
         if (verifyEmail) {
             //get recruiter and user email
             var URemail = String(document.getElementById("txtUsername").value);
-            var mailArr = URemail.split('@');
-            var logn = mailArr[0];
+            var mailArr = URemail.replace("@", "_");
+            var logn = mailArr;
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             var time = today.getHours() + ":" + today.getMinutes();
@@ -345,19 +355,7 @@
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             var time = today.getHours() + ":" + today.getMinutes();
             var sentTime = time + ' ' + date;
-            var visitor = "Visitor" + 1;
-        }
-
-        var checkSeen = "";
-
-        if (verifyEmail) {
-            firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
-                checkSeen = snapshot.val().seen;
-            });
-        } else {
-            firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
-                checkSeen = snapshot.val().seen;
-            });
+            var visitor = "Visitor" + create_UUID();
         }
 
         function openChat() {
@@ -461,6 +459,8 @@
                 }
             }
         }
+
+        var checkSeen = checkSeenMessages();
 
         if (verifyEmail) {
             //listen for incoming messages
@@ -574,6 +574,23 @@
         function scrollToBottomMessage() {
             var messages = document.getElementById("messages");
             messages.scrollTop = messages.scrollHeight;
+        }
+
+        function checkSeenMessages() {
+
+            var checkSeen = "";
+
+            if (verifyEmail) {
+                firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
+                    checkSeen = snapshot.val().seen;
+                });
+            } else {
+                firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
+                    checkSeen = snapshot.val().seen;
+                });
+            }
+
+            return checkSeen
         }
     </script>
 

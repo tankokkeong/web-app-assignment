@@ -216,15 +216,6 @@
     transform: translate(-90%, -50%);
 }
 
-.eyeImagePasswordLogin {
-    position: absolute;
-    height: 25px;
-    left: 85%;
-    top: 55%;
-    cursor: pointer;
-    transform: translate(-90%, -50%);
-}
-
 .eyeImagePasswordSignUp {
     position: absolute;
     height: 25px;

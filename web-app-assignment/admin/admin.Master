@@ -170,6 +170,12 @@
                     </a>
                 </li>
 
+                <li class="treeview">
+                    <a class="app-menu__item" href="jobs-management.aspx">
+                        <i class="app-menu__icon fas fa-briefcase"></i><span class="app-menu__label">Jobs Managements</span>
+                    </a>
+                </li>
+
               </ul>
             </aside>
 
