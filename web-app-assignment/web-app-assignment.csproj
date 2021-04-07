@@ -104,6 +104,7 @@
     <Content Include="admin\css\privacy.css" />
     <Content Include="admin\css\terms_conditions.css" />
     <Content Include="admin\css\user-management.css" />
+    <Content Include="admin\css\view-jobs-management.css" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\display-blogs.aspx" />
     <Content Include="admin\edit-blogs.aspx" />
@@ -150,6 +151,7 @@
     <Content Include="admin\task-post.aspx" />
     <Content Include="admin\blog-category-management.aspx" />
     <Content Include="admin\view-blogs.aspx" />
+    <Content Include="admin\view-jobs-management.aspx" />
     <Content Include="blog-explore.aspx" />
     <Content Include="blog.aspx" />
     <Content Include="blog_description.aspx" />
@@ -2166,6 +2168,13 @@
     </Compile>
     <Compile Include="admin\view-blogs.aspx.designer.cs">
       <DependentUpon>view-blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-jobs-management.aspx.cs">
+      <DependentUpon>view-jobs-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-jobs-management.aspx.designer.cs">
+      <DependentUpon>view-jobs-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="blog-explore.aspx.cs">
       <DependentUpon>blog-explore.aspx</DependentUpon>
