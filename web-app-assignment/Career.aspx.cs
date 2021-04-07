@@ -156,7 +156,7 @@ namespace web_app_assignment
                     //close connection
                     con.Close();
 
-                    Response.Write("<script>alert('Application Sent! We will approach to you shortly');</script>");
+                    Response.Write("<script>alert('Application Sent! We will approach to you shortly'); window.location.href = 'home.aspx' </script>");
                 }
                 else if (HttpContext.Current.Request.Cookies["jobs4uVtr"] != null)
                 {
