@@ -356,25 +356,34 @@
 
     <script>
         function facebookLogin() {
-            FB.login(function (response) {
-                //if (response.authResponse) {
-                //    console.log('Welcome!  Fetching your information.... ');
-                //    FB.api('/me', function (response) {
-                //        console.log('Successful login for: ' + response.name + ' and' + response.id + ' and ' + response.email);
+            var roleLogin = document.getElementById("Role").value;
+            var method = document.getElementById("LoginSignUp").value;
 
-                //        var method = document.getElementById("LoginSignUp").value;
+            if (method == "Login" && roleLogin == "0") {
+                alert("Please Select your login role first!");
+            }
+            else {
+                FB.login(function (response) {
+                    //if (response.authResponse) {
+                    //    console.log('Welcome!  Fetching your information.... ');
+                    //    FB.api('/me', function (response) {
+                    //        console.log('Successful login for: ' + response.name + ' and' + response.id + ' and ' + response.email);
 
-                //        if (method == "Login") {
-                //            loginUserData(response);
-                //        } else if (method == "signup") {
-                //            saveUserData(response);
-                //        }
-                //    });
-                //} else {
-                //    console.log('User cancelled login or did not fully authorize.');
-                //}
-                testAPI();
-            })
+                    //        var method = document.getElementById("LoginSignUp").value;
+
+                    //        if (method == "Login") {
+                    //            loginUserData(response);
+                    //        } else if (method == "signup") {
+                    //            saveUserData(response);
+                    //        }
+                    //    });
+                    //} else {
+                    //    console.log('User cancelled login or did not fully authorize.');
+                    //}
+                    testAPI();
+                })
+            }
+            
         }
         
 
@@ -382,7 +391,9 @@
             console.log('statusChangeCallback');
             console.log(response);                   // The current login status of the person.
             if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-                testAPI();
+                FB.logout(function (response) {
+                    console.log(response)
+                });
             } else {                                 // Not logged into your webpage or we are unable to tell.
                 console.log('Please log into the webpage');
             }
@@ -502,6 +513,6 @@
 
         }
 
-
+        
     </script>
 </asp:Content>
