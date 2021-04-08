@@ -127,7 +127,8 @@ namespace web_app_assignment
                 {
                     string seeker_id = helper.getSeekerID();
 
-                    string filename = fileResume.FileName;
+                    string file_extension = "." + fileResume.FileName.Split('.')[1];
+                    string filename = txtFullName.Text + "-" + Guid.NewGuid().ToString("N") + file_extension;
                     string upload_path = MapPath("~/Resume/");
 
                     fileResume.SaveAs(upload_path + filename);
@@ -162,7 +163,8 @@ namespace web_app_assignment
                 {
                     string visitor_id = helper.getVistorID();
 
-                    string fileName = fileResume.FileName;
+                    string file_extension = "." + fileResume.FileName.Split('.')[1];
+                    string fileName = txtFullName.Text + "-" + Guid.NewGuid().ToString("N") + file_extension ;
                     string uploadpath = MapPath("~/Resume/");
 
 

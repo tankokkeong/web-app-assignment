@@ -224,7 +224,7 @@ namespace web_app_assignment
                         "</span>";
                 }
 
-                if(e.Row.Cells[5].Text != "")
+                if(e.Row.Cells[5].Text != "&nbsp;")
                 {
                     e.Row.Cells[4].Text = "<span class='text-danger'>Deleted by admin <br> Reason: " + e.Row.Cells[5].Text + "</span>";
                 }

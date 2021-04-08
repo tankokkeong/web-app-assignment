@@ -178,7 +178,7 @@
 
                 <li class="treeview">
                     <a class="app-menu__item" href="careers.aspx">
-                        <i class="app-menu__icon fas fa-clipboard-list"></i><span class="app-menu__label">Career</span>
+                        <i class="app-menu__icon fas fa-clipboard-list"></i><span class="app-menu__label">Applicants</span>
                     </a>
                 </li>
 

@@ -25,7 +25,7 @@ namespace web_app_assignment.admin
 
             string sql_jobPosted = "SELECT * FROM Applicants WHERE deleted_at IS NULL " +
 
-                                   " ORDER BY seeker_id DESC";
+                                   " ORDER BY applicant_id DESC";
 
             SqlDataAdapter cmd = new SqlDataAdapter(sql_jobPosted, con);
 

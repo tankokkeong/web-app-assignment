@@ -29,7 +29,7 @@
 
             <div class="table-container">
                 <asp:GridView ID="gvCareer" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
-                    AllowPaging="true" PageSize="50" EmptyDataText="No User Found" OnRowCommand="gvCareer_RowCommand">
+                    AllowPaging="true" PageSize="50" EmptyDataText="No Applicants Found" OnRowCommand="gvCareer_RowCommand">
                     <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
                     <HeaderStyle CssClass="table table-striped table-bordered" HorizontalAlign="Center" />
                     <RowStyle HorizontalAlign="Center" BackColor="WhiteSmoke" />
