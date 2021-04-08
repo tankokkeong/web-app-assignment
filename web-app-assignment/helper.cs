@@ -111,35 +111,36 @@ namespace web_app_assignment
 
         public string getAdminID()
         {
-
-            SqlConnection con = new SqlConnection(strcon);
-
-            //Open Connection Again
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-
-            //Get Recruiter ID
-            Dictionary<string, string> UserDetails = (Dictionary<string, string>)HttpContext.Current.Session["Admin"];
-
             string adminID = "";
-
-            //GET Recruiter ID from the seeker table
-            string selectAdminID = "SELECT admin_id FROM Admin WHERE admin_email = @email";
-
-            SqlCommand cmd = new SqlCommand(selectAdminID, con);
-
-            cmd.Parameters.AddWithValue("@email", UserDetails["Admin_Email"].ToString());
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            if (HttpContext.Current.Session["Admin"] != null)
             {
-                adminID = dr["admin_id"].ToString();
-            }
+                SqlConnection con = new SqlConnection(strcon);
 
-            con.Close();
+                //Open Connection Again
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                //Get Recruiter ID
+                Dictionary<string, string> UserDetails = (Dictionary<string, string>)HttpContext.Current.Session["Admin"];
+
+                //GET Recruiter ID from the seeker table
+                string selectAdminID = "SELECT admin_id FROM Admin WHERE admin_email = @email";
+
+                SqlCommand cmd = new SqlCommand(selectAdminID, con);
+
+                cmd.Parameters.AddWithValue("@email", UserDetails["Admin_Email"].ToString());
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    adminID = dr["admin_id"].ToString();
+                }
+
+                con.Close();
+            }       
 
             return adminID;
 
