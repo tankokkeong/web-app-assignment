@@ -47,6 +47,16 @@
             dashboard = nav_option[0];
             $(dashboard).removeClass("active");
         });
+
+        var checkUserSeen = "";
+        firebase.database().ref("seenMessages/User/").on("child_added", function (snapshot) {
+            checkUserSeen = snapshot.val().seen;
+        });
+
+        var checkVisitorSeen = "";
+        firebase.database().ref("seenMessages/").on("child_added", function (snapshot) {
+            checkVisitorSeen = snapshot.val().seen;
+        });
     </script>
 
     <div class="LiveChat">
@@ -134,15 +144,6 @@
     </div>
 
     <script>
-        var checkUserSeen = "";
-        firebase.database().ref("seenMessages/User/").on("child_added", function (snapshot) {
-            checkUserSeen = snapshot.val().seen;
-        });
-
-        var checkVisitorSeen = "";
-        firebase.database().ref("seenMessages/").on("child_added", function (snapshot) {
-            checkVisitorSeen = snapshot.val().seen;
-        });
 
         //listen for incoming messages
         firebase.database().ref("UserMessages/").on("child_added", function (snapshot) {
