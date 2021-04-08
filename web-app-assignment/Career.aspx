@@ -117,13 +117,13 @@
                             <div class="col-lg-6">
                                 <asp:Label ID="lblFullName" runat="server" CssClass="text-light" Text="Full Name"></asp:Label>
                                 <%--<input type="text" name="fullname" class="form-control" id="fullname" required />--%>
-                                <asp:TextBox ID="txtFullName" ClientIDMode="Static" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                                <asp:TextBox ID="txtFullName" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Full Name is required!" ControlToValidate="txtFullName" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
                                 <asp:Label ID="lblEmail" runat="server" CssClass="text-light" Text="Email"></asp:Label>
-                                <asp:TextBox ID="txtEmail" ClientIDMode="Static" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Emaail is required!" ControlToValidate="txtEmail" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid email format!" ControlToValidate="txtEmail" CssClass="text-danger" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
@@ -131,7 +131,7 @@
 
                         <div>
                             <asp:Label ID="lblWhat" runat="server" CssClass="text-light" Text="What Position are you looking for"></asp:Label>
-                            <asp:TextBox ID="txtPosition" ClientIDMode="Static" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                            <asp:TextBox ID="txtPosition" ClientIDMode="Static" runat="server" CssClass="form-control" Enabled="true"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Position is required!" ControlToValidate="txtPosition" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
 
@@ -139,7 +139,7 @@
                         <div>
                             <asp:Label ID="lblSpecific" runat="server" CssClass="text-light" Text="Specific Your current employment status"></asp:Label>
                             <div class="radio-container">
-                                <asp:RadioButtonList ID="employmentStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false">
+                                <asp:RadioButtonList ID="employmentStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                                     <asp:ListItem Value="Employed">&nbsp Employed &nbsp</asp:ListItem>
                                     <asp:ListItem Value="Unemployed">&nbsp Unemployed &nbsp</asp:ListItem>
                                     <asp:ListItem Value="Self-Employment">&nbsp Self-Employment &nbsp</asp:ListItem>
@@ -151,14 +151,14 @@
 
                         <div>
                             <asp:Label ID="lblUpload" runat="server" CssClass="text-light" Text="Upload Your Resume"></asp:Label><br />
-                            <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2" Enabled="false"/>
+                            <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2"/>
                             <asp:TextBox ID="txtResumeFile" runat="server" style="display:none;"/>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Resume is required!" ControlToValidate="fileResume" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .pdf are allowed!" ControlToValidate="fileResume" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.pdf)$" Display="Dynamic"></asp:RegularExpressionValidator>     
                         </div>
 
                       
-                        <asp:Button ID="btnSubmit" ClientIDMode="Static" runat="server" CssClass="btn btn-success btn-block btn-lg" Text="Submit" OnClick="btnSubmit_Click" Enabled="false"/>
+                        <asp:Button ID="btnSubmit" ClientIDMode="Static" runat="server" CssClass="btn btn-success btn-block btn-lg" Text="Submit" OnClick="btnSubmit_Click"/>
                     </form>
                 </div>
             </div>

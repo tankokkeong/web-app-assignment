@@ -211,18 +211,6 @@ namespace web_app_assignment
 
                     Response.Write("<script>alert('Application Sent! We will approach to you shortly.'); window.location.href = 'home.aspx' </script>");
                 }
-                else if (Session["Recruiter"] != null) //If there is a Recruiter
-                {
-                    //Disable all the data insertion
-                    txtFullName.Enabled = true;
-                    txtEmail.Enabled = true;
-                    txtPosition.Enabled = true;
-                    employmentStatus.Enabled = true;
-                    fileResume.Enabled = true;
-                    btnSubmit.Enabled = true;
-                }
-
-
             }
             catch(Exception error) //Error Message
             {

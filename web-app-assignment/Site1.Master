@@ -103,7 +103,7 @@
 
             <li class="nav-item">
             <asp:HyperLink ID="LoginLink" navigateUrl="login_signup.aspx" cssclass="nav-link text-light btn bg-lightgreen" runat="server" Visible="true"><asp:Label ID="lblSignIn" runat="server" Text="Sign In"></asp:Label></asp:HyperLink>
-            <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" href="home.aspx?logout=1"><asp:Label ID="lblSignOut" runat="server" Text="Sign Out"></asp:Label></a>
+            <a class="nav-link text-light btn bg-lightgreen" id="logoutLink" runat="server" visible="false" href="home.aspx?logout=1" onclick="logout()"><asp:Label ID="lblSignOut" runat="server" Text="Sign Out"></asp:Label></a>
           </li>
 
         </ul>
@@ -639,6 +639,18 @@
 
         function clearTextBox() {
             document.getElementById("message").value = "";
+        }
+
+        function logout() {
+            
+            var logout = '<%=this.Request.QueryString["logout"]%>';
+
+            if (logout == "1") {
+                FB.logout(function (response) {
+                   
+                });
+
+            }  
         }
     </script>
 

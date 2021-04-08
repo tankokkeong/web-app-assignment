@@ -458,13 +458,19 @@
                         fb_id: response.id,
                         fb_email: response.email,
                     },
-                    function () {
-                        //alert("Hi " + response.name);
-                        window.location.href = "fb-login-post-js.aspx";
+                    function (data, status) {
+                        console.log()
+                        if (data.substring(0, 16) === "Login Successful") {
+                            window.location.href = "home.aspx";
+                        }
+                        else {
+                            alert("Please sign up with facebook first");
+                        }
                     });
             }
 
         }
+
 
     </script>
 </asp:Content>
