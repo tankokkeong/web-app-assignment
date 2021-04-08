@@ -14,8 +14,14 @@ namespace web_app_assignment.admin
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Valid User
+            helper.checkAdminLogin();
+
             //Open connection
             SqlConnection con = new SqlConnection(strcon);
             if (con.State == ConnectionState.Closed)

@@ -19,7 +19,8 @@ namespace web_app_assignment.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Check Valid User
+            helper.checkAdminLogin();
         }
 
         protected void dpPaymentPagination_PreRender(object sender, EventArgs e)

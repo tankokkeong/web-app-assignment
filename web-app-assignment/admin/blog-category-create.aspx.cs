@@ -13,10 +13,13 @@ namespace web_app_assignment.admin
     {
         Helper helper = new Helper();
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //Check Valid User
+            helper.checkAdminLogin();
         }
+
         protected void btnAddCategory_Click(object sender, EventArgs e)
         {
             string category = txtTitle.Text;

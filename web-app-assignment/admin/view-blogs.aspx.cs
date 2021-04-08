@@ -18,6 +18,9 @@ namespace web_app_assignment.admin
         Helper helper = new Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Valid User
+            helper.checkAdminLogin();
+
             if (!Page.IsPostBack)
             {
                 SqlConnection con = new SqlConnection(strcon);

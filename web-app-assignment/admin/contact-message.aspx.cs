@@ -14,9 +14,12 @@ namespace web_app_assignment.admin
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //Check Valid User
+            helper.checkAdminLogin();
+
             SqlConnection con = new SqlConnection(strcon);
 
             string sql = "SELECT * FROM ContactMessage WHERE deleted_at IS NULL ORDER BY contact_id DESC";

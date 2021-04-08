@@ -22,6 +22,9 @@ namespace web_app_assignment.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Valid User
+            helper.checkAdminLogin();
+
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
             if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")

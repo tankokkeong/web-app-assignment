@@ -317,5 +317,15 @@ namespace web_app_assignment
 
             return is_premium;
         }
+
+        public void checkAdminLogin()
+        {
+            //Redirect User back to login page if it is invalid
+
+            if(HttpContext.Current.Session["Admin"] == null)
+            {
+                HttpContext.Current.Response.Redirect("login.aspx");
+            }
+        }
     }
 }

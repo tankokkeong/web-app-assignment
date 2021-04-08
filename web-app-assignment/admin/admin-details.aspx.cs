@@ -15,8 +15,15 @@ namespace web_app_assignment.admin
     public partial class admin_details : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check Valid User
+            helper.checkAdminLogin();
+
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
 
             if (!Page.IsPostBack)
