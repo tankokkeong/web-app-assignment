@@ -14,7 +14,7 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Visitor', 'Recruiter', 'Job Seeker'],
-                ['2020', 10531, 20512, 9000],
+                ['2020', 1500, 851, 991],
                 ['2021', dataChart3, dataChart, dataChart2],
                 ['2022', 0, 0, 0],
                 ['2023', 0, 0, 0]
@@ -48,9 +48,9 @@
         function drawLineChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Total Application'],
-                ['2018', 30510],
-                ['2019', 13030],
-                ['2020', 10500],
+                ['2018', 510],
+                ['2019', 1030],
+                ['2020', 5500],
                 ['2021', dataChartApp]
             ]);
 
