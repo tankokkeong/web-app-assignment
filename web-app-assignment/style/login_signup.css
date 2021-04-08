@@ -238,7 +238,6 @@
     padding:15px;
 }
 
-
 .dividerLogin {
     padding: 10%;
     margin-top: -7.5%;
@@ -275,20 +274,6 @@
         transform: translate(-85%, -30%);
     }
 
-    .googleSignIn {
-        width: 118.5% !important;
-    }
-
-    .googleSignIn-r {
-        width: 123% !important;
-        margin-left: 50%;
-    }
-
-    .googleSignIn-js {
-        width: 123% !important;
-        margin-left: 50%;
-    }
-
 }
 
 @media(max-width: 576px) {
@@ -303,20 +288,6 @@
         top: 56%;
         cursor: pointer;
         transform: translate(-90%, -55%);
-    }
-
-    .googleSignIn {
-        width: 113% !important;
-    }
-
-    .googleSignIn-r {
-        width: 118% !important;
-        margin-left: 50%;
-    }
-
-    .googleSignIn-js {
-        width: 118% !important;
-        margin-left: 50%;
     }
 
 }
