@@ -3,7 +3,7 @@
 
 <!-- No Script -->
 <noscript>
-    <meta HTTP-EQUIV="refresh" content=0;url="noscript.aspx">
+    <meta HTTP-EQUIV="refresh" content=0; url="noscript.aspx">
 </noscript>
 
 <!DOCTYPE html>
