@@ -35,11 +35,20 @@ namespace web_app_assignment.admin
 
         protected void gvContactMessage_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
-                e.Row.Cells[3].Text = "<a class='badge badge-success action-btn mr-1'  href='message-details.aspx?Id=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                if (UserDetails["Admin_Right"] == "Viewer" || UserDetails["Admin_Right"] == "Editor")
+                {
+                    e.Row.Cells[3].Text = "<a class='badge badge-success action-btn mr-1'  href='message-details.aspx?Id=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                }
+                else
+                {
+                    e.Row.Cells[3].Text = "<a class='badge badge-success action-btn mr-1'  href='message-details.aspx?Id=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
                     "<span class='badge badge-danger action-btn' data-toggle='modal' data-target='#deleteModal' type='button' onclick='deleteMessage(" + e.Row.Cells[3].Text + ")'><i class='fas fa-trash'></i></span>";
+                }
             }
         }
 
