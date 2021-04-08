@@ -158,7 +158,7 @@
                         </div>
 
                       
-                        <asp:Button ID="btnSubmit" ClientIDMode="Static" runat="server" CssClass="btn btn-success btn-block btn-lg" Text="Submit" OnClick="btnSubmit_Click"/>
+                        <asp:Button ID="btnSubmit" ClientIDMode="Static" runat="server" CssClass="btn btn-success btn-block btn-lg" Text="Submit" OnClick="btnSubmit_Click" Enabled="true"/>
                     </form>
                 </div>
             </div>

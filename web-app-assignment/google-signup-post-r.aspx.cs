@@ -167,7 +167,7 @@ namespace web_app_assignment
 
                     conn.Close();
 
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("home.aspx");
                 }
             }
             else

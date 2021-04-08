@@ -126,6 +126,16 @@ namespace web_app_assignment
                 lblPpl4.Text = Languages["Sales Teams"];
                 lblPpl5.Text = Languages["Recruitment Teams"];
             }
+
+            if (Session["Recruiter"] != null)
+            {
+                txtFullName.Enabled = false;
+                txtEmail.Enabled = false;
+                txtPosition.Enabled = false;
+                employmentStatus.Enabled = false;
+                fileResume.Enabled = false;
+                btnSubmit.Enabled = false;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -210,7 +220,9 @@ namespace web_app_assignment
                     conn.Close();
 
                     Response.Write("<script>alert('Application Sent! We will approach to you shortly.'); window.location.href = 'home.aspx' </script>");
+
                 }
+
             }
             catch(Exception error) //Error Message
             {
