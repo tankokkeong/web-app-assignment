@@ -33,15 +33,6 @@ namespace web_app_assignment.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValTitle;
 
         /// <summary>
-        /// regExValTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExValTitle;
-
-        /// <summary>
         /// txtSimpleDesc control.
         /// </summary>
         /// <remarks>
@@ -58,15 +49,6 @@ namespace web_app_assignment.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValSDesc;
-
-        /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
         /// blogPhotoUpload control.

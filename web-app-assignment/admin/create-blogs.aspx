@@ -34,7 +34,6 @@
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtTitle" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValTitle" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExValTitle" runat="server" ErrorMessage="Maximum 20 characters allowed!" ControlToValidate="txtTitle" CssClass="text-danger" ValidationExpression="^[\s\S]{0,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -43,7 +42,6 @@
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtSimpleDesc" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSimpleDesc" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Maximum 40 characters allowed!" ControlToValidate="txtSimpleDesc" CssClass="text-danger" ValidationExpression="^[\s\S]{0,40}$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
 

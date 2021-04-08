@@ -60,7 +60,7 @@ namespace web_app_assignment.admin
 
         protected void btnEditPost_Click(object sender, EventArgs e)
         {
-            string id = Request.QueryString["Id"] ?? "";
+            string id = Request.QueryString["editId"] ?? "";
             string title = txtTitle.Text;
             string desc = txtSimpleDesc.Text;
             string content = HttpUtility.UrlDecode(txtEditDescription.Text);
