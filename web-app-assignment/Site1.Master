@@ -336,6 +336,10 @@
             //get recruiter and user email
             var URemail = String(document.getElementById("txtUsername").value);
             var mailArr = URemail.replace("@", "_");
+
+            //Replace . with -
+            mailArr = mailArr.replace(".", "-");
+
             var logn = mailArr;
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -353,6 +357,17 @@
             document.getElementById('chatbox').style.display = 'block';
             $('.btn-chat').hide();
             scrollToBottomMessage();
+
+            if (verifyEmail) {
+                firebase.database().ref("seenMessages/Admin/" + logn + "/").set({
+                    seen: "seen",
+                });
+            }
+            else {
+                firebase.database().ref("seenMessages/Admin/" + visitor + "/").set({
+                    seen: "seen",
+                });
+            }
         }
         function closeChat() {
             document.getElementById('chatbox').style.display = 'none';
@@ -364,8 +379,11 @@
             var message = document.getElementById("message").value;
 
             if (message != "") {
+
                 if (verifyEmail) {
+
                     if ($("#txtRecruiter").val() != "" && $("#txtSeeker").val() == "") {
+
                         //send form request to livechat post
                         if ($("#message").val().trim().length > 0) {
                             $.post("admin/LiveChatPost.aspx",
@@ -377,7 +395,9 @@
                                     console.log("Data: " + data + "\nStatus: " + status);
                                 });
                         }
+
                     } else if ($("#txtSeeker").val() != "" && $("#txtRecruiter").val() == "") {
+
                         //send form request to livechat post
                         if ($("#message").val().trim().length > 0) {
                             $.post("admin/LiveChatPost.aspx",
@@ -390,6 +410,7 @@
                                 });
                         }
                     }
+
                     //save in firebase
                     firebase.database().ref("UserMessages/" + logn + "/").push({
                         "sender": logn,
@@ -413,7 +434,8 @@
                         "seen": "unseen",
                     });
                 }
-                else {
+                else
+                {
                     //send form request to livechat post
                     if ($("#message").val().trim().length > 0) {
                         $.post("admin/LiveChatPost.aspx",
@@ -448,110 +470,124 @@
                         "seen": "unseen",
                     });
                 }
+
+                //Clear textbox after sending the message
+                clearTextBox();
             }
         }
 
-        var checkSeen = checkSeenMessages();
+        var checkSeen = "";
+
+        //if (verifyEmail) {
+        //    firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
+        //        checkSeen = snapshot.val().seen;
+        //    });
+        //} else {
+        //    firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
+        //        checkSeen = snapshot.val().seen;
+        //    });
+        //}
 
         if (verifyEmail) {
+            var message_container = document.getElementById('messages');
+
+            firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
+                checkSeen = snapshot.val().seen;
+            });
+
             //listen for incoming messages
-            firebase.database().ref("UserMessages/" + logn + "/").on("child_added", function (snapshot) {
-                var html = "";
+            firebase.database().ref("UserMessages/" + logn + "/").on("value", function (snapshot) {
 
-                if (snapshot.val().sent == 1) {
-                    if (checkSeen == "seen") {
-                        // give each message a unique ID
-                        html += "<div class='sender-messagesContexts'>";
-                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
+                snapshot.forEach(function (childSnapshot) {
+                    if (childSnapshot.val().sent == 1) {
 
-                        html += snapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
+                        if (checkSeen == "seen") {
+                            // give each message a unique ID
+                            message_container.innerHTML +=
+                                "<div class='sender-messagesContexts'>" +
+                                    "<div class='sender-messagesContents'>" +
+                                        childSnapshot.val().message +
+                                    "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                                "</div>";
+                        } else {
+                            // give each message a unique ID
+                            message_container.innerHTML +=
+                                "<div class='sender-messagesContexts'>" +
+                                    "<div class='sender-messagesContents'>" +
+                                    childSnapshot.val().message +
+                                    "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                                "</div>";
+                        }
 
-                        html += "</div>";
-
-                        document.getElementById("messages").innerHTML += html;
-                        document.getElementById('message').value = "";
-                    } else {
-                        // give each message a unique ID
-                        html += "<div class='sender-messagesContexts'>";
-                        html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
-
-                        html += snapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
-
-                        html += "</div>";
-
-                        document.getElementById("messages").innerHTML += html;
-                        document.getElementById('message').value = "";
                     }
-                }
-                else {
-                    // give each message a unique ID
-                    html += "<div class='replier-messagesContexts'>";
-                    html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
-
-                    html += snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
-
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-
-                    if (document.getElementById('chatbox').style.display = 'block') {
-                        firebase.database().ref("seenMessages/Admin/" + logn + "/").set({
-                            seen: "seen",
-                        });
+                    else {
+                        // give each message a unique ID
+                        message_container.innerHTML +=
+                            "<div class='replier-messagesContexts'>" +
+                                "<div class='replier-messagesContents'>" +
+                                        childSnapshot.val().message +
+                                "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                            "</div>";
                     }
+                });
+
+                if (checkSeen == "seen") {
+                    message_container.innerHTML += "<div class='text-secondary text-right pr-3 pb-3'>Seen</span>";
                 }
+
+                //Scroll to bottom when received message
+                scrollToBottomMessage();
+                
             });
         }
         else {
+            var message_container = document.getElementById('messages');
             //listen for visitor messages
+
+            firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
+                checkSeen = snapshot.val().seen;
+            });
+
             firebase.database().ref("VisitorMessages/" + visitor + "/").on("value", function (snapshot) {
-                var html = "";
-                document.getElementById("messages").innerHTML = "";
+
                 snapshot.forEach(function (childSnapshot) {
                     if (childSnapshot.val().sent == 1) {
                         if (checkSeen == "seen") {
                             // give each message a unique ID
-                            html += "<div class='sender-messagesContexts'>";
-                            html += "<div class='sender-messagesContents' id='message-" + childSnapshot.key + "'>";
+                            message_container.innerHTML +=
+                           "<div class='sender-messagesContexts'>" +
+                             "<div class='sender-messagesContents'>" +
+                                childSnapshot.val().message +
+                            "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                           "</div>";
 
-                            html += childSnapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + childSnapshot.val().timeSent + "</div>";
-
-                            html += "</div>";
-
-                            document.getElementById("messages").innerHTML += html;
-                            document.getElementById('message').value = "";
                         } else {
                             // give each message a unique ID
-                            html += "<div class='sender-messagesContexts'>";
-                            html += "<div class='sender-messagesContents' id='message-" + childSnapshot.key + "'>";
-
-                            html += childSnapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + childSnapshot.val().timeSent + "</div>";
-
-                            html += "</div>";
-
-                            document.getElementById("messages").innerHTML += html;
-                            document.getElementById('message').value = "";
+                            message_container.innerHTML +=
+                                "<div class='sender-messagesContexts'>" +
+                                    "<div class='sender-messagesContents'>" +
+                                    childSnapshot.val().message +
+                                "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                                "</div>";
                         }
                     } else {
                         // give each message a unique ID
-                        html += "<div class='replier-messagesContexts'>";
-                        html += "<div class='replier-messagesContents' id='message-" + childSnapshot.key + "'>";
-
-                        html += childSnapshot.val().message + "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>";
-
-                        html += "</div>";
-
-                        document.getElementById("messages").innerHTML += html;
-                        document.getElementById('message').value = "";
-
-                        if (document.getElementById('chatbox').style.display = 'block') {
-                            firebase.database().ref("seenMessages/Admin/" + visitor + "/").set({
-                                seen: "seen",
-                            });
-                        }
+                        message_container.innerHTML +=
+                        "<div class='replier-messagesContexts'>" +
+                         "<div class='replier-messagesContents'>" +
+                            childSnapshot.val().message + "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                        "</div>";
                     }
                 });
+
+                if (checkSeen == "seen") {
+                    message_container.innerHTML += "<div class='text-secondary text-right pr-3 pb-3'>Seen</span>";
+                }
+                
+
+                //Scroll to bottom when received message
+                scrollToBottomMessage();
+
             });
         }
 
@@ -569,21 +605,8 @@
             messages.scrollTop = messages.scrollHeight;
         }
 
-        function checkSeenMessages() {
-
-            var checkSeen = "";
-
-            if (verifyEmail) {
-                firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
-                    checkSeen = snapshot.val().seen;
-                });
-            } else {
-                firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
-                    checkSeen = snapshot.val().seen;
-                });
-            }
-
-            return checkSeen
+        function clearTextBox() {
+            document.getElementById("message").value = "";
         }
     </script>
 
