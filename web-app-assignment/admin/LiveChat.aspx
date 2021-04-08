@@ -87,113 +87,138 @@
             // get messages
             var message = document.getElementById("message").value;
 
-            if (message != "") {
-                if (query != "") {
-                    //send form request to livechat post
-                    if ($("#message").val().trim().length > 0) {
+            if (message != "" && query != "") {
 
-                        $.post("LiveChatPost.aspx",
-                        {
-                            chat_content: $("#message").val(),
-                            admin_id: $("#ContentPlaceHolder1_txtAdminID").val(),
-                        });
-                    }
+                //send form request to livechat post
+                if ($("#message").val().trim().length > 0) {
 
+                    $.post("LiveChatPost.aspx",
+                    {
+                        chat_content: $("#message").val(),
+                        admin_id: $("#ContentPlaceHolder1_txtAdminID").val(),
+                    });
+                }
+
+                //save in database
+                firebase.database().ref("adminMessages/" + query + "/").push({
+                    "sender": query,
+                    "message": message,
+                    "timeSent": sentTime,
+                    "sent": 1,
+                    "received": 0,
+                });
+
+                if (query.includes("Visitor")) {
                     //save in database
-                    firebase.database().ref("adminMessages/" + query + "/").push({
+                    firebase.database().ref("VisitorMessages/" + query + "/").push({
                         "sender": query,
                         "message": message,
                         "timeSent": sentTime,
-                        "sent": 1,
-                        "received": 0,
+                        "sent": 0,
+                        "received": 1,
                     });
 
-                    if (query.includes("Visitor")) {
-                        //save in database
-                        firebase.database().ref("VisitorMessages/" + query + "/").push({
-                            "sender": query,
-                            "message": message,
-                            "timeSent": sentTime,
-                            "sent": 0,
-                            "received": 1,
-                        });
+                    //save in firebase
+                    firebase.database().ref("seenMessages/Admin/" + query + "/").set({
+                        "seen": "unseen",
+                    });
+                } else {
+                    //save in firebase
+                    firebase.database().ref("UserMessages/" + query + "/").push({
+                        "sender": query,
+                        "message": message,
+                        "timeSent": sentTime,
+                        "sent": 0,
+                        "received": 1,
+                    });
 
-                        //save in firebase
-                        firebase.database().ref("seenMessages/Admin/" + query + "/").set({
-                            "seen": "unseen",
-                        });
-                    } else {
-                        //save in firebase
-                        firebase.database().ref("UserMessages/" + query + "/").push({
-                            "sender": query,
-                            "message": message,
-                            "timeSent": sentTime,
-                            "sent": 0,
-                            "received": 1,
-                        });
-
-                        //save in firebase
-                        firebase.database().ref("seenMessages/Admin/" + query + "/").set({
-                            "seen": "unseen",
-                        });
-                    }
+                    //save in firebase
+                    firebase.database().ref("seenMessages/Admin/" + query + "/").set({
+                        "seen": "unseen",
+                    });
                 }
+
+                //Clear textbox after sending the message
+                clearTextBox();
             }
         }
 
-        var checkSeen = checkSeenMessages();
+        var checkSeen = "";
 
-        //listen for user messages or visitor messages
-        firebase.database().ref("adminMessages/" + query + "/").on("child_added", function (snapshot) {
-            var html = "";
+        var message_container = document.getElementById("messages");
 
-            if (snapshot.val().sent == 1) {
+        firebase.database().ref("seenMessages/Admin/" + query + "/").on("value", function (snapshot) {
+            checkSeen = snapshot.val().seen;
+
+            //listen for user messages or visitor messages
+            firebase.database().ref("adminMessages/" + query + "/").on("value", function (snapshot) {
+
+                //Clear previous value
+                message_container.innerHTML = "";
+
+                snapshot.forEach(function (childSnapshot) {
+                    if (childSnapshot.val().sent == 1) {
+                        if (checkSeen == "seen") {
+                            // give each message a unique ID
+                            message_container.innerHTML +=
+                                "<div class='sender-messagesContexts'>" +
+                                    "<div class='sender-messagesContents'>" +
+                                        childSnapshot.val().message +
+                                        "<div class='sentTime'>" +
+                                            "Sent at: " + childSnapshot.val().timeSent +
+                                        "</div>" +
+                                    "<div>" +
+                                "</div>";
+
+                        } else {
+                            // give each message a unique ID
+                            message_container.innerHTML +=
+                                "<div class='sender-messagesContexts'>" +
+                                    "<div class='sender-messagesContents'>" +
+                                        childSnapshot.val().message +
+                                        "<div class='sentTime'>" +
+                                            "Sent at: " + childSnapshot.val().timeSent + 
+                                        "</div>" +
+                                    "<div>" +
+                                "</div>";
+
+                        }
+                    } else {
+                        // give each message a unique ID
+                        message_container.innerHTML +=
+                            "<div class='replier-messagesContexts'>" +
+                            "<div class='replier-messagesContents'>" +
+                            "<div class='replier-messagesContentsName'>" +
+                            childSnapshot.val().sender +
+                            "</div> " +
+                            childSnapshot.val().message +
+                            "<div class='sentTime'>Sent at : " + childSnapshot.val().timeSent + "</div>" +
+                            "</div>";
+                        "</div>";
+
+
+                        if (query.includes("Visitor")) {
+                            firebase.database().ref("seenMessages/" + query + "/").set({
+                                seen: "seen",
+                            });
+                        } else {
+                            firebase.database().ref("seenMessages/User/" + query + "/").set({
+                                seen: "seen",
+                            });
+                        }
+                    }
+                });
+
                 if (checkSeen == "seen") {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
-
-                    html += snapshot.val().message + "<div class='sentTime'><i class='fas fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
-
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
-                } else {
-                    // give each message a unique ID
-                    html += "<div class='sender-messagesContexts'>";
-                    html += "<div class='sender-messagesContents' id='message-" + snapshot.key + "'>";
-
-                    html += snapshot.val().message + "<div class='sentTime'><i class='far fa-check-circle'></i>Sent at : " + snapshot.val().timeSent + "</div>";
-
-                    html += "</div>";
-
-                    document.getElementById("messages").innerHTML += html;
-                    document.getElementById('message').value = "";
+                    message_container.innerHTML += "<div class='text-secondary text-right pr-3 pb-3'>Seen</span>";
                 }
-            } else {
-                // give each message a unique ID
-                html += "<div class='replier-messagesContexts'>";
-                html += "<div class='replier-messagesContents' id='message-" + snapshot.key + "'>";
 
-                html += "<div class='replier-messagesContentsName'>" + snapshot.val().sender + "</div> " + snapshot.val().message + "<div class='sentTime'>Sent at : " + snapshot.val().timeSent + "</div>";
+                //Scroll to bottom when received message
+                scrollToBottomMessage();
 
-                html += "</div>";
+            });
 
-                document.getElementById("messages").innerHTML += html;
-                document.getElementById('message').value = "";
-
-                if (query.includes("Visitor")) {
-                    firebase.database().ref("seenMessages/" + query + "/").set({
-                        seen: "seen",
-                    });
-                } else {
-                    firebase.database().ref("seenMessages/User/" + query + "/").set({
-                        seen: "seen",
-                    });
-                }
-            }
-        });
+        });       
 
         //Enter key to send message
         function enterMessagesLiveChatAdmin() {
@@ -207,19 +232,11 @@
         function scrollToBottomMessage() {
             var messages = document.getElementById("messages");
             messages.scrollTop = messages.scrollHeight;
+        }     
+
+        function clearTextBox() {
+            document.getElementById("message").value = "";
         }
 
-        function checkSeenMessages() {
-
-            var checkSeen = "";
-
-            firebase.database().ref("seenMessages/Admin/" + query + "/").on("value", function (snapshot) {
-                checkSeen = snapshot.val().seen;
-            });
-
-            return checkSeen
-        }
-
-        scrollToBottomMessage();
     </script>
 </asp:Content>
