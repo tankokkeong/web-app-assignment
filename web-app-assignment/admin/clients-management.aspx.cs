@@ -44,8 +44,32 @@ namespace web_app_assignment.admin
 
                 //Close Connection
                 con.Close();
+
+                //Open connection
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string sql_premium = "SELECT " +
+                                        "(SELECT COUNT(* ) FROM JobSeeker WHERE is_premium = 'true') AS is_premium, " +
+                                        "(SELECT COUNT(* ) FROM JobSeeker WHERE is_premium IS NULL) AS non_premium" ;
+
+                SqlCommand command = new SqlCommand(sql_premium, con);
+
+
+                SqlDataReader dread = command.ExecuteReader();
+
+                while (dread.Read())
+                {
+                    lblUserPrimium.Text = dread["is_premium"].ToString();
+                    lblUserNonPremium.Text = dread["non_premium"].ToString();
+                }
+
+                //Close Connection
+                con.Close();
             }
-            
+
         }
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -124,5 +148,6 @@ namespace web_app_assignment.admin
             con.Close();
           
         }
+
     }
 }
