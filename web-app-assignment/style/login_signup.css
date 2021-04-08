@@ -114,11 +114,6 @@
     margin-top: 5%;
 }
 
-.dividerLogin {
-    padding: 5%;
-    margin-top: -7.5%;
-}
-
 .dividerSignUplines {
     width: 100%;
     height: 45px;
@@ -226,42 +221,27 @@
 }
 
 .dividerLoginGoogle{
-    width: 89.5%;
-    margin-left:50%;
-    transform:translateX(-50%);
+    width: 100%;
+}
+
+#ContentPlaceHolder1_btnSignIn, #ContentPlaceHolder1_googleRecruiter, #ContentPlaceHolder1_googleSeeker {
+    width: 100% !important;
 }
 
 .googleSignIn {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width:57%!important;
+    width: 100% !important;
 }
 
-.fb-button-login {
-    margin-left: 47.8%;
-    transform: translateX(-50%);
+.fb-login-btn {
+    background-color: #3b5998!important;
+    width:100%!important;
+    padding:15px;
 }
 
-.googleSignIn-r {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 59.5% !important;
-}
 
-.fb-button-r {
-    margin-left: 47%;
-    transform: translateX(-50%);
-}
-
-.googleSignIn-js {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 59.5% !important;
-}
-
-.fb-button-js {
-    margin-left: 47%;
-    transform: translateX(-50%);
+.dividerLogin {
+    padding: 10%;
+    margin-top: -7.5%;
 }
 
 @media(max-width: 1100px) {
@@ -272,11 +252,6 @@
         top: 56%;
         cursor: pointer;
         transform: translate(-90%, -50%);
-    }
-
-    .dividerLogin {
-        padding: 5%;
-        margin-top: -7.5%;
     }
 
     .eyeImagePasswordSignUp {
@@ -300,17 +275,8 @@
         transform: translate(-85%, -30%);
     }
 
-    .dividerLogin {
-        padding: 5%;
-        margin-top: -5%;
-    }
     .googleSignIn {
         width: 118.5% !important;
-    }
-
-    .fb-button-login {
-        margin-left: 27.5% !important;
-        transform: translateX(-50%);
     }
 
     .googleSignIn-r {
@@ -318,30 +284,16 @@
         margin-left: 50%;
     }
 
-    .fb-button-r {
-        margin-left: 25.5% !important;
-        transform: translateX(-50%);
-    }
-
     .googleSignIn-js {
         width: 123% !important;
         margin-left: 50%;
     }
 
-    .fb-button-js {
-        margin-left: 25.5% !important;
-        transform: translateX(-50%);
-    }
 }
 
 @media(max-width: 576px) {
     .login_signUpBackgroundImagePics {
         display: none;
-    }
-
-    .dividerLogin {
-        padding: 5%;
-        margin-top: -2.5%;
     }
 
     .LogineyeImagePasswordLogin {
@@ -357,19 +309,9 @@
         width: 113% !important;
     }
 
-    .fb-button-login {
-        margin-left: 29.5% !important;
-        transform: translateX(-50%);
-    }
-
     .googleSignIn-r {
         width: 118% !important;
         margin-left: 50%;
-    }
-
-    .fb-button-r {
-        margin-left: 28%!important;
-        transform: translateX(-50%);
     }
 
     .googleSignIn-js {
@@ -377,8 +319,4 @@
         margin-left: 50%;
     }
 
-    .fb-button-js {
-        margin-left: 28% !important;
-        transform: translateX(-50%);
-    }
 }

@@ -72,12 +72,16 @@
                         <div class="dividerSignUplines">
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
+
                         <div class="form-group dividerLoginGoogle">
                             <%-- Gmail and Facebook Button Comes here --%>
                             <button type="button" id="btnSignIn" runat="server" class="btn bg-white googleSignIn" onserverclick="btngoogleSignin_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/>&nbsp &nbsp Sign in With Google</button>                     
-                            <div class="fb-button-login mt-2">
-                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                            </div>
+                            
+                        </div>
+
+                        <div class="fb-button-login mt-2">
+                                <%--<div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>--%>
+                            <button type="button" onclick="facebookLogin();" class="btn fb-login-btn text-light">Login with Facebook <i class="fab fa-facebook-square"></i></button>
                         </div>
 
 
@@ -153,8 +157,9 @@
                         <div>
                             <button type="button" id="googleRecruiter" runat="server" class="btn bg-white googleSignIn-r" onserverclick="googleRecruiter_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>       
                         </div>
-                        <div class="fb-button-r mt-2">
-                                <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                        <div class="fb-button-r mt-3">
+                            <%--<div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>--%>
+                            <button type="button" onclick="facebookLogin();" class="btn fb-login-btn text-light">Sign up with Facebook <i class="fab fa-facebook-square"></i></button>
                         </div>
                     </div>  
                             </div><%-- Recruiter Register Section End --%>
@@ -206,11 +211,14 @@
                         <div class="dividerSignUplines">
                             <p class="dividerSignUplinesContent">OR</p>
                         </div>
+
                         <div>
                           <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn-js" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
                         </div>
-                        <div class="fb-button-js mt-2">
-                            <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+                        <div class="fb-button-js mt-3">
+                            <%--<div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>--%>
+                            <button type="button" onclick="facebookLogin();" class="btn fb-login-btn text-light">Sign up with Facebook <i class="fab fa-facebook-square"></i></button>                        
                         </div>                        
                     </div>  
 
@@ -347,6 +355,29 @@
     </script>
 
     <script>
+        function facebookLogin() {
+            FB.login(function (response) {
+                //if (response.authResponse) {
+                //    console.log('Welcome!  Fetching your information.... ');
+                //    FB.api('/me', function (response) {
+                //        console.log('Successful login for: ' + response.name + ' and' + response.id + ' and ' + response.email);
+
+                //        var method = document.getElementById("LoginSignUp").value;
+
+                //        if (method == "Login") {
+                //            loginUserData(response);
+                //        } else if (method == "signup") {
+                //            saveUserData(response);
+                //        }
+                //    });
+                //} else {
+                //    console.log('User cancelled login or did not fully authorize.');
+                //}
+                testAPI();
+            })
+        }
+        
+
         function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');
             console.log(response);                   // The current login status of the person.
@@ -382,7 +413,7 @@
         function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me?fields=name,id,email', function (response) {
-                console.log('Successful login for: ' + response.name + ' and' + response.id + ' and' + response.email);
+                console.log('Successful login for: ' + response.name + ' and' + response.id + ' and 123 ' + response.email);
 
                 var method = document.getElementById("LoginSignUp").value;
 
@@ -411,7 +442,7 @@
                         fb_email: response.email,
                     },
                     function () {
-                        alert("Hi " + response.name);
+                        alert("Hi " + response.email);
                         window.location.href = "home.aspx";
                     });
             }
