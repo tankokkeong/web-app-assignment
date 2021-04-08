@@ -42,6 +42,7 @@ namespace web_app_assignment
                 Languages.Add("Full Name", "全名");
                 Languages.Add("Application Form", "申请表格");
                 Languages.Add("Fill out the below for job opportunies", "填写下面的工作机会");
+                Languages.Add("Submit", "提交");
                 Languages.Add("Our Team", "我们的队伍");
                 Languages.Add("Career Center", "诚聘英才");
                 Languages.Add("I build great teams and then try to point everyone in the right direction.", "我组建了优秀的团队，然后尝试为每个人指明正确的方向。");
@@ -60,6 +61,7 @@ namespace web_app_assignment
                 lblWhat.Text = Languages["What Position are you looking for"];
                 lblEmail.Text = Languages["Email"];
                 lblFullName.Text = Languages["Full Name"];
+                btnSubmit.Text = Languages["Submit"];
                 lblApplication.Text = Languages["Application Form"];
                 lblFill.Text = Languages["Fill out the below for job opportunies"];
                 lblOurTeam.Text = Languages["Our Team"];
@@ -74,6 +76,7 @@ namespace web_app_assignment
                 lblPpl3.Text = Languages["Creative Teams"];
                 lblPpl4.Text = Languages["Sales Teams"];
                 lblPpl5.Text = Languages["Recruitment Teams"];
+
             }
             else if (Session["Languages_EN"] != null)
             {
@@ -82,6 +85,11 @@ namespace web_app_assignment
                 Languages.Add("What Position are you looking for", "What Position are you looking for");
                 Languages.Add("Email", "Email");
                 Languages.Add("Full Name", "Full Name");
+                Languages.Add("Submit", "Submit");
+                Languages.Add("Employed", "Employed");
+                Languages.Add("Unemployed", "Unemployed");
+                Languages.Add("Self-Employed", "Self-Employed");
+                Languages.Add("Student", "Student");
                 Languages.Add("Application Form", "Application Form");
                 Languages.Add("Fill out the below for job opportunies", "Fill out the below for job opportunies");
                 Languages.Add("Our Team", "Our Team");
@@ -102,6 +110,7 @@ namespace web_app_assignment
                 lblWhat.Text = Languages["What Position are you looking for"];
                 lblEmail.Text = Languages["Email"];
                 lblFullName.Text = Languages["Full Name"];
+                btnSubmit.Text = Languages["Submit"];
                 lblApplication.Text = Languages["Application Form"];
                 lblFill.Text = Languages["Fill out the below for job opportunies"];
                 lblOurTeam.Text = Languages["Our Team"];
