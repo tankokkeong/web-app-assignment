@@ -135,7 +135,7 @@ namespace web_app_assignment
 
                     SqlConnection con = new SqlConnection(strcon);
 
-                    string sql = "INSERT INTO Applicants (applicant_name, applicant_email,applicant_position, resume, seeker_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @resume, @seeker_id, GETDATE())";
+                    string sql = "INSERT INTO Applicants (applicant_name, applicant_email, applicant_position, applicant_status, resume, seeker_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @applicant_status, @resume, @seeker_id, GETDATE())";
 
                     //Connection Open
                     con.Open();
@@ -145,7 +145,8 @@ namespace web_app_assignment
 
                     cmd.Parameters.AddWithValue("@applicant_name", txtFullName.Text);
                     cmd.Parameters.AddWithValue("@applicant_email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@applicant_position", employmentStatus.SelectedValue);
+                    cmd.Parameters.AddWithValue("@applicant_position", txtPosition.Text);
+                    cmd.Parameters.AddWithValue("@applicant_status", employmentStatus.SelectedValue);
                     cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
                     cmd.Parameters.AddWithValue("@resume", resume);
 
@@ -170,7 +171,7 @@ namespace web_app_assignment
 
                     SqlConnection conn = new SqlConnection(strcon);
 
-                    string query = "INSERT INTO Applicants (applicant_name, applicant_email,applicant_position, resume, visitor_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @resume, @visitor_id, GETDATE())";
+                    string query = "INSERT INTO Applicants (applicant_name, applicant_email, applicant_position, applicant_status, resume, visitor_id, created_at) VALUES (@applicant_name, @applicant_email, @applicant_position, @applicant_status, @resume, @visitor_id, GETDATE())";
 
                     //Connection Open
                     conn.Open();
@@ -180,7 +181,8 @@ namespace web_app_assignment
 
                     cm.Parameters.AddWithValue("@applicant_name", txtFullName.Text);
                     cm.Parameters.AddWithValue("@applicant_email", txtEmail.Text);
-                    cm.Parameters.AddWithValue("@applicant_position", employmentStatus.SelectedValue);
+                    cm.Parameters.AddWithValue("@applicant_position", txtPosition.Text);
+                    cm.Parameters.AddWithValue("@applicant_status", employmentStatus.SelectedValue);
                     cm.Parameters.AddWithValue("@visitor_id", visitor_id);
                     cm.Parameters.AddWithValue("@resume", resumeName);
 

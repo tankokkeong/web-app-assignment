@@ -119,7 +119,7 @@ namespace web_app_assignment
                         }
                         else
                         {
-                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active')</script>");
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active') window.location.href = 'home.aspx'; </script>");
                         }
 
                     }
@@ -217,7 +217,7 @@ namespace web_app_assignment
                         }
                         else // if user's account is not verified or no longer inactive
                         {
-                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active')</script>");
+                            Response.Write(@"<script language='javascript'>alert('Your account is not verify or no longer active') window.location.href = 'home.aspx'; </script>");
                         }
                     }
                     else //if user enter invalid password or email
