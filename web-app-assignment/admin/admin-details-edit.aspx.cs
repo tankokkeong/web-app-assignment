@@ -15,6 +15,10 @@ namespace web_app_assignment.admin
     public partial class admin_details_edit : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
@@ -23,6 +27,12 @@ namespace web_app_assignment.admin
             {
                 bool found = false;
                 string id = Request.QueryString["editId"] ?? "";
+
+                //Check authorized users
+                if(UserDetails["Admin_Right"] == "Viewer" && id != helper.getAdminID())
+                {
+                    Response.Redirect("admin-management.aspx");
+                }
 
                 string sql = "SELECT * FROM Admin WHERE admin_id = @id AND deleted_at IS NULL";
 
@@ -40,6 +50,7 @@ namespace web_app_assignment.admin
                     txtName.Text = (string)dr["admin_name"];
                     txtEmail.Text = (string)dr["admin_email"];
                     listRight.Text = (string)dr["admin_right"];
+                    txtAdminRight.Text = (string)dr["admin_right"];
                 }
 
                 dr.Close();
@@ -48,6 +59,15 @@ namespace web_app_assignment.admin
                 if (!found)
                 {
                     Response.Redirect("admin-management.aspx");
+                }
+
+                if(UserDetails["Admin_Right"] == "Viewer")
+                {
+                    listRight.Visible = false;
+                }
+                else
+                {
+                    txtAdminRight.Visible = false;
                 }
             }
         }

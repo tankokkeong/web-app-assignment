@@ -30,7 +30,6 @@
             <div class="form-group row">
                 <label for="staticID" class="col-sm-2 col-form-label">Admin ID:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="U0001">--%>
                     <asp:TextBox ID="txtID" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -38,7 +37,6 @@
             <div class="form-group row">
                 <label for="staticName" class="col-sm-2 col-form-label">Admin Name:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="Festus">--%>
                     <asp:TextBox ID="txtName" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -46,7 +44,6 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="email@example.com">--%>
                     <asp:TextBox ID="txtEmail" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -54,7 +51,6 @@
             <div class="form-group row">
                 <label for="staticRight" class="col-sm-2 col-form-label">Role:</label>
                 <div class="col-sm-10">
-                    <%--<input type="text" readonly class="form-control" value="Super Admin">--%>
                     <asp:TextBox ID="txtRight" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>

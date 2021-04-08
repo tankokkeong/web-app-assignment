@@ -32,7 +32,7 @@ namespace web_app_assignment.admin
                 if (dr.Read())
                 {
                     found = true;
-                    txtID.Text = (dr["seeker_id"].ToString());
+                    txtID.Text = dr["seeker_id"].ToString();
                     txtName.Text = (string)dr["full_name"];
                     txtEmail.Text = (string)dr["email"];
                     txtSkills.Text = (string)dr["skills"];

@@ -57,6 +57,8 @@
                         <asp:ListItem Value="Editor">Editor</asp:ListItem>
                         <asp:ListItem Value="Viewer">Viewer</asp:ListItem>
                     </asp:DropDownList>
+
+                    <asp:TextBox ID="txtAdminRight" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
 

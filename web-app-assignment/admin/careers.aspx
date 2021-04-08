@@ -38,7 +38,8 @@
                         <asp:BoundField runat="server" DataField="applicant_name" HeaderText="Applicant Name" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="applicant_email" HeaderText="Applicant Email" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         <asp:BoundField runat="server" DataField="applicant_position" HeaderText="Position Interested" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
-                        <asp:BoundField runat="server" DataField="applicant_status" HeaderText="Applicant Status" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>         
+                        <asp:BoundField runat="server" DataField="applicant_status" HeaderText="Applicant Status" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>     
+                        <asp:BoundField runat="server" DataField="created_at" HeaderText="Applied Date" HeaderStyle-CssClass="bg-lightgreen text-light"></asp:BoundField>
                         
                         <asp:TemplateField HeaderText="Resume" ShowHeader="False" HeaderStyle-CssClass="bg-lightgreen text-light">
                             <ItemTemplate>

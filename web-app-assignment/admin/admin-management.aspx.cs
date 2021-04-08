@@ -16,6 +16,10 @@ namespace web_app_assignment.admin
     public partial class admin_management : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
@@ -46,13 +50,22 @@ namespace web_app_assignment.admin
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
+            string admin_id = helper.getAdminID();
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                    if(e.Row.Cells[4].Text == admin_id)
+                    {
+                        e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>" +
+                                        "<a class='badge badge-primary action-btn mr-1'  href='admin-details-edit.aspx?editId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='Edit'><i class='fas fa-edit'></i></a>";
+                    }
+                    else
+                    {
+                        e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='admin-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                    }
                 }
                 else if (UserDetails["Admin_Right"] == "Editor")
                 {

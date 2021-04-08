@@ -50,7 +50,7 @@ namespace web_app_assignment.admin
                 //Query String
                 if (UserDetails["Admin_Right"] == "Viewer")
                 {
-                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='clients-details.aspx?viewId=" + e.Row.Cells[3].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
+                    e.Row.Cells[4].Text = "<a class='badge badge-success action-btn mr-1'  href='clients-details.aspx?viewId=" + e.Row.Cells[4].Text + "' data-toggle='tooltip' data-placement='top' title='View'><i class='fas fa-eye'></i></a>";
                 }
                 else
                 {
