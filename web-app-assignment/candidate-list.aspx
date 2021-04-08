@@ -13,7 +13,7 @@
             </div>
             <div class="JobListContentsBackGroundContent">
                 <h2 class="JobListContentsBackGroundContentHeader">
-                    Find The Jobs That Matter To You
+                    Find The Candidates That Matter To You
                 </h2>
                     <div class="form-group JobListContentsBackgroundInputs">
                         <div class="input-group mb-3">
