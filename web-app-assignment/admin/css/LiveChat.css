@@ -37,7 +37,7 @@
     min-height: 400px;
     width: 100%;
     padding-top: 51px;
-    max-height: 80vh;
+    max-height: 60vh;
     overflow-y: scroll;
     position: relative;
 }
