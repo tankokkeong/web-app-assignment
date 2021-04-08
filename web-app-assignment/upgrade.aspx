@@ -93,8 +93,8 @@
 
                       alert("Payment Successful!");
 
-                      //Redirect Back to home page
-                      window.history.back();
+                      //Redirect Back to profile page
+                      window.location.href = "upgrade.aspx?payment_successful=1";
                   });
           });
         }

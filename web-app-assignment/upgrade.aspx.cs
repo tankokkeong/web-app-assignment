@@ -24,6 +24,21 @@ namespace web_app_assignment
                 Response.Redirect("home.aspx");
             }
 
+            string payment_successful = Request.QueryString["payment_successful"] ?? "NULL";
+
+            if(payment_successful != "NULL")
+            {
+                //Redirect back to profile page after payment successful
+                if(Session["User"] != null)
+                {
+                    Response.Redirect("user-profile.aspx");
+                }
+                else
+                {
+                    Response.Redirect("recruiter-profile.aspx");
+                }
+            }
+
 
             try
             {
