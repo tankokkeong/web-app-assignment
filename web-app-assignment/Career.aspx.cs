@@ -123,14 +123,18 @@ namespace web_app_assignment
         {
             try
             {
+                //If there is a Job Seeker
                 if (Session["User"] != null)
                 {
+                    //Get job seeker's id
                     string seeker_id = helper.getSeekerID();
 
+                    //File upload handling
                     string file_extension = "." + fileResume.FileName.Split('.')[1];
                     string filename = txtFullName.Text + "-" + Guid.NewGuid().ToString("N") + file_extension;
                     string upload_path = MapPath("~/Resume/");
 
+                    //Save File into Folder
                     fileResume.SaveAs(upload_path + filename);
                     string resume = filename;
 
@@ -159,15 +163,17 @@ namespace web_app_assignment
 
                     Response.Write("<script>alert('Application Sent! We will approach to you shortly'); window.location.href = 'home.aspx' </script>");
                 }
-                else if (HttpContext.Current.Request.Cookies["jobs4uVtr"] != null)
+                else if (HttpContext.Current.Request.Cookies["jobs4uVtr"] != null) // if there is just a normal visitor
                 {
+                    //Get Visitor id
                     string visitor_id = helper.getVistorID();
 
+                    //File Upload Handling
                     string file_extension = "." + fileResume.FileName.Split('.')[1];
                     string fileName = txtFullName.Text + "-" + Guid.NewGuid().ToString("N") + file_extension ;
                     string uploadpath = MapPath("~/Resume/");
 
-
+                    //Save File into Folder
                     fileResume.SaveAs(uploadpath + fileName);
                     string resumeName = fileName;
 
@@ -196,8 +202,9 @@ namespace web_app_assignment
 
                     Response.Write("<script>alert('Application Sent! We will approach to you shortly.'); window.location.href = 'home.aspx' </script>");
                 }
-                else if (Session["Recruiter"] != null)
+                else if (Session["Recruiter"] != null) //If there is a Recruiter
                 {
+                    //Disable all the data insertion
                     txtFullName.Enabled = true;
                     txtEmail.Enabled = true;
                     txtPosition.Enabled = true;
@@ -208,7 +215,7 @@ namespace web_app_assignment
 
 
             }
-            catch(Exception error)
+            catch(Exception error) //Error Message
             {
                 Response.Write(error.Message);
             }

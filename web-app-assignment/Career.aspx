@@ -170,6 +170,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
     <script>
+        //Carousel Slider
         $(document).ready(function () {
             $("#testimonial-slider").owlCarousel({
                 items: 3,
