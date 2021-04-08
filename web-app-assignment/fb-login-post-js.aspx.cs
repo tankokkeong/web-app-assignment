@@ -74,7 +74,7 @@ namespace web_app_assignment
                     Session["User"] = UserDetail;
                     Session.Timeout = 43200;
 
-                    Response.Write(@"<script language='javascript'>alert('Hi" + fb_name +  ".'); window.location.href = 'home.aspx'; </script>");
+                    Response.Write("Login Successful");
                 }
                 else if (result == "0") // if user's account is not verified or no longer inactive
                 {

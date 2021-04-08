@@ -501,7 +501,7 @@
                         fb_email: response.email,
                     },
                     function (data, status) {
-                        console.log()
+                        console.log(data)
                         if (data.substring(0, 16) === "Login Successful") {
                             window.location.href = "home.aspx";
                         }
