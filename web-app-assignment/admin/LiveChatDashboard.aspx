@@ -134,6 +134,16 @@
     </div>
 
     <script>
+        var checkUserSeen = "";
+        firebase.database().ref("seenMessages/User/").on("child_added", function (snapshot) {
+            checkUserSeen = snapshot.val().seen;
+        });
+
+        var checkVisitorSeen = "";
+        firebase.database().ref("seenMessages/").on("child_added", function (snapshot) {
+            checkVisitorSeen = snapshot.val().seen;
+        });
+
         //listen for incoming messages
         firebase.database().ref("UserMessages/").on("child_added", function (snapshot) {
             var html = "";
@@ -149,7 +159,7 @@
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
-                "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
+                "<button type='button' class='btn btn-sm btn-secondary'>" + checkUserSeen + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
                 "<td>" +
@@ -175,7 +185,7 @@
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
-                "<button type='button' class='btn btn-sm btn-secondary'>Not Yet Read</button>" +
+                "<button type='button' class='btn btn-sm btn-secondary'>" + checkVisitorSeen + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
                 "<td>" +
