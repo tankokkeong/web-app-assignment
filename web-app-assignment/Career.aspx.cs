@@ -190,7 +190,7 @@ namespace web_app_assignment
                     //close connection
                     conn.Close();
 
-                    Response.Write("<script>alert('Application Sent! We will approach to you shortly'); window.location.href = 'home.aspx' </script>");
+                    Response.Write("<script>alert('Application Sent! We will approach to you shortly.'); window.location.href = 'home.aspx' </script>");
                 }
 
 
