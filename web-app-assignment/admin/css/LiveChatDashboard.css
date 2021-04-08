@@ -45,5 +45,6 @@
 
 .usernameLiveChat:hover {
     text-decoration: none;
+    font-weight: 500;
     color: #212529;
 }

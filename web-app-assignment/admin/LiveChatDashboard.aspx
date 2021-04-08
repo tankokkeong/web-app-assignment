@@ -137,7 +137,7 @@
         </form>
 
         <div class="LiveChat_MessagesInput">
-            <table class="table">
+            <table class="table table-hover">
               <tbody id="table-contents"></tbody>
             </table>
         </div>
@@ -156,16 +156,12 @@
             // give each message a unique ID
             html += "<tr class='table-rowLiveChat'>" +
                 "<th scope='row'>" +
-                "<input type='checkbox' />" +
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary'>" + checkUserSeen + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
-                "<td>" +
-                "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
-                "</td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
@@ -182,16 +178,12 @@
             // give each message a unique ID
             html += "<tr class='table-rowLiveChat'>" +
                 "<th scope='row'>" +
-                "<input type='checkbox' />" +
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary'>" + checkVisitorSeen + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
-                "<td>" +
-                "<img src='images/Admin-LiveMessage/more.png' alt='more' class='LiveChat_MessagesInputImage' />" +
-                "</td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
