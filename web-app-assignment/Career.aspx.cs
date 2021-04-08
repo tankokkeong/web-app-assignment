@@ -196,6 +196,15 @@ namespace web_app_assignment
 
                     Response.Write("<script>alert('Application Sent! We will approach to you shortly.'); window.location.href = 'home.aspx' </script>");
                 }
+                else if (Session["Recruiter"] != null)
+                {
+                    txtFullName.Enabled = true;
+                    txtEmail.Enabled = true;
+                    txtPosition.Enabled = true;
+                    employmentStatus.Enabled = true;
+                    fileResume.Enabled = true;
+                    btnSubmit.Enabled = true;
+                }
 
 
             }

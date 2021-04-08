@@ -74,7 +74,7 @@ namespace web_app_assignment.admin
 
                 }
             }
-            catch (Exception error) //show error Message
+            catch (Exception error)
             {
                 Response.Write(error.Message);
             }
