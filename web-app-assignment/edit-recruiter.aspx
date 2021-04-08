@@ -80,13 +80,13 @@
 
              <div class="form-row">
                 <div class="form-group col-md-6 m-0">
-                    <label for="inputAddress">Adress Line 1:</label>                    
+                    <label for="inputAddress">Address Line 1:</label>                    
                     <asp:TextBox ID="txtAddressLine1" runat="server" CssClass="form-control" placeholder="Address Line 1"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Address Line 1 is required!" ControlToValidate="txtAddressLine1" CssClass="text-danger"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group col-md-6 m-0">
-                    <label for="inputAddress">Adress Line 2 <strong>(Optional)</strong>:</label>
+                    <label for="inputAddress">Address Line 2 <strong>(Optional)</strong>:</label>
                     <asp:TextBox ID="txtAddressLine2" runat="server" CssClass="form-control" placeholder="Address Line 2"></asp:TextBox>
                 </div>
             </div>
