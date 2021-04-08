@@ -65,7 +65,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/sukChuang.png" />
+                                <video src="images/career/suk%20chuang.mp4" loop style="width:100%; max-height:100px; max-width:100px;" autoplay muted/>
                             </div>
                             <h3 class="title">Suk Chuang</h3>
                             <span class="post"><asp:Label ID="lblPpl3" runat="server" class="text-lightgreen text-center" Text="Creative Teams"></asp:Label></span>
@@ -78,7 +78,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/festus.png" />
+                                <img src="images/career/festus.png" style="width:100px; height:100px; max-height:100px; max-width:100px;"/>
                             </div>
                             <h3 class="title">Festus Chen</h3>
                             <span class="post"><asp:Label ID="lblPpl4" runat="server" class="text-lightgreen text-center" Text="Sales Teams"></asp:Label></span>
@@ -91,7 +91,7 @@
                         </p>
                         <div class="testimonial-content">
                             <div class="pic">
-                                <img src="images/career/anson.jpg" />
+                                <img src="images/career/anson.jpg" style="width:100%; max-height:100px; max-width:100px;"/>
                             </div>
                             <h3 class="title">Anson Ho</h3>
                             <span class="post"><asp:Label ID="lblPpl5" runat="server" class="text-lightgreen text-center" Text="Recruitment Teams"></asp:Label></span>
