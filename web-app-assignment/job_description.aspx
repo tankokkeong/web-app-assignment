@@ -51,7 +51,9 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="jobdescription" role="tabpanel" aria-labelledby="jobdescription-tab">
                     <div class="JobDescriptionContentsBody">
-                        <h2 class="JobDescriptionContentsBodyHeader">H&M (Fashion Designer)</h2>
+                        <h2 class="JobDescriptionContentsBodyHeader">
+                            <asp:Label ID="lblHeadJobTitle" runat="server" Text=""></asp:Label>
+                        </h2>
                     </div>
 
                     <%--The CkEditor Stuff in here--%>
@@ -60,7 +62,8 @@
                     </div>
 
                     <div class="JobDescriptionContentsBodyContents3">
-                        <h4 class="JobDescriptionContentsBodySubHeader">Additional Information : </h4>
+                        <h4 class="JobDescriptionContentsBodySubHeader mb-3 mt-3">Additional Information : </h4>
+
                         <div class="JobDescriptionContentsBodyContents3Details">
                             <div class="JobDescriptionContentsBodySubContents">
                                 <h5 class="JobDescriptionContentsBodySubHeaders">Qualification</h5>

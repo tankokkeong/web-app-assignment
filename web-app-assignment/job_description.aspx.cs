@@ -34,7 +34,7 @@ namespace web_app_assignment
 
                     if (post_id != "")
                     {
-                        string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.post_id = @post_id AND JP.deleted_at IS NULL AND JP.recruiter_id = R.recruiter_id;";
+                        string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.post_id = @post_id AND JP.deleted_at IS NULL AND JP.recruiter_id = R.recruiter_id AND JP.deleted_by_admin IS NULL";
 
                         SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -57,6 +57,7 @@ namespace web_app_assignment
                             lbl_JobDescriptionDetailsHeader.Text = dr["company_name"].ToString();
                             img_JobDescriptionDetailsImage.ImageUrl = dr["company_photo"].ToString();
                             lbl_JobDescriptionDetailsJobTitle.Text = dr["job_title"].ToString();
+                            lblHeadJobTitle.Text = dr["job_title"].ToString();
                             lbl_JobDescriptionDetailsLocation.Text = dr["location"].ToString();
                             lbl_JobDescriptionDetailsJobSalary.Text = "MYR " + dr["salary"].ToString();
 
