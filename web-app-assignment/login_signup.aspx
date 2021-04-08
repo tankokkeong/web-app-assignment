@@ -210,7 +210,6 @@
                           <button type="button" id="googleSeeker" runat="server" class="btn bg-white googleSignIn-js" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>                           
                         </div>
                         <div class="fb-button-js mt-2">
-                             <button type="button" id="Button1" runat="server" class="btn bg-white googleSignIn-js" onserverclick="googleSeeker_Click"><img src="images/login_signup/imageedit_1_6756801447.png" style="height:25px; width:25px;"/></i>&nbsp &nbsp Sign in With Google</button>    
                             <div class="fb-login-button" scope="public_profile , email" onlogin="checkLoginState();" data-width="1000" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                         </div>                        
                     </div>  
