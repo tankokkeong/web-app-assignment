@@ -337,10 +337,10 @@
         if (verifyEmail) {
             //get recruiter and user email
             var URemail = String(document.getElementById("txtUsername").value);
-            var mailArr = URemail.replace("@", "_");
+            var mailArr = URemail.replace(/[@]/g, "_");
 
             //Replace . with -
-            mailArr = mailArr.replace(".", "-");
+            mailArr = mailArr.replace(/[.]/g, "-");
 
             var logn = mailArr;
             var today = new Date();
