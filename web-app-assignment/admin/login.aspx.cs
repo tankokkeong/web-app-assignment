@@ -33,13 +33,13 @@ namespace web_app_assignment.admin
                 //Connection Open
                 con.Open();
 
-                String query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + txtPassword.Text + "' AND verified_at IS NOT NULL AND deleted_at IS NULL";
+                string query = "select count(*) from Admin where admin_email= '" + txtEmail.Text + "' and admin_password ='" + pwHash.hashPassword(txtPassword.Text) + "' AND verified_at IS NOT NULL AND deleted_at IS NULL";
 
                 //Connect to the database
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 //Check for result
-                String output = cmd.ExecuteScalar().ToString();
+                string output = cmd.ExecuteScalar().ToString();
 
                 //if the result found
                 if (output == "1")
@@ -74,7 +74,7 @@ namespace web_app_assignment.admin
 
                 }
             }
-            catch (Exception error)
+            catch (Exception error) //show error Message
             {
                 Response.Write(error.Message);
             }
