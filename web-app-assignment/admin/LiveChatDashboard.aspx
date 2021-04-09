@@ -49,14 +49,9 @@
         });
 
         var checkUserSeen = "";
-        firebase.database().ref("seenMessages/User/").on("child_added", function (snapshot) {
-            checkUserSeen = snapshot.val().seen;
-        });
+        
 
         var checkVisitorSeen = "";
-        firebase.database().ref("seenMessages/").on("child_added", function (snapshot) {
-            checkVisitorSeen = snapshot.val().seen;
-        });
     </script>
 
     <div class="LiveChat">
@@ -155,12 +150,19 @@
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
-                "<button type='button' class='btn btn-sm btn-secondary'>" + checkUserSeen + "</button>" +
+                "<button type='button' class='btn btn-sm btn-secondary' id='" + snapshot.key + "-seen'>" + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
+
+            //Display seen value
+            firebase.database().ref("seenMessages/User/" + snapshot.key + "/").on("value", function (childSnapshot) {
+
+                //Update Seen Value
+                document.getElementById(snapshot.key + "-seen").innerHTML = childSnapshot.val().seen;
+            });
         });
 
         //listen for incoming messages
@@ -177,12 +179,22 @@
                 "</th>" +
                 "<td> <a class='usernameLiveChat' href='LiveChat.aspx?chat=" + snapshot.key + "'>" + snapshot.key + "</a></td>" +
                 "<td>" +
-                "<button type='button' class='btn btn-sm btn-secondary'>" + checkVisitorSeen + "</button>" +
+                "<button type='button' class='btn btn-sm btn-secondary' id='" + snapshot.key + "-seen'>" + "</button>" +
                 "</td>" +
                 "<td>" + messages + "</td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
+
+            //Display seen value
+            firebase.database().ref("seenMessages/Visitor/" + snapshot.key + "/").on("value", function (childSnapshot) {
+
+                //Update seen value
+                document.getElementById(snapshot.key + "-seen").innerHTML = childSnapshot.val().seen;
+
+            });
         });
+
+        
     </script>
 </asp:Content>

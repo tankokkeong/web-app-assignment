@@ -198,7 +198,7 @@
 
 
                         if (query.length == 32) {
-                            firebase.database().ref("seenMessages/" + query + "/").set({
+                            firebase.database().ref("seenMessages/Visitor/" + query + "/").set({
                                 seen: "seen",
                             });
                         } else {

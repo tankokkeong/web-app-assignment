@@ -443,7 +443,7 @@
                 else
                 {
                     //save in firebase
-                    firebase.database().ref("seenMessages/" + visitor + "/").set({
+                    firebase.database().ref("seenMessages/Visitor/" + visitor + "/").set({
                         "seen": "unseen",
                     });
 
@@ -552,7 +552,7 @@
             var message_container = document.getElementById('messages');
             //listen for visitor messages
 
-            firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
+            firebase.database().ref("seenMessages/Visitor/" + visitor + "/").on("value", function (snapshot) {
 
                 checkSeen = snapshot.val().seen;
 
