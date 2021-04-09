@@ -95,7 +95,13 @@
                                             <div class='JobListContentsAllCompaniesBoxesDetailsStars'>
                                                 <div class='jobRating ml-2'>                                                   
                                                     <p runat="server" id="JobRatingDisplay" visible='<%#(is_premium == "true") ? true : false %>'>
-                                                        <%#Eval("job_rating") %><i class='fas fa-star text-warning ml-2'></i>
+                                                        <span runat="server" visible='<%# Eval("job_rating") != System.DBNull.Value %>'>
+                                                               <%#Eval("job_rating")%> <i class='fas fa-star text-warning ml-2'></i>
+                                                        </span>
+                                                        
+                                                        <span runat="server" visible='<%# Eval("job_rating") == System.DBNull.Value %>'>
+                                                             No rating yet
+                                                        </span>
                                                     </p>
                                                 </div>
                                             </div>
