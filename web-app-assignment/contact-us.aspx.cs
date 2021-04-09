@@ -39,6 +39,7 @@ namespace web_app_assignment
                 Languages.Add("Name", "姓名");
                 Languages.Add("We'd love to hear from you.", "我们很乐意听取您的意见。");
                 Languages.Add("Contact Us", "联系我们");
+                Languages.Add("Submit", "提交");
 
                 lblMessage.Text = Languages["Message"];
                 lblSubject.Text = Languages["Subject"];
@@ -48,6 +49,7 @@ namespace web_app_assignment
                 lblWe.Text = Languages["We'd love to hear from you."];
                 lblContactUs1.Text = Languages["Contact Us"];
                 lblContactUs2.Text = Languages["Contact Us"];
+                btnSubmit.Text = Languages["Submit"];
             }
             else if (Session["Languages_EN"] != null)
             {
@@ -58,6 +60,7 @@ namespace web_app_assignment
                 Languages.Add("Name", "Name");
                 Languages.Add("We'd love to hear from you.", "We'd love to hear from you.");
                 Languages.Add("Contact Us", "Contact Us");
+                Languages.Add("Submit", "Submit");
 
                 lblMessage.Text = Languages["Message"];
                 lblSubject.Text = Languages["Subject"];
@@ -67,6 +70,7 @@ namespace web_app_assignment
                 lblWe.Text = Languages["We'd love to hear from you."];
                 lblContactUs1.Text = Languages["Contact Us"];
                 lblContactUs2.Text = Languages["Contact Us"];
+                btnSubmit.Text = Languages["Submit"];
             }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
