@@ -21,6 +21,7 @@ function dashboardSearch() {
     var search_input = document.getElementById("dashboard-search-input").value;
     var results_container = document.getElementById("dashboard-search-results-container");
     var result_item = document.getElementsByClassName("app-search-item");
+    var matching_container = [];
 
     if (search_input.length > 0) {
 
@@ -40,6 +41,9 @@ function dashboardSearch() {
 
             //Display matching results
             result_item[i].style.display = "";
+
+            matching_container.push(result_item[i].href);
+            
         }
         else
         {
@@ -47,5 +51,16 @@ function dashboardSearch() {
             result_item[i].style.display = "none";
         }
     }
+
+    //Check if the array is empty
+    if (matching_container.length > 0) {
+        //If user press the enter key
+        if (event.keyCode === 13) {
+            event.preventDefault();
+
+            window.location.href = matching_container[0];
+        }
+    }
+    
   
 }

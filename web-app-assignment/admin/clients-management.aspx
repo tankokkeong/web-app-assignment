@@ -24,7 +24,7 @@
     <form runat="server">
         <div class="clients-container">
             <div class="client-title">
-                <h3>User Management</h3>
+                <h3>Job Seeker Management</h3>
             </div>
 
             <div class="user-filter mt-3 mb-3">
