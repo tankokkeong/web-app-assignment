@@ -64,10 +64,6 @@
             <h2 class="col">
                 Messages
             </h2>
-            <div class="LiveChat_Filter col col-lg-2">
-                <button type="button" class="btn btn-primary btn-sm">All</button>
-                <button type="button" class="btn btn-secondary btn-sm">Unread</button>
-            </div>
         </div>
 
         <form runat="server">
