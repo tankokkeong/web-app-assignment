@@ -113,8 +113,8 @@ namespace web_app_assignment
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-                    Response.Write("<script>alert('Record Inserted successful!');</script>");
-
+                    Response.Write("<script>alert('Job created successful!');</script>");
+                    Response.Write("<script>window.location.href = 'recruiter-profile.aspx';</script>");
                     //Clear the form
                     ClearForm();
 
