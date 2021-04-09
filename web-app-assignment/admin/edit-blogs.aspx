@@ -41,7 +41,7 @@
                 <label for="staticDesc" class="col-sm-2 col-form-label">Post Simple Description:</label>
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtSimpleDesc" CssClass="form-control" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Title is required!" CssClass="text-danger" ControlToValidate="txtSimpleDesc" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="reqValSDesc" runat="server" ErrorMessage="Post Simple Description is required!" CssClass="text-danger" ControlToValidate="txtSimpleDesc" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
             </div>
 
