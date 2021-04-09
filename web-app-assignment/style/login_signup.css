@@ -205,19 +205,21 @@
 .LogineyeImagePasswordLogin {
     position: absolute;
     height: 25px;
-    left: 85%;
-    top: 55%;
+    right: 20px;
+    bottom: 7px;
     cursor: pointer;
-    transform: translate(-90%, -50%);
+}
+
+.see-password-container{
+    position:relative;
 }
 
 .eyeImagePasswordSignUp {
     position: absolute;
     height: 25px;
-    left: 90%;
-    top: 50%;
+    right: 20px;
+    bottom: 7px;
     cursor: pointer;
-    transform: translate(-90%, -50%);
 }
 
 .dividerLoginGoogle{
@@ -243,51 +245,11 @@
     margin-top: -7.5%;
 }
 
-@media(max-width: 1100px) {
-    .eyeImagePasswordLogin {
-        position: absolute;
-        height: 20px;
-        left: 83%;
-        top: 56%;
-        cursor: pointer;
-        transform: translate(-90%, -50%);
-    }
-
-    .eyeImagePasswordSignUp {
-        position: absolute;
-        height: 20px;
-        left: 86%;
-        top: 55%;
-        cursor: pointer;
-        transform: translate(-90%, -50%);
-    }
-}
-
-
-@media(max-width: 1000px) {
-    .LogineyeImagePasswordLogin {
-        position: absolute;
-        height: 25px;
-        left: 85%;
-        top: 50%;
-        cursor: pointer;
-        transform: translate(-85%, -30%);
-    }
-
-}
 
 @media(max-width: 576px) {
     .login_signUpBackgroundImagePics {
         display: none;
     }
 
-    .LogineyeImagePasswordLogin {
-        position: absolute;
-        height: 25px;
-        left: 85%;
-        top: 56%;
-        cursor: pointer;
-        transform: translate(-90%, -55%);
-    }
 
 }
