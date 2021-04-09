@@ -70,7 +70,7 @@ namespace web_app_assignment.admin
                 }
                 else
                 {
-                    Response.Write(@"<script language='javascript'>alert('Invalid Username or Password. Or Your Email Is Not Verified Yet!')</script>");
+                    Response.Write(@"<script language='javascript'>alert('Invalid Username or Password.')</script>");
 
                 }
             }

@@ -68,10 +68,7 @@ namespace web_app_assignment.admin
                 //Connection Close
                 conn.Close();
 
-              
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Set Successfully'); window.open('login.aspx');", true);
-
-                Response.Redirect("login.aspx");
+                Response.Write(@"<script language='javascript'>alert('Sign Up Successful'); window.location.href = 'login.aspx';</script>");
             }
             //Connection Close
             con.Close();
