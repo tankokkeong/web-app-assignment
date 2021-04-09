@@ -163,7 +163,7 @@
 
             //Place the sticky values
             payment_id.value = query[0].split("=")[1].replace("+", " ");
-            payment_method.value = query[1].split("=")[1].replace("+", " ");
+            payment_method.value = unescape(query[1].split("=")[1].replace("+", " "));
             user_role.value = unescape(query[2].split("=")[1]).replace("+", " "); 
             username.value = unescape(query[3].split("=")[1]).replace("+", " ");
             payment_from_date.value = query[4].split("=")[1].replace("+", " ");
