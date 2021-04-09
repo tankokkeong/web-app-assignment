@@ -87,7 +87,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <asp:TextBox ID="txtTotalMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                        <asp:TextBox ID="txtTotalMessages" runat="server" BorderStyle="None" CssClass="bg-white" Enabled="false"></asp:TextBox>
                                     </td>
                                 </tr>
                             </tbody>
@@ -106,7 +106,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <asp:TextBox ID="txtSentMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                        <asp:TextBox ID="txtSentMessages" runat="server" BorderStyle="None" CssClass="bg-white" Enabled="false"></asp:TextBox>
                                     </td>
                                 </tr>
                             </tbody>
@@ -125,7 +125,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <asp:TextBox ID="txtReceivedMessages" runat="server" BorderStyle="None"></asp:TextBox>
+                                        <asp:TextBox ID="txtReceivedMessages" runat="server" BorderStyle="None" CssClass="bg-white" Enabled="false"></asp:TextBox>
                                     </td>
                                 </tr>
                             </tbody>
