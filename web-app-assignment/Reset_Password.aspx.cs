@@ -63,7 +63,7 @@ namespace web_app_assignment
                 con.Close();
 
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);
+                Response.Write(@"<script language='javascript'>alert('Password Reset Successful!!'); window.location.href = 'login_signup.aspx'; </script>");
 
             }
             else if (requestRole == "recruiter")
@@ -88,7 +88,7 @@ namespace web_app_assignment
                 //Connection Close
                 conn.Close();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Password Reset Successfully'); window.open('login_signup.aspx');", true);
+                Response.Write(@"<script language='javascript'>alert('Password Reset Successful!!'); window.location.href = 'login_signup.aspx'; </script>");
             }
             
         }

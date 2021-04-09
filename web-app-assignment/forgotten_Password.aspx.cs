@@ -102,7 +102,7 @@ namespace web_app_assignment
                 }
                 catch (Exception ex)
                 {
-
+                    Response.Write(ex.Message);
                 }
             }
             catch (Exception error)
