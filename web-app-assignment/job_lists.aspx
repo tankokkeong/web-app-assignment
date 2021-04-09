@@ -125,8 +125,7 @@
                                             <div class='JobListContentsAllCompaniesBoxesDetailsFooter mt-3'>
                                                 <div class='JobListContentsAllCompaniesBoxesDetailsApplyDetailsButton'>
                                                     <button type='button' class='btn btn-primary JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow p-1' onclick='directDetails(<%#Eval("post_id") %>)'> More Details </button>
-                                                    <button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow p-1' onclick='directContact(<%#Eval("recruiter_id") %>)' runat="server" 
-                                                        visible='<%#(Session["User"] != null) ? true : false %>'> Contact Now </button>
+                                                    <button type='button' class='btn btn-danger JobListContentsAllCompaniesBoxesDetailsApplyButtonApplyNow p-1'  onclick='directContact(<%#Eval("recruiter_id")%>)'> Contact Now </button>
                                                 </div>
                                             </div>
                                         </div>
