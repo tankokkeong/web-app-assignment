@@ -35,6 +35,7 @@ namespace web_app_assignment
                     if (post_id != "")
                     {
                         string sql = "SELECT * FROM JobPost JP, Recruiter R WHERE JP.post_id = @post_id AND JP.deleted_at IS NULL AND JP.recruiter_id = R.recruiter_id AND JP.deleted_by_admin IS NULL";
+                        int record_count = 0;
 
                         SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -89,6 +90,15 @@ namespace web_app_assignment
                             {
                                 lbl_JobDescriptionJobSpec.Text += "<button class='btn btn-info mr-3 JobDescriptionContentsBodySubHeadersTagsButton' disabled='true'>" + jobSpecs.ToString() + "</button>";
                             }
+
+                            record_count++;
+                        }
+
+
+                        //Redirect back to job description if no record found
+                        if(record_count == 0)
+                        {
+                            Response.Redirect("job_lists.aspx");
                         }
 
                         //Get seeker id

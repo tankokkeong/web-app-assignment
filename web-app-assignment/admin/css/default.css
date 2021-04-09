@@ -27,3 +27,20 @@
     overflow-x: scroll;
     padding: 10px 0;
 }
+
+.app-search-results {
+    position:absolute;
+    top:45px;
+    width:216px!important;
+    background-color:white;
+    border:1px solid black;
+    border-bottom: 2px solid black;
+}
+
+.search-results-list{
+    list-style:none;
+}
+
+.app-search-item{
+    cursor:pointer;
+}

@@ -51,8 +51,24 @@
               <!-- Navbar Right Menu-->
               <ul class="app-nav">
                 <li class="app-search">
-                  <input class="app-search__input" type="search" placeholder="Search">
+                  <input class="app-search__input" type="search" placeholder="Search" id="dashboard-search-input" onkeyup="dashboardSearch()">
                   <button class="app-search__button"><i class="fa fa-search"></i></button>
+                    
+                    <div class="app-search-results border-secondary" id="dashboard-search-results-container" style="display:none;">
+                        <div class="search-results-list">
+                            <a class="app-search-item list-group-item list-group-item-action" href="dashboard.aspx">Dashboard</></a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="LiveChatDashboard.aspx">Live Messages</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="admin-management.aspx">Admin Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="clients-management.aspx">Job Seeker Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="clients-management-r.aspx">Recruiter Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="contact-message.aspx">Contact Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="display-blogs.aspx">Blogs Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="blog-category-management.aspx">Blogs Category Management</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="payments.aspx">Payments</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="jobs-management.aspx">Jobs Managements</a>
+                            <a class="app-search-item list-group-item list-group-item-action" href="careers.aspx">Applicants</a>
+                        </div>
+                    </div>
                 </li>
                 <%--<!--Notification Menu-->
                 <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
