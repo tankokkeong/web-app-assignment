@@ -1831,6 +1831,7 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
     <Content Include="forgotten_Password.aspx" />
     <Content Include="google-signup-post-r.aspx" />
+    <Content Include="google_login_post-js.aspx" />
     <Content Include="google_login_post.aspx" />
     <Content Include="google_signup-post.aspx" />
     <Content Include="help.aspx" />
@@ -2311,6 +2312,13 @@
     </Compile>
     <Compile Include="google-signup-post-r.aspx.designer.cs">
       <DependentUpon>google-signup-post-r.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="google_login_post-js.aspx.cs">
+      <DependentUpon>google_login_post-js.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="google_login_post-js.aspx.designer.cs">
+      <DependentUpon>google_login_post-js.aspx</DependentUpon>
     </Compile>
     <Compile Include="google_login_post.aspx.cs">
       <DependentUpon>google_login_post.aspx</DependentUpon>

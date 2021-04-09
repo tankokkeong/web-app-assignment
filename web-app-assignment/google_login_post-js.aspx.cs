@@ -14,17 +14,72 @@ using System.Configuration;
 
 namespace web_app_assignment
 {
-    public partial class google_login_post : System.Web.UI.Page
+    public partial class google_login_post_js : System.Web.UI.Page
     {
         //your client id  
         string clientid = "804776769506-k0ibg0dnd1vmigibsmjt4p8gekqp4unn.apps.googleusercontent.com";
         //your client secret  
         string clientsecret = "SsB5Pq6GdQIk0j7J9stZdY2D";
         //your redirection url  
-        string redirection_url = "https://localhost:44329/google_login_post.aspx";
+        string redirection_url = "https://localhost:44329/google_login_post-js.aspx";
         string url = "https://accounts.google.com/o/oauth2/token";
 
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+
+        public class Tokenclass
+        {
+            public string access_token
+            {
+                get;
+                set;
+            }
+            public string token_type
+            {
+                get;
+                set;
+            }
+            public int expires_in
+            {
+                get;
+                set;
+            }
+            public string refresh_token
+            {
+                get;
+                set;
+            }
+        }
+        public class Userclass
+        {
+            public string id
+            {
+                get;
+                set;
+            }
+            public string name
+            {
+                get;
+                set;
+            }
+            public string given_name
+            {
+                get;
+                set;
+            }
+            public string family_name
+            {
+                get;
+                set;
+            }
+
+            public string email
+            {
+                get;
+                set;
+            }
+
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +138,7 @@ namespace web_app_assignment
 
             loginInfo(id, email, name);
 
-            
+
         }
 
         public void loginInfo(string id, string email, string name)
@@ -94,55 +149,54 @@ namespace web_app_assignment
 
                 con.Open();
 
-                string sql = "SELECT COUNT(*) FROM Recruiter where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND active = @active";
+                string sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND active = @active";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
-           
+
                 cmd.Parameters.AddWithValue("@gmail_token", id);
                 cmd.Parameters.AddWithValue("@active", "active");
 
-                int output = (int) cmd.ExecuteScalar();
+                int output = (int)cmd.ExecuteScalar();
 
-                if(output == 1)
+                if (output == 1)
                 {
-                    Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
+                    Dictionary<string, string> UserDetail = new Dictionary<string, string>();
 
-                    SqlConnection conn  = new SqlConnection(strcon);
+                    SqlConnection conn = new SqlConnection(strcon);
 
-                    sql = "SELECT * FROM Recruiter WHERE gmail_token = @gmail_token";
+                    sql = "SELECT * FROM JobSeeker WHERE gmail_token = @gmail_token";
 
-                        cmd = new SqlCommand(sql, conn);
+                    cmd = new SqlCommand(sql, conn);
 
                     conn.Open();
 
-                        cmd.Parameters.AddWithValue("@gmail_token", id);
+                    cmd.Parameters.AddWithValue("@gmail_token", id);
 
-                        SqlDataReader dread = cmd.ExecuteReader();
+                    //Read Data from Database
+                    SqlDataReader dread = cmd.ExecuteReader();
 
-                        while (dread.Read())
-                        {
-                            RecruiterDetails.Add("recruiter_email", dread["email"].ToString());
-                            RecruiterDetails.Add("recruiter_mobile", dread["mobile_number"].ToString());
-                            RecruiterDetails.Add("recruiter_companyphoto", dread["company_photo"].ToString());
-                            RecruiterDetails.Add("recruiter_company", dread["company_name"].ToString());
-                            RecruiterDetails.Add("recruiter_contactEmail", dread["contact_email"].ToString());
-                            RecruiterDetails.Add("address_line1", dread["address_line1"].ToString());
-                            RecruiterDetails.Add("address_line2", dread["address_line2"].ToString());
-                            RecruiterDetails.Add("city", dread["city"].ToString());
-                            RecruiterDetails.Add("state", dread["state"].ToString());
-                            RecruiterDetails.Add("zip-code", dread["zip_code"].ToString());
-                            RecruiterDetails.Add("recruiter_country", dread["country"].ToString());
-                            RecruiterDetails.Add("recruiter_industry", dread["industry"].ToString());
-                            RecruiterDetails.Add("recruiter_fbLink", dread["facebook_link"].ToString());
-                            RecruiterDetails.Add("recruiter_linkedinLink", dread["linkedin_link"].ToString());
-                            RecruiterDetails.Add("introduction", dread["introduction"].ToString());
-                            RecruiterDetails.Add("rating", dread["rating"].ToString());
-                        }
-                        Session["Recruiter"] = RecruiterDetails;
+                    while (dread.Read())
+                    {
+                        //Add Parameter into Dictionary
+                        UserDetail.Add("user_name", dread["full_name"].ToString());
+                        UserDetail.Add("user_email", dread["email"].ToString());
+                        UserDetail.Add("user_skills", dread["skills"].ToString());
+                        UserDetail.Add("user_gender", dread["gender"].ToString());
+                        UserDetail.Add("user_mobile", dread["mobile_number"].ToString());
+                        UserDetail.Add("user_location", dread["location"].ToString());
+                        UserDetail.Add("user_profession", dread["profession"].ToString());
+                        UserDetail.Add("user_preferIndustry", dread["prefer_industry"].ToString());
+                        UserDetail.Add("user_country", dread["country"].ToString());
+                        UserDetail.Add("user_experience", dread["experience"].ToString());
+                        UserDetail.Add("user_fbLink", dread["facebook_link"].ToString());
+                    }
+                    Session["User"] = UserDetail;
                     Session.Timeout = 43200;
+
                     conn.Close();
 
-                        Response.Redirect("home.aspx");
+                    Response.Redirect("home.aspx");
+
                 }
                 else
                 {
@@ -155,61 +209,6 @@ namespace web_app_assignment
             {
                 Response.Write(error.Message);
             }
-
-        }
-
-        public class Tokenclass
-        {
-            public string access_token
-            {
-                get;
-                set;
-            }
-            public string token_type
-            {
-                get;
-                set;
-            }
-            public int expires_in
-            {
-                get;
-                set;
-            }
-            public string refresh_token
-            {
-                get;
-                set;
-            }
-        }
-        public class Userclass
-        {
-            public string id
-            {
-                get;
-                set;
-            }
-            public string name
-            {
-                get;
-                set;
-            }
-            public string given_name
-            {
-                get;
-                set;
-            }
-            public string family_name
-            {
-                get;
-                set;
-            }
-
-            public string email
-            {
-                get;
-                set;
-            }
-
 
         }
     }
