@@ -50,7 +50,9 @@
             <div class="text-center">
                <button type="button" class="btn text-light bg-lightgreen" data-toggle="modal" data-target="#replyModal">Reply</button> 
                 <a href="contact-message.aspx" class="btn btn-secondary">Back</a>
-                <asp:Label ID="lblMailMessage" runat="server" ForeColor="Green"></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="lblMailMessage" runat="server" ForeColor="Green" CssClass="mt-3"></asp:Label>
             </div>
         </div>
     </div>
@@ -60,7 +62,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Reply message</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
