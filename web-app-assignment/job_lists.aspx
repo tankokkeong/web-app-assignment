@@ -233,6 +233,7 @@
 
         function getSelectedLocation() {
             var locationQuery = window.location.href.split('?')[1];
+            locationQuery = decodeURIComponent(locationQuery);
             locationQuery = locationQuery.split('&')[1];
             locationQuery = locationQuery.split('=')[1];
 
@@ -264,6 +265,7 @@
 
         function getJobTitle() {
             var titleQuery = window.location.href.split('?')[1];
+            titleQuery = decodeURIComponent(titleQuery);
             titleQuery = titleQuery.split('=')[1];
 
             var title = titleQuery.split('&')[0];
@@ -280,6 +282,7 @@
 
         function getSelectedJobType() {
             var jobTypeQuery = window.location.href.split('?')[1];
+            jobTypeQuery = decodeURIComponent(jobTypeQuery);
             jobTypeQuery = jobTypeQuery.split('&')[2];
             jobTypeQuery = jobTypeQuery.split('=')[1];
 
@@ -312,6 +315,7 @@
 
         function getSelectedJobSpec() {
             var jobSpecQuery = window.location.href.split('?')[1];
+            jobSpecQuery = decodeURIComponent(jobSpecQuery);
             jobSpecQuery = jobSpecQuery.split('&')[3];
             jobSpecQuery = jobSpecQuery.split('=')[1];
 

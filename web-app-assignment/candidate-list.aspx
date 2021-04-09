@@ -231,13 +231,14 @@
         //Sticky form script
         function getSelectedIndustry() {
             var industriesQuery = window.location.href.split('?')[1];
+            industriesQuery = decodeURIComponent(industriesQuery);
             industriesQuery = industriesQuery.split('&')[2];
             industriesQuery = industriesQuery.split('=')[1];
 
             var industries = industriesQuery.split(',');
             var select2_input = document.getElementById("industry-selection");
 
-            if (industriesQuery !== "" && industries !== "") {
+            if (industriesQuery !== "" && industries != "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < industries.length; i++) {
 
@@ -261,6 +262,7 @@
 
         function getSelectedSkills() {
             var skillsQuery = window.location.href.split('?')[1];
+            skillsQuery = decodeURIComponent(skillsQuery);
             skillsQuery = skillsQuery.split('=')[1];
 
             var skills = skillsQuery.split('&')[0];
@@ -292,13 +294,14 @@
 
         function getSelectedLocation() {
             var locationQuery = window.location.href.split('?')[1];
+            locationQuery = decodeURIComponent(locationQuery);
             locationQuery = locationQuery.split('&')[1];
             locationQuery = locationQuery.split('=')[1];
 
             var location = locationQuery.split(',');
             var select2_input = document.getElementById("location-selection");
 
-            if (locationQuery != "" && location !== "") {
+            if (locationQuery != "" && location != "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < location.length; i++) {
 
@@ -323,13 +326,14 @@
 
         function getSelectedProfession() {
             var professionQuery = window.location.href.split('?')[1];
+            professionQuery = decodeURIComponent(professionQuery);
             professionQuery = professionQuery.split('&')[3];
             professionQuery = professionQuery.split('=')[1];
 
             var profession = professionQuery.split(',');
             var select2_input = document.getElementById("profession-selection");
 
-            if (professionQuery != "" && profession !== "") {
+            if (professionQuery != "" && profession != "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < profession.length; i++) {
 
