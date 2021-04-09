@@ -187,6 +187,9 @@
 
             //Assign the value to CK EDITOR
             ck_editor.value = window.unescape(introduction_value.value);
+
+            //Escape the data
+            introduction_value.value = window.escape(introduction_value.value);
         }
 
         function getSelectedIndustry() {

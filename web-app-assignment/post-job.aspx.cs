@@ -14,6 +14,9 @@ namespace web_app_assignment
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
+        //Create Helper Class
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Check Login
@@ -21,6 +24,101 @@ namespace web_app_assignment
             {
                 Response.Redirect("home.aspx");
             }
+
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string recruiter_id = helper.getRecruiterID();
+
+            //Read User profile Details
+            string sql = "SELECT * FROM Recruiter WHERE recruiter_id = @recruiter_id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            //Insert parameter
+            cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
+
+            int invalid_count = 0;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                //Check empty details
+
+                if(dr["company_name"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if(dr["state"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if(dr["industry"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+                
+                if(dr["email"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["mobile_number"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["contact_email"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["address_line1"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+
+                if (dr["city"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["state"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["zip_code"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["country"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if(dr["company_photo"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+            }
+
+            //Close connection
+            con.Close();
+
+            if(invalid_count  > 0)
+            {
+                Response.Write("<script>alert('Please complete your profile first!');</script>");
+                Response.Write("<script>window.location.href = 'recruiter-profile.aspx';</script>");
+            }
+
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
