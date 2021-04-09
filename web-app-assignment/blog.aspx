@@ -19,7 +19,7 @@
                 <div class="col-sm-12 col-lg-6">
                     <div class="right-latest">
                         <div class="right-latest-title">
-                            <h3>Latest</h3>
+                            <h3>Trending</h3>
                         </div>
                     
                         <div class="right-latest-list">

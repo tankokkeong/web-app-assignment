@@ -17,7 +17,7 @@ namespace web_app_assignment
 
             SqlConnection con = new SqlConnection(strcon);
 
-            string sqlLatest = @"SELECT top 4 blog_id, blog_title, blog_description, blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY created_at DESC";
+            string sqlLatest = @"SELECT top 4 blog_id, blog_title, blog_description, blog_content, blog_image,last_updated FROM BlogPost WHERE deleted_at IS NULL ORDER BY blog_id DESC";
             SqlCommand cmdLatest = new SqlCommand(sqlLatest, con);
             con.Open();
 
