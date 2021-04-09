@@ -152,7 +152,7 @@
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary' id='" + snapshot.key + "-seen'>" + "</button>" +
                 "</td>" +
-                "<td>" + messages + "</td>" +
+                "<td> <span id='" + snapshot.key + "-message'>" + messages + "</span></td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
@@ -181,7 +181,7 @@
                 "<td>" +
                 "<button type='button' class='btn btn-sm btn-secondary' id='" + snapshot.key + "-seen'>" + "</button>" +
                 "</td>" +
-                "<td>" + messages + "</td>" +
+                "<td> <span id='" + snapshot.key + "-message'>" + messages + "</span></td>" +
                 "</tr>";
 
             document.getElementById("table-contents").innerHTML += html;
@@ -192,9 +192,56 @@
                 //Update seen value
                 document.getElementById(snapshot.key + "-seen").innerHTML = childSnapshot.val().seen;
 
-            });
+            });           
+            
         });
 
+        //Listen for the latest sent message
+        firebase.database().ref("VisitorMessages/").on("value", function (snapshot) {
+
+            console.log(snapshot.val())
+
+            snapshot.forEach(function (childSnapshot) {
+                var vistor_total_message = childSnapshot.numChildren();
+
+                console.log(vistor_total_message)
+
+                //Get the message array
+                message_array = Object.values(childSnapshot.val());
+
+                document.getElementById(childSnapshot.key + "-message").innerHTML = message_array[vistor_total_message - 1].message;
+                console.log(message_array[vistor_total_message - 1].message)
+
+            });
+
+            //Display the latest sent message
+            //firebase.database().ref("VisitorMessages/" + snapshot.key).on("value", function (childSnapshot) {
+            //    var vistor_total_message = snapshot.numChildren();
+
+            //    console.log(vistor_total_message)
+
+            //    //Get the message array
+            //    message_array = Object.values(childSnapshot.val());
+
+            //    document.getElementById(snapshot.key + "-message").innerHTML = message_array[vistor_total_message - 1].message;
+            //    console.log(message_array[vistor_total_message - 1].message)
+            //});
+        });
+
+        //Listen for the latest sent message
+        firebase.database().ref("UserMessages/").on("value", function (snapshot) {            
+            snapshot.forEach(function (childSnapshot) {
+                var vistor_total_message = childSnapshot.numChildren();
+
+                console.log(vistor_total_message)
+
+                //Get the message array
+                message_array = Object.values(childSnapshot.val());
+
+                document.getElementById(childSnapshot.key + "-message").innerHTML = message_array[vistor_total_message - 1].message;
+                console.log(message_array[vistor_total_message - 1].message)
+            });
+        });
         
     </script>
 </asp:Content>
