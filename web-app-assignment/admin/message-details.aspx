@@ -6,6 +6,21 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- Change navbar active --%>
+    <script>
+        $(document).ready(function () {
+            navbarActive();
+
+            //Add active to user management
+            contact_message = nav_option[3];
+            $(contact_message).addClass("active");
+
+            //Remove active from dashboard
+            dashboard = nav_option[0];
+            $(dashboard).removeClass("active");
+        });
+    </script>
+
    <form runat="server">
     <div class="message-container">
         <div class="message-title">
