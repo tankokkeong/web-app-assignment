@@ -26,6 +26,7 @@ namespace web_app_assignment
 
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
 
+        //Getter and Setters
         public class Tokenclass
         {
             public string access_token
@@ -85,6 +86,7 @@ namespace web_app_assignment
         {
             if (!IsPostBack)
             {
+                //If query string is not empty
                 if (Request.QueryString["code"] != null)
                 {
                     GetToken(Request.QueryString["code"].ToString());
@@ -92,14 +94,17 @@ namespace web_app_assignment
             }
         }
 
+        //Get User Token
         public void GetToken(string code)
         {
-            string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
+            //Perfome web Request
+            string qstring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/x-www-form-urlencoded";
             request.Method = "POST";
-            UTF8Encoding utfenc = new UTF8Encoding();
-            byte[] bytes = utfenc.GetBytes(poststring);
+
+            UTF8Encoding utfencode = new UTF8Encoding();
+            byte[] bytes = utfencode.GetBytes(qstring);
             Stream outputstream = null;
             try
             {
@@ -116,6 +121,7 @@ namespace web_app_assignment
             GetuserProfile(obj.access_token);
         }
 
+        //Get User info
         public void GetuserProfile(string accesstoken)
         {
             string url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + accesstoken + "";
@@ -130,7 +136,7 @@ namespace web_app_assignment
             JavaScriptSerializer js = new JavaScriptSerializer();
             Userclass userinfo = js.Deserialize<Userclass>(responseFromServer);
 
-
+            //User info
             string id = userinfo.id;
             string email = userinfo.email;
             string name = userinfo.name;
@@ -149,10 +155,13 @@ namespace web_app_assignment
 
                 con.Open();
 
+                //Query
                 string sql = "SELECT COUNT(*) FROM JobSeeker where gmail_token = @gmail_token  AND verified_at IS NOT NULL AND active = @active";
 
+                //Connect to the database
                 SqlCommand cmd = new SqlCommand(sql, con);
 
+                //Insert Parameters
                 cmd.Parameters.AddWithValue("@gmail_token", id);
                 cmd.Parameters.AddWithValue("@active", "active");
 
@@ -160,6 +169,7 @@ namespace web_app_assignment
 
                 if (output == 1)
                 {
+                    //Dictionary
                     Dictionary<string, string> UserDetail = new Dictionary<string, string>();
 
                     SqlConnection conn = new SqlConnection(strcon);
