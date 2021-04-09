@@ -267,7 +267,7 @@
             skills = skills.split(',');
             var select2_input = document.getElementById("skills-selection");
 
-            if (skillsQuery != "" && skills !== "") {
+            if (skillsQuery !== "" && skills != "") {
                 //Add Customize creation for the users
                 for (var i = 0; i < skills.length; i++) {
 
@@ -282,7 +282,7 @@
 
                 for (var i = 0; i < skills.length; i++) {
 
-                    if (document.getElementById(unescape(skills[i])) != null) {
+                    if (document.getElementById(unescape(skills[i])) !== null) {
                         document.getElementById(unescape(skills[i])).selected = true;
                     }
 
