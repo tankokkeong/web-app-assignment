@@ -131,7 +131,7 @@
                                     <div class=" form-group">
                                             <asp:TextBox ID="sign_recruiter_companyEmail" runat="server" ClientIDMode="Static" cssclass="form-control" placeholder="Company Email" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="recruiterCompEmailReq" runat ="server" ControlToValidate="sign_recruiter_companyEmail" ErrorMessage="Company Email is required!" CssClass="text-danger font-weight-bold" validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic"/>
-                                            <asp:RegularExpressionValidator ID="revRecruiterCompEmail" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="sign_recruiter_companyEmail" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                        
+                                            <asp:RegularExpressionValidator ID="revRecruiterCompEmail" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="sign_recruiter_companyEmail" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic" ValidationGroup="recruiter"></asp:RegularExpressionValidator>                                        
                                     </div>
                                     <div class="row form-group-row">
                                         <div class="col">       
@@ -141,7 +141,7 @@
                                             </div>
                                             
                                             <asp:RequiredFieldValidator id="recruiterPasswordReq" runat ="server" ControlToValidate="sign_recruiter_password" ErrorMessage="Password is required!"  validationgroup="recruiter" SetFocusOnError="True" Display="Dynamic" CssClass="text-danger font-weight-bold"/>
-                                            <asp:RegularExpressionValidator ID="revRecruiterPassword" runat="server" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_-])[A-Za-z\d$@$!%*#?&_-]{8,}$" ErrorMessage="Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character" ControlToValidate="sign_recruiter_password" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                    
+                                            <asp:RegularExpressionValidator ID="revRecruiterPassword" runat="server" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_-])[A-Za-z\d$@$!%*#?&_-]{8,}$" ErrorMessage="Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character" ControlToValidate="sign_recruiter_password" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic" ValidationGroup="recruiter"></asp:RegularExpressionValidator>                                                                                    
                                         </div>
                                         <div class="col">
                                             <div class="see-password-container">
@@ -204,7 +204,7 @@
                                             </div>
                                            
                                             <asp:RequiredFieldValidator id="seekerPasswordReq" runat ="server" ControlToValidate="sign_seeker_password" validationgroup="seeker" ErrorMessage="Password is required!" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic"/>
-                                            <asp:RegularExpressionValidator ID="revseekerPassword" runat="server" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_-])[A-Za-z\d$@$!%*#?&_-]{8,}$" ErrorMessage="Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character" ControlToValidate="sign_seeker_password" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>                                                                                    
+                                            <asp:RegularExpressionValidator ID="revseekerPassword" runat="server" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_-])[A-Za-z\d$@$!%*#?&_-]{8,}$" ErrorMessage="Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character" ControlToValidate="sign_seeker_password" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic" ValidationGroup="seeker"></asp:RegularExpressionValidator>                                                                                    
                                         </div>
                                         <div class="col">
                                             <div class="see-password-container">
