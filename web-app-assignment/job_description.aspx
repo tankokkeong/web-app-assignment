@@ -109,7 +109,7 @@
                     <div class="companyOverviewInformation">
                         <%--The CkEditor Stuff in here--%>
                         <div>
-                            <asp:Label ID="lbl_JobDescriptionCompOverview" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lbl_JobDescriptionCompOverview" runat="server" Text="" CssClass="bg-transparent"></asp:Label>
                         </div>
                         <div class="companyOverviewInformationDetails">
                             <h3 class="companyOverviewInformationDetailsHeader">Additional Company Information : </h3>

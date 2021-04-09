@@ -174,3 +174,10 @@
 .two-star-bg {
     background-color: #eca1a6 !important;
 }
+
+#ContentPlaceHolder1_lbl_JobDescriptionDesc p, #ContentPlaceHolder1_lbl_JobDescriptionDesc ul,
+#ContentPlaceHolder1_lbl_JobDescriptionDesc ol, #ContentPlaceHolder1_lbl_JobDescriptionDesc span,
+#ContentPlaceHolder1_lbl_JobDescriptionCompOverview p, #ContentPlaceHolder1_lbl_JobDescriptionCompOverview ul,
+#ContentPlaceHolder1_lbl_JobDescriptionCompOverview ol, #ContentPlaceHolder1_lbl_JobDescriptionCompOverview span {
+    background-color: transparent !important;
+}
