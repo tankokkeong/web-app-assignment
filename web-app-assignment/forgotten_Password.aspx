@@ -32,8 +32,8 @@
                     <div class="form-group">
                         <%--<input type="email" class="form-control" id="forgotPasswordFormEmail" aria-describedby="emailHelp" placeholder="Email">--%>
                         <asp:TextBox ID="forgotPasswordFormEmail" ClientIDMode="Static" cssclass="form-control" runat="server" placeholder="Email"></asp:TextBox>
-                         <asp:RequiredFieldValidator id="forgotPwReq" runat ="server" ControlToValidate="forgotPasswordFormEmail" validationgroup="reset_password" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
-                         <asp:RegularExpressionValidator ID="revforgotPasswordFormEmail" runat="server" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="forgotPasswordFormEmail" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"  validationgroup="reset_password"></asp:RegularExpressionValidator>                                        
+                         <asp:RequiredFieldValidator id="forgotPwReq" runat ="server" ControlToValidate="forgotPasswordFormEmail" validationgroup="reset_password" ErrorMessage="Email is required!" CssClass="text-danger font-weight-bold" SetFocusOnError="True" Display="Dynamic"/>
+                         <asp:RegularExpressionValidator ID="revforgotPasswordFormEmail" runat="server" CssClass="text-danger font-weight-bold" ValidationExpression="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" ErrorMessage="Example : example@example.com" ControlToValidate="forgotPasswordFormEmail" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"  validationgroup="reset_password"></asp:RegularExpressionValidator>                                        
                     
                     </div>
                     <div class="forgotPasswordFormEmailButton">
@@ -41,8 +41,8 @@
                         <asp:Button ID="forgotPasswordFormEmailButtonSubmit" ClientIDMode="Static" cssclass="btn btn-info" runat="server" Text="Send Reset Password Email"  validationgroup="reset_password" OnClick="forgotPasswordFormEmailButtonSubmit_Click"/>
                     </div>
                     <div class="form-group">
-                        <asp:Label ID="lblresult" runat="server"></asp:Label>
-                        <asp:Label ID="lblNoResult" CssClass="text-center" runat="server" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblresult" runat="server" CssClass="text-success font-weight-bold"></asp:Label>
+                        <asp:Label ID="lblNoResult" CssClass="text-danger font-weight-bold" runat="server"></asp:Label>
                     </div>
                 </form>
             </div>

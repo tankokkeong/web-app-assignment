@@ -26,11 +26,14 @@ namespace web_app_assignment
             {
                 SqlConnection con = new SqlConnection(strcon);
 
+                //Connection Open
+                con.Open();
+
+                //Query
                 string sql = "SELECT COUNT(*) FROM Recruiter WHERE facebook_token = '" + fb_id + "'";
 
+                //Connect to the database
                 SqlCommand cmd = new SqlCommand(sql, con);
-
-                con.Open();
 
                 string result = cmd.ExecuteScalar().ToString();
 
@@ -44,15 +47,18 @@ namespace web_app_assignment
 
                     con.Open();
 
-
+                    //Add Parameters
                     cmd.Parameters.AddWithValue("@email", fb_email);
                     cmd.Parameters.AddWithValue("@facebook_token", fb_id);
                     cmd.Parameters.AddWithValue("@active", "active");
 
+                    //Execute Query
                     cmd.ExecuteNonQuery();
 
+                    //Connection Close
                     con.Close();
 
+                    //Redirect to the web page with login status
                     SqlConnection conn = new SqlConnection(strcon);
 
                     string query = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL AND active = @active";
@@ -114,17 +120,22 @@ namespace web_app_assignment
                 {
                     SqlConnection connect = new SqlConnection(strcon);
 
-                    string sqlquery = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL AND active = @active";
-
-                    SqlCommand command = new SqlCommand(sqlquery, connect);
-
+                    //Connection Open
                     connect.Open();
 
+                    //Query
+                    string sqlquery = "SELECT COUNT(*) FROM Recruiter where facebook_token = @facebook_token  AND verified_at IS NOT NULL AND active = @active";
+
+                    //Connect to the database
+                    SqlCommand command = new SqlCommand(sqlquery, connect);
+
+                    //Add Parameters
                     command.Parameters.AddWithValue("@facebook_token", fb_id);
                     command.Parameters.AddWithValue("@active", "active");
 
                     int output = (int)command.ExecuteScalar();
 
+                    //If the result found
                     if (output == 1)
                     {
                         Dictionary<string, string> RecruiterDetails = new Dictionary<string, string>();
@@ -139,6 +150,7 @@ namespace web_app_assignment
 
                         command.Parameters.AddWithValue("@facebook_token", fb_id);
 
+                        //Read Data
                         SqlDataReader dread = command.ExecuteReader();
 
                         while (dread.Read())

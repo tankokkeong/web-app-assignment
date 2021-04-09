@@ -16,18 +16,18 @@ namespace web_app_assignment.admin
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if the permission granted
-            if(Session["admin_verify_key"] != null)
+            //if the permission is not granted
+            if(Session["admin_verify_key"] == null)
             {
-                string admin_key = Session["admin_verify_key"].ToString();
-            }
-            
+                Response.Redirect("login.aspx");
+            }       
         }
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(strcon);
 
+            //Query
             string query = "SELECT COUNT(*) FROM Admin WHERE verify_key = @verify_key";
 
             //Connect to the databse

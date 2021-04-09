@@ -26,12 +26,12 @@
                     <form>
                       <div class="form-group">
                           <asp:TextBox ID="txtEmail" runat="server" cssclass="form-control bg-login" placeholder="Email Address"></asp:TextBox>
-                           <asp:RequiredFieldValidator id="adminlogin_emailReq" runat ="server" ControlToValidate="txtEmail" validationgroup="admin_login" ErrorMessage="Email is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>
+                           <asp:RequiredFieldValidator id="adminlogin_emailReq" runat ="server" CssClass="text-danger font-weight-bold" ControlToValidate="txtEmail" validationgroup="admin_login" ErrorMessage="Email is required!" SetFocusOnError="True" Display="Dynamic"/>
                       </div>
 
                       <div class="form-group">
                           <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" cssclass="form-control bg-login" placeholder="Password"></asp:TextBox>           
-                           <asp:RequiredFieldValidator id="adminLogin_PasswordReq" runat ="server" ControlToValidate="txtPassword" validationgroup="admin_login" ErrorMessage="Passoword is required!" ForeColor="Red" SetFocusOnError="True" Display="Dynamic"/>                       
+                           <asp:RequiredFieldValidator id="adminLogin_PasswordReq" runat ="server" CssClass="text-danger font-weight-bold" ControlToValidate="txtPassword" validationgroup="admin_login" ErrorMessage="Passoword is required!" SetFocusOnError="True" Display="Dynamic"/>                       
                       </div>
 
                        <div class="text-center">

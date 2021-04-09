@@ -25,6 +25,12 @@ namespace web_app_assignment
             {
                 string seeker = Session["recruiter_verify_key"].ToString();
             }
+
+            //If no requested query string
+            if (Request.QueryString["Role"]== null)
+            {
+                Response.Redirect("login_signup.aspx");
+            }
         }
 
         protected void forgotPasswordFormEmailButtonSubmit_Click(object sender, EventArgs e)
@@ -32,11 +38,12 @@ namespace web_app_assignment
             //Set requested query string into variable
             string requestRole = Request.QueryString["Role"];
 
-
+            //If role is job seeker
             if(requestRole == "job-seeker")
             {
                 SqlConnection con = new SqlConnection(strcon);
 
+                //Query
                 string query = "UPDATE JobSeeker SET password = @password where verify_key = @verify_key";
 
                 //Connect to the database
