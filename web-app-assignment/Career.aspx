@@ -154,7 +154,7 @@
                             <asp:FileUpload ID="fileResume" runat="server" CssClass="bg-light mt-1 mb-2"/>
                             <asp:TextBox ID="txtResumeFile" runat="server" style="display:none;"/>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Resume is required!" ControlToValidate="fileResume" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .pdf are allowed!" ControlToValidate="fileResume" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.pdf)$" Display="Dynamic"></asp:RegularExpressionValidator>     
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="only .pdf are allowed!" ControlToValidate="fileResume" CssClass="text-danger" ValidationExpression="([a-zA-Z0-9\s_\\.\\()\\'\\%\\*\\?\-:])+(.pdf)$" Display="Dynamic"></asp:RegularExpressionValidator>     
                         </div>
 
                       
