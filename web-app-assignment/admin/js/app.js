@@ -64,3 +64,7 @@ function dashboardSearch() {
     
   
 }
+
+function logoutClick() {
+    window.location.href = window.location.href + "?logout=1";
+}

@@ -17,6 +17,15 @@ namespace web_app_assignment.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string logout_string = Request.QueryString["logout"] ?? "None";
+
+            //Check logout
+            if (logout_string != "None")
+            {
+                Session.Remove("Admin");
+                Response.Redirect("login.aspx");
+            }
+
             if (Session["Admin"] != null)
             {
                 Dictionary<string, string> UserDetails = (Dictionary<string, string>)Session["Admin"];
@@ -29,13 +38,6 @@ namespace web_app_assignment.admin
             {
                 Response.Redirect("login.aspx");
             }
-        }
-        protected void logout_Click (object sender, EventArgs e)
-        {           
-           
-            Session.Remove("Admin");
-
-            Response.Redirect("login.aspx");
         }
 
     }
