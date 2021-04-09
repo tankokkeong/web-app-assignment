@@ -1920,6 +1920,7 @@
     <Content Include="images\user profile\invisible-min.png" />
     <Content Include="images\user profile\linkedin-min.png" />
     <Content Include="images\user profile\man-user-min.png" />
+    <Content Include="images\user profile\no-profile_user.png" />
     <Content Include="images\user profile\pin-min.png" />
     <Content Include="images\user profile\twitter-min.png" />
     <Content Include="job_description.aspx" />

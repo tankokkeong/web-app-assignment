@@ -61,8 +61,7 @@ namespace web_app_assignment
                     SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        lblRecruiterName.Text = dr["company_name"].ToString();
-                        imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        lblRecruiterName.Text = dr["company_name"].ToString();  
                         lblRecruiterState.Text = dr["state"].ToString();
                         lblRecruiterIndustry.Text = dr["industry"].ToString();
                         linkFB.NavigateUrl = dr["facebook_link"].ToString();
@@ -78,6 +77,15 @@ namespace web_app_assignment
                         lblRecruiterZip.Text = dr["zip_code"].ToString();
                         lblRecruiterCountry.Text = dr["country"].ToString();
                         lblRecruiterRating.Text = getCompanyAverageRating(dr["recruiter_id"].ToString());
+
+                        if (dr["company_photo"].ToString() == "")
+                        {
+                            imgRecruiterProfile.ImageUrl = "Images/user profile/no-profile_user.png";
+                        }
+                        else
+                        {
+                            imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        }
 
                         //Check premium user
                         if (dr["is_premium"].ToString() != "true")
@@ -159,7 +167,6 @@ namespace web_app_assignment
                     while (dr.Read())
                     {
                         lblRecruiterName.Text = dr["company_name"].ToString();
-                        imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
                         lblRecruiterState.Text = dr["state"].ToString();
                         lblRecruiterIndustry.Text = dr["industry"].ToString();
                         linkFB.NavigateUrl = dr["facebook_link"].ToString();
@@ -175,7 +182,16 @@ namespace web_app_assignment
                         lblRecruiterZip.Text = dr["zip_code"].ToString();
                         lblRecruiterCountry.Text = dr["country"].ToString();
 
-                        if(Session["User"] != null)
+                        if (dr["company_photo"].ToString() == "")
+                        {
+                            imgRecruiterProfile.ImageUrl = "Images/user profile/no-profile_user.png";
+                        }
+                        else
+                        {
+                            imgRecruiterProfile.ImageUrl = dr["company_photo"].ToString();
+                        }
+
+                        if (Session["User"] != null)
                         {
                             string seeker_id = helper.getSeekerID();
                             if (helper.getSeekerIsPremium(seeker_id))

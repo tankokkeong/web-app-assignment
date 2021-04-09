@@ -78,7 +78,15 @@ namespace web_app_assignment
                         lblSeekerCountry.Text = dr["country"].ToString();
                         lblSeekerExperience.Text = dr["experience"].ToString();
                         lblSeekerSkills.Text = dr["skills"].ToString();
-                        imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+
+                        if (dr["user_photo"].ToString() == "")
+                        {
+                            imgSeekerProfile.ImageUrl = "Images/user profile/no-profile_user.png";
+                        }
+                        else
+                        {
+                            imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+                        }
 
                         //Check premium user
                         if (dr["is_premium"].ToString() != "true")
@@ -137,7 +145,15 @@ namespace web_app_assignment
                         lblSeekerCountry.Text = dr["country"].ToString();
                         lblSeekerExperience.Text = dr["experience"].ToString();
                         lblSeekerSkills.Text = dr["skills"].ToString();
-                        imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+
+                        if (dr["user_photo"].ToString() == "")
+                        {
+                            imgSeekerProfile.ImageUrl = "Images/user profile/no-profile_user.png";
+                        }
+                        else
+                        {
+                            imgSeekerProfile.ImageUrl = dr["user_photo"].ToString();
+                        }
                     }
 
                     //Close connection
