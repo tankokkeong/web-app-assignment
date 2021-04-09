@@ -79,10 +79,11 @@ namespace web_app_assignment.admin
                 user_id = "";
                 recruiter_id = "";
 
+                Response.Write("Live Chat Suucessful");
             }
             catch (Exception error)
             {
-                Response.Write("<script>alert(' +" + error.Message + "'); </script>");
+                Response.Write(error.Message);
             }
         }
     }

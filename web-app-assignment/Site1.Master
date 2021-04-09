@@ -352,7 +352,7 @@
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             var time = today.getHours() + ":" + today.getMinutes();
             var sentTime = time + ' ' + date;
-            var visitor = "Visitor" + String(document.getElementById("txtVisitorID").value);
+            var visitor = String(document.getElementById("txtVisitorID").value);
         }
 
         function openChat() {
@@ -629,18 +629,6 @@
 
         function clearTextBox() {
             document.getElementById("message").value = "";
-        }
-
-        function logout() {
-            
-            var logout = '<%=this.Request.QueryString["logout"]%>';
-
-            if (logout == "1") {
-                FB.logout(function (response) {
-                   
-                });
-
-            }  
         }
     </script>
 

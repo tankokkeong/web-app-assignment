@@ -108,7 +108,7 @@
                     "received": 0,
                 });
 
-                if (query.includes("Visitor")) {
+                if (query.length == 32) {
                     //save in database
                     firebase.database().ref("VisitorMessages/" + query + "/").push({
                         "sender": query,
@@ -197,7 +197,7 @@
                         "</div>";
 
 
-                        if (query.includes("Visitor")) {
+                        if (query.length == 32) {
                             firebase.database().ref("seenMessages/" + query + "/").set({
                                 seen: "seen",
                             });
