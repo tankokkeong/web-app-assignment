@@ -485,16 +485,6 @@
 
         var checkSeen = "";
 
-        //if (verifyEmail) {
-        //    firebase.database().ref("seenMessages/User/" + logn + "/").on("value", function (snapshot) {
-        //        checkSeen = snapshot.val().seen;
-        //    });
-        //} else {
-        //    firebase.database().ref("seenMessages/" + visitor + "/").on("value", function (snapshot) {
-        //        checkSeen = snapshot.val().seen;
-        //    });
-        //}
-
         if (verifyEmail) {
             var message_container = document.getElementById('messages');
 
