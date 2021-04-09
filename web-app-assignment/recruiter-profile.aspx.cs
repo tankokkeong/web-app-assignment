@@ -84,13 +84,14 @@ namespace web_app_assignment
                         {
                             ltrPlan.Text = "Free  <button type='button' class='btn bg-lightgreen text-light' data-toggle='modal' data-target='#premiumModal'>Upgrade</button>";
                             lblFreePlan.Text = "Current Plan";
-                            lblPremiumPlan.Text = "<a class='text-lightgreen' href='upgrade.aspx'>Upgrade</a>";
+                            lblPremiumPlan.Text = "<a class='text-lightgreen' href='upgrade.aspx'>Upgrade</a>";                           
                         }
                         else
                         {
                             ltrPlan.Text = "Premium <button type='button' class='btn bg-lightgreen text-light' data-toggle='modal' data-target='#premiumModal'>View</button>";
                             lblFreePlan.Text = "Free Plan";
                             lblPremiumPlan.Text = "<span class='text-lightgreen'>Current Plan</span>";
+                            myRatingRow.Visible = true;
 
                             is_premium = "true";
                         }
@@ -173,7 +174,16 @@ namespace web_app_assignment
                         lblRecruiterState2.Text = dr["state"].ToString();
                         lblRecruiterZip.Text = dr["zip_code"].ToString();
                         lblRecruiterCountry.Text = dr["country"].ToString();
-                        lblRecruiterRating.Text = dr["rating"].ToString();
+
+                        if(Session["User"] != null)
+                        {
+                            string seeker_id = helper.getSeekerID();
+                            if (helper.getSeekerIsPremium(seeker_id))
+                            {
+                                myRatingRow.Visible = true;
+                                lblRecruiterRating.Text = getCompanyAverageRating(dr["recruiter_id"].ToString());
+                            }
+                        }
                     }
 
                     //Close connection

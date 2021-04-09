@@ -13,9 +13,26 @@ namespace web_app_assignment
     public partial class job_lists : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        
+
+        //Create Helper Class
+        Helper helper = new Helper();
+
+        public string is_premium = "false";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
+            if(Session["User"] != null)
+            {
+                string seeker_id = helper.getSeekerID();
+
+                if (helper.getSeekerIsPremium(seeker_id))
+                {
+                    is_premium = "true";
+                }
+            }
         }
 
         protected void dpPagination_PreRender(object sender, EventArgs e)

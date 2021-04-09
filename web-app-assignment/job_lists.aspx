@@ -93,8 +93,8 @@
                                         <div class='JobListContentsAllCompaniesBoxesCompanyLogoPosition col'>
                                             <img src='<%#Eval("company_photo") %>' alt='company' class='JobListContentsAllCompaniesBoxesCompanyLogoPosition'/>
                                             <div class='JobListContentsAllCompaniesBoxesDetailsStars'>
-                                                <div class='jobRating ml-2'>
-                                                    <p>
+                                                <div class='jobRating ml-2'>                                                   
+                                                    <p runat="server" id="JobRatingDisplay" visible='<%#(is_premium == "true") ? true : false %>'>
                                                         <%#Eval("job_rating") %><i class='fas fa-star text-warning ml-2'></i>
                                                     </p>
                                                 </div>
