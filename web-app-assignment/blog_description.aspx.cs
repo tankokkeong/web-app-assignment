@@ -59,10 +59,13 @@ namespace web_app_assignment
                 litResultLike.Text += "<div class='swiper-slide'>" +
                                              "<div class='card' style='width: 100%;'>" +
                                              "<a href='blog_description.aspx?blog=" + drLike["blog_id"] + "' style='text-decoration: none;'>" +
-                                                 "<img src='../" + drLike["blog_image"] +"' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
+                                                 "<img src='../" + drLike["blog_image"] + "' style='width:100%; height:300px' class='card-img-top' alt='...'>" +
                                                  "<div class='card-body text-center'>" +
-                                                     "<p class='card-text font-weight-bold'>"+ drLike["blog_title"] +"</p>" +
-                                                     "<p class='card-text font-weight-bold'>" + drLike["blog_description"].ToString().Substring(0, 20) + "...</p>" +
+                                                     "<p class='card-text font-weight-bold'>" + drLike["blog_title"] + "</p>" +
+                                                     "<p class='card-text font-weight-bold'>";
+
+                if (drLike["blog_description"].ToString().Length >= 20) {
+                    litResultLike.Text += drLike["blog_description"].ToString().Substring(0, 20) + "...</p>" +
                                                  "</div>" +
 
                                                      "<div class='card-footer text-muted text-center'>" +
@@ -71,6 +74,19 @@ namespace web_app_assignment
                                              "</a>" +
                                              "</div>" +
                                          "</div>";
+                }
+                else
+                {
+                    litResultLike.Text += drLike["blog_description"].ToString().Substring(0) + "...</p>" +
+                                                 "</div>" +
+
+                                                     "<div class='card-footer text-muted text-center'>" +
+                                                        "<p class='text-muted text-center'>" + drLike["last_updated"] + "</p>" +
+                                                     "</div>" +
+                                             "</a>" +
+                                             "</div>" +
+                                         "</div>";
+                }
             }
 
             drLike.Close();
