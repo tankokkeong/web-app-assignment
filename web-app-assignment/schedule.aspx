@@ -217,6 +217,8 @@
          */
         function appendPre(message) {
             alert(message);
+
+            window.location.href = "recruiter-profile.aspx";
         }
 
         //Print out timezones for the form inputs

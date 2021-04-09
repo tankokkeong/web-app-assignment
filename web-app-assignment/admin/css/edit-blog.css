@@ -3,3 +3,10 @@
     padding: 2.5%;
 }
 
+#ContentPlaceHolder1_txtEditDescription img, #ContentPlaceHolder1_imgBlogPhoto{
+    max-width:100%!important;
+}
+
+#ContentPlaceHolder1_txtEditDescription ul, #ContentPlaceHolder1_txtEditDescription ol{
+    margin-left:20px;
+}

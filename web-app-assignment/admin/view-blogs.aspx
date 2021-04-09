@@ -57,7 +57,7 @@
                 <div class="col-sm-10">
                     <div>
 <%--                        <textarea id="blogDescription_editor" class="form-control" placeholder="Write Your Blog Here" name="blogDescription_editor"></textarea>--%>
-                        <div id="txtEditDescription" ReadOnly="true" class="form-control" runat="server"></div>
+                        <div id="txtEditDescription" ReadOnly="true" class="" runat="server"></div>
                     </div>
                 </div>
             </div>
