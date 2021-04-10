@@ -163,6 +163,9 @@ namespace web_app_assignment
         {
             if(Session["User"] != null)
             {
+                //Check is profile empty
+                checkCompleteProfile();
+
                 try
                 {
                     string seekerID = helper.getSeekerID();
@@ -714,6 +717,103 @@ namespace web_app_assignment
             }
 
             return job_rating;
+        }
+
+        protected void checkCompleteProfile()
+        {
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            string seeker_id = helper.getSeekerID();
+
+            //Read User profile Details
+            string sql = "SELECT * FROM JobSeeker WHERE seeker_id = @seeker_id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            //Insert parameter
+            cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
+
+            int invalid_count = 0;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                //Check empty details
+
+                if (dr["user_photo"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["user_photo"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["full_name"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["introduction"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["mobile_number"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["contact_email"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["location"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["country"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["gender"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["profession"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["prefer_industry"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+
+                if (dr["skills"].ToString() == "")
+                {
+                    invalid_count++;
+                }
+            }
+
+            //Close connection
+            con.Close();
+
+            if (invalid_count > 0)
+            {
+                Response.Write("<script>alert('Please complete your profile first!');</script>");
+                Response.Write("<script>window.location.href = 'user-profile.aspx';</script>");
+            }
         }
     }
 }
