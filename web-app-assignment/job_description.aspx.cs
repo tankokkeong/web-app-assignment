@@ -164,73 +164,99 @@ namespace web_app_assignment
             if(Session["User"] != null)
             {
                 //Check is profile empty
-                checkCompleteProfile();
-
-                try
+                if (checkCompleteProfile())
                 {
-                    string seekerID = helper.getSeekerID();
-                    string is_premium = "";
-                    bool applicationSent = false;
-
-                    applicationSent = checkApplicationSent();
-
-                    if (applicationSent)
+                    try
                     {
-                        Response.Write("<script>alert('Already Applied For this Job');</script>");
-                    }
-                    else
-                    {
-                        SqlConnection con = new SqlConnection(strcon);
-                        if (con.State == ConnectionState.Closed)
+                        string seekerID = helper.getSeekerID();
+                        string is_premium = "";
+                        bool applicationSent = false;
+
+                        applicationSent = checkApplicationSent();
+
+                        if (applicationSent)
                         {
-                            con.Open();
+                            Response.Write("<script>alert('Already Applied For this Job');</script>");
                         }
-
-                        string selectSeekerID = "SELECT * FROM JobSeeker WHERE seeker_id = @seekerID AND mobile_number IS NOT NULL" +
-                            " AND contact_email IS NOT NULL AND location IS NOT NULL AND profession IS NOT NULL";
-
-                        SqlCommand cmd = new SqlCommand(selectSeekerID, con);
-
-                        cmd.Parameters.AddWithValue("@seekerID", seekerID);
-
-                        SqlDataReader dr = cmd.ExecuteReader();
-
-                        while (dr.Read())
+                        else
                         {
-                            seekerID = dr["seeker_id"].ToString();
-
-                            if (dr["is_premium"].ToString() == "true")
-                            {
-                                is_premium = "true";
-                            }
-                        }
-
-                        con.Close();
-
-                        if (is_premium != "true")
-                        {
-                            //Open Connection
-                            con = new SqlConnection(strcon);
+                            SqlConnection con = new SqlConnection(strcon);
                             if (con.State == ConnectionState.Closed)
                             {
                                 con.Open();
                             }
 
-                            string sql_jobApplied = "SELECT COUNT(*) FROM ApplicationStatus WHERE seeker_id = @seeker_id AND deleted_at IS NULL";
+                            string selectSeekerID = "SELECT * FROM JobSeeker WHERE seeker_id = @seekerID AND mobile_number IS NOT NULL" +
+                                " AND contact_email IS NOT NULL AND location IS NOT NULL AND profession IS NOT NULL";
 
-                            cmd = new SqlCommand(sql_jobApplied, con);
+                            SqlCommand cmd = new SqlCommand(selectSeekerID, con);
 
-                            //Insert parameter
-                            cmd.Parameters.AddWithValue("@seeker_id", seekerID);
+                            cmd.Parameters.AddWithValue("@seekerID", seekerID);
 
-                            int applied_count = Convert.ToInt32(cmd.ExecuteScalar());
+                            SqlDataReader dr = cmd.ExecuteReader();
 
-                            //Close connection
+                            while (dr.Read())
+                            {
+                                seekerID = dr["seeker_id"].ToString();
+
+                                if (dr["is_premium"].ToString() == "true")
+                                {
+                                    is_premium = "true";
+                                }
+                            }
+
                             con.Close();
 
-                            if (applied_count > 0)
+                            if (is_premium != "true")
                             {
-                                Response.Write("<script>alert('You can only apply 1 job, please upgrade your plan!');</script>");
+                                //Open Connection
+                                con = new SqlConnection(strcon);
+                                if (con.State == ConnectionState.Closed)
+                                {
+                                    con.Open();
+                                }
+
+                                string sql_jobApplied = "SELECT COUNT(*) FROM ApplicationStatus WHERE seeker_id = @seeker_id AND deleted_at IS NULL";
+
+                                cmd = new SqlCommand(sql_jobApplied, con);
+
+                                //Insert parameter
+                                cmd.Parameters.AddWithValue("@seeker_id", seekerID);
+
+                                int applied_count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                                //Close connection
+                                con.Close();
+
+                                if (applied_count > 0)
+                                {
+                                    Response.Write("<script>alert('You can only apply 1 job, please upgrade your plan!');</script>");
+                                }
+                                else
+                                {
+                                    //Open Connection
+                                    con = new SqlConnection(strcon);
+                                    if (con.State == ConnectionState.Closed)
+                                    {
+                                        con.Open();
+                                    }
+
+                                    string post_id = Request.QueryString["post_id"] ?? "";
+
+                                    string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
+                                                "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
+
+                                    cmd = new SqlCommand(sql, con);
+
+                                    cmd.Parameters.AddWithValue("@post_id", post_id);
+                                    cmd.Parameters.AddWithValue("@seeker_id", seekerID);
+
+                                    cmd.ExecuteNonQuery();
+
+                                    con.Close();
+
+                                    Response.Write("<script>alert('Application Sent Successfully!');</script>");
+                                }
                             }
                             else
                             {
@@ -253,43 +279,26 @@ namespace web_app_assignment
 
                                 cmd.ExecuteNonQuery();
 
+                                //Close Connection
                                 con.Close();
 
                                 Response.Write("<script>alert('Application Sent Successfully!');</script>");
                             }
                         }
-                        else
-                        {
-                            //Open Connection
-                            con = new SqlConnection(strcon);
-                            if (con.State == ConnectionState.Closed)
-                            {
-                                con.Open();
-                            }
-
-                            string post_id = Request.QueryString["post_id"] ?? "";
-
-                            string sql = "INSERT INTO ApplicationStatus (applied_time, applied_status, seeker_id, post_id, created_at) " +
-                                        "VALUES(GETDATE(), 'Pending', @seeker_id, @post_id, GETDATE())";
-
-                            cmd = new SqlCommand(sql, con);
-
-                            cmd.Parameters.AddWithValue("@post_id", post_id);
-                            cmd.Parameters.AddWithValue("@seeker_id", seekerID);
-
-                            cmd.ExecuteNonQuery();
-
-                            //Close Connection
-                            con.Close();
-
-                            Response.Write("<script>alert('Application Sent Successfully!');</script>");
-                        }
+                    }
+                    catch (Exception error)
+                    {
+                        Response.Write("<script>alert('" + error.Message + "');</script>");
                     }
                 }
-                catch (Exception error)
+                else
                 {
-                    Response.Write("<script>alert('" + error.Message + "');</script>");
+                    //Ask user to complete the profile first
+                    Response.Write("<script>alert('Please complete your profile first!');</script>");
+                    Response.Write("<script>window.location.href = 'user-profile.aspx';</script>");
                 }
+
+                
             }
             else
             {
@@ -719,8 +728,10 @@ namespace web_app_assignment
             return job_rating;
         }
 
-        protected void checkCompleteProfile()
+        protected bool checkCompleteProfile()
         {
+            bool valid_profile = false;
+
             SqlConnection con = new SqlConnection(strcon);
             if (con.State == ConnectionState.Closed)
             {
@@ -809,11 +820,12 @@ namespace web_app_assignment
             //Close connection
             con.Close();
 
-            if (invalid_count > 0)
+            if (invalid_count == 0)
             {
-                Response.Write("<script>alert('Please complete your profile first!');</script>");
-                Response.Write("<script>window.location.href = 'user-profile.aspx';</script>");
+                valid_profile = true;               
             }
+
+            return valid_profile;
         }
     }
 }
