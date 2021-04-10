@@ -216,8 +216,12 @@ namespace web_app_assignment.admin
                 cmdDelete.ExecuteNonQuery();
                 con.Close();
 
-                Response.Write("<script>alert('Record Deleted successful!');</script>");
-                Response.Redirect("display-blogs.aspx");
+                //Redirect back 
+                Response.Write("<script>alert('Blog deleted successful!')</script>");
+                Response.Write("<script>window.location.href = 'display-blogs.aspx';</script>");
+
+                //Response.Write("<script>alert('Record Deleted successful!');</script>");
+                //Response.Redirect("display-blogs.aspx");
             }
             catch (Exception error)
             {

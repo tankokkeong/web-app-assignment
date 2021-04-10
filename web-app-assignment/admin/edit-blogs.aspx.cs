@@ -109,7 +109,11 @@ namespace web_app_assignment.admin
             //Close Connection
             con.Close();
 
-            Response.Redirect("display-blogs.aspx");
+            //Redirect back 
+            Response.Write("<script>alert('Blog edited successful!')</script>");
+            Response.Write("<script>window.location.href = 'display-blogs.aspx';</script>");
+
+            //Response.Redirect("display-blogs.aspx");
         }
     }
 }
