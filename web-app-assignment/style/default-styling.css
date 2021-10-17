@@ -171,12 +171,12 @@ footer {
     display: none;
 }
 
-.sender-messagesContexts {
+.sender-message-context {
     display: flex;
     justify-content: flex-end;
 }
 
-.sender-messagesContents {
+.sender-message-content {
     background-color: #92989C;
     color: white;
     width: 50%;
@@ -184,14 +184,9 @@ footer {
     border-radius: 15px;
     margin: 15px;
     position: relative;
-    overflow-wrap: break-word;
 }
 
-.replier-messagesContexts {
-    display: block;
-}
-
-.replier-messagesContents {
+.replier-message-content {
     background-color: #007d71;
     color: white;
     padding: 10px;

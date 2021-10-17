@@ -43,7 +43,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,6 +150,7 @@
     <Content Include="admin\js\bootstrap.min.js" />
     <Content Include="admin\js\calendar.js" />
     <Content Include="admin\js\jquery-3.2.1.min.js" />
+    <Content Include="admin\js\admin-live-chat.js" />
     <Content Include="admin\js\main.js" />
     <Content Include="admin\js\plugins\bootstrap-datepicker.min.js" />
     <Content Include="admin\js\plugins\bootstrap-notify.min.js" />
@@ -1931,7 +1956,15 @@
     <Content Include="recruiter-profile.aspx" />
     <Content Include="Reset_Password.aspx" />
     <Content Include="schedule.aspx" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="script\app.js" />
+    <Content Include="script\live-chat.js" />
     <Content Include="select2%404.1.0-beta.1\css\select2.min.css" />
     <Content Include="select2%404.1.0-beta.1\js\select2.min.js" />
     <Content Include="sqldb.txt" />
@@ -2244,6 +2277,7 @@
     <Compile Include="admin\clients-management-r.aspx.designer.cs">
       <DependentUpon>clients-management-r.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChatHub.cs" />
     <Compile Include="contact-us.aspx.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2422,6 +2456,7 @@
     <Compile Include="login_signup.aspx.designer.cs">
       <DependentUpon>login_signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="terms_conditions.aspx.cs">
       <DependentUpon>terms_conditions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2519,6 +2554,8 @@
     <Content Include="fontawesome-free-5.15.1-web\webfonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

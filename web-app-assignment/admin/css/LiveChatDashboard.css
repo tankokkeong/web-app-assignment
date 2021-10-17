@@ -10,16 +10,6 @@
     padding: 1%;
 }
 
-.LiveChat_MessagesDataImages {
-    width: 100px;
-    padding: 2.5%;
-    background-color: #EEF2FD;
-}
-
-.LiveChat_MessagesDataDetails {
-    display: flex;
-}
-
 .LiveChat_MessagesInput {
     margin-top: 2.5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -31,12 +21,6 @@
     width: 25px;
 }
 
-.table{
-    margin-bottom: 0;
-}
-
-.table-rowLiveChat {
-}
 
 .usernameLiveChat {
     text-decoration: none;
@@ -47,4 +31,29 @@
     text-decoration: none;
     font-weight: 500;
     color: #212529;
+}
+
+.chat-row {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px;
+    margin-left: 0 !important;
+    border-bottom: 1px solid #cccccc;
+}
+
+.chat-row:hover {
+    background-color: #cccccc;
+    cursor:pointer;
+}
+
+.user-message-dashboard{
+    overflow:hidden;
+}
+
+.chatbox-img{
+    font-size:50px;
+}
+
+.chat-img-container{
+    padding:15px;
 }

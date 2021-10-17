@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,58 +13,88 @@ namespace web_app_assignment
 {
     public partial class chat_post : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Read chat content from post submit
-            var chat_content = Request.Form["chat_content"];
-            var seeker_id = Request.Form["seeker_id"];
-            var recruiter_id = Request.Form["recruiter_id"];
-            //Insert Chat Record
-            try
+           
+        }
+
+        [WebMethod]
+        public static string submitLiveMessage(string chat_content, string sender_id, string sender_name)
+        {
+            //Declare the connection strings
+            string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Open Connection
+            if (con.State == ConnectionState.Closed)
             {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+                con.Open();
+            }
 
-                string sql = "INSERT INTO ChatMessages(chat_content, sent_time, sent, received, recruiter_id, seeker_id, created_at) " +
-                             "VALUES(@chat_content, @sent_time, @sent, @received, @recruiter_id, @seeker_id, @created_at)";
+            string sql = "INSERT INTO LiveMessages(chat_content, seeker_id, recruiter_id, visitor_id, admin_id, seen_message, sender_name, created_at) " +
+                             "VALUES(@chat_content, @seeker_id, @recruiter_id, @visitor_id, @admin_id, @seen_message, @sender_name, @created_at)";
 
-                //Connect to the database
-                SqlCommand cmd = new SqlCommand(sql, con);
+            //Connect to the database
+            SqlCommand cmd = new SqlCommand(sql, con);
 
+            string sent_time = DateTime.Now.ToString("dd MMMM yyyy h:mm tt");
+
+
+
+            if (sender_id.IndexOf("_") == 6)
+            {
                 //Insert parameters
+                cmd.Parameters.AddWithValue("@seeker_id", sender_id.Substring(7));
+                cmd.Parameters.AddWithValue("@recruiter_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@visitor_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@admin_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@seen_message", "unseen");
+                cmd.Parameters.AddWithValue("@sender_name", sender_name);
                 cmd.Parameters.AddWithValue("@chat_content", chat_content);
-                cmd.Parameters.AddWithValue("@sent_time", DateTime.Now);
-                cmd.Parameters.AddWithValue("@recruiter_id", recruiter_id);
-                cmd.Parameters.AddWithValue("@seeker_id", seeker_id);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
-
-                //Check role
-                if(Session["Recruiter"] != null)
-                {
-                    cmd.Parameters.AddWithValue("@sent", "Recruiter");
-                    cmd.Parameters.AddWithValue("@received", "Job Seeker");
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@sent", "Job Seeker");
-                    cmd.Parameters.AddWithValue("@received", "Recruiter");
-                }
 
                 //Execute the queries
                 cmd.ExecuteNonQuery();
-
-                //Close connection
-                con.Close();
             }
-            catch (Exception error)
+            else if (sender_id.IndexOf("_") == 9)
             {
-                Response.Write("<script>alert(' +" + error.Message + "'); </script>");
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@seeker_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@recruiter_id", sender_id.Substring(10));
+                cmd.Parameters.AddWithValue("@visitor_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@admin_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@seen_message", "unseen");
+                cmd.Parameters.AddWithValue("@sender_name", sender_name);
+                cmd.Parameters.AddWithValue("@chat_content", chat_content);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                //Execute the queries
+                cmd.ExecuteNonQuery();
             }
+            else
+            {
+                //Insert parameters
+                cmd.Parameters.AddWithValue("@seeker_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@recruiter_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@visitor_id", sender_id);
+                cmd.Parameters.AddWithValue("@admin_id", DBNull.Value);
+                cmd.Parameters.AddWithValue("@seen_message", "unseen");
+                cmd.Parameters.AddWithValue("@sender_name", sender_name);
+                cmd.Parameters.AddWithValue("@chat_content", chat_content);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+
+                //Execute the queries
+                cmd.ExecuteNonQuery();
+            }
+
+
+
+            //Close connection
+            con.Close();
+
+            return sent_time;
         }
     }
 }

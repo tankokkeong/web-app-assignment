@@ -16,6 +16,8 @@ namespace web_app_assignment
     public partial class WebForm1 : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ToString();
+        Helper helper = new Helper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Post Back to Home if there is no Session in the page
@@ -92,6 +94,7 @@ namespace web_app_assignment
                             while (dread.Read())
                             {
                                 //Add Parameter into Dictionary
+                                UserDetail.Add("user_id", dread["seeker_id"].ToString());
                                 UserDetail.Add("user_name", dread["full_name"].ToString());
                                 UserDetail.Add("user_email", dread["email"].ToString());
                                 UserDetail.Add("user_skills", dread["skills"].ToString());
@@ -115,6 +118,10 @@ namespace web_app_assignment
 
                             //Dictionary store in session
                             Session["User"] = UserDetail;
+
+                            //Remove chat ID
+                            helper.removeChatID();
+
                             Response.Redirect("home.aspx");
                         }
                         else
@@ -185,6 +192,7 @@ namespace web_app_assignment
                             while (dR.Read())
                             {
                                 //Insert Parameters into Dictionary
+                                RecruiterDetails.Add("recruiter_id", dR["recruiter_id"].ToString());
                                 RecruiterDetails.Add("recruiter_email", dR["email"].ToString());
                                 RecruiterDetails.Add("recruiter_mobile", dR["mobile_number"].ToString());
                                 RecruiterDetails.Add("recruiter_companyphoto", dR["company_photo"].ToString());
@@ -212,6 +220,9 @@ namespace web_app_assignment
                             }
                                 //Store Dictionary into Session
                                 Session["Recruiter"] = RecruiterDetails;
+
+                            //Remove chat ID
+                            helper.removeChatID();
 
                             Response.Redirect("home.aspx");
                         }

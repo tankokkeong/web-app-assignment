@@ -15,6 +15,11 @@ namespace web_app_assignment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         Helper helper = new Helper();
 
+        //Variables for live message
+        public string sender_id = "";
+        public string user_name = "";
+        public string user_role = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Check logout
@@ -209,43 +214,25 @@ namespace web_app_assignment
                     con.Open();
                 }
 
+                //Get live chat info
                 if (Session["User"] != null)
                 {
-                    string seeker_email = UserDetail["user_email"];
+                    user_name = UserDetail["user_name"];
+                    sender_id = "Seeker_" + UserDetail["user_id"];
+                    user_role = "Seeker";
 
-                    string sql = "SELECT * FROM JobSeeker WHERE email = @email";
-
-                    SqlCommand command = new SqlCommand(sql, con);
-
-                    command.Parameters.AddWithValue("@email", seeker_email);
-
-                    SqlDataReader dread = command.ExecuteReader();
-
-                    while (dread.Read())
-                    {
-                        txtUsername.Text = dread["email"].ToString();
-                    }
-
-                    txtSeeker.Text = helper.getSeekerID();
                 }
                 else if (Session["Recruiter"] != null)
                 {
-                    string recruiter_email = RecruiterDetail["recruiter_email"];
-
-                    string sql = "SELECT * FROM Recruiter WHERE email = @email";
-
-                    SqlCommand command = new SqlCommand(sql, con);
-
-                    command.Parameters.AddWithValue("@email", recruiter_email);
-
-                    SqlDataReader dread = command.ExecuteReader();
-
-                    while (dread.Read())
-                    {
-                        txtUsername.Text = dread["email"].ToString();
-                    }
-
-                    txtRecruiter.Text = helper.getRecruiterID();
+                    user_name = RecruiterDetail["recruiter_company"];
+                    sender_id = "Recruiter_" + RecruiterDetail["recruiter_id"];
+                    user_role = "Recruiter";
+                }
+                else
+                {
+                    user_name = "Visitor " + helper.getVistorID();
+                    sender_id = helper.getVistorID();
+                    user_role = "Visitor";
                 }
 
                 con.Close();
@@ -253,7 +240,8 @@ namespace web_app_assignment
                 //Display Current Site information
                 getCurrentSiteJobDetails();
 
-                txtVisitorID.Text = helper.getVistorID();
+                //Display live chat message
+                displayLiveChatMessage();
 
             }
 
@@ -281,8 +269,11 @@ namespace web_app_assignment
                     Session.Remove("Recruiter");
                     Response.Redirect("home.aspx");
                 }
-            }          
-           
+
+                //Remove chat ID
+                helper.removeChatID();
+            }
+
         }   
         
         protected void getCurrentSiteJobDetails()
@@ -357,5 +348,145 @@ namespace web_app_assignment
                 }              
             }
         }
+
+        protected void displayLiveChatMessage()
+        {
+            SqlConnection con = new SqlConnection(strcon);
+
+            //Opem Connection
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            if(user_role == "Recruiter")
+            {
+                string sql = "SELECT * FROM LiveMessages WHERE recruiter_id = @recruiter_id";
+
+                SqlCommand command = new SqlCommand(sql, con);
+
+                //Insert parameters
+                command.Parameters.AddWithValue("@recruiter_id", sender_id.Substring(10));
+
+                SqlDataReader dread = command.ExecuteReader();
+
+                while (dread.Read())
+                {
+                    if(dread["admin_id"] != DBNull.Value)
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                            "<div class='replier-message-context'>" +
+                                "<div class='replier-message-content'>" +
+                                    dread["chat_content"].ToString() +
+                                    "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                                "</div>" +
+                            "</div>";
+                    }
+                    else
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                           "<div class='sender-message-context'>" +
+                               "<div class='sender-message-content'>" +
+                                   dread["chat_content"].ToString() +
+                                   "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                               "</div>" +
+                           "</div>";
+                    }
+                }
+
+                //Close Connection
+                con.Close();
+            }
+            else if(user_role == "Seeker")
+            {
+                string sql = "SELECT * FROM LiveMessages WHERE seeker_id = @seeker_id";
+
+                SqlCommand command = new SqlCommand(sql, con);
+
+                //Insert parameters
+                command.Parameters.AddWithValue("@seeker_id", sender_id.Substring(7));
+
+                SqlDataReader dread = command.ExecuteReader();
+
+                while (dread.Read())
+                {
+                    if (dread["admin_id"] != DBNull.Value)
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                            "<div class='replier-message-context'>" +
+                                "<div class='replier-message-content'>" +
+                                    dread["chat_content"].ToString() +
+                                    "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                                "</div>" +
+                            "</div>";
+                    }
+                    else
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                           "<div class='sender-message-context'>" +
+                               "<div class='sender-message-content'>" +
+                                   dread["chat_content"].ToString() +
+                                   "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                               "</div>" +
+                           "</div>";
+                    }
+                }
+
+                //Close Connection
+                con.Close();
+            }
+            else
+            {
+                string sql = "SELECT * FROM LiveMessages WHERE visitor_id = @visitor_id";
+
+                SqlCommand command = new SqlCommand(sql, con);
+
+                //Insert parameters
+                command.Parameters.AddWithValue("@visitor_id", sender_id);
+
+                SqlDataReader dread = command.ExecuteReader();
+
+                while (dread.Read())
+                {
+                    if (dread["admin_id"] != DBNull.Value)
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                            "<div class='replier-message-context'>" +
+                                "<div class='replier-message-content'>" +
+                                    dread["chat_content"].ToString() +
+                                    "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                                "</div>" +
+                            "</div>";
+                    }
+                    else
+                    {
+                        DateTime sent_time = Convert.ToDateTime(dread["created_at"]);
+
+                        ltrClientLiveMessageContainer.Text = ltrClientLiveMessageContainer.Text +
+                           "<div class='sender-message-context'>" +
+                               "<div class='sender-message-content'>" +
+                                   dread["chat_content"].ToString() +
+                                   "<div class='sentTime'>" + sent_time.ToString("dd MMMM yyyy h:mm tt") + "</div>" +
+                               "</div>" +
+                           "</div>";
+                    }
+                }
+
+                //Close Connection
+                con.Close();
+            }
+
+        }
+
     }
 }
