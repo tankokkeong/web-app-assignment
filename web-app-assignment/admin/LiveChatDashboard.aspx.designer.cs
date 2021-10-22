@@ -15,39 +15,30 @@ namespace web_app_assignment.admin
     {
 
         /// <summary>
-        /// lblTotalMessages control.
+        /// txtTotalMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalMessages;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalMessages;
 
         /// <summary>
-        /// lblSentMessages control.
+        /// txtSentMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSentMessages;
+        protected global::System.Web.UI.WebControls.TextBox txtSentMessages;
 
         /// <summary>
-        /// lblReceivedMessages control.
+        /// txtReceivedMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReceivedMessages;
-
-        /// <summary>
-        /// ltrChatContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrChatContent;
+        protected global::System.Web.UI.WebControls.TextBox txtReceivedMessages;
     }
 }

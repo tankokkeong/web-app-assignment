@@ -328,13 +328,5 @@ namespace web_app_assignment
                 HttpContext.Current.Response.Redirect("login.aspx");
             }
         }
-
-        public void removeChatID()
-        {
-            if (HttpContext.Current.Response.Cookies["chatID"] != null)
-            {
-                HttpContext.Current.Response.Cookies["chatID"].Expires = DateTime.Now.AddDays(-1);
-            }
-        }
     }
 }
